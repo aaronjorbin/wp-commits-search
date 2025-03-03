@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Magnifying glass handle -->
+  <path 
+    d="M27.7 25.3L21.7 19.3C21.5 19.1 21.2 19 21 19L20.5 19"
+    stroke="#0073AA"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+  
+  <!-- Magnifying glass circle -->
+  <circle
+    cx="14"
+    cy="14"
+    r="9"
+    fill="white"
+    stroke="#0073AA"
+    stroke-width="3"
+  />
+  
+  <!-- W letter inside -->
+  <path
+    d="M9 10L11 18L14 12L17 18L19 10"
+    stroke="#0073AA"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+</svg> 
