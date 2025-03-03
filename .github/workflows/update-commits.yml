@@ -1,0 +1,50 @@
+name: Update Commits Data
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Run every hour
+  workflow_dispatch:      # Allow manual trigger
+
+jobs:
+  update-commits:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install SVN
+        run: sudo apt-get install -y subversion
+
+      - name: Update Commits Data
+        run: |
+          svn log https://develop.svn.wordpress.org/ --xml -v | python3 -c 'import sys, xml.etree.ElementTree as ET, json; print(json.dumps([{"id": int(e.get("revision")), "author": e.findtext("author"), "message": e.findtext("msg"), "date": e.findtext("date"), "files": [p.text for p in e.findall("paths/path")]} for e in ET.parse(sys.stdin).getroot().findall("logentry")], indent=4))' > commits.json.new
+
+      - name: Validate JSON
+        run: |
+          if ! python3 -c 'import json; json.load(open("commits.json.new"))'; then
+            echo "Invalid JSON generated"
+            exit 1
+          fi
+          mv commits.json.new commits.json
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet commits.json; then
+            echo "No changes to commit"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changes detected"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and Push
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          git add commits.json
+          git commit -m "Update commits data [skip ci]"
+          git push 
