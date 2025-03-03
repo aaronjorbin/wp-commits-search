@@ -5,8 +5,6 @@ import Document from "flexsearch/dist/module/document";
 // @ts-expect-error flexsearch is not typed
 import { encode } from "flexsearch/dist/module/lang/latin/advanced";
 
-// import the commits.json file from the root of the project
-import commits from "../commits.json";
 import { Commit } from "./components/Commit";
 import { PaginationControls } from "./components/PaginationControls";
 import { SearchControls } from "./components/SearchControls";
@@ -61,9 +59,10 @@ export default function App() {
   const [searchResults, setSearchResults] = useState<Commit[]>([]);
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [error, setError] = useState<string | null>(null);
   const resultsPerPage = 10;
 
-  // Initialize from URL params
+  // Initialize from URL params and load commits
   useEffect(() => {
     const url = new URL(window.location.href);
     const urlQuery = url.searchParams.get('q');
@@ -77,12 +76,21 @@ export default function App() {
     }
 
     const loadCommits = async () => {
-      const commitsArray: Commit[] = commits as Commit[];
-      commitsArray.forEach((commit) => {
-        commit.text = `${commit.message} ${commit.author} ${commit.date} ${commit.id} ${commit.files.join(' ')}`;
-        index.add(commit);
-      });
-      setLoading(false);
+      try {
+        const response = await fetch('/wp-commits-search/commits.json');
+        if (!response.ok) {
+          throw new Error('Failed to load commits data');
+        }
+        const commitsArray: Commit[] = await response.json();
+        commitsArray.forEach((commit) => {
+          commit.text = `${commit.message} ${commit.author} ${commit.date} ${commit.id} ${commit.files.join(' ')}`;
+          index.add(commit);
+        });
+        setLoading(false);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load commits data');
+        setLoading(false);
+      }
     };
 
     loadCommits();
@@ -135,7 +143,11 @@ export default function App() {
     <>
       {loading ? (
         <div className="flex justify-center items-center min-h-screen">
-          <p className="text-lg text-gray-600">Loading...</p>
+          <p className="text-lg text-gray-600">Loading commits data...</p>
+        </div>
+      ) : error ? (
+        <div className="flex justify-center items-center min-h-screen">
+          <p className="text-lg text-red-600">{error}</p>
         </div>
       ) : (
         <div className="container mx-auto px-4 py-8 max-w-4xl">
