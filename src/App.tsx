@@ -18,11 +18,11 @@ const index = new Document({
 });
 
 type Commit = {
-  id: string;
+  id: number;
   message: string;
   author: string;
   date: string;
-  text: string;
+  text?: string;
   files: string[];
   doc?: {
     id: string;
