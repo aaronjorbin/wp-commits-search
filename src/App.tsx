@@ -2,6 +2,8 @@ import { useEffect, useState, useCallback } from "react";
 
 // @ts-expect-error flexsearch is not typed
 import Document from "flexsearch/dist/module/document";
+// @ts-expect-error flexsearch is not typed
+import { encode } from "flexsearch/dist/module/lang/latin/advanced";
 
 // import the commits.json file from the root of the project
 import commits from "../commits.json";
@@ -12,7 +14,11 @@ import { SearchControls } from "./components/SearchControls";
 const index = new Document({
   document: {
       id: "id",
-      index: ["text", "date"],
+      index: [{
+        field: "text",
+        tokenize: "forward",
+        encode
+      }],
       store: ["message", "author", "date", "id", "files"],
   }
 });
@@ -76,7 +82,6 @@ export default function App() {
         commit.text = `${commit.message} ${commit.author} ${commit.date} ${commit.id} ${commit.files.join(' ')}`;
         index.add(commit);
       });
-      console.log( 'commits loaded' );
       setLoading(false);
     };
 
@@ -153,7 +158,7 @@ export default function App() {
               />
               <ul className="space-y-4">
                 {paginatedResults.map((commit) => (
-                  <Commit key={commit.doc?.id} doc={commit.doc} />
+                  <Commit key={commit.doc?.id} doc={commit.doc} searchQuery={query} />
                 ))}
               </ul>
               <PaginationControls

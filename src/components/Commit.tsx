@@ -8,6 +8,7 @@ type CommitProps = {
     date: string;
     files: string[];
   };
+  searchQuery?: string;
 };
 
 const timeAgo = (date: Date) => {
@@ -42,7 +43,18 @@ const formatDate = (dateStr: string) => {
   return `${formattedDate} (${timeAgo(date)})`;
 };
 
-const formatMessageWithLinks = (text: string) => {
+const highlightText = (text: string, searchQuery: string) => {
+  if (!searchQuery) return text;
+  
+  const parts = text.split(new RegExp(`(${searchQuery})`, 'gi'));
+  return parts.map((part, index) => 
+    part.toLowerCase() === searchQuery.toLowerCase() ? (
+      <mark key={index} className="bg-yellow-200 rounded-sm">{part}</mark>
+    ) : part
+  );
+};
+
+const formatMessageWithLinks = (text: string, searchQuery?: string) => {
   // First split on both patterns
   const parts = text.split(/(\[?\d+\]|#\d+)/g);
   return parts.map((part, index) => {
@@ -78,11 +90,11 @@ const formatMessageWithLinks = (text: string) => {
       );
     }
 
-    return part;
+    return searchQuery ? highlightText(part, searchQuery) : part;
   });
 };
 
-export const Commit = ({ doc }: CommitProps) => {
+export const Commit = ({ doc, searchQuery }: CommitProps) => {
   const [showFiles, setShowFiles] = useState(false);
 
   if (!doc) return null;
@@ -101,15 +113,15 @@ export const Commit = ({ doc }: CommitProps) => {
           >
            r{doc.id}
           </a> 
-          {formatMessageWithLinks(messageLines[0])}
+          {formatMessageWithLinks(messageLines[0], searchQuery)}
         </p>
         {messageLines.slice(1).map((line, index) => (
           <p key={index} className="text-sm mb-1">
-            {formatMessageWithLinks(line)}
+            {formatMessageWithLinks(line, searchQuery)}
           </p>
         ))}
         <div className="text-sm text-gray-600 mt-2">
-          <p className="mb-1">Author: {doc.author}</p>
+          <p className="mb-1">Author: {searchQuery ? highlightText(doc.author, searchQuery) : doc.author}</p>
           <p>Date: {doc.date && formatDate(doc.date)}</p>
         </div>
         <div className="text-sm text-gray-600 mt-2">
@@ -124,7 +136,9 @@ export const Commit = ({ doc }: CommitProps) => {
           {showFiles && (
             <ul className="mt-1 ml-4 space-y-1">
               {doc.files.map((file, index) => (
-                <li key={index} className="text-gray-600">{file}</li>
+                <li key={index} className="text-gray-600">
+                  {searchQuery ? highlightText(file, searchQuery) : file}
+                </li>
               ))}
             </ul>
           )}
