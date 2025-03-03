@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 type CommitProps = {
   doc?: {
@@ -6,6 +6,7 @@ type CommitProps = {
     message: string;
     author: string;
     date: string;
+    files: string[];
   };
 };
 
@@ -81,7 +82,9 @@ const formatMessageWithLinks = (text: string) => {
   });
 };
 
-export const Commit: React.FC<CommitProps> = ({ doc }) => {
+export const Commit = ({ doc }: CommitProps) => {
+  const [showFiles, setShowFiles] = useState(false);
+
   if (!doc) return null;
 
   const messageLines = doc.message.split('\n');
@@ -108,6 +111,23 @@ export const Commit: React.FC<CommitProps> = ({ doc }) => {
         <div className="text-sm text-gray-600 mt-2">
           <p className="mb-1">Author: {doc.author}</p>
           <p>Date: {doc.date && formatDate(doc.date)}</p>
+        </div>
+        <div className="text-sm text-gray-600 mt-2">
+          <div className="flex items-center gap-2 mb-2">
+            <button
+              onClick={() => setShowFiles(!showFiles)}
+              className="text-blue-600 hover:text-blue-800 text-sm flex items-center gap-1"
+            >
+              {showFiles ? '▼' : '▶'} {doc.files.length} file{doc.files.length === 1 ? '' : 's'}
+            </button>
+          </div>
+          {showFiles && (
+            <ul className="mt-1 ml-4 space-y-1">
+              {doc.files.map((file, index) => (
+                <li key={index} className="text-gray-600">{file}</li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </li>

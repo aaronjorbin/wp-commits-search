@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
-// @ts-ignore
+// @ts-expect-error flexsearch is not typed
 import Document from "flexsearch/dist/module/document";
 
 // import the commits.json file from the root of the project
 import commits from "../commits.json";
 import { Commit } from "./components/Commit";
 import { PaginationControls } from "./components/PaginationControls";
+import { SearchControls } from "./components/SearchControls";
 
 const index = new Document({
   document: {
       id: "id",
       index: ["text", "date"],
-      store: ["message", "author", "date", "id"],
+      store: ["message", "author", "date", "id", "files"],
   }
 });
 
@@ -22,19 +23,15 @@ type Commit = {
   author: string;
   date: string;
   text: string;
+  files: string[];
   doc?: {
     id: string;
     message: string;
     author: string;
     date: string;
+    files: string[];
   };
 };
-
-const commitsArray: Commit[] = commits as Commit[];
-commitsArray.forEach((commit) => {
-  commit.text = `${commit.message} ${commit.author} ${commit.date}`;
-  index.add(commit);
-});
 
 // Helper function to update URL without triggering a page reload
 const updateUrlParams = (query: string, page: number) => {
@@ -72,36 +69,30 @@ export default function App() {
     if (urlPage) {
       setCurrentPage(parseInt(urlPage));
     }
-  }, []);
 
-  // Perform initial search if query is present in URL
-  useEffect(() => {
-    if (query && !loading && !searchResults.length) {
-      handleSearch(currentPage);
-    }
-  }, [loading, query]);
-
-  // Update URL when page or query changes
-  useEffect(() => {
-    updateUrlParams(query, currentPage);
-  }, [query, currentPage]);
-
-  useEffect(() => {
     const loadCommits = async () => {
       const commitsArray: Commit[] = commits as Commit[];
       commitsArray.forEach((commit) => {
+        commit.text = `${commit.message} ${commit.author} ${commit.date} ${commit.id} ${commit.files.join(' ')}`;
         index.add(commit);
       });
+      console.log( 'commits loaded' );
       setLoading(false);
     };
 
     loadCommits();
   }, []);
 
-  const handleSearch = ( currentPage?: number ) => {
+  const handleSearch = useCallback(( currentPage?: number ) => {
     setSearching(true);
     setCurrentPage(currentPage || 1); // Reset to first page on new search
     const results = index.search(query, { limit: 100000, enrich: true });
+
+    if ( results.length === 0 || results[0].result.length === 0 ) {
+      setSearchResults([]);
+      setSearching(false);
+      return;
+    }
 
     // Sort results by ID in descending order (newest first)
     const sortedResults = results[0].result.sort((a: Commit, b: Commit) => {
@@ -110,7 +101,22 @@ export default function App() {
 
     setSearchResults(sortedResults);
     setSearching(false);
-  };
+  }, [query]);
+
+  // Perform initial search if query is present in URL
+  useEffect(() => {
+    if (query && !loading && !searchResults.length) {
+      handleSearch(currentPage);
+    }
+  }, [loading, query, handleSearch, currentPage, searchResults.length]);
+
+  // Update URL when page or query changes
+  useEffect(() => {
+    updateUrlParams(query, currentPage);
+  }, [query, currentPage]);
+
+  useEffect(() => {
+  }, []);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -129,41 +135,15 @@ export default function App() {
       ) : (
         <div className="container mx-auto px-4 py-8 max-w-4xl">
           <h1 className="text-3xl font-bold text-center mb-8">Search WordPress Core Commits</h1>
-          <div className="flex gap-2 mb-8">
-            <input
-              type="text"
-              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                if (e.key === 'Enter' && !searching) {
-                  setQuery((e.target as HTMLInputElement).value);
-                  handleSearch();
-                }
-              }}
-              className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your search query..."
-              disabled={searching}
-            />
-            <button 
-              onClick={() => handleSearch()}
-              disabled={searching}
-              className={`px-6 py-2 rounded-lg transition-colors ${
-                searching 
-                  ? 'bg-gray-400 cursor-not-allowed' 
-                  : 'bg-blue-500 hover:bg-blue-600 text-white'
-              }`}
-            >
-              {searching ? 'Searching...' : 'Search'}
-            </button>
-          </div>
-          {searching && (
-            <p className="text-gray-600 mb-4">
-              Searching...
-            </p>
-          )}
+          <SearchControls
+            query={query}
+            onQueryChange={setQuery}
+            onSearch={() => handleSearch()}
+            searching={searching}
+            resultsCount={searchResults.length || null}
+          />
           {!searching && searchResults.length > 0 && (
             <>
-              <p className="text-gray-600 mb-4">
-                Found {searchResults.length.toLocaleString()} commit{searchResults.length === 1 ? '' : 's'}
-              </p>
               <PaginationControls
                 currentPage={currentPage}
                 totalPages={totalPages}
