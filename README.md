@@ -1,54 +1,45 @@
-# React + TypeScript + Vite
+# WordPress Core Commits Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fast, client-side search interface for WordPress Core commits. This allows you to search through the commit history of WordPress Core, with features like full-text search, file filtering, and commit details.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 Full-text search across commit messages, authors, and files
+- 📄 File-level changes visibility for each commit
+- 🔗 Direct links to WordPress Trac for commits and tickets
+- 📱 Responsive design that works on all devices
+- ⚡ Client-side search powered by [FlexSearch](https://github.com/nextapps-de/flexsearch)
+- 🔄 Auto-updating commit data (refreshed hourly)
+- 🎯 URL-based search parameters for easy sharing
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Install dependencies
+npm install
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Data Updates
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The commit data is automatically updated every hour through a GitHub Action that fetches the latest commits from WordPress Core's SVN repository. The data is stored in `commits.json` and is included in the build.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+Licensed under the GNU General Public License v3.0 or later. See the LICENSE file for details.
+
+## Author
+
+Made with ❤️ by [Aaron Jorbin](https://aaron.jorb.in)
