@@ -1,118 +1,50 @@
 import { useEffect, useState, useCallback } from "react";
-
-// @ts-expect-error flexsearch is not typed
-import Document from "flexsearch/dist/module/document";
-// @ts-expect-error flexsearch is not typed
-import { encode } from "flexsearch/dist/module/lang/latin/advanced";
-
 import { Commit } from "./components/Commit";
 import { PaginationControls } from "./components/PaginationControls";
 import { SearchControls } from "./components/SearchControls";
-
-const index = new Document({
-  document: {
-      id: "id",
-      index: [{
-        field: "text",
-        tokenize: "forward",
-        encode
-      }],
-      store: ["message", "author", "date", "id", "files"],
-  }
-});
-
-type Commit = {
-  id: number;
-  message: string;
-  author: string;
-  date: string;
-  text?: string;
-  files: string[];
-  doc?: {
-    id: string;
-    message: string;
-    author: string;
-    date: string;
-    files: string[];
-  };
-};
-
-// Helper function to update URL without triggering a page reload
-const updateUrlParams = (query: string, page: number) => {
-  const url = new URL(window.location.href);
-  if (query) {
-    url.searchParams.set('q', query);
-  } else {
-    url.searchParams.delete('q');
-  }
-  if (page > 1) {
-    url.searchParams.set('p', page.toString());
-  } else {
-    url.searchParams.delete('p');
-  }
-  window.history.pushState({}, '', url);
-};
+import { loadCommits, searchCommits, type Commit as CommitType } from "./lib/commits";
+import { updateUrlParams, getInitialUrlParams } from "./lib/url";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [searching, setSearching] = useState(false);
-  const [searchResults, setSearchResults] = useState<Commit[]>([]);
+  const [searchResults, setSearchResults] = useState<CommitType[]>([]);
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState<string | null>(null);
+  const [totalCommits, setTotalCommits] = useState<number | null>(null);
   const resultsPerPage = 10;
 
   // Initialize from URL params and load commits
   useEffect(() => {
-    const url = new URL(window.location.href);
-    const urlQuery = url.searchParams.get('q');
-    const urlPage = url.searchParams.get('p');
+    const { query: urlQuery, page: urlPage } = getInitialUrlParams();
 
     if (urlQuery) {
       setQuery(urlQuery);
     }
     if (urlPage) {
-      setCurrentPage(parseInt(urlPage));
+      setCurrentPage(urlPage);
     }
 
-    const loadCommits = async () => {
-      try {
-        const response = await fetch('/wp-commits-search/commits.json');
-        if (!response.ok) {
-          throw new Error('Failed to load commits data');
-        }
-        const commitsArray: Commit[] = await response.json();
-        commitsArray.forEach((commit) => {
-          commit.text = `${commit.message} ${commit.author} ${commit.date} ${commit.id} ${commit.files.join(' ')}`;
-          index.add(commit);
-        });
-        setLoading(false);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load commits data');
-        setLoading(false);
+    const initializeCommits = async () => {
+      const { error, totalCommits } = await loadCommits();
+      if (error) {
+        setError(error);
       }
+      if (totalCommits) {
+        setTotalCommits(totalCommits);
+      }
+      setLoading(false);
     };
 
-    loadCommits();
+    initializeCommits();
   }, []);
 
-  const handleSearch = useCallback(( currentPage?: number ) => {
+  const handleSearch = useCallback((currentPage?: number) => {
     setSearching(true);
     setCurrentPage(currentPage || 1); // Reset to first page on new search
-    const results = index.search(query, { limit: 100000, enrich: true });
-
-    if ( results.length === 0 || results[0].result.length === 0 ) {
-      setSearchResults([]);
-      setSearching(false);
-      return;
-    }
-
-    // Sort results by ID in descending order (newest first)
-    const sortedResults = results[0].result.sort((a: Commit, b: Commit) => {
-      return parseInt(b.doc?.id || '0') - parseInt(a.doc?.id || '0');
-    });
-
-    setSearchResults(sortedResults);
+    const results = searchCommits(query);
+    setSearchResults(results);
     setSearching(false);
   }, [query]);
 
@@ -128,9 +60,6 @@ export default function App() {
     updateUrlParams(query, currentPage);
   }, [query, currentPage]);
 
-  useEffect(() => {
-  }, []);
-
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -140,61 +69,68 @@ export default function App() {
   const paginatedResults = searchResults.slice(startIndex, startIndex + resultsPerPage);
 
   return (
-    <>
-      {loading ? (
-        <div className="flex justify-center items-center min-h-screen">
-          <p className="text-lg text-gray-600">Loading commits data...</p>
-        </div>
-      ) : error ? (
-        <div className="flex justify-center items-center min-h-screen">
-          <p className="text-lg text-red-600">{error}</p>
-        </div>
-      ) : (
-        <div className="container mx-auto px-4 py-8 max-w-4xl">
-          <h1 className="text-3xl font-bold text-center mb-8">Search WordPress Core Commits</h1>
-          <SearchControls
-            query={query}
-            onQueryChange={setQuery}
-            onSearch={() => handleSearch()}
-            searching={searching}
-            resultsCount={searchResults.length || null}
-          />
-          {!searching && searchResults.length > 0 && (
-            <>
-              <PaginationControls
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-                totalResults={searchResults.length}
-                resultsPerPage={resultsPerPage}
-              />
-              <ul className="space-y-4">
-                {paginatedResults.map((commit) => (
-                  <Commit key={commit.doc?.id} doc={commit.doc} searchQuery={query} />
-                ))}
-              </ul>
-              <PaginationControls
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-                totalResults={searchResults.length}
-                resultsPerPage={resultsPerPage}
-              />
-            </>
-          )}
-          <footer className="mt-8 text-center text-gray-600">
-            Made with ❤️ by{' '}
-            <a 
-              href="https://aaron.jorb.in"
-              className="text-blue-600 hover:text-blue-800"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Aaron Jorbin
-            </a>
-          </footer>
-        </div>
-      )}
-    </>
+    <div className="min-h-screen flex flex-col">
+      <header className="py-8">
+        <h1 className="text-3xl font-bold text-center">Search WordPress Core Commits</h1>
+        <p className="text-center text-gray-600 mt-4">
+          Search {totalCommits ? totalCommits.toLocaleString() : "alot of"} commits to WordPress core in your browser.
+        </p>
+      </header>
+      <main className="flex-grow">
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <p className="text-lg text-gray-600">Loading commits data...</p>
+          </div>
+        ) : error ? (
+          <div className="flex justify-center items-center h-64">
+            <p className="text-lg text-red-600">{error}</p>
+          </div>
+        ) : (
+          <div className="container mx-auto px-4 max-w-4xl">
+            <SearchControls
+              query={query}
+              onQueryChange={setQuery}
+              onSearch={() => handleSearch()}
+              searching={searching}
+              resultsCount={searchResults.length || null}
+            />
+            {!searching && searchResults.length > 0 && (
+              <>
+                <PaginationControls
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                  totalResults={searchResults.length}
+                  resultsPerPage={resultsPerPage}
+                />
+                <ul className="space-y-4">
+                  {paginatedResults.map((commit) => (
+                    <Commit key={commit.doc?.id} doc={commit.doc} searchQuery={query} />
+                  ))}
+                </ul>
+                <PaginationControls
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                  totalResults={searchResults.length}
+                  resultsPerPage={resultsPerPage}
+                />
+              </>
+            )}
+          </div>
+        )}
+      </main>
+      <footer className="py-8 text-center text-gray-600">
+        Made with ❤️ by{' '}
+        <a 
+          href="https://aaron.jorb.in"
+          className="text-blue-600 hover:text-blue-800"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Aaron Jorbin
+        </a>
+      </footer>
+    </div>
   );
 } 
