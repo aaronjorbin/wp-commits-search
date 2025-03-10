@@ -69,24 +69,31 @@ export default function App() {
   const paginatedResults = searchResults.slice(startIndex, startIndex + resultsPerPage);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="py-8">
-        <h1 className="text-3xl font-bold text-center">Search WordPress Core Commits</h1>
-        <p className="text-center text-gray-600 mt-4">
-          Search {totalCommits ? totalCommits.toLocaleString() : "alot of"} commits to WordPress core in your browser.
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50">
+      <header className="py-12 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <h1 className="text-4xl font-extrabold text-center mb-2 tracking-tight">
+          Search WordPress Core Commits
+        </h1>
+        <p className="text-center text-blue-100 mt-4 text-lg font-light">
+          Search {totalCommits ? (
+            <span className="font-semibold">{totalCommits.toLocaleString()}</span>
+          ) : "all"} commits to WordPress core in your browser
         </p>
       </header>
-      <main className="flex-grow">
+      <main className="flex-grow container mx-auto px-4 py-8 max-w-4xl">
         {loading ? (
           <div className="flex justify-center items-center h-64">
-            <p className="text-lg text-gray-600">Loading commits data...</p>
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent mb-4"></div>
+              <p className="text-lg text-gray-600">Loading commits data...</p>
+            </div>
           </div>
         ) : error ? (
           <div className="flex justify-center items-center h-64">
-            <p className="text-lg text-red-600">{error}</p>
+            <p className="text-lg text-red-600 bg-red-50 px-6 py-4 rounded-lg border border-red-200">{error}</p>
           </div>
         ) : (
-          <div className="container mx-auto px-4 max-w-4xl">
+          <div className="space-y-6">
             <SearchControls
               query={query}
               onQueryChange={setQuery}
@@ -103,7 +110,7 @@ export default function App() {
                   totalResults={searchResults.length}
                   resultsPerPage={resultsPerPage}
                 />
-                <ul className="space-y-4">
+                <ul className="space-y-6">
                   {paginatedResults.map((commit) => (
                     <Commit key={commit.doc?.id} doc={commit.doc} searchQuery={query} />
                   ))}
@@ -120,16 +127,18 @@ export default function App() {
           </div>
         )}
       </main>
-      <footer className="py-8 text-center text-gray-600">
-        Made with ❤️ by{' '}
-        <a 
-          href="https://aaron.jorb.in"
-          className="text-blue-600 hover:text-blue-800"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Aaron Jorbin
-        </a>
+      <footer className="py-8 text-center text-gray-600 bg-white border-t border-gray-100">
+        <p className="text-sm">
+          Made with <span className="text-red-500 animate-pulse">❤️</span> by{' '}
+          <a 
+            href="https://aaron.jorb.in"
+            className="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Aaron Jorbin
+          </a>
+        </p>
       </footer>
     </div>
   );

@@ -102,12 +102,12 @@ export const Commit = ({ doc, searchQuery }: CommitProps) => {
   const messageLines = doc.message.split('\n');
 
   return (
-    <li className="p-4 border rounded-lg hover:bg-gray-50">
+    <li className="p-6 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md">
       <div>
-        <p className="text-lg font-medium mb-2">
+        <p className="text-xl font-medium mb-3 leading-relaxed">
           <a 
             href={`https://core.trac.wordpress.org/changeset/${doc.id}`}
-            className="text-blue-500 hover:text-blue-600 mr-2"
+            className="text-blue-600 hover:text-blue-800 font-semibold mr-3 transition-colors duration-200"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -116,27 +116,34 @@ export const Commit = ({ doc, searchQuery }: CommitProps) => {
           {formatMessageWithLinks(messageLines[0], searchQuery)}
         </p>
         {messageLines.slice(1).map((line, index) => (
-          <p key={index} className="text-sm mb-1">
+          <p key={index} className="text-gray-600 mb-2 pl-4 border-l-2 border-gray-200">
             {formatMessageWithLinks(line, searchQuery)}
           </p>
         ))}
-        <div className="text-sm text-gray-600 mt-2">
-          <p className="mb-1">Author: {searchQuery ? highlightText(doc.author, searchQuery) : doc.author}</p>
-          <p>Date: {doc.date && formatDate(doc.date)}</p>
+        <div className="mt-4 space-y-2 text-sm">
+          <p className="text-gray-700">
+            <span className="font-medium">Author:</span>{' '}
+            <span className="text-gray-900">{searchQuery ? highlightText(doc.author, searchQuery) : doc.author}</span>
+          </p>
+          <p className="text-gray-700">
+            <span className="font-medium">Date:</span>{' '}
+            <span className="text-gray-900">{doc.date && formatDate(doc.date)}</span>
+          </p>
         </div>
-        <div className="text-sm text-gray-600 mt-2">
-          <div className="flex items-center gap-2 mb-2">
-            <button
-              onClick={() => setShowFiles(!showFiles)}
-              className="text-blue-600 hover:text-blue-800 text-sm flex items-center gap-1"
-            >
-              {showFiles ? '▼' : '▶'} {doc.files.length} file{doc.files.length === 1 ? '' : 's'}
-            </button>
-          </div>
+        <div className="mt-4">
+          <button
+            onClick={() => setShowFiles(!showFiles)}
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200"
+          >
+            <span className="transform transition-transform duration-200" style={{ display: 'inline-block', transform: showFiles ? 'rotate(90deg)' : 'none' }}>
+              ▶
+            </span>
+            {doc.files.length} file{doc.files.length === 1 ? '' : 's'}
+          </button>
           {showFiles && (
-            <ul className="mt-1 ml-4 space-y-1">
+            <ul className="mt-3 pl-6 space-y-1 border-l-2 border-blue-100">
               {doc.files.map((file, index) => (
-                <li key={index} className="text-gray-600">
+                <li key={index} className="text-gray-700 hover:text-gray-900">
                   {searchQuery ? highlightText(file, searchQuery) : file}
                 </li>
               ))}
