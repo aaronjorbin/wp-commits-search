@@ -82,10 +82,12 @@ export default function App() {
       </header>
       <main className="flex-grow container mx-auto px-4 py-8 max-w-4xl">
         {loading ? (
-          <div className="flex justify-center items-center h-64">
+          <div className="flex items-center justify-center h-[calc(100vh-300px)]">
             <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent mb-4"></div>
-              <p className="text-lg text-gray-600">Loading commits data...</p>
+              <div className="flex justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent mb-6"></div>
+              </div>
+              <p className="text-lg text-gray-600">Loading commits data&hellip;</p>
             </div>
           </div>
         ) : error ? (
