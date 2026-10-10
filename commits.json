@@ -1,5 +1,16 @@
 [
     {
+        "id": 64295,
+        "author": "SergeyBiryukov",
+        "message": "Docs: Allow `false` in the documented type of `WP_REST_Posts_Controller::$allow_batch`.\n\n`WP_REST_Posts_Controller::$allow_batch` is documented as `array`, while `WP_REST_Attachments_Controller`, `WP_REST_Font_Faces_Controller` and `WP_REST_Font_Families_Controller` override it with `false` to opt out of batching. PHPStan reports this as a PHPDoc type that is not covariant with the parent.\n\n`false` is a supported value, as documented for the `allow_batch` route option in `WP_REST_Server` (`array{v1?: bool}|false`). `WP_REST_Server::serve_batch_request_v1()` explicitly handles this value, rejecting the request with `rest_batch_not_allowed` when `allow_batch` is not an array. The parent type is therefore widened to `array|false` to match. This is a documentation-only change.\n\nThis resolves all three errors in the `property.phpDocType` PHPStan baseline, which is deleted.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13812.\n\nFollow-up to r52068, r57548.\n\nProps Soean.\nSee #65817.",
+        "date": "2026-10-10T22:31:03.546115Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/trunk/tests/phpstan/baselines/property.phpDocType.neon"
+        ]
+    },
+    {
         "id": 64294,
         "author": "westonruter",
         "message": "HTML API: Restore spec-mirroring structure in HTML Processor.\n\nSome code in `WP_HTML_Processor` is written to mirror the steps of the HTML specification, so that it can be compared against the living standard as it changes and extended as more of it is supported. Static analysis reports parts of that structure as unreachable or redundant, which is accurate but beside the point. In r64250 two such places were restructured to satisfy PHPStan: the `else` branch for a `FORM` end tag in `step_in_body()`, which corresponds to the specification's \"Otherwise\" steps, and the `is_tag_closer()` checks for end tags in `step_in_foreign_content()`, which spell out the specification's \"An end tag whose tag name is\u2026\" conditions. Both are reverted, along with the trailing `bail()` calls those methods need again.\n\nThe errors these intentional constructs produce, along with a false positive where PHPStan does not see that `bookmark_token()` sets `$last_error` before throwing, are now ignored in the HTML API section of `phpstan.neon.dist` with an explanation, rather than left in baselines that invite contributors to fix them. The remaining baseline errors for the HTML API are genuine and are fixed:\n\n* The bookmark counter is cast to a string before being passed to `set_bookmark()`.\n* The `$node` variable is initialized before a loop that may not iterate.\n* The `$is_closing_tag` property is documented as nullable.\n* Redundant `isset()` checks on the always-set `WP_HTML_Text_Replacement::$text` property are removed.\n\nThis empties the `catch.neverThrown` baseline, which is deleted.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14141.\nFollow-up to r58779, r58871, r64250.\n\nProps westonruter, dmsnell.\nSee #65817.\n",
