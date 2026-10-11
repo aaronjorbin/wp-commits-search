@@ -1,5 +1,14 @@
 [
     {
+        "id": 64299,
+        "author": "joedolson",
+        "message": "Media: Improve focus handling on repeated image edits.\n\nFix a bug where triggering the image edit panel multiple times would successively remove keyboard access to edit controls, beginning with the 2nd instantiation.\n\nAdjust the logic to ensure that `tabindex=\"-1\"` is only applied to notices, and not to editing controls.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12921.\n\nProps afercia, rishabhwp, abdullah17, joedolson.\nFixes #65814.",
+        "date": "2026-10-11T21:00:03.961987Z",
+        "files": [
+            "/trunk/src/js/_enqueues/lib/image-edit.js"
+        ]
+    },
+    {
         "id": 64298,
         "author": "lancewillett",
         "message": "Build/Test Tools: Add descriptions for registered Grunt tasks.\n\nAdd descriptions to 30 tasks in `Gruntfile.js` so `grunt --help` explains their purpose instead of showing generic placeholders. Preserve task implementations and lists, and retain the existing description for the `apply` alias.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13915\n\nProps sabbir345.\nFixes #65858.\n",
