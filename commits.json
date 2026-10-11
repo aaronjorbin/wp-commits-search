@@ -1,5 +1,24 @@
 [
     {
+        "id": 64303,
+        "author": "joedolson",
+        "message": "Twenty Twenty Three: Add aria-label to primary menu.\n\nHTML templates can't contain translatable strings, and the primary menu needs a default ARIA label. Move the primary navigation into a hidden pattern and add the ARIA label.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14091.\n\nProps joedolson, rahultank, mukesh27, dhruvang21.\nFixes #66195.",
+        "date": "2026-10-11T23:09:46.916488Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwentythree/parts/header.html",
+            "/trunk/src/wp-content/themes/twentytwentythree/patterns/hidden-navigation.php"
+        ]
+    },
+    {
+        "id": 64302,
+        "author": "johnjamesjacoby",
+        "message": "Users: Associate profile screen descriptions with their controls.\n\nAdds `aria-describedby` associations for the username and biographical info fields, password reset link button, and session action buttons on profile and user edit screens.\n\nProps johnjamesjacoby, therssoftware, joedolson.\nFixes #66213.\n",
+        "date": "2026-10-11T22:41:11.654334Z",
+        "files": [
+            "/trunk/src/wp-admin/user-edit.php"
+        ]
+    },
+    {
         "id": 64301,
         "author": "joedolson",
         "message": "Admin: Add screen option to turn off moving meta boxes.\n\nIn most cases, changing the order and position of dashboard or post meta boxes is an occasional need. When it's not needed, the extra two controls for every meta box create a high number of extra tab stops and a busy design. The drag and drop can result in accidental moves and difficulty scrolling on mobile devices due to accidental touch effects.\n\nAdd a screen option that allows users to disable moving meta boxes, disabling mover buttons and drag and drop behavior. The setting is defaulted to enable moving meta boxes, so there is no change in the default experience for users.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12627.\n\nProps azaozz, pbiron, afercia, johnbillion, hellofromtonya, helen, knutsp, johnjamesjacoby, garrett-eclipse, margaretschneider, johnstonphilip, hedgefield, sanketparmar, poligilad, sabernhardt, tyxla, jillq, sarahricker, ryokuhi, poena, abrain, SergeyBiryukov, joedolson.\nFixes #50699, #51419.",
