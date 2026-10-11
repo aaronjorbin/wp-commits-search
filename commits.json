@@ -1,5 +1,34 @@
 [
     {
+        "id": 64298,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Add descriptions for registered Grunt tasks.\n\nAdd descriptions to 30 tasks in `Gruntfile.js` so `grunt --help` explains their purpose instead of showing generic placeholders. Preserve task implementations and lists, and retain the existing description for the `apply` alias.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13915\n\nProps sabbir345.\nFixes #65858.\n",
+        "date": "2026-10-11T07:16:13.969502Z",
+        "files": [
+            "/trunk/Gruntfile.js"
+        ]
+    },
+    {
+        "id": 64297,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Add `accordion.js` to TypeScript checking.\n\nInclude `accordion.js` in `tsconfig.json` and document the `accordionSwitch()` parameter as `JQuery` to match its callers and use of jQuery methods. This adds static checking without changing runtime behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14041\n\nProps rahultank.\nSee #65997.\n",
+        "date": "2026-10-11T07:13:12.001300Z",
+        "files": [
+            "/trunk/src/js/_enqueues/lib/accordion.js",
+            "/trunk/tsconfig.json"
+        ]
+    },
+    {
+        "id": 64296,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Remove the direct `check-node-version` dependency.\n\nRemove `check-node-version` from the root development dependencies because no Core script or task uses it directly. Retain its lockfile entries because `@wordpress/scripts` still requires it.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14127\n\nProps mukesh27.\nSee #65857.\n",
+        "date": "2026-10-11T07:09:43.115576Z",
+        "files": [
+            "/trunk/package-lock.json",
+            "/trunk/package.json"
+        ]
+    },
+    {
         "id": 64295,
         "author": "SergeyBiryukov",
         "message": "Docs: Allow `false` in the documented type of `WP_REST_Posts_Controller::$allow_batch`.\n\n`WP_REST_Posts_Controller::$allow_batch` is documented as `array`, while `WP_REST_Attachments_Controller`, `WP_REST_Font_Faces_Controller` and `WP_REST_Font_Families_Controller` override it with `false` to opt out of batching. PHPStan reports this as a PHPDoc type that is not covariant with the parent.\n\n`false` is a supported value, as documented for the `allow_batch` route option in `WP_REST_Server` (`array{v1?: bool}|false`). `WP_REST_Server::serve_batch_request_v1()` explicitly handles this value, rejecting the request with `rest_batch_not_allowed` when `allow_batch` is not an array. The parent type is therefore widened to `array|false` to match. This is a documentation-only change.\n\nThis resolves all three errors in the `property.phpDocType` PHPStan baseline, which is deleted.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13812.\n\nFollow-up to r52068, r57548.\n\nProps Soean.\nSee #65817.",
