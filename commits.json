@@ -1,5 +1,35 @@
 [
     {
+        "id": 64301,
+        "author": "joedolson",
+        "message": "Admin: Add screen option to turn off moving meta boxes.\n\nIn most cases, changing the order and position of dashboard or post meta boxes is an occasional need. When it's not needed, the extra two controls for every meta box create a high number of extra tab stops and a busy design. The drag and drop can result in accidental moves and difficulty scrolling on mobile devices due to accidental touch effects.\n\nAdd a screen option that allows users to disable moving meta boxes, disabling mover buttons and drag and drop behavior. The setting is defaulted to enable moving meta boxes, so there is no change in the default experience for users.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12627.\n\nProps azaozz, pbiron, afercia, johnbillion, hellofromtonya, helen, knutsp, johnjamesjacoby, garrett-eclipse, margaretschneider, johnstonphilip, hedgefield, sanketparmar, poligilad, sabernhardt, tyxla, jillq, sarahricker, ryokuhi, poena, abrain, SergeyBiryukov, joedolson.\nFixes #50699, #51419.",
+        "date": "2026-10-11T21:24:39.758466Z",
+        "files": [
+            "/trunk/src/js/_enqueues/admin/common.js",
+            "/trunk/src/js/_enqueues/admin/postbox.js",
+            "/trunk/src/wp-admin/admin-ajax.php",
+            "/trunk/src/wp-admin/admin-header.php",
+            "/trunk/src/wp-admin/css/common.css",
+            "/trunk/src/wp-admin/css/dashboard.css",
+            "/trunk/src/wp-admin/includes/ajax-actions.php",
+            "/trunk/src/wp-admin/includes/class-wp-screen.php",
+            "/trunk/src/wp-admin/includes/screen.php",
+            "/trunk/tests/phpunit/includes/testcase-ajax.php",
+            "/trunk/tests/phpunit/tests/admin/includesScreen.php",
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxMetaBoxReordering.php"
+        ]
+    },
+    {
+        "id": 64300,
+        "author": "peterwilsoncc",
+        "message": "Canonical: Generate stable cache for `redirect_guess_404_permalink()`.\n\nRun `$wpdb->remove_placeholder_escape()` on the prepared database query when generating the cache key.\n\nThe WPDB placeholder varies each time WordPress is executed so without replacement the cache key is unstable resulting in an unreachable cache entry.\n\nFollow up to r64043.\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14146\n\nProps maheshbohara, therssoftware.\nFixes #66282.\nSee #64250.\n\n",
+        "date": "2026-10-11T21:19:47.866978Z",
+        "files": [
+            "/trunk/src/wp-includes/canonical.php",
+            "/trunk/tests/phpunit/tests/canonical.php"
+        ]
+    },
+    {
         "id": 64299,
         "author": "joedolson",
         "message": "Media: Improve focus handling on repeated image edits.\n\nFix a bug where triggering the image edit panel multiple times would successively remove keyboard access to edit controls, beginning with the 2nd instantiation.\n\nAdjust the logic to ensure that `tabindex=\"-1\"` is only applied to notices, and not to editing controls.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12921.\n\nProps afercia, rishabhwp, abdullah17, joedolson.\nFixes #65814.",
