@@ -1,5 +1,35 @@
 [
     {
+        "id": 64318,
+        "author": "lancewillett",
+        "message": "Tests: Skip PDF alpha checks when the fixture cannot load.\n\nCheck that `wp_get_image_editor()` can load the PDF before testing alpha-channel removal. ImageMagick can advertise PDF support when Ghostscript is unavailable. Match the existing PDF tests while preserving the preview and pixel assertions on supported systems.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14214\n\nProps ekamran.\nSee #65819.\n",
+        "date": "2026-10-12T20:50:38.000391Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/editorImagick.php"
+        ]
+    },
+    {
+        "id": 64317,
+        "author": "lancewillett",
+        "message": "Tests: Separate URL details parsing tests.\n\nMove direct `WP_REST_URL_Details_Controller` parsing tests into a separate `WP_UnitTestCase` class. Preserve all 80 datasets and their assertions while avoiding REST setup and teardown for parsing-only checks. Keep endpoint tests in the existing controller test class.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14103\n\nProps abcd95.\nSee #66074.\n",
+        "date": "2026-10-12T20:45:11.311569Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestUrlDetailsController",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestUrlDetailsController/parsing.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestUrlDetailsController.php"
+        ]
+    },
+    {
+        "id": 64316,
+        "author": "lancewillett",
+        "message": "Tests: Separate global styles CSS validation tests.\n\nMove direct `validate_custom_css()` tests into a separate `WP_UnitTestCase` class, avoiding REST server and theme setup for each dataset. Preserve all 28 cases, their assertions, and independent dataset reporting.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14119\n\nProps sainathpoojary.\nSee #66074.\n",
+        "date": "2026-10-12T20:42:53.953341Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-global-styles-controller-css-validation.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-global-styles-controller.php"
+        ]
+    },
+    {
         "id": 64315,
         "author": "gziolo",
         "message": "JSON schema: Send empty object defaults as `{}` for union types \n\n`wp_prepare_json_schema_for_client()` already changes an empty array `default` to an object when the type is `object`. Now it also does this when the type is a list that includes `object` but not `array`, like `array( 'object', 'null' )`. If `array` is allowed, the default stays `[]`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14068.\nFollow-up to [62591].\n\nProps sukhendu2002.\nSee #66267.\n\n",
