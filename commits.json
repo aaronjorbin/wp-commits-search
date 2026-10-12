@@ -1,5 +1,34 @@
 [
     {
+        "id": 64305,
+        "author": "peterwilsoncc",
+        "message": "General: Send correct HTTP statuses for db-error/maintenance drop-ins.\n\nUpdates the HTTP headers for sites running the `db-error.php` or `maintenance.php` drop-ins. Previously sites running these drop-ins would send a `200 OK` HTTP response by default if they were not specified by the drop-in. These have been updated to:\n\n* `500 Internal Server Error` for the Database Error drop-in, matching the header sent by the default call to `wp_die().\n* `503 Service Unavailable` for the maintenance mode drop-in with a retry header of 10 minutes, matching the headers sent by the default call to `wp_die()`.\n\nDevelopers can continue to customize these headers by sending the headers in the drop-ins.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13471.\n\nProps bradleyt, dineshinau, sabernhardt, westonruter.\nFixes #66080.\n\n\n",
+        "date": "2026-10-11T23:48:15.443791Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wpdb.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/src/wp-includes/load.php"
+        ]
+    },
+    {
+        "id": 64304,
+        "author": "SergeyBiryukov",
+        "message": "Docs: Remove variable names from `@return` tags.\n\nPer the [https://developer.wordpress.org/coding-standards/inline-documentation-standards/php/ inline documentation standards], `@return` tags should only contain the type and an optional description, not the name of the returned variable. This commit removes the variable names from all remaining `@return` tags in core.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13844.\n\nProps Soean, mukesh27.\nSee #65860.",
+        "date": "2026-10-11T23:32:58.554149Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-custom-background.php",
+            "/trunk/src/wp-admin/includes/class-custom-image-header.php",
+            "/trunk/src/wp-admin/includes/media.php",
+            "/trunk/src/wp-includes/class-wp-editor.php",
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/src/wp-includes/comment.php",
+            "/trunk/src/wp-includes/ms-blogs.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-navigation-fallback-controller.php",
+            "/trunk/tests/phpunit/tests/kses.php",
+            "/trunk/tests/phpunit/tests/query/searchColumns.php"
+        ]
+    },
+    {
         "id": 64303,
         "author": "joedolson",
         "message": "Twenty Twenty Three: Add aria-label to primary menu.\n\nHTML templates can't contain translatable strings, and the primary menu needs a default ARIA label. Move the primary navigation into a hidden pattern and add the ARIA label.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14091.\n\nProps joedolson, rahultank, mukesh27, dhruvang21.\nFixes #66195.",
