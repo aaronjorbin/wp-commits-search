@@ -1,5 +1,15 @@
 [
     {
+        "id": 64315,
+        "author": "gziolo",
+        "message": "JSON schema: Send empty object defaults as `{}` for union types \n\n`wp_prepare_json_schema_for_client()` already changes an empty array `default` to an object when the type is `object`. Now it also does this when the type is a list that includes `object` but not `array`, like `array( 'object', 'null' )`. If `array` is allowed, the default stays `[]`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14068.\nFollow-up to [62591].\n\nProps sukhendu2002.\nSee #66267.\n\n",
+        "date": "2026-10-12T14:39:32.038699Z",
+        "files": [
+            "/trunk/src/wp-includes/json-schema.php",
+            "/trunk/tests/phpunit/tests/json-schema.php"
+        ]
+    },
+    {
         "id": 64314,
         "author": "lancewillett",
         "message": "Tests: Cover scheduled publication and the Scheduled posts view.\n\nAdd PHPUnit coverage for the registered `publish_future_post` callback: publish due posts, reschedule early calls, and ignore draft or missing posts.\n\nVerify the Scheduled view link, filtered post IDs, and date-column labels for scheduled and past-due posts. Exercise real WordPress behavior without waiting for scheduled times.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12668\n\nProps csmcneill, lucatume.\nFixes #65772.\n",
