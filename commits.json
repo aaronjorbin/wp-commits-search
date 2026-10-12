@@ -1,5 +1,15 @@
 [
     {
+        "id": 64309,
+        "author": "ramonopoly",
+        "message": "Editor: Ignore theme.json values of unexpected types\n\nThis commit prevents `WP_Theme_JSON` from throwing fatal TypeErrors when theme.json or global styles data contains values of the wrong type.\n\nThose values could be user- or AI-generated.\n\nThe checks in this commit cover spacing scale arrays, block variation selectors, and custom block CSS processing.\n\nThe motivation arose from a real-life PHP fatal where `WP_Theme_JSON::process_blocks_custom_css` attempted to explode a non-string.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14190\n\nProps ramonopoly, aaronrobertshaw, andrewserong.\n\nFixes #66286. \n\n",
+        "date": "2026-10-12T08:18:48.052140Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
         "id": 64308,
         "author": "lancewillett",
         "message": "Tests: Cover `validate_plugin()`.\n\nAdd coverage for valid plugins, invalid paths, missing files, and missing plugin headers. Guard temporary fixtures against overwrites and clear the plugin cache after fixture changes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14157\n\nProps huzaifaalmesbah.\nSee #65819.\n",
