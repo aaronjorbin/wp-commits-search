@@ -1,5 +1,54 @@
 [
     {
+        "id": 64313,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Add comment moderation end-to-end tests.\n\nCover approval from Pending, row-level spam, inline replies, and bulk spam in the admin. Verify saved comment state and visible completion for each interaction, including reply content and parent. Create fixtures through REST and delete only those fixtures after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12667\n\nProps csmcneill, adrianmoldovanwp.\nFixes #65771.\nSee #52895.\n",
+        "date": "2026-10-12T12:25:43.189862Z",
+        "files": [
+            "/trunk/tests/e2e/specs/moderate-comments.test.js"
+        ]
+    },
+    {
+        "id": 64312,
+        "author": "mcsf",
+        "message": "Toolbar: Move \"Howdy\" into user menu item to free up space.\n\nFree up space in the toolbar by replacing the \"Howdy, $user\" line with \"$user\". In turn, the greeting is moved into the user menu item, thereby replacing \"$user\" with \"Howdy, $user\".\n\nProps fushar, tyxla, mcsf, joen.\n\nFixes #66157.\n\n",
+        "date": "2026-10-12T12:03:59.700334Z",
+        "files": [
+            "/trunk/src/js/_enqueues/admin/user-profile.js",
+            "/trunk/src/wp-admin/css/colors/_admin.scss",
+            "/trunk/src/wp-includes/admin-bar.php",
+            "/trunk/src/wp-includes/css/admin-bar.css",
+            "/trunk/tests/phpunit/tests/adminbar.php"
+        ]
+    },
+    {
+        "id": 64311,
+        "author": "jorgefilipecosta",
+        "message": "Core Abilities: Add the `core/settings-get` ability.\n\nAdds a read-only `core/settings-get` ability that returns WordPress settings as a flat map of setting name to value, optionally narrowed by settings group, by setting name, or both. It requires the `manage_options` capability. The code lives in the new private `WP_Abilities_Settings` class.\nSettings opt in with the new `show_in_abilities` argument of `register_setting()`, which defaults to `false`. When `true`, a setting is exposed.\n\nDeveloped in https://github.com/WordPress/ai/pull/691 and https://github.com/WordPress/wordpress-develop/pull/12141.\n\nProps jorgefilipecosta, gziolo, jorbin, justlevine, dkotter, logicrays, jason_the_adams, mukesh27, ovidiu-galatan, jeffpaul.\nFixes #64605.",
+        "date": "2026-10-12T11:36:14.933050Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities",
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-settings.php",
+            "/trunk/src/wp-includes/abilities.php",
+            "/trunk/src/wp-includes/default-filters.php",
+            "/trunk/src/wp-includes/option.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreSettingsGetAbility.php",
+            "/trunk/tests/phpunit/tests/option/registration.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesSettingsController.php",
+            "/trunk/tests/qunit/fixtures/wp-api-generated.js"
+        ]
+    },
+    {
+        "id": 64310,
+        "author": "wildworks",
+        "message": "Tests: Expand coverage for the icon collections REST endpoint.\n\nAdds tests for permission checks, `_fields` filtering, the schema, and collection parameters, and verifies that the built-in non-public `core-admin` collection is not exposed.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14195\n\nProps noruzzaman, rejaulalomkhan, wildworks.\nFixes #66287.",
+        "date": "2026-10-12T11:30:08.258369Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/icons/wpRestIconCollectionsController.php"
+        ]
+    },
+    {
         "id": 64309,
         "author": "ramonopoly",
         "message": "Editor: Ignore theme.json values of unexpected types\n\nThis commit prevents `WP_Theme_JSON` from throwing fatal TypeErrors when theme.json or global styles data contains values of the wrong type.\n\nThose values could be user- or AI-generated.\n\nThe checks in this commit cover spacing scale arrays, block variation selectors, and custom block CSS processing.\n\nThe motivation arose from a real-life PHP fatal where `WP_Theme_JSON::process_blocks_custom_css` attempted to explode a non-string.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14190\n\nProps ramonopoly, aaronrobertshaw, andrewserong.\n\nFixes #66286. \n\n",
