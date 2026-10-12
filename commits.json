@@ -1,5 +1,33 @@
 [
     {
+        "id": 64308,
+        "author": "lancewillett",
+        "message": "Tests: Cover `validate_plugin()`.\n\nAdd coverage for valid plugins, invalid paths, missing files, and missing plugin headers. Guard temporary fixtures against overwrites and clear the plugin cache after fixture changes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14157\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-12T06:20:36.619407Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/validatePlugin.php"
+        ]
+    },
+    {
+        "id": 64307,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin paused-state and recovery functions.\n\nAdd coverage for `is_plugin_paused()`, `wp_get_plugin_error()`, and `resume_plugin()`, including successful removal of paused state and failure to resume. Restore the original recovery-mode state after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14156\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-12T06:19:09.111331Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/pluginPausedState.php"
+        ]
+    },
+    {
+        "id": 64306,
+        "author": "lancewillett",
+        "message": "Tests: Cover `validate_plugin_requirements()`.\n\nAdd coverage for compatible and incompatible WordPress and PHP requirements, plugin dependencies, PHP update annotations, and validation filters. Guard temporary plugin fixtures against overwrites and reset dependency state between tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14153\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-12T06:17:44.900763Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/validatePluginRequirements.php"
+        ]
+    },
+    {
         "id": 64305,
         "author": "peterwilsoncc",
         "message": "General: Send correct HTTP statuses for db-error/maintenance drop-ins.\n\nUpdates the HTTP headers for sites running the `db-error.php` or `maintenance.php` drop-ins. Previously sites running these drop-ins would send a `200 OK` HTTP response by default if they were not specified by the drop-in. These have been updated to:\n\n* `500 Internal Server Error` for the Database Error drop-in, matching the header sent by the default call to `wp_die().\n* `503 Service Unavailable` for the maintenance mode drop-in with a retry header of 10 minutes, matching the headers sent by the default call to `wp_die()`.\n\nDevelopers can continue to customize these headers by sending the headers in the drop-ins.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13471.\n\nProps bradleyt, dineshinau, sabernhardt, westonruter.\nFixes #66080.\n\n\n",
