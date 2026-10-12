@@ -1,5 +1,15 @@
 [
     {
+        "id": 64314,
+        "author": "lancewillett",
+        "message": "Tests: Cover scheduled publication and the Scheduled posts view.\n\nAdd PHPUnit coverage for the registered `publish_future_post` callback: publish due posts, reschedule early calls, and ignore draft or missing posts.\n\nVerify the Scheduled view link, filtered post IDs, and date-column labels for scheduled and past-due posts. Exercise real WordPress behavior without waiting for scheduled times.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12668\n\nProps csmcneill, lucatume.\nFixes #65772.\n",
+        "date": "2026-10-12T13:26:22.903557Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpPostsListTable.php",
+            "/trunk/tests/phpunit/tests/cron.php"
+        ]
+    },
+    {
         "id": 64313,
         "author": "lancewillett",
         "message": "Build/Test Tools: Add comment moderation end-to-end tests.\n\nCover approval from Pending, row-level spam, inline replies, and bulk spam in the admin. Verify saved comment state and visible completion for each interaction, including reply content and parent. Create fixtures through REST and delete only those fixtures after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12667\n\nProps csmcneill, adrianmoldovanwp.\nFixes #65771.\nSee #52895.\n",
