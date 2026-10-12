@@ -1,5 +1,22 @@
 [
     {
+        "id": 64319,
+        "author": "SergeyBiryukov",
+        "message": "Docs: Correct type declarations in test docblocks.\n\nReplaces non-standard type names in test docblocks with the ones used throughout core, and fixes `@param` tags that had the type after the variable name.\n\n- `integer` \u2192 `int`, `boolean` \u2192 `bool`, `callback` \u2192 `callable`.\n- `@param $data string` \u2192 `@param string $data`\n- `tests_get_phpunit_version()` was documented as returning `double`. It actually returns the version string from PHPUnit, or `0` if PHPUnit is not loaded, so the `@return` is now `string|int`.\n- The affected `@param` blocks are realigned.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14204.\n\nProps Soean, dhruvang21, westonruter.\nSee #65860.",
+        "date": "2026-10-12T21:56:03.226392Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/class-wp-sitemaps-large-test-provider.php",
+            "/trunk/tests/phpunit/includes/functions.php",
+            "/trunk/tests/phpunit/includes/testcase-ajax.php",
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxResponse.php",
+            "/trunk/tests/phpunit/tests/block-supports/aria-label.php",
+            "/trunk/tests/phpunit/tests/block-supports/shadow.php",
+            "/trunk/tests/phpunit/tests/db.php",
+            "/trunk/tests/phpunit/tests/kses.php",
+            "/trunk/tests/phpunit/tests/media/testcase-adjacent-image-link.php"
+        ]
+    },
+    {
         "id": 64318,
         "author": "lancewillett",
         "message": "Tests: Skip PDF alpha checks when the fixture cannot load.\n\nCheck that `wp_get_image_editor()` can load the PDF before testing alpha-channel removal. ImageMagick can advertise PDF support when Ghostscript is unavailable. Match the existing PDF tests while preserving the preview and pixel assertions on supported systems.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14214\n\nProps ekamran.\nSee #65819.\n",
