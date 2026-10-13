@@ -1,5 +1,27 @@
 [
     {
+        "id": 64335,
+        "author": "westonruter",
+        "message": "Code Quality: Annotate `WP_HTML_Processor::next_token()` as \"impure\".\n\nPHPStan infers `WP_HTML_Processor::next_token()` as pure, so the result of `is_tag_closer()` before the matching-closer loop in the block bindings processor's `replace_rich_text()` method survives across the loop, even though each `next_token()` call advances the parser to a different token. The `||` in the check after the loop is then reported as always true, the negation within it as always true, and the code that follows as unreachable. Adding `@phpstan-impure`, as was done for `WP_HTML_Tag_Processor::next_tag()` in r61934 and for `WP_HTML_Tag_Processor::parse_next_tag()` in r63301, resolves all three baselined errors.\n\nThis empties the `booleanOr.alwaysTrue` baseline, so the file is removed along with its `includes` entry in `phpstan.neon.dist`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14037.\nFollow-up to r61934, r63023, r63301.\n\nProps huzaifaalmesbah, rejaulalomkhan, tstokes8040.\nSee #65817.\n",
+        "date": "2026-10-13T17:00:13.848151Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-includes/html-api/class-wp-html-processor.php",
+            "/trunk/tests/phpstan/baselines/booleanNot.alwaysTrue.neon",
+            "/trunk/tests/phpstan/baselines/booleanOr.alwaysTrue.neon",
+            "/trunk/tests/phpstan/baselines/deadCode.unreachable.neon"
+        ]
+    },
+    {
+        "id": 64334,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Update PHPStan to 2.3.1.\n\nThe existing baselines continue to match with this patch release, so they are left unchanged. The `phpstan/phpstan-phpunit` extension is already at its latest version.\n\nFollow-up to r64237.\n\nSee #65817.\n",
+        "date": "2026-10-13T16:41:41.301167Z",
+        "files": [
+            "/trunk/composer.json"
+        ]
+    },
+    {
         "id": 64333,
         "author": "afercia",
         "message": "Administration: Remove any reference to the non-standard ::-moz-focus-inner pseudo-element from Core files.\n\nAs of August 2025, the `::-moz-focus-inner` CSS pseudo-element has been removed from any Firefox implementation on any platform. Targeting this pseudo element doesn't do anything any longer.\nBundled themes will be handled separately.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14213\n\nProps irozum, ViktorFroberg, DrewAPicture, callumbw95, afercia.\nFixes #41580.\n",
