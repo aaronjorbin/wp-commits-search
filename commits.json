@@ -1,5 +1,52 @@
 [
     {
+        "id": 64326,
+        "author": "lancewillett",
+        "message": "Tests: Limit metadata registration in REST tags tests.\n\nRegister the five term metadata fields only in the tests that use them, instead of in every test in `WP_Test_REST_Tags_Controller`. Preserve the existing assertions and inherited setup and cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14222\n\nProps sainathpoojary.\nSee #66074.\n",
+        "date": "2026-10-13T06:26:50.984014Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-tags-controller.php"
+        ]
+    },
+    {
+        "id": 64325,
+        "author": "lancewillett",
+        "message": "Tests: Cover drop-in and must-use plugin discovery.\n\nAdd coverage for `_get_dropins()`, `get_dropins()`, and `get_mu_plugins()`, including metadata, filtering, fallback names, sorting, and the 30-byte `index.php` threshold. Back up and restore existing drop-ins and must-use plugins to isolate filesystem fixtures.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14211\n\nProps noruzzaman.\nSee #65819.\n",
+        "date": "2026-10-13T06:24:19.210093Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/getDropins.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/getMuPlugins.php"
+        ]
+    },
+    {
+        "id": 64324,
+        "author": "lancewillett",
+        "message": "Tests: Cover the pattern overrides block bindings source.\n\nVerify registration of `core/pattern-overrides`, missing metadata and context, attribute lookup, and retrieval through the registered source. Cover valid falsey override values without changing their types.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14155\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-13T06:20:23.241940Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-bindings/patternOverridesSource.php"
+        ]
+    },
+    {
+        "id": 64323,
+        "author": "lancewillett",
+        "message": "Tests: Cover recovery mode email delivery and customization.\n\nAdd coverage for `WP_Recovery_Mode_Email_Service`, including delivery, rate limiting, mail failures, rate-limit clearing, theme error details, and email customization filters. Verify that the email includes the complete recovery URL.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14154\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-13T06:19:16.957531Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/error-protection/wpRecoveryModeEmailService.php"
+        ]
+    },
+    {
+        "id": 64322,
+        "author": "isabel_brison",
+        "message": "Editor: unset incompatible dimensions styles in viewport states.\n\nRe-adds a missed line from a previous Gutenberg sync to enable unsetting height and min-height when aspect ratio is set for a viewport state, and vice versa.\n\nProps isabel_brison, westonruter, marian1, abditsori.\nFixes #66275.\n",
+        "date": "2026-10-13T05:49:42.673407Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/states.php",
+            "/trunk/tests/phpunit/tests/block-supports/states.php"
+        ]
+    },
+    {
         "id": 64321,
         "author": "westonruter",
         "message": "Site Health: Stop listing obsolete compression constants.\n\nThe `COMPRESS_SCRIPTS` and `COMPRESS_CSS` constants are no longer listed under WordPress Constants on the Info tab. Since r43580 `load-scripts.php` and `load-styles.php` have not compressed their output, so the constants have no effect: they only add a `c` argument to the loaders' URLs, which nothing reads. Listing them suggested a setting that still mattered. The constants themselves are left in place for now, pending the removal of the rest of the compression code as part of retiring script and style concatenation. The `ENFORCE_GZIP` constant was never listed.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13493.\nFollow-up to r43580, r44986.\n\nProps haritpanchal, westonruter, zodiac1978, nicoblandel.\nSee #57548.\nFixes #66053.\n",
