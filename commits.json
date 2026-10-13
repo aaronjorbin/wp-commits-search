@@ -1,5 +1,14 @@
 [
     {
+        "id": 64329,
+        "author": "lancewillett",
+        "message": "Themes: Avoid a missing screenshot request in Theme Details.\n\nReturn early from `screenshotCheck()` when the theme has no screenshot image. This prevents assigning an undefined source to a new `Image` and requesting `/wp-admin/undefined`.\n\nPreserve the screenshot sizing check for themes with an image.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14221\n\nProps afercia, anupkankale.\nFixes #66295.\n",
+        "date": "2026-10-13T11:54:30.960239Z",
+        "files": [
+            "/trunk/src/js/_enqueues/wp/theme.js"
+        ]
+    },
+    {
         "id": 64328,
         "author": "afercia",
         "message": "Administration: Adjust line-height values after change to the body line-height.\n\nFollow-up to [63965], which changed the body line-height in `common.css` from 1.4em to 1.4 to adapt to the WordPress CSS Coding Standards.\n\n- Adjusts the line height for the Classic Editor post title 'placeholder'.\n- Adjusts the line height for arrow icons in the Plugin and Theme file editors.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14218\n\nProps iamadisingh, wildworks.\nSee #65898.\nFixes #66294.\n",
