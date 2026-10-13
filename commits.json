@@ -1,5 +1,20 @@
 [
     {
+        "id": 64336,
+        "author": "westonruter",
+        "message": "Code Quality: Mark `current_user_can()` and `chmod()` as \"impure\".\n\nPHPStan infers `current_user_can()` and `WP_Filesystem_Base::chmod()` as pure, so it remembers what each returned and reuses that value at a later call in the same scope, reporting the second check as always true or always false. Yet a capability check can legitimately answer differently the second time, since it reads the current user and applies the `user_has_cap` filter, so a plugin hooked in between (for example during the `admin-header.php` load in `wp-admin/link-manager.php`) can change the result. Similarly, `chmod()` changes the permissions that a following `is_writable()` reports. The annotation goes on the call that invalidates the remembered value rather than on read-only accessors like `is_writable()`, and on `current_user_can()` itself since annotating `WP_User::has_cap()` cleared nothing. This resolves 13 baselined errors across five identifiers.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13074.\nFollow-up to r63023, r63301, r63357, r64335.\n\nProps tstokes8040.\nSee #65817.\n",
+        "date": "2026-10-13T18:05:05.854531Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-filesystem-base.php",
+            "/trunk/src/wp-includes/capabilities.php",
+            "/trunk/tests/phpstan/baselines/booleanAnd.leftAlwaysTrue.neon",
+            "/trunk/tests/phpstan/baselines/booleanNot.alwaysFalse.neon",
+            "/trunk/tests/phpstan/baselines/booleanNot.alwaysTrue.neon",
+            "/trunk/tests/phpstan/baselines/if.alwaysTrue.neon",
+            "/trunk/tests/phpstan/baselines/ternary.alwaysTrue.neon"
+        ]
+    },
+    {
         "id": 64335,
         "author": "westonruter",
         "message": "Code Quality: Annotate `WP_HTML_Processor::next_token()` as \"impure\".\n\nPHPStan infers `WP_HTML_Processor::next_token()` as pure, so the result of `is_tag_closer()` before the matching-closer loop in the block bindings processor's `replace_rich_text()` method survives across the loop, even though each `next_token()` call advances the parser to a different token. The `||` in the check after the loop is then reported as always true, the negation within it as always true, and the code that follows as unreachable. Adding `@phpstan-impure`, as was done for `WP_HTML_Tag_Processor::next_tag()` in r61934 and for `WP_HTML_Tag_Processor::parse_next_tag()` in r63301, resolves all three baselined errors.\n\nThis empties the `booleanOr.alwaysTrue` baseline, so the file is removed along with its `includes` entry in `phpstan.neon.dist`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14037.\nFollow-up to r61934, r63023, r63301.\n\nProps huzaifaalmesbah, rejaulalomkhan, tstokes8040.\nSee #65817.\n",
