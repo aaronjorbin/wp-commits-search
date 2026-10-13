@@ -1,5 +1,15 @@
 [
     {
+        "id": 64328,
+        "author": "afercia",
+        "message": "Administration: Adjust line-height values after change to the body line-height.\n\nFollow-up to [63965], which changed the body line-height in `common.css` from 1.4em to 1.4 to adapt to the WordPress CSS Coding Standards.\n\n- Adjusts the line height for the Classic Editor post title 'placeholder'.\n- Adjusts the line height for arrow icons in the Plugin and Theme file editors.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14218\n\nProps iamadisingh, wildworks.\nSee #65898.\nFixes #66294.\n",
+        "date": "2026-10-13T10:48:11.726842Z",
+        "files": [
+            "/trunk/src/wp-admin/css/common.css",
+            "/trunk/src/wp-admin/css/edit.css"
+        ]
+    },
+    {
         "id": 64327,
         "author": "gziolo",
         "message": "AI: Introduce support for generating embeddings\n\nUpdate the bundled PHP AI Client from 1.3.1 to 1.5.0 and introduce `wp_ai_client_embedding()` and `WP_AI_Client_Embedding_Builder` for generating embedding vectors from text and file inputs. Accept multiple inputs as variadic arguments or a single list, and require an explicit model to keep vectors comparable.\n\nExtract shared prompt and embedding builder behavior into the internal `WP_AI_Client_Builder` base class, including fluent method proxying, `WP_Error` handling, request timeouts, and clone isolation. Add the `wp_ai_client_prevent_embedding` filter and embedding lifecycle actions, and pass the builder type to the existing timeout filter.\n\nInclude tests for embedding input handling, model selection, error handling, filters, lifecycle actions, and clone isolation.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12530.\n\nProps jason_the_adams, gziolo, dkotter, jorgefilipecosta, extrachill, ugyensupport, jeffpaul, jorbin, saadtajik, vedantere, arkaprabhachowdhury, jamesbregenzer.\nFixes #65638.\n\n",
