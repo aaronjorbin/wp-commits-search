@@ -1,5 +1,16 @@
 [
     {
+        "id": 64333,
+        "author": "afercia",
+        "message": "Administration: Remove any reference to the non-standard ::-moz-focus-inner pseudo-element from Core files.\n\nAs of August 2025, the `::-moz-focus-inner` CSS pseudo-element has been removed from any Firefox implementation on any platform. Targeting this pseudo element doesn't do anything any longer.\nBundled themes will be handled separately.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14213\n\nProps irozum, ViktorFroberg, DrewAPicture, callumbw95, afercia.\nFixes #41580.\n",
+        "date": "2026-10-13T15:45:58.259062Z",
+        "files": [
+            "/trunk/src/wp-includes/css/buttons.css",
+            "/trunk/src/wp-includes/css/editor.css",
+            "/trunk/src/wp-includes/css/jquery-ui-dialog.css"
+        ]
+    },
+    {
         "id": 64332,
         "author": "lancewillett",
         "message": "Tests: Add coverage for `WP_Widget_Tag_Cloud`.\n\nCover taxonomy selection, empty clouds, title filters, navigation markup, term counts, settings sanitization, and form fields.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14244\n\nProps rejaulalomkhan.\nSee #65819.\n",
