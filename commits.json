@@ -1,5 +1,32 @@
 [
     {
+        "id": 64332,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Widget_Tag_Cloud`.\n\nCover taxonomy selection, empty clouds, title filters, navigation markup, term counts, settings sanitization, and form fields.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14244\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-13T12:32:01.692302Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetTagCloud.php"
+        ]
+    },
+    {
+        "id": 64331,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Widget_Categories`.\n\nCover category lists and dropdowns, counts, hierarchy, filter arguments, navigation markup, settings sanitization, and form fields.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14243\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-13T12:30:55.366138Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetCategories.php"
+        ]
+    },
+    {
+        "id": 64330,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Widget_Pages`.\n\nCover page listing, sorting, exclusions, title filters, navigation markup, settings sanitization, and form fields.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14241\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-13T12:29:50.397624Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetPages.php"
+        ]
+    },
+    {
         "id": 64329,
         "author": "lancewillett",
         "message": "Themes: Avoid a missing screenshot request in Theme Details.\n\nReturn early from `screenshotCheck()` when the theme has no screenshot image. This prevents assigning an undefined source to a new `Image` and requesting `/wp-admin/undefined`.\n\nPreserve the screenshot sizing check for themes with an image.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14221\n\nProps afercia, anupkankale.\nFixes #66295.\n",
