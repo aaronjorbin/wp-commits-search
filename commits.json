@@ -1,5 +1,17 @@
 [
     {
+        "id": 64320,
+        "author": "westonruter",
+        "message": "Script Loader: Disable script/style concatenation by default.\n\nScripts and styles in the admin and on the login screen are no longer concatenated by default. When the `CONCATENATE_SCRIPTS` constant is not defined, `wp_should_concatenate_admin_scripts()` now returns `false`, so `load-scripts.php` and `load-styles.php` are only used when a site opts in with `define( 'CONCATENATE_SCRIPTS', true )`. This is the next step toward retiring concatenation. It also puts into effect the prefetching of the admin's assets added in r64120, which only applies when concatenation is off. With an empty browser cache, logging in and then opening the Dashboard, the Posts list and the block editor was measured to be faster this way than with concatenation on.\n\nTinyMCE is now always registered as two separate files instead of the prebuilt `wp-tinymce.js` bundle: TinyMCE core and the compat3x plugin. The bundle was registered only when scripts were both concatenated and compressed, and since r43580 and r44651 the `$compress_scripts` global has not compressed anything, so the registration no longer depends on either. The block editor loads TinyMCE on every screen but initializes it only when a Classic block is edited, so it now downloads 369 KB for the two files instead of 671 KB for the bundle, which also holds the theme and all 22 plugins. When TinyMCE is initialized, in the classic editor or for a Classic block, it now requests them itself and takes longer to become ready, a cost deemed acceptable since the role TinyMCE is increasingly diminished. A site can still register the bundle under the `wp-tinymce` handle. The unused second parameter of `wp_register_tinymce_scripts()` is deprecated.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13090.\nFollow-up to r43580, r44114, r44651, r64120.\n\nProps adnan007, westonruter.\nSee #57548, #66053.\n",
+        "date": "2026-10-13T04:12:29.147362Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-editor.php",
+            "/trunk/src/wp-includes/script-loader.php",
+            "/trunk/tests/phpunit/tests/dependencies/scripts.php",
+            "/trunk/tests/phpunit/tests/dependencies/wpShouldConcatenateAdminScripts.php"
+        ]
+    },
+    {
         "id": 64319,
         "author": "SergeyBiryukov",
         "message": "Docs: Correct type declarations in test docblocks.\n\nReplaces non-standard type names in test docblocks with the ones used throughout core, and fixes `@param` tags that had the type after the variable name.\n\n- `integer` \u2192 `int`, `boolean` \u2192 `bool`, `callback` \u2192 `callable`.\n- `@param $data string` \u2192 `@param string $data`\n- `tests_get_phpunit_version()` was documented as returning `double`. It actually returns the version string from PHPUnit, or `0` if PHPUnit is not loaded, so the `@return` is now `string|int`.\n- The affected `@param` blocks are realigned.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14204.\n\nProps Soean, dhruvang21, westonruter.\nSee #65860.",
