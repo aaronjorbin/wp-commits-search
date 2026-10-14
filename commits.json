@@ -1,5 +1,15 @@
 [
     {
+        "id": 64345,
+        "author": "whyisjake",
+        "message": "Security: Use `str_starts_with()` in the Secrets API test mocks.\n\nReplaces the `strpos()` comparisons in `Mock_Keyring::unwrap()` and `Mock_Store::list_names()` with `str_starts_with()`, matching the change to the Secrets API itself.\n\nFollow-up to [64337], [64344].\n\nSee #66187.\n",
+        "date": "2026-10-14T15:41:46.063527Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/secrets/class-mock-keyring.php",
+            "/trunk/tests/phpunit/includes/secrets/class-mock-store.php"
+        ]
+    },
+    {
         "id": 64344,
         "author": "whyisjake",
         "message": "Security: Use `str_contains()` and `str_starts_with()` in the Secrets API.\n\nReplaces the `strpos()` comparisons in the Site Health tests and `WP_Secrets_Libsodium_Provider::list_secrets()` with `str_contains()` and `str_starts_with()`, which are available in core through the polyfills added in WordPress 5.9.\n\nFollow-up to [64337].\n\nProps soean.\nSee #66187.\n",
