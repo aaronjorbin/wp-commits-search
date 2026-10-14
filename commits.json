@@ -1,5 +1,36 @@
 [
     {
+        "id": 64341,
+        "author": "westonruter",
+        "message": "Code Quality: Remove an always-true check in `_wp_menu_output()`.\n\nEvery top-level admin menu item receives at least one class, since the current-item check either adds `current` or `wp-has-current-submenu wp-menu-open` or else adds `wp-not-current-submenu`, so the empty-string fallback for the `class` attribute was unreachable. The only other `ternary.alwaysTrue` occurrence, in `theme-install.php`, was resolved in r64336, so the baseline is now empty and is deleted along with its include in `phpstan.neon.dist`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14264.\nFollow-up to r63023, r64336.\n\nProps mukesh27, huzaifaalmesbah.\nSee #65817.\n",
+        "date": "2026-10-14T05:13:09.231182Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-admin/menu-header.php",
+            "/trunk/tests/phpstan/baselines/ternary.alwaysTrue.neon"
+        ]
+    },
+    {
+        "id": 64340,
+        "author": "isabel_brison",
+        "message": "Editor: fix block style variation custom CSS selector\n\nEnsures block style variations use the feature selector for custom CSS if the block defines one.\n\nProps isabel_brison, andrewserong.\nFixes #66297.\n",
+        "date": "2026-10-14T05:12:04.724393Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
+        "id": 64339,
+        "author": "westonruter",
+        "message": "Code Quality: Remove unused `$class` in posts list table.\n\nThe variable was used to keep the \"All\" view link from being marked current when the \"Mine\" link was, but since r54215 each view link in `WP_Posts_List_Table::get_views()` sets its `current` flag from its own condition, and `$class` is no longer used to build any link. The only remaining read, `empty( $class )` in the \"All\" link's `current` flag, always passed, as the \"Mine\" block resets `$class` to an empty string after setting it. The variable and every assignment to it are removed, with no change in behavior.\n\nThis resolves one error in the `empty.variable` PHPStan baseline.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14229.\nFollow-up to r31959, r54215.\n\nProps soean, westonruter.\nSee #65817.\n",
+        "date": "2026-10-14T04:40:51.804934Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-posts-list-table.php",
+            "/trunk/tests/phpstan/baselines/empty.variable.neon"
+        ]
+    },
+    {
         "id": 64338,
         "author": "SergeyBiryukov",
         "message": "Feeds: Use the namespaced SimplePie HTML attribute pattern.\n\n`WP_SimplePie_Sanitize_KSES::sanitize()` still used the deprecated `SIMPLEPIE_PCRE_HTML_ATTRIBUTE` constant. r59141 switched all other SimplePie constants in this method to their namespaced equivalents, but this one was missed. SimplePie has deprecated it since 1.7.0.\n\n**Why this is safe**\n\nSimplePie defines the legacy constant as an alias of the class constant (`define( 'SIMPLEPIE_PCRE_HTML_ATTRIBUTE', NamespacedSimplePie::PCRE_HTML_ATTRIBUTE )` in `SimplePie/library/SimplePie.php`), so the regex is identical. The namespaced class is already used three lines above and below. This is the only `SIMPLEPIE_*` constant used in Core outside the bundled library.\n\nFollow-up to r59141.\n\nProps Soean.\nFixes #66301.",
