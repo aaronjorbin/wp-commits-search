@@ -1,5 +1,26 @@
 [
     {
+        "id": 64349,
+        "author": "SergeyBiryukov",
+        "message": "External Libraries: Update the Moment library to version 2.31.0.\n\nThe latest release includes a security fix and a few bug fixes.\n\nReferences:\n* [https://github.com/moment/moment/releases/tag/2.31.0 Moment 2.31.0 release notes]\n* [https://github.com/moment/moment/compare/2.30.1...2.31.0 Full list of changes in Moment 2.31.0]\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14282.\n\nFollow-up to r44271, r48075, r50773, r53163, r53662, r53725, r59129.\n\nProps iamchitti, jayt101.\nFixes #66311.",
+        "date": "2026-10-14T22:06:20.302064Z",
+        "files": [
+            "/trunk/package-lock.json",
+            "/trunk/package.json",
+            "/trunk/src/wp-includes/script-loader.php"
+        ]
+    },
+    {
+        "id": 64348,
+        "author": "peterwilsoncc",
+        "message": "Login and Registration: Support `/.well-known/change-password`.\n\nIntroduce support for the [https://w3c.github.io/webappsec-change-password-url/ Well-Known URL for Changing Passwords], a standardized URL for tools such as password managers to make change of password forms discoverable.\n\nPer the specification this is only available to WordPress sites installed in the root directory of a domain. The URL `example.com/.well-known/change-password` will redirect a user to their profile page.\n\nIntroduces the filter `wp_change_password_url` to allow sites using a non-standard location for managing user passwords. If this is hosted on an another host, the host will need to be added to the allow list via the `allowed_redirect_hosts` filter in order to pass the `wp_safe_redirect()` validation process.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12621\n\nProps audrasjb, ayeshrajans, hasnainashfaq, jns141191, johnbillion, masteradhoc, pfefferle, romainmrhenry, sajib1223, sergeybiryukov, swissspidy.\nFixes #51173.\n",
+        "date": "2026-10-14T21:54:00.247319Z",
+        "files": [
+            "/trunk/src/wp-includes/canonical.php",
+            "/trunk/tests/phpunit/tests/canonical/changePassword.php"
+        ]
+    },
+    {
         "id": 64347,
         "author": "joedolson",
         "message": "Admin: Revert admin notices accessibility fixes.\n\nFollowing merge, it became evident that the complexity of notices as handled in the WordPress admin make this change premature. While it worked effectively handling standard notices, there are significant numbers of unusual notice cases. The follow-up PR (https://github.com/wordpress/wordpress-develop/pull/14223) would have significantly limited the false positives, but not sufficiently for production.\n\nVariant notices will need to have improved handling before these fixes can be implemented effectively.\n\nProps joedolson, matt, peterwilsoncc, wildworks, mamaduka.\nSee #50486.",
