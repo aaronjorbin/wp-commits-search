@@ -1,5 +1,18 @@
 [
     {
+        "id": 64346,
+        "author": "jorgefilipecosta",
+        "message": "Abilities API: Add the `core/users-query` ability.\n\nAdds a read-only `core/users-query` ability that returns a page of users, optionally filtered by IDs, slugs, usernames, roles, or published-post authorship. Until now, the only user ability was `core/get-user-info`, which returns the current user's own profile. The code lives in the new private `WP_Abilities_Users` class.\nThe input has three members: `where` selects the users, `fields` the fields returned for each one, and `pagination` the page. The output always holds the users in `items`, ordered by username, and the totals in `pagination`.\n\nDeveloped in https://github.com/WordPress/ai/pull/774, and https://github.com/WordPress/wordpress-develop/pull/10775.\n\nProps jorgefilipecosta, gziolo, justlevine, peterwilsoncc, dkotter, jason_the_adams, ugyensupport, iamadisingh, sangu3105.\nFixes #64657.",
+        "date": "2026-10-14T18:47:16.234582Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-settings.php",
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-users.php",
+            "/trunk/src/wp-includes/abilities.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreUsersAbility.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesUsersController.php"
+        ]
+    },
+    {
         "id": 64345,
         "author": "whyisjake",
         "message": "Security: Use `str_starts_with()` in the Secrets API test mocks.\n\nReplaces the `strpos()` comparisons in `Mock_Keyring::unwrap()` and `Mock_Store::list_names()` with `str_starts_with()`, matching the change to the Secrets API itself.\n\nFollow-up to [64337], [64344].\n\nSee #66187.\n",
