@@ -1,5 +1,17 @@
 [
     {
+        "id": 64342,
+        "author": "westonruter",
+        "message": "Code Quality: Remove redundant checks in `human_time_diff()`.\n\nEach branch of the `if`/`elseif` chain that chooses the unit of the time difference checked a lower bound that was already guaranteed by the previous branch not matching. These checks are removed, and the last branch becomes an `else`, which makes it explicit that `$since` is always set before it is passed to the `human_time_diff` filter. For the same reason, the `<= 1` clamps in the minute through year branches could never change the value, so they are removed too; only the seconds branch keeps its clamp, since a zero difference is still reported as \"1 second\". The result of `round()` is now cast to `int`, so that `_n()` receives the type it declares; the clamps had previously hidden this mismatch from PHPStan by making the type `float|int`.\n\nThere is no change in behavior. New tests cover each unit threshold, both exactly at the threshold and one second below it, in both directions. This resolves the remaining errors in the `greaterOrEqual.alwaysTrue` PHPStan baseline, which is deleted.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14005.\nFollow-up to r24582, r45573.\n\nProps soean, westonruter, sergeybiryukov.\nSee #65817.\n",
+        "date": "2026-10-14T05:20:00.037030Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-includes/formatting.php",
+            "/trunk/tests/phpstan/baselines/greaterOrEqual.alwaysTrue.neon",
+            "/trunk/tests/phpunit/tests/formatting/humanTimeDiff.php"
+        ]
+    },
+    {
         "id": 64341,
         "author": "westonruter",
         "message": "Code Quality: Remove an always-true check in `_wp_menu_output()`.\n\nEvery top-level admin menu item receives at least one class, since the current-item check either adds `current` or `wp-has-current-submenu wp-menu-open` or else adds `wp-not-current-submenu`, so the empty-string fallback for the `class` attribute was unreachable. The only other `ternary.alwaysTrue` occurrence, in `theme-install.php`, was resolved in r64336, so the baseline is now empty and is deleted along with its include in `phpstan.neon.dist`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14264.\nFollow-up to r63023, r64336.\n\nProps mukesh27, huzaifaalmesbah.\nSee #65817.\n",
