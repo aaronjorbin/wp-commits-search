@@ -1,5 +1,20 @@
 [
     {
+        "id": 64347,
+        "author": "joedolson",
+        "message": "Admin: Revert admin notices accessibility fixes.\n\nFollowing merge, it became evident that the complexity of notices as handled in the WordPress admin make this change premature. While it worked effectively handling standard notices, there are significant numbers of unusual notice cases. The follow-up PR (https://github.com/wordpress/wordpress-develop/pull/14223) would have significantly limited the false positives, but not sufficiently for production.\n\nVariant notices will need to have improved handling before these fixes can be implemented effectively.\n\nProps joedolson, matt, peterwilsoncc, wildworks, mamaduka.\nSee #50486.",
+        "date": "2026-10-14T19:34:43.746783Z",
+        "files": [
+            "/trunk/src/js/_enqueues/admin/common.js",
+            "/trunk/src/wp-admin/admin.php",
+            "/trunk/src/wp-includes/class-wp-admin-notice-collector.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/src/wp-settings.php",
+            "/trunk/tests/phpunit/tests/functions/wpAdminNotice.php",
+            "/trunk/tests/phpunit/tests/functions/wpGetAdminNotice.php"
+        ]
+    },
+    {
         "id": 64346,
         "author": "jorgefilipecosta",
         "message": "Abilities API: Add the `core/users-query` ability.\n\nAdds a read-only `core/users-query` ability that returns a page of users, optionally filtered by IDs, slugs, usernames, roles, or published-post authorship. Until now, the only user ability was `core/get-user-info`, which returns the current user's own profile. The code lives in the new private `WP_Abilities_Users` class.\nThe input has three members: `where` selects the users, `fields` the fields returned for each one, and `pagination` the page. The output always holds the users in `items`, ordered by username, and the totals in `pagination`.\n\nDeveloped in https://github.com/WordPress/ai/pull/774, and https://github.com/WordPress/wordpress-develop/pull/10775.\n\nProps jorgefilipecosta, gziolo, justlevine, peterwilsoncc, dkotter, jason_the_adams, ugyensupport, iamadisingh, sangu3105.\nFixes #64657.",
