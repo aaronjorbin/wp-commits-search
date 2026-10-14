@@ -1,5 +1,20 @@
 [
     {
+        "id": 64343,
+        "author": "Mamaduka",
+        "message": "REST API: Add `action-trash` link to posts and comments.\n\nAdds a `https://api.w.org/action-trash` link relation to post and comment responses in the `edit` context. The link means the current user can move that item to the trash. Whether an item can be trashed is decided per record by `EMPTY_TRASH_DAYS`, `MEDIA_TRASH` and the `rest_{$type}_trashable` filters, so the route schema can't express it. The link exposes it for each item, which helps UIs that render long lists, like DataViews and Notes.\n\nMenu items can only be deleted permanently, so they don't get the link.\n\nProps mamaduka, timothyblynjacobs, adamsilverstein, isabel_brison, peterwilsoncc.\nFixes #63670.",
+        "date": "2026-10-14T09:34:52.819088Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-attachments-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-posts-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestMenuItemsController.php"
+        ]
+    },
+    {
         "id": 64342,
         "author": "westonruter",
         "message": "Code Quality: Remove redundant checks in `human_time_diff()`.\n\nEach branch of the `if`/`elseif` chain that chooses the unit of the time difference checked a lower bound that was already guaranteed by the previous branch not matching. These checks are removed, and the last branch becomes an `else`, which makes it explicit that `$since` is always set before it is passed to the `human_time_diff` filter. For the same reason, the `<= 1` clamps in the minute through year branches could never change the value, so they are removed too; only the seconds branch keeps its clamp, since a zero difference is still reported as \"1 second\". The result of `round()` is now cast to `int`, so that `_n()` receives the type it declares; the clamps had previously hidden this mismatch from PHPStan by making the type `float|int`.\n\nThere is no change in behavior. New tests cover each unit threshold, both exactly at the threshold and one second below it, in both directions. This resolves the remaining errors in the `greaterOrEqual.alwaysTrue` PHPStan baseline, which is deleted.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14005.\nFollow-up to r24582, r45573.\n\nProps soean, westonruter, sergeybiryukov.\nSee #65817.\n",
