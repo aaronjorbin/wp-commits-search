@@ -1,5 +1,15 @@
 [
     {
+        "id": 64344,
+        "author": "whyisjake",
+        "message": "Security: Use `str_contains()` and `str_starts_with()` in the Secrets API.\n\nReplaces the `strpos()` comparisons in the Site Health tests and `WP_Secrets_Libsodium_Provider::list_secrets()` with `str_contains()` and `str_starts_with()`, which are available in core through the polyfills added in WordPress 5.9.\n\nFollow-up to [64337].\n\nProps soean.\nSee #66187.\n",
+        "date": "2026-10-14T15:09:28.589105Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/secrets-site-health.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-libsodium-provider.php"
+        ]
+    },
+    {
         "id": 64343,
         "author": "Mamaduka",
         "message": "REST API: Add `action-trash` link to posts and comments.\n\nAdds a `https://api.w.org/action-trash` link relation to post and comment responses in the `edit` context. The link means the current user can move that item to the trash. Whether an item can be trashed is decided per record by `EMPTY_TRASH_DAYS`, `MEDIA_TRASH` and the `rest_{$type}_trashable` filters, so the route schema can't express it. The link exposes it for each item, which helps UIs that render long lists, like DataViews and Notes.\n\nMenu items can only be deleted permanently, so they don't get the link.\n\nProps mamaduka, timothyblynjacobs, adamsilverstein, isabel_brison, peterwilsoncc.\nFixes #63670.",
