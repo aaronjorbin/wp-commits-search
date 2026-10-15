@@ -1,5 +1,23 @@
 [
     {
+        "id": 64350,
+        "author": "westonruter",
+        "message": "Code Quality: Correct nullable `WP_Http_Cookie` property types.\n\nA cookie created without a name, value, domain, expiration or host-only flag, or from incomplete data, leaves those properties `null`, and an unparsable expiration date is stored as `false`, but their documented types said otherwise. PHPStan therefore treated `isset()` checks on them as always true, so correcting the types retires the `booleanOr.alwaysFalse` baseline entirely along with several `isset.property` entries.\n\nThe corrected types surfaced real errors in callers, which are fixed rather than baselined:\n* In `WP_Http::normalize_cookies()`, a `WP_Http_Cookie` value was passed to `WpOrg\\Requests\\Cookie` as is, which throws an `InvalidArgument` exception for anything but a string, failing the request. A cookie without a value or with a non-scalar value is now skipped, as `WP_Http_Cookie::getHeaderValue()` already does, and other scalar values are cast to strings.\n* `wp_remote_retrieve_cookie_value()` now returns an empty string instead of `null` for a cookie without a value.\n\nThe handling of empty or missing cookie names is unchanged, as it is being addressed separately in #66305.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14283.\nFollow-up to r38164, r45135, r57501, r63023.\n\nProps huzaifaalmesbah, westonruter.\nSee #65817, #66305.\n",
+        "date": "2026-10-14T23:44:46.766426Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-includes/class-wp-http-cookie.php",
+            "/trunk/src/wp-includes/class-wp-http.php",
+            "/trunk/src/wp-includes/http.php",
+            "/trunk/tests/phpstan/baselines/booleanOr.alwaysFalse.neon",
+            "/trunk/tests/phpstan/baselines/isset.property.neon",
+            "/trunk/tests/phpstan/baselines/offsetAssign.valueType.neon",
+            "/trunk/tests/phpunit/tests/http/functions.php",
+            "/trunk/tests/phpunit/tests/http/http.php",
+            "/trunk/tests/phpunit/tests/http/wpHttpCookie.php"
+        ]
+    },
+    {
         "id": 64349,
         "author": "SergeyBiryukov",
         "message": "External Libraries: Update the Moment library to version 2.31.0.\n\nThe latest release includes a security fix and a few bug fixes.\n\nReferences:\n* [https://github.com/moment/moment/releases/tag/2.31.0 Moment 2.31.0 release notes]\n* [https://github.com/moment/moment/compare/2.30.1...2.31.0 Full list of changes in Moment 2.31.0]\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14282.\n\nFollow-up to r44271, r48075, r50773, r53163, r53662, r53725, r59129.\n\nProps iamchitti, jayt101.\nFixes #66311.",
