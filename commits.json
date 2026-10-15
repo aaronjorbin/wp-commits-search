@@ -1,5 +1,16 @@
 [
     {
+        "id": 64353,
+        "author": "isabel_brison",
+        "message": "Editor: enable custom CSS on style states.\n\nEnables viewport and pseudo state-specific custom CSS on block instances.\n\nProps isabel_brison, ramonopoly.\nFixes #66288.\n\n",
+        "date": "2026-10-15T05:52:48.654366Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/custom-css.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderCustomCssSupportStyles.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpStripCustomCssFromBlocks.php"
+        ]
+    },
+    {
         "id": 64352,
         "author": "peterwilsoncc",
         "message": "Themes: Restore Add Theme to appearance sub-menu.\n\nRestores the Appearance > Add Theme menu item within the dashboard. The menu item was removed in r13533 in favour of a tabbed layout that was subsequently removed in r26141.\n\nThis makes the appearance menu consistent with the posts, pages, media, plugins and users menus.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14135.\n\nProps afercia, aristath, audrasjb, chaion07, dhruvang21, joedolson, joyously, sergeybiryukov.\nFixes #47124.\n",
