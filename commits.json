@@ -1,5 +1,28 @@
 [
     {
+        "id": 64355,
+        "author": "jonsurrell",
+        "message": "Tests: Fix Block Bindings unsafe HTML test.\n\nAssert that the output has no SCRIPT tag, without depending on how KSES removes it.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14092\n\nFollow-up to r64233.\n\nProps jonsurrell, mamaduka, andrewserong.\nSee #66208.\n",
+        "date": "2026-10-15T08:08:11.796298Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-bindings/render.php"
+        ]
+    },
+    {
+        "id": 64354,
+        "author": "jonsurrell",
+        "message": "Editor: Cache the theme.json data merged from all origins.\n\n`WP_Theme_JSON_Resolver::get_merged_data()` merged all origins on every call, including once for each rendered block with an `is-style-*` class. Cache the result until a block is registered or `wp_clean_theme_json_cache()` is called, and remove the redundant cache in `wp_get_global_settings()`. Theme support changes made after the first merge require `wp_clean_theme_json_cache()`.\n\nBackports https://github.com/WordPress/gutenberg/pull/81979.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14071\n\nProps jonsurrell, peterwilsoncc, isabel_brison, ramonopoly.\nFixes #66280. See #62249.\n",
+        "date": "2026-10-15T07:55:09.420800Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/layout.php",
+            "/trunk/src/wp-includes/class-wp-theme-json-resolver.php",
+            "/trunk/src/wp-includes/global-styles-and-settings.php",
+            "/trunk/tests/phpunit/tests/theme/wpGetGlobalSettings.php",
+            "/trunk/tests/phpunit/tests/theme/wpGetGlobalStyles.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJsonResolver.php"
+        ]
+    },
+    {
         "id": 64353,
         "author": "isabel_brison",
         "message": "Editor: enable custom CSS on style states.\n\nEnables viewport and pseudo state-specific custom CSS on block instances.\n\nProps isabel_brison, ramonopoly.\nFixes #66288.\n\n",
