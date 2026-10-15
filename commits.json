@@ -1,5 +1,29 @@
 [
     {
+        "id": 64352,
+        "author": "peterwilsoncc",
+        "message": "Themes: Restore Add Theme to appearance sub-menu.\n\nRestores the Appearance > Add Theme menu item within the dashboard. The menu item was removed in r13533 in favour of a tabbed layout that was subsequently removed in r26141.\n\nThis makes the appearance menu consistent with the posts, pages, media, plugins and users menus.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14135.\n\nProps afercia, aristath, audrasjb, chaion07, dhruvang21, joedolson, joyously, sergeybiryukov.\nFixes #47124.\n",
+        "date": "2026-10-15T04:12:09.140897Z",
+        "files": [
+            "/trunk/src/wp-admin/menu.php",
+            "/trunk/src/wp-admin/theme-install.php",
+            "/trunk/src/wp-admin/update.php",
+            "/trunk/src/wp-includes/functions.php"
+        ]
+    },
+    {
+        "id": 64351,
+        "author": "peterwilsoncc",
+        "message": "Administration: Display 404 error for unregistered admin pages.\n\nReplaces the misleading \"sorry, you are not allowed to access this page\" message with \"the requested page does not exist\" when a user attempts to visit an unregistered page in the dashboard.\n\nUnregistered pages now return an HTTP 404 response rather than a 403.\n\nProps ahsannayem, apermo, arifulislam1, audrasjb, chinmoy709, chriscct7, dd32, envygeeks, habiburdev, hakre, huzaifaalmesbah, jane, jorbin, marzanhusain, mindctrl, muryam, nacin, nikschavan, nirajgirixd, noruzzaman, ornani, ozgursar, pento, poojapadamad, presskopp, ramiy, sainathpoojary, sergeybiryukov, shailu25, sirlouen, syedjakir91, thabotswana, vgnavada, westonruter, wildworks\nFixes #14060.\n\n",
+        "date": "2026-10-15T03:20:06.857270Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/menu.php",
+            "/trunk/src/wp-admin/includes/plugin.php",
+            "/trunk/tests/phpstan/baselines/offsetAccess.nonOffsetAccessible.neon",
+            "/trunk/tests/phpunit/tests/admin/includesPlugin.php"
+        ]
+    },
+    {
         "id": 64350,
         "author": "westonruter",
         "message": "Code Quality: Correct nullable `WP_Http_Cookie` property types.\n\nA cookie created without a name, value, domain, expiration or host-only flag, or from incomplete data, leaves those properties `null`, and an unparsable expiration date is stored as `false`, but their documented types said otherwise. PHPStan therefore treated `isset()` checks on them as always true, so correcting the types retires the `booleanOr.alwaysFalse` baseline entirely along with several `isset.property` entries.\n\nThe corrected types surfaced real errors in callers, which are fixed rather than baselined:\n* In `WP_Http::normalize_cookies()`, a `WP_Http_Cookie` value was passed to `WpOrg\\Requests\\Cookie` as is, which throws an `InvalidArgument` exception for anything but a string, failing the request. A cookie without a value or with a non-scalar value is now skipped, as `WP_Http_Cookie::getHeaderValue()` already does, and other scalar values are cast to strings.\n* `wp_remote_retrieve_cookie_value()` now returns an empty string instead of `null` for a cookie without a value.\n\nThe handling of empty or missing cookie names is unchanged, as it is being addressed separately in #66305.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14283.\nFollow-up to r38164, r45135, r57501, r63023.\n\nProps huzaifaalmesbah, westonruter.\nSee #65817, #66305.\n",
