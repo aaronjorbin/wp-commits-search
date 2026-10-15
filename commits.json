@@ -1,5 +1,102 @@
 [
     {
+        "id": 64367,
+        "author": "lancewillett",
+        "message": "Tests: Reduce setup overhead in REST comments tests.\n\nRemove the unused controller instance and two unused post creations from `WP_Test_REST_Comments_Controller`. Reuse existing class fixtures in four permission and validation tests that reject requests before creating database records.\n\nPreserve the existing assertions while avoiding unnecessary fixture setup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14258\n\nProps sainathpoojary.\nSee #66074.\n",
+        "date": "2026-10-15T20:59:04.729746Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 64366,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST API page creation and updates.\n\nReplace the empty `test_create_item()` and `test_update_item()` stubs with assertions for response status, headers, returned fields, and stored page values. Verify that updating a page preserves an omitted status.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14256\n\nProps nathanrice, mindctrl.\nSee #40538.\n",
+        "date": "2026-10-15T20:56:19.013915Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-pages-controller.php"
+        ]
+    },
+    {
+        "id": 64365,
+        "author": "lancewillett",
+        "message": "Tests: Assert unsupported template revision requests.\n\nReplace skipped create and update tests with authenticated requests against valid template revision routes. Confirm each route is readable before asserting that unsupported write methods return `rest_template_not_found` with status `404`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14294\n\nProps shailu25.\nSee #66073.\n",
+        "date": "2026-10-15T20:31:18.399217Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplateRevisionsController.php"
+        ]
+    },
+    {
+        "id": 64364,
+        "author": "lancewillett",
+        "message": "Tests: Assert unsupported template autosave requests.\n\nReplace skipped update and delete tests with authenticated requests against a valid template autosave. Confirm the item is readable before asserting that unsupported write methods return `rest_template_not_found` with status `404`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14291\n\nProps shailu25.\nSee #66073.\n",
+        "date": "2026-10-15T20:29:05.949460Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplateAutosavesController.php"
+        ]
+    },
+    {
+        "id": 64363,
+        "author": "lancewillett",
+        "message": "Tests: Isolate the debug-mode multisite files test.\n\nRun the `MS_FILES_REQUEST` case in a separate process with global state preservation disabled. The constant cannot be removed during teardown and must not affect later `wp_debug_mode()` calls.\n\nFollow-up to [64267].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14297\n\nProps shailu25.\nSee #65893.\n",
+        "date": "2026-10-15T20:25:25.261075Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpDebugMode.php"
+        ]
+    },
+    {
+        "id": 64362,
+        "author": "lancewillett",
+        "message": "Tests: Restore the Abilities API setup filter stack.\n\nUse `try`/`finally` around core ability and category registration so each simulated action is removed from `$wp_current_filter` even if registration throws.\n\nFollow-up to [64266].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14296\n\nProps shailu25.\nSee #65893.\n",
+        "date": "2026-10-15T20:24:08.151512Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreAbilities.php"
+        ]
+    },
+    {
+        "id": 64361,
+        "author": "lancewillett",
+        "message": "Tests: Cover template path traversal restrictions.\n\nAdd regression coverage for `_wp_is_template_path_allowed()` and `locate_template()`, including allowed theme directories, rejected paths, and fallback template names. Verify that decoded page names containing directory traversal are omitted from the template hierarchy.\n\nCovers the restrictions introduced in [63792].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14255\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T20:20:15.831913Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/template.php",
+            "/trunk/tests/phpunit/tests/theme/locateTemplate.php",
+            "/trunk/tests/phpunit/tests/theme/wpIsTemplatePathAllowed.php"
+        ]
+    },
+    {
+        "id": 64360,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `wp_roles()`.\n\nVerify initialization, reuse of an existing `WP_Roles` instance, and replacement of invalid global values. Cover the behavior introduced in [63490].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14257\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T20:18:57.093450Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/wpRoles.php"
+        ]
+    },
+    {
+        "id": 64359,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Widget_Recent_Posts`.\n\nCover post ordering and visibility, widget filters and markup, dates and current-page indication, settings sanitization, and form fields.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14263\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-15T20:16:23.356503Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetRecentPosts.php"
+        ]
+    },
+    {
+        "id": 64358,
+        "author": "lancewillett",
+        "message": "Tests: Replace deprecated `$factory` property access.\n\nUse `self::factory()` instead of `$this->factory` in sixteen places across six test files. Preserve the existing factory object and test behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14272\n\nProps soean.\nSee #65819.\n",
+        "date": "2026-10-15T20:14:07.248485Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/editorImagick.php",
+            "/trunk/tests/phpunit/tests/media/wpCopyParentAttachmentProperties.php",
+            "/trunk/tests/phpunit/tests/media/wpGenerateAttachmentMetadata.php",
+            "/trunk/tests/phpunit/tests/post/metaRevisions.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-post-meta-fields.php"
+        ]
+    },
+    {
         "id": 64357,
         "author": "lancewillett",
         "message": "Tests: Add coverage for `WP_Widget_Recent_Comments`.\n\nCover comment ordering and visibility, widget filters and markup, styles, settings sanitization, form fields, and the deprecated cache method.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14273\n\nProps ravipatel.\nSee #65819.\n",
