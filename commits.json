@@ -1,5 +1,59 @@
 [
     {
+        "id": 64373,
+        "author": "lancewillett",
+        "message": "Tests: Cover admin menu and submenu removal.\n\nAdd coverage for `remove_menu_page()` and `remove_submenu_page()`. Verify returned items, strict slug matching, removal of only the first match, preservation of remaining positions, and unchanged menus when no match exists. Confirm removing a menu leaves its submenu intact and removing a submenu leaves its parent menu intact.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14169\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:09:52.250616Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/removeMenuPage.php"
+        ]
+    },
+    {
+        "id": 64372,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin uninstall behavior.\n\nAdd coverage for registered uninstall callbacks, full plugin paths, plugins without uninstall routines, and the `pre_uninstall_plugin` action. Verify `uninstall.php` execution, callback precedence, and cleanup of the plugin's registered uninstall callback. Extend coverage of `is_uninstallable_plugin()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14168\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:08:36.416351Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/uninstallPlugin.php"
+        ]
+    },
+    {
+        "id": 64371,
+        "author": "lancewillett",
+        "message": "Tests: Expand user sitemap provider coverage.\n\nCover author pagination, public custom post types, unpublished posts, and filtered URL lists and query arguments in `WP_Sitemaps_Users`. Verify page counts and both short-circuit filters, including empty results.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14166\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T22:39:43.696012Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsUsers.php"
+        ]
+    },
+    {
+        "id": 64370,
+        "author": "lancewillett",
+        "message": "Tests: Cover the sitemap provider base class.\n\nAdd coverage for subtype data, sitemap entries, index entry filtering, and plain and pretty sitemap URLs in `WP_Sitemaps_Provider`. Use minimal concrete providers to exercise the shared base-class behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14165\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T22:34:41.045295Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsProvider.php"
+        ]
+    },
+    {
+        "id": 64369,
+        "author": "lancewillett",
+        "message": "Tests: Expand recovery mode cookie service coverage.\n\nCover request cookies, explicit cookie precedence, filtered cookie lifetimes, and session ID extraction in `WP_Recovery_Mode_Cookie_Service`. Verify fallback authentication key and salt storage and reuse when the default secret keys are configured.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14164\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T22:32:10.764736Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/error-protection/wpRecoveryModeCookieService.php"
+        ]
+    },
+    {
+        "id": 64368,
+        "author": "lancewillett",
+        "message": "Tests: Cover error protection functions.\n\nAdd coverage for the paused plugin and theme storage helpers, the recovery mode singleton, and extension error descriptions. Verify that the fatal error handler respects its configuration constant and filter, including the filter overriding the constant.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14161\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T22:27:50.989541Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/error-protection/functions.php"
+        ]
+    },
+    {
         "id": 64367,
         "author": "lancewillett",
         "message": "Tests: Reduce setup overhead in REST comments tests.\n\nRemove the unused controller instance and two unused post creations from `WP_Test_REST_Comments_Controller`. Reuse existing class fixtures in four permission and validation tests that reject requests before creating database records.\n\nPreserve the existing assertions while avoiding unnecessary fixture setup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14258\n\nProps sainathpoojary.\nSee #66074.\n",
