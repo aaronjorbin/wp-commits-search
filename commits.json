@@ -1,5 +1,14 @@
 [
     {
+        "id": 64356,
+        "author": "SergeyBiryukov",
+        "message": "Build/Test Tools: Report the database version to the Host Test Results.\n\nPass the test database settings to the test runner's report step, so the Host Test Results show the database server version for core's runs instead of `Unknown`.\n\nThe test runner gets the version from the database server with `SELECT VERSION()`, but only when `WPT_DB_HOST`, `WPT_DB_USER`, `WPT_DB_PASSWORD`, and `WPT_DB_NAME` are set. The values are the ones the test suite already uses in the local Docker environment.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14299.\n\nFollow-up to r49783, https://github.com/WordPress/phpunit-test-runner/pull/319.\n\nProps ekamran.\nFixes #66318.",
+        "date": "2026-10-15T15:51:06.131110Z",
+        "files": [
+            "/trunk/.github/workflows/reusable-phpunit-tests-v3.yml"
+        ]
+    },
+    {
         "id": 64355,
         "author": "jonsurrell",
         "message": "Tests: Fix Block Bindings unsafe HTML test.\n\nAssert that the output has no SCRIPT tag, without depending on how KSES removes it.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14092\n\nFollow-up to r64233.\n\nProps jonsurrell, mamaduka, andrewserong.\nSee #66208.\n",
