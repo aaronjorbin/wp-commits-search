@@ -1,5 +1,14 @@
 [
     {
+        "id": 64357,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Widget_Recent_Comments`.\n\nCover comment ordering and visibility, widget filters and markup, styles, settings sanitization, form fields, and the deprecated cache method.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14273\n\nProps ravipatel.\nSee #65819.\n",
+        "date": "2026-10-15T20:12:02.338005Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetRecentComments.php"
+        ]
+    },
+    {
         "id": 64356,
         "author": "SergeyBiryukov",
         "message": "Build/Test Tools: Report the database version to the Host Test Results.\n\nPass the test database settings to the test runner's report step, so the Host Test Results show the database server version for core's runs instead of `Unknown`.\n\nThe test runner gets the version from the database server with `SELECT VERSION()`, but only when `WPT_DB_HOST`, `WPT_DB_USER`, `WPT_DB_PASSWORD`, and `WPT_DB_NAME` are set. The values are the ones the test suite already uses in the local Docker environment.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14299.\n\nFollow-up to r49783, https://github.com/WordPress/phpunit-test-runner/pull/319.\n\nProps ekamran.\nFixes #66318.",
