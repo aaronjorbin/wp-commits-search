@@ -1,5 +1,97 @@
 [
     {
+        "id": 64403,
+        "author": "lancewillett",
+        "message": "Tests: Cover KSES attribute value validation.\n\nAdd direct coverage for `wp_kses_check_attr_val()` length, numeric, valueless, allowed-value, and callback constraints. Check boundaries, strict string matching, and callback arguments, and verify that `wp_kses()` keeps valid attributes and removes invalid ones.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14321\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T17:05:50.306529Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/kses/wpKsesCheckAttrVal.php"
+        ]
+    },
+    {
+        "id": 64402,
+        "author": "jorbin",
+        "message": "Rewrite Rules: Add support for random content redirects.\n\nIntroduce a `random` query var and `/random/` rewrite rules[1], built on the existing rewrite, WP, and query APIs, that redirect to a randomly selected published post. Random requests[2] work for the whole site, taxonomy terms, authors and post type archives, with the base configurable on the Permalinks screen. A new `randomable` post type argument controls which content is eligible, and the selection runs through the main query so it remains filterable and costs a single database query.\n\nThe Random Base[3] is translatable and stored in the rewrite rules. This means that rewrite rules are regenerated when translations are updated or the Site Language is changed. Also, if a post or page is published that would result in the same slug as the Random Base, that content gets priority and nothing will be random[4].\n\nThis reintroduces the feature committed in r63767 and reverted in r63906.\n\n1) Literally `/random/`, not just rules that are random. Though that could be fun too!\n2) Not \"random\" as in unpredictable, but random as in someone wanted it to be random.\n3) It's intentionally \"random\" but it could also intentionally be \"aleatoria\" or \"karkovice\".\n4) The other random permalinks will still work, so not nothing. But is anything really random?\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14018\n\nFollow-up to r63767, r63906.\n\nProps jorbin, peterwilsoncc, westonruter, mukesh27, annezazu, mlaetitia, mcsf, johnbillion, TobiasBg, solankisoftware, sajib1223, ellatrix, matt.\nSee #64498.\n",
+        "date": "2026-10-16T17:03:59.371905Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/schema.php",
+            "/trunk/src/wp-admin/includes/upgrade.php",
+            "/trunk/src/wp-admin/network/site-settings.php",
+            "/trunk/src/wp-admin/options-permalink.php",
+            "/trunk/src/wp-includes/class-wp-post-type.php",
+            "/trunk/src/wp-includes/class-wp-query.php",
+            "/trunk/src/wp-includes/class-wp-rewrite.php",
+            "/trunk/src/wp-includes/class-wp.php",
+            "/trunk/src/wp-includes/default-filters.php",
+            "/trunk/src/wp-includes/formatting.php",
+            "/trunk/src/wp-includes/option.php",
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/src/wp-includes/query.php",
+            "/trunk/src/wp-includes/rewrite.php",
+            "/trunk/src/wp-includes/version.php",
+            "/trunk/tests/phpstan/baselines/variable.undefined.neon",
+            "/trunk/tests/phpunit/tests/post/randomablePostType.php",
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php",
+            "/trunk/tests/phpunit/tests/query/vars.php",
+            "/trunk/tests/phpunit/tests/rewrite/randomRewriteRules.php"
+        ]
+    },
+    {
+        "id": 64401,
+        "author": "lancewillett",
+        "message": "Tests: Trim repeated metadata lazy-loader test cases.\n\nRemove the empty-string and empty-array datasets from `data_check_values()`. Retain `null`, `false`, and a nonempty value to cover cache priming and unchanged pass-through values in `WP_Metadata_Lazyloader::lazyload_meta_callback()`.\n\nFollow-up to [64377].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14318\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T17:01:58.577330Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/meta/wpMetadataLazyloader.php"
+        ]
+    },
+    {
+        "id": 64400,
+        "author": "lancewillett",
+        "message": "Tests: Remove duplicate matches-map callback tests.\n\nRemove the three direct `WP_MatchesMapRegex::callback()` cases and their provider. The retained `apply()` datasets exercise the same callback path and cover match selection, URL encoding, and missing matches.\n\nFollow-up to [64376].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14317\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T16:59:35.588874Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rewrite/wpMatchesMapRegex.php"
+        ]
+    },
+    {
+        "id": 64399,
+        "author": "lancewillett",
+        "message": "Tests: Remove redundant template-global restoration.\n\nRemove the backup properties and setup and teardown overrides from the `locate_template()` and `_wp_is_template_path_allowed()` test classes. The inherited teardown already resets `$wp_stylesheet_path` and `$wp_template_path` to `null`, superseding the custom restoration.\n\nFollow-up to [64361].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14316\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T16:53:51.098643Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme/locateTemplate.php",
+            "/trunk/tests/phpunit/tests/theme/wpIsTemplatePathAllowed.php"
+        ]
+    },
+    {
+        "id": 64398,
+        "author": "lancewillett",
+        "message": "Tests: Clarify category checklist walker assertion messages.\n\nDescribe tag order rather than nesting in two `Walker_Category_Checklist` assertion messages, matching what `WP_HTML_Tag_Processor::next_tag()` verifies. Leave the assertions unchanged.\n\nFollow-up to [64381].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14315\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T16:48:28.706371Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/walkerCategoryChecklist.php"
+        ]
+    },
+    {
+        "id": 64397,
+        "author": "lancewillett",
+        "message": "Tests: Clarify the allowed-options data provider name.\n\nRename `data_invalid_new_allowed_options()` to `data_new_allowed_options_without_additions()` and update its `@dataProvider` reference. The empty-array dataset is valid input that adds nothing, rather than invalid input. Preserve all datasets and assertions.\n\nFollow-up to [64375].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14314\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T16:46:27.454270Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/allowedOptions.php"
+        ]
+    },
+    {
+        "id": 64396,
+        "author": "lancewillett",
+        "message": "Tests: Cover zero-slug category dropdown selection.\n\nVerify that `Walker_CategoryDropdown::start_el()` leaves a category with slug `'0'` unselected when `selected` is `false`, and selects it when `selected` is `'0'`. Guard against loose comparisons selecting the wrong option.\n\nFollow-up to [64379].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14313\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T16:43:54.133239Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/walkerCategoryDropdown.php"
+        ]
+    },
+    {
         "id": 64395,
         "author": "lancewillett",
         "message": "Tests: Cover preservation of an existing admin parent file.\n\nVerify that `get_admin_page_parent()` returns an empty string while preserving `$parent_file` when no submenu matches. Also cover skipping a matching submenu when the existing parent file contains a query string.\n\nFollow-up to [64374].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14312\n\nProps huzaifaalmesbah.\nSee #65819.\n",
