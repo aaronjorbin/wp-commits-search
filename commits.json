@@ -1,5 +1,15 @@
 [
     {
+        "id": 64385,
+        "author": "andrewserong",
+        "message": "Editor: Skip auto-attaching media when attachment pages are enabled.\n\nThe block editor attaches unattached images in Image and Gallery blocks to the post when the post is saved. When attachment pages are enabled, attaching an image moves its attachment page to a URL under that post, and\nthe old attachment page URL then returns a 404.\n\nThis adds an `autoAttachMediaEnabled` setting to `get_default_block_editor_settings()`. It is `false` when the `wp_attachment_pages_enabled` option is on, and `true` otherwise. Sites can still change it with the\n`block_editor_settings_all` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14308\n\nProps faisalahammad, rejaulalomkhan, andrewserong, ramonopoly, padams.\nFixes #66321.\n\n",
+        "date": "2026-10-16T03:30:43.533412Z",
+        "files": [
+            "/trunk/src/wp-includes/block-editor.php",
+            "/trunk/tests/phpunit/tests/blocks/editor.php"
+        ]
+    },
+    {
         "id": 64384,
         "author": "lancewillett",
         "message": "Tests: Cover Archives widget output and settings.\n\nAdd coverage for `WP_Widget_Archives` registration, titles and filters, navigation wrappers, dropdown output, and dropdown filter arguments. Verify settings sanitization and settings form fields, including unchecked checkboxes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14185\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65819.\n",
