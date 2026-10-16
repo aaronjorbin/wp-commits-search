@@ -1,5 +1,24 @@
 [
     {
+        "id": 64411,
+        "author": "lancewillett",
+        "message": "Tests: Cover HTTP encoding and compression helpers.\n\nAdd coverage for `WP_Http_Encoding` compression, decompression, optional gzip headers, invalid input, encoding negotiation, filter arguments, response headers, and compression availability.\n\nGenerate compressed fixtures after checking required functions, and use valid gzip header checksums.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14174\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T18:58:49.000624Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/http/wpHttpEncoding.php"
+        ]
+    },
+    {
+        "id": 64410,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Run the `wp.updates` QUnit tests.\n\nLoad the existing updates fixture, implementation, and tests in the QUnit runner so their assertions run against both development and minified scripts.\n\nPopulate the fixture's update totals to match its markup and prevent `wp.updates.decrementCount()` from throwing when it accesses the counts.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14319\n\nProps dlocc.\nFixes #66324.\n",
+        "date": "2026-10-16T18:19:54.297077Z",
+        "files": [
+            "/trunk/tests/qunit/fixtures/updates.js",
+            "/trunk/tests/qunit/index.html"
+        ]
+    },
+    {
         "id": 64409,
         "author": "lancewillett",
         "message": "Build/Test Tools: Cover privacy page creation and policy copying.\n\nAdd browser tests for creating a draft Privacy Policy page and selecting it in settings. Restore the original setting and permanently delete the test-created page during cleanup.\n\nVerify the real clipboard contains the suggested policy text without tutorial or toolbar text, including a second copy while the success notice is visible.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8246\n\nProps juhise, lucatume.\nSee #52895.\n",
