@@ -1,5 +1,14 @@
 [
     {
+        "id": 64412,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Recovery_Mode`.\n\nTest recovery mode initialization, error handling, recovery emails, plugin and theme error storage, redirects, session exit, and expired-key cleanup. Cover filter behavior and invalid inputs, and isolate tests that depend on headers or process state.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14160\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T19:25:23.378011Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/error-protection/wpRecoveryMode.php"
+        ]
+    },
+    {
         "id": 64411,
         "author": "lancewillett",
         "message": "Tests: Cover HTTP encoding and compression helpers.\n\nAdd coverage for `WP_Http_Encoding` compression, decompression, optional gzip headers, invalid input, encoding negotiation, filter arguments, response headers, and compression availability.\n\nGenerate compressed fixtures after checking required functions, and use valid gzip header checksums.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14174\n\nProps huzaifaalmesbah.\nSee #65819.\n",
