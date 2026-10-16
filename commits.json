@@ -1,5 +1,19 @@
 [
     {
+        "id": 64388,
+        "author": "jorgefilipecosta",
+        "message": "Abilities API: Add the `core/content-query` ability.\n\nAdds a read-only `core/content-query` ability that returns a page of the posts of one post type, optionally filtered by IDs, slugs, status, author, or parent. Until now, Core had no ability to read posts. The code lives in the new private `WP_Abilities_Content` class, and the ability is registered in a new `content` category.\nPost types opt in with the new `show_in_abilities` argument of `register_post_type()`, which defaults to `false`. Only `true` exposes a post type, and the `post` and `page` post types set it.\n\nDeveloped in https://github.com/WordPress/ai/pull/739 and https://github.com/WordPress/wordpress-develop/pull/12195.\n\nProps jorgefilipecosta, gziolo, peterwilsoncc, ovidiu-galatan, justlevine, ugyensupport, dkotter, jason_the_adams, jasonbahl, jeffpaul.\nFixes #66268.",
+        "date": "2026-10-16T10:28:45.893468Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-content.php",
+            "/trunk/src/wp-includes/abilities.php",
+            "/trunk/src/wp-includes/class-wp-post-type.php",
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreContentAbility.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesContentController.php"
+        ]
+    },
+    {
         "id": 64387,
         "author": "wildworks",
         "message": "Twenty Nineteen: Replace `node-sass` with `sass`\n\nTwenty Nineteen now compiles its stylesheets with the actively maintained `sass` package instead of the deprecated `node-sass`, which allows the theme to move to Node.js 24.x without changing the compiled CSS output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12510\n\nProps adrianduffell, cyrusblake89, debarghyabanerjee, desrosj, karmatosed, rejaulalomkhan, sabernhardt, sainathpoojary, wildworks.\n\nFixes #63013.",
