@@ -1,5 +1,35 @@
 [
     {
+        "id": 64434,
+        "author": "SergeyBiryukov",
+        "message": "Database: Correct uppercasing the SQL mode values in `wpdb::set_sql_mode()`.\n\n`wpdb::set_sql_mode()` aimed to convert lowercased values to uppercase before comparing them with the `incompatible_sql_modes` filter results, but the case conversion was erroneously performed on numeric keys of the modes array rather than the string values. This commit ensures the array values are converted as expected.\n\nFollow-up to r27072.\n\nProps DavidAnderson, SergeyBiryukov.\nFixes #66326.",
+        "date": "2026-10-16T22:48:16.206954Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wpdb.php",
+            "/trunk/tests/phpunit/tests/db.php"
+        ]
+    },
+    {
+        "id": 64433,
+        "author": "jorgefilipecosta",
+        "message": "REST API: Add the homepage and posts page action links to pages.\n\nAdds the `action-set-homepage` and `action-set-posts-page` links to the published pages the current user can set as the homepage or as the posts page, in the `edit` context, and their link description objects to the pages schema. Both change the site settings, so they require `manage_options`, and the current homepage and posts page get neither. The editor uses them for its \"Set as homepage\" and \"Set as posts page\" actions.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14347 and https://github.com/WordPress/gutenberg/pull/84932.\n\nFollow-up to [64343].\n\nProps jorgefilipecosta, oandregal, chihsuan.\nFixes #66327.",
+        "date": "2026-10-16T22:46:38.996788Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-pages-controller.php"
+        ]
+    },
+    {
+        "id": 64432,
+        "author": "jorgefilipecosta",
+        "message": "Connectors: Match the settings route the way the REST server does.\n\n`_wp_connectors_rest_settings_dispatch()` now matches the request route with the REST server's own pattern, to fix possible inconsistencies with the server's route matching.\n\nFollow-up to [61749], [62684].\n\nProps mcliwanow, jorgefilipecosta.\nFixes #66330.",
+        "date": "2026-10-16T22:41:30.570784Z",
+        "files": [
+            "/trunk/src/wp-includes/connectors.php",
+            "/trunk/tests/phpunit/tests/connectors/wpConnectorsRestSettingsDispatch.php"
+        ]
+    },
+    {
         "id": 64431,
         "author": "lancewillett",
         "message": "Bootstrap/Load: Recognize network plugins in recovery mode.\n\nNormalize the absolute paths returned by `wp_get_active_network_plugins()` with `plugin_basename()` before comparing them with extension slugs. Match single-file plugins by basename as well as plugins in directories.\n\nAdd multisite regression tests for network-plugin errors and unrelated plugins with similar names. This corrects network-plugin detection without enabling recovery mode on multisite.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14355\n\nProps huzaifaalmesbah.\nFixes #66328.\n",
