@@ -1,5 +1,104 @@
 [
     {
+        "id": 64384,
+        "author": "lancewillett",
+        "message": "Tests: Cover Archives widget output and settings.\n\nAdd coverage for `WP_Widget_Archives` registration, titles and filters, navigation wrappers, dropdown output, and dropdown filter arguments. Verify settings sanitization and settings form fields, including unchecked checkboxes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14185\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:31:02.715144Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetArchives.php"
+        ]
+    },
+    {
+        "id": 64383,
+        "author": "lancewillett",
+        "message": "Tests: Cover Search widget output and settings.\n\nAdd coverage for `WP_Widget_Search` registration, title output and filtering, search form rendering, title sanitization, and escaped settings form fields.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14184\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:29:57.482297Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetSearch.php"
+        ]
+    },
+    {
+        "id": 64382,
+        "author": "lancewillett",
+        "message": "Tests: Cover Meta widget output and settings.\n\nAdd coverage for `WP_Widget_Meta` registration, titles, navigation markup, links, filters, and the `wp_meta` action. Verify title sanitization, preservation of existing settings, and escaped settings form output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14181\n\nProps huzaifaalmesbah, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-15T23:28:57.386616Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetMeta.php"
+        ]
+    },
+    {
+        "id": 64381,
+        "author": "lancewillett",
+        "message": "Tests: Cover category checklist walker output.\n\nAdd direct coverage for `Walker_Category_Checklist` list-only and checkbox markup, selection, popular categories, disabled states, and taxonomy-specific field names. Verify generated ID distinctions, filtered name escaping, element wrappers, and nested categories.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14180\n\nProps huzaifaalmesbah, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-15T23:27:49.435623Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/walkerCategoryChecklist.php"
+        ]
+    },
+    {
+        "id": 64380,
+        "author": "lancewillett",
+        "message": "Tests: Cover page dropdown walker output.\n\nAdd direct coverage for `Walker_PageDropdown` option markup, ID-based selection, value fields, title fallback, and escaping. Verify the `list_pages` filter receives the expected arguments and its result is escaped. Cover output appending and nested page indentation using in-memory fixtures.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14179\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:26:51.456351Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/walkerPageDropdown.php"
+        ]
+    },
+    {
+        "id": 64379,
+        "author": "lancewillett",
+        "message": "Tests: Cover category dropdown walker output.\n\nAdd direct coverage for `Walker_CategoryDropdown` option markup, selection, value fields, escaping, formatted counts, and the `list_cats` filter. Verify output appending and indentation of nested categories using in-memory fixtures.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14178\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:22:57.274531Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/walkerCategoryDropdown.php"
+        ]
+    },
+    {
+        "id": 64378,
+        "author": "lancewillett",
+        "message": "Tests: Cover HTTP proxy configuration and routing.\n\nAdd coverage for `WP_HTTP_Proxy` settings, authentication headers, incomplete configuration, and proxy routing decisions. Verify the `pre_http_send_through_proxy` filter and exact and wildcard bypass hosts. Isolate tests that define proxy constants in separate processes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14176\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:21:55.364739Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/http/wpHttpProxy.php"
+        ]
+    },
+    {
+        "id": 64377,
+        "author": "lancewillett",
+        "message": "Tests: Cover metadata lazy-loader behavior.\n\nAdd direct coverage for `WP_Metadata_Lazyloader`, including queue management, metadata filters, action arguments, and cache priming. Verify queued and requested objects are primed, unrelated objects remain uncached, and queues are reset independently. Cover the deprecated term and comment callbacks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14175\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:16:38.245283Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/meta/wpMetadataLazyloader.php"
+        ]
+    },
+    {
+        "id": 64376,
+        "author": "lancewillett",
+        "message": "Tests: Cover rewrite query match mapping.\n\nAdd coverage for `WP_MatchesMapRegex`, including placeholder substitution, URL encoding, missing and empty matches, and unsupported placeholders. Verify the public `output` property and `callback()` results.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14173\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:15:25.081637Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rewrite/wpMatchesMapRegex.php"
+        ]
+    },
+    {
+        "id": 64375,
+        "author": "lancewillett",
+        "message": "Tests: Cover allowed options helpers.\n\nAdd coverage for `add_allowed_options()`, `remove_allowed_options()`, and `option_update_filter()`. Verify strict option-name matching, duplicate handling, preserved array keys, and updates to the `$allowed_options` global only when no explicit options are passed. Cover array and non-array values of `$new_allowed_options`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14171\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:13:35.272249Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/allowedOptions.php"
+        ]
+    },
+    {
+        "id": 64374,
+        "author": "lancewillett",
+        "message": "Tests: Cover admin page parent resolution and plugin page hooks.\n\nAdd coverage for `get_admin_page_parent()`, `get_plugin_page_hookname()`, and `get_plugin_page_hook()`. Verify explicit and detected parents, real-parent mappings, pages without privileges, and missing parents. Check generated hook names and that a hook name is returned only when a callback is registered.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14170\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-15T23:11:42.766072Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/getAdminPageParent.php"
+        ]
+    },
+    {
         "id": 64373,
         "author": "lancewillett",
         "message": "Tests: Cover admin menu and submenu removal.\n\nAdd coverage for `remove_menu_page()` and `remove_submenu_page()`. Verify returned items, strict slug matching, removal of only the first match, preservation of remaining positions, and unchanged menus when no match exists. Confirm removing a menu leaves its submenu intact and removing a submenu leaves its parent menu intact.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14169\n\nProps huzaifaalmesbah.\nSee #65819.\n",
