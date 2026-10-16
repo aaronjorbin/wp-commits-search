@@ -1,5 +1,51 @@
 [
     {
+        "id": 64431,
+        "author": "lancewillett",
+        "message": "Bootstrap/Load: Recognize network plugins in recovery mode.\n\nNormalize the absolute paths returned by `wp_get_active_network_plugins()` with `plugin_basename()` before comparing them with extension slugs. Match single-file plugins by basename as well as plugins in directories.\n\nAdd multisite regression tests for network-plugin errors and unrelated plugins with similar names. This corrects network-plugin detection without enabling recovery mode on multisite.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14355\n\nProps huzaifaalmesbah.\nFixes #66328.\n",
+        "date": "2026-10-16T21:46:37.257824Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-recovery-mode.php",
+            "/trunk/tests/phpunit/tests/error-protection/wpRecoveryModeNetworkPlugins.php"
+        ]
+    },
+    {
+        "id": 64430,
+        "author": "lancewillett",
+        "message": "Tests: Cover paused and deactivated plugin notices.\n\nVerify notice messages, types, and links, and the conditions that suppress them. Cover site and network deactivation lists and their cleanup after display. Restore the super-admin grant after the test class.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14172\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T21:42:33.731410Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/pluginNotices.php"
+        ]
+    },
+    {
+        "id": 64429,
+        "author": "lancewillett",
+        "message": "Tests: Cover unapproved comment author email lookup.\n\nAdd coverage for `wp_get_unapproved_comment_author_email()`. Verify that a valid moderation hash for a recent comment takes precedence over the commenter cookie, and that missing, invalid, or expired query arguments fall back to the cookie. Cover the empty result when neither source is available.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14334\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-16T21:24:53.679499Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/wpGetUnapprovedCommentAuthorEmail.php"
+        ]
+    },
+    {
+        "id": 64428,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `author_can()`.\n\nVerify that capability checks use the post author independently of the current user, accept post objects and IDs, and forward extra arguments for meta capabilities. Cover missing posts and missing authors.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14333\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-16T21:23:00.879692Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/authorCan.php"
+        ]
+    },
+    {
+        "id": 64427,
+        "author": "lancewillett",
+        "message": "Tests: Cover default tag-cloud count scaling.\n\nAdd coverage for `default_topic_count_scale()`, including zero, rounding, and numeric-string inputs. Verify that `wp_generate_tag_cloud()` uses logarithmic scaling for font sizes by default.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14332\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-16T21:12:03.844659Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term/defaultTopicCountScale.php"
+        ]
+    },
+    {
         "id": 64426,
         "author": "lancewillett",
         "message": "Tests: Add coverage for `separate_comments()`.\n\nCover default groups, comment types, combined pings, and empty and custom types. Verify that grouped elements retain references to the input array.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14330\n\nProps rejaulalomkhan.\nSee #65819.\n",
