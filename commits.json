@@ -1,5 +1,20 @@
 [
     {
+        "id": 64386,
+        "author": "luisherranz",
+        "message": "Interactivity API: Add server-side processing for the `data-wp-html` directive.\n\nAdds server-side processing for the `data-wp-html` directive, whose client implementation was added in Gutenberg, so that trusted HTML produced in PHP is present in the server-rendered page.\n\nThe new `wp_interactivity_as_dangerous_html()` function returns a `WP_Interactivity_Dangerous_HTML` token that marks an HTML string as trusted. Only these tokens render. The HTML is neither sanitized nor processed for directives, and it is never included in the data printed for the client, where a token is encoded as `{}`. An unserialized token holds no HTML and does not render.\n\nWhen the directive cannot render, the element keeps its existing content and a `_doing_it_wrong()` notice is raised. That happens when the value is not a token, when the element cannot hold content, or when the element also uses `data-wp-text` or `data-wp-each` on a `template`.\n\nAlso adds `WP_Interactivity_API_Directives_Processor::set_raw_content_between_balanced_tags()`, which replaces the content between balanced tags without escaping it.\n\nProps darerodz.\nFixes #66246.",
+        "date": "2026-10-16T05:08:08.807752Z",
+        "files": [
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-api-directives-processor.php",
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-dangerous-html.php",
+            "/trunk/src/wp-includes/interactivity-api/interactivity-api.php",
+            "/trunk/src/wp-settings.php",
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-html.php",
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPIDirectivesProcessor.php"
+        ]
+    },
+    {
         "id": 64385,
         "author": "andrewserong",
         "message": "Editor: Skip auto-attaching media when attachment pages are enabled.\n\nThe block editor attaches unattached images in Image and Gallery blocks to the post when the post is saved. When attachment pages are enabled, attaching an image moves its attachment page to a URL under that post, and\nthe old attachment page URL then returns a 404.\n\nThis adds an `autoAttachMediaEnabled` setting to `get_default_block_editor_settings()`. It is `false` when the `wp_attachment_pages_enabled` option is on, and `true` otherwise. Sites can still change it with the\n`block_editor_settings_all` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14308\n\nProps faisalahammad, rejaulalomkhan, andrewserong, ramonopoly, padams.\nFixes #66321.\n\n",
