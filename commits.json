@@ -1,5 +1,59 @@
 [
     {
+        "id": 64409,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Cover privacy page creation and policy copying.\n\nAdd browser tests for creating a draft Privacy Policy page and selecting it in settings. Restore the original setting and permanently delete the test-created page during cleanup.\n\nVerify the real clipboard contains the suggested policy text without tutorial or toolbar text, including a second copy while the success notice is visible.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8246\n\nProps juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-16T18:13:28.924970Z",
+        "files": [
+            "/trunk/tests/e2e/specs/privacy.test.js"
+        ]
+    },
+    {
+        "id": 64408,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Wait for login autofocus in the installation test.\n\nWait for the username field to receive focus before filling the login credentials. This prevents the delayed focus callback in `wp-login.php` from moving focus during password entry.\n\nKeep the installation and login assertions unchanged.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14220\n\nProps lucatume.\nSee #52895.\n",
+        "date": "2026-10-16T17:55:46.616024Z",
+        "files": [
+            "/trunk/tests/e2e/specs/install.test.js"
+        ]
+    },
+    {
+        "id": 64407,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Verify published post content on the front end.\n\nExtend the existing post publication E2E test to follow the View link from the posts list and verify that the published title and body are visible on the front end.\n\nCarry forward the rendering check from https://github.com/WordPress/wordpress-develop/pull/7998 without adding another publication test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14206\n\nProps jayson31, lucatume.\nSee #52895.\n",
+        "date": "2026-10-16T17:23:24.339123Z",
+        "files": [
+            "/trunk/tests/e2e/specs/edit-posts.test.js"
+        ]
+    },
+    {
+        "id": 64406,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Wait for installation test cleanup to take effect.\n\nAfter restoring `wp-config.php` and removing the temporary installation tables, wait for a fresh request to `wp-login.php` to display the login form. This prevents the following E2E test from reaching the installer while PHP still serves the previous configuration.\n\nRetry only the readiness navigation within a bounded timeout. Keep configuration restoration, table cleanup, and the installation assertions unchanged.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14205\n\nProps lucatume.\nFixes #66290.\n",
+        "date": "2026-10-16T17:19:56.500843Z",
+        "files": [
+            "/trunk/tests/e2e/specs/install.test.js"
+        ]
+    },
+    {
+        "id": 64405,
+        "author": "jorbin",
+        "message": "Fix DB Version.\n\nFollow-up to r64402.\n\nUnprops Jorbin.\nSee #64498.\n",
+        "date": "2026-10-16T17:17:11.530134Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64404,
+        "author": "lancewillett",
+        "message": "Tests: Cover user field sanitization.\n\nAdd direct coverage for `sanitize_user_field()` integer casting, raw and non-string values, context-specific filters and their arguments, and HTML, attribute, JavaScript, and URL escaping.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14322\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T17:11:21.178493Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/sanitizeUserField.php"
+        ]
+    },
+    {
         "id": 64403,
         "author": "lancewillett",
         "message": "Tests: Cover KSES attribute value validation.\n\nAdd direct coverage for `wp_kses_check_attr_val()` length, numeric, valueless, allowed-value, and callback constraints. Check boundaries, strict string matching, and callback arguments, and verify that `wp_kses()` keeps valid attributes and removes invalid ones.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14321\n\nProps huzaifaalmesbah.\nSee #65819.\n",
