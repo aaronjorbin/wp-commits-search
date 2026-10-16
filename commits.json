@@ -1,5 +1,71 @@
 [
     {
+        "id": 64395,
+        "author": "lancewillett",
+        "message": "Tests: Cover preservation of an existing admin parent file.\n\nVerify that `get_admin_page_parent()` returns an empty string while preserving `$parent_file` when no submenu matches. Also cover skipping a matching submenu when the existing parent file contains a query string.\n\nFollow-up to [64374].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14312\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T16:01:16.101314Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/getAdminPageParent.php"
+        ]
+    },
+    {
+        "id": 64394,
+        "author": "lancewillett",
+        "message": "Tests: Strengthen Recent Posts and Archives widget assertions.\n\nCheck the `name` attributes for the Recent Posts number and date inputs, which are required to submit those settings. Verify that the `widget_archives_dropdown_args` filter changes the Archives dropdown label when it selects yearly archives.\n\nFollow-up to [64359] and [64384].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14311\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-16T15:55:52.763584Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetArchives.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetRecentPosts.php"
+        ]
+    },
+    {
+        "id": 64393,
+        "author": "lancewillett",
+        "message": "Tests: Expand post sitemap provider coverage.\n\nCover `WP_Sitemaps_Posts` subtype filtering, URL entries, timezone handling, pagination, page counts, and filters. Use fixed modified dates with distinct local and GMT values to catch incorrect `lastmod` calculations.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14167\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T15:49:06.117252Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsPosts.php"
+        ]
+    },
+    {
+        "id": 64392,
+        "author": "lancewillett",
+        "message": "Tests: Separate theme feature validation tests.\n\nMove `test_register_theme_support_validation()` and its provider into a separate `WP_UnitTestCase` class to avoid unnecessary theme-directory and cache setup. Preserve all eight datasets, assertions, and expected errors.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14306\n\nProps sainathpoojary.\nSee #66074.\n",
+        "date": "2026-10-16T15:46:38.743006Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme/registerThemeFeature.php",
+            "/trunk/tests/phpunit/tests/theme.php"
+        ]
+    },
+    {
+        "id": 64391,
+        "author": "lancewillett",
+        "message": "Tests: Cover Calendar widget output and settings.\n\nAdd coverage for `WP_Widget_Calendar` registration, rendered output with and without posts, title filtering, unique wrapper IDs, title sanitization, and settings form fields. Preserve the original instance counter and global `$posts` state between tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14186\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T15:37:21.469350Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetCalendar.php"
+        ]
+    },
+    {
+        "id": 64390,
+        "author": "lancewillett",
+        "message": "Tests: Separate template ID sanitization tests.\n\nMove the four `_sanitize_template_id()` datasets into a separate `WP_UnitTestCase` class to avoid unnecessary REST server and fixture setup. Preserve all assertions, expected values, and independent dataset reporting.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14345\n\nProps sainathpoojary.\nSee #66074.\n",
+        "date": "2026-10-16T15:26:43.442903Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplatesController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplatesControllerSanitizeTemplateId.php"
+        ]
+    },
+    {
+        "id": 64389,
+        "author": "lancewillett",
+        "message": "Tests: Correct URL details parsing fixtures and labels.\n\nReverse the attribute order in the multiline icon fixture so it exercises a distinct input. Correct a dataset label and document the malformed description fixture and minimal HTML wrapper.\n\nFollow-up to [64317].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14326\n\nProps abcd95.\nSee #66074.\n",
+        "date": "2026-10-16T15:20:35.686170Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestUrlDetailsController/parsing.php"
+        ]
+    },
+    {
         "id": 64388,
         "author": "jorgefilipecosta",
         "message": "Abilities API: Add the `core/content-query` ability.\n\nAdds a read-only `core/content-query` ability that returns a page of the posts of one post type, optionally filtered by IDs, slugs, status, author, or parent. Until now, Core had no ability to read posts. The code lives in the new private `WP_Abilities_Content` class, and the ability is registered in a new `content` category.\nPost types opt in with the new `show_in_abilities` argument of `register_post_type()`, which defaults to `false`. Only `true` exposes a post type, and the `post` and `page` post types set it.\n\nDeveloped in https://github.com/WordPress/ai/pull/739 and https://github.com/WordPress/wordpress-develop/pull/12195.\n\nProps jorgefilipecosta, gziolo, peterwilsoncc, ovidiu-galatan, justlevine, ugyensupport, dkotter, jason_the_adams, jasonbahl, jeffpaul.\nFixes #66268.",
