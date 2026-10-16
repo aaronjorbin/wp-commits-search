@@ -1,5 +1,133 @@
 [
     {
+        "id": 64426,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `separate_comments()`.\n\nCover default groups, comment types, combined pings, and empty and custom types. Verify that grouped elements retain references to the input array.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14330\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-16T21:01:26.485451Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/separateComments.php"
+        ]
+    },
+    {
+        "id": 64425,
+        "author": "lancewillett",
+        "message": "Tests: Cover updated and removed oEmbed providers.\n\nVerify that ReverbNation URL variants resolve to the legacy endpoint and that Someecards and some.ly URLs no longer match trusted providers. Disable discovery to keep the checks independent of network requests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14329\n\nProps huzaifaalmesbah.\nSee #65819, #66079, #66078.\n",
+        "date": "2026-10-16T20:58:31.505317Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/oembed/wpOembed.php"
+        ]
+    },
+    {
+        "id": 64424,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `get_the_category_list()`.\n\nCover unordered and separated lists, parent-category display modes, permalink-dependent link attributes, and the current-post default. Verify empty results and the arguments and output of the `the_category_list` and `the_category` filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14325\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T20:47:39.809524Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/getTheCategoryList.php"
+        ]
+    },
+    {
+        "id": 64423,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `Walker_Nav_Menu_Checklist`.\n\nCover nested list markup, menu-item checkbox and hidden inputs, disabled states, label selection, escaping, and page post states. Restore the navigation-menu globals after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14346\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-16T20:45:07.232883Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/menu/walkerNavMenuChecklist.php"
+        ]
+    },
+    {
+        "id": 64422,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Widget_Links`.\n\nCover bookmark rendering, category filtering, widget arguments, settings sanitization, and saved and default form values. Delete shared bookmark fixtures after the class to keep later tests isolated.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14344\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-16T20:44:05.012212Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetLinks.php"
+        ]
+    },
+    {
+        "id": 64421,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Widget_Block`.\n\nCover rendered block content, legacy widget class names, content and class-name filters, capability-dependent HTML sanitization, saved form values, and Customizer width behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14343\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-16T20:43:02.695270Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetBlock.php"
+        ]
+    },
+    {
+        "id": 64420,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Nav_Menu_Widget`.\n\nCover menu rendering, missing-menu behavior, title and argument filters, navigation wrappers, settings sanitization, and form output, including the Customizer context.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14342\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-16T20:41:26.922210Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpNavMenuWidget.php"
+        ]
+    },
+    {
+        "id": 64419,
+        "author": "lancewillett",
+        "message": "Tests: Correct missing-URL coverage for the RSS widget.\n\nFix the misspelled `url` key so the missing-URL dataset actually removes the setting. Remove an unused branch from the successful-URL test and declare both data providers static.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14341\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-16T20:40:04.985380Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetRss.php"
+        ]
+    },
+    {
+        "id": 64418,
+        "author": "lancewillett",
+        "message": "Tests: Strengthen Recent Comments widget XHTML coverage.\n\nAssert that the Recent Comments widget still renders five comments in XHTML mode, alongside the existing check that it omits the navigation wrapper. This prevents empty output from satisfying the negative assertion.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14338\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-16T20:39:02.443734Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetRecentComments.php"
+        ]
+    },
+    {
+        "id": 64417,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `wp_sprintf()` and `wp_sprintf_l()`.\n\nCover numbered and missing arguments, literal percent signs, formatting specifiers, and fragment filtering in `wp_sprintf()`. Verify list formatting, suffix preservation, and customizable delimiters in `wp_sprintf_l()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14324\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T20:27:46.331867Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/wpSprintf.php"
+        ]
+    },
+    {
+        "id": 64416,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for bookmark sanitization.\n\nCover field normalization, context-specific filters and escaping in `sanitize_bookmark_field()`. Test array and object inputs to `sanitize_bookmark()`, including preservation of unknown fields, omission of missing fields, and forwarding the bookmark ID and context to filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14323\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T20:24:52.016868Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/bookmark/sanitizeBookmarkField.php"
+        ]
+    },
+    {
+        "id": 64415,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Fatal_Error_Handler`.\n\nCover error detection, handled error types, early returns, and default error messages and filters. Isolate tests that depend on sandbox or header state, explicitly establish their preconditions, and verify the error details and response arguments passed to `wp_die()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14163\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T20:20:44.755387Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/error-protection/wpFatalErrorHandler.php"
+        ]
+    },
+    {
+        "id": 64414,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for paused-theme recovery helpers.\n\nCover paused-theme detection, stored error retrieval, and resuming themes. Verify error removal preserves other paused themes, inactive themes do not redirect, and active themes load their `functions.php` file while discarding its output and generating a valid error nonce.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14162\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-16T20:14:14.580462Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/theme",
+            "/trunk/tests/phpunit/tests/admin/includes/theme/themePausedState.php"
+        ]
+    },
+    {
+        "id": 64413,
+        "author": "westonruter",
+        "message": "Widgets: Use booleans in Categories widget arguments.\n\nThe Categories widget passed `show_count` and `hierarchical` to `wp_list_categories()` and `wp_dropdown_categories()` as the numeric strings `'0'` and `'1'`, while both functions document these arguments as `bool|int`. They are now passed as booleans, matching what the Categories block already passes. Core only checks these values for truthiness, so output is unchanged; a callback on the `widget_categories_args` or `widget_categories_dropdown_args` filter that compares them strictly to `'1'` or `'0'` is the only code affected, which is noted in the filters' `@since` tags.\n\nThe arguments passed to those filters, along with the widget's display arguments and instance settings, are now documented as hashes so that static analysis can type them. The `count`, `hierarchical` and `dropdown` settings are documented as the `0` or `1` that `update()` stores, while `widget()` keeps reading them loosely for instances saved before WordPress 2.8, which stored booleans. A missing title in the submitted settings no longer triggers an undefined array key warning in `update()`, which can happen when REST API form data omits it.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/8071.\nFollow-up to r10809, r41685, r64331.\n\nProps westonruter, marian1.\nSee #65817, #65860.\nFixes #62762.\n",
+        "date": "2026-10-16T20:14:01.208596Z",
+        "files": [
+            "/trunk/src/wp-includes/widgets/class-wp-widget-categories.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetCategories.php"
+        ]
+    },
+    {
         "id": 64412,
         "author": "lancewillett",
         "message": "Tests: Add coverage for `WP_Recovery_Mode`.\n\nTest recovery mode initialization, error handling, recovery emails, plugin and theme error storage, redirects, session exit, and expired-key cleanup. Cover filter behavior and invalid inputs, and isolate tests that depend on headers or process state.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14160\n\nProps huzaifaalmesbah.\nSee #65819.\n",
