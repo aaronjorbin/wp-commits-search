@@ -1,5 +1,31 @@
 [
     {
+        "id": 64387,
+        "author": "wildworks",
+        "message": "Twenty Nineteen: Replace `node-sass` with `sass`\n\nTwenty Nineteen now compiles its stylesheets with the actively maintained `sass` package instead of the deprecated `node-sass`, which allows the theme to move to Node.js 24.x without changing the compiled CSS output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12510\n\nProps adrianduffell, cyrusblake89, debarghyabanerjee, desrosj, karmatosed, rejaulalomkhan, sabernhardt, sainathpoojary, wildworks.\n\nFixes #63013.",
+        "date": "2026-10-16T08:21:33.262104Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentynineteen/.nvmrc",
+            "/trunk/src/wp-content/themes/twentynineteen/package-lock.json",
+            "/trunk/src/wp-content/themes/twentynineteen/package.json",
+            "/trunk/src/wp-content/themes/twentynineteen/print.css",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/blocks/_blocks.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/forms/_buttons.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/mixins/_mixins-master.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/navigation/_menu-main-navigation.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/site/header/_site-featured-image.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/site/header/_site-header.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/site/primary/_comments.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/site/secondary/_widgets.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/typography/_headings.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/variables-site/_colors.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/style-editor.css",
+            "/trunk/src/wp-content/themes/twentynineteen/style-editor.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/style-rtl.css",
+            "/trunk/src/wp-content/themes/twentynineteen/style.css"
+        ]
+    },
+    {
         "id": 64386,
         "author": "luisherranz",
         "message": "Interactivity API: Add server-side processing for the `data-wp-html` directive.\n\nAdds server-side processing for the `data-wp-html` directive, whose client implementation was added in Gutenberg, so that trusted HTML produced in PHP is present in the server-rendered page.\n\nThe new `wp_interactivity_as_dangerous_html()` function returns a `WP_Interactivity_Dangerous_HTML` token that marks an HTML string as trusted. Only these tokens render. The HTML is neither sanitized nor processed for directives, and it is never included in the data printed for the client, where a token is encoded as `{}`. An unserialized token holds no HTML and does not render.\n\nWhen the directive cannot render, the element keeps its existing content and a `_doing_it_wrong()` notice is raised. That happens when the value is not a token, when the element cannot hold content, or when the element also uses `data-wp-text` or `data-wp-each` on a `template`.\n\nAlso adds `WP_Interactivity_API_Directives_Processor::set_raw_content_between_balanced_tags()`, which replaces the content between balanced tags without escaping it.\n\nProps darerodz.\nFixes #66246.",
