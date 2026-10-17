@@ -1,5 +1,21 @@
 [
     {
+        "id": 64435,
+        "author": "westonruter",
+        "message": "Upgrade/Install: Add PHPStan types to the automatic updater.\n\nThe update offers and results handled by `WP_Automatic_Updater` are now typed by update type, with a type alias for each kind of offer and result and a conditional return type for `WP_Automatic_Updater::update()`. A conditional parameter type for the offer would be preferable, but PHPStan only narrows the outermost condition of a nested conditional parameter type and resolves the others to `never`, so the offer is instead narrowed with inline tags in each branch that reads it, alongside comments to replace them once nested conditions are supported.\n\nTyping the results showed that several documented return types never matched the code. The `null|WP_Error` documented for `update()` since r32655 omitted both the `false` returned when an update is declined and the result passed through from the upgrader. Because `Plugin_Upgrader`, `Theme_Upgrader` and `Language_Pack_Upgrader` redeclare `$result` without a default, their `upgrade()` methods and the plugin and theme `install()` methods return `null` when the operation fails before the package is installed, which their documentation has omitted since r30758. The `$update` parameter of `Language_Pack_Upgrader::upgrade()` is also corrected to the update offer object that its callers pass.\n\nVariables that PHPStan reported as possibly undefined are initialized, and a redundant `$is_debug` assignment from r58139 is removed. This resolves 7 baselined errors across the `argument.type`, `return.type` and `variable.undefined` identifiers.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14361.\nFollow-up to r11005, r25566, r30758, r32655, r58139, r63019, r63022, r63024.\n\nSee #65817.\n",
+        "date": "2026-10-16T23:46:27.937285Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-language-pack-upgrader.php",
+            "/trunk/src/wp-admin/includes/class-plugin-upgrader.php",
+            "/trunk/src/wp-admin/includes/class-theme-upgrader.php",
+            "/trunk/src/wp-admin/includes/class-wp-automatic-updater.php",
+            "/trunk/src/wp-admin/includes/class-wp-upgrader.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon",
+            "/trunk/tests/phpstan/baselines/return.type.neon",
+            "/trunk/tests/phpstan/baselines/variable.undefined.neon"
+        ]
+    },
+    {
         "id": 64434,
         "author": "SergeyBiryukov",
         "message": "Database: Correct uppercasing the SQL mode values in `wpdb::set_sql_mode()`.\n\n`wpdb::set_sql_mode()` aimed to convert lowercased values to uppercase before comparing them with the `incompatible_sql_modes` filter results, but the case conversion was erroneously performed on numeric keys of the modes array rather than the string values. This commit ensures the array values are converted as expected.\n\nFollow-up to r27072.\n\nProps DavidAnderson, SergeyBiryukov.\nFixes #66326.",
