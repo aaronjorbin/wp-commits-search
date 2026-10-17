@@ -1,5 +1,14 @@
 [
     {
+        "id": 64453,
+        "author": "lancewillett",
+        "message": "Tests: Cover whitespace and character references in `class_list()`.\n\nCheck leading and trailing whitespace, whitespace-only values, encoded separators, and character-reference boundaries in `class_list()`. Prevent empty class names and incorrect decoding from passing unnoticed.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14300\n\nProps jonsurrell.\nSee #65819.\n",
+        "date": "2026-10-17T23:09:40.515066Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/html-api/wpHtmlTagProcessor.php"
+        ]
+    },
+    {
         "id": 64452,
         "author": "lancewillett",
         "message": "Tests: Cover navigation fallback response preparation.\n\nReplace the empty `test_prepare_item()` stub with assertions for the navigation ID, response status, and embeddable `self` link returned by `WP_REST_Navigation_Fallback_Controller::prepare_item_for_response()`. Verify that requesting only `id` through `_fields` omits links.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14385\n\nProps rejaulalomkhan.\nSee #40538, #66073.\n",
