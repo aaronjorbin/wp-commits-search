@@ -1,5 +1,93 @@
 [
     {
+        "id": 64452,
+        "author": "lancewillett",
+        "message": "Tests: Cover navigation fallback response preparation.\n\nReplace the empty `test_prepare_item()` stub with assertions for the navigation ID, response status, and embeddable `self` link returned by `WP_REST_Navigation_Fallback_Controller::prepare_item_for_response()`. Verify that requesting only `id` through `_fields` omits links.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14385\n\nProps rejaulalomkhan.\nSee #40538, #66073.\n",
+        "date": "2026-10-17T19:21:48.016518Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-navigation-fallback-controller.php"
+        ]
+    },
+    {
+        "id": 64451,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST page response preparation.\n\nReplace the empty `test_prepare_item()` stub with assertions for page fields in the edit context and the `self`, `collection`, and `about` links returned by `WP_REST_Posts_Controller::prepare_item_for_response()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14384\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #40538.\n",
+        "date": "2026-10-17T19:20:38.692727Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-pages-controller.php"
+        ]
+    },
+    {
+        "id": 64450,
+        "author": "lancewillett",
+        "message": "Tests: Make canonical redirect test data providers static.\n\nDeclare the data providers in `tests/phpunit/tests/canonical/` as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14399\n\nProps rejaulalomkhan.\nSee #66211.\n",
+        "date": "2026-10-17T19:14:32.417983Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/canonical/category.php",
+            "/trunk/tests/phpunit/tests/canonical/customRules.php",
+            "/trunk/tests/phpunit/tests/canonical/noRewrite.php",
+            "/trunk/tests/phpunit/tests/canonical/pageOnFront.php",
+            "/trunk/tests/phpunit/tests/canonical/sitemaps.php",
+            "/trunk/tests/phpunit/tests/canonical/stripFragmentFromUrl.php"
+        ]
+    },
+    {
+        "id": 64449,
+        "author": "lancewillett",
+        "message": "Tests: Make block support test data providers static.\n\nDeclare the data providers in `tests/phpunit/tests/block-supports/` as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14398\n\nProps rejaulalomkhan.\nSee #66211.\n",
+        "date": "2026-10-17T19:12:12.786272Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-supports/anchor.php",
+            "/trunk/tests/phpunit/tests/block-supports/aria-label.php",
+            "/trunk/tests/phpunit/tests/block-supports/duotone.php",
+            "/trunk/tests/phpunit/tests/block-supports/layout.php",
+            "/trunk/tests/phpunit/tests/block-supports/shadow.php",
+            "/trunk/tests/phpunit/tests/block-supports/typography.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpApplyDimensionsSupport.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpGetBlockStyleVariationNameFromClass.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpGetLayoutStyle.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderBackgroundSupport.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderCustomCssClassName.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderCustomCssSupportStyles.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderDimensionsSupport.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderElementsSupport.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderElementsSupportStyles.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderPositionSupport.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpStripCustomCssFromBlocks.php"
+        ]
+    },
+    {
+        "id": 64448,
+        "author": "lancewillett",
+        "message": "Tests: Make font test data providers static.\n\nDeclare the data providers in `tests/phpunit/tests/fonts/` as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14400\n\nProps rejaulalomkhan.\nSee #66211.\n",
+        "date": "2026-10-17T19:10:25.336173Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/fonts/font-face/wpFontFaceResolver/getFontsFromThemeJson.php",
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpFontCollection/getData.php",
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpFontUtils/getFontFaceSlug.php",
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpFontUtils/sanitizeFontFamily.php",
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpFontUtils/sanitizeFromSchema.php",
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpRestFontFacesController.php",
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpRestFontFamiliesController.php"
+        ]
+    },
+    {
+        "id": 64447,
+        "author": "lancewillett",
+        "message": "Tests: Make date test data providers static.\n\nDeclare the data providers in `tests/phpunit/tests/date/` as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14397\n\nProps rejaulalomkhan.\nSee #66211.\n",
+        "date": "2026-10-17T19:09:16.675150Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/date/currentTime.php",
+            "/trunk/tests/phpunit/tests/date/dateI18n.php",
+            "/trunk/tests/phpunit/tests/date/getFeedBuildDate.php",
+            "/trunk/tests/phpunit/tests/date/maybeDeclineDate.php",
+            "/trunk/tests/phpunit/tests/date/query.php",
+            "/trunk/tests/phpunit/tests/date/wpCheckdate.php",
+            "/trunk/tests/phpunit/tests/date/wpDate.php",
+            "/trunk/tests/phpunit/tests/date/wpTimezone.php"
+        ]
+    },
+    {
         "id": 64446,
         "author": "lancewillett",
         "message": "Tests: Make compatibility test data providers static.\n\nDeclare the data providers in `tests/phpunit/tests/compat/` as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14396\n\nProps rejaulalomkhan.\nSee #66211.\n",
