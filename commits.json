@@ -1,5 +1,24 @@
 [
     {
+        "id": 64438,
+        "author": "jorgefilipecosta",
+        "message": "Connectors: Preload the screen's REST API responses.\n\nThe Connectors screen requested the site settings, the `OPTIONS` response of the plugins endpoint, and the records of the AI plugin and of each connector's plugin only after its scripts loaded, which delayed its first render.\nAdds the private `_wp_connectors_preload_paths()` callback to the `wp_options_connectors_wp_admin_preload_paths` filter, so these responses are embedded in the page. Only successful responses are preloaded, so the screen still requests the records of plugins that aren't installed.\nThe filter is applied by the page that the Gutenberg build generates, so the preloading takes effect once the pinned Gutenberg version includes https://github.com/WordPress/gutenberg/pull/77353.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/11790 and https://github.com/WordPress/gutenberg/pull/77353.\n\nProps westonruter, wildworks, jorgefilipecosta, mukesh27, apermo, ugyensupport, gziolo, justlevine, peterwilsoncc, ellatrix, cbravobernal.\nFixes #65215.",
+        "date": "2026-10-17T16:45:30.786596Z",
+        "files": [
+            "/trunk/src/wp-admin/options-connectors.php"
+        ]
+    },
+    {
+        "id": 64437,
+        "author": "jorgefilipecosta",
+        "message": "REST API: Correct the `action-unfiltered-html` link's target schema.\n\nThe target schema of the `https://api.w.org/action-unfiltered-html` link description object nested `raw` directly under `content`, without the `type` and `properties` keywords. `raw` isn't a JSON Schema keyword, so the schema put no constraint on `content`.\nWraps `raw` in an object schema, like the `content` property of the post schema, and adds a test for it.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14362.\n\nFollow-up to [43974].\n\nProps jorgefilipecosta.\nFixes #66332.",
+        "date": "2026-10-17T16:17:30.573227Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-posts-controller.php"
+        ]
+    },
+    {
         "id": 64436,
         "author": "westonruter",
         "message": "Docs: Use `@link` instead of `@see` for URL references.\n\nThe WordPress inline documentation standards for PHP and JavaScript reserve `@see` for references to functions, methods, classes, and hooks, and use `@link` for URLs. While phpDocumentor and JSDoc both accept a URL in `@see`, core had used both forms for external references such as specifications, Trac tickets, and GitHub pull requests, so the remaining `@see` tags pointing to URLs are converted to `@link` across core, the bundled themes, core scripts, and the unit tests.\n\nOn the touched lines, `@see` is kept ahead of `@link` where both appear, per the standards; links to developer.wordpress.org pages for core functions in Twenty Twenty become `@see` references to those functions; and links that no longer resolve are updated. The block files synced from Gutenberg, the bundled pomo library, and other third-party code are left unchanged, and the HTML API is handled separately.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/10804.\nFollow-up to r63569.\n\nProps huzaifaalmesbah, westonruter, noruzzaman, shailu25.\nSee #65860.\n",
