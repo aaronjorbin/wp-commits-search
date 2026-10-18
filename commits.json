@@ -1,5 +1,286 @@
 [
     {
+        "id": 64484,
+        "author": "lancewillett",
+        "message": "Tests: Reuse existing fixtures in REST user tests.\n\nReuse the author and subscriber fixtures in read-only and rejected-request tests in `WP_Test_REST_Users_Controller`, avoiding 13 user creations per class run.\n\nPreserve the requests, assertions, and include-query ordering checks. Keep fresh users for successful updates, deletions, and identity-specific scenarios, and retain per-test post and page fixtures.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14339\n\nProps abcd95.\nSee #66074.\n",
+        "date": "2026-10-18T00:24:57.207728Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-users-controller.php"
+        ]
+    },
+    {
+        "id": 64483,
+        "author": "lancewillett",
+        "message": "Tests: Isolate the navigation menu ID filter per test.\n\nRemove `_nav_menu_item_id_use_once` in `Tests_Menu_wpNavMenu::set_up()` after the parent setup. The test harness restores hooks after each test, so removing the filter only during class setup allows it to return and strip menu-item IDs from later output.\n\nRely on the normal per-test teardown to restore the filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14358\n\nProps mukesh27.\nSee #65893.\n",
+        "date": "2026-10-18T00:10:05.833938Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/menu/wp-nav-menu.php"
+        ]
+    },
+    {
+        "id": 64482,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `get_author_posts_url()`.\n\nChecks query-string and pretty author URLs, explicit nicenames, and the author-link filter arguments.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14406\n\nProps shailu25, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-17T23:55:37.039517Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/getAuthorPostsUrl.php"
+        ]
+    },
+    {
+        "id": 64481,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `the_author_link()`.\n\nChecks linked and unlinked author output and the optional title attribute.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14405\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-17T23:54:26.765794Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/theAuthorLink.php"
+        ]
+    },
+    {
+        "id": 64480,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `the_author()`.\n\nChecks returned and echoed author names and both deprecated argument behaviors.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14404\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-17T23:53:25.675208Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/theAuthor.php"
+        ]
+    },
+    {
+        "id": 64479,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `is_multi_author()`.\n\nChecks published-author counts, excluded drafts and pages, cached values, and the result filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14403\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-17T23:52:14.860882Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/isMultiAuthor.php"
+        ]
+    },
+    {
+        "id": 64478,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `the_author_meta()`.\n\nChecks current and explicit author fields and the dynamic author-field filter arguments.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14402\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-17T23:50:52.055910Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/theAuthorMeta.php"
+        ]
+    },
+    {
+        "id": 64477,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `the_tags()`.\n\nChecks default and custom tag-list output and suppresses output when tag retrieval returns an error.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14401\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-17T23:46:35.595958Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/theTags.php"
+        ]
+    },
+    {
+        "id": 64476,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `get_the_tag_list()`.\n\nChecks tag-link formatting for the current or explicit post, empty results, and the tags filter arguments.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14394\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-17T23:45:32.630400Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/getTheTagList.php"
+        ]
+    },
+    {
+        "id": 64475,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `term_description()`.\n\nChecks descriptions by term ID and queried archive object, including missing terms and non-archive requests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14390\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-17T23:44:11.196270Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term/termDescription.php"
+        ]
+    },
+    {
+        "id": 64474,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `the_terms()`.\n\nChecks echoed term-link formatting, error suppression, and the display filter with its arguments.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14388\n\nProps shailu25, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-17T23:43:03.833340Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term/theTerms.php"
+        ]
+    },
+    {
+        "id": 64473,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `get_the_term_list()`.\n\nChecks term-link formatting, empty and error results, and the taxonomy-specific links filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14387\n\nProps shailu25, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-17T23:41:47.479059Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term/getTheTermList.php"
+        ]
+    },
+    {
+        "id": 64472,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `image_edit_apply_changes()`.\n\nCheck rotation and flip combination, cancellation, operation order, crop scaling, filter arguments, and the GD image path in `image_edit_apply_changes()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14383\n\nProps huzaifaalmesbah, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-17T23:40:46.643033Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/imageEditApplyChanges.php"
+        ]
+    },
+    {
+        "id": 64471,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `get_the_tags()`.\n\nChecks post ID, post object, and global-post lookup, plus empty results and the tags filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14380\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:39:26.177717Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/getTheTags.php"
+        ]
+    },
+    {
+        "id": 64470,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `in_category()`.\n\nChecks matching categories and empty category inputs against a post.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14379\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:38:17.862789Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/inCategory.php",
+            "/trunk/tests/phpunit/tests/taxonomy.php"
+        ]
+    },
+    {
+        "id": 64469,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `wp_get_code_editor_settings()`.\n\nVerify editor modes across MIME types and filenames, lint settings, HTMLHint permissions, argument overrides, and the `wp_code_editor_settings` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14377\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:36:47.962488Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/wpGetCodeEditorSettings.php"
+        ]
+    },
+    {
+        "id": 64468,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `walk_category_dropdown_tree()`.\n\nCovers the default dropdown walker, invalid-walker fallback, and a supplied custom walker.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14376\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:35:49.163194Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/walkCategoryDropdownTree.php"
+        ]
+    },
+    {
+        "id": 64467,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `get_tag()`.\n\nCovers tag lookup by ID and object, array output, edit-con filtering, and invalid or wrong-taxonomy inputs.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14375\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:34:14.975903Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/getTag.php"
+        ]
+    },
+    {
+        "id": 64466,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `walk_category_tree()`.\n\nCovers the default walker, invalid-walker fallback, and a supplied custom walker.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14374\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:32:55.680475Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/walkCategoryTree.php"
+        ]
+    },
+    {
+        "id": 64465,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `the_category()`.\n\nChecks the default category list and custom separator, parent, and post-ID output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14373\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:31:55.264394Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/theCategory.php"
+        ]
+    },
+    {
+        "id": 64464,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `user_can_access_admin_page()`.\n\nCheck capability and registration decisions for core submenus, plugin pages, hidden pages, and parent-menu fallbacks. Restore menu and request globals between cases.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14372\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:30:54.777435Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/userCanAccessAdminPage.php"
+        ]
+    },
+    {
+        "id": 64463,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `has_category()`.\n\nChecks matching and missing categories, the empty-category case, global-post fallback, and invalid posts.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14369\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:29:46.257521Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/hasCategory.php"
+        ]
+    },
+    {
+        "id": 64462,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `get_the_category()`.\n\nCovers post ID and global-post lookup, empty results, compatibility properties, and the categories filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14368\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:28:36.732836Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/getTheCategory.php"
+        ]
+    },
+    {
+        "id": 64461,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `sanitize_category_field()`.\n\nChecks field casting, con-specific filters and escaping, including the database slug path.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14367\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:26:45.391712Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/sanitizeCategoryField.php"
+        ]
+    },
+    {
+        "id": 64460,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `sanitize_category()`.\n\nCovers object and array sanitization, filter arguments, and preservation of unset fields.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14366\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:25:34.665041Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/sanitizeCategory.php"
+        ]
+    },
+    {
+        "id": 64459,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `clean_category_cache()`.\n\nVerifies category cache invalidation and its action, plus regeneration of the category hierarchy option.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14365\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-17T23:23:58.620126Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/cleanCategoryCache.php"
+        ]
+    },
+    {
+        "id": 64458,
+        "author": "SergeyBiryukov",
+        "message": "Database: Avoid a fatal error in `wpdb::load_col_info()` if the result is not set.\n\nThis resolves an error if `mysqli_num_fields()` is called before a successful SELECT-type query is performed:\n{{{\nmysqli_num_fields(): Argument #1 ($result) must be of type mysqli_result, false given\n}}}\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13099.\n\nFollow-up to r21472.\n\nProps joehorntw, akshat2802, mukesh27, rejaulalomkhan, SergeyBiryukov.\nFixes #64130.",
+        "date": "2026-10-17T23:21:34.665228Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wpdb.php",
+            "/trunk/tests/phpunit/tests/db.php"
+        ]
+    },
+    {
+        "id": 64457,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `cat_is_ancestor_of()`.\n\nChecks direct and indirect ancestry, unrelated categories, and term IDs from another taxonomy.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14364\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-17T23:19:34.635489Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/catIsAncestorOf.php"
+        ]
+    },
+    {
+        "id": 64456,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `get_category()`.\n\nCovers category lookup by ID and object, array output, edit-con filtering, and invalid or wrong-taxonomy inputs.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14363\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-17T23:14:15.099505Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/getCategory.php"
+        ]
+    },
+    {
+        "id": 64455,
+        "author": "lancewillett",
+        "message": "Tests: Cover serialized parent block helpers.\n\nVerify that `extract_serialized_parent_block()` retains the outer block and `remove_serialized_parent_block()` returns its inner content across nested blocks, attributes, comments, and whitespace.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14331\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-17T23:12:48.364868Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/blocks/serializedParentBlock.php"
+        ]
+    },
+    {
+        "id": 64454,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `WP_Importer` and `get_cli_args()`.\n\nVerify importer mappings, blog and user selection, request options, quota handling, and command-line argument parsing. Cover the 100-row boundary in `get_imported_posts()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14327\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-17T23:11:34.238401Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpImporter.php"
+        ]
+    },
+    {
         "id": 64453,
         "author": "lancewillett",
         "message": "Tests: Cover whitespace and character references in `class_list()`.\n\nCheck leading and trailing whitespace, whitespace-only values, encoded separators, and character-reference boundaries in `class_list()`. Prevent empty class names and incorrect decoding from passing unnoticed.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14300\n\nProps jonsurrell.\nSee #65819.\n",
