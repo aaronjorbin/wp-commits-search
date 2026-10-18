@@ -1,5 +1,74 @@
 [
     {
+        "id": 64492,
+        "author": "adamsilverstein",
+        "message": "REST API: Send URL sideloads through the shared attachment insert path.\n\nSince [62659], a `POST /wp/v2/media` request with a `url` built its own response in `create_item_from_url()` and returned before `create_item()` did any of its work. Fields the schema accepts (`title`, `caption`, `description`, `alt_text`, `featured_media`, `meta`, terms) were silently dropped. The `rest_pre_insert_attachment`, `rest_insert_attachment` and `wp_after_insert_post` hooks never fired. A request with both an uploaded file and a `url` discarded the file without an error.\n\nThis treats a URL as a third source of the file, next to a multipart upload and a raw request body. `create_item_from_url()` becomes `upload_from_url()`, a sibling of `upload_from_file()` and `upload_from_data()`. It downloads the remote file, passes it to `wp_handle_sideload()`, and returns the same data. `insert_attachment()` picks the handler, so every path now shares the same insert, hooks and field handling. A request with both a file and a `url` now returns a 400. An error returned from `rest_pre_insert_attachment` is now respected on every path instead of being used as if it were an attachment.\n\nFollow-up to [62659], [62841].\n\nProps jeremyfelt, andrewserong, khokansardar.\nFixes #65810.\n\n",
+        "date": "2026-10-18T22:56:10.262694Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-attachments-controller.php"
+        ]
+    },
+    {
+        "id": 64491,
+        "author": "ramonopoly",
+        "message": "Editor: Remove theme.json preset items of unexpected types to prevent fatals in PHP\n\nThis commit prevents `WP_Theme_JSON` from throwing fatal TypeErrors when preset items in theme.json or global styles data contain values of the wrong type. Those values could be user- or AI-generated.\n\nIt does this by removing theme.json preset items that aren't objects, or whose `slug` isn't a scalar, in `WP_Theme_JSON::sanitize()`.\n\nPreviouly, for example, a preset list of strings, such as `\"fontFamilies\": [ \"Inter\" ]`, failed with `Cannot access offset of type string on string` when the stylesheet is generated.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14262\n\nProps ramonopoly, aaronrobertshaw, isabel_brison.\n\nFixes #66304.\n\n",
+        "date": "2026-10-18T22:52:12.433343Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
+        "id": 64490,
+        "author": "adamsilverstein",
+        "message": "Media: Generate animated image sub-sizes by default.\n\nFix an issue where sub-sizes of animated image uploads were static first-frame images, as GD and Imagick flatten animated images when resizing. When client-side media processing is active, generated images now retain animations.\n\nAdd a `wp_generate_animated_image_subsizes` filter (boolean, default true) so the client pipeline can keep or drop the animation in sub-sizes. The client-side consumption ships via the Gutenberg package updates in https://github.com/WordPress/gutenberg/pull/80385.\n\nFixes #65656, #28474.\n\n",
+        "date": "2026-10-18T22:36:44.816197Z",
+        "files": [
+            "/trunk/src/wp-admin/edit-form-blocks.php",
+            "/trunk/src/wp-admin/site-editor.php",
+            "/trunk/src/wp-includes/rest-api/class-wp-rest-server.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-server.php",
+            "/trunk/tests/qunit/fixtures/wp-api-generated.js"
+        ]
+    },
+    {
+        "id": 64489,
+        "author": "adamsilverstein",
+        "message": "Media: stop adding crossorigin attributes in the editor.\n\nFix an issue where editing a post in Chromium 137+ could end in a fatal error and a blank screen when the page loaded any cross-origin resource. `wp_add_crossorigin_attributes()` ran `WP_HTML_Tag_Processor` over the whole document inside an `ob_start()` display handler, where errors cannot be caught. The injected `crossorigin=\"anonymous\"` was not needed in the first place: `Document-Isolation-Policy: isolate-and-credentialless` loads cross-origin scripts, stylesheets, audio and video without credentials instead of blocking them, and forcing a CORS request broke any host that does not send `Access-Control-Allow-Origin`, such as media offloaded to a CDN.\n\nThe header is now sent directly by the new `wp_send_document_isolation_policy_header()`, and the editor page is no longer buffered or rewritten. `wp_start_cross_origin_isolation_output_buffer()` and `wp_add_crossorigin_attributes()` are deprecated; the first only sends the header and the second returns the HTML unchanged. `wp_print_media_templates()` no longer adds the attribute to AUDIO and VIDEO tags. Cross-origin isolation and client-side media processing are unaffected.\n\nFollow-up to [61844], [62048], [62819].\n\nProps b0b3k, khokansardar, arkaprabhachowdhury, westonruter, andrewserong, algorithmsunlocks, sabernhardt, swissspidy, adamsilverstein.\nFixes #65930. See #65673.\n\n",
+        "date": "2026-10-18T22:32:14.281500Z",
+        "files": [
+            "/trunk/src/wp-includes/deprecated.php",
+            "/trunk/src/wp-includes/media-template.php",
+            "/trunk/src/wp-includes/media.php",
+            "/trunk/tests/phpunit/tests/media/wpCrossOriginIsolation.php"
+        ]
+    },
+    {
+        "id": 64488,
+        "author": "adamsilverstein",
+        "message": "Editor: Add emoji reactions \u2764\ufe0f \ud83c\udf89 \ud83d\ude04 \ud83d\udc40 \ud83d\ude80 \n\nAdd a `reaction` comment type so users can react to a note with one of five emoji. Each reaction is stored as its own comment under the note, with `comment_content` holding the emoji's hex key rather than raw emoji bytes, since the comments table isn't guaranteed to be utf8mb4.\n\nReactions are created and deleted through the `/wp/v2/comments` endpoint using the note permission checks (`edit_post` on the note's post). They are always approved and authored by the current user, limited to one per emoji per user per note, and cannot be edited. Notes gain a read-only `reaction_summary` field, prefetched in at most two queries per page of notes.\n\nReactions are excluded from the admin comments list, comment counts, `get_lastcommentmodified()`, comment feeds and a note's `children` link, and are trashed and deleted along with their note. Restoring a trashed note does not yet restore its reactions, see https://github.com/WordPress/gutenberg/issues/84202.\n\nThis brings over the PHP changes from https://github.com/WordPress/gutenberg/pull/76767.\n\nProps adamsilverstein, wildworks, westonruter, noruzzaman, mamaduka, swissspidy, joedolson, joen, jeffpaul, andraganescu, mciampini, fcoveram, scruffian, manzoorwanijk, annezazu, ellatrix, jorbin.\nFixes #64638.\n\n",
+        "date": "2026-10-18T22:27:14.501809Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-comments-list-table.php",
+            "/trunk/src/wp-admin/includes/comment.php",
+            "/trunk/src/wp-includes/class-wp-comment-query.php",
+            "/trunk/src/wp-includes/class-wp-query.php",
+            "/trunk/src/wp-includes/comment.php",
+            "/trunk/src/wp-includes/link-template.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/trunk/tests/phpunit/tests/admin/includes/comment/CommentExists_Test.php",
+            "/trunk/tests/phpunit/tests/admin/wpCommentsListTable.php",
+            "/trunk/tests/phpunit/tests/comment/getLastCommentModified.php",
+            "/trunk/tests/phpunit/tests/comment/isAvatarCommentType.php",
+            "/trunk/tests/phpunit/tests/comment/query.php",
+            "/trunk/tests/phpunit/tests/comment/wpUpdateCommentCountNow.php",
+            "/trunk/tests/phpunit/tests/comment.php",
+            "/trunk/tests/phpunit/tests/query/commentFeed.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
         "id": 64487,
         "author": "SergeyBiryukov",
         "message": "Database: Ignore default integer display widths in `dbDelta()` on MariaDB.\n\n`dbDelta()` compares the column type in a `CREATE TABLE` query with the type `DESCRIBE` reports. MariaDB, and MySQL before 8.0.17, add a default display width to an integer column declared without one, so a column declared as `bigint unsigned` reports `bigint(20) unsigned`, and `dbDelta()` sends the same `ALTER TABLE` on every call. Likewise, `INTEGER` never matches the `int` the server reports.\n\nThis commit skips the change when the query has no width and the server reports exactly the default width for that type, and treats `INTEGER` as `int`; any other difference is still compared, and MySQL 8.0.17+ keeps its existing code path, similar to the 6.1 change in #49364.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14353.\n\nFollow-up to r53897, r60789.\n\nProps jmdodd, janjakes, SergeyBiryukov.\nFixes #46145.",
