@@ -1,5 +1,25 @@
 [
     {
+        "id": 64486,
+        "author": "westonruter",
+        "message": "Script Loader: Remove the unused compression test.\n\nThe compression test ran on admin screens until it stored its result in the `can_compress_scripts` option, but that result has had no effect since PHP compression was removed from `load-scripts.php` and `load-styles.php` in r43580, and the last code reading it was removed in r64485. The test also failed with a 400 error when `admin_url()` was filtered to add a query string, as translation plugins do, since it appended a second `?` to the AJAX URL. Users without `manage_options` were sent the test on every admin page, since the AJAX handler rejected their requests and the option was never set. Rather than fixing the URL, the test is removed.\n\nThe `compression_test()` and `wp_ajax_wp_compression_test()` functions are deprecated as no-ops so that existing callers do not cause fatal errors, and the `wp-compression-test` AJAX action is no longer registered. On single sites, the option is already deleted on a database upgrade since it is in the list of unused options. On multisite it is a network option, so it is no longer primed and is now deleted by `upgrade_network()`, with the database version bumped for that step.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14412.\nFollow-up to r10357, r43580, r64485.\n\nProps azaozz, juzar, tofandel, szepeviktor, irozum, oglekler, peterwilsoncc, westonruter.\nSee #57548, #63017.\nFixes #58302, #65750, #65980.\n",
+        "date": "2026-10-18T04:17:32.421507Z",
+        "files": [
+            "/trunk/src/wp-admin/admin-ajax.php",
+            "/trunk/src/wp-admin/admin-footer.php",
+            "/trunk/src/wp-admin/includes/ajax-actions.php",
+            "/trunk/src/wp-admin/includes/deprecated.php",
+            "/trunk/src/wp-admin/includes/template.php",
+            "/trunk/src/wp-admin/includes/upgrade.php",
+            "/trunk/src/wp-includes/option.php",
+            "/trunk/src/wp-includes/version.php",
+            "/trunk/tests/phpstan/base.neon",
+            "/trunk/tests/phpunit/includes/testcase-ajax.php",
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxWpCompressionTest.php",
+            "/trunk/tests/phpunit/tests/multisite/upgradeNetwork.php"
+        ]
+    },
+    {
         "id": 64485,
         "author": "westonruter",
         "message": "Script Loader: Remove obsolete compression constants.\n\nScripts and styles have not been compressed from PHP since WordPress 4.9.9, when `load-scripts.php` and `load-styles.php` stopped reading the `c` argument in r43580. Even so, the `COMPRESS_SCRIPTS`, `COMPRESS_CSS` and `ENFORCE_GZIP` constants were still documented and read, only to set that unused argument on the loader URLs. That code and documentation are removed.\n\nThe `$compress_scripts` and `$compress_css` globals are kept for backward compatibility with code that reads them, but they now default to false since nothing is compressed, and a value already set by a plugin is still left alone. The compression test, which still runs in the admin, is to be removed separately.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/8409.\nFollow-up to r10442, r43580, r64320, r64321.\n\nProps sainathpoojary, westonruter, zodiac1978, dpknauss, azaozz.\nSee #44815, #57548, #58302, #65980.\nFixes #63017.\n",
