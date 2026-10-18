@@ -1,5 +1,17 @@
 [
     {
+        "id": 64485,
+        "author": "westonruter",
+        "message": "Script Loader: Remove obsolete compression constants.\n\nScripts and styles have not been compressed from PHP since WordPress 4.9.9, when `load-scripts.php` and `load-styles.php` stopped reading the `c` argument in r43580. Even so, the `COMPRESS_SCRIPTS`, `COMPRESS_CSS` and `ENFORCE_GZIP` constants were still documented and read, only to set that unused argument on the loader URLs. That code and documentation are removed.\n\nThe `$compress_scripts` and `$compress_css` globals are kept for backward compatibility with code that reads them, but they now default to false since nothing is compressed, and a value already set by a plugin is still left alone. The compression test, which still runs in the admin, is to be removed separately.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/8409.\nFollow-up to r10442, r43580, r64320, r64321.\n\nProps sainathpoojary, westonruter, zodiac1978, dpknauss, azaozz.\nSee #44815, #57548, #58302, #65980.\nFixes #63017.\n",
+        "date": "2026-10-18T02:56:08.645063Z",
+        "files": [
+            "/trunk/src/wp-includes/script-loader.php",
+            "/trunk/tests/phpunit/tests/dependencies/scriptConcatSettings.php",
+            "/trunk/tests/phpunit/tests/dependencies/scripts.php",
+            "/trunk/tests/phpunit/tests/dependencies/styles.php"
+        ]
+    },
+    {
         "id": 64484,
         "author": "lancewillett",
         "message": "Tests: Reuse existing fixtures in REST user tests.\n\nReuse the author and subscriber fixtures in read-only and rejected-request tests in `WP_Test_REST_Users_Controller`, avoiding 13 user creations per class run.\n\nPreserve the requests, assertions, and include-query ordering checks. Keep fresh users for successful updates, deletions, and identity-specific scenarios, and retain per-test post and page fixtures.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14339\n\nProps abcd95.\nSee #66074.\n",
