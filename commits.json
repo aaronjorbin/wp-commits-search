@@ -1,5 +1,15 @@
 [
     {
+        "id": 64487,
+        "author": "SergeyBiryukov",
+        "message": "Database: Ignore default integer display widths in `dbDelta()` on MariaDB.\n\n`dbDelta()` compares the column type in a `CREATE TABLE` query with the type `DESCRIBE` reports. MariaDB, and MySQL before 8.0.17, add a default display width to an integer column declared without one, so a column declared as `bigint unsigned` reports `bigint(20) unsigned`, and `dbDelta()` sends the same `ALTER TABLE` on every call. Likewise, `INTEGER` never matches the `int` the server reports.\n\nThis commit skips the change when the query has no width and the server reports exactly the default width for that type, and treats `INTEGER` as `int`; any other difference is still compared, and MySQL 8.0.17+ keeps its existing code path, similar to the 6.1 change in #49364.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14353.\n\nFollow-up to r53897, r60789.\n\nProps jmdodd, janjakes, SergeyBiryukov.\nFixes #46145.",
+        "date": "2026-10-18T21:07:06.881076Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/upgrade.php",
+            "/trunk/tests/phpunit/tests/db/dbDelta.php"
+        ]
+    },
+    {
         "id": 64486,
         "author": "westonruter",
         "message": "Script Loader: Remove the unused compression test.\n\nThe compression test ran on admin screens until it stored its result in the `can_compress_scripts` option, but that result has had no effect since PHP compression was removed from `load-scripts.php` and `load-styles.php` in r43580, and the last code reading it was removed in r64485. The test also failed with a 400 error when `admin_url()` was filtered to add a query string, as translation plugins do, since it appended a second `?` to the AJAX URL. Users without `manage_options` were sent the test on every admin page, since the AJAX handler rejected their requests and the option was never set. Rather than fixing the URL, the test is removed.\n\nThe `compression_test()` and `wp_ajax_wp_compression_test()` functions are deprecated as no-ops so that existing callers do not cause fatal errors, and the `wp-compression-test` AJAX action is no longer registered. On single sites, the option is already deleted on a database upgrade since it is in the list of unused options. On multisite it is a network option, so it is no longer primed and is now deleted by `upgrade_network()`, with the database version bumped for that step.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14412.\nFollow-up to r10357, r43580, r64485.\n\nProps azaozz, juzar, tofandel, szepeviktor, irozum, oglekler, peterwilsoncc, westonruter.\nSee #57548, #63017.\nFixes #58302, #65750, #65980.\n",
