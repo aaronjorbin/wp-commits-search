@@ -1,5 +1,210 @@
 [
     {
+        "id": 64538,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_using_themes()`.\n\nVerify undefined, true, and false `WP_USE_THEMES` states and filter overrides, with process isolation for constant definitions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14445\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T18:14:45.285564Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpUsingThemes.php"
+        ]
+    },
+    {
+        "id": 64537,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_doing_cron()`.\n\nVerify undefined, true, and false `DOING_CRON` states and filter overrides, with process isolation for constant definitions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14444\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T18:13:48.183522Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpDoingCron.php"
+        ]
+    },
+    {
+        "id": 64536,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_doing_ajax()`.\n\nVerify undefined, true, and false `DOING_AJAX` states and filter overrides, with process isolation for constant definitions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14442\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T18:12:54.204194Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpDoingAjax.php"
+        ]
+    },
+    {
+        "id": 64535,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_guid()`.\n\nVerify GUID output for post IDs, objects, the global post, attachments, and missing or empty values. Cover the `the_guid` and `get_the_guid` filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14441\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:11:59.490555Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/theGuid.php"
+        ]
+    },
+    {
+        "id": 64534,
+        "author": "lancewillett",
+        "message": "Tests: Cover suggested privacy policy content updates.\n\nVerify plugin activation, deactivation, reactivation, renamed plugins, and changed policy text in `WP_Privacy_Policy_Content::get_suggested_policy_text()`. Check stored metadata, timestamps, incomplete entries, and entry ordering.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14439\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-19T18:11:06.300137Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/privacy/wpPrivacyPolicyContentGetSuggestedPolicyText.php"
+        ]
+    },
+    {
+        "id": 64533,
+        "author": "lancewillett",
+        "message": "Tests: Cover `get_day_link()`.\n\nVerify plain and pretty day archive URLs, month and day padding, fallback date values, and the `day_link` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14438\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:10:05.180332Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getDayLink.php"
+        ]
+    },
+    {
+        "id": 64532,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_is_file_mod_allowed()`.\n\nVerify the `DISALLOW_FILE_MODS` states, context forwarding, and filter overrides. Isolate constant-defining cases in separate processes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14437\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T18:09:09.662074Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpIsFileModAllowed.php"
+        ]
+    },
+    {
+        "id": 64531,
+        "author": "lancewillett",
+        "message": "Tests: Cover `get_month_link()`.\n\nVerify plain and pretty month archive URLs, month padding, fallback date values, and the `month_link` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14436\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:08:16.911445Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getMonthLink.php"
+        ]
+    },
+    {
+        "id": 64530,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_permalink()`.\n\nVerify echoed permalinks for global and explicit posts, post objects, filtered output, and nonexistent posts.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14435\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:07:25.601476Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/thePermalink.php"
+        ]
+    },
+    {
+        "id": 64529,
+        "author": "lancewillett",
+        "message": "Tests: Cover `get_year_link()`.\n\nVerify plain and pretty year archive URLs, trailing-slash behavior, fallback years, and the `year_link` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14434\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-19T18:06:07.217798Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getYearLink.php"
+        ]
+    },
+    {
+        "id": 64528,
+        "author": "oandregal",
+        "message": "Editor: Add the entity fields API.\n\nAdds a registry for the fields DataViews and DataForm show for an entity,\nso they can be registered on the server with `wp_register_entity_fields()` and `wp_unregister_entity_fields()` on the `wp_entity_fields_api_init` action.\n\nProps: oandregal, jorgefilipecosta.\nPart of #66229.\n",
+        "date": "2026-10-19T17:46:26.432600Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-entity-fields-registry.php",
+            "/trunk/src/wp-includes/default-filters.php",
+            "/trunk/src/wp-includes/entity-fields.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-entity-fields-controller.php",
+            "/trunk/src/wp-includes/rest-api.php",
+            "/trunk/src/wp-settings.php",
+            "/trunk/tests/phpunit/data/entity-fields",
+            "/trunk/tests/phpunit/data/entity-fields/collections",
+            "/trunk/tests/phpunit/data/entity-fields/collections/duplicate",
+            "/trunk/tests/phpunit/data/entity-fields/collections/duplicate/book",
+            "/trunk/tests/phpunit/data/entity-fields/collections/duplicate/book/authorship",
+            "/trunk/tests/phpunit/data/entity-fields/collections/duplicate/book/authorship/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/duplicate/book/index.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/book",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/book/index.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/book/subtitle",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/book/subtitle/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/no_name",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/no_name/index.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/no_name/skipped",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/no_name/skipped/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/no_origin",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/no_origin/index.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/no_origin/skipped",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/no_origin/skipped/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/null_name",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/null_name/index.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/null_name/skipped",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid/null_name/skipped/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/array_id",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/array_id/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/empty_id",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/empty_id/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/index.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/int_id",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/int_id/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/not_array",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/not_array/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/null_id",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/null_id/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/valid",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/valid/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/valid_again",
+            "/trunk/tests/phpunit/data/entity-fields/collections/invalid_fields/book/valid_again/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/book",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/book/index.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/book/subtitle",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/book/subtitle/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/hidden",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/hidden/index.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/hidden/secret",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/hidden/secret/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/magazine",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/magazine/index.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/magazine/issue",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/magazine/issue/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/scoped",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/scoped/index.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/scoped/plain",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/scoped/plain/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/scoped/scoped",
+            "/trunk/tests/phpunit/data/entity-fields/collections/valid/scoped/scoped/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/fixture",
+            "/trunk/tests/phpunit/data/entity-fields/fixture/alpha",
+            "/trunk/tests/phpunit/data/entity-fields/fixture/alpha/field.php",
+            "/trunk/tests/phpunit/data/entity-fields/fixture/beta",
+            "/trunk/tests/phpunit/data/entity-fields/fixture/beta/field.php",
+            "/trunk/tests/phpunit/tests/entity-fields",
+            "/trunk/tests/phpunit/tests/entity-fields/base.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpAddEntityFieldModulesToEditorScript.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpEntityFieldsRegistry.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpPreloadEntityFields.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpRegisterEntityFieldCollection.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-entity-fields-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-schema-setup.php",
+            "/trunk/tests/qunit/fixtures/wp-api-generated.js"
+        ]
+    },
+    {
+        "id": 64527,
+        "author": "westonruter",
+        "message": "Code Quality: Narrow types for REST requests and responses.\n\nAdds array shapes and narrowed types to `WP_HTTP_Response`, `WP_REST_Request` and `WP_REST_Response`, and to the parts of `WP_REST_Server` that pass data to them, reusing the route handler and endpoint argument aliases the server already defines. Several existing types were wrong rather than merely loose, and are corrected:\n\n* A request's body is null until one is set.\n* A request's JSON params decode to a scalar for a JSON body that is not an object or array.\n* A request's headers hold lists of values.\n* A file param may describe a failed upload, or a field named with brackets such as `files[]`.\n\nThe status code is typed `int<100, 599>`, and `absint()` gains a template conditional return so that an argument already known to be a non-negative integer keeps its narrower type through it. The one call where that type cannot be inferred, in the deprecated numeric branch of `wp_get_recent_posts()`, is added to the PHPStan baseline. The no-cache check for a 4xx response to a method-overridden request now compares the status numerically instead of passing an integer to `str_starts_with()`, which removes another baseline entry, and a test now covers that path.\n\nThe narrower types also expose existing bugs that are left for follow-up: a scalar JSON body makes `WP_REST_Request::set_param()` fatal and `WP_REST_Request::sanitize_params()` warn, and uploading to the media endpoint with a `file[]` field makes `WP_REST_Attachments_Controller::create_item()` throw a `TypeError`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14471.\nFollow-up to r34928, r56834, r57126, r62618, r63646, r63756.\n\nProps westonruter, apermo.\nSee #65817.\n",
+        "date": "2026-10-19T17:39:57.291410Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-http-response.php",
+            "/trunk/src/wp-includes/load.php",
+            "/trunk/src/wp-includes/rest-api/class-wp-rest-request.php",
+            "/trunk/src/wp-includes/rest-api/class-wp-rest-response.php",
+            "/trunk/src/wp-includes/rest-api/class-wp-rest-server.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon",
+            "/trunk/tests/phpstan/baselines/argument.unresolvableType.neon",
+            "/trunk/tests/phpunit/tests/rest-api/rest-server.php"
+        ]
+    },
+    {
+        "id": 64526,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_author_posts()`.\n\nVerify echoed author post counts for ordinary and custom post types, and zero output without a global post.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14433\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T17:14:17.757909Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/theAuthorPosts.php"
+        ]
+    },
+    {
         "id": 64525,
         "author": "lancewillett",
         "message": "Tests: Cover `the_privacy_policy_link()`.\n\nVerify echoed privacy links and surrounding markup, empty output for unconfigured or unpublished pages, and filtered output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14432\n\nProps rejaulalomkhan.\nSee #65819.\n",
