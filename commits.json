@@ -1,5 +1,101 @@
 [
     {
+        "id": 64582,
+        "author": "westonruter",
+        "message": "Upgrade/Install: Report fatal errors in auto-update emails.\n\nWhen a plugin auto-update was rolled back because the loopback request found a fatal error, the failure email gave no reason, even though `WP_Automatic_Updater::has_fatal_error()` had already received the error's message, file, and line in the scrape result. These details are now added to the rollback `WP_Error` under a new `plugin_update_fatal_error` code, so the email lists them under the plugin whose update failed. This works regardless of `WP_DEBUG`, and when the loopback request itself fails, its error message is reported instead, so a rollback is no longer left unexplained.\n\nThe details are carried on the plugin's update result rather than in a transient, so that they cannot expire during a long update run, go stale when no email is sent, or be attributed to the wrong plugin when several fail in the same run. This also leaves the signature of the protected `has_fatal_error()` method unchanged for subclasses. Only the first line of the error message is included, since the message for an uncaught exception continues with a stack trace whose argument values, such as database credentials, would otherwise leave the server by email.\n\nThe parameters of the `send_plugin_theme_email()` and `after_plugin_theme_update()` methods are also typed with the update result types, so that PHPStan can check the new email code, which resolves a baselined error for a possibly undefined `$subject`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/10445.\nFollow-up to r58128, r64435.\n\nProps tlloancy, westonruter, sajib1223, afragen, knutsp, im3dabasia1.\nSee #65817.\nFixes #64155.\n",
+        "date": "2026-10-19T20:54:15.925646Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-automatic-updater.php",
+            "/trunk/tests/phpstan/baselines/variable.undefined.neon",
+            "/trunk/tests/phpunit/tests/admin/wpAutomaticUpdater.php"
+        ]
+    },
+    {
+        "id": 64581,
+        "author": "jorgefilipecosta",
+        "message": "Editor: Register the core entity fields on the server.\n\nGutenberg registers the core fields (title, author, status, the media fields, \u2026) on the server through the entity fields API, and the editors read them from the `wp/v2/entity-fields` route. Core has the API but registered no fields, so the title column of the Site Editor's pages list was blank. Register them in Core the same way.\nCopy the PHP files of `@wordpress/core-fields` from the Gutenberg build in the `gutenberg-php` Grunt copy task, next to the core actions, and load their `index.php` from `wp-settings.php`. They register the default fields every post type gets from its supports, plus the field collections of pages, templates, template parts, patterns, attachments, navigation menus, and the site.\nThe entity fields tests now swap the core fields for their fixture defaults, so they still test the API on its own. The tests for the core fields are skipped until the pinned Gutenberg build includes them.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14512.\nSynced from https://github.com/WordPress/gutenberg/pull/84696.\nFollow-up to [64528].\n\nProps oandregal, jorgefilipecosta.\nFixes #66229.",
+        "date": "2026-10-19T20:35:43.986617Z",
+        "files": [
+            "/trunk/Gruntfile.js",
+            "/trunk/src/wp-includes/entity-fields.php",
+            "/trunk/src/wp-settings.php",
+            "/trunk/tests/phpunit/tests/entity-fields/base.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpRegisterCoreFieldCollections.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-entity-fields-controller.php"
+        ]
+    },
+    {
+        "id": 64580,
+        "author": "lancewillett",
+        "message": "Tests: Make media data providers static.\n\nDeclare ten data providers in `tests/phpunit/tests/media/` as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14462\n\nProps therssoftware.\nSee #66211.\n",
+        "date": "2026-10-19T20:33:25.433429Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/media/getAdjacentImageLink.php",
+            "/trunk/tests/phpunit/tests/media/getNextImageLink.php",
+            "/trunk/tests/phpunit/tests/media/getPostGalleries.php",
+            "/trunk/tests/phpunit/tests/media/getPreviousImageLink.php",
+            "/trunk/tests/phpunit/tests/media/nextImageLink.php",
+            "/trunk/tests/phpunit/tests/media/previousImageLink.php",
+            "/trunk/tests/phpunit/tests/media/wpCrossOriginIsolation.php",
+            "/trunk/tests/phpunit/tests/media/wpGetChromiumMajorVersion.php",
+            "/trunk/tests/phpunit/tests/media/wpImageTagAddDecodingAttr.php"
+        ]
+    },
+    {
+        "id": 64579,
+        "author": "mikachan",
+        "message": "Editor: Fix link color in the \"Large title\" query pattern.\n\nThe Post Title block in the `core/query-large-title-posts` pattern set its link color with the old `style.color.link` attribute, which the block no longer supports. The setting was ignored, so the title links took the theme's link colour. In themes such as Twenty Twenty-Two and Twenty Twenty-Four, that made the titles nearly invisible on the pattern's dark background.\n\nThis changeset moves the link colour to `style.elements.link.color.text`, the Elements API attribute, so the titles show as intended.\n\nProps sakshamsharma5, onemaggie.\nFixes #66201.",
+        "date": "2026-10-19T20:30:37.135245Z",
+        "files": [
+            "/trunk/src/wp-includes/block-patterns/query-large-title-posts.php"
+        ]
+    },
+    {
+        "id": 64578,
+        "author": "lancewillett",
+        "message": "Tests: Use the error assertion in term tests.\n\nUse `assertWPError()` to check that `wp_remove_object_terms()` rejects an invalid taxonomy, preserving the existing assertion behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14511\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T20:27:48.823251Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term.php"
+        ]
+    },
+    {
+        "id": 64577,
+        "author": "lancewillett",
+        "message": "Tests: Restore entity action module coverage annotations.\n\nAdd the two `@covers` annotations omitted when landing [64575], identifying `wp_get_all_registered_entity_action_modules()` and `WP_Entity_Actions_Registry::get_all_registered_action_modules()` as covered by the tests.\n\nFollow-up to [64575].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14508\n\nProps ravipatel.\nSee #65819.\n",
+        "date": "2026-10-19T20:23:19.102047Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/entity-actions.php"
+        ]
+    },
+    {
+        "id": 64576,
+        "author": "lancewillett",
+        "message": "Tests: Use the error assertion in spam authentication tests.\n\nUse `assertWPError()` to check that `wp_authenticate_spam_check()` rejects a user marked as spam.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14510\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T20:18:46.461755Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/wpAuthenticateSpamCheck.php"
+        ]
+    },
+    {
+        "id": 64575,
+        "author": "lancewillett",
+        "message": "Tests: Cover registered entity action modules.\n\nCover `wp_get_all_registered_entity_action_modules()` grouping, string identifiers, omitted empty modules, and initialization behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14508\n\nProps ravipatel.\nSee #65819.\n",
+        "date": "2026-10-19T20:17:04.245771Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/entity-actions.php"
+        ]
+    },
+    {
+        "id": 64574,
+        "author": "lancewillett",
+        "message": "Tests: Use the error assertion in image resize tests.\n\nUse `assertWPError()` in image resizing failure tests, preserving the existing error-code assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14507\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T20:15:49.802274Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/resize.php"
+        ]
+    },
+    {
         "id": 64573,
         "author": "lancewillett",
         "message": "Tests: Cover feed link output.\n\nCover `the_feed_link()` and `post_comments_feed_link()` output, feed arguments, permalink formats, and filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14493\n\nProps rejaulalomkhan.\nSee #65819.\n",
