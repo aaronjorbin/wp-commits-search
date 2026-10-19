@@ -1,5 +1,135 @@
 [
     {
+        "id": 64573,
+        "author": "lancewillett",
+        "message": "Tests: Cover feed link output.\n\nCover `the_feed_link()` and `post_comments_feed_link()` output, feed arguments, permalink formats, and filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14493\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T20:14:32.342783Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/postCommentsFeedLink.php",
+            "/trunk/tests/phpunit/tests/link/theFeedLink.php"
+        ]
+    },
+    {
+        "id": 64572,
+        "author": "lancewillett",
+        "message": "Tests: Cover tag edit links.\n\nCover `get_edit_tag_link()` and `edit_tag_link()` for taxonomy handling, permissions, output, and filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14491\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T20:13:01.133686Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/editTagLink.php",
+            "/trunk/tests/phpunit/tests/link/getEditTagLink.php"
+        ]
+    },
+    {
+        "id": 64571,
+        "author": "lancewillett",
+        "message": "Tests: Strengthen mobile detection fixtures.\n\nUse independent user-agent fixtures for `wp_is_mobile()` detection branches and cover a desktop client hint overriding a mobile user agent.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14429\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T20:11:29.650226Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/vars.php"
+        ]
+    },
+    {
+        "id": 64570,
+        "author": "lancewillett",
+        "message": "Tests: Cover JSONP callback edge cases.\n\nAdd coverage for empty strings, parentheses, and non-string inputs to `wp_check_jsonp_callback()`, complementing existing REST API tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14423\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T20:09:54.372419Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpCheckJsonpCallback.php"
+        ]
+    },
+    {
+        "id": 64569,
+        "author": "lancewillett",
+        "message": "Tests: Cover media state labels.\n\nCover `get_media_states()` for headers, backgrounds, site icons, and logos, including combined labels and filtering. Isolate the static header-image cache case.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14386\n\nProps huzaifaalmesbah, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T20:08:24.227958Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/template",
+            "/trunk/tests/phpunit/tests/admin/includes/template/getMediaStates.php"
+        ]
+    },
+    {
+        "id": 64568,
+        "author": "lancewillett",
+        "message": "Tests: Cover tag retrieval.\n\nCover `get_tags()` field selection, ordering, taxonomy overrides, and filter behavior with explicit fixture expectations.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14378\n\nProps rejaulalomkhan, mukesh27, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-19T20:07:26.568862Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/getTags.php"
+        ]
+    },
+    {
+        "id": 64567,
+        "author": "jorgefilipecosta",
+        "message": "Editor: Add the attachment entity view config for the media editor.\n\nAdds the view config of the `attachment` post type. Its form is the one of the media editor: the editable fields (title, alt text, caption, and description) in a regular layout, then the date, author, file name, MIME type, file size, dimensions, and \"Attached to\" fields in panels. Only the form is replaced; the default view, the layouts, and the list view stay the ones `wp_get_entity_view_config()` builds for every post type.\nWithout it, the media editor falls back to the default post type form, and the \"Details\" tab of the \"Edit image\" modal shows only the date and the author.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14513.\nSynced from https://github.com/WordPress/gutenberg/pull/84700.\n\nProps jorgefilipecosta, oandregal.\nSee #66229.",
+        "date": "2026-10-19T19:59:30.457650Z",
+        "files": [
+            "/trunk/src/wp-includes/default-filters.php",
+            "/trunk/src/wp-includes/view-config.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-view-config-controller.php",
+            "/trunk/tests/phpunit/tests/view-config.php"
+        ]
+    },
+    {
+        "id": 64566,
+        "author": "jorgefilipecosta",
+        "message": "Editor: Register the core entity actions on the server.\n\nGutenberg registers the core actions (Trash, Rename, Duplicate, \u2026) on the\nserver through the entity actions API, and the editors read them from the\n`wp/v2/entity-actions` route. Register them in Core the same way.\nCopy the PHP files of `@wordpress/core-actions` from the Gutenberg build in the\n`gutenberg-php` Grunt copy task, alongside `routes.php` and `pages.php`, and\nload their `index.php` from `wp-settings.php`.\nAlso preload the actions of the post type the post editor edits, so its actions\nmenu reads them from the preloaded data instead of requesting the route as it\nloads.\n\nProps jorgefilipecosta, oandregal.\nFixes #66343.",
+        "date": "2026-10-19T19:51:08.860560Z",
+        "files": [
+            "/trunk/Gruntfile.js",
+            "/trunk/src/wp-includes/default-filters.php",
+            "/trunk/src/wp-includes/entity-actions.php",
+            "/trunk/src/wp-settings.php",
+            "/trunk/tests/phpunit/tests/entity-actions",
+            "/trunk/tests/phpunit/tests/entity-actions/registerCoreEntityActions.php",
+            "/trunk/tests/phpunit/tests/entity-actions.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpAddEntityFieldModulesToEditorScript.php"
+        ]
+    },
+    {
+        "id": 64565,
+        "author": "lancewillett",
+        "message": "Tests: Test comment edit link output.\n\nCover link text, surrounding markup, permissions, and filter behavior in `edit_comment_link()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14488\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T19:14:07.238673Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/editCommentLink.php"
+        ]
+    },
+    {
+        "id": 64564,
+        "author": "lancewillett",
+        "message": "Tests: Test user edit links.\n\nCover profile and user-edit URLs, permissions, ID handling, and filter behavior in `get_edit_user_link()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14487\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T19:13:12.935899Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getEditUserLink.php"
+        ]
+    },
+    {
+        "id": 64563,
+        "author": "lancewillett",
+        "message": "Tests: Test blog administration detection.\n\nCover screen contexts and the constant fallback in `is_blog_admin()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14485\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T19:12:18.146704Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/isBlogAdmin.php"
+        ]
+    },
+    {
+        "id": 64562,
+        "author": "lancewillett",
+        "message": "Tests: Test edited-file error scraping setup.\n\nCover early returns and successful registration in `wp_start_scraping_edited_file_errors()`. Isolate the case that defines a constant and registers a shutdown callback.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14483\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T19:11:28.947168Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpStartScrapingEditedFileErrors.php"
+        ]
+    },
+    {
+        "id": 64561,
+        "author": "lancewillett",
+        "message": "Tests: Test active theme loading.\n\nCover theme path ordering, installation exceptions, and paused-theme filtering in `wp_get_active_and_valid_themes()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14482\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T19:10:31.875779Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpGetActiveAndValidThemes.php"
+        ]
+    },
+    {
         "id": 64560,
         "author": "lancewillett",
         "message": "Tests: Test internal character encoding.\n\nCover configured encoding and the empty-charset fallback in `wp_set_internal_encoding()`, restoring the original encoding after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14481\n\nProps shailu25, mukesh27.\nSee #65819.\n",
