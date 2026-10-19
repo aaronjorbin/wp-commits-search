@@ -1,5 +1,16 @@
 [
     {
+        "id": 64501,
+        "author": "luisherranz",
+        "message": "Interactivity API: Print `data-wp-html` tokens as the `wpServerHtml` marker.\n\nEncode `WP_Interactivity_Dangerous_HTML` tokens as `{\"wpServerHtml\":true}` on both paths of `wp_json_encode()`, so the client keeps the server-rendered content of a `data-wp-html` host wherever the reference reaches the token, including `data-wp-each` items read from context. Stop listing tokens reached through state in `derivedStateClosures`, which the marker makes unnecessary.\n\nFollow-up to [64386].\n\nProps santosguillamot.\nFixes #66246.",
+        "date": "2026-10-19T12:37:11.641733Z",
+        "files": [
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-dangerous-html.php",
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-html.php"
+        ]
+    },
+    {
         "id": 64500,
         "author": "gziolo",
         "message": "Abilities API: Allow declaring required capabilities\n\nAdd `required_capabilities` to ability registration and expose it in REST responses. Check these capabilities before permission callbacks, allowing the callback to be omitted when capabilities are declared. Add `has_required_capabilities` filtering to `wp_get_abilities()` and the REST collection endpoint without running permission callbacks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14335\n\nProps ovidiu-galatan.\nFixes #66325.\n\n\n",
