@@ -1,5 +1,28 @@
 [
     {
+        "id": 64498,
+        "author": "jonsurrell",
+        "message": "Administration: Avoid `$()` with non-literal selectors.\n\n`$( string )` either selects elements or creates elements from HTML, and the string decides which. Several scripts passed values that are not string literals to `$()`. These scripts now use `$( document ).find()`, which only selects.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14061\n\nFollow-up to r64133.\n\nProps jonsurrell, westonruter.\nFixes #66265.\n",
+        "date": "2026-10-19T06:48:56.073123Z",
+        "files": [
+            "/trunk/src/js/_enqueues/admin/link.js",
+            "/trunk/src/js/_enqueues/admin/plugin-install.js",
+            "/trunk/src/js/_enqueues/admin/post.js",
+            "/trunk/src/js/_enqueues/admin/site-health.js",
+            "/trunk/src/js/_enqueues/wp/media/views.js",
+            "/trunk/src/js/_enqueues/wp/updates.js"
+        ]
+    },
+    {
+        "id": 64497,
+        "author": "jonsurrell",
+        "message": "Docs: `get_block_wrapper_attributes()` expects unescaped values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14140\n\nProps jonsurrell, westonruter.\nSee #65860.\n",
+        "date": "2026-10-19T06:32:46.882880Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-supports.php"
+        ]
+    },
+    {
         "id": 64496,
         "author": "jonsurrell",
         "message": "Script Loader: Document `wp_inline_script_attributes` `$data` parameter quirk.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14281\n\nProps jonsurrell, westonruter.\nSee #65860, #66308.\n",
