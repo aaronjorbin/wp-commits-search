@@ -1,5 +1,39 @@
 [
     {
+        "id": 64584,
+        "author": "lancewillett",
+        "message": "Tests: Verify timezone persistence and restore original settings.\n\nCheck successful timezone saves, rejection of invalid values, and persistence after reloading General Settings. Preserve and restore both `timezone_string` and `gmt_offset`, including half-hour offsets, using WP-CLI against the same site as the browser.\n\nKeep dotenv output quiet when reading the saved options as JSON.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14207\n\nProps juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-19T21:47:13.828460Z",
+        "files": [
+            "/trunk/tests/e2e/specs/general-settings-invalid-timezone.test.js"
+        ]
+    },
+    {
+        "id": 64583,
+        "author": "mcsf",
+        "message": "Administration: Replace Dashicons in admin bar and sidebar with wp-icons.\n\nReplace the usage of Dashicons in admin bar and sidebar with `@wordpress/icons` via the newly-introduced `wp_get_icon()` function, which outputs an inline SVG to be rendered.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12270.\n\nProps fushar, wildworks, tyxla, mcsf, mciampini, aduth, peterwilsoncc, jeffpaul, fcoveram, keoshi, joen, afercia, ugyensupport, mrwweb.\nFixes #65089.\n\n",
+        "date": "2026-10-19T21:25:08.646842Z",
+        "files": [
+            "/trunk/src/js/_enqueues/admin/user-profile.js",
+            "/trunk/src/wp-admin/css/admin-menu.css",
+            "/trunk/src/wp-admin/css/colors/_admin.scss",
+            "/trunk/src/wp-admin/includes/admin-filters.php",
+            "/trunk/src/wp-admin/includes/misc.php",
+            "/trunk/src/wp-admin/includes/plugin.php",
+            "/trunk/src/wp-admin/menu-header.php",
+            "/trunk/src/wp-admin/menu.php",
+            "/trunk/src/wp-includes/admin-bar.php",
+            "/trunk/src/wp-includes/class-wp-admin-bar.php",
+            "/trunk/src/wp-includes/css/admin-bar.css",
+            "/trunk/src/wp-includes/icons.php",
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/tests/phpunit/tests/admin/wpColorSchemeMenuIconStyles.php",
+            "/trunk/tests/phpunit/tests/admin/wpMenuOutput.php",
+            "/trunk/tests/phpunit/tests/adminbar.php",
+            "/trunk/tests/phpunit/tests/icons/wpIsValidIconName.php"
+        ]
+    },
+    {
         "id": 64582,
         "author": "westonruter",
         "message": "Upgrade/Install: Report fatal errors in auto-update emails.\n\nWhen a plugin auto-update was rolled back because the loopback request found a fatal error, the failure email gave no reason, even though `WP_Automatic_Updater::has_fatal_error()` had already received the error's message, file, and line in the scrape result. These details are now added to the rollback `WP_Error` under a new `plugin_update_fatal_error` code, so the email lists them under the plugin whose update failed. This works regardless of `WP_DEBUG`, and when the loopback request itself fails, its error message is reported instead, so a rollback is no longer left unexplained.\n\nThe details are carried on the plugin's update result rather than in a transient, so that they cannot expire during a long update run, go stale when no email is sent, or be attributed to the wrong plugin when several fail in the same run. This also leaves the signature of the protected `has_fatal_error()` method unchanged for subclasses. Only the first line of the error message is included, since the message for an uncaught exception continues with a stack trace whose argument values, such as database credentials, would otherwise leave the server by email.\n\nThe parameters of the `send_plugin_theme_email()` and `after_plugin_theme_update()` methods are also typed with the update result types, so that PHPStan can check the new email code, which resolves a baselined error for a possibly undefined `$subject`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/10445.\nFollow-up to r58128, r64435.\n\nProps tlloancy, westonruter, sajib1223, afragen, knutsp, im3dabasia1.\nSee #65817.\nFixes #64155.\n",
