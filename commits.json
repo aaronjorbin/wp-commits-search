@@ -1,5 +1,108 @@
 [
     {
+        "id": 64525,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_privacy_policy_link()`.\n\nVerify echoed privacy links and surrounding markup, empty output for unconfigured or unpublished pages, and filtered output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14432\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T17:08:19.390289Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/thePrivacyPolicyLink.php"
+        ]
+    },
+    {
+        "id": 64524,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_author_posts_link()`.\n\nVerify echoed author links, permalink formats, empty author context, deprecated arguments, and filtered output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14431\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T17:06:59.970628Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/theAuthorPostsLink.php"
+        ]
+    },
+    {
+        "id": 64523,
+        "author": "lancewillett",
+        "message": "Tests: Cover `has_tag()`.\n\nVerify matching by ID, name, slug, and arrays, explicit and global posts, empty tags, nonmatches, and numeric-name versus integer-ID behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14428\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T17:05:37.550395Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/hasTag.php"
+        ]
+    },
+    {
+        "id": 64522,
+        "author": "lancewillett",
+        "message": "Tests: Verify edits target the filtered image editor.\n\nRecord image operations separately for the original and replacement editors. Assert that `image_edit_apply_changes()` applies the combined edits only to the filtered editor.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14427\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-19T17:01:24.046993Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/imageEditApplyChanges.php"
+        ]
+    },
+    {
+        "id": 64521,
+        "author": "lancewillett",
+        "message": "Tests: Strengthen code editor settings coverage.\n\nCover JSON filename mode detection in `wp_get_code_editor_settings()` and verify that HTMLHint receives the complete post KSES allowlist.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14426\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-19T17:00:02.397762Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/wpGetCodeEditorSettings.php"
+        ]
+    },
+    {
+        "id": 64520,
+        "author": "lancewillett",
+        "message": "Tests: Cover `tag_description()`.\n\nVerify formatted descriptions, archive defaults, explicit term IDs, empty results, and description filtering.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14425\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T16:58:12.194163Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/tagDescription.php"
+        ]
+    },
+    {
+        "id": 64519,
+        "author": "mcsf",
+        "message": "Toolbar: Fix display name live preview and \"Howdy\" color.\n\nWhen the display name is changed on the profile page, correctly update the user menu in the admin bar: don't overwrite the \"Edit Profile\" item, do update the aria-label attribute, and of course update the rendered username.\n\nAdd class `display-name` to the greeting wrapper to better preserve back-compat with custom admin color schemes that only target `#wp-admin-bar-user-info .display-name`.\n\nFollow-up to r64502 and its revert, r64504.\n\nProps fushar, tyxla.\n\nFixes #66222.\n\n",
+        "date": "2026-10-19T16:56:28.654524Z",
+        "files": [
+            "/trunk/src/js/_enqueues/admin/user-profile.js",
+            "/trunk/src/wp-admin/css/colors/_admin.scss",
+            "/trunk/src/wp-includes/admin-bar.php",
+            "/trunk/src/wp-includes/css/admin-bar.css",
+            "/trunk/tests/phpunit/tests/adminbar.php"
+        ]
+    },
+    {
+        "id": 64518,
+        "author": "lancewillett",
+        "message": "Tests: Pair the hidden admin-page access cases.\n\nAdd the accessible counterpart to the hidden top-level plugin page denial case in `user_can_access_admin_page()`, verifying that the denial entry determines access.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14424\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-19T16:55:15.528247Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/userCanAccessAdminPage.php"
+        ]
+    },
+    {
+        "id": 64517,
+        "author": "jorgefilipecosta",
+        "message": "Editor: Add the entity actions API.\n\nAdds a registry for the actions DataViews shows for an entity, so they can be registered on the server with `wp_register_entity_actions()` and `wp_unregister_entity_actions()` on the `wp_entity_actions_api_init` action. An action definition is the serializable part of a DataViews action; its JavaScript parts come from a script module registered with the actions.\nThe `GET /wp/v2/entity-actions` route returns the actions of an entity and their script modules, which are also added to the import map of the pages that load the editor script.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14276.\nSynced from https://github.com/WordPress/gutenberg/pull/84650.\n\nProps jorgefilipecosta, oandregal.\nFixes #66343.",
+        "date": "2026-10-19T16:43:32.368554Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-entity-actions-registry.php",
+            "/trunk/src/wp-includes/default-filters.php",
+            "/trunk/src/wp-includes/entity-actions.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-entity-actions-controller.php",
+            "/trunk/src/wp-includes/rest-api.php",
+            "/trunk/src/wp-settings.php",
+            "/trunk/tests/phpunit/tests/entity-actions.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-entity-actions-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-schema-setup.php",
+            "/trunk/tests/qunit/fixtures/wp-api-generated.js"
+        ]
+    },
+    {
+        "id": 64516,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_is_xml_request()`.\n\nVerify XML request detection through the `Accept` and `Content-Type` headers, including absent and non-XML header values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14421\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T16:16:58.633804Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpIsXmlRequest.php"
+        ]
+    },
+    {
         "id": 64515,
         "author": "lancewillett",
         "message": "Tests: Cover `the_title_attribute()`.\n\nVerify output and return behavior, argument formats, post selection, HTML stripping, attribute escaping, and title filtering. Cover empty titles and missing posts.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14420\n\nProps rejaulalomkhan.\nSee #65819.\n",
