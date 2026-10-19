@@ -1,5 +1,205 @@
 [
     {
+        "id": 64560,
+        "author": "lancewillett",
+        "message": "Tests: Test internal character encoding.\n\nCover configured encoding and the empty-charset fallback in `wp_set_internal_encoding()`, restoring the original encoding after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14481\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T19:09:32.480367Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpSetInternalEncoding.php"
+        ]
+    },
+    {
+        "id": 64559,
+        "author": "lancewillett",
+        "message": "Tests: Test active plugin loading.\n\nCover valid and invalid plugin entries, installation mode, and recovery filtering in `wp_get_active_and_valid_plugins()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14480\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T19:08:29.081645Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpGetActiveAndValidPlugins.php"
+        ]
+    },
+    {
+        "id": 64558,
+        "author": "lancewillett",
+        "message": "Tests: Test edited-file error output.\n\nAdd coverage for the output markers and nonfatal error handling in `wp_finalize_scraping_edited_file_errors()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14479\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T19:07:32.062788Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpFinalizeScrapingEditedFileErrors.php"
+        ]
+    },
+    {
+        "id": 64557,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_magic_quotes()`.\n\nVerify escaping in request superglobals and rebuilding of `$_REQUEST`, including POST precedence and exclusion of cookies and stale keys. Restore the original superglobals after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14478\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T18:59:59.185674Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpMagicQuotes.php"
+        ]
+    },
+    {
+        "id": 64556,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_is_recovery_mode()`.\n\nVerify active and inactive recovery-mode results and consistency with the recovery-mode instance. Restore its original state after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14477\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T18:58:15.668394Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpIsRecoveryMode.php"
+        ]
+    },
+    {
+        "id": 64555,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_skip_paused_themes()`.\n\nVerify filtering of paused themes by directory basename, preservation of remaining entries, and error data stored for notices. Restore recovery-mode state after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14476\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T18:55:42.972367Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpSkipPausedThemes.php"
+        ]
+    },
+    {
+        "id": 64554,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_skip_paused_plugins()`.\n\nVerify filtering of paused directory and single-file plugins, preservation of remaining entries, and error data stored for notices. Restore recovery-mode state after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14475\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T18:54:47.145495Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpSkipPausedPlugins.php"
+        ]
+    },
+    {
+        "id": 64553,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_is_maintenance_mode()`.\n\nVerify maintenance-file freshness, installation and fatal-error scraping bypasses, and filtered maintenance decisions. Restore request and installation state and remove the test file.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14474\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T18:53:36.802403Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpIsMaintenanceMode.php"
+        ]
+    },
+    {
+        "id": 64552,
+        "author": "lancewillett",
+        "message": "Tests: Cover `is_protected_ajax_action()`.\n\nVerify Ajax preconditions, built-in protected actions, unknown actions, and filtered additions. Use the Ajax filter to avoid unnecessary process isolation.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14473\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T18:51:28.193719Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/isProtectedAjaxAction.php"
+        ]
+    },
+    {
+        "id": 64551,
+        "author": "lancewillett",
+        "message": "Tests: Cover `is_protected_endpoint()`.\n\nVerify protection for login, admin, and selected Ajax requests, front-end defaults, and the endpoint filter. Use the Ajax filter to avoid unnecessary process isolation.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14472\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-19T18:49:17.105498Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/isProtectedEndpoint.php"
+        ]
+    },
+    {
+        "id": 64550,
+        "author": "lancewillett",
+        "message": "Tests: Cover `get_delete_post_link()`.\n\nVerify trash and forced-delete URLs, nonce actions, post selection, permission checks, custom post types, deprecated arguments, and filtered output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14459\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:47:56.495439Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getDeletePostLink.php"
+        ]
+    },
+    {
+        "id": 64549,
+        "author": "lancewillett",
+        "message": "Tests: Cover `get_search_link()`.\n\nVerify plain and pretty search URLs, spaces and special characters, the current search query fallback, and filtered links.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14458\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:46:48.564527Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getSearchLink.php"
+        ]
+    },
+    {
+        "id": 64548,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_modified_author()`.\n\nVerify echoed editor names, missing editor or post context, display-name handling, and filtered output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14456\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:45:19.265444Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/theModifiedAuthor.php"
+        ]
+    },
+    {
+        "id": 64547,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_shortlink()`.\n\nVerify echoed short links, link text, surrounding markup, empty output, and filter arguments and results.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14455\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:37:01.315990Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/theShortlink.php"
+        ]
+    },
+    {
+        "id": 64546,
+        "author": "lancewillett",
+        "message": "Tests: Cover `get_post_format_link()`.\n\nVerify post-format archive links with plain and pretty permalinks, invalid formats, and filtered term links.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14454\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:36:05.955318Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getPostFormatLink.php"
+        ]
+    },
+    {
+        "id": 64545,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_using_ext_object_cache()`.\n\nVerify reading the external-cache flag, previous-value setter returns, state transitions, and repeated assignments. Restore the original flag after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14452\n\nProps shailu25, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:35:13.328593Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpUsingExtObjectCache.php"
+        ]
+    },
+    {
+        "id": 64544,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_modified_date()`.\n\nVerify echoed and returned modification dates, date formats, surrounding markup, missing posts, and display and retrieval filters. Use distinct creation and modification dates.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14451\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:34:04.720350Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/date/theModifiedDate.php"
+        ]
+    },
+    {
+        "id": 64543,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_modified_time()`.\n\nVerify echoed modification times, explicit and configured formats, missing posts, and display and retrieval filters. Use distinct creation and modification timestamps.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14449\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:32:57.930984Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/date/theModifiedTime.php"
+        ]
+    },
+    {
+        "id": 64542,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_installing()`.\n\nVerify the installation-state getter, previous-value setter returns, state transitions, and repeated assignments. Reset installation state after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14448\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T18:32:04.606736Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpInstalling.php"
+        ]
+    },
+    {
+        "id": 64541,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_time()`.\n\nVerify echoed post times, explicit and configured formats, missing posts, and display and retrieval filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14447\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T18:31:13.216909Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/date/theTime.php"
+        ]
+    },
+    {
+        "id": 64540,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_get_environment_type()`.\n\nVerify supported constant values and production fallbacks for missing, empty, or invalid values. Isolate constant definitions and clear the inherited environment value.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14446\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T18:30:22.390749Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpGetEnvironmentType.php"
+        ]
+    },
+    {
+        "id": 64539,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Report PHPStan errors in a pull request comment.\n\nSince PHPStan was integrated into CI, its errors have only been reported as warning annotations, which are easy to miss, even for committers. Some cannot be shown alongside the changes at all: an out-of-date baseline entry is reported without a line number, which is how a stale baseline was committed in r63485 and regenerated afterward in r63486, and an unmatched `ignoreErrors` entry without a path has no file to be attached to.\n\nThe annotations are now emitted from PHPStan's JSON report instead of by `cs2pr`, since that report says whether each error can be ignored. Errors that can be ignored remain warnings, while those PHPStan does not allow to be ignored are annotated as errors and fail the check, with instructions for regenerating the baselines when those are the cause.\n\nFor pull requests, the results are also uploaded as an artifact, which a new workflow triggered by `workflow_run` turns into a single comment on the pull request, so that it works for pull requests from forks as well. The comment's heading shows whether the check fails, has only warnings, or has nothing left to report. It lists each error with the commit it was first reported for, moves the errors that a commit resolves into a collapsed list naming that commit, and is minimized once all of them are resolved. The history is kept within the comment itself. Since the analysis runs on the pull request merged into its base branch, errors in files that the base branch has changed since are not linked to their lines, and the comment suggests merging the latest base branch instead.\n\nThe artifact is treated as untrusted: nothing from the pull request is checked out in the privileged workflow, the results are validated, messages are rendered as code spans so that they cannot mention users or link issues, and results are only accepted for the current head of the pull request.\n\nThe PHPStan README now describes these results, and discourages `@phpstan-ignore` comments, which hide an error from every later analysis of that line, in favor of fixing the error or correcting the types PHPStan relies on.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14261.\nFollow-up to r61699, r63019.\n\nSee #65817.\n",
+        "date": "2026-10-19T18:18:29.336760Z",
+        "files": [
+            "/trunk/.github/workflows/phpstan-pull-request-comments.yml",
+            "/trunk/.github/workflows/reusable-phpstan-static-analysis-v1.yml",
+            "/trunk/tests/phpstan/README.md"
+        ]
+    },
+    {
         "id": 64538,
         "author": "lancewillett",
         "message": "Tests: Cover `wp_using_themes()`.\n\nVerify undefined, true, and false `WP_USE_THEMES` states and filter overrides, with process isolation for constant definitions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14445\n\nProps shailu25.\nSee #65819.\n",
