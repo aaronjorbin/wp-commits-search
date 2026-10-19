@@ -1,5 +1,24 @@
 [
     {
+        "id": 64496,
+        "author": "jonsurrell",
+        "message": "Script Loader: Document `wp_inline_script_attributes` `$data` parameter quirk.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14281\n\nProps jonsurrell, westonruter.\nSee #65860, #66308.\n",
+        "date": "2026-10-19T05:56:25.210440Z",
+        "files": [
+            "/trunk/src/wp-includes/script-loader.php"
+        ]
+    },
+    {
+        "id": 64495,
+        "author": "jonsurrell",
+        "message": "HTML API: Simplify the `class_list()` loop.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8076\n\nProps jonsurrell, mukesh27, peterwilsoncc, westonruter.\nSee #65846.\n",
+        "date": "2026-10-19T05:44:15.305211Z",
+        "files": [
+            "/trunk/src/wp-includes/html-api/class-wp-html-tag-processor.php",
+            "/trunk/tests/phpunit/tests/html-api/wpHtmlTagProcessor.php"
+        ]
+    },
+    {
         "id": 64494,
         "author": "adamsilverstein",
         "message": "REST API: Enable filtering comments by multiple statuses.\n\n`WP_Comment_Query` has always supported an array of statuses. The `status` collection parameter is now defined as an array of strings, so it accepts a comma-separated list (`?status=approve,hold`) or an array (`?status[]=approve&status[]=hold`). Values are sanitized by the new `WP_REST_Comments_Controller::sanitize_comment_statuses()` method.\n\nSingle status requests work as before, and the permission check is unchanged: unauthenticated requests may only use the default `approve` status. Because the parameter is now always an array after sanitization, code reading `$request['status']` or `status` in the `rest_comment_query` filter receives an array instead of a string.\n\nProps adamsilverstein, westonruter, swissspidy, timothyblynjacobs, mukesh27, wildworks.\nFixes #63982.\n\n",
