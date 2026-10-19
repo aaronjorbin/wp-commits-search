@@ -1,5 +1,16 @@
 [
     {
+        "id": 64494,
+        "author": "adamsilverstein",
+        "message": "REST API: Enable filtering comments by multiple statuses.\n\n`WP_Comment_Query` has always supported an array of statuses. The `status` collection parameter is now defined as an array of strings, so it accepts a comma-separated list (`?status=approve,hold`) or an array (`?status[]=approve&status[]=hold`). Values are sanitized by the new `WP_REST_Comments_Controller::sanitize_comment_statuses()` method.\n\nSingle status requests work as before, and the permission check is unchanged: unauthenticated requests may only use the default `approve` status. Because the parameter is now always an array after sanitization, code reading `$request['status']` or `status` in the `rest_comment_query` filter receives an array instead of a string.\n\nProps adamsilverstein, westonruter, swissspidy, timothyblynjacobs, mukesh27, wildworks.\nFixes #63982.\n\n",
+        "date": "2026-10-19T04:20:26.874525Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php",
+            "/trunk/tests/qunit/fixtures/wp-api-generated.js"
+        ]
+    },
+    {
         "id": 64493,
         "author": "isabel_brison",
         "message": "Editor: ignore unsupported duotone attribute types.\n\nEnsure early return from duotone render if attribute is neither string nor array.\n\nProps yotatameguchi, westonruter, ramonopoly, isabel_brison.\nSee #65817.\n",
