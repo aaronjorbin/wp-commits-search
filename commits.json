@@ -1,5 +1,16 @@
 [
     {
+        "id": 64493,
+        "author": "isabel_brison",
+        "message": "Editor: ignore unsupported duotone attribute types.\n\nEnsure early return from duotone render if attribute is neither string nor array.\n\nProps yotatameguchi, westonruter, ramonopoly, isabel_brison.\nSee #65817.\n",
+        "date": "2026-10-19T04:09:21.695342Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-duotone.php",
+            "/trunk/tests/phpstan/baselines/variable.undefined.neon",
+            "/trunk/tests/phpunit/tests/block-supports/duotone.php"
+        ]
+    },
+    {
         "id": 64492,
         "author": "adamsilverstein",
         "message": "REST API: Send URL sideloads through the shared attachment insert path.\n\nSince [62659], a `POST /wp/v2/media` request with a `url` built its own response in `create_item_from_url()` and returned before `create_item()` did any of its work. Fields the schema accepts (`title`, `caption`, `description`, `alt_text`, `featured_media`, `meta`, terms) were silently dropped. The `rest_pre_insert_attachment`, `rest_insert_attachment` and `wp_after_insert_post` hooks never fired. A request with both an uploaded file and a `url` discarded the file without an error.\n\nThis treats a URL as a third source of the file, next to a multipart upload and a raw request body. `create_item_from_url()` becomes `upload_from_url()`, a sibling of `upload_from_file()` and `upload_from_data()`. It downloads the remote file, passes it to `wp_handle_sideload()`, and returns the same data. `insert_attachment()` picks the handler, so every path now shares the same insert, hooks and field handling. A request with both a file and a `url` now returns a 400. An error returned from `rest_pre_insert_attachment` is now respected on every path instead of being used as if it were an attachment.\n\nFollow-up to [62659], [62841].\n\nProps jeremyfelt, andrewserong, khokansardar.\nFixes #65810.\n\n",
