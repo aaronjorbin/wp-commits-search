@@ -1,5 +1,23 @@
 [
     {
+        "id": 64500,
+        "author": "gziolo",
+        "message": "Abilities API: Allow declaring required capabilities\n\nAdd `required_capabilities` to ability registration and expose it in REST responses. Check these capabilities before permission callbacks, allowing the callback to be omitted when capabilities are declared. Add `has_required_capabilities` filtering to `wp_get_abilities()` and the REST collection endpoint without running permission callbacks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14335\n\nProps ovidiu-galatan.\nFixes #66325.\n\n\n",
+        "date": "2026-10-19T11:14:17.067486Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-settings.php",
+            "/trunk/src/wp-includes/abilities-api/class-wp-abilities-registry.php",
+            "/trunk/src/wp-includes/abilities-api/class-wp-ability.php",
+            "/trunk/src/wp-includes/abilities-api.php",
+            "/trunk/src/wp-includes/abilities.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-list-controller.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpAbility.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpGetAbilities.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1ListController.php",
+            "/trunk/tests/qunit/fixtures/wp-api-generated.js"
+        ]
+    },
+    {
         "id": 64499,
         "author": "fabiankaegy",
         "message": "Editor: Add author support to the `wp_block` post type.\n\nThe REST API now returns each pattern's author, so the block inserter and the Site Editor's Patterns screen can filter patterns by author. Patterns already store `post_author` and their capabilities already check it.\n\nSets `delete_with_user` to `false`, so deleting a user keeps their patterns, as they may be used across the site.\n\nAlso renames the Site Editor's \"My patterns\" view to \"Site patterns\", since it lists every user-created pattern, not only the current user's.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14269.\nSynced from https://github.com/WordPress/gutenberg/pull/84680.\n\nProps fabiankaegy, wildworks, talldanwp, jameskoster, mamaduka, fcoveram.\nFixes #66307.\n",
