@@ -1,5 +1,112 @@
 [
     {
+        "id": 64515,
+        "author": "lancewillett",
+        "message": "Tests: Cover `the_title_attribute()`.\n\nVerify output and return behavior, argument formats, post selection, HTML stripping, attribute escaping, and title filtering. Cover empty titles and missing posts.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14420\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T16:14:55.972151Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/theTitleAttribute.php"
+        ]
+    },
+    {
+        "id": 64514,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_is_json_request()`.\n\nVerify JSON request detection through the `Accept` and `Content-Type` headers, including absent and non-JSON header values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14419\n\nProps shailu25, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-19T16:13:36.737687Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpIsJsonRequest.php"
+        ]
+    },
+    {
+        "id": 64513,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_is_jsonp_request()`.\n\nVerify JSONP request detection for missing, valid, and invalid callbacks, and disabling JSONP through the `rest_jsonp_enabled` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14418\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T16:10:56.319439Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpIsJsonpRequest.php"
+        ]
+    },
+    {
+        "id": 64512,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_get_server_protocol()`.\n\nVerify recognized HTTP protocol values and the fallback for unknown, empty, or missing `SERVER_PROTOCOL` values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14417\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T16:09:01.163708Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpGetServerProtocol.php"
+        ]
+    },
+    {
+        "id": 64511,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_removable_query_args()`.\n\nVerify representative default removable query arguments and additions and removals through the `removable_query_args` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14416\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T16:07:51.691269Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpRemovableQueryArgs.php"
+        ]
+    },
+    {
+        "id": 64510,
+        "author": "lancewillett",
+        "message": "Tests: Cover internal host and link helpers.\n\nVerify `wp_internal_hosts()` defaults, filtered host normalization, and deduplication. Cover internal and external URL classification in `wp_is_internal_link()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14415\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T16:06:38.907393Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/wpIsInternalLink.php"
+        ]
+    },
+    {
+        "id": 64509,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_is_serving_rest_request()`.\n\nVerify REST request detection when `REST_REQUEST` is undefined, true, or false. Isolate constant-defining cases in separate processes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14414\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-19T16:05:05.758096Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpIsServingRestRequest.php"
+        ]
+    },
+    {
+        "id": 64508,
+        "author": "lancewillett",
+        "message": "Tests: Simplify theme fixture setup in REST API tests.\n\nSelect the fixture theme directly in `WP_Test_REST_Themes_Controller::set_up()` instead of running `switch_theme()` before each test. Preserve the theme roots, template globals, and theme JSON cache cleanup needed by the controller tests.\n\nRemove the unused saved theme object. Keep all test methods, data providers, and assertions unchanged.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14470\n\nProps abcd95, rejaulalomkhan, mukesh27.\nSee #66074.\n",
+        "date": "2026-10-19T15:56:48.362637Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-themes-controller.php"
+        ]
+    },
+    {
+        "id": 64507,
+        "author": "lancewillett",
+        "message": "Tests: Make rewrite data providers static.\n\nDeclare the remaining data providers in the rewrite tests as `public static` for compatibility with newer PHPUnit versions. Preserve the datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14460\n\nProps therssoftware.\nSee #66211.\n",
+        "date": "2026-10-19T15:50:29.964156Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rewrite/randomRewriteRules.php",
+            "/trunk/tests/phpunit/tests/rewrite/rewriteTags.php",
+            "/trunk/tests/phpunit/tests/rewrite/wpResolveNumericSlugConflicts.php"
+        ]
+    },
+    {
+        "id": 64506,
+        "author": "lancewillett",
+        "message": "Tests: Make HTTP data providers static.\n\nDeclare the remaining data providers in the HTTP tests as `public static` for compatibility with newer PHPUnit versions. Preserve the datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14440\n\nProps therssoftware.\nSee #66211.\n",
+        "date": "2026-10-19T15:49:05.337023Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/http/base.php",
+            "/trunk/tests/phpunit/tests/http/http.php",
+            "/trunk/tests/phpunit/tests/http/wpHttpCookie.php"
+        ]
+    },
+    {
+        "id": 64505,
+        "author": "lancewillett",
+        "message": "Tests: Make AJAX data providers static.\n\nDeclare the remaining data providers in the AJAX tests as `public static` for compatibility with newer PHPUnit versions. Preserve the datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14443\n\nProps therssoftware.\nSee #66211.\n",
+        "date": "2026-10-19T15:47:41.467541Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxAddTag.php",
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxImageEditor.php",
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxMetaBoxReordering.php",
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxParseMediaShortcode.php",
+            "/trunk/tests/phpunit/tests/ajax/wpCustomizeNavMenus.php"
+        ]
+    },
+    {
         "id": 64504,
         "author": "mcsf",
         "message": "Toolbar: Undo partial changes to user menu\n\nReverts r64502, which was missing some files for some reason.\n\nFollow-up to r64502.\n\nSee #66222.\n\n",
