@@ -1,5 +1,18 @@
 [
     {
+        "id": 64499,
+        "author": "fabiankaegy",
+        "message": "Editor: Add author support to the `wp_block` post type.\n\nThe REST API now returns each pattern's author, so the block inserter and the Site Editor's Patterns screen can filter patterns by author. Patterns already store `post_author` and their capabilities already check it.\n\nSets `delete_with_user` to `false`, so deleting a user keeps their patterns, as they may be used across the site.\n\nAlso renames the Site Editor's \"My patterns\" view to \"Site patterns\", since it lists every user-created pattern, not only the current user's.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14269.\nSynced from https://github.com/WordPress/gutenberg/pull/84680.\n\nProps fabiankaegy, wildworks, talldanwp, jameskoster, mamaduka, fcoveram.\nFixes #66307.\n",
+        "date": "2026-10-19T10:56:43.699646Z",
+        "files": [
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/src/wp-includes/view-config.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-blocks-controller.php",
+            "/trunk/tests/phpunit/tests/user/wpDeleteUser.php",
+            "/trunk/tests/qunit/fixtures/wp-api-generated.js"
+        ]
+    },
+    {
         "id": 64498,
         "author": "jonsurrell",
         "message": "Administration: Avoid `$()` with non-literal selectors.\n\n`$( string )` either selects elements or creates elements from HTML, and the string decides which. Several scripts passed values that are not string literals to `$()`. These scripts now use `$( document ).find()`, which only selects.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14061\n\nFollow-up to r64133.\n\nProps jonsurrell, westonruter.\nFixes #66265.\n",
