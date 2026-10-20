@@ -1,5 +1,17 @@
 [
     {
+        "id": 64595,
+        "author": "jorgefilipecosta",
+        "message": "Editor: Preload the entity fields and actions the editors read.\n\nThe editors read the fields and actions of the post types they show from the `wp/v2/entity-fields` and `wp/v2/entity-actions` routes. Core preloaded the fields only in the site editor and the actions only in the post editor.\nThe post editor now also preloads the entity fields of the edited post type, which the post summary of its inspector reads. The site editor now also preloads the entity actions of the edited post and of the post types its screen lists (pages, templates, patterns and template parts), as it already did for the entity fields.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14516.\nSynced from https://github.com/WordPress/gutenberg/pull/85081 and https://github.com/WordPress/gutenberg/pull/85155.\nFollow-up to [64528], [64566].\n\nProps jorgefilipecosta, oandregal.\nSee #66343.",
+        "date": "2026-10-20T11:09:21.927642Z",
+        "files": [
+            "/trunk/src/wp-includes/entity-actions.php",
+            "/trunk/src/wp-includes/entity-fields.php",
+            "/trunk/tests/phpunit/tests/entity-actions.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpPreloadEntityFields.php"
+        ]
+    },
+    {
         "id": 64594,
         "author": "gziolo",
         "message": "JSON Schema: Prepare default values according to their schemas\n\nUse wp_prepare_json_value_for_client() to normalize existing schema defaults, preserving empty objects within nested values and resolving matching anyOf and oneOf branches. Defaults remain arrays when a matching schema allows arrays.\n\nAdd regression coverage for nested defaults and clarify the schema and value preparation PHPDoc.\n\nFollow-up to [64592], [64315].\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14542.\n\nFix #66267.\n\n\n",
