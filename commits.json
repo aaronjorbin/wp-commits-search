@@ -1,5 +1,26 @@
 [
     {
+        "id": 64597,
+        "author": "mikachan",
+        "message": "Editor: Add pseudo-selector support for text inputs.\n\nAdds `:required`, `:user-valid`, `:user-invalid`, `:focus`, `:focus-visible`, and `::placeholder` to the pseudo selectors that `WP_Theme_JSON` allows for the `textInput` element, so themes can style these states in `theme.json`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13056.\nDiscussed in https://github.com/WordPress/gutenberg/pull/71634.\n\nProps onemaggie, scruffian, sarthaknagoshe2002, wildworks, im3dabasia1, audrasjb, mamaduka.\nFixes #65880.",
+        "date": "2026-10-20T11:50:22.594576Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
+        "id": 64596,
+        "author": "jorgefilipecosta",
+        "message": "Tests: Port Gutenberg tests for REST action links and view configs.\n\nAdds the Gutenberg PHPUnit tests that have no Core counterpart yet, for code Core already has:\n- The `action-trash` link is absent in the `view` context and when the user cannot delete the post.\n- The `action-set-homepage` and `action-set-posts-page` links of pages in a collection are compacted as `wp:action-set-homepage` and `wp:action-set-posts-page`, the keys the core actions read.\n- The view config schema describes the table column styles.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14518\n\nProps jorgefilipecosta.\nSee #63670, #66327, #65981.",
+        "date": "2026-10-20T11:36:09.026905Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-pages-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-posts-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-view-config-controller.php"
+        ]
+    },
+    {
         "id": 64595,
         "author": "jorgefilipecosta",
         "message": "Editor: Preload the entity fields and actions the editors read.\n\nThe editors read the fields and actions of the post types they show from the `wp/v2/entity-fields` and `wp/v2/entity-actions` routes. Core preloaded the fields only in the site editor and the actions only in the post editor.\nThe post editor now also preloads the entity fields of the edited post type, which the post summary of its inspector reads. The site editor now also preloads the entity actions of the edited post and of the post types its screen lists (pages, templates, patterns and template parts), as it already did for the entity fields.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14516.\nSynced from https://github.com/WordPress/gutenberg/pull/85081 and https://github.com/WordPress/gutenberg/pull/85155.\nFollow-up to [64528], [64566].\n\nProps jorgefilipecosta, oandregal.\nSee #66343.",
