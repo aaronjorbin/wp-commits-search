@@ -1,5 +1,45 @@
 [
     {
+        "id": 64610,
+        "author": "SergeyBiryukov",
+        "message": "Twenty Nineteen: Adjust `sass` usage.\n\nThis commit:\n- Updates `package-lock.json` after `npm audit fix` and `npm dedupe` (which might be done with other `npm` updates anyway).\n- Changes the build to run each command sequentially, so `npm run build` does not need to be used twice to update the RTL stylesheet.\n- Introduces `sass:string` to prevent deprecation warnings for `unquote()` global built-in.\n- Uses `math.div()` to prevent deprecation warnings for `slash-div` calculations.\n- Does **not** replace `@import` (yet).\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14549.\n\nFollow-up to r64387.\n\nProps sabernhardt, rejaulalomkhan.\nFixes #63013.",
+        "date": "2026-10-20T17:14:19.230529Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentynineteen/package-lock.json",
+            "/trunk/src/wp-content/themes/twentynineteen/package.json",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/mixins/_mixins-master.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/site/primary/_comments.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/variables-site/_fonts.scss"
+        ]
+    },
+    {
+        "id": 64609,
+        "author": "lancewillett",
+        "message": "Tests: Cover theme data preparation for JavaScript.\n\nAdd coverage for `wp_prepare_themes_for_js()`, including theme metadata and ordering, capability-dependent actions, update availability, auto-update settings, filters, and multisite allowed themes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14450\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T16:52:54.446839Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/theme/wpPrepareThemesForJs.php"
+        ]
+    },
+    {
+        "id": 64608,
+        "author": "lancewillett",
+        "message": "Tests: Cover legacy widget settings conversion.\n\nAdd coverage for `wp_convert_widget_settings()`, including single-widget conversion, preservation of multi-widget settings, front-end sidebar updates in memory, and admin persistence.\n\nUse a numeric string key that remains a string to distinguish `is_numeric()` from integer-only checks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14422\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T16:49:37.649112Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpConvertWidgetSettings.php"
+        ]
+    },
+    {
+        "id": 64607,
+        "author": "SergeyBiryukov",
+        "message": "Docs: Correct the `@param` tag in a `wp_is_internal_link()` test.\n\nThe tag for `Tests_Link_WpIsInternalLink::test_wp_is_internal_link_returns_true_for_internal_urls()` named a `$path` parameter, but the parameter is `$scheme_and_path`. The data provider passes a URL format with a `%s` placeholder for the home host, not a path, so the description is updated as well.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14539.\n\nFollow-up to r64510.\n\nProps Soean.\nSee #65819.",
+        "date": "2026-10-20T16:41:15.979058Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/wpIsInternalLink.php"
+        ]
+    },
+    {
         "id": 64606,
         "author": "audrasjb",
         "message": "Post WordPress 7.2 Beta 1 version bump.\n\n",
