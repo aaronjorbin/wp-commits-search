@@ -1,5 +1,15 @@
 [
     {
+        "id": 64591,
+        "author": "aaronrobertshaw",
+        "message": "Editor: Scope state rules to the block's own element.\n\nPer-instance state styles never applied to a block whose root selector starts with another block's class. List Item registers `.wp-block-list > li`, so scoping swapped `.wp-block-list` for the instance class and produced `.wp-states-xxxx > li`, which matches nothing because the instance class sits on the `li` itself.\n\nA new `wp_get_state_selector_ancestor()` returns the leading compound and its combinator when that compound names a different block, and `wp_build_state_selector()` gains a `$block_name` parameter so the ancestor is kept and the instance class lands on the block's own compound, giving `.wp-block-list > .wp-states-xxxx`. Selectors for nested elements, such as `.wp-block-button .wp-block-button__link`, keep their existing behavior.\n\nThis brings in changes from https://github.com/WordPress/gutenberg/pull/83986.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14039\n\nProps ramonopoly, talldanwp.\nFixes #66252.\n",
+        "date": "2026-10-20T06:25:45.057342Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/states.php",
+            "/trunk/tests/phpunit/tests/block-supports/states.php"
+        ]
+    },
+    {
         "id": 64590,
         "author": "aaronrobertshaw",
         "message": "Editor: Add a background clip block support.\n\nAdds a `background.backgroundClip` block support, so a block can paint its background into the border box, padding box, content box or the text itself. Clipping to the text gives blocks a gradient text fill.\n\nThe style engine gains the `backgroundClip` definition and a `VALID_BACKGROUND_CLIP_VALUES` constant, `WP_Theme_JSON` gains the setting and style, and KSES allows `background-clip` and its vendor prefixed companions. A color clipped to the text no longer adds the `has-background` class.\n\nPseudo states and breakpoints that change the clip, or set a text color over a text gradient, now escape the inherited text clip, in both block instance styles and global styles.\n\nThis brings in changes from https://github.com/WordPress/gutenberg/pull/77141, https://github.com/WordPress/gutenberg/pull/77142 and https://github.com/WordPress/gutenberg/pull/85057.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13491\n\nProps westonruter, isabel_brison, andrewserong, peterwilsoncc, ramonopoly, scruffian, joen, talldanwp.\nFixes #66094.\n",
