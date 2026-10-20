@@ -1,5 +1,23 @@
 [
     {
+        "id": 64606,
+        "author": "audrasjb",
+        "message": "Post WordPress 7.2 Beta 1 version bump.\n\n",
+        "date": "2026-10-20T15:58:38.417075Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64605,
+        "author": "audrasjb",
+        "message": "WordPress 7.2 Beta 1.\n",
+        "date": "2026-10-20T15:30:21.513213Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
         "id": 64604,
         "author": "davidbaumwald",
         "message": "REST API: Cleanup empty test file.\n\n[64602] was meant to delete this file.\n\nFollow-up to [64602].\n\nProps audrasjb, SergeyBiryukov.\nSee #66267.",
