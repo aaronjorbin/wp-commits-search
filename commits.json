@@ -1,5 +1,15 @@
 [
     {
+        "id": 64598,
+        "author": "Mamaduka",
+        "message": "Editor: Add pseudo-selector support for select elements.\n\nAdds `:hover`, `:focus`, `:focus-visible`, and `:active` to the pseudo selectors that `WP_Theme_JSON` allows for the `select` element, so themes can style these states in `theme.json`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14544.\nDiscussed in https://github.com/WordPress/gutenberg/pull/81644.\n\nProps onemaggie, mikachan, mamaduka.\nFixes #66349.",
+        "date": "2026-10-20T12:27:21.065518Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
         "id": 64597,
         "author": "mikachan",
         "message": "Editor: Add pseudo-selector support for text inputs.\n\nAdds `:required`, `:user-valid`, `:user-invalid`, `:focus`, `:focus-visible`, and `::placeholder` to the pseudo selectors that `WP_Theme_JSON` allows for the `textInput` element, so themes can style these states in `theme.json`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13056.\nDiscussed in https://github.com/WordPress/gutenberg/pull/71634.\n\nProps onemaggie, scruffian, sarthaknagoshe2002, wildworks, im3dabasia1, audrasjb, mamaduka.\nFixes #65880.",
