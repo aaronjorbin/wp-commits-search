@@ -1,5 +1,70 @@
 [
     {
+        "id": 64631,
+        "author": "lancewillett",
+        "message": "Tests: Cover post type archive feed links.\n\nAdd coverage for `get_post_type_archive_feed_link()`, including invalid post types, permalink settings, archive rewrites, default feed selection, and filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14528\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T18:47:18.229524Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getPostTypeArchiveFeedLink.php"
+        ]
+    },
+    {
+        "id": 64630,
+        "author": "lancewillett",
+        "message": "Tests: Cover page permalink generation.\n\nAdd coverage for `get_page_link()` and `_get_page_link()`, including permalink formats, page hierarchy, drafts, private pages, the static front page, and filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14527\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T18:44:31.872305Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getPageLink.php"
+        ]
+    },
+    {
+        "id": 64629,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin dependency notices.\n\nAdd coverage for `WP_Plugin_Install_List_Table::get_dependencies_notice()`, including stored dependency data, API fallbacks, escaping, dependency order, and multisite URLs.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14526\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T18:42:12.040000Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpPluginInstallListTableGetDependenciesNotice.php"
+        ]
+    },
+    {
+        "id": 64628,
+        "author": "lancewillett",
+        "message": "Tests: Cover dispatch to the all hook.\n\nAdd coverage for `_wp_call_all_hook()` through action and filter dispatch, including argument forwarding, callback priority, and current-filter cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14525\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T18:40:31.942788Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/hooks/wpCallAllHook.php"
+        ]
+    },
+    {
+        "id": 64627,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin lifecycle hook registration.\n\nAdd coverage for `register_activation_hook()`, `register_deactivation_hook()`, and `register_uninstall_hook()`. Verify hook names, callback arguments, uninstall callback validation, and option persistence.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14523\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T18:38:15.962225Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/registerActivationHook.php",
+            "/trunk/tests/phpunit/tests/functions/registerDeactivationHook.php",
+            "/trunk/tests/phpunit/tests/functions/registerUninstallHook.php"
+        ]
+    },
+    {
+        "id": 64626,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin header markup and translation.\n\nAdd coverage for `_get_plugin_data_markup_translate()`, including sanitization, link markup, translation settings, text domains, and domain paths.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14522\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T18:36:28.591778Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/getPluginDataMarkupTranslate.php"
+        ]
+    },
+    {
+        "id": 64625,
+        "author": "lancewillett",
+        "message": "Tests: Cover search feed links.\n\nAdd coverage for `get_search_feed_link()` and `get_search_comments_feed_link()`, including permalink formats, feed types, query encoding, and filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14519\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-20T18:34:49.105842Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getSearchFeedLink.php"
+        ]
+    },
+    {
         "id": 64624,
         "author": "lancewillett",
         "message": "Build/Test Tools: Cover plugin upload and management.\n\nAdd browser checks for plugin upload, activation and deactivation, replacement with a newer uploaded version, and deletion. Verify saved plugin status, version, and removal through REST.\n\nUse small local ZIP fixtures containing only plugin headers. Install prerequisites for each case and clean up only the fixture plugin.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8075\n\nProps juhise, lucatume.\nSee #52895.\n",
