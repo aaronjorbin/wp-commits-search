@@ -1,5 +1,27 @@
 [
     {
+        "id": 64594,
+        "author": "gziolo",
+        "message": "JSON Schema: Prepare default values according to their schemas\n\nUse wp_prepare_json_value_for_client() to normalize existing schema defaults, preserving empty objects within nested values and resolving matching anyOf and oneOf branches. Defaults remain arrays when a matching schema allows arrays.\n\nAdd regression coverage for nested defaults and clarify the schema and value preparation PHPDoc.\n\nFollow-up to [64592], [64315].\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14542.\n\nFix #66267.\n\n\n",
+        "date": "2026-10-20T10:07:45.754221Z",
+        "files": [
+            "/trunk/src/wp-includes/json-schema.php",
+            "/trunk/tests/phpunit/tests/json-schema.php"
+        ]
+    },
+    {
+        "id": 64593,
+        "author": "audrasjb",
+        "message": "Administration: Add a \u201dOn This Day\u201d section to the Activity widget\n\nThis changeset adds a \u201dOn This Day\u201d section to the Activity widget and moves the Recent Comments section into a dedicated dashboard widget.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14038.\n\nProps alshakero, eclev91, annezazu, matt, westonruter, kellychoffman, simison, joen, retrofox, audrasjb, desrosj, joedolson, wildworks, mukesh27, SergeyBiryukov, peterwilsoncc, sukhendu2002, muryam.\nFixes #65116.\n",
+        "date": "2026-10-20T10:03:58.764791Z",
+        "files": [
+            "/trunk/src/wp-admin/_index.php",
+            "/trunk/src/wp-admin/css/dashboard.css",
+            "/trunk/src/wp-admin/includes/dashboard.php",
+            "/trunk/tests/phpunit/tests/admin/wpDashboardSiteActivity.php"
+        ]
+    },
+    {
         "id": 64592,
         "author": "gziolo",
         "message": "Abilities API: Preserve empty objects in JSON results\n\nEmpty PHP arrays representing objects are incorrectly encoded as []\ninstead of {}. Add wp_prepare_json_value_for_client() to prepare ability\nresults according to their output schemas before JSON encoding.\n\nApply it to AI client results and associative REST results, preserving\ncompatibility with _fields and _embed processing.\n\nProps sukhendu2002, gziolo.\nSee #66267.\n\n",
