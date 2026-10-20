@@ -1,5 +1,137 @@
 [
     {
+        "id": 64624,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Cover plugin upload and management.\n\nAdd browser checks for plugin upload, activation and deactivation, replacement with a newer uploaded version, and deletion. Verify saved plugin status, version, and removal through REST.\n\nUse small local ZIP fixtures containing only plugin headers. Install prerequisites for each case and clean up only the fixture plugin.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8075\n\nProps juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-20T18:12:15.534752Z",
+        "files": [
+            "/trunk/tests/e2e/assets/e2e-test-plugin-1.0.zip",
+            "/trunk/tests/e2e/assets/e2e-test-plugin-2.0.zip",
+            "/trunk/tests/e2e/assets/e2e-test-plugin.md",
+            "/trunk/tests/e2e/specs/plugins.test.js"
+        ]
+    },
+    {
+        "id": 64623,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Cover successful media uploads.\n\nUpload a JPEG through the media uploader's file picker and verify the completed attachment title and its Edit link. Capture the attachment ID before assertions so cleanup removes the uploaded attachment even when a check fails.\n\nReuse the existing JPEG fixture and retain the failed-upload dismissal test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8047\n\nProps juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-20T18:07:43.492048Z",
+        "files": [
+            "/trunk/tests/e2e/specs/media-upload.test.js"
+        ]
+    },
+    {
+        "id": 64622,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Cover persisted dashboard preferences.\n\nAdd browser checks for Welcome panel dismissal and visibility, widget visibility, collapse and expansion, and widget ordering. Verify each preference persists after reload.\n\nUse a temporary administrator for each case to preserve shared user preferences. Permanently delete that user's Quick Draft auto-drafts before removing the user.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8095\n\nProps juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-20T18:02:59.100814Z",
+        "files": [
+            "/trunk/tests/e2e/specs/dashboard.test.js"
+        ]
+    },
+    {
+        "id": 64621,
+        "author": "lancewillett",
+        "message": "Tests: Cover elapsed request time from `timer_float()`.\n\nVerify that `timer_float()` returns elapsed seconds as a float, bounded by the supplied request-start timestamp and the current time. Restore `$_SERVER['REQUEST_TIME_FLOAT']` after the test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14484\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T18:01:47.892934Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/timerFloat.php"
+        ]
+    },
+    {
+        "id": 64620,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Cover changing selected posts to drafts in bulk.\n\nAdd a browser test that uses Bulk Edit to change two published posts to drafts. Verify the draft labels after reload and both saved statuses, while an unselected control remains published.\n\nCreate fixtures through REST and delete only those posts during cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8045\n\nProps juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-20T17:59:21.046731Z",
+        "files": [
+            "/trunk/tests/e2e/specs/edit-posts.test.js"
+        ]
+    },
+    {
+        "id": 64619,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Cover moving selected posts to Trash in bulk.\n\nAdd a browser test that selects two published posts and moves them to Trash through the bulk-action form. Verify both saved statuses become `trash` while an unselected control remains visible and published.\n\nCreate fixtures through REST and delete only those posts during cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8040\n\nProps juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-20T17:58:13.148859Z",
+        "files": [
+            "/trunk/tests/e2e/specs/empty-trash-restore-trashed-posts.test.js"
+        ]
+    },
+    {
+        "id": 64618,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Cover restoring a trashed post with Undo.\n\nAdd a browser test that trashes a published post, clicks Undo, and verifies that the same post returns with its original `publish` status. This distinguishes Undo from ordinary Restore, which defaults to `draft`.\n\nCreate the fixture through REST and delete only that post during cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/7995\n\nProps jayson31, lucatume.\nSee #52895.\n",
+        "date": "2026-10-20T17:55:49.650599Z",
+        "files": [
+            "/trunk/tests/e2e/specs/empty-trash-restore-trashed-posts.test.js"
+        ]
+    },
+    {
+        "id": 64617,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Cover page parent selection in Quick Edit.\n\nAdd a browser test that assigns a page parent through Quick Edit, reloads the page list, and verifies the saved selection. Check that the page cannot select itself as its parent.\n\nCreate fixtures through REST and delete only those pages after the test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/7992\n\nProps jayson31, lucatume.\nSee #52895.\n",
+        "date": "2026-10-20T17:54:31.027236Z",
+        "files": [
+            "/trunk/tests/e2e/specs/pages",
+            "/trunk/tests/e2e/specs/pages/quick-edit-page.test.js"
+        ]
+    },
+    {
+        "id": 64616,
+        "author": "lancewillett",
+        "message": "Tests: Cover media date filtering in attachment queries.\n\nExercise `wp_ajax_query_attachments()` with attachments in different months and years. Check the exact returned IDs for a selected month and year, a month without matches, and all dates.\n\nCover the server-side date query without requiring browser tests or image files.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/7947\n\nProps jayson31, jorbin, lucatume.\nSee #65252, #52895.\n",
+        "date": "2026-10-20T17:52:55.299506Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/queryAttachments.php"
+        ]
+    },
+    {
+        "id": 64615,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Cover user creation and bulk deletion.\n\nAdd browser tests for creating a user through the admin form and logging in with the generated password, and for deleting selected users through the bulk-action confirmation screen while preserving an unselected user.\n\nUse REST fixtures and cleanup scoped to the test users. Cover the single-site user-management screens.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/7732\n\nProps pavanpatil1, apermo, juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-20T17:51:05.329202Z",
+        "files": [
+            "/trunk/tests/e2e/specs/users.test.js"
+        ]
+    },
+    {
+        "id": 64614,
+        "author": "lancewillett",
+        "message": "Tests: Cover navigation menu conditionals.\n\nAdd coverage for `is_nav_menu()`, `has_nav_menu()`, and `is_nav_menu_item()`, including menu identification, location assignments, filters, invalid inputs, and trashed menu items.\n\nPreserve menu registrations and theme support across each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14354\n\nProps ravipatel, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T17:48:42.958577Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/menu/hasNavMenu.php",
+            "/trunk/tests/phpunit/tests/menu/isNavMenu.php",
+            "/trunk/tests/phpunit/tests/menu/isNavMenuItem.php"
+        ]
+    },
+    {
+        "id": 64613,
+        "author": "lancewillett",
+        "message": "Tests: Cover permalink anchor output.\n\nAdd coverage for `permalink_anchor()` modes, case-insensitive arguments, fallback behavior, and sanitized title anchors. Use a literal expected slug for the special-character title.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14486\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T17:46:34.029407Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/permalinkAnchor.php"
+        ]
+    },
+    {
+        "id": 64612,
+        "author": "lancewillett",
+        "message": "Tests: Expand category ancestry tests.\n\nExpand `cat_is_ancestor_of()` coverage for hierarchy depth, category IDs and objects, invalid inputs, and unrelated terms. Preserve the hierarchical cross-taxonomy regression test that protects the category-only restriction.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14430\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-20T17:45:28.134400Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/catIsAncestorOf.php"
+        ]
+    },
+    {
+        "id": 64611,
+        "author": "lancewillett",
+        "message": "Tests: Cover automatic update eligibility decisions.\n\nAdd coverage for `WP_Automatic_Updater::should_update()`, including filesystem checks, core update policy, plugin and theme settings, translation updates, filters, version requirements, and core notification behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14453\n\nProps huzaifaalmesbah, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-20T17:44:03.953030Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpAutomaticUpdaterShouldUpdate.php"
+        ]
+    },
+    {
         "id": 64610,
         "author": "SergeyBiryukov",
         "message": "Twenty Nineteen: Adjust `sass` usage.\n\nThis commit:\n- Updates `package-lock.json` after `npm audit fix` and `npm dedupe` (which might be done with other `npm` updates anyway).\n- Changes the build to run each command sequentially, so `npm run build` does not need to be used twice to update the RTL stylesheet.\n- Introduces `sass:string` to prevent deprecation warnings for `unquote()` global built-in.\n- Uses `math.div()` to prevent deprecation warnings for `slash-div` calculations.\n- Does **not** replace `@import` (yet).\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14549.\n\nFollow-up to r64387.\n\nProps sabernhardt, rejaulalomkhan.\nFixes #63013.",
