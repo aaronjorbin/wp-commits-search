@@ -1,5 +1,20 @@
 [
     {
+        "id": 64592,
+        "author": "gziolo",
+        "message": "Abilities API: Preserve empty objects in JSON results\n\nEmpty PHP arrays representing objects are incorrectly encoded as []\ninstead of {}. Add wp_prepare_json_value_for_client() to prepare ability\nresults according to their output schemas before JSON encoding.\n\nApply it to AI client results and associative REST results, preserving\ncompatibility with _fields and _embed processing.\n\nProps sukhendu2002, gziolo.\nSee #66267.\n\n",
+        "date": "2026-10-20T09:09:30.956421Z",
+        "files": [
+            "/trunk/src/wp-includes/ai-client/class-wp-ai-client-ability-function-resolver.php",
+            "/trunk/src/wp-includes/json-schema.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-run-controller.php",
+            "/trunk/tests/phpunit/includes/wp-ai-client-test-abilities-trait.php",
+            "/trunk/tests/phpunit/tests/ai-client/wpAiClientAbilityFunctionResolver.php",
+            "/trunk/tests/phpunit/tests/json-schema.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1RunController.php"
+        ]
+    },
+    {
         "id": 64591,
         "author": "aaronrobertshaw",
         "message": "Editor: Scope state rules to the block's own element.\n\nPer-instance state styles never applied to a block whose root selector starts with another block's class. List Item registers `.wp-block-list > li`, so scoping swapped `.wp-block-list` for the instance class and produced `.wp-states-xxxx > li`, which matches nothing because the instance class sits on the `li` itself.\n\nA new `wp_get_state_selector_ancestor()` returns the leading compound and its combinator when that compound names a different block, and `wp_build_state_selector()` gains a `$block_name` parameter so the ancestor is kept and the instance class lands on the block's own compound, giving `.wp-block-list > .wp-states-xxxx`. Selectors for nested elements, such as `.wp-block-button .wp-block-button__link`, keep their existing behavior.\n\nThis brings in changes from https://github.com/WordPress/gutenberg/pull/83986.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14039\n\nProps ramonopoly, talldanwp.\nFixes #66252.\n",
