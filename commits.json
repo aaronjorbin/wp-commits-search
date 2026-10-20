@@ -1,5 +1,35 @@
 [
     {
+        "id": 64590,
+        "author": "aaronrobertshaw",
+        "message": "Editor: Add a background clip block support.\n\nAdds a `background.backgroundClip` block support, so a block can paint its background into the border box, padding box, content box or the text itself. Clipping to the text gives blocks a gradient text fill.\n\nThe style engine gains the `backgroundClip` definition and a `VALID_BACKGROUND_CLIP_VALUES` constant, `WP_Theme_JSON` gains the setting and style, and KSES allows `background-clip` and its vendor prefixed companions. A color clipped to the text no longer adds the `has-background` class.\n\nPseudo states and breakpoints that change the clip, or set a text color over a text gradient, now escape the inherited text clip, in both block instance styles and global styles.\n\nThis brings in changes from https://github.com/WordPress/gutenberg/pull/77141, https://github.com/WordPress/gutenberg/pull/77142 and https://github.com/WordPress/gutenberg/pull/85057.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13491\n\nProps westonruter, isabel_brison, andrewserong, peterwilsoncc, ramonopoly, scruffian, joen, talldanwp.\nFixes #66094.\n",
+        "date": "2026-10-20T06:09:21.800460Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/background.php",
+            "/trunk/src/wp-includes/block-supports/colors.php",
+            "/trunk/src/wp-includes/block-supports/states.php",
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/src/wp-includes/kses.php",
+            "/trunk/src/wp-includes/style-engine/class-wp-style-engine.php",
+            "/trunk/tests/phpunit/tests/block-supports/colors.php",
+            "/trunk/tests/phpunit/tests/block-supports/states.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderBackgroundSupport.php",
+            "/trunk/tests/phpunit/tests/style-engine/styleEngine.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
+        "id": 64589,
+        "author": "westonruter",
+        "message": "Posts, Post Types: Add `pre_wp_count_attachments` filter.\n\nIntroduces the `pre_wp_count_attachments` filter to `wp_count_attachments()`, the counterpart of `pre_wp_count_posts`. Returning a `stdClass` object short-circuits the function, skipping the object cache lookup and both of its queries. Since the `counts` cache group is non-persistent, those queries otherwise run on every request that needs the counts, and on a site with millions of attachments the `GROUP BY post_mime_type` aggregate alone can take several seconds. The filter allows the counts to be served instead from a value pre-computed in the background.\n\nUnlike post statuses, the set of MIME types is not known ahead of time, so only a missing trash count is filled in with zero. The filtered value should therefore contain a count for every MIME type matching `$mime_type`, and only those types. As with `pre_wp_count_posts`, the value is not cached and is passed through the `wp_count_attachments` filter.\n\nThe `pre_wp_count_posts` filter introduced in r64245 is brought in line with the new one. A filtered value now short-circuits only when it is a `stdClass` object: any other non-null value was previously cast to an object, turning `false` into a nonsensical result, and filling in missing counts on another class can trigger a dynamic property deprecation. Both filters also clone the returned object, so that a callback which keeps it, such as in a static variable, does not have it modified by core or by later callbacks on the `wp_count_posts` and `wp_count_attachments` filters.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14210.\nFollow-up to r64245.\n\nProps jdeep, westonruter, peterwilsoncc.\nSee #66098.\nFixes #66291.\n",
+        "date": "2026-10-20T05:49:16.411774Z",
+        "files": [
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/tests/phpunit/tests/post/wpCountAttachments.php",
+            "/trunk/tests/phpunit/tests/post/wpCountPosts.php"
+        ]
+    },
+    {
         "id": 64588,
         "author": "adamsilverstein",
         "message": "Media: Enable client-side uploads in the Media Library and modal.\n\nEnable client-side media processing for Uploads from the Media Library grid, the Add New Media File screen and the media modal in the block editor (in supported browsers).\n\nThese screens now use the same pipeline as block editor uploads: the original is uploaded through the REST API, sub-sizes are generated in the browser and sideloaded, then the attachment is finalized. `wp_set_up_cross_origin_isolation()` now also isolates the Media Library grid and the Add New Media File screen using Document Isolation Policy. Uploads huse the client-side processing still use the existing progress, tile and error UI.\n\nWhen client-side processing is disabled, uploads fall back to the classic flow unchanged. Audio files, uploaders that do not post attachments, and JPEG/PNG files while plupload resizing is enabled also stay on the classic path, and a HEIC the browser cannot decode is handed to the server when its image editor supports HEIC. The Customizer, Site Icon picker and classic editor are not isolated and keep classic uploads.\n\nSee https://github.com/WordPress/gutenberg/issues/82409.\n\nProps adamsilverstein, westonruter, andrewserong, sanayasir, arkaprabhachowdhury, logicrays.\nFixes #65661. See #66220.\n\n\n",
