@@ -1,5 +1,186 @@
 [
     {
+        "id": 64650,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in image editor tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results, preserving the existing test behavior and assertion messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14567\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T20:06:55.685674Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/editor.php"
+        ]
+    },
+    {
+        "id": 64649,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in Customizer setting tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results, preserving the existing test behavior and assertion messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14568\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T20:05:57.779001Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/customize/setting.php"
+        ]
+    },
+    {
+        "id": 64648,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in GD image editor tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results, preserving the existing test behavior and assertion messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14566\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T20:04:41.598875Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/editorGd.php"
+        ]
+    },
+    {
+        "id": 64647,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in image function tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results, preserving the existing test behavior and assertion messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14565\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T20:03:49.802387Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/functions.php"
+        ]
+    },
+    {
+        "id": 64646,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in GD image resize tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results, preserving the existing test behavior and assertion messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14564\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T20:01:55.238624Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/resizeGd.php"
+        ]
+    },
+    {
+        "id": 64645,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in REST API tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results, preserving the existing test behavior and assertion messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14563\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T20:00:56.415797Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api.php"
+        ]
+    },
+    {
+        "id": 64644,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in REST server tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results, preserving the existing test behavior and assertion messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14562\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T19:59:58.427820Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-server.php"
+        ]
+    },
+    {
+        "id": 64643,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in REST users controller tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results, preserving the existing test behavior and assertion messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14561\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T19:59:13.124363Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-users-controller.php"
+        ]
+    },
+    {
+        "id": 64642,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in taxonomy tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results, preserving the existing test behavior and assertion messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14559\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T19:58:00.123962Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/taxonomy.php"
+        ]
+    },
+    {
+        "id": 64641,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in theme tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results, preserving the existing test behavior and assertion messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14557\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T19:56:43.754148Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme.php"
+        ]
+    },
+    {
+        "id": 64640,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in user tests.\n\nUse the dedicated assertion helper for expected `WP_Error` results while retaining the existing error-code and behavior checks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14556\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-20T19:45:24.601860Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user.php"
+        ]
+    },
+    {
+        "id": 64639,
+        "author": "lancewillett",
+        "message": "Tests: Cover comment links.\n\nAdd coverage for `get_comments_link()` and `comments_link()`, including approved comment counts, permalink formats, post inputs, filters, escaped output, and deprecated arguments.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14536\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T19:44:23.539013Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getCommentsLink.php"
+        ]
+    },
+    {
+        "id": 64638,
+        "author": "lancewillett",
+        "message": "Tests: Cover trackback URLs.\n\nAdd coverage for `get_trackback_url()` and `trackback_url()`, including permalink structures, site and home URL roots, filters, output, and deprecated return behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14535\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T19:43:19.261558Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/getTrackbackUrl.php"
+        ]
+    },
+    {
+        "id": 64637,
+        "author": "lancewillett",
+        "message": "Tests: Cover language attributes.\n\nAdd coverage for `get_language_attributes()` and `language_attributes()`, including document types, locale normalization, text direction, filters, and displayed output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14534\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T19:42:26.745637Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/getLanguageAttributes.php"
+        ]
+    },
+    {
+        "id": 64636,
+        "author": "westonruter",
+        "message": "HTML API: Use `@link` instead of `@see` for URL references.\n\nIn r64436 the `@see` tags pointing to URLs were converted to `@link` across core, since the WordPress inline documentation standards reserve `@see` for references to functions, methods, classes, and hooks. The HTML API was split out of that change so that it could be reviewed by the component's maintainers, and its references to the HTML Standard and other specifications are now converted as well, in both the classes and their tests. Where both tags appear, `@see` is kept ahead of `@link`, per the standards.\n\nSpec references within prose or a list use the inline `{@link}` form instead, since a tag is only recognized at the start of a line and a block-level tag ends the description. In `WP_HTML_Doctype_Info` this had cut the class description short at its first reference, so that the Code Reference rendered the paragraphs after it as the link's text. Those references are now worked into the prose with descriptive link text.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14370.\nFollow-up to r63569, r64436.\n\nProps huzaifaalmesbah, westonruter, jonsurrell, rejaulalomkhan.\nSee #65860.\n",
+        "date": "2026-10-20T19:42:17.754101Z",
+        "files": [
+            "/trunk/src/wp-includes/html-api/class-wp-html-active-formatting-elements.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-decoder.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-doctype-info.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-open-elements.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-processor-state.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-processor.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-tag-processor.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-token.php",
+            "/trunk/tests/phpunit/data/html5-entities/generate-html5-named-character-references.php",
+            "/trunk/tests/phpunit/includes/build-visual-html-tree.php",
+            "/trunk/tests/phpunit/tests/html-api/wpHtmlDecoder.php"
+        ]
+    },
+    {
+        "id": 64635,
+        "author": "lancewillett",
+        "message": "Tests: Cover archive link markup.\n\nAdd coverage for `get_archives_link()`, including output formats, selected states, wrappers, escaping, text formatting, and filter arguments.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14533\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T19:41:30.427079Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/getArchivesLink.php"
+        ]
+    },
+    {
+        "id": 64634,
+        "author": "lancewillett",
+        "message": "Tests: Cover privacy policy content registration.\n\nAdd coverage for `wp_add_privacy_policy_content()` and `WP_Privacy_Policy_Content::add()`, including admin context, action timing, empty input, and duplicate content.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14531\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T19:40:39.743817Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/privacy/wpAddPrivacyPolicyContent.php"
+        ]
+    },
+    {
+        "id": 64633,
+        "author": "lancewillett",
+        "message": "Tests: Cover post datetime and timestamp helpers.\n\nAdd coverage for `get_post_datetime()` and `get_post_timestamp()`, including local and UTC fields, timezone conversion, daylight saving time, and invalid dates.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14530\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T19:39:33.400253Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/date/getPostDatetime.php"
+        ]
+    },
+    {
+        "id": 64632,
+        "author": "lancewillett",
+        "message": "Tests: Cover bookmark editing links.\n\nAdd coverage for `get_edit_bookmark_link()` and `edit_bookmark_link()`, including permissions, Link Manager availability, bookmark inputs, filters, and escaped output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14529\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T19:38:28.333487Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/editBookmarkLink.php"
+        ]
+    },
+    {
         "id": 64631,
         "author": "lancewillett",
         "message": "Tests: Cover post type archive feed links.\n\nAdd coverage for `get_post_type_archive_feed_link()`, including invalid post types, permalink settings, archive rewrites, default feed selection, and filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14528\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
