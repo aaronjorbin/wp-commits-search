@@ -1,5 +1,14 @@
 [
     {
+        "id": 64669,
+        "author": "audrasjb",
+        "message": "Docs: Use triple digit convention for `since` mentions in class `WP_Theme_JSON`.\n\nSee #65860.\n\n",
+        "date": "2026-10-20T22:34:47.764549Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme-json.php"
+        ]
+    },
+    {
         "id": 64668,
         "author": "lancewillett",
         "message": "Tests: Cover empty plugin list messages.\n\nTest `WP_Plugins_List_Table::no_items()` for empty views, search terms, escaped output, directory links, installation permissions, and multisite behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14585\n\nProps huzaifaalmesbah.\nSee #65819.\n",
