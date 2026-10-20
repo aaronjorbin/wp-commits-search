@@ -1,5 +1,113 @@
 [
     {
+        "id": 64668,
+        "author": "lancewillett",
+        "message": "Tests: Cover empty plugin list messages.\n\nTest `WP_Plugins_List_Table::no_items()` for empty views, search terms, escaped output, directory links, installation permissions, and multisite behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14585\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T22:04:46.551968Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTableNoItems.php"
+        ]
+    },
+    {
+        "id": 64667,
+        "author": "lancewillett",
+        "message": "Tests: Cover Site Health plugin version checks.\n\nTest `WP_Site_Health::get_test_plugin_version()` for active and inactive plugins, available updates, singular and plural descriptions, update links, and multisite behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14582\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T22:03:25.328667Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpSiteHealthGetTestPluginVersion.php"
+        ]
+    },
+    {
+        "id": 64666,
+        "author": "lancewillett",
+        "message": "Tests: Cover circular plugin dependency detection.\n\nTest `WP_Plugin_Dependencies::get_circular_dependencies()` and `WP_Plugin_Dependencies::check_for_circular_dependencies()` for cached results, acyclic dependencies, missing plugins, and dependency cycles.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14584\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T22:00:23.426155Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/plugin-dependencies/getCircularDependencies.php"
+        ]
+    },
+    {
+        "id": 64665,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin debug information.\n\nTest the plugin sections produced by `WP_Debug_Data`, including must-use plugins, active and inactive plugins, available updates, auto-update settings, and filtered debug strings.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14583\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T21:59:08.837126Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpDebugDataPlugins.php"
+        ]
+    },
+    {
+        "id": 64664,
+        "author": "lancewillett",
+        "message": "Tests: Cover Site Health auto-update checks.\n\nTest `WP_Site_Health::detect_plugin_theme_auto_update_issues()` across plugin and theme auto-update filters, settings visibility, reported statuses, and filter arguments.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14580\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T21:57:59.553319Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpSiteHealthDetectPluginThemeAutoUpdateIssues.php"
+        ]
+    },
+    {
+        "id": 64663,
+        "author": "lancewillett",
+        "message": "Tests: Cover update counts and titles.\n\nTest `wp_get_update_data()` for plugin, theme, core, and translation updates, including permissions, dismissed core updates, singular and plural titles, and filtered results.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14579\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T21:56:52.420329Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpGetUpdateData.php"
+        ]
+    },
+    {
+        "id": 64662,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin update notices.\n\nTest `wp_plugin_update_row()` and `wp_plugin_update_rows()` across update availability, permissions, package and PHP requirements, escaped output, links, hooks, and multisite screens.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14578\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T21:55:26.099106Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/update/wpPluginUpdateRow.php"
+        ]
+    },
+    {
+        "id": 64661,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin package validation.\n\nAdd coverage for `Plugin_Upgrader::check_package()`, including invalid packages, plugin header discovery, remote path mapping, and unmet PHP and WordPress requirements. Verify uploaded plugin data and restore the filesystem global after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14577\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T21:33:45.398236Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/pluginUpgraderCheckPackage.php"
+        ]
+    },
+    {
+        "id": 64660,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin overwrite confirmation.\n\nAdd coverage for `Plugin_Installer_Skin::do_overwrite()`, including comparison markup, update and downgrade actions, unmet requirements, and filtered output. Verify that `after()` stops after displaying the overwrite screen.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14576\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-20T21:32:47.165506Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/pluginInstallerSkinDoOverwrite.php"
+        ]
+    },
+    {
+        "id": 64659,
+        "author": "lancewillett",
+        "message": "Tests: Cover AJAX plugin dependency checks.\n\nAdd coverage for `WP_Plugin_Dependencies::check_plugin_dependencies_during_ajax()`, including nonce validation, missing plugins, activation capabilities, dependency states, and multisite activation URLs. Restore dependency caches and revoke the class fixture's super-admin grant after testing.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14521\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-20T21:31:36.307490Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxCheckPluginDependencies.php"
+        ]
+    },
+    {
+        "id": 64658,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Recognize REST uploads in the media E2E test.\n\nRecognize REST media-creation responses alongside classic multipart uploads when waiting for a JPEG upload. Extract the attachment ID from either response format while excluding requests for attachment markup.\n\nThis fixes the timeout introduced when browser uploads began using the REST API in [64588]. Preserve the completed-title and Edit-link assertions and attachment cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14575\n\nProps adrianmoldovanwp.\nSee #52895.\n",
+        "date": "2026-10-20T21:27:58.965793Z",
+        "files": [
+            "/trunk/tests/e2e/specs/media-upload.test.js"
+        ]
+    },
+    {
+        "id": 64657,
+        "author": "lancewillett",
+        "message": "Tests: Use error assertions in Customizer manager tests.\n\nUse `assertWPError()` in the Customizer manager tests. Preserve the existing error-code, validation, error-data, and changeset persistence checks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14569\n\nProps devmuhib.\nSee #65819.\n",
+        "date": "2026-10-20T21:26:06.452808Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/customize/manager.php"
+        ]
+    },
+    {
         "id": 64656,
         "author": "lancewillett",
         "message": "Tests: Use error assertions in authentication tests.\n\nUse `assertWPError()` for authentication and password reset failures. Preserve the existing error-code and success-path checks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14573\n\nProps shailu25.\nSee #65819.\n",
