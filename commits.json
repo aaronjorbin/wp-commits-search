@@ -1,5 +1,15 @@
 [
     {
+        "id": 64670,
+        "author": "westonruter",
+        "message": "Docs: Allow a callable `$args` in `register_setting()`.\n\nFor backward compatibility, `register_setting()` still accepts a sanitize callback as its third argument, converting it into the `sanitize_callback` argument without a deprecation notice. Its docblock documented `$args` only as an array, so once PHPStan began reading the hash notation in r63420, callers passing a callback were reported, such as Twenty Eleven and the deprecated `add_option_update_handler()`. This form remains in wide use across thousands of plugins and themes in the theme & plugin directories.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14137.\nFollow-up to r38635, r63420.\n\nProps jorgefilipecosta, westonruter.\nSee #65817, #65860.\n",
+        "date": "2026-10-20T23:55:03.342600Z",
+        "files": [
+            "/trunk/src/wp-includes/option.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon"
+        ]
+    },
+    {
         "id": 64669,
         "author": "audrasjb",
         "message": "Docs: Use triple digit convention for `since` mentions in class `WP_Theme_JSON`.\n\nSee #65860.\n\n",
