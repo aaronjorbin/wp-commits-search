@@ -1,5 +1,17 @@
 [
     {
+        "id": 64674,
+        "author": "whyisjake",
+        "message": "Security: Keep the previous secret version when a value is saved unchanged.\n\nSaving a secret's current value again demoted it to the previous slot. Settings forms do this on every submit, so a rotation in progress lost the previous value it depends on.\n\n`WP_Secrets_Libsodium_Provider::set()` now treats an unchanged write as a no-op: nothing is stored and `wp_secret_changed` does not fire. The exception is a write that raises `needs_rotation`, such as `wp_import_option_as_secret()` on an option holding the current value. That write is recorded and keeps the previous version.\n\n`WP_Secrets_Provider::set()` now documents that an unchanged write must not discard the previous version, and `WP_Secrets_Provider_Conformance` tests it, so the rule applies to third-party providers too.\n\nFollow-up to [r64337].\n\nProps ravipatel, ericmann, whyisjake.\nFixes #66353. See #66187.\n",
+        "date": "2026-10-21T17:56:47.349469Z",
+        "files": [
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-libsodium-provider.php",
+            "/trunk/src/wp-includes/secrets/interface-wp-secrets-provider.php",
+            "/trunk/tests/phpunit/includes/secrets/class-wp-secrets-provider-conformance.php",
+            "/trunk/tests/phpunit/tests/secrets/versionSlots.php"
+        ]
+    },
+    {
         "id": 64673,
         "author": "westonruter",
         "message": "Code Quality: Remove dead code and document bookmark exceptions.\n\nSeveral `step_*()` methods in the HTML Processor can throw an `Exception` via `insert_virtual_node()` when bookmarks run out. Documenting this with `@throws` shows PHPStan that the generic `catch` in `step()` is reachable, so its `catch.neverThrown` ignore is removed. The existing `identical.alwaysFalse` ignore now covers that `catch` as well, since PHPStan cannot see `$last_error` being set by a call that throws.\n\nDead code is also removed from `wp-admin/plugins.php`, along with a redundant check in `WP_REST_Users_Controller::check_reassign()`, whose documented types are corrected.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13073.\nFollow-up to r39426, r63023, r64294.\n\nProps dpantazis, westonruter.\nSee #65817.\n",
