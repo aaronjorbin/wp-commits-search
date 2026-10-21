@@ -1,5 +1,19 @@
 [
     {
+        "id": 64672,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Add types for dynamic constants in PHPStan.\n\nPHPStan treated many install-dependent constants as fixed values. Those missing from `dynamicConstantNames` took their placeholder value from the PHPStan bootstrap, and listed ones without a type took the type of their only visible definition. For `WP_DEBUG_LOG` that definition was `false`, so the `is_string()` checks for a log file path in `wp_debug_mode()` and `WP_Debug_Data` were reported as impossible.\n\nEvery install-dependent constant now has an explicit type, including those the bootstrap had pinned, such as the content and plugin paths, the cookie names, the memory limits, and the timeouts. Each type is what core expects: the values it defines and documents, and that its reads are designed for. Where real-world configurations are known to define wider values, most often by passing `getenv()` through unconverted, a comment notes them along with how core handles them. Widening the types to cover such values instead would require handling invalid configuration at every read.\n\nThe bootstrap definitions remain, since PHPStan does not discover constants that core defines inside a function, but their values no longer affect the analysis. The `preg_replace()` results that define the cookie paths are cast to strings to fit their types, and the PHPUnit bootstrap now defines the memory limits as strings to match theirs.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14034.\nFollow-up to r61699, r62965, r63191, r63356.\n\nProps rahultank, westonruter.\nSee #65817.\n",
+        "date": "2026-10-21T04:37:51.090369Z",
+        "files": [
+            "/trunk/src/wp-admin/press-this.php",
+            "/trunk/src/wp-includes/default-constants.php",
+            "/trunk/tests/phpstan/base.neon",
+            "/trunk/tests/phpstan/baselines/function.impossibleType.neon",
+            "/trunk/tests/phpstan/bootstrap.php",
+            "/trunk/tests/phpunit/includes/bootstrap.php"
+        ]
+    },
+    {
         "id": 64671,
         "author": "peterwilsoncc",
         "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis update adds four and removes five certificates to the bundle.\n\nProps westonruter, peterwilsoncc.\nFixes #66355.\n",
