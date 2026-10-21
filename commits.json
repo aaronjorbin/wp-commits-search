@@ -1,5 +1,18 @@
 [
     {
+        "id": 64673,
+        "author": "westonruter",
+        "message": "Code Quality: Remove dead code and document bookmark exceptions.\n\nSeveral `step_*()` methods in the HTML Processor can throw an `Exception` via `insert_virtual_node()` when bookmarks run out. Documenting this with `@throws` shows PHPStan that the generic `catch` in `step()` is reachable, so its `catch.neverThrown` ignore is removed. The existing `identical.alwaysFalse` ignore now covers that `catch` as well, since PHPStan cannot see `$last_error` being set by a call that throws.\n\nDead code is also removed from `wp-admin/plugins.php`, along with a redundant check in `WP_REST_Users_Controller::check_reassign()`, whose documented types are corrected.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13073.\nFollow-up to r39426, r63023, r64294.\n\nProps dpantazis, westonruter.\nSee #65817.\n",
+        "date": "2026-10-21T06:13:12.718013Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-admin/plugins.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-processor.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php",
+            "/trunk/tests/phpstan/baselines/identical.alwaysFalse.neon"
+        ]
+    },
+    {
         "id": 64672,
         "author": "westonruter",
         "message": "Build/Test Tools: Add types for dynamic constants in PHPStan.\n\nPHPStan treated many install-dependent constants as fixed values. Those missing from `dynamicConstantNames` took their placeholder value from the PHPStan bootstrap, and listed ones without a type took the type of their only visible definition. For `WP_DEBUG_LOG` that definition was `false`, so the `is_string()` checks for a log file path in `wp_debug_mode()` and `WP_Debug_Data` were reported as impossible.\n\nEvery install-dependent constant now has an explicit type, including those the bootstrap had pinned, such as the content and plugin paths, the cookie names, the memory limits, and the timeouts. Each type is what core expects: the values it defines and documents, and that its reads are designed for. Where real-world configurations are known to define wider values, most often by passing `getenv()` through unconverted, a comment notes them along with how core handles them. Widening the types to cover such values instead would require handling invalid configuration at every read.\n\nThe bootstrap definitions remain, since PHPStan does not discover constants that core defines inside a function, but their values no longer affect the analysis. The `preg_replace()` results that define the cookie paths are cast to strings to fit their types, and the PHPUnit bootstrap now defines the memory limits as strings to match theirs.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14034.\nFollow-up to r61699, r62965, r63191, r63356.\n\nProps rahultank, westonruter.\nSee #65817.\n",
