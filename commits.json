@@ -1,5 +1,15 @@
 [
     {
+        "id": 64680,
+        "author": "jorgefilipecosta",
+        "message": "Abilities API: Replace the `author_slug` filter of `core/content-query` with an `author` object.\n\nThe `core/content-query` ability filtered posts by author through a `where.author_slug` string, while each post returns its author as an `author` object with `id`, `name`, and `slug`. The REST API posts collection filters by author ID, which the ability did not take.\nReplace the filter with a `where.author` object that takes the `id` or the `slug` the `author` field returns, so a result's author can be given back as a filter.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14673.\n\nFollow-up to [64388].\n\nProps jorgefilipecosta, gziolo.\nSee #66268.",
+        "date": "2026-10-22T11:11:58.683753Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-content.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreContentAbility.php"
+        ]
+    },
+    {
         "id": 64679,
         "author": "audrasjb",
         "message": "Bundled Themes: Add missing screenshot to Ipsum theme.\n\nFollow-up to [64677], [64678].\n\nProps ravipatel.\nSee #66352.\n\n",
