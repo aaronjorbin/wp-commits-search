@@ -1,5 +1,15 @@
 [
     {
+        "id": 64682,
+        "author": "westonruter",
+        "message": "Formatting: Document `sanitize_key()` as accepting `mixed`.\n\nSince a non-scalar key was made to yield an empty string in r52292 and non-string scalars were again coerced to a string in r52370, `sanitize_key()` handles values of any type, and its tests cover this. Most of its callers pass raw request data or REST parameters, which are untyped, so documenting `$key` as a `string` caused PHPStan to report an error at nearly every call site.\n\nThe `sanitize_key` filter is updated to match, as it receives the original key, and its sanitized key is now typed as a lowercase string so that the result of `apply_filters()` agrees with the function's return type. The cast to `string` before `strtolower()` makes the existing coercion explicit without changing behavior. Tests are added for additional non-string types and for the arguments passed to the filter.\n\nThis resolves 50 PHPStan errors at rule level 10.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14759.\nFollow-up to r13718, r52292, r52370.\n\nSee #54160, #65817.\n",
+        "date": "2026-10-22T22:47:08.871271Z",
+        "files": [
+            "/trunk/src/wp-includes/formatting.php",
+            "/trunk/tests/phpunit/tests/formatting/sanitizeKey.php"
+        ]
+    },
+    {
         "id": 64681,
         "author": "SergeyBiryukov",
         "message": "Widgets: Avoid sidebar name collision in `dynamic_sidebar()`.\n\nThis ensures that `dynamic_sidebar()` displays the correct sidebar when it has the same ID as the sanitized name of another sidebar registered earlier.\n\nAn exact sidebar ID match is now prioritized over a sanitized name match, which may be less accurate.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12166.\n\nFollow-up to r5474.\n\nProps sainathpoojary, wildworks, alexvorn2, markoheijnen, dilip2615, mosescursor, im3dabasia1, SergeyBiryukov.\nFixes #22116.",
