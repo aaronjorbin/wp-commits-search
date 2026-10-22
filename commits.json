@@ -1,5 +1,14 @@
 [
     {
+        "id": 64679,
+        "author": "audrasjb",
+        "message": "Bundled Themes: Add missing screenshot to Ipsum theme.\n\nFollow-up to [64677], [64678].\n\nProps ravipatel.\nSee #66352.\n\n",
+        "date": "2026-10-22T09:24:05.527649Z",
+        "files": [
+            "/trunk/src/wp-content/themes/ipsum/screenshot.jpg"
+        ]
+    },
+    {
         "id": 64678,
         "author": "audrasjb",
         "message": "Bundled Themes: Add missing assets to Ipsum theme.\n\nThis changeset adds missing fonts and images to Ipsum.\n\nFollow-up to [64677].\n\nProps westonruter.\nSee #66352.\n\n",
