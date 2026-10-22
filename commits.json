@@ -1,5 +1,15 @@
 [
     {
+        "id": 64676,
+        "author": "ramonopoly",
+        "message": "Editor: Generate custom CSS for blocks rendered by their parent block\n\nThis commit generates per-block custom, \"Additional CSS\" for blocks that a parent block parses and renders itself, such as the links in a navigation menu.\n\nPreviously, the frontend did not render generate CSS for these blocks, the major case being Navigation Link blocks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14538\n\nProps mikachan, mrleemon, scruffian.\n\nFixes #66345.\n\n",
+        "date": "2026-10-22T00:56:22.339483Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/custom-css.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderCustomCssClassName.php"
+        ]
+    },
+    {
         "id": 64675,
         "author": "SergeyBiryukov",
         "message": "Tests: Use the null coalescing operators in the test suite.\n\nReplaces `isset()` and `array_key_exists()` ternaries that return the tested value or a fallback of `null` or `''` with the null coalescing operator (`??`), and self-referencing `$x = $x ?? $y` assignments with the null coalescing assignment operator (`??=`).\n\n**Why this is safe**\n\n- `??` and `isset()` test the same condition, so the fallback is used in exactly the same cases.\n- `array_key_exists()` and `??` only differ for a key that exists with a `null` value. Every converted `array_key_exists()` site falls back to `null`, so both forms return `null` in that case as well.\n- `??=` requires PHP 7.4, which is already the minimum supported version.\n- No behavior change; this is test-only code.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14616.\n\nFollow-up to r63609, r63633.\n\nProps Soean, huzaifaalmesbah.\nSee #65819.",
