@@ -1,5 +1,15 @@
 [
     {
+        "id": 64684,
+        "author": "wildworks",
+        "message": "Comments: Restore child notes trashed with their parent note.\n\nRestoring a top-level note from the Trash now also restores the child notes that were trashed along with it. Child notes the user trashed individually before trashing the parent stay in the Trash.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14044\n\nProps wildworks, mukesh27, peterwilsoncc.\nFixes #66255.",
+        "date": "2026-10-23T03:13:59.316978Z",
+        "files": [
+            "/trunk/src/wp-includes/comment.php",
+            "/trunk/tests/phpunit/tests/comment.php"
+        ]
+    },
+    {
         "id": 64683,
         "author": "peterwilsoncc",
         "message": "Themes: Add `label` support to `theme.json` schema.\n\nAdds the `label` as a supported element within the `theme.json` schema to allow theme developers/editors to modify the styles as required.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13105.\nMerges PHP component of https://github.com/WordPress/gutenberg/pull/81160 to WordPress-Develop.\n\nFixes #65899.\nProps sarthaknagoshe2002, wildworks, onemaggie, im3dabasia1.\n\n",
