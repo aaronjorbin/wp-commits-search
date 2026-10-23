@@ -1,5 +1,14 @@
 [
     {
+        "id": 64683,
+        "author": "peterwilsoncc",
+        "message": "Themes: Add `label` support to `theme.json` schema.\n\nAdds the `label` as a supported element within the `theme.json` schema to allow theme developers/editors to modify the styles as required.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13105.\nMerges PHP component of https://github.com/WordPress/gutenberg/pull/81160 to WordPress-Develop.\n\nFixes #65899.\nProps sarthaknagoshe2002, wildworks, onemaggie, im3dabasia1.\n\n",
+        "date": "2026-10-23T01:52:51.148612Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme-json.php"
+        ]
+    },
+    {
         "id": 64682,
         "author": "westonruter",
         "message": "Formatting: Document `sanitize_key()` as accepting `mixed`.\n\nSince a non-scalar key was made to yield an empty string in r52292 and non-string scalars were again coerced to a string in r52370, `sanitize_key()` handles values of any type, and its tests cover this. Most of its callers pass raw request data or REST parameters, which are untyped, so documenting `$key` as a `string` caused PHPStan to report an error at nearly every call site.\n\nThe `sanitize_key` filter is updated to match, as it receives the original key, and its sanitized key is now typed as a lowercase string so that the result of `apply_filters()` agrees with the function's return type. The cast to `string` before `strtolower()` makes the existing coercion explicit without changing behavior. Tests are added for additional non-string types and for the arguments passed to the filter.\n\nThis resolves 50 PHPStan errors at rule level 10.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14759.\nFollow-up to r13718, r52292, r52370.\n\nSee #54160, #65817.\n",
