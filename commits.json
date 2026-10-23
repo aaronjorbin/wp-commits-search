@@ -1,5 +1,19 @@
 [
     {
+        "id": 64690,
+        "author": "westonruter",
+        "message": "Code Modernization: Use `array_any()` and `array_all()` more widely.\n\nThis replaces `foreach` loops that return early on the first matching or failing element with `array_any()` and `array_all()`, with no change in behavior. These loops were all added in later features, so they were missed by the conversions in r62550 and r62553.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14618.\nFollow-up to r59783, r62550, r62553, r62564, r63453, r64337, r64351, r64388, r64402, r64500, r64588.\n\nProps soean.\nSee #65818.\n",
+        "date": "2026-10-23T17:58:31.822632Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/plugin.php",
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-content.php",
+            "/trunk/src/wp-includes/abilities-api/class-wp-ability.php",
+            "/trunk/src/wp-includes/class-wp-rewrite.php",
+            "/trunk/src/wp-includes/media.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-config-key-provider.php"
+        ]
+    },
+    {
         "id": 64689,
         "author": "jorgefilipecosta",
         "message": "REST API: Let routes turn off `_fields`, `_embed` and response links.\n\nAdd a `data_processing` option to REST routes and route handlers, so a route can serve its response data as returned. The option is `false` to turn off every feature, or an array with any of the `fields`, `embed` and `links` keys. Every feature is on by default, the handler setting applies over the route setting feature by feature, and turning off `links` also turns off `embed`.\nThe settings are resolved once, when the request is matched, and stored on the request attributes, the matched handler and the response, where `rest_filter_response_fields()`, `WP_REST_Controller::get_fields_for_response()` and `WP_REST_Server::response_to_data()` read them. They apply to served, enveloped, batched and preloaded requests, and to responses returned by the `rest_pre_dispatch` filter. The index lists the settings of endpoints that turn a feature off.\nResponse data that is not an array is now served as returned even without the option: `_fields` leaves scalars and objects alone and keeps list items that are not arrays, links are not added to them unless the object implements `ArrayAccess`, and `rest_preload_api_request()` no longer casts preloaded data to an array.\nThis lets endpoints that own their output schema, such as the abilities run endpoint, return objects, lists and scalar values unchanged.\n\nProps jorgefilipecosta, gziolo.\nSee #66267.\nFixes #66372.",
