@@ -1,5 +1,50 @@
 [
     {
+        "id": 64687,
+        "author": "gziolo",
+        "message": "Abilities API: Align environment info permissions with Site Health\n\nRequire `view_site_health_checks` for `core/get-environment-info`\ninstead of `manage_options`. Add regression tests.\n\nProps gziolo, jorgefilipecosta, jonsurrell.\nFixes #66369.\n\n",
+        "date": "2026-10-23T07:43:15.660264Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreAbilities.php"
+        ]
+    },
+    {
+        "id": 64686,
+        "author": "oandregal",
+        "message": "Editor: Fix edge cases in the entity actions and fields APIs.\n\n`_wp_preload_entity_actions()` and `_wp_preload_entity_fields()` assumed\n`$paths` was an array, so the editor crashed when an earlier\n`block_editor_rest_api_preload_paths` callback returned `null`, `false`,\na string or an object. Empty values are now turned into an array so the\nentity paths are still added. Other non-array values, and contexts that\nare not a `WP_Block_Editor_Context`, are returned unchanged. `$context`\nnow defaults to `null`, so calling either function with one argument no\nlonger throws an `ArgumentCountError`.\n\nNumeric script module ids are now handled as strings. PHP turned them into\ninteger array keys, so `wp_get_registered_entity_field_modules()` and\n`wp_get_registered_entity_action_modules()` could miss them in a strict\ncomparison and `array_merge()` could renumber them. Both functions now\nreturn a list of entries holding the module id and the ids of the fields\nor actions it applies to. This is the shape the REST controllers already\nreturned, and they now use these results directly. The entity fields\nendpoint now returns module ids as strings, matching its schema.\n\nA field registered with the id `'0'` is no longer rejected as empty.\n\nThe code duplicated between the two APIs now lives in a new\n`entity-utils.php` file:\n- `_wp_add_entity_preload_paths()` builds the preload paths for both\n  preload callbacks.\n- `_wp_add_entity_modules_to_editor_script()` adds the script modules to\n  the editor script for both `admin_footer` callbacks. It takes a callable\n  rather than the modules, so the registries are still only read on pages\n  that load the editor script.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14716.\n\nProps oandregal, jorgefilipecosta.\nSee #66229, #66343.\n",
+        "date": "2026-10-23T07:31:51.249550Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-entity-actions-registry.php",
+            "/trunk/src/wp-includes/class-wp-entity-fields-registry.php",
+            "/trunk/src/wp-includes/entity-actions.php",
+            "/trunk/src/wp-includes/entity-fields.php",
+            "/trunk/src/wp-includes/entity-utils.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-entity-actions-controller.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-entity-fields-controller.php",
+            "/trunk/src/wp-settings.php",
+            "/trunk/tests/phpunit/tests/entity-actions/registerCoreEntityActions.php",
+            "/trunk/tests/phpunit/tests/entity-actions.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpAddEntityFieldModulesToEditorScript.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpEntityFieldsRegistry.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpPreloadEntityFields.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpRegisterCoreFieldCollections.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpRegisterEntityFieldCollection.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-entity-fields-controller.php"
+        ]
+    },
+    {
+        "id": 64685,
+        "author": "gziolo",
+        "message": "Abilities API: Improve inline documentation\n\nClarify required capabilities and input-dependent permission checks,\nschema handling, callbacks, and execution hooks. Correct registration\nexamples and naming constraints, and document discovery filtering\nand preservation of ability keys.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14550.\n\nProps gziolo, jorgefilipecosta.\nSee #66325, #65569.\n\n\n",
+        "date": "2026-10-23T07:23:13.534653Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities-api/class-wp-abilities-registry.php",
+            "/trunk/src/wp-includes/abilities-api/class-wp-ability.php",
+            "/trunk/src/wp-includes/abilities-api.php"
+        ]
+    },
+    {
         "id": 64684,
         "author": "wildworks",
         "message": "Comments: Restore child notes trashed with their parent note.\n\nRestoring a top-level note from the Trash now also restores the child notes that were trashed along with it. Child notes the user trashed individually before trashing the parent stay in the Trash.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14044\n\nProps wildworks, mukesh27, peterwilsoncc.\nFixes #66255.",
