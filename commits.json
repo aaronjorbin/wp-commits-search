@@ -1,5 +1,15 @@
 [
     {
+        "id": 64688,
+        "author": "jorgefilipecosta",
+        "message": "Abilities API: Name the author of a `core/content-query` post only to users who may see them.\n\nThe `core/content-query` ability returned the author's display name and slug for every post the current user can read, and its `author` slug filter named any user of the site.\nReturn them only to users who may see the author: the author themselves, users who can edit them or list users, and otherwise users who can read a published post of theirs in a post type exposed to abilities, where the ability already returns the author.\n\nFollow-up to [64388], [64680].\n\nProps jorgefilipecosta, gziolo.\nSee #66268.",
+        "date": "2026-10-23T10:05:06.250604Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-content.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreContentAbility.php"
+        ]
+    },
+    {
         "id": 64687,
         "author": "gziolo",
         "message": "Abilities API: Align environment info permissions with Site Health\n\nRequire `view_site_health_checks` for `core/get-environment-info`\ninstead of `manage_options`. Add regression tests.\n\nProps gziolo, jorgefilipecosta, jonsurrell.\nFixes #66369.\n\n",
