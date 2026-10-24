@@ -1,5 +1,16 @@
 [
     {
+        "id": 64694,
+        "author": "SergeyBiryukov",
+        "message": "Code Quality: Remove a redundant `is_wp_error()` check after uploading a plugin or theme.\n\nAfter a plugin or theme is installed from an uploaded ZIP file in `wp-admin/update.php`, the upload is cleaned up when `$result || is_wp_error( $result )`. A `WP_Error` is an object and therefore always truthy, so the first operand already covers it and the `is_wp_error()` call can never return `true`. PHPStan reports this as `function.impossibleType`.\n\nThe condition is reduced to `if ( $result )`, which behaves identically: a failed installation still cleans up the upload, and only `false`, which `WP_Upgrader::run()` returns when filesystem credentials are requested, keeps the upload so it is still there once the credentials are entered.\n\nThis empties the `function.impossibleType` baseline, so the file and its entry in `phpstan.neon.dist` are removed.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14778.\n\nProps Soean.\nSee #65817.",
+        "date": "2026-10-24T22:55:37.198752Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-admin/update.php",
+            "/trunk/tests/phpstan/baselines/function.impossibleType.neon"
+        ]
+    },
+    {
         "id": 64693,
         "author": "peterwilsoncc",
         "message": "Themes: Clarify 'editor-style' vs 'editor-styles' documentation.\n\nWordPress themes can support both `editor-styles` (plural) for the block editor and `editor-style` (singular) for the TinyMCE/classic editors.\n\nThis improves the documentation of the `add_editor_style()` and `remove_editor_styles()` functions to use `add_theme_support( 'editor-styles' )` and `remove_theme_support( 'editor-styles' )` to add stylesheets to the block editor.\n\nThe tests for theme support are expanded to ensure that the subtle distinction is retained.\n\nProps azaozz, chaion07, desrosj, hellofromtonya, khoipro, oglekler, sabernhardt, sergeybiryukov, soean, sukhendu2002.\nFixes #60826.\n\n\n",
