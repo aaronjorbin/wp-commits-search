@@ -1,5 +1,15 @@
 [
     {
+        "id": 64695,
+        "author": "SergeyBiryukov",
+        "message": "Code Quality: Correct `argument.unresolvableType` PHPStan errors in `cron.php`.\n\nIn `wp_schedule_single_event()` and `wp_schedule_event()`, `$crons` keys are positive integer Unix timestamps. Using `uksort( $crons, 'strnatcasecmp' )` caused PHPStan level 2+ to report unresolvable callback argument types when passing integer keys to a string comparison function.\n\nReplacing `uksort()` with `ksort( $crons )` maintains natural numerical ordering by timestamp without type mismatches or unnecessary docblock type overrides.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14030.\n\nFollow-up to r4289.\n\nProps huzaifaalmesbah.\nSee #65817.",
+        "date": "2026-10-25T18:37:56.780355Z",
+        "files": [
+            "/trunk/src/wp-includes/cron.php",
+            "/trunk/tests/phpstan/baselines/argument.unresolvableType.neon"
+        ]
+    },
+    {
         "id": 64694,
         "author": "SergeyBiryukov",
         "message": "Code Quality: Remove a redundant `is_wp_error()` check after uploading a plugin or theme.\n\nAfter a plugin or theme is installed from an uploaded ZIP file in `wp-admin/update.php`, the upload is cleaned up when `$result || is_wp_error( $result )`. A `WP_Error` is an object and therefore always truthy, so the first operand already covers it and the `is_wp_error()` call can never return `true`. PHPStan reports this as `function.impossibleType`.\n\nThe condition is reduced to `if ( $result )`, which behaves identically: a failed installation still cleans up the upload, and only `false`, which `WP_Upgrader::run()` returns when filesystem credentials are requested, keeps the upload so it is still there once the credentials are entered.\n\nThis empties the `function.impossibleType` baseline, so the file and its entry in `phpstan.neon.dist` are removed.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14778.\n\nProps Soean.\nSee #65817.",
