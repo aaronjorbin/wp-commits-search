@@ -1,5 +1,62 @@
 [
     {
+        "id": 64701,
+        "author": "audrasjb",
+        "message": "Docs: Fix various typos in inline comments: `/wp-includes/kses.php`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14844.\n\nProps nofearinc.\nSee #65860.\n\n",
+        "date": "2026-10-25T19:59:34.212260Z",
+        "files": [
+            "/trunk/src/wp-includes/kses.php"
+        ]
+    },
+    {
+        "id": 64700,
+        "author": "audrasjb",
+        "message": "Docs: Fix various typos in inline comments: `/sitemaps/class-wp-sitemaps-renderer.php`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14844.\n\nProps nofearinc.\nSee #65860.\n\n",
+        "date": "2026-10-25T19:55:56.523876Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-plugins-controller.php",
+            "/trunk/src/wp-includes/sitemaps/class-wp-sitemaps-renderer.php"
+        ]
+    },
+    {
+        "id": 64699,
+        "author": "audrasjb",
+        "message": "Docs: Fix erroneous `since` mention in the `upload_from_url()` method of `WP_REST_Attachments_Controller` class.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14844.\n\nProps nofearinc.\nSee #65860.\n\n",
+        "date": "2026-10-25T19:53:13.571939Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php"
+        ]
+    },
+    {
+        "id": 64698,
+        "author": "audrasjb",
+        "message": "Docs: Fix various typos in inline comments: `/block-supports/settings.php`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14844.\n\nProps nofearinc.\nSee #65860.\n\n",
+        "date": "2026-10-25T19:50:36.481976Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/settings.php"
+        ]
+    },
+    {
+        "id": 64697,
+        "author": "audrasjb",
+        "message": "Docs: Fix various typos in inline comments: `/wp-admin/css/admin-menu.css`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14844.\n\nProps nofearinc.\nSee #65860.\n\n",
+        "date": "2026-10-25T19:47:40.244642Z",
+        "files": [
+            "/trunk/src/wp-admin/css/admin-menu.css"
+        ]
+    },
+    {
+        "id": 64696,
+        "author": "audrasjb",
+        "message": "\nDocs: Fix various typos in inline comments: `/wp/editor/base.js`, `/wp/backbone.js` and `/wp/theme.js`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14844.\n\nProps nofearinc.\nSee #65860.\n\n",
+        "date": "2026-10-25T19:46:01.346373Z",
+        "files": [
+            "/trunk/src/js/_enqueues/wp/backbone.js",
+            "/trunk/src/js/_enqueues/wp/editor/base.js",
+            "/trunk/src/js/_enqueues/wp/theme.js"
+        ]
+    },
+    {
         "id": 64695,
         "author": "SergeyBiryukov",
         "message": "Code Quality: Correct `argument.unresolvableType` PHPStan errors in `cron.php`.\n\nIn `wp_schedule_single_event()` and `wp_schedule_event()`, `$crons` keys are positive integer Unix timestamps. Using `uksort( $crons, 'strnatcasecmp' )` caused PHPStan level 2+ to report unresolvable callback argument types when passing integer keys to a string comparison function.\n\nReplacing `uksort()` with `ksort( $crons )` maintains natural numerical ordering by timestamp without type mismatches or unnecessary docblock type overrides.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14030.\n\nFollow-up to r4289.\n\nProps huzaifaalmesbah.\nSee #65817.",
