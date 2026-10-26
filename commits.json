@@ -1,5 +1,15 @@
 [
     {
+        "id": 64740,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Update Playwright to 1.64.1.\n\nUpdate `@playwright/test` from `1.61.1` to `1.64.1`, along with its `playwright` and `playwright-core` dependencies. This provides test-lock support for follow-up improvements to parallel E2E execution.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14896\n\nProps adrianmoldovanwp.\nSee #65857.\n",
+        "date": "2026-10-26T18:36:25.250739Z",
+        "files": [
+            "/trunk/package-lock.json",
+            "/trunk/package.json"
+        ]
+    },
+    {
         "id": 64739,
         "author": "lancewillett",
         "message": "Tests: Add the theme tests omitted from [64736].\n\nAdd `themes.test.js` and the fixture documentation from the reviewed patch. [64736] added the ZIP fixture but omitted these two files.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8082\n\nProps juhise, lucatume.\nSee #52895.\n",
