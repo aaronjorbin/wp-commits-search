@@ -1,5 +1,174 @@
 [
     {
+        "id": 64752,
+        "author": "lancewillett",
+        "message": "Tests: Cover repeated string replacement.\n\nTest `_deep_replace()` with nested matches, multiple search strings, empty input, and scalar subjects. Verify that replacement continues until no matches remain.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14636\n\nProps shailu25, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-26T22:11:40.706974Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/deepReplace.php"
+        ]
+    },
+    {
+        "id": 64751,
+        "author": "lancewillett",
+        "message": "Tests: Cover calendar weekday normalization.\n\nTest `calendar_week_mod()` at positive and negative week boundaries. Verify that offsets wrap into the expected weekday range and preserve the float return type.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14632\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T22:01:08.492488Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/calendarWeekMod.php"
+        ]
+    },
+    {
+        "id": 64750,
+        "author": "lancewillett",
+        "message": "Tests: Cover query string construction.\n\nTest `build_query()` with empty, nested, and multiple values. Verify that keys and values remain unencoded, null values are omitted, and false becomes zero.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14631\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T22:00:17.447510Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/buildQuery.php"
+        ]
+    },
+    {
+        "id": 64749,
+        "author": "lancewillett",
+        "message": "Tests: Cover admin page title resolution.\n\nTest `get_admin_page_title()` with an existing title, top-level menus, core and plugin submenus, and post type parents. Verify title fallback behavior and restore the affected globals and query parameter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14627\n\nProps shailu25, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-26T21:58:32.226843Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/getAdminPageTitle.php"
+        ]
+    },
+    {
+        "id": 64748,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin cache invalidation.\n\nVerify that `wp_clean_plugins_cache()` clears the plugin discovery cache and handles the update transient correctly for omitted, true, and false arguments.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14626\n\nProps shailu25, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-26T21:57:10.209309Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/wpCleanPluginsCache.php"
+        ]
+    },
+    {
+        "id": 64747,
+        "author": "lancewillett",
+        "message": "Tests: Resolve gallery attachment IDs after fixture setup.\n\nResolve the gallery shortcode's attachment ID during test execution instead of in the data provider, which runs before fixture setup. Add an unrelated attachment and assert that the response includes only the intended caption.\n\nPreserve the existing success and rejection expectations for all three shortcode cases.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14832\n\nProps benitoalba.\nSee #66211.\n",
+        "date": "2026-10-26T21:49:27.444053Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxParseMediaShortcode.php"
+        ]
+    },
+    {
+        "id": 64746,
+        "author": "lancewillett",
+        "message": "Tests: Make remaining utility data providers static.\n\nDeclare 20 data providers in the secrets, cache, database, script dependency and locale tests as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14670, https://github.com/WordPress/wordpress-develop/pull/14799, https://github.com/WordPress/wordpress-develop/pull/14800, https://github.com/WordPress/wordpress-develop/pull/14802, https://github.com/WordPress/wordpress-develop/pull/14804, https://github.com/WordPress/wordpress-develop/pull/14806\n\nProps ravipatel, shailu25, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-26T21:29:23.091340Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/cache.php",
+            "/trunk/tests/phpunit/tests/db/realEscape.php",
+            "/trunk/tests/phpunit/tests/dependencies/jquery.php",
+            "/trunk/tests/phpunit/tests/dependencies.php",
+            "/trunk/tests/phpunit/tests/locale.php",
+            "/trunk/tests/phpunit/tests/secrets/capabilities.php",
+            "/trunk/tests/phpunit/tests/secrets/errorCodes.php",
+            "/trunk/tests/phpunit/tests/secrets/wpSecret.php",
+            "/trunk/tests/phpunit/tests/secrets/wpSecretsCipher.php",
+            "/trunk/tests/phpunit/tests/secrets/wpSecretsConfigKeyProvider.php",
+            "/trunk/tests/phpunit/tests/secrets/wpSecretsKeyManager.php",
+            "/trunk/tests/phpunit/tests/secrets/wpSecretsValidateName.php"
+        ]
+    },
+    {
+        "id": 64745,
+        "author": "lancewillett",
+        "message": "Tests: Make file and filesystem data providers static.\n\nDeclare 30 data providers in the file, filesystem and file type tests as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14613, https://github.com/WordPress/wordpress-develop/pull/14807, https://github.com/WordPress/wordpress-develop/pull/14887\n\nProps devmuhib, shailu25, benitoalba, mukesh27, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-26T21:27:33.831583Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/file.php",
+            "/trunk/tests/phpunit/tests/filesystem/moveDir.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpFilesystemDirect/base.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpFilesystemDirect/chdir.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpFilesystemDirect/chmod.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpFilesystemDirect/delete.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpFilesystemDirect/dirlist.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpFilesystemDirect/isDir.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpFilesystemDirect/isFile.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpFilesystemDirect/mkdir.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpFilesystemDirect/touch.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpOpcacheInvalidateDirectory.php",
+            "/trunk/tests/phpunit/tests/filesystem/wpZipFileIsValid.php",
+            "/trunk/tests/phpunit/tests/functions.php"
+        ]
+    },
+    {
+        "id": 64744,
+        "author": "lancewillett",
+        "message": "Tests: Make URL, routing, hook and shortcode data providers static.\n\nDeclare 20 data providers in the actions, admin bar, canonical, filters, rewrite, shortcode and URL tests as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14706, https://github.com/WordPress/wordpress-develop/pull/14723, https://github.com/WordPress/wordpress-develop/pull/14724, https://github.com/WordPress/wordpress-develop/pull/14790, https://github.com/WordPress/wordpress-develop/pull/14792, https://github.com/WordPress/wordpress-develop/pull/14793, https://github.com/WordPress/wordpress-develop/pull/14803\n\nProps devmuhib, shailu25, mukesh27, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-26T21:25:36.445685Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/actions.php",
+            "/trunk/tests/phpunit/tests/adminbar.php",
+            "/trunk/tests/phpunit/tests/canonical.php",
+            "/trunk/tests/phpunit/tests/filters.php",
+            "/trunk/tests/phpunit/tests/rewrite.php",
+            "/trunk/tests/phpunit/tests/shortcode.php",
+            "/trunk/tests/phpunit/tests/url.php"
+        ]
+    },
+    {
+        "id": 64743,
+        "author": "lancewillett",
+        "message": "Tests: Make post, comment and term data providers static.\n\nDeclare eight data providers in the post, comment, category, taxonomy and term tests as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14622, https://github.com/WordPress/wordpress-develop/pull/14623, https://github.com/WordPress/wordpress-develop/pull/14624, https://github.com/WordPress/wordpress-develop/pull/14788, https://github.com/WordPress/wordpress-develop/pull/14791, https://github.com/WordPress/wordpress-develop/pull/14801, https://github.com/WordPress/wordpress-develop/pull/14805\n\nProps shailu25, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-26T21:23:11.505477Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/walkerCategory.php",
+            "/trunk/tests/phpunit/tests/comment/getLastCommentModified.php",
+            "/trunk/tests/phpunit/tests/post/truncatePostSlug.php",
+            "/trunk/tests/phpunit/tests/post/wpCountAttachments.php",
+            "/trunk/tests/phpunit/tests/post/wpCountPosts.php",
+            "/trunk/tests/phpunit/tests/taxonomy.php",
+            "/trunk/tests/phpunit/tests/term.php"
+        ]
+    },
+    {
+        "id": 64742,
+        "author": "lancewillett",
+        "message": "Tests: Make user and multisite data providers static.\n\nDeclare 41 data providers in the user and multisite tests as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14725, https://github.com/WordPress/wordpress-develop/pull/14726, https://github.com/WordPress/wordpress-develop/pull/14763, https://github.com/WordPress/wordpress-develop/pull/14771\n\nProps devmuhib, therssoftware, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-26T21:21:54.510393Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/multisite/bootstrap.php",
+            "/trunk/tests/phpunit/tests/multisite/forceSslContent.php",
+            "/trunk/tests/phpunit/tests/multisite/getBlogDetails.php",
+            "/trunk/tests/phpunit/tests/multisite/getSpaceAllowed.php",
+            "/trunk/tests/phpunit/tests/multisite/isEmailAddressUnsafe.php",
+            "/trunk/tests/phpunit/tests/multisite/network.php",
+            "/trunk/tests/phpunit/tests/multisite/site.php",
+            "/trunk/tests/phpunit/tests/multisite/siteDetails.php",
+            "/trunk/tests/phpunit/tests/multisite/updateBlogDetails.php",
+            "/trunk/tests/phpunit/tests/multisite/upgradeNetwork.php",
+            "/trunk/tests/phpunit/tests/multisite/wpGetSites.php",
+            "/trunk/tests/phpunit/tests/multisite/wpSite.php",
+            "/trunk/tests/phpunit/tests/multisite/wpSiteQuery.php",
+            "/trunk/tests/phpunit/tests/multisite/wpmuValidateBlogSignup.php",
+            "/trunk/tests/phpunit/tests/multisite/wpmuValidateUserSignup.php",
+            "/trunk/tests/phpunit/tests/user/countUsers.php",
+            "/trunk/tests/phpunit/tests/user/query.php",
+            "/trunk/tests/phpunit/tests/user/wpSetCurrentUser.php"
+        ]
+    },
+    {
+        "id": 64741,
+        "author": "lancewillett",
+        "message": "Tests: Make block data providers static.\n\nDeclare 11 data providers in the block, block template and block supports tests as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14717, https://github.com/WordPress/wordpress-develop/pull/14718, https://github.com/WordPress/wordpress-develop/pull/14719, https://github.com/WordPress/wordpress-develop/pull/14764, https://github.com/WordPress/wordpress-develop/pull/14765, https://github.com/WordPress/wordpress-develop/pull/14766\n\nProps devmuhib, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-26T21:19:38.376200Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/basic.php",
+            "/trunk/tests/phpunit/tests/block-supports/colors.php",
+            "/trunk/tests/phpunit/tests/block-supports/duotone.php",
+            "/trunk/tests/phpunit/tests/block-template-utils.php",
+            "/trunk/tests/phpunit/tests/block-templates/buildBlockTemplateResultFromFile.php",
+            "/trunk/tests/phpunit/tests/block-templates/getTemplateHierarchy.php",
+            "/trunk/tests/phpunit/tests/blocks/getBlockTemplates.php",
+            "/trunk/tests/phpunit/tests/blocks/resolvePatternBlocks.php",
+            "/trunk/tests/phpunit/tests/blocks/wpBlockTypeRegistry.php"
+        ]
+    },
+    {
         "id": 64740,
         "author": "lancewillett",
         "message": "Build/Test Tools: Update Playwright to 1.64.1.\n\nUpdate `@playwright/test` from `1.61.1` to `1.64.1`, along with its `playwright` and `playwright-core` dependencies. This provides test-lock support for follow-up improvements to parallel E2E execution.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14896\n\nProps adrianmoldovanwp.\nSee #65857.\n",
