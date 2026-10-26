@@ -1,5 +1,15 @@
 [
     {
+        "id": 64729,
+        "author": "gziolo",
+        "message": "Abilities API: Normalize inputs in core information abilities\n\nSupport object inputs and comma- or whitespace-separated field lists\nduring direct execution. Preserve empty-selection defaults and validation\nof field names. Add regression tests.\n\nProps gziolo, jorgefilipecosta.\nFixes #66370.\n\n",
+        "date": "2026-10-26T08:34:12.355938Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreAbilities.php"
+        ]
+    },
+    {
         "id": 64728,
         "author": "gziolo",
         "message": "Tests: Expand JSON Schema value preparation coverage\n\nTest nested `oneOf` schemas with multiple matching branches and combined `anyOf`/`oneOf` schemas through `wp_prepare_json_value_for_client()`, asserting the resulting JSON representation. Add three basic tests for `_wp_json_schema_matches_type()` while retaining the existing coverage for nesting and type inheritance.\n\nFollow-up to [64592].\n\nProps ravipatel, gziolo.\nSee #66267.\n\n\n",
