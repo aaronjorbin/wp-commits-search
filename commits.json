@@ -1,5 +1,275 @@
 [
     {
+        "id": 64727,
+        "author": "westonruter",
+        "message": "Code Quality: Sync PHPStan fixes from Gutenberg.\n\nThese fixes were made in Gutenberg while resolving the PHPStan errors in the plugin, ahead of adding PHPStan to its CI, and are brought to core to keep the two codebases in sync. They were developed in:\n\n* https://github.com/WordPress/gutenberg/pull/68398\n* https://github.com/WordPress/gutenberg/pull/68404\n* https://github.com/WordPress/gutenberg/pull/68405\n* https://github.com/WordPress/gutenberg/pull/68407\n\nThe first one fixes a bug in core. Since r56046 the `array_key_exists()` checks in `wp_register_shadow_support()` have lacked their negation, so a block type with shadow support but no `style` or `shadow` attribute never had them registered, while one that already defined them had its definitions replaced, dropping any `default`. Gutenberg already had the negation. Tests are added for the attribute registration.\n\nThe others make implicit type conversions explicit in the layout and duotone code, and narrow the types used by `WP_Theme_JSON::get_feature_declarations_for_node()` so that it reports no errors even at PHPStan rule level 10. Since the node comes from `theme.json` data, that method now also checks that a feature is an array before reading its subfeatures. This fixes a fatal error (\"Cannot unset string offsets\") when a feature's value is a string, such as a `shadow`, and the block's selectors for that feature are a list rather than keyed by subfeature name, since each numeric key then reads a character of the string instead of a subfeature. The baseline entries for the resolved errors are removed.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14862.\nFollow-up to r56046, r56058, r56101, r62478, r63426.\n\nProps justlevine, westonruter, poena, ramonopoly.\nSee #65817.\n",
+        "date": "2026-10-26T02:17:56.825718Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/layout.php",
+            "/trunk/src/wp-includes/block-supports/shadow.php",
+            "/trunk/src/wp-includes/class-wp-duotone.php",
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon",
+            "/trunk/tests/phpunit/tests/block-supports/shadow.php"
+        ]
+    },
+    {
+        "id": 64726,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 4.7 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 4.7 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:07:13.953533Z",
+        "files": [
+            "/branches/4.7",
+            "/branches/4.7/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64725,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 4.8 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 4.8 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:06:29.618649Z",
+        "files": [
+            "/branches/4.8",
+            "/branches/4.8/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64724,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 4.9 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 4.9 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:05:25.505789Z",
+        "files": [
+            "/branches/4.9",
+            "/branches/4.9/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64723,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 5.0 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 5.0 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:04:54.381182Z",
+        "files": [
+            "/branches/5.0",
+            "/branches/5.0/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64722,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 5.1 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 5.1 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:04:09.656595Z",
+        "files": [
+            "/branches/5.1",
+            "/branches/5.1/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64721,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 5.2 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 5.2 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:03:26.250615Z",
+        "files": [
+            "/branches/5.2",
+            "/branches/5.2/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64720,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 5.3 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 5.3 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:02:48.851519Z",
+        "files": [
+            "/branches/5.3",
+            "/branches/5.3/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64719,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 5.4 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 5.4 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:02:10.326468Z",
+        "files": [
+            "/branches/5.4",
+            "/branches/5.4/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64718,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 5.5 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 5.5 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:01:36.402149Z",
+        "files": [
+            "/branches/5.5",
+            "/branches/5.5/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64717,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 5.6 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 5.6 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:00:46.135320Z",
+        "files": [
+            "/branches/5.6",
+            "/branches/5.6/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64716,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 5.7 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 5.7 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T02:00:14.685805Z",
+        "files": [
+            "/branches/5.7",
+            "/branches/5.7/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64715,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 5.8 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 5.8 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:59:45.512450Z",
+        "files": [
+            "/branches/5.8",
+            "/branches/5.8/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64714,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 5.9 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 5.9 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:59:16.829636Z",
+        "files": [
+            "/branches/5.9",
+            "/branches/5.9/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64713,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 6.0 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 6.0 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:58:44.517398Z",
+        "files": [
+            "/branches/6.0",
+            "/branches/6.0/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64712,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 6.1 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 6.1 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:58:14.302411Z",
+        "files": [
+            "/branches/6.1",
+            "/branches/6.1/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64711,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 6.2 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 6.2 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:57:44.544647Z",
+        "files": [
+            "/branches/6.2",
+            "/branches/6.2/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64710,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 6.3 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 6.3 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:57:17.528714Z",
+        "files": [
+            "/branches/6.3",
+            "/branches/6.3/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64709,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 6.4 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 6.4 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:56:48.171846Z",
+        "files": [
+            "/branches/6.4",
+            "/branches/6.4/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64708,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 6.5 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 6.5 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:54:43.857615Z",
+        "files": [
+            "/branches/6.5",
+            "/branches/6.5/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64707,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 6.6 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 6.6 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:54:11.940606Z",
+        "files": [
+            "/branches/6.6",
+            "/branches/6.6/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64706,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 6.7 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 6.7 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:53:38.736771Z",
+        "files": [
+            "/branches/6.7",
+            "/branches/6.7/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64705,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 6.8 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 6.8 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:53:07.476579Z",
+        "files": [
+            "/branches/6.8",
+            "/branches/6.8/composer.json",
+            "/branches/6.8/src/wp-includes/certificates/ca-bundle.crt",
+            "/branches/6.8/src/wp-includes/certificates/cacert.pem"
+        ]
+    },
+    {
+        "id": 64704,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 6.9 branch.\n\nReviewed by desrosj.\nMerges r61685, r62271, r62393, r62929, r64671 to the 6.9 branch.\n\nProps westonruter, peterwilsoncc, johnbillion.\nSee #64245, #64969, #66355.\n",
+        "date": "2026-10-26T01:51:56.079516Z",
+        "files": [
+            "/branches/6.9",
+            "/branches/6.9/composer.json",
+            "/branches/6.9/src/wp-includes/certificates/ca-bundle.crt",
+            "/branches/6.9/src/wp-includes/certificates/cacert.pem"
+        ]
+    },
+    {
+        "id": 64703,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis applies the last 5 updates to the `composer/ca-bundle` to the bundled certificate file in the 7.0 branch.\n\nReviewed by desrosj.\nMerges r62393, r62929, r64671 to the 7.0 branch.\n\nProps westonruter, peterwilsoncc.\nSee #64245, #64969, #66355.\n\n",
+        "date": "2026-10-26T01:46:16.279887Z",
+        "files": [
+            "/branches/7.0",
+            "/branches/7.0/composer.json",
+            "/branches/7.0/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 64702,
+        "author": "desrosj",
+        "message": "Security: Update `composer/ca-bundle` to version `1.6.0`.\n\nThis update adds four and removes five certificates to the bundle.\n\nReviewed by desrosj.\nMerges r64671 to the 7.1 branch.\n\nProps westonruter, peterwilsoncc.\nSee #66355.\n\n",
+        "date": "2026-10-26T01:40:58.872688Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/composer.json",
+            "/branches/7.1/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
         "id": 64701,
         "author": "audrasjb",
         "message": "Docs: Fix various typos in inline comments: `/wp-includes/kses.php`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14844.\n\nProps nofearinc.\nSee #65860.\n\n",
