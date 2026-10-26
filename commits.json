@@ -1,5 +1,14 @@
 [
     {
+        "id": 64728,
+        "author": "gziolo",
+        "message": "Tests: Expand JSON Schema value preparation coverage\n\nTest nested `oneOf` schemas with multiple matching branches and combined `anyOf`/`oneOf` schemas through `wp_prepare_json_value_for_client()`, asserting the resulting JSON representation. Add three basic tests for `_wp_json_schema_matches_type()` while retaining the existing coverage for nesting and type inheritance.\n\nFollow-up to [64592].\n\nProps ravipatel, gziolo.\nSee #66267.\n\n\n",
+        "date": "2026-10-26T07:55:44.555579Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/json-schema.php"
+        ]
+    },
+    {
         "id": 64727,
         "author": "westonruter",
         "message": "Code Quality: Sync PHPStan fixes from Gutenberg.\n\nThese fixes were made in Gutenberg while resolving the PHPStan errors in the plugin, ahead of adding PHPStan to its CI, and are brought to core to keep the two codebases in sync. They were developed in:\n\n* https://github.com/WordPress/gutenberg/pull/68398\n* https://github.com/WordPress/gutenberg/pull/68404\n* https://github.com/WordPress/gutenberg/pull/68405\n* https://github.com/WordPress/gutenberg/pull/68407\n\nThe first one fixes a bug in core. Since r56046 the `array_key_exists()` checks in `wp_register_shadow_support()` have lacked their negation, so a block type with shadow support but no `style` or `shadow` attribute never had them registered, while one that already defined them had its definitions replaced, dropping any `default`. Gutenberg already had the negation. Tests are added for the attribute registration.\n\nThe others make implicit type conversions explicit in the layout and duotone code, and narrow the types used by `WP_Theme_JSON::get_feature_declarations_for_node()` so that it reports no errors even at PHPStan rule level 10. Since the node comes from `theme.json` data, that method now also checks that a feature is an array before reading its subfeatures. This fixes a fatal error (\"Cannot unset string offsets\") when a feature's value is a string, such as a `shadow`, and the block's selectors for that feature are a list rather than keyed by subfeature name, since each numeric key then reads a character of the string instead of a subfeature. The baseline entries for the resolved errors are removed.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14862.\nFollow-up to r56046, r56058, r56101, r62478, r63426.\n\nProps justlevine, westonruter, poena, ramonopoly.\nSee #65817.\n",
