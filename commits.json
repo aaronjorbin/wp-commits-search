@@ -1,5 +1,208 @@
 [
     {
+        "id": 64774,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_direct_php_update_button()`.\n\nTest that an empty direct update URL produces no output, a supplied URL\nproduces a button, and the URL is escaped in the output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14747\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T23:09:29.964716Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpDirectPhpUpdateButton.php"
+        ]
+    },
+    {
+        "id": 64773,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Use `assertNotSame()` for scalar comparison in link tests.\n\nConverts `assertNotEquals()` to `assertNotSame()` in `tests/phpunit/tests/link.php` where the values are scalar (strings, URLs).\n\n`assertNotSame()` is stricter \u2014 it checks both value and type equality, preventing false passes from type coercion.\n\nFollow-up to r25030, r48937.\n\nProps hmbashar, rejaulalomkhan.\nSee #64895.",
+        "date": "2026-10-26T23:09:23.497298Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link.php"
+        ]
+    },
+    {
+        "id": 64772,
+        "author": "lancewillett",
+        "message": "Tests: Use `snake_case` for image editor Ajax test methods.\n\nRename two image editor Ajax test methods to follow the suite naming\nconvention.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14745\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T23:08:03.467995Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxImageEditor.php"
+        ]
+    },
+    {
+        "id": 64771,
+        "author": "lancewillett",
+        "message": "Tests: Cover `_wp_add_global_attributes()`.\n\nTest merging global attributes into an existing attribute array, expanding\n`true` to global attributes, and preserving other values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14744\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T23:06:30.174004Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/kses/wpAddGlobalAttributes.php"
+        ]
+    },
+    {
+        "id": 64770,
+        "author": "lancewillett",
+        "message": "Tests: Cover valid Unicode character boundaries.\n\nTest `valid_unicode()` with allowed control characters, range boundaries, surrogate code points, excluded values, and numeric-string input.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14741\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T22:57:23.734034Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/kses/validUnicode.php"
+        ]
+    },
+    {
+        "id": 64769,
+        "author": "lancewillett",
+        "message": "Tests: Rename capability coverage checks.\n\nUse `snake_case` for the primitive and meta capability coverage test methods. Preserve their assertions and PHPUnit discovery.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14740\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T22:56:29.538013Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/capabilities.php"
+        ]
+    },
+    {
+        "id": 64768,
+        "author": "lancewillett",
+        "message": "Tests: Cover HTML tag name escaping.\n\nTest `tag_escape()` with case variations, allowed separators, invalid characters, and a filter override.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14737\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T22:54:29.058084Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/tagEscape.php"
+        ]
+    },
+    {
+        "id": 64767,
+        "author": "lancewillett",
+        "message": "Tests: Cover query title sanitization.\n\nTest `sanitize_title_for_query()` with empty input, markup, punctuation, and ordinary titles. Verify that the wrapper passes the `query` context.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14736\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T22:52:26.421857Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/sanitizeTitleForQuery.php"
+        ]
+    },
+    {
+        "id": 64766,
+        "author": "lancewillett",
+        "message": "Tests: Cover ISO 8601 timezone offsets.\n\nTest `iso8601_timezone_to_offset()` with UTC, zero offsets, positive and negative hours, and fractional-hour offsets.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14733\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T22:49:37.570882Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/iso8601TimezoneToOffset.php"
+        ]
+    },
+    {
+        "id": 64765,
+        "author": "lancewillett",
+        "message": "Tests: Rename the public query variables test.\n\nUse `snake_case` for the public query variables test method. Preserve its assertions and PHPUnit discovery.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14730\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T22:46:15.435109Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/query/vars.php"
+        ]
+    },
+    {
+        "id": 64764,
+        "author": "lancewillett",
+        "message": "Tests: Cover filesystem writability checks.\n\nTest `wp_is_writable()` with a writable directory, a temporary file, and a path whose parent does not exist. Use a missing parent to account for the Windows implementation creating files in writable directories.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14667\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-26T22:45:11.726783Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpIsWritable.php"
+        ]
+    },
+    {
+        "id": 64763,
+        "author": "lancewillett",
+        "message": "Tests: Cover PDF object URL validation.\n\nTest `_wp_kses_allow_pdf_objects()` with query strings, fragments, non-PDF extensions, unrelated hosts, and an accepted uploads URL. Keep rejection fixtures specific to the guard under test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14666\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-26T22:44:04.677463Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/kses/wpKsesAllowPdfObjects.php"
+        ]
+    },
+    {
+        "id": 64762,
+        "author": "lancewillett",
+        "message": "Tests: Cover KSES numeric entity decoding.\n\nTest `wp_kses_decode_entities()` with decimal and hexadecimal entities, mixed content, and named entities that must remain unchanged.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14665\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-26T22:43:00.356599Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/kses/wpKsesDecodeEntities.php"
+        ]
+    },
+    {
+        "id": 64761,
+        "author": "lancewillett",
+        "message": "Tests: Cover KSES pre-filter behavior.\n\nTest `wp_kses_hook()` with no filters, a content-changing callback, and a callback receiving the allowed HTML and protocol arguments.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14664\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-26T22:41:07.285748Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/kses/wpKsesHook.php"
+        ]
+    },
+    {
+        "id": 64760,
+        "author": "lancewillett",
+        "message": "Tests: Cover KSES URI attribute defaults and filtering.\n\nVerify selected defaults returned by `wp_kses_uri_attributes()`, their string types, and extension of the list through its filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14662\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-26T22:37:29.861825Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/kses/wpKsesUriAttributes.php"
+        ]
+    },
+    {
+        "id": 64759,
+        "author": "lancewillett",
+        "message": "Tests: Cover protected option names.\n\nVerify that `wp_protect_special_option()` permits an ordinary option and rejects `alloptions` and `notoptions` with the expected messages.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14660\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-26T22:35:58.292001Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/option/wpProtectSpecialOption.php"
+        ]
+    },
+    {
+        "id": 64758,
+        "author": "lancewillett",
+        "message": "Tests: Cover special character entity decoding.\n\nTest `wp_specialchars_decode()` with its default quote handling, explicit quote modes, named and numeric entities, and zero-padded numeric entities. Preserve literal expectations for each decoded result.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14659\n\nProps shailu25, huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-26T22:34:18.694629Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/wpSpecialcharsDecode.php"
+        ]
+    },
+    {
+        "id": 64757,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Update PHPStan to 2.3.2.\n\nPHPStan 2.3.2 no longer reports `$authors_dropdown` as possibly undefined in `WP_Posts_List_Table::inline_edit()`, where it is echoed under the same `post_type_supports()` condition that defines it, so its entry is removed from the `variable.undefined` baseline. Running 2.3.1 on the file still reports the variable, which confirms the change comes from the upgrade rather than from a stale baseline. The other baselines are unchanged, and the `phpstan/phpstan-phpunit` extension is already at its latest version.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14830.\nFollow-up to r63019, r64334.\n\nSee #65817.\n",
+        "date": "2026-10-26T22:26:00.828753Z",
+        "files": [
+            "/trunk/composer.json",
+            "/trunk/tests/phpstan/baselines/variable.undefined.neon"
+        ]
+    },
+    {
+        "id": 64756,
+        "author": "westonruter",
+        "message": "Code Quality: Remove the global PHPStan type aliases.\n\nThe `typeAliases` defined in `tests/phpstan/base.neon` only exist for core's own analysis, but the docblocks in `src/` that use them are read elsewhere too. A WordPress release package and the `WordPress/WordPress` repository only include `src/`, and the stubs generated from core (as used by `szepeviktor/phpstan-wordpress`) keep each reference to an alias while losing its definition. Anyone analyzing a plugin or theme against core then gets an unknown type at every use of an alias, unless they define each one themselves.\n\nThe `Maybe_Callable` union is now written out at each of its uses, which are mostly functions, where an alias declared on a class cannot be imported. The `Block_Style_Properties` shape is declared with `@phpstan-type` on `WP_Block_Styles_Registry`, which the generated stubs keep, and imported into `WP_REST_Block_Types_Controller`. A note in `base.neon` explains why new aliases should be declared on a class as well, at least until PHPStan supports declaring one outside a class.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14900.\nFollow-up to r63451, r63524.\n\nProps westonruter, marian1.\nSee #65817.\n",
+        "date": "2026-10-26T22:19:44.053544Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-styles-registry.php",
+            "/trunk/src/wp-includes/class-wp-hook.php",
+            "/trunk/src/wp-includes/plugin.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php",
+            "/trunk/tests/phpstan/base.neon"
+        ]
+    },
+    {
+        "id": 64755,
+        "author": "lancewillett",
+        "message": "Tests: Cover HTML entity conversion.\n\nTest `htmlentities2()` with plain text, markup, quotes, bare ampersands, and existing named and numeric entities. Verify that existing entities are preserved.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14645\n\nProps shailu25, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-26T22:16:11.693069Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/htmlentities2.php"
+        ]
+    },
+    {
+        "id": 64754,
+        "author": "lancewillett",
+        "message": "Tests: Cover HTTP origin retrieval.\n\nTest `get_http_origin()` with an absent header, a supplied origin, and an `http_origin` filter override.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14640\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T22:15:14.759045Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/http/getHttpOrigin.php"
+        ]
+    },
+    {
+        "id": 64753,
+        "author": "lancewillett",
+        "message": "Tests: Cover option value output escaping.\n\nTest `form_option()` with a custom option containing unescaped characters and with a missing option. Verify the escaped output and empty-string fallback.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14638\n\nProps shailu25, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-26T22:13:53.377070Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/option/formOption.php"
+        ]
+    },
+    {
         "id": 64752,
         "author": "lancewillett",
         "message": "Tests: Cover repeated string replacement.\n\nTest `_deep_replace()` with nested matches, multiple search strings, empty input, and scalar subjects. Verify that replacement continues until no matches remain.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14636\n\nProps shailu25, huzaifaalmesbah.\nSee #65819.\n",
