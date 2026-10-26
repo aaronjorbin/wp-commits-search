@@ -1,5 +1,16 @@
 [
     {
+        "id": 64730,
+        "author": "adamsilverstein",
+        "message": "REST API: Introduce the `rest_allowed_cors_methods` filter.\n\nAdd a filter to `rest_send_cors_headers()` so the `Access-Control-Allow-Methods` header sent with CORS responses can be adjusted. The list of methods is a fixed default and is not derived from the registered routes, so a site serving routes that accept other methods can now advertise them. The filter receives the method list as an array and the request in context, matching the shape of the sibling `rest_exposed_cors_headers` and `rest_allowed_cors_headers` filters, so a plugin can append to or narrow the list rather than restate it. An empty list omits the header. The default output is unchanged.\n\nThe filter is seeded from an `Access-Control-Allow-Methods` header already set on the response, limited to the methods in the default list, falling back to the default list itself. A value set through `rest_post_dispatch` was previously discarded: `rest_send_cors_headers()` runs on `rest_pre_serve_request`, after the response's own headers have been emitted, and `header()` replaces by default.\n\nFollow-up to [56096].\n\nProps moonmeister, sudar, TimothyBlynJacobs, aaemnnosttv, westonruter.\nFixes #46992.\n\n",
+        "date": "2026-10-26T15:56:24.885404Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api.php",
+            "/trunk/tests/phpunit/includes/spy-rest-server.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-cors-headers.php"
+        ]
+    },
+    {
         "id": 64729,
         "author": "gziolo",
         "message": "Abilities API: Normalize inputs in core information abilities\n\nSupport object inputs and comma- or whitespace-separated field lists\nduring direct execution. Preserve empty-selection defaults and validation\nof field names. Add regression tests.\n\nProps gziolo, jorgefilipecosta.\nFixes #66370.\n\n",
