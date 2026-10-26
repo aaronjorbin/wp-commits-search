@@ -1,5 +1,92 @@
 [
     {
+        "id": 64739,
+        "author": "lancewillett",
+        "message": "Tests: Add the theme tests omitted from [64736].\n\nAdd `themes.test.js` and the fixture documentation from the reviewed patch. [64736] added the ZIP fixture but omitted these two files.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8082\n\nProps juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-26T18:10:25.823164Z",
+        "files": [
+            "/trunk/tests/e2e/assets/e2e-test-theme.md",
+            "/trunk/tests/e2e/specs/themes.test.js"
+        ]
+    },
+    {
+        "id": 64738,
+        "author": "lancewillett",
+        "message": "Tests: Cover category and tag administration.\n\nAdd browser tests for creating, quick-editing, and deleting categories and tags, including assigning a parent category. Verify persisted changes and clean up test terms.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/7988\n\nProps jayson31, lucatume.\nSee #52895.\n",
+        "date": "2026-10-26T18:07:15.997057Z",
+        "files": [
+            "/trunk/tests/e2e/specs/taxonomies.test.js"
+        ]
+    },
+    {
+        "id": 64737,
+        "author": "lancewillett",
+        "message": "Tests: Cover media deletion and grid filtering.\n\nAdd browser coverage for deleting individual and bulk-selected media items, and filtering the media grid by type. Create isolated attachments and remove them after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/7717\n\nProps pavanpatil1, jayson31, jorbin, swissspidy, lucatume.\nSee #52895.\n",
+        "date": "2026-10-26T18:03:57.979344Z",
+        "files": [
+            "/trunk/tests/e2e/specs/media-library.test.js"
+        ]
+    },
+    {
+        "id": 64736,
+        "author": "lancewillett",
+        "message": "Tests: Cover theme activation and deletion.\n\nAdd browser tests for activating and deleting a theme using a local ZIP fixture. Restore the original active theme and remove the fixture after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8082\n\nProps juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-26T18:01:30.986071Z",
+        "files": [
+            "/trunk/tests/e2e/assets/e2e-test-theme.zip"
+        ]
+    },
+    {
+        "id": 64735,
+        "author": "lancewillett",
+        "message": "Tests: Cover comment Quick Edit persistence.\n\nExercise comment Quick Edit in the browser and verify that the edited values persist after reloading the page.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8089\n\nProps juhise, lucatume.\nSee #52895.\n",
+        "date": "2026-10-26T17:56:00.257923Z",
+        "files": [
+            "/trunk/tests/e2e/specs/moderate-comments.test.js"
+        ]
+    },
+    {
+        "id": 64734,
+        "author": "lancewillett",
+        "message": "Tests: Cover AJAX bookmark deletion.\n\nAdd tests for `wp_ajax_delete_link()` covering successful deletion, invalid nonces, insufficient permissions, and idempotent success for a missing bookmark. Verify that invalid nonce requests leave the bookmark intact.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11872\n\nProps pbearne, mindctrl.\nSee #65252.\n",
+        "date": "2026-10-26T17:54:15.934558Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/deleteLink.php"
+        ]
+    },
+    {
+        "id": 64733,
+        "author": "lancewillett",
+        "message": "Tests: Serve HTTP redirection tests from the local fixture server.\n\nCopy the redirection fixture into the existing local HTTP server directory and use its URL for redirect and header checks. Retain the external fallback when the local fixture is unavailable, and clear the fixture URL during teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14677\n\nProps devmuhib, huzaifaalmesbah.\nSee #63914.\n",
+        "date": "2026-10-26T17:52:43.177017Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/http/base.php"
+        ]
+    },
+    {
+        "id": 64732,
+        "author": "lancewillett",
+        "message": "Tests: Check readme recommendations without external HTTP requests.\n\nRun the offline check for recommended PHP, MySQL, and MariaDB version declarations in the default suite. Keep `external-http` on the three methods that check versions against external services.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14686\n\nProps devmuhib, huzaifaalmesbah.\nSee #63914.\n",
+        "date": "2026-10-26T17:49:45.356542Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/readme.php"
+        ]
+    },
+    {
+        "id": 64731,
+        "author": "adamsilverstein",
+        "message": "REST API: only include revisioned meta in revision responses.\n\nFix an issue where restoring a revision in the editor overwrote meta values that weren't associated with the revision.\n\nVisual Revisions in the block editor, introduced in 7.0, restores a revision by saving the `meta` returned from the revisions endpoint onto the post. That endpoint returned every `show_in_rest` meta key for the parent post type, but only revisioned keys are stored on a revision, so the rest came back as their default (or `null`) and the restore overwrote the post's real values. Unsynced patterns silently became synced, synced patterns failed to restore with a `rest_invalid_stored_value` error, and any other non-revisioned `show_in_rest` key was reset.\n\nIntroduce `WP_REST_Revision_Meta_Fields`, used by `WP_REST_Revisions_Controller`, which limits a revision's `meta` and its schema to the keys from `wp_post_revision_meta_keys()`. This matches what `wp_restore_post_revision()` restores from the classic revisions screen, and requires no editor change. Autosave responses follow the same rules, since they are prepared by the revisions controller; autosave requests still accept all of the parent post type's meta. Plugins that write meta onto revisions directly should add those keys with the `wp_post_revision_meta_keys` filter to keep them in responses.\n\nAlso fixes https://github.com/WordPress/gutenberg/issues/84809.\n\nProps dlocc, davidsword, talldanwp, rachelbaker, prasadkarmalkar, umeshnevase.\nFixes #66329.\n\n",
+        "date": "2026-10-26T17:33:08.785296Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php",
+            "/trunk/src/wp-includes/rest-api/fields/class-wp-rest-revision-meta-fields.php",
+            "/trunk/src/wp-settings.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-autosaves-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-revisions-controller.php",
+            "/trunk/tests/qunit/fixtures/wp-api-generated.js"
+        ]
+    },
+    {
         "id": 64730,
         "author": "adamsilverstein",
         "message": "REST API: Introduce the `rest_allowed_cors_methods` filter.\n\nAdd a filter to `rest_send_cors_headers()` so the `Access-Control-Allow-Methods` header sent with CORS responses can be adjusted. The list of methods is a fixed default and is not derived from the registered routes, so a site serving routes that accept other methods can now advertise them. The filter receives the method list as an array and the request in context, matching the shape of the sibling `rest_exposed_cors_headers` and `rest_allowed_cors_headers` filters, so a plugin can append to or narrow the list rather than restate it. An empty list omits the header. The default output is unchanged.\n\nThe filter is seeded from an `Access-Control-Allow-Methods` header already set on the response, limited to the methods in the default list, falling back to the default list itself. A value set through `rest_post_dispatch` was previously discarded: `rest_send_cors_headers()` runs on `rest_pre_serve_request`, after the response's own headers have been emitted, and `header()` replaces by default.\n\nFollow-up to [56096].\n\nProps moonmeister, sudar, TimothyBlynJacobs, aaemnnosttv, westonruter.\nFixes #46992.\n\n",
