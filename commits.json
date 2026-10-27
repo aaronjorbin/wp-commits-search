@@ -1,5 +1,14 @@
 [
     {
+        "id": 64791,
+        "author": "lancewillett",
+        "message": "Tests: Isolate script modules in block registration tests.\n\nSave and reset `$wp_script_modules` in `Tests_Blocks_Register::set_up()`, then restore the incoming instance in `tear_down()`. This prevents previously enqueued modules from affecting registration assertions when tests run in a different order.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14909\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T00:55:15.657377Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/blocks/register.php"
+        ]
+    },
+    {
         "id": 64790,
         "author": "lancewillett",
         "message": "Tests: Cover plain post permalink decisions.\n\nAdd coverage for `wp_force_plain_post_permalink()` across post statuses, read permissions, sample permalinks, missing posts, and unregistered statuses and types. Verify that the global post supplies the default and an explicit post takes precedence, using distinct expected results.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14532\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
