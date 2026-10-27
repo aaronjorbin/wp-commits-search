@@ -1,5 +1,111 @@
 [
     {
+        "id": 64862,
+        "author": "lancewillett",
+        "message": "Tests: Clean up fixtures in taxonomy and oEmbed tests.\n\nUnregister custom taxonomies during teardown in edit term link, tag link, attachment taxonomy, and category ancestor tests. Unregister `not_embeddable` after oEmbed discovery tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14943, https://github.com/WordPress/wordpress-develop/pull/14964, https://github.com/WordPress/wordpress-develop/pull/14965, https://github.com/WordPress/wordpress-develop/pull/14967, https://github.com/WordPress/wordpress-develop/pull/14986\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T22:59:46.984456Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/catIsAncestorOf.php",
+            "/trunk/tests/phpunit/tests/link/editTermLink.php",
+            "/trunk/tests/phpunit/tests/media/getAttachmentTaxonomies.php",
+            "/trunk/tests/phpunit/tests/oembed/discovery.php",
+            "/trunk/tests/phpunit/tests/term/getTagLink.php"
+        ]
+    },
+    {
+        "id": 64861,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom registrations after link and post type tests.\n\nUnregister fixture post types and taxonomies during teardown in link, Customizer navigation menu, and post type tests. Preserve parent teardown and clean up the shared edit term link taxonomy after the class.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14947, https://github.com/WordPress/wordpress-develop/pull/14948, https://github.com/WordPress/wordpress-develop/pull/14949, https://github.com/WordPress/wordpress-develop/pull/14951\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T22:54:03.290135Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/customize/nav-menus.php",
+            "/trunk/tests/phpunit/tests/link/getEditTagLink.php",
+            "/trunk/tests/phpunit/tests/link/getEditTermLink.php",
+            "/trunk/tests/phpunit/tests/post/types.php"
+        ]
+    },
+    {
+        "id": 64860,
+        "author": "lancewillett",
+        "message": "Tests: Clean up the post type in canonical redirect tests.\n\nUnregister `wp_tests_private` after each test and after the class, preserving the parent cleanup for shared canonical fixtures.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14946\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T22:48:20.150008Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/canonical.php"
+        ]
+    },
+    {
+        "id": 64859,
+        "author": "lancewillett",
+        "message": "Tests: Clean up taxonomies in adjacent post tests.\n\nUnregister `wptests_tax` and `wptests_error_tax` during teardown to prevent custom taxonomy registrations from leaking into later tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14945\n\nProps rejaulalomkhan.\nSee #65893.\n",
+        "date": "2026-10-27T22:47:28.528190Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getAdjacentPost.php"
+        ]
+    },
+    {
+        "id": 64858,
+        "author": "lancewillett",
+        "message": "Tests: Clean up the taxonomy in factory tests.\n\nUnregister `wptests_tax` after each factory test to prevent its registration from leaking into later tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14941\n\nProps rejaulalomkhan.\nSee #65893.\n",
+        "date": "2026-10-27T22:45:53.538048Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/includes/factory.php"
+        ]
+    },
+    {
+        "id": 64857,
+        "author": "lancewillett",
+        "message": "Tests: Clean up post types in core entity field tests.\n\nUnregister `test_book` and `test_note` during teardown, including fixtures registered directly instead of through the test helper.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14939\n\nProps rejaulalomkhan.\nSee #65893.\n",
+        "date": "2026-10-27T22:45:04.109412Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/entity-fields/wpRegisterCoreFieldCollections.php"
+        ]
+    },
+    {
+        "id": 64856,
+        "author": "lancewillett",
+        "message": "Tests: Clean up fixtures in category list tests.\n\nUnregister `wptests_pt`, `wptests_pt2`, and `wptests_tax` after each test of `wp_list_categories()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14934\n\nProps rejaulalomkhan.\nSee #65893.\n",
+        "date": "2026-10-27T22:43:46.362676Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/wpListCategories.php"
+        ]
+    },
+    {
+        "id": 64855,
+        "author": "lancewillett",
+        "message": "Tests: Clean up the post type in Customizer menu AJAX tests.\n\nUnregister `privilege` during teardown so its registration does not leak into later tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14938\n\nProps rejaulalomkhan.\nSee #65893.\n",
+        "date": "2026-10-27T22:42:59.649915Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/ajax/wpCustomizeNavMenus.php"
+        ]
+    },
+    {
+        "id": 64854,
+        "author": "lancewillett",
+        "message": "Tests: Clean up post types in core entity action tests.\n\nUnregister `test_book`, `test_note`, and `test_hidden` before resetting the entity action registry and running parent teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14937\n\nProps rejaulalomkhan.\nSee #65893.\n",
+        "date": "2026-10-27T22:42:09.657818Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/entity-actions/registerCoreEntityActions.php"
+        ]
+    },
+    {
+        "id": 64853,
+        "author": "lancewillett",
+        "message": "Tests: Clean up taxonomies in AJAX inline save tests.\n\nUnregister `wptests_tax_1` and `wptests_tax_2` during teardown while preserving the parent AJAX cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14936\n\nProps rejaulalomkhan.\nSee #65893.\n",
+        "date": "2026-10-27T22:41:14.574597Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxInlineSave.php"
+        ]
+    },
+    {
+        "id": 64852,
+        "author": "lancewillett",
+        "message": "Tests: Clean up the taxonomy in admin template tests.\n\nUnregister `wptests_tax_1` during teardown so its registration does not leak into later tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14935\n\nProps rejaulalomkhan.\nSee #65893.\n",
+        "date": "2026-10-27T22:40:15.373750Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includesTemplate.php"
+        ]
+    },
+    {
         "id": 64851,
         "author": "lancewillett",
         "message": "Tests: Clean up fixtures in canonical post status tests.\n\nUnregister `a-public-cpt`, `a-private-cpt`, and `a-private-status` after each test and after the class fixtures are finished.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14929\n\nProps huzaifaalmesbah.\nSee #65893.\n",
