@@ -1,5 +1,19 @@
 [
     {
+        "id": 64794,
+        "author": "westonruter",
+        "message": "Docs: Add class-level PHPStan annotations.\n\nMembers that `WP_Theme` and `WP_Query` serve through their magic methods were unknown to static analysis, so every access to one was reported as an undefined or private property and recorded in the PHPStan baselines. These are now declared at the class level: the `WP_Theme` properties with `@property-read`, since they are public back-compat API that belongs in the developer docs, and the private `WP_Query` members that its `$compat_fields` and `$compat_methods` expose with PHPStan-only tags. Where a `WP_Theme` property comes from a method that can return `false`, its type includes `false`, which surfaces a few existing cases in `WP_Debug_Data` that pass such a value on as a string.\n\n`WP_Block_List` declares the key and value types of the `Iterator` and `ArrayAccess` interfaces it implements, so that iterating over or indexing a block list yields `WP_Block` instances. The `WP_Widget::update_callback()` and `WP_Widget::form_callback()` methods are marked `@final`, as their documentation already says not to override them. The same note on `WP_Widget::display_callback()` is not enforced, since at least one popular plugin overrides it.\n\nThe annotations are adopted from the function map of the php-stubs/wordpress-stubs package.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13891.\nFollow-up to r31151, r48159, r63020.\n\nProps swissspidy, marian1, westonruter.\nSee #65817.\n",
+        "date": "2026-10-27T03:22:19.743955Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-list.php",
+            "/trunk/src/wp-includes/class-wp-query.php",
+            "/trunk/src/wp-includes/class-wp-theme.php",
+            "/trunk/src/wp-includes/class-wp-widget.php",
+            "/trunk/tests/phpstan/baselines/property.notFound.neon",
+            "/trunk/tests/phpstan/baselines/property.private.neon"
+        ]
+    },
+    {
         "id": 64793,
         "author": "westonruter",
         "message": "Docs: Add PHPStan types for optional callback parameters.\n\nThe `add_*_page()` functions and the `Custom_Background` and `Custom_Image_Header` constructors default their callback to an empty string, and plugins as well as core pass `null` to them, neither of which a plain `callable` allows. Their callbacks are now documented as `''|(callable(): mixed)|null`, since the page and header hooks invoke them without arguments. The type is written out at each use rather than declared as a global alias, as aliases defined only for core's own analysis are lost to anyone analyzing against core's source or the stubs generated from it.\n\nThe deprecated third parameter of `unregister_setting()` is narrowed to its default of an empty string, in the same way as other unused deprecated parameters, so that static analysis flags callers still passing a sanitize callback. The callbacks of `register_activation_hook()`, `register_deactivation_hook()`, `register_uninstall_hook()`, and `add_feed()` are documented with the arguments core calls them with.\n\nThis resolves every entry in the `parameter.defaultValue` PHPStan baseline, so that baseline is removed.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13890.\nFollow-up to r63020, r64163, r64756.\n\nProps swissspidy, marian1, westonruter.\nSee #65817.\n",
