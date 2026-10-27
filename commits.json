@@ -1,5 +1,202 @@
 [
     {
+        "id": 64841,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom post types in sitemap tests.\n\nUnregister the public, private, and non-viewable fixture post types used by the post and user sitemap tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14917\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:06:11.456016Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsPosts.php",
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsUsers.php"
+        ]
+    },
+    {
+        "id": 64840,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom post types in query field tests.\n\nUnregister the fixture post types used by the query fields-clause and search tests during teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14916\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:05:18.587575Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/query/fieldsClause.php",
+            "/trunk/tests/phpunit/tests/query/search.php"
+        ]
+    },
+    {
+        "id": 64839,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom post types in user tests.\n\nUnregister the custom post types used by user post-count, query-cache, and author post-count tests during teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14915\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:04:19.079893Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/countUserPosts.php",
+            "/trunk/tests/phpunit/tests/user/queryCache.php",
+            "/trunk/tests/phpunit/tests/user/theAuthorPosts.php"
+        ]
+    },
+    {
+        "id": 64838,
+        "author": "lancewillett",
+        "message": "Tests: Restore themes after REST pattern and sidebar tests.\n\nSave and restore the original stylesheet in the sidebar, block pattern, and block pattern category REST controller test classes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14769\n\nProps devmuhib.\nSee #65893.\n",
+        "date": "2026-10-27T20:01:06.778574Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-sidebars-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestBlockPatternCategoriesController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestBlockPatternsController.php"
+        ]
+    },
+    {
+        "id": 64837,
+        "author": "lancewillett",
+        "message": "Tests: Restore the active theme after link tests.\n\nSave and restore the original stylesheet in the edit-post-link and theme-file test classes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14768\n\nProps devmuhib.\nSee #65893.\n",
+        "date": "2026-10-27T20:00:14.962351Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getEditPostLink.php",
+            "/trunk/tests/phpunit/tests/link/themeFile.php"
+        ]
+    },
+    {
+        "id": 64836,
+        "author": "lancewillett",
+        "message": "Tests: Restore the theme in the theme test base class.\n\nSave the original stylesheet in `WP_Theme_UnitTestCase` and restore it during teardown after removing the test theme-root filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14735\n\nProps devmuhib, huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T19:59:17.860638Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme/base.php"
+        ]
+    },
+    {
+        "id": 64835,
+        "author": "lancewillett",
+        "message": "Tests: Restore the theme after font face tests.\n\nSave the original stylesheet in `WP_Font_Face_UnitTestCase` and restore it during teardown after removing the test theme-root filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14734\n\nProps devmuhib, huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T19:58:24.065308Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/fonts/font-face/base.php"
+        ]
+    },
+    {
+        "id": 64834,
+        "author": "lancewillett",
+        "message": "Tests: Restore themes after template and body class tests.\n\nSave and restore the original stylesheet in the template location and body class test suites.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14731\n\nProps devmuhib, huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T19:53:05.044032Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getBodyClass.php",
+            "/trunk/tests/phpunit/tests/theme/locateTemplate.php"
+        ]
+    },
+    {
+        "id": 64833,
+        "author": "lancewillett",
+        "message": "Tests: Reset the mock mailer around user tests.\n\nReset the mock mailer during setup and teardown so captured messages and mailer state do not leak between user tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14690\n\nProps devmuhib, huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T19:52:16.221289Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user.php"
+        ]
+    },
+    {
+        "id": 64832,
+        "author": "lancewillett",
+        "message": "Tests: Restore the active theme after comment tests.\n\nSave the original stylesheet before switching themes in comment template, metadata cache, and comment list tests. Restore it during teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14687\n\nProps devmuhib, huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T19:51:14.447174Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/commentsTemplate.php",
+            "/trunk/tests/phpunit/tests/comment/metaCache.php",
+            "/trunk/tests/phpunit/tests/comment/wpListComments.php"
+        ]
+    },
+    {
+        "id": 64831,
+        "author": "lancewillett",
+        "message": "Tests: Cover block directory REST response links.\n\nCheck that block directory response preparation includes an install-plugin link by default and omits links when `_fields` excludes them.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14762\n\nProps devmuhib.\nSee #40538.\n",
+        "date": "2026-10-27T19:45:02.349657Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-block-directory-controller.php"
+        ]
+    },
+    {
+        "id": 64830,
+        "author": "lancewillett",
+        "message": "Tests: Cover autosave REST response field selection.\n\nVerify that autosave response preparation returns only `id` and `slug` when requested through `_fields`, and omits response links.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14761\n\nProps devmuhib.\nSee #40538.\n",
+        "date": "2026-10-27T19:43:20.649348Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-autosaves-controller.php"
+        ]
+    },
+    {
+        "id": 64829,
+        "author": "lancewillett",
+        "message": "Tests: Cover block REST response preparation.\n\nVerify raw block title and content, omitted rendered fields, and the presence of `wp_pattern_sync_status`. Check the response keys and omitted links when `_fields` limits the response.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14732\n\nProps devmuhib, huzaifaalmesbah.\nSee #40538.\n",
+        "date": "2026-10-27T19:42:09.580410Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-blocks-controller.php"
+        ]
+    },
+    {
+        "id": 64828,
+        "author": "lancewillett",
+        "message": "Tests: Cover template REST response preparation.\n\nReplace the assertion-free template preparation test with checks for template properties and the `self`, `collection`, and `about` links.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14699\n\nProps devmuhib, shailu25, huzaifaalmesbah.\nSee #40538.\n",
+        "date": "2026-10-27T19:40:58.916995Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplatesController.php"
+        ]
+    },
+    {
+        "id": 64827,
+        "author": "lancewillett",
+        "message": "Tests: Cover sidebar REST response preparation.\n\nReplace the assertion-free sidebar preparation test with checks for response data and links. Verify that links are omitted when `_fields` excludes them.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14695\n\nProps devmuhib, shailu25, huzaifaalmesbah.\nSee #40538.\n",
+        "date": "2026-10-27T19:40:03.427234Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-sidebars-controller.php"
+        ]
+    },
+    {
+        "id": 64826,
+        "author": "lancewillett",
+        "message": "Tests: Document intentional object value comparisons.\n\nExplain why post and attachment count tests and the Interactivity API HTML test retain `assertEquals()` when comparing separate objects by value.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14709\n\nProps devmuhib, huzaifaalmesbah.\nSee #64895.\n",
+        "date": "2026-10-27T19:38:42.116199Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-html.php",
+            "/trunk/tests/phpunit/tests/post/wpCountAttachments.php",
+            "/trunk/tests/phpunit/tests/post/wpCountPosts.php"
+        ]
+    },
+    {
+        "id": 64825,
+        "author": "lancewillett",
+        "message": "Tests: Use strict inequality for unique filenames.\n\nUse `assertNotSame()` when comparing the two filename strings returned by `wp_unique_filename()`. Preserve the checks that both files can be created and written.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14857\n\nProps hmbashar, mukesh27.\nSee #64895.\n",
+        "date": "2026-10-27T19:36:35.498066Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/file.php"
+        ]
+    },
+    {
+        "id": 64824,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in theme tests.\n\nUse the dedicated WordPress error assertion when checking a cached invalid child theme. Preserve the error code and template checks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14612\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-27T19:35:30.621032Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme/wpTheme.php"
+        ]
+    },
+    {
+        "id": 64823,
+        "author": "joedolson",
+        "message": "Accessibility: Focus state improvements in high contrast mode.\n\nAdd a focus state to the adminbar search input, add missing outlines on `.wp-core-ui select`, remove obsolete `-moz-focusring` property which impacted high contrast mode, toggle custom `select` dropdown arrow to light color variant in forced colors, improve visibility of all button focus states, add missing focus states for theme browser navigation and close buttons, add outline on plugin information tabs. \n\nAll fixes apply only in forced color schemes, such as Windows High Contrast Mode.\n\nProps joedolson, afercia, therssoftware, ravipatel, jainil07, nhrrob.\nFixes #45910.",
+        "date": "2026-10-27T19:34:37.871798Z",
+        "files": [
+            "/trunk/src/wp-admin/css/colors/_mixins.scss",
+            "/trunk/src/wp-admin/css/common.css",
+            "/trunk/src/wp-admin/css/forms.css",
+            "/trunk/src/wp-admin/css/themes.css",
+            "/trunk/src/wp-includes/css/admin-bar.css",
+            "/trunk/src/wp-includes/css/buttons.css"
+        ]
+    },
+    {
+        "id": 64822,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in application password tests.\n\nUse the dedicated WordPress error assertion when application password validation or updates fail. Preserve the error code and message checks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14611\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-27T19:34:11.811906Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/application-passwords.php"
+        ]
+    },
+    {
         "id": 64821,
         "author": "lancewillett",
         "message": "Tests: Use `assertWPError()` in Abilities API tests.\n\nUse the dedicated WordPress error assertion in `WP_Ability` tests. Preserve the existing error codes, failure messages, and action and filter checks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14610\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
