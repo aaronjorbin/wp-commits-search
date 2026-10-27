@@ -1,5 +1,16 @@
 [
     {
+        "id": 64795,
+        "author": "westonruter",
+        "message": "Docs: Add PHPStan type assertions.\n\nFunctions that validate their argument now tell PHPStan what a `true` result implies about it, so callers no longer need redundant checks after, for example, `taxonomy_exists()` or `wp_is_uuid()`. Each assertion uses the equality form (`=Type`), which narrows only when the function returns `true`. The plain form also asserts the negation on a `false` return, which is wrong for these functions: an unregistered taxonomy or a relative path is still a non-falsy string. For that reason the existing assertion on `path_is_absolute()` is switched to the equality form as well, since an argument already known to be a non-falsy string was otherwise narrowed to `never` when the path was relative, making that branch look unreachable.\n\nThe annotations are adopted from the function map of the php-stubs/wordpress-stubs package.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13896.\nFollow-up to r63941, r64235.\n\nProps swissspidy, marian1, szepeviktor, westonruter.\nSee #65817.\n",
+        "date": "2026-10-27T05:14:10.115691Z",
+        "files": [
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/src/wp-includes/shortcodes.php",
+            "/trunk/src/wp-includes/taxonomy.php"
+        ]
+    },
+    {
         "id": 64794,
         "author": "westonruter",
         "message": "Docs: Add class-level PHPStan annotations.\n\nMembers that `WP_Theme` and `WP_Query` serve through their magic methods were unknown to static analysis, so every access to one was reported as an undefined or private property and recorded in the PHPStan baselines. These are now declared at the class level: the `WP_Theme` properties with `@property-read`, since they are public back-compat API that belongs in the developer docs, and the private `WP_Query` members that its `$compat_fields` and `$compat_methods` expose with PHPStan-only tags. Where a `WP_Theme` property comes from a method that can return `false`, its type includes `false`, which surfaces a few existing cases in `WP_Debug_Data` that pass such a value on as a string.\n\n`WP_Block_List` declares the key and value types of the `Iterator` and `ArrayAccess` interfaces it implements, so that iterating over or indexing a block list yields `WP_Block` instances. The `WP_Widget::update_callback()` and `WP_Widget::form_callback()` methods are marked `@final`, as their documentation already says not to override them. The same note on `WP_Widget::display_callback()` is not enforced, since at least one popular plugin overrides it.\n\nThe annotations are adopted from the function map of the php-stubs/wordpress-stubs package.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13891.\nFollow-up to r31151, r48159, r63020.\n\nProps swissspidy, marian1, westonruter.\nSee #65817.\n",
