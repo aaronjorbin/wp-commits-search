@@ -1,5 +1,152 @@
 [
     {
+        "id": 64790,
+        "author": "lancewillett",
+        "message": "Tests: Cover plain post permalink decisions.\n\nAdd coverage for `wp_force_plain_post_permalink()` across post statuses, read permissions, sample permalinks, missing posts, and unregistered statuses and types. Verify that the global post supplies the default and an explicit post takes precedence, using distinct expected results.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14532\n\nProps rejaulalomkhan, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-27T00:27:57.994686Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/wpForcePlainPostPermalink.php"
+        ]
+    },
+    {
+        "id": 64789,
+        "author": "lancewillett",
+        "message": "Tests: Cover widget REST response preparation.\n\nReplace the empty `test_prepare_item()` placeholder with checks for widget identity, sidebar assignment, rendered content, and response links.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14700\n\nProps shailu25.\nSee #40538.\n",
+        "date": "2026-10-27T00:27:03.534782Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-widgets-controller.php"
+        ]
+    },
+    {
+        "id": 64788,
+        "author": "lancewillett",
+        "message": "Tests: Cover global styles revision response preparation.\n\nReplace the empty `test_prepare_item()` placeholder with checks for revision metadata, settings, and styles. Verify that `_fields=id` returns only the revision ID and omits links.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14696\n\nProps shailu25.\nSee #40538.\n",
+        "date": "2026-10-27T00:25:44.291401Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-global-styles-revisions-controller.php"
+        ]
+    },
+    {
+        "id": 64787,
+        "author": "lancewillett",
+        "message": "Tests: Cover global styles REST response preparation.\n\nReplace the empty `test_prepare_item()` placeholder with assertions for the global styles response data and links. Verify that `_fields=id` omits unrequested fields and links.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14694\n\nProps shailu25.\nSee #40538.\n",
+        "date": "2026-10-27T00:23:11.710885Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-global-styles-controller.php"
+        ]
+    },
+    {
+        "id": 64786,
+        "author": "lancewillett",
+        "message": "Tests: Cover block pattern REST response preparation.\n\nReplace the empty `test_prepare_item()` placeholder with checks for pattern response values, camelCase-to-snake_case field mappings, and `_fields` filtering.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14693\n\nProps devmuhib, shailu25, huzaifaalmesbah.\nSee #40538.\n",
+        "date": "2026-10-27T00:17:18.922827Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestBlockPatternsController.php"
+        ]
+    },
+    {
+        "id": 64785,
+        "author": "lancewillett",
+        "message": "Tests: Cover block pattern category REST response preparation.\n\nReplace the empty `test_prepare_item()` placeholder with checks for category names, labels, and descriptions. Verify that `_fields` excludes unrequested response properties.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14692\n\nProps devmuhib, shailu25, huzaifaalmesbah.\nSee #40538.\n",
+        "date": "2026-10-27T00:16:28.627865Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestBlockPatternCategoriesController.php"
+        ]
+    },
+    {
+        "id": 64784,
+        "author": "lancewillett",
+        "message": "Tests: Cover menu location REST response preparation.\n\nReplace the empty `test_prepare_item()` placeholder with checks for menu location data, assigned-menu links, and `_fields` filtering.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14691\n\nProps devmuhib, shailu25, huzaifaalmesbah.\nSee #40538.\n",
+        "date": "2026-10-27T00:15:09.521869Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestMenuLocationsController.php"
+        ]
+    },
+    {
+        "id": 64783,
+        "author": "lancewillett",
+        "message": "Tests: Use a strict comparison for user meta query logins.\n\nUse `assertNotSame()` when checking that a `NOT EXISTS` user meta query excludes the fixture author.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14855\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T00:14:13.466114Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/meta.php"
+        ]
+    },
+    {
+        "id": 64782,
+        "author": "lancewillett",
+        "message": "Tests: Use a strict comparison for the attachment URL.\n\nUse `assertNotSame()` when checking that `wp_prepare_attachment_for_js()` supplies a non-empty URL for an attachment without media.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14854\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T00:13:22.572747Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/media.php"
+        ]
+    },
+    {
+        "id": 64781,
+        "author": "lancewillett",
+        "message": "Tests: Use strict comparisons for admin bar profile URLs.\n\nUse `assertNotSame()` for profile URL comparisons in multisite admin bar tests. Preserve the checks that users without a role on the current site receive links to the appropriate profile screen.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14853\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T00:12:05.353390Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/adminbar.php"
+        ]
+    },
+    {
+        "id": 64780,
+        "author": "lancewillett",
+        "message": "Tests: Use strict comparisons for POMO translation keys.\n\nUse `assertNotSame()` for differing `Translation_Entry::key()` values. Preserve the checks that context and singular text distinguish keys, while plural text does not.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14729\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T00:10:38.526584Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/pomo/translationEntry.php"
+        ]
+    },
+    {
+        "id": 64779,
+        "author": "lancewillett",
+        "message": "Tests: Use strict comparisons for abilities pagination.\n\nUse `assertNotSame()` to compare page-one and page-two identifier arrays in the abilities and ability categories REST controller tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14728\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T00:08:58.908208Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1CategoriesController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1ListController.php"
+        ]
+    },
+    {
+        "id": 64778,
+        "author": "lancewillett",
+        "message": "Tests: Use strict comparisons for comment query counts.\n\nUse `assertNotSame()` when checking that comment queries with different types or parent filters issue another database query. Both operands come from the integer query counter returned by `get_num_queries()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14727\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T00:07:21.557119Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/getPageOfComment.php",
+            "/trunk/tests/phpunit/tests/comment/query.php"
+        ]
+    },
+    {
+        "id": 64777,
+        "author": "lancewillett",
+        "message": "Tests: Set up script fixtures for embed template tests.\n\nEnsure `wp-emoji-loader.js` and `wp-embed-template.js` exist before every embed template test, so individual and randomized runs do not depend on another test creating the files.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14828\n\nProps shailu25.\nSee #65893.\n",
+        "date": "2026-10-26T23:47:38.773566Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/oembed/template.php"
+        ]
+    },
+    {
+        "id": 64776,
+        "author": "lancewillett",
+        "message": "Tests: Restore themes after block template tests.\n\nSave and restore the incoming stylesheet in `Tests_Block_Template` and `Tests_Block_Template_Utils`.\n\nSwitching back clears cached `theme.json` data before parent teardown, preventing later tests from using resolver data from a temporary test theme.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14817\n\nProps shailu25.\nSee #65893.\n",
+        "date": "2026-10-26T23:30:52.425706Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-template-utils.php",
+            "/trunk/tests/phpunit/tests/block-template.php"
+        ]
+    },
+    {
+        "id": 64775,
+        "author": "lancewillett",
+        "message": "Tests: Cover Basic Auth detection and context selection.\n\nAdd tests for `wp_is_site_protected_by_basic_auth()` covering credential\ndetection, filter overrides, and explicit and inferred contexts.\n\nRestore authentication server variables and `$pagenow` after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14750\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-26T23:15:09.027774Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpIsSiteProtectedByBasicAuth.php"
+        ]
+    },
+    {
         "id": 64774,
         "author": "lancewillett",
         "message": "Tests: Cover `wp_direct_php_update_button()`.\n\nTest that an empty direct update URL produces no output, a supplied URL\nproduces a button, and the URL is escaped in the output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14747\n\nProps shailu25.\nSee #65819.\n",
