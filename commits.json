@@ -1,5 +1,15 @@
 [
     {
+        "id": 64801,
+        "author": "audrasjb",
+        "message": "Editor: Revert [64600].\n\nThis changeset was committed ahead of the related Gutenberg PR.\n\nUnprops audrasjb.\nSee #66312, #64806.\n\n",
+        "date": "2026-10-27T15:04:40.608259Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
         "id": 64800,
         "author": "wildworks",
         "message": "Icons: Skip sanitizing the icons bundled with WordPress\n\nIcons that ship with WordPress in the core icon library are no longer sanitized when they are loaded, because they are reviewed and versioned like the rest of core. This cuts the server time it takes to render the admin bar and admin menu icons on every admin screen. Icons registered by plugins and themes are still sanitized.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14492\n\nProps fushar, softglaze, wildworks.\nFixes #66338.",
