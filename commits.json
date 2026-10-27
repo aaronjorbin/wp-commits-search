@@ -1,5 +1,105 @@
 [
     {
+        "id": 64851,
+        "author": "lancewillett",
+        "message": "Tests: Clean up fixtures in canonical post status tests.\n\nUnregister `a-public-cpt`, `a-private-cpt`, and `a-private-status` after each test and after the class fixtures are finished.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14929\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:25:18.933476Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/canonical/postStatus.php"
+        ]
+    },
+    {
+        "id": 64850,
+        "author": "lancewillett",
+        "message": "Tests: Clean up post types in the core users ability tests.\n\nUnregister `not_viewable_pt`, `public_pt`, and `private_pt` after each test to prevent custom post types from leaking into later tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14928\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:24:28.636881Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreUsersAbility.php"
+        ]
+    },
+    {
+        "id": 64849,
+        "author": "lancewillett",
+        "message": "Tests: Clean up post types in admin post and export tests.\n\nUnregister `yes_title`, `no_title`, and `wpexport_excluded` in the relevant test classes during teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14927\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:23:34.727307Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/exportWp.php",
+            "/trunk/tests/phpunit/tests/admin/includesPost.php"
+        ]
+    },
+    {
+        "id": 64848,
+        "author": "lancewillett",
+        "message": "Tests: Clean up post types in archive and admin screen tests.\n\nUnregister the custom post types used by `wp_get_archives()` and admin screen tests during teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14926\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:22:41.674993Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includesScreen.php",
+            "/trunk/tests/phpunit/tests/functions/wpGetArchives.php"
+        ]
+    },
+    {
+        "id": 64847,
+        "author": "lancewillett",
+        "message": "Tests: Clean up fixtures in feed link and document title tests.\n\nUnregister the custom post types and taxonomy used by the feed link and document title tests during teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14925\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:21:48.657149Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/feedLinksExtra.php",
+            "/trunk/tests/phpunit/tests/general/wpGetDocumentTitle.php"
+        ]
+    },
+    {
+        "id": 64846,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom taxonomies in category tests.\n\nUnregister `wptests_tax` after the category description, category link, and category name tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14923\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:16:03.233993Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/categoryDescription.php",
+            "/trunk/tests/phpunit/tests/category/getCategoryLink.php",
+            "/trunk/tests/phpunit/tests/category/getTheCategoryById.php"
+        ]
+    },
+    {
+        "id": 64845,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom taxonomies in term tests.\n\nUnregister `wptests_tax` and `wptests_tax2` in the relevant term link and term description test teardown methods. Clean up the class-level taxonomy fixture after the term link tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14924\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:15:13.315753Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term/getTermLink.php",
+            "/trunk/tests/phpunit/tests/term/termDescription.php"
+        ]
+    },
+    {
+        "id": 64844,
+        "author": "lancewillett",
+        "message": "Tests: Clean up fixtures in taxonomy tests.\n\nUnregister the custom taxonomies and post type used by the object taxonomy and taxonomy visibility tests during teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14922\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:14:12.228802Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/taxonomy/getObjectTaxonomies.php",
+            "/trunk/tests/phpunit/tests/taxonomy/isTaxonomyViewable.php"
+        ]
+    },
+    {
+        "id": 64843,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom post types in link tests.\n\nUnregister `wptests_books` and `non_viewable_cpt` after the archive feed and preview link tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14921\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:13:24.786319Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getPostTypeArchiveFeedLink.php",
+            "/trunk/tests/phpunit/tests/link/getPreviewPostLink.php"
+        ]
+    },
+    {
+        "id": 64842,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom post types in post and menu tests.\n\nUnregister `wptests_pt`, `fooo-bar-baz`, and `books` in the relevant test classes during teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14920\n\nProps huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-27T20:12:00.980397Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getPageByPath.php",
+            "/trunk/tests/phpunit/tests/post/getPages.php",
+            "/trunk/tests/phpunit/tests/post/nav-menu.php"
+        ]
+    },
+    {
         "id": 64841,
         "author": "lancewillett",
         "message": "Tests: Clean up custom post types in sitemap tests.\n\nUnregister the public, private, and non-viewable fixture post types used by the post and user sitemap tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14917\n\nProps huzaifaalmesbah.\nSee #65893.\n",
