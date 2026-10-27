@@ -1,5 +1,69 @@
 [
     {
+        "id": 64809,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `settings_fields()`.\n\nVerify settings group and action fields, attribute escaping, group-specific nonces, and the referer field.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14625\n\nProps shailu25, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-27T18:10:48.075775Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/settingsFields.php"
+        ]
+    },
+    {
+        "id": 64808,
+        "author": "lancewillett",
+        "message": "Tests: Use strict inequality in top-level test files.\n\nUse `assertNotSame()` for scalar and array comparisons in database, post count, rewrite, and widget tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14982\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T17:53:36.887658Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/db.php",
+            "/trunk/tests/phpunit/tests/post.php",
+            "/trunk/tests/phpunit/tests/rewrite.php",
+            "/trunk/tests/phpunit/tests/widgets.php"
+        ]
+    },
+    {
+        "id": 64807,
+        "author": "lancewillett",
+        "message": "Tests: Compare adjacent post IDs with strict inequality.\n\nCompare post IDs with `assertNotSame()` to verify that adjacent post queries exclude the current post. Retain value-based comparisons for the expected post objects.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14979\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T17:52:43.177994Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getAdjacentPost.php"
+        ]
+    },
+    {
+        "id": 64806,
+        "author": "lancewillett",
+        "message": "Tests: Use strict inequality in search query tests.\n\nUse `assertNotSame()` for search term arrays and attachment ID results. Retain value-based comparisons for query results containing objects.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14978\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T17:51:49.966110Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/query/search.php"
+        ]
+    },
+    {
+        "id": 64805,
+        "author": "lancewillett",
+        "message": "Tests: Use strict inequality in term tests.\n\nUse `assertNotSame()` when comparing term IDs, names, cache timestamps, and the term count filter sentinel.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14976\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T17:51:00.647703Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term/cache.php",
+            "/trunk/tests/phpunit/tests/term/getTerms.php",
+            "/trunk/tests/phpunit/tests/term/splitSharedTerm.php",
+            "/trunk/tests/phpunit/tests/term/wpInsertTerm.php",
+            "/trunk/tests/phpunit/tests/term/wpUpdateTerm.php"
+        ]
+    },
+    {
+        "id": 64804,
+        "author": "lancewillett",
+        "message": "Tests: Use strict inequality in Customizer tests.\n\nUse `assertNotSame()` for scalar and array comparisons in Customizer tests, including menu item counts, changeset data, and sidebar parameters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14975\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-27T17:48:06.350415Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/customize/manager.php",
+            "/trunk/tests/phpunit/tests/customize/nav-menu-item-setting.php",
+            "/trunk/tests/phpunit/tests/customize/setting.php",
+            "/trunk/tests/phpunit/tests/customize/widgets.php"
+        ]
+    },
+    {
         "id": 64803,
         "author": "audrasjb",
         "message": "Post WordPress 7.2 Beta 2 version bump.\n\n",
