@@ -1,5 +1,113 @@
 [
     {
+        "id": 64821,
+        "author": "lancewillett",
+        "message": "Tests: Use `assertWPError()` in Abilities API tests.\n\nUse the dedicated WordPress error assertion in `WP_Ability` tests. Preserve the existing error codes, failure messages, and action and filter checks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14610\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-27T19:02:11.914446Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/abilities-api/wpAbility.php"
+        ]
+    },
+    {
+        "id": 64820,
+        "author": "lancewillett",
+        "message": "Tests: Preserve canonical redirect comparison diffs.\n\nRetain the original `ComparisonFailure` when adding case context to canonical post status failures. Preserve expected/actual URL diffs for both plain and pretty permalink tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14984\n\nProps shailu25.\nSee #66074.\n",
+        "date": "2026-10-27T18:45:01.738837Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/canonical/postStatus.php"
+        ]
+    },
+    {
+        "id": 64819,
+        "author": "lancewillett",
+        "message": "Tests: Strengthen icon collection REST assertions.\n\nVerify collection labels, descriptions, field filtering, and schema properties. Cover access through a REST-visible custom post type\u2019s edit capability.\n\nClean up temporary collections and the post type in teardown, and remove the redundant administrator permission test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14985\n\nProps shailu25.\nSee #40538.\n",
+        "date": "2026-10-27T18:43:23.566898Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/icons/wpRestIconCollectionsController.php"
+        ]
+    },
+    {
+        "id": 64818,
+        "author": "lancewillett",
+        "message": "Tests: Restore the original theme after position support tests.\n\nSave the incoming stylesheet and restore it after resetting theme directories, removing fixture-root filters, and clearing theme caches.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14877\n\nProps shailu25.\nSee #65893.\n",
+        "date": "2026-10-27T18:36:48.499808Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderPositionSupport.php"
+        ]
+    },
+    {
+        "id": 64817,
+        "author": "lancewillett",
+        "message": "Tests: Restore the original theme after dimensions support tests.\n\nSave the incoming stylesheet and restore it after resetting theme directories, removing fixture-root filters, and clearing theme caches.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14876\n\nProps shailu25.\nSee #65893.\n",
+        "date": "2026-10-27T18:35:46.111228Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderDimensionsSupport.php"
+        ]
+    },
+    {
+        "id": 64816,
+        "author": "lancewillett",
+        "message": "Tests: Restore the original theme after background support tests.\n\nSave the incoming stylesheet and restore it after resetting theme directories, removing fixture-root filters, and clearing theme caches.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14874\n\nProps shailu25.\nSee #65893.\n",
+        "date": "2026-10-27T18:34:41.099222Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderBackgroundSupport.php"
+        ]
+    },
+    {
+        "id": 64815,
+        "author": "lancewillett",
+        "message": "Tests: Restore the original theme after admin theme tests.\n\nSave the incoming stylesheet and restore it after resetting theme directories, removing fixture-root filters, and clearing theme caches.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14873\n\nProps shailu25.\nSee #65893.\n",
+        "date": "2026-10-27T18:32:14.357150Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includesTheme.php"
+        ]
+    },
+    {
+        "id": 64814,
+        "author": "lancewillett",
+        "message": "Tests: Restore the original theme after typography tests.\n\nSave the incoming stylesheet and restore it after removing fixture theme-root filters and clearing theme caches. Use a named root callback so teardown can remove it before switching themes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14872\n\nProps shailu25.\nSee #65893.\n",
+        "date": "2026-10-27T18:29:24.680256Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-supports/typography.php"
+        ]
+    },
+    {
+        "id": 64813,
+        "author": "lancewillett",
+        "message": "Tests: Cover contextual localization of the PHP update URL.\n\nVerify that `wp_get_default_update_php_url()` uses the expected source URL and translation context.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14749\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-27T18:18:43.339155Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpGetDefaultUpdatePhpUrl.php"
+        ]
+    },
+    {
+        "id": 64812,
+        "author": "lancewillett",
+        "message": "Tests: Cover localization of the default HTTPS update URL.\n\nVerify that `wp_get_default_update_https_url()` returns the translated documentation URL.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14748\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-27T18:17:13.915079Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpGetDefaultUpdateHttpsUrl.php"
+        ]
+    },
+    {
+        "id": 64811,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `wp_kses_post_deep()`.\n\nVerify sanitization of strings, nested array values, and object properties. Check that allowed markup remains and forbidden tags are removed.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14663\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-27T18:15:13.889804Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/kses/wpKsesPostDeep.php"
+        ]
+    },
+    {
+        "id": 64810,
+        "author": "lancewillett",
+        "message": "Tests: Add coverage for `is_allowed_http_origin()`.\n\nCover allowed and disallowed origins, explicit empty input, request-header fallback, and filtering of the allowed origin.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14646\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-27T18:13:41.640019Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/http/isAllowedHttpOrigin.php"
+        ]
+    },
+    {
         "id": 64809,
         "author": "lancewillett",
         "message": "Tests: Add coverage for `settings_fields()`.\n\nVerify settings group and action fields, attribute escaping, group-specific nonces, and the referer field.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14625\n\nProps shailu25, huzaifaalmesbah.\nSee #65819.\n",
