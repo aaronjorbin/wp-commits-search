@@ -1,5 +1,23 @@
 [
     {
+        "id": 64803,
+        "author": "audrasjb",
+        "message": "Post WordPress 7.2 Beta 2 version bump.\n\n",
+        "date": "2026-10-27T15:46:51.365472Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64802,
+        "author": "audrasjb",
+        "message": "WordPress 7.2 Beta 2.\n\n",
+        "date": "2026-10-27T15:28:11.123053Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
         "id": 64801,
         "author": "audrasjb",
         "message": "Editor: Revert [64600].\n\nThis changeset was committed ahead of the related Gutenberg PR.\n\nUnprops audrasjb.\nSee #66312, #64806.\n\n",
