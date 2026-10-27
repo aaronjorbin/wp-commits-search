@@ -1,5 +1,31 @@
 [
     {
+        "id": 64793,
+        "author": "westonruter",
+        "message": "Docs: Add PHPStan types for optional callback parameters.\n\nThe `add_*_page()` functions and the `Custom_Background` and `Custom_Image_Header` constructors default their callback to an empty string, and plugins as well as core pass `null` to them, neither of which a plain `callable` allows. Their callbacks are now documented as `''|(callable(): mixed)|null`, since the page and header hooks invoke them without arguments. The type is written out at each use rather than declared as a global alias, as aliases defined only for core's own analysis are lost to anyone analyzing against core's source or the stubs generated from it.\n\nThe deprecated third parameter of `unregister_setting()` is narrowed to its default of an empty string, in the same way as other unused deprecated parameters, so that static analysis flags callers still passing a sanitize callback. The callbacks of `register_activation_hook()`, `register_deactivation_hook()`, `register_uninstall_hook()`, and `add_feed()` are documented with the arguments core calls them with.\n\nThis resolves every entry in the `parameter.defaultValue` PHPStan baseline, so that baseline is removed.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13890.\nFollow-up to r63020, r64163, r64756.\n\nProps swissspidy, marian1, westonruter.\nSee #65817.\n",
+        "date": "2026-10-27T02:43:06.698001Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-admin/includes/class-custom-background.php",
+            "/trunk/src/wp-admin/includes/class-custom-image-header.php",
+            "/trunk/src/wp-admin/includes/deprecated.php",
+            "/trunk/src/wp-admin/includes/plugin.php",
+            "/trunk/src/wp-includes/option.php",
+            "/trunk/src/wp-includes/plugin.php",
+            "/trunk/src/wp-includes/rewrite.php",
+            "/trunk/tests/phpstan/baselines/parameter.defaultValue.neon"
+        ]
+    },
+    {
+        "id": 64792,
+        "author": "peterwilsoncc",
+        "message": "Sitemaps: Render empty sitemap when URL's filtered to empty list.\n\nModifies the site maps to render a valid site map for each URL listed on the sitemap index page, ie `/wp-sitemap.xml`. \n\nThis changes the response code for sitemaps return an empty URL list via the `wp_sitemaps_{$sitemap_type}_pre_url_list` and related filters. This ensures that all sitemap URLs submitted to search engines via the index respond with a 200 OK response.\n\nProps adrianduffell, audrasjb, cybr, devansh2002, im3dabasia1, masteradhoc, westonruter, wildworks.\nFixes #61293.\n\n\n",
+        "date": "2026-10-27T02:36:25.298553Z",
+        "files": [
+            "/trunk/src/wp-includes/sitemaps/class-wp-sitemaps.php"
+        ]
+    },
+    {
         "id": 64791,
         "author": "lancewillett",
         "message": "Tests: Isolate script modules in block registration tests.\n\nSave and reset `$wp_script_modules` in `Tests_Blocks_Register::set_up()`, then restore the incoming instance in `tear_down()`. This prevents previously enqueued modules from affecting registration assertions when tests run in a different order.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14909\n\nProps huzaifaalmesbah.\nSee #65893.\n",
