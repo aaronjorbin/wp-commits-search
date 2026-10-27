@@ -1,5 +1,18 @@
 [
     {
+        "id": 64798,
+        "author": "Mamaduka",
+        "message": "Administration: Map Dashicons to replacement icons from the icon library manifest.\n\nIntroduce the `WP_Icons_Registry::get_admin_icon_name_for_dashicon()` method, which returns the `core-admin` icon that replaces a given Dashicon, based on the `dashicons` property of the icon library manifest. It returns `null` if the Dashicon has no mapping or its replacement icon is not registered.\n\nUse it in `_wp_menu_output()` in place of the hard-coded list of core menu item Dashicons. Menu items from plugins and custom post types that use a mapped Dashicon now get the SVG icon too. A Dashicon with no mapping still uses the Dashicons font.\n\nFollow-up to [64583].\n\nProps fushar, mamaduka, peterwilsoncc.\nSee #65089.",
+        "date": "2026-10-27T08:30:01.807375Z",
+        "files": [
+            "/trunk/src/wp-admin/menu-header.php",
+            "/trunk/src/wp-includes/class-wp-icons-registry.php",
+            "/trunk/src/wp-includes/icons.php",
+            "/trunk/tests/phpunit/tests/admin/wpMenuOutput.php",
+            "/trunk/tests/phpunit/tests/icons/wpIconsRegistry.php"
+        ]
+    },
+    {
         "id": 64797,
         "author": "Mamaduka",
         "message": "Build/Test Tools: Restore `theme-i18n.json`.\n\nThe Gutenberg sync in r64796 left `src/wp-includes/theme-i18n.json` as an empty file. This restores it from the pinned Gutenberg build.\n\nFollow-up to r64796.\n\nProps mamaduka, jonsurrell.\nSee #66340.",
