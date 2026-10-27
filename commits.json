@@ -1,5 +1,27 @@
 [
     {
+        "id": 64800,
+        "author": "wildworks",
+        "message": "Icons: Skip sanitizing the icons bundled with WordPress\n\nIcons that ship with WordPress in the core icon library are no longer sanitized when they are loaded, because they are reviewed and versioned like the rest of core. This cuts the server time it takes to render the admin bar and admin menu icons on every admin screen. Icons registered by plugins and themes are still sanitized.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14492\n\nProps fushar, softglaze, wildworks.\nFixes #66338.",
+        "date": "2026-10-27T11:09:56.923988Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-icons-registry.php",
+            "/trunk/tests/phpunit/tests/icons/wpGetIcon.php",
+            "/trunk/tests/phpunit/tests/icons/wpIconsRegistry.php"
+        ]
+    },
+    {
+        "id": 64799,
+        "author": "wildworks",
+        "message": "Administration: Use SVG icons in the At a Glance widget\n\nReplace the Dashicons in the At a Glance dashboard widget with icons from the icon library, so the widget matches the SVG icons now used in the admin menu and admin bar. Items added by plugins fall back to a default SVG icon, while items that provide their own Dashicon via CSS or their own inline SVG icon keep it.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14548\n\nFollow-up to [64583].\n\nProps fushar, joen, ocean90, peterwilsoncc, suryakantupadhyay, wildworks.\nFixes #66347.",
+        "date": "2026-10-27T10:41:08.275389Z",
+        "files": [
+            "/trunk/src/js/_enqueues/admin/edit-comments.js",
+            "/trunk/src/wp-admin/css/dashboard.css",
+            "/trunk/src/wp-admin/includes/dashboard.php"
+        ]
+    },
+    {
         "id": 64798,
         "author": "Mamaduka",
         "message": "Administration: Map Dashicons to replacement icons from the icon library manifest.\n\nIntroduce the `WP_Icons_Registry::get_admin_icon_name_for_dashicon()` method, which returns the `core-admin` icon that replaces a given Dashicon, based on the `dashicons` property of the icon library manifest. It returns `null` if the Dashicon has no mapping or its replacement icon is not registered.\n\nUse it in `_wp_menu_output()` in place of the hard-coded list of core menu item Dashicons. Menu items from plugins and custom post types that use a mapped Dashicon now get the SVG icon too. A Dashicon with no mapping still uses the Dashicons font.\n\nFollow-up to [64583].\n\nProps fushar, mamaduka, peterwilsoncc.\nSee #65089.",
