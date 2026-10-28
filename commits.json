@@ -1,5 +1,14 @@
 [
     {
+        "id": 64872,
+        "author": "jonsurrell",
+        "message": "HTML API: Prevent re-scan of attribute spans in closing tags.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15112\n\nFollow-up to r55469, r57348.\n\nProps dmsnell, jonsurrell.\nSee #65984.\n",
+        "date": "2026-10-28T10:01:44.242064Z",
+        "files": [
+            "/trunk/src/wp-includes/html-api/class-wp-html-tag-processor.php"
+        ]
+    },
+    {
         "id": 64871,
         "author": "westonruter",
         "message": "Code Quality: Remove a dead fallback in `WP_Comment_Query`.\n\nWhen `WP_Comment_Query::get_comment_ids()` appends a `comment_ID` clause to make the sort deterministic, the clause takes its order from a date clause if there is one, or else from the first available clause. Since `$orderby_array` is never empty at that point (a `comment_date_gmt` clause is added when no valid clause was found), the second loop always assigns `ASC` or `DESC`, so the subsequent fallback to `DESC` could never run. A comment is left in its place, as initializing the order to an empty string otherwise suggests the value may remain unset.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14933.\nFollow-up to r31467.\n\nProps huzaifaalmesbah, westonruter.\nSee #65817.\n",
