@@ -1,5 +1,176 @@
 [
     {
+        "id": 64893,
+        "author": "jeremyfelt",
+        "message": "General: Bump the pinned hash for Gutenberg in `7.1` branch.\n\nThis updates the pinned commit hash of the Gutenberg repository from `dd294ab86ceaf9f3d7d42a09b78f399238ce8826` to `8daba429215ef3dce75da4360156b1a2f39897c6`.\n\nA full list of changes included in this commit can be found on GitHub:\nhttps://github.com/WordPress/gutenberg/compare/dd294ab86ceaf9f3d7d42a09b78f399238ce8826...8daba429215ef3dce75da4360156b1a2f39897c6.\n\n- Interactivity API: Harden directive processing and client-side navigation\n- Block parser: Only accept HTML whitespace in block delimiters\n- Categories block: Don't run the dropdown label through sprintf()\n- Use the HTML API to insert the Image lightbox button and the Playlist waveform player\n- Escape the labels of the post navigation and comments pagination links\n\nProps jonsurrell, luisherranz, ntsekouras, santosguillamot, darerodz, johnbillion, westonruter, xknown, jorbin.\n",
+        "date": "2026-10-28T15:03:01.610253Z",
+        "files": [
+            "/branches/7.1/package.json",
+            "/branches/7.1/src/wp-includes/assets/script-loader-packages.php",
+            "/branches/7.1/src/wp-includes/assets/script-modules-packages.php",
+            "/branches/7.1/src/wp-includes/blocks/categories.php",
+            "/branches/7.1/src/wp-includes/blocks/comments-pagination-next.php",
+            "/branches/7.1/src/wp-includes/blocks/comments-pagination-previous.php",
+            "/branches/7.1/src/wp-includes/blocks/image.php",
+            "/branches/7.1/src/wp-includes/blocks/playlist.php",
+            "/branches/7.1/src/wp-includes/blocks/post-navigation-link.php",
+            "/branches/7.1/src/wp-includes/build/routes/connectors-home/content.js",
+            "/branches/7.1/src/wp-includes/build/routes/connectors-home/content.min.asset.php",
+            "/branches/7.1/src/wp-includes/build/routes/connectors-home/content.min.js"
+        ]
+    },
+    {
+        "id": 64892,
+        "author": "jeremyfelt",
+        "message": "Bundled Themes: Bump Twenty Twenty to version 3.3.\n\nMerges [64880] to the 7.1 branch.\n\nProps jeremyfelt, jorbin, lancewillett, sergeybiryukov.\n",
+        "date": "2026-10-28T15:00:37.902219Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/src/wp-content/themes/twentytwenty/package-lock.json",
+            "/branches/7.1/src/wp-content/themes/twentytwenty/package.json",
+            "/branches/7.1/src/wp-content/themes/twentytwenty/readme.txt",
+            "/branches/7.1/src/wp-content/themes/twentytwenty/style-rtl.css",
+            "/branches/7.1/src/wp-content/themes/twentytwenty/style.css"
+        ]
+    },
+    {
+        "id": 64891,
+        "author": "jeremyfelt",
+        "message": "Customize: Resolve selective refresh partial placements as selectors only\n\nMerges [64879] to the 7.1 branch.\n\nProps westonruter, jonsurrell, jorbin.\n",
+        "date": "2026-10-28T14:59:05.747715Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/src/js/_enqueues/wp/customize/preview-widgets.js",
+            "/branches/7.1/src/js/_enqueues/wp/customize/selective-refresh.js",
+            "/branches/7.1/src/wp-content/themes/twentytwenty/assets/js/customize-preview.js"
+        ]
+    },
+    {
+        "id": 64890,
+        "author": "jeremyfelt",
+        "message": "Interactivity API: Limit bindings on object elements to global attributes\n\nThis includes the matching update to the `get_directive_entries()` test expectations for the new `attribute_name` key.\n\nMerges [64878] and [64881] to the 7.1 branch.\n\nProps jonsurrell, ntsekouras, luisherranz.\n",
+        "date": "2026-10-28T14:58:02.202994Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/branches/7.1/src/wp-includes/kses.php",
+            "/branches/7.1/tests/phpunit/tests/interactivity-api/wpInteractivityAPI.php"
+        ]
+    },
+    {
+        "id": 64889,
+        "author": "jeremyfelt",
+        "message": "Upgrade/Install: Improve the handling of the upgrade working directory.\n\nMerges [64877] to the 7.1 branch.\n\nProps umut3806, marcs0h, rfaile313, jorbin.\n",
+        "date": "2026-10-28T14:54:23.436003Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/src/wp-admin/includes/class-wp-upgrader.php",
+            "/branches/7.1/src/wp-admin/includes/update-core.php"
+        ]
+    },
+    {
+        "id": 64888,
+        "author": "jeremyfelt",
+        "message": "Customizer: Improve changeset handling.\n\nMerges [64876] to the 7.1 branch.\n\nProps westonruter, lancewillett, jorbin, jeremyfelt, antonade.\n",
+        "date": "2026-10-28T14:53:33.583216Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/src/wp-includes/class-wp-customize-manager.php"
+        ]
+    },
+    {
+        "id": 64887,
+        "author": "jeremyfelt",
+        "message": "Editor: Align block-delimiter whitespace matching between the PHP and JavaScript parsers.\n\nProps jonsurrell, jorbin, dmsnell.\n",
+        "date": "2026-10-28T14:52:11.146827Z",
+        "files": [
+            "/branches/7.1/src/wp-includes/class-wp-block-parser.php"
+        ]
+    },
+    {
+        "id": 64886,
+        "author": "jeremyfelt",
+        "message": "Comments: Require edit access to a note's post to update or delete it\n\nMerges [64875] to the 7.1 branch.\n\nProps ramonopoly, xknown, adamsilverstein, audrasjb, jorbin.\n",
+        "date": "2026-10-28T14:51:17.952761Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 64885,
+        "author": "jeremyfelt",
+        "message": "Privacy: Harden column_email() output escaping in request list tables\n\nMerges [64874] to the 7.1 branch.\n\nProps xknown, westonruter, jeremyfelt.\n",
+        "date": "2026-10-28T14:50:31.144863Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/src/wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php",
+            "/branches/7.1/src/wp-admin/includes/class-wp-privacy-data-removal-requests-list-table.php",
+            "/branches/7.1/src/wp-admin/includes/class-wp-privacy-requests-table.php"
+        ]
+    },
+    {
+        "id": 64884,
+        "author": "jeremyfelt",
+        "message": "Users: Escape user login\n\nMerges [64873] to the 7.1 branch.\n\nProps xknown, jeremyfelt, jorbin, rfaile313.\n",
+        "date": "2026-10-28T14:49:26.792255Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/src/wp-admin/includes/ajax-actions.php",
+            "/branches/7.1/src/wp-admin/includes/class-wp-ms-users-list-table.php",
+            "/branches/7.1/src/wp-admin/includes/class-wp-users-list-table.php",
+            "/branches/7.1/src/wp-admin/includes/ms.php",
+            "/branches/7.1/src/wp-admin/user-edit.php",
+            "/branches/7.1/src/wp-admin/users.php",
+            "/branches/7.1/src/wp-includes/admin-bar.php",
+            "/branches/7.1/src/wp-signup.php"
+        ]
+    },
+    {
+        "id": 64883,
+        "author": "jeremyfelt",
+        "message": "Build/Test Tools: Remove the final newline from generated asset files.\n\nThe build writes `script-loader-packages.php` and `script-modules-packages.php` without a final newline. [64882] added one to each, so every build modified both files.\n\nFollow-up to [64882].\n\nProps lancewillett.\n",
+        "date": "2026-10-28T14:41:03.341142Z",
+        "files": [
+            "/trunk/src/wp-includes/assets/script-loader-packages.php",
+            "/trunk/src/wp-includes/assets/script-modules-packages.php"
+        ]
+    },
+    {
+        "id": 64882,
+        "author": "jeremyfelt",
+        "message": "General: Bump the pinned hash for Gutenberg to `cc75a79`.\n\nThis updates the pinned commit hash of the Gutenberg repository from `d72020a651eda64dcc53b5dbd5b9d5bd511c4cc9` to `cc75a79186fd23e72eb015d594e82f40c6209eb5`.\n\nA full list of changes included in this commit can be found on GitHub:\nhttps://github.com/WordPress/gutenberg/compare/d72020a651eda64dcc53b5dbd5b9d5bd511c4cc9...cc75a79186fd23e72eb015d594e82f40c6209eb5.\n\n- Interactivity API: Harden directive processing and client-side navigation\n- Block parser: Only accept HTML whitespace in block delimiters\n- Categories block: Don't run the dropdown label through sprintf()\n- Use the HTML API to insert the Image lightbox button and the Playlist waveform player\n- Escape the labels of the post navigation and comments pagination links\n- Copy the text of bound fields instead of whole block (#85403)\n- [WP 7.2] UnitControl: Use a neutral color for static unit labels (#85532)\n- Block Styles: Clamp variation labels to two lines and show the label in a tooltip (#85721) (#85733)\n- Icons: Skip sanitizing the core icons (#85083)\n- DataViews: Omit ellipses from action buttons (#85396)\n- UI: Show keyboard focus on disabled menu items (#85488) (#85765)\n- E2E: Open the settings sidebar in the Cover focal point test. (#85788)\n- Notes: Keep the avatar round when it fails to load (#85807)\n- Media & Text: Restore content padding in classic themes with a CSS reset (#85200) (#85821)\n- DropdownMenu: Match initial focus to the opening interaction (#85486) (#85826)\n- Layout: Pair physical margins with the physical float on `.alignleft/.alignright` (#83520) (#85824)\n- Components: Synchronize popup hover and keyboard targets (#85487) (#85829)\n\nProps jonsurrell, luisherranz, ntsekouras, santosguillamot, darerodz, johnbillion, westonruter, xknown, jorbin.\n",
+        "date": "2026-10-28T14:25:10.717149Z",
+        "files": [
+            "/trunk/package.json",
+            "/trunk/src/wp-includes/assets/script-loader-packages.php",
+            "/trunk/src/wp-includes/assets/script-modules-packages.php",
+            "/trunk/src/wp-includes/blocks/categories.php",
+            "/trunk/src/wp-includes/blocks/comments-pagination-next.php",
+            "/trunk/src/wp-includes/blocks/comments-pagination-previous.php",
+            "/trunk/src/wp-includes/blocks/image.php",
+            "/trunk/src/wp-includes/blocks/playlist.php",
+            "/trunk/src/wp-includes/blocks/post-navigation-link.php",
+            "/trunk/src/wp-includes/build/routes/connectors-home/content.js",
+            "/trunk/src/wp-includes/build/routes/connectors-home/content.min.asset.php",
+            "/trunk/src/wp-includes/build/routes/connectors-home/content.min.js",
+            "/trunk/src/wp-includes/build/routes/font-list/content.js",
+            "/trunk/src/wp-includes/build/routes/font-list/content.min.asset.php",
+            "/trunk/src/wp-includes/build/routes/font-list/content.min.js",
+            "/trunk/src/wp-includes/build/scripts/core-actions/page/set-as-homepage/action.php",
+            "/trunk/src/wp-includes/build/scripts/core-actions/page/set-as-posts-page/action.php",
+            "/trunk/src/wp-includes/build/scripts/core-actions/post_type_supports/delete-post/action.php",
+            "/trunk/src/wp-includes/build/scripts/core-actions/post_type_supports/duplicate-post/action.php",
+            "/trunk/src/wp-includes/build/scripts/core-actions/post_type_supports/move-to-trash/action.php",
+            "/trunk/src/wp-includes/build/scripts/core-actions/post_type_supports/order-pages/action.php",
+            "/trunk/src/wp-includes/build/scripts/core-actions/post_type_supports/permanently-delete/action.php",
+            "/trunk/src/wp-includes/build/scripts/core-actions/post_type_supports/rename-post/action.php",
+            "/trunk/src/wp-includes/build/scripts/core-actions/post_type_supports/reset-post/action.php",
+            "/trunk/src/wp-includes/build/scripts/core-actions/wp_block/duplicate-pattern/action.php",
+            "/trunk/src/wp-includes/build/scripts/core-actions/wp_template_part/duplicate-template-part/action.php"
+        ]
+    },
+    {
         "id": 64881,
         "author": "jeremyfelt",
         "message": "Tests: Expect `attribute_name` in Interactivity API directive entries.\n\nFollow-up to r64878.\n\nProps jonsurrell, ntsekouras, luisherranz.\n",
