@@ -1,5 +1,25 @@
 [
     {
+        "id": 64870,
+        "author": "dmsnell",
+        "message": "Blocks: Rely on WP_Block_Processor inside WP_Block_Parser\n\nWhen `WP_Block_Processor` was introduced, it added a second pathway for parsing block structure. This patch unifies that parsing by replacing the internals of the `WP_Block_Parser` class with the newer `WP_Block_Processor`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13695\nDiscussed in: https://core.trac.wordpress.org/ticket/66138\n\nProps dmsnell, jonsurrell.\nSee #66138.\n",
+        "date": "2026-10-28T06:02:08.819586Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-parser.php"
+        ]
+    },
+    {
+        "id": 64869,
+        "author": "westonruter",
+        "message": "Docs: Correct the variadic `@param` tag in `add_query_arg()`.\n\nSince r46126 the signature of `add_query_arg()` has been `...$args`, but its docblock still documented separate `$key`, `$value`, and `$url` parameters, which PHPStan reports as unknown. The variadic is now documented as `mixed ...$args`, with both call shapes described in its text, since a PHPDoc type cannot vary by argument position. These were the last `parameter.notFound` errors, so that baseline is removed.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14930.\nFollow-up to r34511, r46126, r46451, r63020.\n\nProps huzaifaalmesbah, westonruter.\nSee #65817.\n",
+        "date": "2026-10-28T05:31:40.654557Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/tests/phpstan/baselines/parameter.notFound.neon"
+        ]
+    },
+    {
         "id": 64868,
         "author": "westonruter",
         "message": "Code Quality: Document properties accessible via magic methods.\n\nCode outside of `wpdb`, `WP_List_Table`, and `WP_Object_Cache` reads several of their protected properties, which the classes' magic `__get()` methods allow for backward compatibility. Since PHPStan cannot see this, each such read was reported as a `property.protected` error. Class-level `@property` tags now document these properties, and the `property.protected` PHPStan baseline is removed. The tags are writable to match the classes' `__set()` methods, except for `wpdb::$check_current_query`, which `__set()` blocks.\n\nBeyond the properties that core itself reads, the `wpdb` tags also cover properties that plugins are known to read, while the database password is not documented, to avoid encouraging access to it. The documented types of `wpdb::$col_info` and `WP_Object_Cache::$global_groups` are also corrected: the former can be `null`, and the latter maps group names to `true` rather than listing them.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14265.\nFollow-up to r21472, r31146, r63020.\n\nProps mukesh27, westonruter.\nSee #65817.\n",
