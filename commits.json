@@ -1,5 +1,20 @@
 [
     {
+        "id": 64868,
+        "author": "westonruter",
+        "message": "Code Quality: Document properties accessible via magic methods.\n\nCode outside of `wpdb`, `WP_List_Table`, and `WP_Object_Cache` reads several of their protected properties, which the classes' magic `__get()` methods allow for backward compatibility. Since PHPStan cannot see this, each such read was reported as a `property.protected` error. Class-level `@property` tags now document these properties, and the `property.protected` PHPStan baseline is removed. The tags are writable to match the classes' `__set()` methods, except for `wpdb::$check_current_query`, which `__set()` blocks.\n\nBeyond the properties that core itself reads, the `wpdb` tags also cover properties that plugins are known to read, while the database password is not documented, to avoid encouraging access to it. The documented types of `wpdb::$col_info` and `WP_Object_Cache::$global_groups` are also corrected: the former can be `null`, and the latter maps group names to `true` rather than listing them.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14265.\nFollow-up to r21472, r31146, r63020.\n\nProps mukesh27, westonruter.\nSee #65817.\n",
+        "date": "2026-10-28T02:43:26.698623Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-admin/includes/class-wp-list-table.php",
+            "/trunk/src/wp-includes/class-wp-object-cache.php",
+            "/trunk/src/wp-includes/class-wpdb.php",
+            "/trunk/tests/phpstan/baselines/assign.propertyType.neon",
+            "/trunk/tests/phpstan/baselines/isset.property.neon",
+            "/trunk/tests/phpstan/baselines/property.protected.neon"
+        ]
+    },
+    {
         "id": 64867,
         "author": "SergeyBiryukov",
         "message": "Media: Guard the image size lookup in `image_constrain_size_for_editor()`.\n\nThis ensures that passing a size which is not a valid array key does not cause a PHP error.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13032.\n\nFollow-up to r63177.\n\nProps mukesh27, im3dabasia1, softglaze.\nFixes #65842.",
