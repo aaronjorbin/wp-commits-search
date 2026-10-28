@@ -1,5 +1,59 @@
 [
     {
+        "id": 64867,
+        "author": "SergeyBiryukov",
+        "message": "Media: Guard the image size lookup in `image_constrain_size_for_editor()`.\n\nThis ensures that passing a size which is not a valid array key does not cause a PHP error.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13032.\n\nFollow-up to r63177.\n\nProps mukesh27, im3dabasia1, softglaze.\nFixes #65842.",
+        "date": "2026-10-27T23:32:39.369175Z",
+        "files": [
+            "/trunk/src/wp-includes/media.php",
+            "/trunk/tests/phpunit/tests/image/size.php"
+        ]
+    },
+    {
+        "id": 64866,
+        "author": "lancewillett",
+        "message": "Tests: Cover category, tag, and author feed links.\n\nCheck plain and pretty feed URLs, default and explicit feed formats, and filter arguments and output. Cover category and tag lookup with IDs and term objects, including missing terms.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14633, https://github.com/WordPress/wordpress-develop/pull/14634, https://github.com/WordPress/wordpress-develop/pull/14650\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-27T23:28:03.563474Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getAuthorFeedLink.php",
+            "/trunk/tests/phpunit/tests/link/getCategoryFeedLink.php",
+            "/trunk/tests/phpunit/tests/link/getTagFeedLink.php"
+        ]
+    },
+    {
+        "id": 64865,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom registrations in post and query tests.\n\nUnregister the custom taxonomies and post types used by the publishing, lazy-load term metadata, and random content redirect tests after each test. Preserve the existing assertions and parent teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14994, https://github.com/WordPress/wordpress-develop/pull/14997, https://github.com/WordPress/wordpress-develop/pull/14998\n\nProps rejaulalomkhan.\nSee #65893.\n",
+        "date": "2026-10-27T23:18:47.880155Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/wpPublishPost.php",
+            "/trunk/tests/phpunit/tests/query/lazyLoadTermMeta.php",
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php"
+        ]
+    },
+    {
+        "id": 64864,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom registrations in post and metadata tests.\n\nUnregister fixture post types and taxonomies during teardown in post class, randomable post type, metadata registration, meta revision, and term count transition tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14987, https://github.com/WordPress/wordpress-develop/pull/14988, https://github.com/WordPress/wordpress-develop/pull/14989, https://github.com/WordPress/wordpress-develop/pull/14990, https://github.com/WordPress/wordpress-develop/pull/14993\n\nProps rejaulalomkhan.\nSee #65893.\n",
+        "date": "2026-10-27T23:13:28.268190Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/meta/registerMeta.php",
+            "/trunk/tests/phpunit/tests/post/getPostClass.php",
+            "/trunk/tests/phpunit/tests/post/metaRevisions.php",
+            "/trunk/tests/phpunit/tests/post/randomablePostType.php",
+            "/trunk/tests/phpunit/tests/post/updateTermCountOnTransitionPostStatus.php"
+        ]
+    },
+    {
+        "id": 64863,
+        "author": "lancewillett",
+        "message": "Tests: Limit private reader role setup in REST posts tests.\n\nRegister the `private_reader` role and grant `read_private_posts` only in the three REST posts controller tests that use the private reader. Preserve the existing requests and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14087\n\nProps sainathpoojary, huzaifaalmesbah.\nSee #66074.\n",
+        "date": "2026-10-27T23:12:35.228650Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-posts-controller.php"
+        ]
+    },
+    {
         "id": 64862,
         "author": "lancewillett",
         "message": "Tests: Clean up fixtures in taxonomy and oEmbed tests.\n\nUnregister custom taxonomies during teardown in edit term link, tag link, attachment taxonomy, and category ancestor tests. Unregister `not_embeddable` after oEmbed discovery tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14943, https://github.com/WordPress/wordpress-develop/pull/14964, https://github.com/WordPress/wordpress-develop/pull/14965, https://github.com/WordPress/wordpress-develop/pull/14967, https://github.com/WordPress/wordpress-develop/pull/14986\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65893.\n",
