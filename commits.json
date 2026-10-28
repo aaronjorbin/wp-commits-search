@@ -1,5 +1,309 @@
 [
     {
+        "id": 64908,
+        "author": "jeremyfelt",
+        "message": "Tag 7.1.4",
+        "date": "2026-10-28T16:11:28.215386Z",
+        "files": [
+            "/tags/7.1.4"
+        ]
+    },
+    {
+        "id": 64907,
+        "author": "jorgefilipecosta",
+        "message": "Abilities API: Rename the `local` date sub-field of `core/content-query` to `site`.\n\nThe `date` and `modified` fields now return `site` and `gmt` sub-fields, and the `fields` input accepts `date.site` and `modified.site`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15000.\nFollow-up to r64388.\n\nProps jorgefilipecosta, gziolo.\nSee #66268.",
+        "date": "2026-10-28T16:08:33.011320Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-content.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreContentAbility.php"
+        ]
+    },
+    {
+        "id": 64906,
+        "author": "jeremyfelt",
+        "message": "WordPress 7.2 Beta 3.\n",
+        "date": "2026-10-28T16:04:43.928672Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64905,
+        "author": "jeremyfelt",
+        "message": "WordPress 6.6.11.\n",
+        "date": "2026-10-28T15:59:18.673717Z",
+        "files": [
+            "/branches/6.6/package-lock.json",
+            "/branches/6.6/package.json",
+            "/branches/6.6/src/wp-admin/about.php",
+            "/branches/6.6/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64904,
+        "author": "jeremyfelt",
+        "message": "WordPress 6.7.11.\n",
+        "date": "2026-10-28T15:58:50.068579Z",
+        "files": [
+            "/branches/6.7/package-lock.json",
+            "/branches/6.7/package.json",
+            "/branches/6.7/src/wp-admin/about.php",
+            "/branches/6.7/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64903,
+        "author": "jeremyfelt",
+        "message": "WordPress 6.8.12.\n",
+        "date": "2026-10-28T15:58:21.120330Z",
+        "files": [
+            "/branches/6.8/composer.json",
+            "/branches/6.8/package-lock.json",
+            "/branches/6.8/package.json",
+            "/branches/6.8/src/wp-admin/about.php",
+            "/branches/6.8/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64902,
+        "author": "jeremyfelt",
+        "message": "WordPress 6.9.11.\n",
+        "date": "2026-10-28T15:57:55.816312Z",
+        "files": [
+            "/branches/6.9/composer.json",
+            "/branches/6.9/package-lock.json",
+            "/branches/6.9/package.json",
+            "/branches/6.9/src/wp-admin/about.php",
+            "/branches/6.9/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64901,
+        "author": "jeremyfelt",
+        "message": "WordPress 7.0.8.\n",
+        "date": "2026-10-28T15:57:07.164584Z",
+        "files": [
+            "/branches/7.0/composer.json",
+            "/branches/7.0/package-lock.json",
+            "/branches/7.0/package.json",
+            "/branches/7.0/src/wp-admin/about.php",
+            "/branches/7.0/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64900,
+        "author": "jeremyfelt",
+        "message": "WordPress 7.1.4.\n",
+        "date": "2026-10-28T15:56:16.938786Z",
+        "files": [
+            "/branches/7.1/src/wp-admin/about.php",
+            "/branches/7.1/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64899,
+        "author": "jeremyfelt",
+        "message": "Security: Backport the WordPress 7.1.4 security fixes to the 6.6 branch.\n\n- Users: Escape user login\n- Privacy: Harden column_email() output escaping in request list tables\n- Editor: Align block-delimiter whitespace matching between the PHP and JavaScript parsers.\n- Customizer: Improve changeset handling.\n- Upgrade/Install: Improve the handling of the upgrade working directory.\n- Interactivity API: Limit bindings on object elements to global attributes\n- Customize: Resolve selective refresh partial placements as selectors only\n- Interactivity API: Harden directive processing and client-side navigation\n- Block parser: Only accept HTML whitespace in block delimiters\n- Use the HTML API to insert the Image lightbox button and the Playlist waveform player\n- Escape the labels of the post navigation and comments pagination links\n\nThis also updates @wordpress/block-library@9.0.10, @wordpress/block-serialization-default-parser@5.0.2, @wordpress/interactivity@6.0.3, @wordpress/interactivity-router@2.0.3.\n\nMerges [64873], [64874], [64876], [64877], [64878], [64879] to the 6.6 branch.\n\nProps xknown, jeremyfelt, jorbin, rfaile313, westonruter, jonsurrell, dmsnell, lancewillett, umut3806, marcs0h, ntsekouras, luisherranz, santosguillamot, darerodz, johnbillion.\n",
+        "date": "2026-10-28T15:45:55.017059Z",
+        "files": [
+            "/branches/6.6",
+            "/branches/6.6/package-lock.json",
+            "/branches/6.6/package.json",
+            "/branches/6.6/src/js/_enqueues/wp/customize/preview-widgets.js",
+            "/branches/6.6/src/js/_enqueues/wp/customize/selective-refresh.js",
+            "/branches/6.6/src/wp-admin/includes/ajax-actions.php",
+            "/branches/6.6/src/wp-admin/includes/class-wp-ms-users-list-table.php",
+            "/branches/6.6/src/wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php",
+            "/branches/6.6/src/wp-admin/includes/class-wp-privacy-data-removal-requests-list-table.php",
+            "/branches/6.6/src/wp-admin/includes/class-wp-privacy-requests-table.php",
+            "/branches/6.6/src/wp-admin/includes/class-wp-upgrader.php",
+            "/branches/6.6/src/wp-admin/includes/class-wp-users-list-table.php",
+            "/branches/6.6/src/wp-admin/includes/ms.php",
+            "/branches/6.6/src/wp-admin/includes/update-core.php",
+            "/branches/6.6/src/wp-admin/user-edit.php",
+            "/branches/6.6/src/wp-admin/users.php",
+            "/branches/6.6/src/wp-content/themes/twentytwenty/assets/js/customize-preview.js",
+            "/branches/6.6/src/wp-includes/admin-bar.php",
+            "/branches/6.6/src/wp-includes/assets/script-loader-packages.min.php",
+            "/branches/6.6/src/wp-includes/blocks/comments-pagination-next.php",
+            "/branches/6.6/src/wp-includes/blocks/comments-pagination-previous.php",
+            "/branches/6.6/src/wp-includes/blocks/image.php",
+            "/branches/6.6/src/wp-includes/blocks/post-navigation-link.php",
+            "/branches/6.6/src/wp-includes/class-wp-block-parser.php",
+            "/branches/6.6/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/6.6/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/branches/6.6/src/wp-includes/kses.php",
+            "/branches/6.6/src/wp-signup.php"
+        ]
+    },
+    {
+        "id": 64898,
+        "author": "jeremyfelt",
+        "message": "Security: Backport the WordPress 7.1.4 security fixes to the 6.7 branch.\n\n- Users: Escape user login\n- Privacy: Harden column_email() output escaping in request list tables\n- Editor: Align block-delimiter whitespace matching between the PHP and JavaScript parsers.\n- Customizer: Improve changeset handling.\n- Upgrade/Install: Improve the handling of the upgrade working directory.\n- Interactivity API: Limit bindings on object elements to global attributes\n- Customize: Resolve selective refresh partial placements as selectors only\n- Interactivity API: Harden directive processing and client-side navigation\n- Block parser: Only accept HTML whitespace in block delimiters\n- Categories block: Don't run the dropdown label through sprintf()\n- Use the HTML API to insert the Image lightbox button and the Playlist waveform player\n- Escape the labels of the post navigation and comments pagination links\n\nThis also updates @wordpress/block-library@9.8.19, @wordpress/block-serialization-default-parser@5.8.2, @wordpress/interactivity@6.8.7, @wordpress/interactivity-router@2.8.8.\n\nMerges [64873], [64874], [64876], [64877], [64878], [64879] to the 6.7 branch.\n\nProps xknown, jeremyfelt, jorbin, rfaile313, westonruter, jonsurrell, dmsnell, lancewillett, umut3806, marcs0h, ntsekouras, luisherranz, santosguillamot, darerodz, johnbillion.\n",
+        "date": "2026-10-28T15:45:02.829497Z",
+        "files": [
+            "/branches/6.7",
+            "/branches/6.7/package-lock.json",
+            "/branches/6.7/package.json",
+            "/branches/6.7/src/js/_enqueues/wp/customize/preview-widgets.js",
+            "/branches/6.7/src/js/_enqueues/wp/customize/selective-refresh.js",
+            "/branches/6.7/src/wp-admin/includes/ajax-actions.php",
+            "/branches/6.7/src/wp-admin/includes/class-wp-ms-users-list-table.php",
+            "/branches/6.7/src/wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php",
+            "/branches/6.7/src/wp-admin/includes/class-wp-privacy-data-removal-requests-list-table.php",
+            "/branches/6.7/src/wp-admin/includes/class-wp-privacy-requests-table.php",
+            "/branches/6.7/src/wp-admin/includes/class-wp-upgrader.php",
+            "/branches/6.7/src/wp-admin/includes/class-wp-users-list-table.php",
+            "/branches/6.7/src/wp-admin/includes/ms.php",
+            "/branches/6.7/src/wp-admin/includes/update-core.php",
+            "/branches/6.7/src/wp-admin/user-edit.php",
+            "/branches/6.7/src/wp-admin/users.php",
+            "/branches/6.7/src/wp-content/themes/twentytwenty/assets/js/customize-preview.js",
+            "/branches/6.7/src/wp-includes/admin-bar.php",
+            "/branches/6.7/src/wp-includes/assets/script-loader-packages.min.php",
+            "/branches/6.7/src/wp-includes/assets/script-modules-packages.min.php",
+            "/branches/6.7/src/wp-includes/blocks/categories.php",
+            "/branches/6.7/src/wp-includes/blocks/comments-pagination-next.php",
+            "/branches/6.7/src/wp-includes/blocks/comments-pagination-previous.php",
+            "/branches/6.7/src/wp-includes/blocks/image.php",
+            "/branches/6.7/src/wp-includes/blocks/post-navigation-link.php",
+            "/branches/6.7/src/wp-includes/class-wp-block-parser.php",
+            "/branches/6.7/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/6.7/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/branches/6.7/src/wp-includes/kses.php",
+            "/branches/6.7/src/wp-signup.php"
+        ]
+    },
+    {
+        "id": 64897,
+        "author": "jeremyfelt",
+        "message": "Security: Backport the WordPress 7.1.4 security fixes to the 6.8 branch.\n\n- Users: Escape user login\n- Privacy: Harden column_email() output escaping in request list tables\n- Editor: Align block-delimiter whitespace matching between the PHP and JavaScript parsers.\n- Customizer: Improve changeset handling.\n- Upgrade/Install: Improve the handling of the upgrade working directory.\n- Interactivity API: Limit bindings on object elements to global attributes\n- Customize: Resolve selective refresh partial placements as selectors only\n- Interactivity API: Harden directive processing and client-side navigation\n- Block parser: Only accept HTML whitespace in block delimiters\n- Categories block: Don't run the dropdown label through sprintf()\n- Use the HTML API to insert the Image lightbox button and the Playlist waveform player\n- Escape the labels of the post navigation and comments pagination links\n\nThis also updates @wordpress/block-library@9.19.8, @wordpress/block-serialization-default-parser@5.19.2, @wordpress/interactivity@6.19.2, @wordpress/interactivity-router@2.19.2.\n\nMerges [64873], [64874], [64876], [64877], [64878], [64879] to the 6.8 branch.\n\nProps xknown, jeremyfelt, jorbin, rfaile313, westonruter, jonsurrell, dmsnell, lancewillett, umut3806, marcs0h, ntsekouras, luisherranz, santosguillamot, darerodz, johnbillion.\n",
+        "date": "2026-10-28T15:44:02.530105Z",
+        "files": [
+            "/branches/6.8",
+            "/branches/6.8/package-lock.json",
+            "/branches/6.8/package.json",
+            "/branches/6.8/src/js/_enqueues/wp/customize/preview-widgets.js",
+            "/branches/6.8/src/js/_enqueues/wp/customize/selective-refresh.js",
+            "/branches/6.8/src/wp-admin/includes/ajax-actions.php",
+            "/branches/6.8/src/wp-admin/includes/class-wp-ms-users-list-table.php",
+            "/branches/6.8/src/wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php",
+            "/branches/6.8/src/wp-admin/includes/class-wp-privacy-data-removal-requests-list-table.php",
+            "/branches/6.8/src/wp-admin/includes/class-wp-privacy-requests-table.php",
+            "/branches/6.8/src/wp-admin/includes/class-wp-upgrader.php",
+            "/branches/6.8/src/wp-admin/includes/class-wp-users-list-table.php",
+            "/branches/6.8/src/wp-admin/includes/ms.php",
+            "/branches/6.8/src/wp-admin/includes/update-core.php",
+            "/branches/6.8/src/wp-admin/user-edit.php",
+            "/branches/6.8/src/wp-admin/users.php",
+            "/branches/6.8/src/wp-content/themes/twentytwenty/assets/js/customize-preview.js",
+            "/branches/6.8/src/wp-includes/admin-bar.php",
+            "/branches/6.8/src/wp-includes/assets/script-loader-packages.min.php",
+            "/branches/6.8/src/wp-includes/assets/script-modules-packages.min.php",
+            "/branches/6.8/src/wp-includes/blocks/categories.php",
+            "/branches/6.8/src/wp-includes/blocks/comments-pagination-next.php",
+            "/branches/6.8/src/wp-includes/blocks/comments-pagination-previous.php",
+            "/branches/6.8/src/wp-includes/blocks/image.php",
+            "/branches/6.8/src/wp-includes/blocks/post-navigation-link.php",
+            "/branches/6.8/src/wp-includes/class-wp-block-parser.php",
+            "/branches/6.8/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/6.8/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/branches/6.8/src/wp-includes/kses.php",
+            "/branches/6.8/src/wp-signup.php"
+        ]
+    },
+    {
+        "id": 64896,
+        "author": "jeremyfelt",
+        "message": "Security: Backport the WordPress 7.1.4 security fixes to the 6.9 branch.\n\n- Users: Escape user login\n- Privacy: Harden column_email() output escaping in request list tables\n- Comments: Require edit access to a note's post to update or delete it\n- Editor: Align block-delimiter whitespace matching between the PHP and JavaScript parsers.\n- Customizer: Improve changeset handling.\n- Upgrade/Install: Improve the handling of the upgrade working directory.\n- Interactivity API: Limit bindings on object elements to global attributes\n- Customize: Resolve selective refresh partial placements as selectors only\n- Interactivity API: Harden directive processing and client-side navigation\n- Block parser: Only accept HTML whitespace in block delimiters\n- Categories block: Don't run the dropdown label through sprintf()\n- Use the HTML API to insert the Image lightbox button and the Playlist waveform player\n- Escape the labels of the post navigation and comments pagination links\n\nThis also updates @wordpress/block-library@9.33.12, @wordpress/block-serialization-default-parser@5.33.2, @wordpress/interactivity@6.33.4, @wordpress/interactivity-router@2.33.4.\n\nMerges [64873], [64874], [64875], [64876], [64877], [64878], [64879], [64881] to the 6.9 branch.\n\nProps xknown, jeremyfelt, jorbin, rfaile313, westonruter, ramonopoly, adamsilverstein, audrasjb, jonsurrell, dmsnell, lancewillett, umut3806, marcs0h, ntsekouras, luisherranz, santosguillamot, darerodz, johnbillion.\n",
+        "date": "2026-10-28T15:43:03.746428Z",
+        "files": [
+            "/branches/6.9",
+            "/branches/6.9/package-lock.json",
+            "/branches/6.9/package.json",
+            "/branches/6.9/src/js/_enqueues/wp/customize/preview-widgets.js",
+            "/branches/6.9/src/js/_enqueues/wp/customize/selective-refresh.js",
+            "/branches/6.9/src/wp-admin/includes/ajax-actions.php",
+            "/branches/6.9/src/wp-admin/includes/class-wp-ms-users-list-table.php",
+            "/branches/6.9/src/wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php",
+            "/branches/6.9/src/wp-admin/includes/class-wp-privacy-data-removal-requests-list-table.php",
+            "/branches/6.9/src/wp-admin/includes/class-wp-privacy-requests-table.php",
+            "/branches/6.9/src/wp-admin/includes/class-wp-upgrader.php",
+            "/branches/6.9/src/wp-admin/includes/class-wp-users-list-table.php",
+            "/branches/6.9/src/wp-admin/includes/ms.php",
+            "/branches/6.9/src/wp-admin/includes/update-core.php",
+            "/branches/6.9/src/wp-admin/user-edit.php",
+            "/branches/6.9/src/wp-admin/users.php",
+            "/branches/6.9/src/wp-content/themes/twentytwenty/assets/js/customize-preview.js",
+            "/branches/6.9/src/wp-includes/admin-bar.php",
+            "/branches/6.9/src/wp-includes/assets/script-loader-packages.min.php",
+            "/branches/6.9/src/wp-includes/assets/script-modules-packages.min.php",
+            "/branches/6.9/src/wp-includes/blocks/categories.php",
+            "/branches/6.9/src/wp-includes/blocks/comments-pagination-next.php",
+            "/branches/6.9/src/wp-includes/blocks/comments-pagination-previous.php",
+            "/branches/6.9/src/wp-includes/blocks/image.php",
+            "/branches/6.9/src/wp-includes/blocks/post-navigation-link.php",
+            "/branches/6.9/src/wp-includes/class-wp-block-parser.php",
+            "/branches/6.9/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/6.9/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/branches/6.9/src/wp-includes/kses.php",
+            "/branches/6.9/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/branches/6.9/src/wp-signup.php",
+            "/branches/6.9/tests/phpunit/tests/interactivity-api/wpInteractivityAPI.php"
+        ]
+    },
+    {
+        "id": 64895,
+        "author": "jeremyfelt",
+        "message": "Security: Backport the WordPress 7.1.4 security fixes to the 7.0 branch.\n\n- Users: Escape user login\n- Privacy: Harden column_email() output escaping in request list tables\n- Comments: Require edit access to a note's post to update or delete it\n- Editor: Align block-delimiter whitespace matching between the PHP and JavaScript parsers.\n- Customizer: Improve changeset handling.\n- Upgrade/Install: Improve the handling of the upgrade working directory.\n- Interactivity API: Limit bindings on object elements to global attributes\n- Customize: Resolve selective refresh partial placements as selectors only\n- Interactivity API: Harden directive processing and client-side navigation\n- Block parser: Only accept HTML whitespace in block delimiters\n- Categories block: Don't run the dropdown label through sprintf()\n- Use the HTML API to insert the Image lightbox button and the Playlist waveform player\n- Escape the labels of the post navigation and comments pagination links\n\nThis also updates the pinned commit hash of the Gutenberg repository from `28c0dedc4eaf001a24237a1fbba4b0887698b000` to `594b540e0bdd826d5ab8153b2ebdc5157e500456`: https://github.com/WordPress/gutenberg/compare/28c0dedc4eaf001a24237a1fbba4b0887698b000...594b540e0bdd826d5ab8153b2ebdc5157e500456.\n\nMerges [64873], [64874], [64875], [64876], [64877], [64878], [64879], [64881] to the 7.0 branch.\n\nProps xknown, jeremyfelt, jorbin, rfaile313, westonruter, ramonopoly, adamsilverstein, audrasjb, jonsurrell, dmsnell, lancewillett, umut3806, marcs0h, ntsekouras, luisherranz, santosguillamot, darerodz, johnbillion.\n",
+        "date": "2026-10-28T15:40:30.806744Z",
+        "files": [
+            "/branches/7.0",
+            "/branches/7.0/package.json",
+            "/branches/7.0/src/js/_enqueues/wp/customize/preview-widgets.js",
+            "/branches/7.0/src/js/_enqueues/wp/customize/selective-refresh.js",
+            "/branches/7.0/src/wp-admin/includes/ajax-actions.php",
+            "/branches/7.0/src/wp-admin/includes/class-wp-ms-users-list-table.php",
+            "/branches/7.0/src/wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php",
+            "/branches/7.0/src/wp-admin/includes/class-wp-privacy-data-removal-requests-list-table.php",
+            "/branches/7.0/src/wp-admin/includes/class-wp-privacy-requests-table.php",
+            "/branches/7.0/src/wp-admin/includes/class-wp-upgrader.php",
+            "/branches/7.0/src/wp-admin/includes/class-wp-users-list-table.php",
+            "/branches/7.0/src/wp-admin/includes/ms.php",
+            "/branches/7.0/src/wp-admin/includes/update-core.php",
+            "/branches/7.0/src/wp-admin/user-edit.php",
+            "/branches/7.0/src/wp-admin/users.php",
+            "/branches/7.0/src/wp-content/themes/twentytwenty/assets/js/customize-preview.js",
+            "/branches/7.0/src/wp-includes/admin-bar.php",
+            "/branches/7.0/src/wp-includes/assets/script-loader-packages.php",
+            "/branches/7.0/src/wp-includes/assets/script-modules-packages.php",
+            "/branches/7.0/src/wp-includes/blocks/categories.php",
+            "/branches/7.0/src/wp-includes/blocks/comments-pagination-next.php",
+            "/branches/7.0/src/wp-includes/blocks/comments-pagination-previous.php",
+            "/branches/7.0/src/wp-includes/blocks/image.php",
+            "/branches/7.0/src/wp-includes/blocks/post-navigation-link.php",
+            "/branches/7.0/src/wp-includes/build/routes/connectors-home/content.js",
+            "/branches/7.0/src/wp-includes/build/routes/connectors-home/content.min.asset.php",
+            "/branches/7.0/src/wp-includes/build/routes/connectors-home/content.min.js",
+            "/branches/7.0/src/wp-includes/class-wp-block-parser.php",
+            "/branches/7.0/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/7.0/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/branches/7.0/src/wp-includes/kses.php",
+            "/branches/7.0/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/branches/7.0/src/wp-signup.php",
+            "/branches/7.0/tests/phpunit/tests/interactivity-api/wpInteractivityAPI.php"
+        ]
+    },
+    {
+        "id": 64894,
+        "author": "jeremyfelt",
+        "message": "Tests: Expect the \"Trash\" label without an ellipsis in the core entity action tests.\n\nThe Gutenberg update in [64882] removed the ellipsis from the labels of the core entity actions.\n\nFollow-up to [64882].\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14808.\n\nProps mciampini, jeremyfelt, oandregal, mamaduka, jorbin, jonsurrell, lancewillett, ntsekouras.\nSee #66343.\n",
+        "date": "2026-10-28T15:22:49.441263Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/entity-actions/registerCoreEntityActions.php"
+        ]
+    },
+    {
         "id": 64893,
         "author": "jeremyfelt",
         "message": "General: Bump the pinned hash for Gutenberg in `7.1` branch.\n\nThis updates the pinned commit hash of the Gutenberg repository from `dd294ab86ceaf9f3d7d42a09b78f399238ce8826` to `8daba429215ef3dce75da4360156b1a2f39897c6`.\n\nA full list of changes included in this commit can be found on GitHub:\nhttps://github.com/WordPress/gutenberg/compare/dd294ab86ceaf9f3d7d42a09b78f399238ce8826...8daba429215ef3dce75da4360156b1a2f39897c6.\n\n- Interactivity API: Harden directive processing and client-side navigation\n- Block parser: Only accept HTML whitespace in block delimiters\n- Categories block: Don't run the dropdown label through sprintf()\n- Use the HTML API to insert the Image lightbox button and the Playlist waveform player\n- Escape the labels of the post navigation and comments pagination links\n\nProps jonsurrell, luisherranz, ntsekouras, santosguillamot, darerodz, johnbillion, westonruter, xknown, jorbin.\n",
