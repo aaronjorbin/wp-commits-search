@@ -1,5 +1,296 @@
 [
     {
+        "id": 64972,
+        "author": "jeremyfelt",
+        "message": "Tag 4.7.39",
+        "date": "2026-10-28T20:38:53.582177Z",
+        "files": [
+            "/tags/4.7.39"
+        ]
+    },
+    {
+        "id": 64971,
+        "author": "jeremyfelt",
+        "message": "Tag 4.8.34",
+        "date": "2026-10-28T20:38:45.096272Z",
+        "files": [
+            "/tags/4.8.34"
+        ]
+    },
+    {
+        "id": 64970,
+        "author": "jeremyfelt",
+        "message": "Tag 4.9.35",
+        "date": "2026-10-28T20:38:38.003453Z",
+        "files": [
+            "/tags/4.9.35"
+        ]
+    },
+    {
+        "id": 64969,
+        "author": "jeremyfelt",
+        "message": "Tag 5.0.31",
+        "date": "2026-10-28T20:38:29.237441Z",
+        "files": [
+            "/tags/5.0.31"
+        ]
+    },
+    {
+        "id": 64968,
+        "author": "jeremyfelt",
+        "message": "Tag 5.1.28",
+        "date": "2026-10-28T20:38:19.501250Z",
+        "files": [
+            "/tags/5.1.28"
+        ]
+    },
+    {
+        "id": 64967,
+        "author": "jeremyfelt",
+        "message": "Tag 5.2.30",
+        "date": "2026-10-28T20:38:10.034252Z",
+        "files": [
+            "/tags/5.2.30"
+        ]
+    },
+    {
+        "id": 64966,
+        "author": "jeremyfelt",
+        "message": "Tag 5.3.27",
+        "date": "2026-10-28T20:37:58.972717Z",
+        "files": [
+            "/tags/5.3.27"
+        ]
+    },
+    {
+        "id": 64965,
+        "author": "jeremyfelt",
+        "message": "Tag 5.4.25",
+        "date": "2026-10-28T20:37:46.917129Z",
+        "files": [
+            "/tags/5.4.25"
+        ]
+    },
+    {
+        "id": 64964,
+        "author": "jeremyfelt",
+        "message": "Tag 5.5.24",
+        "date": "2026-10-28T20:37:38.755856Z",
+        "files": [
+            "/tags/5.5.24"
+        ]
+    },
+    {
+        "id": 64963,
+        "author": "jeremyfelt",
+        "message": "Tag 5.6.23",
+        "date": "2026-10-28T20:37:24.081289Z",
+        "files": [
+            "/tags/5.6.23"
+        ]
+    },
+    {
+        "id": 64962,
+        "author": "jeremyfelt",
+        "message": "Tag 5.7.21",
+        "date": "2026-10-28T20:37:16.289124Z",
+        "files": [
+            "/tags/5.7.21"
+        ]
+    },
+    {
+        "id": 64961,
+        "author": "jeremyfelt",
+        "message": "Tag 5.8.19",
+        "date": "2026-10-28T20:37:07.844395Z",
+        "files": [
+            "/tags/5.8.19"
+        ]
+    },
+    {
+        "id": 64960,
+        "author": "jeremyfelt",
+        "message": "Tag 5.9.20",
+        "date": "2026-10-28T20:37:00.586943Z",
+        "files": [
+            "/tags/5.9.20"
+        ]
+    },
+    {
+        "id": 64959,
+        "author": "jeremyfelt",
+        "message": "Tag 6.0.18",
+        "date": "2026-10-28T20:36:53.852479Z",
+        "files": [
+            "/tags/6.0.18"
+        ]
+    },
+    {
+        "id": 64958,
+        "author": "jeremyfelt",
+        "message": "Tag 6.1.16",
+        "date": "2026-10-28T20:36:46.706752Z",
+        "files": [
+            "/tags/6.1.16"
+        ]
+    },
+    {
+        "id": 64957,
+        "author": "jeremyfelt",
+        "message": "Tag 6.2.15",
+        "date": "2026-10-28T20:36:39.764278Z",
+        "files": [
+            "/tags/6.2.15"
+        ]
+    },
+    {
+        "id": 64956,
+        "author": "jeremyfelt",
+        "message": "Tag 6.3.14",
+        "date": "2026-10-28T20:36:28.637682Z",
+        "files": [
+            "/tags/6.3.14"
+        ]
+    },
+    {
+        "id": 64955,
+        "author": "jeremyfelt",
+        "message": "Tag 6.4.14",
+        "date": "2026-10-28T20:36:20.298641Z",
+        "files": [
+            "/tags/6.4.14"
+        ]
+    },
+    {
+        "id": 64954,
+        "author": "jeremyfelt",
+        "message": "Tag 6.5.14",
+        "date": "2026-10-28T20:36:10.850610Z",
+        "files": [
+            "/tags/6.5.14"
+        ]
+    },
+    {
+        "id": 64953,
+        "author": "jeremyfelt",
+        "message": "WordPress 4.7.39.",
+        "date": "2026-10-28T20:14:56.467310Z",
+        "files": [
+            "/branches/4.7/package-lock.json",
+            "/branches/4.7/package.json",
+            "/branches/4.7/src/wp-admin/about.php",
+            "/branches/4.7/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64952,
+        "author": "jeremyfelt",
+        "message": "WordPress 4.8.34.",
+        "date": "2026-10-28T20:14:29.309256Z",
+        "files": [
+            "/branches/4.8/package-lock.json",
+            "/branches/4.8/package.json",
+            "/branches/4.8/src/wp-admin/about.php",
+            "/branches/4.8/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64951,
+        "author": "jeremyfelt",
+        "message": "WordPress 4.9.35.",
+        "date": "2026-10-28T20:14:00.127297Z",
+        "files": [
+            "/branches/4.9/package-lock.json",
+            "/branches/4.9/package.json",
+            "/branches/4.9/src/wp-admin/about.php",
+            "/branches/4.9/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64950,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.0.31.",
+        "date": "2026-10-28T20:13:39.736479Z",
+        "files": [
+            "/branches/5.0/package-lock.json",
+            "/branches/5.0/package.json",
+            "/branches/5.0/src/wp-admin/about.php",
+            "/branches/5.0/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64949,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.1.28.",
+        "date": "2026-10-28T20:13:11.396757Z",
+        "files": [
+            "/branches/5.1/package-lock.json",
+            "/branches/5.1/package.json",
+            "/branches/5.1/src/wp-admin/about.php",
+            "/branches/5.1/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64948,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.2.30.",
+        "date": "2026-10-28T20:12:40.525353Z",
+        "files": [
+            "/branches/5.2/package-lock.json",
+            "/branches/5.2/package.json",
+            "/branches/5.2/src/wp-admin/about.php",
+            "/branches/5.2/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64947,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.3.27.",
+        "date": "2026-10-28T20:12:21.728086Z",
+        "files": [
+            "/branches/5.3/package-lock.json",
+            "/branches/5.3/package.json",
+            "/branches/5.3/src/wp-admin/about.php",
+            "/branches/5.3/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64946,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.4.25.",
+        "date": "2026-10-28T20:11:56.178811Z",
+        "files": [
+            "/branches/5.4/package-lock.json",
+            "/branches/5.4/package.json",
+            "/branches/5.4/src/wp-admin/about.php",
+            "/branches/5.4/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64945,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.5.24.",
+        "date": "2026-10-28T20:11:23.686144Z",
+        "files": [
+            "/branches/5.5/package-lock.json",
+            "/branches/5.5/package.json",
+            "/branches/5.5/src/wp-admin/about.php",
+            "/branches/5.5/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64944,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.6.23.",
+        "date": "2026-10-28T20:11:00.186097Z",
+        "files": [
+            "/branches/5.6/package-lock.json",
+            "/branches/5.6/package.json",
+            "/branches/5.6/src/wp-admin/about.php",
+            "/branches/5.6/src/wp-includes/version.php"
+        ]
+    },
+    {
         "id": 64943,
         "author": "jeremyfelt",
         "message": "WordPress 5.7.21.",
