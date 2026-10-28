@@ -1,5 +1,284 @@
 [
     {
+        "id": 64991,
+        "author": "lancewillett",
+        "message": "Tests: Make auth, user, comment, and icon data providers static.\n\nDeclare 33 data providers as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nMake the three user-notification callback helpers static and reference them with `self::class` so the provider does not require a test instance.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14966, https://github.com/WordPress/wordpress-develop/pull/14968, https://github.com/WordPress/wordpress-develop/pull/14969, https://github.com/WordPress/wordpress-develop/pull/15118\n\nProps rejaulalomkhan, shailu25, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-28T23:05:18.486971Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/auth.php",
+            "/trunk/tests/phpunit/tests/comment.php",
+            "/trunk/tests/phpunit/tests/icons/wpIconCollectionsRegistry.php",
+            "/trunk/tests/phpunit/tests/icons/wpIconsRegistry.php",
+            "/trunk/tests/phpunit/tests/icons/wpRestIconCollectionsController.php",
+            "/trunk/tests/phpunit/tests/icons/wpRestIconsController.php",
+            "/trunk/tests/phpunit/tests/user.php"
+        ]
+    },
+    {
+        "id": 64990,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Cache and retry WP-CLI downloads.\n\nInstall WP-CLI through a shared action in the installation, upgrade, and performance workflows. Cache downloads in six-hour windows, retry failed downloads, and fall back to a previously cached copy when available. Fail the setup step when no usable download is available.\n\nPreserve WP-CLI 2.4.0 for PHP 5.4 and 5.5. Use `$/` action references so release-branch callers load the action from the reusable workflow's commit. Update workflow path filters and lint tooling for the new action syntax.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14789\n\nProps lucatume, adrianmoldovanwp.\nFixes #66388.\n",
+        "date": "2026-10-28T22:58:20.890655Z",
+        "files": [
+            "/trunk/.github/actionlint.yaml",
+            "/trunk/.github/actions/setup-wp-cli",
+            "/trunk/.github/actions/setup-wp-cli/action.yml",
+            "/trunk/.github/workflows/install-testing.yml",
+            "/trunk/.github/workflows/performance.yml",
+            "/trunk/.github/workflows/reusable-performance-test-v2.yml",
+            "/trunk/.github/workflows/reusable-upgrade-testing.yml",
+            "/trunk/.github/workflows/reusable-workflow-lint.yml",
+            "/trunk/.github/workflows/upgrade-develop-testing.yml",
+            "/trunk/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
+        "id": 64989,
+        "author": "lancewillett",
+        "message": "Tests: Improve image editor test coverage.\n\nRemove repeated non-array image-edit inputs. Check native Imagick PDF rendering independently, then assert WordPress PDF support so loader regressions fail instead of being hidden by a skip.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15031, https://github.com/WordPress/wordpress-develop/pull/15032\n\nProps huzaifaalmesbah, shailu25.\nSee #65819.\n",
+        "date": "2026-10-28T22:57:20.167087Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/editorImagick.php",
+            "/trunk/tests/phpunit/tests/image/imageEditApplyChanges.php"
+        ]
+    },
+    {
+        "id": 64988,
+        "author": "lancewillett",
+        "message": "Tests: Simplify option, menu, and comment helper coverage.\n\nRemove repeated form-option and navigation-menu condition cases. Use in-memory comment fixtures for grouping tests that do not require database records.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15028, https://github.com/WordPress/wordpress-develop/pull/15029, https://github.com/WordPress/wordpress-develop/pull/15030\n\nProps huzaifaalmesbah, shailu25.\nSee #65819.\n",
+        "date": "2026-10-28T22:56:09.870743Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/separateComments.php",
+            "/trunk/tests/phpunit/tests/menu/hasNavMenu.php",
+            "/trunk/tests/phpunit/tests/option/formOption.php"
+        ]
+    },
+    {
+        "id": 64987,
+        "author": "lancewillett",
+        "message": "Tests: Simplify content and template helper coverage.\n\nConsolidate repeated post, term, bookmark, rewrite, and block-binding checks while retaining distinct output and escaping behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15027\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-28T22:55:06.502320Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-bindings/patternOverridesSource.php",
+            "/trunk/tests/phpunit/tests/block-bindings/postDataSource.php",
+            "/trunk/tests/phpunit/tests/block-bindings/termDataSource.php",
+            "/trunk/tests/phpunit/tests/bookmark/sanitizeBookmarkField.php",
+            "/trunk/tests/phpunit/tests/post/getPostFormatLink.php",
+            "/trunk/tests/phpunit/tests/post/theGuid.php",
+            "/trunk/tests/phpunit/tests/post/theTitleAttribute.php",
+            "/trunk/tests/phpunit/tests/post/walkerPageDropdown.php",
+            "/trunk/tests/phpunit/tests/rewrite/wpMatchesMapRegex.php",
+            "/trunk/tests/phpunit/tests/term/defaultTopicCountScale.php",
+            "/trunk/tests/phpunit/tests/term/getTheTermList.php"
+        ]
+    },
+    {
+        "id": 64986,
+        "author": "lancewillett",
+        "message": "Tests: Simplify duplicate admin helper coverage.\n\nRemove overlapping provider cases and internal cache-storage assertions. Consolidate submenu and referer checks, use an independent plugin-install status expectation, and make translation checks order-independent.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15026\n\nProps huzaifaalmesbah, shailu25.\nSee #65819.\n",
+        "date": "2026-10-28T22:53:38.172715Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/allowedOptions.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/getAdminPageParent.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/getDropins.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/getMuPlugins.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/getPluginDataMarkupTranslate.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/removeMenuPage.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/settingsFields.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/uninstallPlugin.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/wpCleanPluginsCache.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin-install/InstallPluginInstallStatus_Test.php",
+            "/trunk/tests/phpunit/tests/admin/plugin-dependencies/getCircularDependencies.php",
+            "/trunk/tests/phpunit/tests/admin/walkerCategoryChecklist.php",
+            "/trunk/tests/phpunit/tests/admin/wpAutomaticUpdaterShouldUpdate.php",
+            "/trunk/tests/phpunit/tests/admin/wpImporter.php",
+            "/trunk/tests/phpunit/tests/admin/wpPluginInstallListTableGetDependenciesNotice.php",
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTableGetBulkActions.php"
+        ]
+    },
+    {
+        "id": 64985,
+        "author": "lancewillett",
+        "message": "Tests: Simplify category helper coverage.\n\nConsolidate repeated category and tag cases and replace implementation-derived expectations with independent expected results.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15025\n\nProps huzaifaalmesbah, shailu25.\nSee #65819.\n",
+        "date": "2026-10-28T22:52:32.561019Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/catIsAncestorOf.php",
+            "/trunk/tests/phpunit/tests/category/getCategory.php",
+            "/trunk/tests/phpunit/tests/category/getTag.php",
+            "/trunk/tests/phpunit/tests/category/getTags.php",
+            "/trunk/tests/phpunit/tests/category/getTheCategory.php",
+            "/trunk/tests/phpunit/tests/category/getTheTags.php",
+            "/trunk/tests/phpunit/tests/category/sanitizeCategory.php",
+            "/trunk/tests/phpunit/tests/category/tagDescription.php",
+            "/trunk/tests/phpunit/tests/category/theCategory.php",
+            "/trunk/tests/phpunit/tests/category/walkCategoryDropdownTree.php",
+            "/trunk/tests/phpunit/tests/category/walkCategoryTree.php",
+            "/trunk/tests/phpunit/tests/category/walkerCategoryDropdown.php"
+        ]
+    },
+    {
+        "id": 64984,
+        "author": "lancewillett",
+        "message": "Tests: Simplify user helper coverage.\n\nRemove duplicate user-helper checks and use independent literal expectations for escaping behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15024\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-28T22:51:27.904731Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/sanitizeUserField.php",
+            "/trunk/tests/phpunit/tests/user/theAuthorPosts.php",
+            "/trunk/tests/phpunit/tests/user/theAuthorPostsLink.php",
+            "/trunk/tests/phpunit/tests/user/theModifiedAuthor.php",
+            "/trunk/tests/phpunit/tests/user/wpRoles.php"
+        ]
+    },
+    {
+        "id": 64983,
+        "author": "lancewillett",
+        "message": "Tests: Simplify recovery-mode coverage.\n\nRemove redundant wrapper checks and repeated recovery-mode cases. Strengthen mail assertions to check observable message content.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15023\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-28T22:50:10.132865Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/error-protection/functions.php",
+            "/trunk/tests/phpunit/tests/error-protection/wpPausedExtensionsStorage.php",
+            "/trunk/tests/phpunit/tests/error-protection/wpRecoveryMode.php",
+            "/trunk/tests/phpunit/tests/error-protection/wpRecoveryModeCookieService.php",
+            "/trunk/tests/phpunit/tests/error-protection/wpRecoveryModeEmailService.php"
+        ]
+    },
+    {
+        "id": 64982,
+        "author": "lancewillett",
+        "message": "Tests: Simplify repeated date helper coverage.\n\nReduce repeated date and time helper cases while retaining distinct formatting and filtering behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15021\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-28T22:49:02.427535Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/date/getPostDatetime.php",
+            "/trunk/tests/phpunit/tests/date/theModifiedDate.php",
+            "/trunk/tests/phpunit/tests/date/theModifiedTime.php",
+            "/trunk/tests/phpunit/tests/date/theTime.php"
+        ]
+    },
+    {
+        "id": 64981,
+        "author": "lancewillett",
+        "message": "Tests: Trim repeated general-template provider cases.\n\nRemove redundant calendar, archive-link, and code-editor settings cases while retaining boundary coverage.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15020\n\nProps huzaifaalmesbah, shailu25.\nSee #65819.\n",
+        "date": "2026-10-28T22:46:23.139894Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/calendarWeekMod.php",
+            "/trunk/tests/phpunit/tests/general/getArchivesLink.php",
+            "/trunk/tests/phpunit/tests/general/wpGetCodeEditorSettings.php"
+        ]
+    },
+    {
+        "id": 64980,
+        "author": "lancewillett",
+        "message": "Tests: Simplify widget coverage and clean up preview state.\n\nClear Customizer preview state after media and text widget tests to prevent it affecting later tests. Remove repeated widget cases while retaining distinct rendering and update behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15018, https://github.com/WordPress/wordpress-develop/pull/15022\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-28T22:45:08.052133Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpConvertWidgetSettings.php",
+            "/trunk/tests/phpunit/tests/widgets/wpNavMenuWidget.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetArchives.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetBlock.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetCalendar.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetCategories.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetLinks.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetMedia.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetMeta.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetPages.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetRecentComments.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetRecentPosts.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetSearch.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetTagCloud.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetText.php"
+        ]
+    },
+    {
+        "id": 64979,
+        "author": "lancewillett",
+        "message": "Tests: Trim duplicate sitemap provider checks.\n\nRemove repeated provider cases while retaining strict assertions for sitemap defaults and result structures.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15017\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-28T22:44:01.751295Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsPosts.php",
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsProvider.php",
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsRegistry.php",
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsUsers.php"
+        ]
+    },
+    {
+        "id": 64978,
+        "author": "lancewillett",
+        "message": "Tests: Trim duplicate HTTP provider cases.\n\nRemove repeated deterministic inputs from the HTTP encoding and proxy tests while retaining distinct behavior checks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15016\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-28T22:41:12.161221Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/http/wpHttpEncoding.php",
+            "/trunk/tests/phpunit/tests/http/wpHttpProxy.php"
+        ]
+    },
+    {
+        "id": 64977,
+        "author": "lancewillett",
+        "message": "Tests: Simplify registration and load helper coverage.\n\nRemove duplicate callback-registration, output, and load-helper checks. Retain cases that exercise distinct behavior and existing regression coverage.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15015, https://github.com/WordPress/wordpress-develop/pull/15019\n\nProps huzaifaalmesbah, shailu25.\nSee #65819.\n",
+        "date": "2026-10-28T22:40:04.235123Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/registerActivationHook.php",
+            "/trunk/tests/phpunit/tests/functions/registerDeactivationHook.php",
+            "/trunk/tests/phpunit/tests/functions/wpCheckJsonpCallback.php",
+            "/trunk/tests/phpunit/tests/functions/wpDirectPhpUpdateButton.php",
+            "/trunk/tests/phpunit/tests/load/isProtectedAjaxAction.php",
+            "/trunk/tests/phpunit/tests/load/isProtectedEndpoint.php",
+            "/trunk/tests/phpunit/tests/load/timerFloat.php",
+            "/trunk/tests/phpunit/tests/load/wpGetActiveAndValidThemes.php",
+            "/trunk/tests/phpunit/tests/load/wpGetServerProtocol.php",
+            "/trunk/tests/phpunit/tests/load/wpInstalling.php",
+            "/trunk/tests/phpunit/tests/load/wpIsFileModAllowed.php",
+            "/trunk/tests/phpunit/tests/load/wpIsJsonRequest.php",
+            "/trunk/tests/phpunit/tests/load/wpIsRecoveryMode.php",
+            "/trunk/tests/phpunit/tests/load/wpSkipPausedThemes.php"
+        ]
+    },
+    {
+        "id": 64976,
+        "author": "lancewillett",
+        "message": "Tests: Trim redundant link helper coverage.\n\nRemove repeated link wrapper and URL cases while retaining markup, escaping, and filter boundaries.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15014\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-28T22:38:39.009726Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/editCommentLink.php",
+            "/trunk/tests/phpunit/tests/link/getCommentsLink.php",
+            "/trunk/tests/phpunit/tests/link/getDayLink.php",
+            "/trunk/tests/phpunit/tests/link/getMonthLink.php",
+            "/trunk/tests/phpunit/tests/link/getSearchFeedLink.php",
+            "/trunk/tests/phpunit/tests/link/getSearchLink.php",
+            "/trunk/tests/phpunit/tests/link/getTagFeedLink.php",
+            "/trunk/tests/phpunit/tests/link/getYearLink.php",
+            "/trunk/tests/phpunit/tests/link/permalinkAnchor.php",
+            "/trunk/tests/phpunit/tests/link/postCommentsFeedLink.php",
+            "/trunk/tests/phpunit/tests/link/theFeedLink.php",
+            "/trunk/tests/phpunit/tests/link/thePrivacyPolicyLink.php",
+            "/trunk/tests/phpunit/tests/link/theShortlink.php"
+        ]
+    },
+    {
+        "id": 64975,
+        "author": "lancewillett",
+        "message": "Tests: Clean up post type and taxonomy fixtures.\n\nUnregister custom post types, post statuses, and taxonomies during teardown in the query, post function, and body-class tests. Clean up both per-test and class-level post type registrations where needed.\n\nClear the synthetic post type's `_builtin` flag before unregistering it in the `is_post_type_viewable()` tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14918, https://github.com/WordPress/wordpress-develop/pull/14919, https://github.com/WordPress/wordpress-develop/pull/14995, https://github.com/WordPress/wordpress-develop/pull/15034\n\nProps huzaifaalmesbah, rejaulalomkhan, mukesh27.\nSee #65893.\n",
+        "date": "2026-10-28T22:36:59.862067Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getBodyClass.php",
+            "/trunk/tests/phpunit/tests/post/getLastPostDate.php",
+            "/trunk/tests/phpunit/tests/post/getLastPostModified.php",
+            "/trunk/tests/phpunit/tests/post/isPostTypeViewable.php",
+            "/trunk/tests/phpunit/tests/query/isTerm.php",
+            "/trunk/tests/phpunit/tests/query/postStatus.php",
+            "/trunk/tests/phpunit/tests/query/results.php"
+        ]
+    },
+    {
+        "id": 64974,
+        "author": "lancewillett",
+        "message": "Tests: Cover MIME query clauses and widget ID parsing.\n\nAdd focused checks for MIME type matching, character filtering, wildcard restrictions, and table aliases in `wp_post_mime_type_where()`.\n\nVerify hyphenated and underscored widget ID bases, integer widget numbers, and the absence of a number for legacy IDs in `wp_parse_widget_id()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14710, https://github.com/WordPress/wordpress-develop/pull/14780\n\nProps ekamran.\nSee #65819.\n",
+        "date": "2026-10-28T22:35:41.033540Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/wpPostMimeTypeWhere.php",
+            "/trunk/tests/phpunit/tests/widgets/wpParseWidgetId.php"
+        ]
+    },
+    {
         "id": 64973,
         "author": "jorbin",
         "message": "iBuild/Test Tools: Add .nvmrc files to default themes.\n\nToday there are 5 default themes that have package.json files:\n\nTwenty Nineteen\nTwenty Twenty\nTwenty Twenty-One\nTwenty Twenty-Two\nTwenty Twenty-Five\nThe .nvmrc file at the root of the repository will be used when modifying these themes in the context of a wordpress-develop checkout. But these themes exist outside of wordpress-develop more often than not. And there are times where the version of Node.js used by Core is not the same as one or more of the themes (this is currently the case with Twenty Nineteen).\n\nThis adds an .nvmrc file to each of the 5 themes that rely on Node.js. The theme testing GitHub Actions workflow is also updated to use each theme\u2019s individual .nvmrc files to determine which version of Node.js to use instead of always defaulting to the version used for Core itself.\n\nReviewed by jeremyfelt.\nMerges [63450] to 7.1 branch without the change to the workflow that no longer exists.\n\nFixes #66041.\n",
