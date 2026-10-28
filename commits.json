@@ -1,5 +1,103 @@
 [
     {
+        "id": 64881,
+        "author": "jeremyfelt",
+        "message": "Tests: Expect `attribute_name` in Interactivity API directive entries.\n\nFollow-up to r64878.\n\nProps jonsurrell, ntsekouras, luisherranz.\n",
+        "date": "2026-10-28T13:40:17.243135Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPI.php"
+        ]
+    },
+    {
+        "id": 64880,
+        "author": "jeremyfelt",
+        "message": "Bundled Themes: Bump Twenty Twenty to version 3.3.\n\nProps jeremyfelt, jorbin, lancewillett.\n",
+        "date": "2026-10-28T13:38:09.670600Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwenty/package-lock.json",
+            "/trunk/src/wp-content/themes/twentytwenty/package.json",
+            "/trunk/src/wp-content/themes/twentytwenty/readme.txt",
+            "/trunk/src/wp-content/themes/twentytwenty/style-rtl.css",
+            "/trunk/src/wp-content/themes/twentytwenty/style.css"
+        ]
+    },
+    {
+        "id": 64879,
+        "author": "jeremyfelt",
+        "message": "Customize: Resolve selective refresh partial placements as selectors only\n\nProps westonruter, jonsurrell, jorbin.\n",
+        "date": "2026-10-28T13:31:19.473792Z",
+        "files": [
+            "/trunk/src/js/_enqueues/wp/customize/preview-widgets.js",
+            "/trunk/src/js/_enqueues/wp/customize/selective-refresh.js",
+            "/trunk/src/wp-content/themes/twentytwenty/assets/js/customize-preview.js"
+        ]
+    },
+    {
+        "id": 64878,
+        "author": "jeremyfelt",
+        "message": "Interactivity API: Limit bindings on object elements to global attributes\n\nProps jonsurrell, ntsekouras, luisherranz.\n",
+        "date": "2026-10-28T13:30:30.774271Z",
+        "files": [
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/trunk/src/wp-includes/kses.php"
+        ]
+    },
+    {
+        "id": 64877,
+        "author": "jeremyfelt",
+        "message": "Upgrade/Install: Improve the handling of the upgrade working directory.\n\nProps umut3806, marcs0h, rfaile313, jorbin.\n",
+        "date": "2026-10-28T13:29:48.126822Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-upgrader.php",
+            "/trunk/src/wp-admin/includes/update-core.php"
+        ]
+    },
+    {
+        "id": 64876,
+        "author": "jeremyfelt",
+        "message": "Customizer: Improve changeset handling.\n\nProps westonruter, lancewillett, jorbin, jeremyfelt, antonade.\n",
+        "date": "2026-10-28T13:28:54.969141Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-customize-manager.php"
+        ]
+    },
+    {
+        "id": 64875,
+        "author": "jeremyfelt",
+        "message": "Comments: Require edit access to a note's post to update or delete it\n\nProps ramonopoly, xknown, adamsilverstein, audrasjb, jorbin.\n",
+        "date": "2026-10-28T13:28:12.585784Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 64874,
+        "author": "jeremyfelt",
+        "message": "Privacy: Harden column_email() output escaping in request list tables\n\nProps xknown, westonruter, jeremyfelt.\n",
+        "date": "2026-10-28T13:27:32.761977Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php",
+            "/trunk/src/wp-admin/includes/class-wp-privacy-data-removal-requests-list-table.php",
+            "/trunk/src/wp-admin/includes/class-wp-privacy-requests-table.php"
+        ]
+    },
+    {
+        "id": 64873,
+        "author": "jeremyfelt",
+        "message": "Users: Escape user login\n\nProps xknown, jeremyfelt, jorbin, rfaile313.\n",
+        "date": "2026-10-28T13:26:38.372197Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/ajax-actions.php",
+            "/trunk/src/wp-admin/includes/class-wp-ms-users-list-table.php",
+            "/trunk/src/wp-admin/includes/class-wp-users-list-table.php",
+            "/trunk/src/wp-admin/includes/ms.php",
+            "/trunk/src/wp-admin/user-edit.php",
+            "/trunk/src/wp-admin/users.php",
+            "/trunk/src/wp-includes/admin-bar.php",
+            "/trunk/src/wp-signup.php"
+        ]
+    },
+    {
         "id": 64872,
         "author": "jonsurrell",
         "message": "HTML API: Prevent re-scan of attribute spans in closing tags.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15112\n\nFollow-up to r55469, r57348.\n\nProps dmsnell, jonsurrell.\nSee #65984.\n",
