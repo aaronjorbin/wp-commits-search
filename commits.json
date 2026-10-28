@@ -1,5 +1,19 @@
 [
     {
+        "id": 64973,
+        "author": "jorbin",
+        "message": "iBuild/Test Tools: Add .nvmrc files to default themes.\n\nToday there are 5 default themes that have package.json files:\n\nTwenty Nineteen\nTwenty Twenty\nTwenty Twenty-One\nTwenty Twenty-Two\nTwenty Twenty-Five\nThe .nvmrc file at the root of the repository will be used when modifying these themes in the context of a wordpress-develop checkout. But these themes exist outside of wordpress-develop more often than not. And there are times where the version of Node.js used by Core is not the same as one or more of the themes (this is currently the case with Twenty Nineteen).\n\nThis adds an .nvmrc file to each of the 5 themes that rely on Node.js. The theme testing GitHub Actions workflow is also updated to use each theme\u2019s individual .nvmrc files to determine which version of Node.js to use instead of always defaulting to the version used for Core itself.\n\nReviewed by jeremyfelt.\nMerges [63450] to 7.1 branch without the change to the workflow that no longer exists.\n\nFixes #66041.\n",
+        "date": "2026-10-28T21:59:34.727488Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/src/wp-content/themes/twentynineteen/.nvmrc",
+            "/branches/7.1/src/wp-content/themes/twentytwenty/.nvmrc",
+            "/branches/7.1/src/wp-content/themes/twentytwentyfive/.nvmrc",
+            "/branches/7.1/src/wp-content/themes/twentytwentyone/.nvmrc",
+            "/branches/7.1/src/wp-content/themes/twentytwentytwo/.nvmrc"
+        ]
+    },
+    {
         "id": 64972,
         "author": "jeremyfelt",
         "message": "Tag 4.7.39",
