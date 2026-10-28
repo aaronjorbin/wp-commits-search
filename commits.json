@@ -1,5 +1,26 @@
 [
     {
+        "id": 64915,
+        "author": "jeremyfelt",
+        "message": "Post WordPress 7.1.4 version bump.\n",
+        "date": "2026-10-28T17:13:53.277443Z",
+        "files": [
+            "/branches/7.1/composer.json",
+            "/branches/7.1/package-lock.json",
+            "/branches/7.1/package.json",
+            "/branches/7.1/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 64914,
+        "author": "jeremyfelt",
+        "message": "Post WordPress 7.2 Beta 3 version bump.\n",
+        "date": "2026-10-28T17:13:01.576689Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
         "id": 64913,
         "author": "jeremyfelt",
         "message": "Tag 6.6.11",
