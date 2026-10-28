@@ -1,5 +1,15 @@
 [
     {
+        "id": 64871,
+        "author": "westonruter",
+        "message": "Code Quality: Remove a dead fallback in `WP_Comment_Query`.\n\nWhen `WP_Comment_Query::get_comment_ids()` appends a `comment_ID` clause to make the sort deterministic, the clause takes its order from a date clause if there is one, or else from the first available clause. Since `$orderby_array` is never empty at that point (a `comment_date_gmt` clause is added when no valid clause was found), the second loop always assigns `ASC` or `DESC`, so the subsequent fallback to `DESC` could never run. A comment is left in its place, as initializing the order to an empty string otherwise suggests the value may remain unset.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14933.\nFollow-up to r31467.\n\nProps huzaifaalmesbah, westonruter.\nSee #65817.\n",
+        "date": "2026-10-28T06:34:06.135819Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-comment-query.php",
+            "/trunk/tests/phpstan/baselines/booleanNot.alwaysFalse.neon"
+        ]
+    },
+    {
         "id": 64870,
         "author": "dmsnell",
         "message": "Blocks: Rely on WP_Block_Processor inside WP_Block_Parser\n\nWhen `WP_Block_Processor` was introduced, it added a second pathway for parsing block structure. This patch unifies that parsing by replacing the internals of the `WP_Block_Parser` class with the newer `WP_Block_Processor`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13695\nDiscussed in: https://core.trac.wordpress.org/ticket/66138\n\nProps dmsnell, jonsurrell.\nSee #66138.\n",
