@@ -1,5 +1,16 @@
 [
     {
+        "id": 65023,
+        "author": "westonruter",
+        "message": "XML-RPC: Expand test coverage for login credentials.\n\nThe fatal error from non-scalar credentials passed to `wp.getUsersBlogs` was fixed for all authenticated methods in r63927, which rejects them in `wp_xmlrpc_server::login()`. Tests are now added at the `wp.getUsersBlogs` level, where the error was originally reported, along with `null` credential cases and a test that integer credentials, which XML-RPC clients can send as `<int>` values, still authenticate the matching user.\n\nThe credential parameters of `wp_xmlrpc_server::login()` and `wp_xmlrpc_server::login_pass_ok()` are now documented as `mixed`, since they hold untrusted client input that `login()` validates, and are asserted to be scalar on success. This resolves static analysis errors in the methods that pass raw request arguments to `login()`. The scalar credentials are also cast to strings for `wp_authenticate()`, so `authenticate` filter callbacks now receive a string even when the client sent an integer.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12462.\nFollow-up to r63006, r63927.\n\nProps josephscott, westonruter.\nSee #66168.\nFixes #65600.\n",
+        "date": "2026-10-29T19:40:22.799039Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-xmlrpc-server.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/basic.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/getUsersBlogs.php"
+        ]
+    },
+    {
         "id": 65022,
         "author": "westonruter",
         "message": "Menus: Avoid warning when a nav menu item lacks `current`.\n\nIn `Walker_Nav_Menu::start_el()`, the `aria-current` attribute was built by reading `$menu_item->current` directly, but that property is only ever set by `_wp_menu_item_classes_by_context()`. Menu items that bypass it, such as `stdClass` items that plugins add via the `wp_nav_menu_objects` filter, triggered an undefined property warning on every page load. The property is now read behind `empty()`, as the other optional menu item properties in the method already are.\n\nSince menu items reaching the walker are not always `WP_Post` instances, the menu item parameters of the walker and of the hooks it fires are now documented as `WP_Post|stdClass`, along with an object shape for static analysis that describes the properties `start_el()` actually requires. The admin walkers extending this class read more properties than that shape guarantees, so the resulting parameter type mismatch is recorded in the static analysis baseline rather than hidden.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12805.\nFollow-up to r42808.\n\nProps deepakbhojwani, babola, im3dabasia1, westonruter.\nSee #65817.\nFixes #65786.\n",
