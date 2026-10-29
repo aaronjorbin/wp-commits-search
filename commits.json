@@ -1,5 +1,62 @@
 [
     {
+        "id": 64996,
+        "author": "dmsnell",
+        "message": "Blocks: Fix implicit block closing in default block parser.\n\nWhen reaching the end of a document during block parsing, and blocks remain open, existing open blocks should implicitly close. Previously, there was a mistake in the closing code which duplicated content in the implicitly-closed blocks.\n\nIn this patch, that implicit closing of open blocks is moved into a new helper method where the logic can be more clearly isolated and analyzed, and the defect is resolved.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13720\nDiscussed in: https://core.trac.wordpress.org/ticket/66138\n\nProps dmsnell, jonsurrell, westonruter.\nSee #66138.\n",
+        "date": "2026-10-28T23:51:25.758226Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-parser.php",
+            "/trunk/src/wp-includes/class-wp-block-processor.php",
+            "/trunk/tests/phpunit/tests/block-processor/wpBlockProcessor.php",
+            "/trunk/tests/phpunit/tests/blocks/wpBlockParser.php"
+        ]
+    },
+    {
+        "id": 64995,
+        "author": "SergeyBiryukov",
+        "message": "Code Modernization: Use the null coalescing operator in the Secrets API.\n\nReplaces the remaining ternaries in the Secrets API that return a tested value or a fallback with the null coalescing operator (`??`).\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14981.\n\nFollow-up to r64337.\n\nProps Soean, westonruter, mukesh27.\nSee #65818.",
+        "date": "2026-10-28T23:32:26.832396Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/secrets-site-health.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-key-manager.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-libsodium-provider.php"
+        ]
+    },
+    {
+        "id": 64994,
+        "author": "dmsnell",
+        "message": "Blocks: Fix advancement inside `extract_full_block_and_advance()`.\n\nWhen the Block Processor was introduced, the `extract_full_block_and_advance()` method was provided in order to support backwards compatibility with `parse_blocks()`, specifically when wanting to extract the structural representation of a subset of blocks within a large post.\n\nUnfortunately, when extracting void blocks, it was advancing to the next token, which, if called from within a loop that was already advancing, would lead to a skipped block delimiter.\n\nIn this patch the behavior is normalized such that, after a call to `extract_full_block_and_advance()`, the calling code should call `next_token()` to continue processing the next block or top-level freeform HTML in the post.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14104\nDiscussed in: https://core.trac.wordpress.org/ticket/66138\n\nFollow-up to r60939.\n\nProps dmsnell, jonsurrell, westonruter.\nSee #66138.\n",
+        "date": "2026-10-28T23:17:24.385558Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-processor.php",
+            "/trunk/tests/phpstan/baselines/if.alwaysFalse.neon",
+            "/trunk/tests/phpstan/baselines/return.type.neon",
+            "/trunk/tests/phpunit/tests/block-processor/wpBlockProcessor.php"
+        ]
+    },
+    {
+        "id": 64993,
+        "author": "lancewillett",
+        "message": "Tests: Cover post edit and comment navigation links.\n\nAdd focused coverage for `edit_post_link()` markup, post selection, permission checks, and filtering. Cover `paginate_comments_links()` request guards, permalink formats, output modes, and current-page handling.\n\nVerify that `next_comments_link()` and `previous_comments_link()` echo their getters and produce no output at the relevant pagination boundary.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14702, https://github.com/WordPress/wordpress-develop/pull/14703, https://github.com/WordPress/wordpress-develop/pull/14704\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-28T23:15:23.032715Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/editPostLink.php",
+            "/trunk/tests/phpunit/tests/link/getNextCommentsLink.php",
+            "/trunk/tests/phpunit/tests/link/getPreviousCommentsLink.php",
+            "/trunk/tests/phpunit/tests/link/paginateCommentsLinks.php"
+        ]
+    },
+    {
+        "id": 64992,
+        "author": "lancewillett",
+        "message": "Tests: Simplify offline readme and HTTP error checks.\n\nRemove redundant `assertNotEmpty()` checks and unused match variables from the readme recommendation test. The existing `preg_match()` assertions require version text.\n\nMock HTTP errors for empty and schemeless URLs in the `wp_remote_fopen()` tests. Remove their `external-http` annotations so they run in the default suite, and verify the safe-request flag and timeout.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15119, https://github.com/WordPress/wordpress-develop/pull/15114\n\nProps shailu25, rejaulalomkhan.\nSee #63914.\n",
+        "date": "2026-10-28T23:09:56.930466Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpRemoteFopen.php",
+            "/trunk/tests/phpunit/tests/readme.php"
+        ]
+    },
+    {
         "id": 64991,
         "author": "lancewillett",
         "message": "Tests: Make auth, user, comment, and icon data providers static.\n\nDeclare 33 data providers as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nMake the three user-notification callback helpers static and reference them with `self::class` so the provider does not require a test instance.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14966, https://github.com/WordPress/wordpress-develop/pull/14968, https://github.com/WordPress/wordpress-develop/pull/14969, https://github.com/WordPress/wordpress-develop/pull/15118\n\nProps rejaulalomkhan, shailu25, mukesh27.\nSee #66211.\n",
