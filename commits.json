@@ -1,5 +1,14 @@
 [
     {
+        "id": 65003,
+        "author": "SergeyBiryukov",
+        "message": "Filesystem API: Avoid a fatal error in PclZip when the temporary file cannot be created.\n\n`PclZip::privExtractFileUsingTempFile()` calls `fclose( $v_file )` when it fails to open its temporary file, but `$v_file` is not defined in that function. On PHP 8, `fclose( null )` throws a `TypeError`, so the request dies with a fatal error instead of returning an error with `PCLZIP_ERR_WRITE_OPEN_FAIL`. Nothing has been opened at that point, so the call is removed.\n\nThe similar `fclose( $v_file )` in `privAddFileUsingTempFile()` is correct (the file is opened a few lines above) and is left unchanged.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15133.\n\nFollow-up to r11056.\n\nProps ExtremsX.\nFixes #66408.",
+        "date": "2026-10-29T10:46:55.346355Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-pclzip.php"
+        ]
+    },
+    {
         "id": 65002,
         "author": "jorgefilipecosta",
         "message": "Abilities API: Return the `core/users-query` registration date as `registered.site` and `registered.gmt`.\n\nReplace the `registered_date` field with a `registered` object holding the registration date in the site's timezone (`site`) and in GMT (`gmt`), like the `core/content-query` date fields. The `fields` input accepts `registered.site` and `registered.gmt` to select a single date.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15001.\n\nFollow-up to [64346].\n\nProps jorgefilipecosta, gziolo.\nSee #64657.",
