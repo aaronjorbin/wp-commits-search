@@ -1,5 +1,24 @@
 [
     {
+        "id": 65006,
+        "author": "lancewillett",
+        "message": "Tests: Make widget, block and editor data providers static.\n\nDeclare 25 data providers in the widget, block registration, editor, connector, and Interactivity API tests as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nMake the Interactivity API JSON serialization helper static so providers can call it without a test instance.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14651, https://github.com/WordPress/wordpress-develop/pull/14652, https://github.com/WordPress/wordpress-develop/pull/15117, https://github.com/WordPress/wordpress-develop/pull/15135, https://github.com/WordPress/wordpress-develop/pull/15154\n\nProps devmuhib, rejaulalomkhan, shailu25, huzaifaalmesbah, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-29T16:07:52.904778Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/blocks/register.php",
+            "/trunk/tests/phpunit/tests/connectors/wpConnectorRegistry.php",
+            "/trunk/tests/phpunit/tests/connectors/wpConnectorsMaskApiKey.php",
+            "/trunk/tests/phpunit/tests/connectors/wpConnectorsRestSettingsDispatch.php",
+            "/trunk/tests/phpunit/tests/editor/classic-to-block-menu-converter.php",
+            "/trunk/tests/phpunit/tests/editor/disableBlockEditorForNavigationPostType.php",
+            "/trunk/tests/phpunit/tests/editor/disableContentEditorForNavigationPostType.php",
+            "/trunk/tests/phpunit/tests/editor/enableContentEditorForNavigationPostType.php",
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-bind.php",
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPIFunctions.php",
+            "/trunk/tests/phpunit/tests/widgets.php"
+        ]
+    },
+    {
         "id": 65005,
         "author": "lancewillett",
         "message": "Build/Test Tools: Include WordPress versions in Slack notifications.\n\nInclude the requested WordPress version in Upgrade Tests and Installation Tests notifications, using the existing `workflow_name` payload field. Keep notifications unchanged for callers that omit the optional `version` input.\n\nUse `latest` as the default upgrade target and `nightly` as the default installation version.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15128\n\nProps jorbin, lucatume.\nFixes #66401.\n",
