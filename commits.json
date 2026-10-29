@@ -1,5 +1,15 @@
 [
     {
+        "id": 64998,
+        "author": "peterwilsoncc",
+        "message": "Editor: Use physical margins on `.alignleft` / `.alignright`.\n\nSwitches the `.alignleft` / `.alignright` layout rules from `margin-inline-start` / `margin-inline-end` to `margin-left` / `margin-right`.  Values are unchanged. `.aligncenter` is untouched.\n\nPreviously the `float` properties were using physical directions with logical margins, resulting in layout errors in right-to-left languages.\n\nProps im3dabasia1, wildworks, ndiego, isabel_brison, joen, azragh.\nFixes #66382.\n\n\n",
+        "date": "2026-10-29T04:15:06.828444Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/layout.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
         "id": 64997,
         "author": "westonruter",
         "message": "Privacy: Avoid PHP warnings for invalid request IDs.\n\nWhen the checks in `wp_validate_user_request_key()` were consolidated in r49090, the `confirm_key` and `modified_timestamp` properties came to be read before the request was confirmed to exist. A confirmation link whose `request_id` is not a `user_request` post, as is common with bot probes of `wp-login.php?action=confirmaction`, therefore logged two \"Attempt to read property on false\" warnings before returning the `invalid_request` error. The error is now returned as soon as the lookup fails, so the returned errors are unchanged.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14991.\nFollow-up to r49090.\n\nProps bor0.\nSee #51351.\nFixes #66389.\n",
