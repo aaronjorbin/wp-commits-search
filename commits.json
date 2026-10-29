@@ -1,5 +1,77 @@
 [
     {
+        "id": 65021,
+        "author": "westonruter",
+        "message": "Docs: Clarify `$operator` values for object list filters.\n\nThe `$operator` default for `wp_filter_object_list()` was documented as `'AND'` even though the signature declares `'and'`, and the functions that pass `$operator` through to `WP_List_Util::filter()` disagreed with each other on the casing and on whether `'not'` is accepted. Since the value is uppercased before it is validated, each of these functions now documents that it is case-insensitive and that `'and'`, `'or'`, and `'not'` are all accepted, and declares a PHPStan type for the parameter so that unsupported values can be flagged. The type lists only the lowercase and uppercase forms, as enumerating every mixed-case variant is impractical.\n\nFor consistency, the documentation now uses lowercase throughout, and the `'AND'` default of `wp_list_filter()` and `WP_List_Util::filter()` is changed to `'and'` to match the other functions. Because of the uppercasing, this does not change behavior.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13245.\nFollow-up to r17251, r36090, r36091, r38928.\n\nProps khokansardar, westonruter, marian1.\nSee #65817, #65860.\nFixes #65933.\n",
+        "date": "2026-10-29T17:57:18.820776Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-list-util.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/src/wp-includes/taxonomy.php"
+        ]
+    },
+    {
+        "id": 65020,
+        "author": "lancewillett",
+        "message": "Tests: Clean up taxonomy and REST controller fixtures.\n\nUnregister custom taxonomies after the object-term, `WP_Term`, term update, and REST taxonomy controller tests, and custom post types after the REST post type controller tests. Remove the temporary `category` association with `attachment` while preserving the built-in taxonomy and parent teardown.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15061, https://github.com/WordPress/wordpress-develop/pull/15062, https://github.com/WordPress/wordpress-develop/pull/15063, https://github.com/WordPress/wordpress-develop/pull/15064, https://github.com/WordPress/wordpress-develop/pull/15066\n\nProps rejaulalomkhan, mukesh27.\nSee #65893.\n",
+        "date": "2026-10-29T17:48:13.410481Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-post-types-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-taxonomies-controller.php",
+            "/trunk/tests/phpunit/tests/term/wpGetObjectTerms.php",
+            "/trunk/tests/phpunit/tests/term/wpTerm.php",
+            "/trunk/tests/phpunit/tests/term/wpUpdateTerm.php"
+        ]
+    },
+    {
+        "id": 65019,
+        "author": "lancewillett",
+        "message": "Tests: Clean up post status and taxonomy fixtures.\n\nUnregister the custom `foo` post status after the `get_pages()` tests. Unregister custom taxonomies after object-term removal, tag-cloud widget, XML-RPC term, and unique term slug tests. Preserve parent teardown and clean up registrations before subsequent class fixtures run.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15056, https://github.com/WordPress/wordpress-develop/pull/15057, https://github.com/WordPress/wordpress-develop/pull/15058, https://github.com/WordPress/wordpress-develop/pull/15059, https://github.com/WordPress/wordpress-develop/pull/15060\n\nProps rejaulalomkhan, mukesh27.\nSee #65893.\n",
+        "date": "2026-10-29T17:42:48.106017Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getPages.php",
+            "/trunk/tests/phpunit/tests/term/wpRemoveObjectTerms.php",
+            "/trunk/tests/phpunit/tests/term/wpUniqueTermSlug.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetTagCloud.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/getTerms.php"
+        ]
+    },
+    {
+        "id": 65018,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom registrations after fixture use.\n\nUnregister custom taxonomies, post types, and post statuses during teardown in the tag cloud, permalink, Customizer menu item, oEmbed, and menu quick-search tests. Preserve parent teardown and leave the built-in registrations intact.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15050, https://github.com/WordPress/wordpress-develop/pull/15051, https://github.com/WordPress/wordpress-develop/pull/15052, https://github.com/WordPress/wordpress-develop/pull/15053, https://github.com/WordPress/wordpress-develop/pull/15055\n\nProps rejaulalomkhan, mukesh27.\nSee #65893.\n",
+        "date": "2026-10-29T17:35:51.577656Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/customize/nav-menu-item-setting.php",
+            "/trunk/tests/phpunit/tests/link/wpForcePlainPostPermalink.php",
+            "/trunk/tests/phpunit/tests/menu/wpAjaxMenuQuickSearch.php",
+            "/trunk/tests/phpunit/tests/oembed/getOembedResponseData.php",
+            "/trunk/tests/phpunit/tests/term/wpGenerateTagCloud.php"
+        ]
+    },
+    {
+        "id": 65017,
+        "author": "lancewillett",
+        "message": "Tests: Clean up split-term and query fixtures.\n\nUnregister custom taxonomies after the shared-term splitting tests and custom post types after the query conditional tests. Remove these registrations during teardown so they do not remain after the tests finish.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15042, https://github.com/WordPress/wordpress-develop/pull/15048\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-10-29T17:34:48.095427Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/query/conditionals.php",
+            "/trunk/tests/phpunit/tests/term/splitSharedTerm.php"
+        ]
+    },
+    {
+        "id": 65016,
+        "author": "lancewillett",
+        "message": "Tests: Unregister taxonomies after query and term tests.\n\nRemove custom taxonomy registrations during teardown in the query cache, term deletion, and object-term relationship tests. Prevent these fixtures from leaking into later tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15045, https://github.com/WordPress/wordpress-develop/pull/15046, https://github.com/WordPress/wordpress-develop/pull/15047\n\nProps rejaulalomkhan, mukeshpanchal27.\nSee #65893.\n",
+        "date": "2026-10-29T17:13:37.106091Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/query/cacheResults.php",
+            "/trunk/tests/phpunit/tests/term/wpDeleteObjectTermRelationships.php",
+            "/trunk/tests/phpunit/tests/term/wpDeleteTerm.php"
+        ]
+    },
+    {
         "id": 65015,
         "author": "lancewillett",
         "message": "Tests: Clean up taxonomies in term lookup and count tests.\n\nUnregister custom taxonomies during teardown in the `get_term_by()` and term-count tests. Preserve parent cleanup and prevent test-owned registrations from leaking into later tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15043, https://github.com/WordPress/wordpress-develop/pull/15044\n\nProps rejaulalomkhan, mukeshpanchal27.\nSee #65893.\n",
