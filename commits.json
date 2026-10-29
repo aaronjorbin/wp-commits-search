@@ -1,5 +1,15 @@
 [
     {
+        "id": 64997,
+        "author": "westonruter",
+        "message": "Privacy: Avoid PHP warnings for invalid request IDs.\n\nWhen the checks in `wp_validate_user_request_key()` were consolidated in r49090, the `confirm_key` and `modified_timestamp` properties came to be read before the request was confirmed to exist. A confirmation link whose `request_id` is not a `user_request` post, as is common with bot probes of `wp-login.php?action=confirmaction`, therefore logged two \"Attempt to read property on false\" warnings before returning the `invalid_request` error. The error is now returned as soon as the lookup fails, so the returned errors are unchanged.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14991.\nFollow-up to r49090.\n\nProps bor0.\nSee #51351.\nFixes #66389.\n",
+        "date": "2026-10-29T01:01:41.895564Z",
+        "files": [
+            "/trunk/src/wp-includes/user.php",
+            "/trunk/tests/phpunit/tests/auth.php"
+        ]
+    },
+    {
         "id": 64996,
         "author": "dmsnell",
         "message": "Blocks: Fix implicit block closing in default block parser.\n\nWhen reaching the end of a document during block parsing, and blocks remain open, existing open blocks should implicitly close. Previously, there was a mistake in the closing code which duplicated content in the implicitly-closed blocks.\n\nIn this patch, that implicit closing of open blocks is moved into a new helper method where the logic can be more clearly isolated and analyzed, and the defect is resolved.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13720\nDiscussed in: https://core.trac.wordpress.org/ticket/66138\n\nProps dmsnell, jonsurrell, westonruter.\nSee #66138.\n",
