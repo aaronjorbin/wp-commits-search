@@ -1,5 +1,109 @@
 [
     {
+        "id": 65015,
+        "author": "lancewillett",
+        "message": "Tests: Clean up taxonomies in term lookup and count tests.\n\nUnregister custom taxonomies during teardown in the `get_term_by()` and term-count tests. Preserve parent cleanup and prevent test-owned registrations from leaking into later tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15043, https://github.com/WordPress/wordpress-develop/pull/15044\n\nProps rejaulalomkhan, mukeshpanchal27.\nSee #65893.\n",
+        "date": "2026-10-29T17:06:07.301579Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term/getTermBy.php",
+            "/trunk/tests/phpunit/tests/term/termCounts.php"
+        ]
+    },
+    {
+        "id": 65014,
+        "author": "lancewillett",
+        "message": "Tests: Clean up custom post types and taxonomies.\n\nUnregister test fixtures during teardown in the random rewrite rules, sitemap taxonomy, and term tests. Prevent custom registrations from leaking into later tests while preserving parent cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15035, https://github.com/WordPress/wordpress-develop/pull/15036, https://github.com/WordPress/wordpress-develop/pull/15037, https://github.com/WordPress/wordpress-develop/pull/15038, https://github.com/WordPress/wordpress-develop/pull/15039\n\nProps rejaulalomkhan, mukeshpanchal27.\nSee #65893.\n",
+        "date": "2026-10-29T17:00:51.212852Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rewrite/randomRewriteRules.php",
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsTaxonomies.php",
+            "/trunk/tests/phpunit/tests/term/getTermField.php",
+            "/trunk/tests/phpunit/tests/term/getTermParentsList.php",
+            "/trunk/tests/phpunit/tests/term/getTheTerms.php"
+        ]
+    },
+    {
+        "id": 65013,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Skip themes absent from the selected branch.\n\nCheck whether each theme exists before running theme-specific validation, builds, and ZIP uploads. This allows the default-theme workflow to run against release branches that do not contain every theme in the matrix.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15144\n\nProps arkaprabhachowdhury.\nFixes #66402.\n",
+        "date": "2026-10-29T16:55:11.257710Z",
+        "files": [
+            "/trunk/.github/workflows/test-and-zip-default-themes.yml"
+        ]
+    },
+    {
+        "id": 65012,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Exclude hidden files from theme ZIPs.\n\nUse the default hidden-file exclusion in `actions/upload-artifact` so bundled theme ZIPs omit `.nvmrc` and other dotfiles rejected by the WordPress.org theme uploader. Build configuration files remain available in the checkout.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15140\n\nProps iamadisingh, abcd95.\nFixes #66404.\n",
+        "date": "2026-10-29T16:54:13.950954Z",
+        "files": [
+            "/trunk/.github/workflows/test-and-zip-default-themes.yml"
+        ]
+    },
+    {
+        "id": 65011,
+        "author": "lancewillett",
+        "message": "Tests: Cover prepended attachment output.\n\nCover `prepend_attachment()` for non-attachments, file links, audio, and video. Verify media attributes, dimensions, poster images, and filtered output using distinct audio and video stubs.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14824\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-29T16:30:19.591874Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/prependAttachment.php"
+        ]
+    },
+    {
+        "id": 65010,
+        "author": "lancewillett",
+        "message": "Tests: Cover profile URLs and post navigation.\n\nCover `get_edit_profile_url()`, `user_trailingslashit()`, post navigation, and posts pagination. Verify URL selection, slash policy, link destinations, accessibility labels, output, and filter results.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14635, https://github.com/WordPress/wordpress-develop/pull/14637, https://github.com/WordPress/wordpress-develop/pull/14641, https://github.com/WordPress/wordpress-develop/pull/14656\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-29T16:28:00.916391Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getEditProfileUrl.php",
+            "/trunk/tests/phpunit/tests/link/getThePostNavigation.php",
+            "/trunk/tests/phpunit/tests/link/getThePostsPagination.php",
+            "/trunk/tests/phpunit/tests/link/userTrailingslashit.php"
+        ]
+    },
+    {
+        "id": 65009,
+        "author": "lancewillett",
+        "message": "Tests: Cover login links and template titles.\n\nCover `wp_loginout()`, `wp_register()`, `single_post_title()`, and `single_month_title()`. Check generated output, permissions, escaping, filters, date-query precedence, and localized month names.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14820, https://github.com/WordPress/wordpress-develop/pull/14821, https://github.com/WordPress/wordpress-develop/pull/14822, https://github.com/WordPress/wordpress-develop/pull/14823\n\nProps rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-29T16:22:50.530735Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/singleMonthTitle.php",
+            "/trunk/tests/phpunit/tests/general/singlePostTitle.php",
+            "/trunk/tests/phpunit/tests/general/wpLoginout.php",
+            "/trunk/tests/phpunit/tests/general/wpRegister.php"
+        ]
+    },
+    {
+        "id": 65008,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST pattern-property schema matching.\n\nTest matching schemas and null results from `rest_find_matching_pattern_property_schema()`, including numeric property names, literal hash characters, and Unicode.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14819\n\nProps ekamran.\nSee #65819.\n",
+        "date": "2026-10-29T16:21:34.782016Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/restFindMatchingPatternPropertySchema.php"
+        ]
+    },
+    {
+        "id": 65007,
+        "author": "lancewillett",
+        "message": "Tests: Make entity, menu, media and feed data providers static.\n\nDeclare 18 data providers in the entity fields, menu, media, feed, oEmbed, and theme tests as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15155, https://github.com/WordPress/wordpress-develop/pull/15157, https://github.com/WordPress/wordpress-develop/pull/15159, https://github.com/WordPress/wordpress-develop/pull/15167, https://github.com/WordPress/wordpress-develop/pull/15168, https://github.com/WordPress/wordpress-develop/pull/15170\n\nProps devmuhib, rejaulalomkhan, shailu25, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-29T16:13:30.202696Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/entity-fields/wpPreloadEntityFields.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpRegisterCoreFieldCollections.php",
+            "/trunk/tests/phpunit/tests/feed/rss2.php",
+            "/trunk/tests/phpunit/tests/feed/rssEnclosure.php",
+            "/trunk/tests/phpunit/tests/feed/wpSimplePieFile.php",
+            "/trunk/tests/phpunit/tests/media/wpCrossOriginIsolation.php",
+            "/trunk/tests/phpunit/tests/media/wpIsDocumentIsolationPolicySupported.php",
+            "/trunk/tests/phpunit/tests/menu/walker-nav-menu.php",
+            "/trunk/tests/phpunit/tests/menu/wpNavMenuRemoveMenuItemHasChildrenClass.php",
+            "/trunk/tests/phpunit/tests/oembed/wpFilterOembedIframeTitleAttributes.php",
+            "/trunk/tests/phpunit/tests/oembed/wpFilterOembedResult.php",
+            "/trunk/tests/phpunit/tests/theme/registerThemeFeature.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
         "id": 65006,
         "author": "lancewillett",
         "message": "Tests: Make widget, block and editor data providers static.\n\nDeclare 25 data providers in the widget, block registration, editor, connector, and Interactivity API tests as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nMake the Interactivity API JSON serialization helper static so providers can call it without a test instance.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14651, https://github.com/WordPress/wordpress-develop/pull/14652, https://github.com/WordPress/wordpress-develop/pull/15117, https://github.com/WordPress/wordpress-develop/pull/15135, https://github.com/WordPress/wordpress-develop/pull/15154\n\nProps devmuhib, rejaulalomkhan, shailu25, huzaifaalmesbah, mukesh27.\nSee #66211.\n",
