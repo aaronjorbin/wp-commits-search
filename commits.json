@@ -1,5 +1,153 @@
 [
     {
+        "id": 65033,
+        "author": "lancewillett",
+        "message": "Tests: Make Customizer and text-diff data providers static.\n\nDeclare the widget control and text-diff compatibility data providers as `public static` for compatibility with newer PHPUnit versions.\n\nPreserve existing datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15177, https://github.com/WordPress/wordpress-develop/pull/15178\n\nProps rejaulalomkhan.\nSee #66211.\n",
+        "date": "2026-10-29T23:06:18.137776Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/customize/widgets.php",
+            "/trunk/tests/phpunit/tests/diff/wpTextDiffRendererTable.php"
+        ]
+    },
+    {
+        "id": 65032,
+        "author": "lancewillett",
+        "message": "Tests: Make HTML API and font data providers static.\n\nDeclare four HTML API data providers and the shared font-face data provider as `public static` for compatibility with newer PHPUnit versions.\n\nPreserve existing datasets, assertions and fixture behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15173, https://github.com/WordPress/wordpress-develop/pull/15175\n\nProps rejaulalomkhan.\nSee #66211.\n",
+        "date": "2026-10-29T23:02:49.859000Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/fonts/font-face/wp-font-face-tests-dataset.php",
+            "/trunk/tests/phpunit/tests/html-api/wpHtmlProcessor-serialize.php",
+            "/trunk/tests/phpunit/tests/html-api/wpHtmlProcessor.php",
+            "/trunk/tests/phpunit/tests/html-api/wpHtmlProcessorWebPlatformTests.php"
+        ]
+    },
+    {
+        "id": 65031,
+        "author": "lancewillett",
+        "message": "Tests: Make REST, block-support and localization providers static.\n\nDeclare 125 data providers as `public static` for compatibility with newer PHPUnit versions.\n\nUse `self::` for the two REST metadata providers that call another provider. Preserve existing datasets, assertions and fixture behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14907, https://github.com/WordPress/wordpress-develop/pull/15156, https://github.com/WordPress/wordpress-develop/pull/15166\n\nProps huzaifaalmesbah, devmuhib, rejaulalomkhan, mukesh27, shailu25.\nSee #66211.\n",
+        "date": "2026-10-29T22:56:11.974870Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-supports/states.php",
+            "/trunk/tests/phpunit/tests/l10n/wpTextdomainRegistry.php",
+            "/trunk/tests/phpunit/tests/l10n/wpTranslationsConvert.php",
+            "/trunk/tests/phpunit/tests/rest-api/application-passwords.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-application-passwords-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-attachments-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-blocks-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-cors-headers.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-global-styles-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-pattern-directory-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-post-meta-fields.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-posts-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-request.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-revisions-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-schema-sanitization.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-schema-validation.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-server.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-term-meta-fields.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-themes-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-users-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1CategoriesController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1ListController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1RunController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplateAutosavesController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplateRevisionsController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplatesController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplatesControllerSanitizeTemplateId.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestUrlDetailsController/parsing.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestUrlDetailsController.php"
+        ]
+    },
+    {
+        "id": 65030,
+        "author": "lancewillett",
+        "message": "Tests: Make post, query and general data providers static.\n\nDeclare 71 data providers as `public static` for compatibility with newer PHPUnit versions.\n\nMake the post instance helper and two feed-link callbacks static, and update their callers. Preserve deferred fixture access, datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14904, https://github.com/WordPress/wordpress-develop/pull/14905, https://github.com/WordPress/wordpress-develop/pull/14906\n\nProps huzaifaalmesbah, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-29T22:46:12.648535Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/feedLinksExtra.php",
+            "/trunk/tests/phpunit/tests/general/paginateLinks.php",
+            "/trunk/tests/phpunit/tests/general/template.php",
+            "/trunk/tests/phpunit/tests/general/template_CheckedSelectedHelper.php",
+            "/trunk/tests/phpunit/tests/general/wpGetTooltip.php",
+            "/trunk/tests/phpunit/tests/general/wpPreloadResources.php",
+            "/trunk/tests/phpunit/tests/general/wpTitle.php",
+            "/trunk/tests/phpunit/tests/post/getPageByPath.php",
+            "/trunk/tests/phpunit/tests/post/getPages.php",
+            "/trunk/tests/phpunit/tests/post/getPost.php",
+            "/trunk/tests/phpunit/tests/post/getPostStatus.php",
+            "/trunk/tests/phpunit/tests/post/isPostPubliclyViewable.php",
+            "/trunk/tests/phpunit/tests/post/meta.php",
+            "/trunk/tests/phpunit/tests/post/metaRevisions.php",
+            "/trunk/tests/phpunit/tests/post/nav-menu.php",
+            "/trunk/tests/phpunit/tests/post/query.php",
+            "/trunk/tests/phpunit/tests/post/randomablePostType.php",
+            "/trunk/tests/phpunit/tests/post/revisions.php",
+            "/trunk/tests/phpunit/tests/post/thumbnails.php",
+            "/trunk/tests/phpunit/tests/post/walkerPage.php",
+            "/trunk/tests/phpunit/tests/post/wpGetAttachmentLink.php",
+            "/trunk/tests/phpunit/tests/post/wpGetAttachmentMetadata.php",
+            "/trunk/tests/phpunit/tests/post/wpInsertPost.php",
+            "/trunk/tests/phpunit/tests/post/wpPost.php",
+            "/trunk/tests/phpunit/tests/post/wpPostType.php",
+            "/trunk/tests/phpunit/tests/post/wpUniquePostSlug.php",
+            "/trunk/tests/phpunit/tests/query/cacheResults.php",
+            "/trunk/tests/phpunit/tests/query/commentFeed.php",
+            "/trunk/tests/phpunit/tests/query/conditionals.php",
+            "/trunk/tests/phpunit/tests/query/parseQuery.php",
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php",
+            "/trunk/tests/phpunit/tests/query/thePost.php"
+        ]
+    },
+    {
+        "id": 65029,
+        "author": "lancewillett",
+        "message": "Tests: Make dependency, term binding and XML-RPC providers static.\n\nDeclare 52 data providers in the dependency, term-data block binding, and XML-RPC tests as `public static` for compatibility with newer PHPUnit versions.\n\nMake three script helpers static and call them with `self::` from provider callbacks, preserving execution after test setup. Add the `array` return type to the comment-permissions provider. Preserve all datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14908, https://github.com/WordPress/wordpress-develop/pull/14971, https://github.com/WordPress/wordpress-develop/pull/14972\n\nProps huzaifaalmesbah, rejaulalomkhan, therssoftware, mukesh27, shailu25.\nSee #66211.\n",
+        "date": "2026-10-29T22:32:51.351937Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-bindings/termDataSource.php",
+            "/trunk/tests/phpunit/tests/dependencies/scripts.php",
+            "/trunk/tests/phpunit/tests/dependencies/styles.php",
+            "/trunk/tests/phpunit/tests/dependencies/wpPrefetchAdminAssets.php",
+            "/trunk/tests/phpunit/tests/dependencies/wpRemoveSurroundingEmptyScriptTags.php",
+            "/trunk/tests/phpunit/tests/dependencies/wpScriptIs.php",
+            "/trunk/tests/phpunit/tests/dependencies/wpScripts/getSrc.php",
+            "/trunk/tests/phpunit/tests/dependencies/wpStyles/getRtlSrc.php",
+            "/trunk/tests/phpunit/tests/dependencies/wpStyles/getSrc.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/demo/addTwoNumbers.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/newComment.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/uploadFile.php"
+        ]
+    },
+    {
+        "id": 65028,
+        "author": "lancewillett",
+        "message": "Tests: Make image, privacy and KSES data providers static.\n\nDeclare 25 data providers in the image metadata, privacy export, and KSES tests as `public static` for compatibility with newer PHPUnit versions. Call the existing static `text_array_to_dataprovider()` helper with `self::`. Preserve all datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14956, https://github.com/WordPress/wordpress-develop/pull/14959, https://github.com/WordPress/wordpress-develop/pull/14963\n\nProps rejaulalomkhan, huzaifaalmesbah, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-29T22:17:25.837184Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/meta.php",
+            "/trunk/tests/phpunit/tests/kses.php",
+            "/trunk/tests/phpunit/tests/privacy/wpPrivacyGeneratePersonalDataExportFile.php"
+        ]
+    },
+    {
+        "id": 65027,
+        "author": "lancewillett",
+        "message": "Tests: Make style, script module and load data providers static.\n\nDeclare ten data providers in the style-engine, script-module, and load tests as `public static` for compatibility with newer PHPUnit versions. Add explicit `array` return types to the five load providers. Preserve all datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15098, https://github.com/WordPress/wordpress-develop/pull/15102, https://github.com/WordPress/wordpress-develop/pull/15153\n\nProps rejaulalomkhan, therssoftware, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-29T22:11:44.878242Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/load/wpConvertHrToBytes.php",
+            "/trunk/tests/phpunit/tests/load/wpGetDevelopmentMode.php",
+            "/trunk/tests/phpunit/tests/load/wpGetEnvironmentType.php",
+            "/trunk/tests/phpunit/tests/load/wpIsFileModAllowed.php",
+            "/trunk/tests/phpunit/tests/load/wpIsIniValueChangeable.php",
+            "/trunk/tests/phpunit/tests/script-modules/wpScriptModules.php",
+            "/trunk/tests/phpunit/tests/style-engine/styleEngine.php",
+            "/trunk/tests/phpunit/tests/style-engine/wpStyleEngineCssDeclarations.php"
+        ]
+    },
+    {
         "id": 65026,
         "author": "lancewillett",
         "message": "Tests: Clean up registrations in embed, query, and term tests.\n\nUnregister custom post types, taxonomies, and post statuses during teardown in the oEmbed template, taxonomy query, comment query, post-status visibility, and object-term tests. Prevent these registrations from leaking into subsequent tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15079, https://github.com/WordPress/wordpress-develop/pull/15080, https://github.com/WordPress/wordpress-develop/pull/15081, https://github.com/WordPress/wordpress-develop/pull/15082, https://github.com/WordPress/wordpress-develop/pull/15084\n\nProps rejaulalomkhan, mukesh27.\nSee #65893.\n",
