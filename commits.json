@@ -1,5 +1,25 @@
 [
     {
+        "id": 65005,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Include WordPress versions in Slack notifications.\n\nInclude the requested WordPress version in Upgrade Tests and Installation Tests notifications, using the existing `workflow_name` payload field. Keep notifications unchanged for callers that omit the optional `version` input.\n\nUse `latest` as the default upgrade target and `nightly` as the default installation version.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15128\n\nProps jorbin, lucatume.\nFixes #66401.\n",
+        "date": "2026-10-29T14:49:23.697995Z",
+        "files": [
+            "/trunk/.github/workflows/install-testing.yml",
+            "/trunk/.github/workflows/slack-notifications.yml",
+            "/trunk/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
+        "id": 65004,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Preserve filenames in installation test downloads.\n\nDownload release archives with `curl` and extract them with the system `tar` to avoid truncated filenames from `PharData`. This fixes the Twenty Twenty-Two pattern loading failure in WordPress 5.9 and 6.0 installation smoke checks.\n\nKeep `wp core download` for `nightly` and `trunk`, which use ZIP archives.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15152\n\nProps adrianmoldovanwp.\nFixes #66403.\n",
+        "date": "2026-10-29T14:38:21.704786Z",
+        "files": [
+            "/trunk/.github/workflows/install-testing.yml"
+        ]
+    },
+    {
         "id": 65003,
         "author": "SergeyBiryukov",
         "message": "Filesystem API: Avoid a fatal error in PclZip when the temporary file cannot be created.\n\n`PclZip::privExtractFileUsingTempFile()` calls `fclose( $v_file )` when it fails to open its temporary file, but `$v_file` is not defined in that function. On PHP 8, `fclose( null )` throws a `TypeError`, so the request dies with a fatal error instead of returning an error with `PCLZIP_ERR_WRITE_OPEN_FAIL`. Nothing has been opened at that point, so the call is removed.\n\nThe similar `fclose( $v_file )` in `privAddFileUsingTempFile()` is correct (the file is opened a few lines above) and is left unchanged.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15133.\n\nFollow-up to r11056.\n\nProps ExtremsX.\nFixes #66408.",
