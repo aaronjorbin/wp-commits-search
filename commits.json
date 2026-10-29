@@ -1,5 +1,17 @@
 [
     {
+        "id": 65022,
+        "author": "westonruter",
+        "message": "Menus: Avoid warning when a nav menu item lacks `current`.\n\nIn `Walker_Nav_Menu::start_el()`, the `aria-current` attribute was built by reading `$menu_item->current` directly, but that property is only ever set by `_wp_menu_item_classes_by_context()`. Menu items that bypass it, such as `stdClass` items that plugins add via the `wp_nav_menu_objects` filter, triggered an undefined property warning on every page load. The property is now read behind `empty()`, as the other optional menu item properties in the method already are.\n\nSince menu items reaching the walker are not always `WP_Post` instances, the menu item parameters of the walker and of the hooks it fires are now documented as `WP_Post|stdClass`, along with an object shape for static analysis that describes the properties `start_el()` actually requires. The admin walkers extending this class read more properties than that shape guarantees, so the resulting parameter type mismatch is recorded in the static analysis baseline rather than hidden.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12805.\nFollow-up to r42808.\n\nProps deepakbhojwani, babola, im3dabasia1, westonruter.\nSee #65817.\nFixes #65786.\n",
+        "date": "2026-10-29T18:49:18.109524Z",
+        "files": [
+            "/trunk/src/wp-includes/class-walker-nav-menu.php",
+            "/trunk/tests/phpstan/baselines/method.childParameterType.neon",
+            "/trunk/tests/phpstan/baselines/property.notFound.neon",
+            "/trunk/tests/phpunit/tests/menu/walker-nav-menu.php"
+        ]
+    },
+    {
         "id": 65021,
         "author": "westonruter",
         "message": "Docs: Clarify `$operator` values for object list filters.\n\nThe `$operator` default for `wp_filter_object_list()` was documented as `'AND'` even though the signature declares `'and'`, and the functions that pass `$operator` through to `WP_List_Util::filter()` disagreed with each other on the casing and on whether `'not'` is accepted. Since the value is uppercased before it is validated, each of these functions now documents that it is case-insensitive and that `'and'`, `'or'`, and `'not'` are all accepted, and declares a PHPStan type for the parameter so that unsupported values can be flagged. The type lists only the lowercase and uppercase forms, as enumerating every mixed-case variant is impractical.\n\nFor consistency, the documentation now uses lowercase throughout, and the `'AND'` default of `wp_list_filter()` and `WP_List_Util::filter()` is changed to `'and'` to match the other functions. Because of the uppercasing, this does not change behavior.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13245.\nFollow-up to r17251, r36090, r36091, r38928.\n\nProps khokansardar, westonruter, marian1.\nSee #65817, #65860.\nFixes #65933.\n",
