@@ -1,5 +1,44 @@
 [
     {
+        "id": 65026,
+        "author": "lancewillett",
+        "message": "Tests: Clean up registrations in embed, query, and term tests.\n\nUnregister custom post types, taxonomies, and post statuses during teardown in the oEmbed template, taxonomy query, comment query, post-status visibility, and object-term tests. Prevent these registrations from leaking into subsequent tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15079, https://github.com/WordPress/wordpress-develop/pull/15080, https://github.com/WordPress/wordpress-develop/pull/15081, https://github.com/WordPress/wordpress-develop/pull/15082, https://github.com/WordPress/wordpress-develop/pull/15084\n\nProps rejaulalomkhan, mukesh27.\nSee #65893.\n",
+        "date": "2026-10-29T21:37:44.314250Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/query.php",
+            "/trunk/tests/phpunit/tests/oembed/template.php",
+            "/trunk/tests/phpunit/tests/post/isPostStatusViewable.php",
+            "/trunk/tests/phpunit/tests/query/taxQuery.php",
+            "/trunk/tests/phpunit/tests/term/isObjectInTerm.php"
+        ]
+    },
+    {
+        "id": 65025,
+        "author": "lancewillett",
+        "message": "Tests: Clean up registrations in post, term, and user tests.\n\nUnregister custom post types, taxonomies, and post statuses during teardown in the post-status transition, navigation menu, post, term metadata, and user query tests. Prevent these registrations from leaking into subsequent tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15074, https://github.com/WordPress/wordpress-develop/pull/15075, https://github.com/WordPress/wordpress-develop/pull/15076, https://github.com/WordPress/wordpress-develop/pull/15077, https://github.com/WordPress/wordpress-develop/pull/15078\n\nProps rejaulalomkhan, mukesh27.\nSee #65893.\n",
+        "date": "2026-10-29T21:31:22.298848Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/nav-menu.php",
+            "/trunk/tests/phpunit/tests/post/updateTermCountOnTransitionPostStatus.php",
+            "/trunk/tests/phpunit/tests/post.php",
+            "/trunk/tests/phpunit/tests/term/meta.php",
+            "/trunk/tests/phpunit/tests/user/query.php"
+        ]
+    },
+    {
+        "id": 65024,
+        "author": "lancewillett",
+        "message": "Tests: Clean up XML-RPC and REST term fixtures.\n\nUnregister custom taxonomies after the XML-RPC term editing, term insertion, and REST category and tag controller tests. Unregister the custom post type after XML-RPC post type tests. Preserve shared fixtures and parent teardown while removing registrations immediately after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15067, https://github.com/WordPress/wordpress-develop/pull/15068, https://github.com/WordPress/wordpress-develop/pull/15069, https://github.com/WordPress/wordpress-develop/pull/15070, https://github.com/WordPress/wordpress-develop/pull/15072\n\nProps rejaulalomkhan, mukesh27.\nSee #65893.\n",
+        "date": "2026-10-29T21:25:33.729503Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-categories-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-tags-controller.php",
+            "/trunk/tests/phpunit/tests/term/wpInsertTerm.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/editTerm.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/getPostType.php"
+        ]
+    },
+    {
         "id": 65023,
         "author": "westonruter",
         "message": "XML-RPC: Expand test coverage for login credentials.\n\nThe fatal error from non-scalar credentials passed to `wp.getUsersBlogs` was fixed for all authenticated methods in r63927, which rejects them in `wp_xmlrpc_server::login()`. Tests are now added at the `wp.getUsersBlogs` level, where the error was originally reported, along with `null` credential cases and a test that integer credentials, which XML-RPC clients can send as `<int>` values, still authenticate the matching user.\n\nThe credential parameters of `wp_xmlrpc_server::login()` and `wp_xmlrpc_server::login_pass_ok()` are now documented as `mixed`, since they hold untrusted client input that `login()` validates, and are asserted to be scalar on success. This resolves static analysis errors in the methods that pass raw request arguments to `login()`. The scalar credentials are also cast to strings for `wp_authenticate()`, so `authenticate` filter callbacks now receive a string even when the client sent an integer.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12462.\nFollow-up to r63006, r63927.\n\nProps josephscott, westonruter.\nSee #66168.\nFixes #65600.\n",
