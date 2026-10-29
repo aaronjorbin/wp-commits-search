@@ -1,5 +1,46 @@
 [
     {
+        "id": 65002,
+        "author": "jorgefilipecosta",
+        "message": "Abilities API: Return the `core/users-query` registration date as `registered.site` and `registered.gmt`.\n\nReplace the `registered_date` field with a `registered` object holding the registration date in the site's timezone (`site`) and in GMT (`gmt`), like the `core/content-query` date fields. The `fields` input accepts `registered.site` and `registered.gmt` to select a single date.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15001.\n\nFollow-up to [64346].\n\nProps jorgefilipecosta, gziolo.\nSee #64657.",
+        "date": "2026-10-29T09:57:23.931622Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-users.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreUsersAbility.php"
+        ]
+    },
+    {
+        "id": 65001,
+        "author": "gziolo",
+        "message": "AI: Update the PHP AI Client library to version 1.5.1\n\nThis maintenance release hardens file input handling and deserialization, adds explicit file constructors, and deprecates implicit local file loading through the File constructor. Local paths remain supported by the prompt and message builders without deprecation notices.\n\nThe update also adds a provider hook for preparing function parameter schemas and excludes function annotations from OpenAI-compatible tool request payloads.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15142.\n\nProps alekv, aryanjasala, gziolo, jason_the_adams, jeffpaul, jorgefilipecosta, laurisaarni.\nFixes #66400.\n\n\n",
+        "date": "2026-10-29T09:54:01.893845Z",
+        "files": [
+            "/trunk/src/wp-includes/php-ai-client/src/AiClient.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Builders/MessageBuilder.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Builders/PromptBuilder.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Common/AbstractDataTransferObject.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Files/DTO/File.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Files/Util",
+            "/trunk/src/wp-includes/php-ai-client/src/Files/Util/FileInputUtil.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Files/ValueObjects/MimeType.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Messages/DTO/Message.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Messages/DTO/MessagePart.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Providers/ApiBasedImplementation/AbstractApiBasedModel.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Providers/OpenAiCompatibleImplementation/AbstractOpenAiCompatibleImageGenerationModel.php",
+            "/trunk/src/wp-includes/php-ai-client/src/Providers/OpenAiCompatibleImplementation/AbstractOpenAiCompatibleTextGenerationModel.php"
+        ]
+    },
+    {
+        "id": 65000,
+        "author": "wildworks",
+        "message": "I18N: Use wp-i18n for strings in the theme browser.\n\nThe Themes screen and theme installer now translate their JavaScript strings with wp-i18n instead of the strings localized from PHP. This also removes the deprecation notice logged in the console when updating a theme from the Theme Details modal.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14798\n\nProps audrasjb, huzaifaalmesbah, im3dabasia1, manishxdp, ozgursar, presskopp, rkdevops24, sawf1y, westonruter, wildworks.\nFixes #64619.",
+        "date": "2026-10-29T09:50:54.728389Z",
+        "files": [
+            "/trunk/src/js/_enqueues/wp/theme.js",
+            "/trunk/src/wp-includes/script-loader.php"
+        ]
+    },
+    {
         "id": 64999,
         "author": "Mamaduka",
         "message": "Editor: Add thumbs up and plus note reactions.\n\nAdds \ud83d\udc4d and \u2795 to the note reaction keys accepted by `WP_REST_Comments_Controller`, extending the quick reactions with two common positive responses. Thumbs down remains excluded to keep the default set positive.\n\nThis brings over the PHP changes from https://github.com/WordPress/gutenberg/pull/85565.\n\nFollow-up to r64488.\n\nProps mamaduka, mukesh27.\nSee #64638.",
