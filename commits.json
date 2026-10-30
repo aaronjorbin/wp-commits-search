@@ -1,5 +1,15 @@
 [
     {
+        "id": 65045,
+        "author": "gziolo",
+        "message": "Abilities API: Restrict content-query author visibility to viewable post types\n\nPrevent pagination totals from revealing author slugs through non-viewable post types. Add regression coverage.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15181.\n\nFollow-up to [64688].\n\nProps gziolo, laurisaarni, jorgefilipecosta, sadmansakibnadvi.\nSee #66268.\n\n",
+        "date": "2026-10-30T11:19:40.015636Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-content.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreContentAbility.php"
+        ]
+    },
+    {
         "id": 65044,
         "author": "gziolo",
         "message": "Abilities API: Share input coercion across execution paths\n\nIntroduce WP_Ability::coerce_input() to apply schema-based type coercion and format sanitization after validation and before permission checks and execution.\n\nReuse the shared implementation in the REST controller, including for normalized defaults and filter-provided input. Return ability_invalid_input on coercion failures, including nested errors, instead of falling back to raw input.\n\nDirect execution now follows REST type semantics, including converting number values to floats. Add regression coverage for coercion, lifecycle ordering, and REST error handling.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14882.\n\nProps gziolo, jorgefilipecosta.\nFixes #66383.\n\n\n",
