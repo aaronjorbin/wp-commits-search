@@ -1,5 +1,17 @@
 [
     {
+        "id": 65042,
+        "author": "peterwilsoncc",
+        "message": "Rewrites: Reinstate split the query for random redirects.\n\nRemoves the filtering of `split_the_query` to `false` on random post redirects. As sorting queries randomly generates a temporary table, selecting `*` places all data in the temporary table, whereas selecting `ID` only places the post ID in the temporary table. The unsplit query can become inefficient on sites with a relatively few posts (ie, thousands not millions).\n\nThis removes the function `wp_random_content_split_the_query()` with a hard deprecation as it was not released to a production version of WordPress.\n\nAdditionally, the following changes have been made to the test suite:\n\n* Tests ensuring random redirects are not cached are refactored to avoid the `$this->go_to()` method in the test suite as the helper method flushes the cache, causing the tests to be invalid\n* Introduces tests covering `WP::handle_random()` specifically\n* Adds docblocks to each and every test in `Tests_Query_RandomContentRedirect`\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14809.\n\nFollow-up to r63767, r63906, r64402.\n\nProps aryanjasala, peterwilsoncc, dhrupo, westonruter.\nFixes #64498.\n\n",
+        "date": "2026-10-30T00:59:06.480951Z",
+        "files": [
+            "/trunk/src/wp-includes/default-filters.php",
+            "/trunk/src/wp-includes/query.php",
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php",
+            "/trunk/tests/phpunit/tests/wp/handleRandom.php"
+        ]
+    },
+    {
         "id": 65041,
         "author": "lancewillett",
         "message": "Tests: Cover plugin list-table navigation, rows, and views.\n\nCover empty search results and navigation in `WP_Plugin_Install_List_Table`. Verify row classes, checkbox availability, and plugin grouping in `WP_Plugins_List_Table`, including multisite restrictions and update information.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14597, https://github.com/WordPress/wordpress-develop/pull/14606, https://github.com/WordPress/wordpress-develop/pull/14607\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
