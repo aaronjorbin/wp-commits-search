@@ -1,5 +1,74 @@
 [
     {
+        "id": 65077,
+        "author": "lancewillett",
+        "message": "Tests: Use keyboard activation for the menu location checkbox.\n\nFocus the primary menu location checkbox and activate it with Space to avoid a click being lost when focus scrolls the menu screen. Assert the checked state before saving, retaining the saved-location and front-end navigation checks.\n\nFollow-up to [65063]. The underlying pointer-interaction issue remains tracked in #65684.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15261\n\nProps westonruter.\nSee #54892, #65684.\n",
+        "date": "2026-10-30T18:57:50.869386Z",
+        "files": [
+            "/trunk/tests/e2e/specs/classic-menus.test.js"
+        ]
+    },
+    {
+        "id": 65076,
+        "author": "lancewillett",
+        "message": "Tests: Cover login URL generation and filtering.\n\nTest the default `wp_login_url()` result, redirect and reauthentication parameters separately and together, and the arguments and return value of the `login_url` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15225\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-30T18:28:35.030054Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/wpLoginUrl.php"
+        ]
+    },
+    {
+        "id": 65075,
+        "author": "westonruter",
+        "message": "Docs: Document hooks that may pass a null post object.\n\nSeveral hooks document their post parameter as `WP_Post` even though `get_post()` can return null before the hook fires, so callbacks that type-hint `WP_Post` fatal with a `TypeError`. This was reported for the Image Placeholders plugin, where a plugin filtered `post_thumbnail_id` to an ID with no post, leading `wp_get_attachment_image()` to pass a null `$attachment` to `wp_get_attachment_image_attributes`. The same applies to `post_password_required` and `the_password_form` when no post is found, and to `media_view_settings` and `media_view_strings` whenever `wp_enqueue_media()` is not called for a specific post. Core and bundled theme callbacks of these hooks are updated to match.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15257.\n\nSee #65860.\n",
+        "date": "2026-10-30T18:16:36.577073Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentyseventeen/functions.php",
+            "/trunk/src/wp-content/themes/twentysixteen/functions.php",
+            "/trunk/src/wp-content/themes/twentytwentyone/inc/template-functions.php",
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-content.php",
+            "/trunk/src/wp-includes/media.php",
+            "/trunk/src/wp-includes/post-template.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php"
+        ]
+    },
+    {
+        "id": 65074,
+        "author": "lancewillett",
+        "message": "Tests: Make image data providers and editor discovery static.\n\nDeclare fourteen existing image-test data providers as `public static`. Make the editor-discovery helper static and update helper calls, preserving datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15236\n\nProps devmuhib, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-30T18:15:53.225982Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/editor.php",
+            "/trunk/tests/phpunit/tests/image/editorGd.php",
+            "/trunk/tests/phpunit/tests/image/functions.php",
+            "/trunk/tests/phpunit/tests/image/size.php"
+        ]
+    },
+    {
+        "id": 65073,
+        "author": "lancewillett",
+        "message": "Tests: Make user data providers and capability helpers static.\n\nDeclare twelve existing user-test data providers as `public static`. Convert their capability-map helpers and update helper calls without changing datasets or assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15235\n\nProps devmuhib, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-30T18:10:20.813755Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/capabilities.php",
+            "/trunk/tests/phpunit/tests/user/mapMetaCap.php",
+            "/trunk/tests/phpunit/tests/user/newUserEmailAdminNotice.php",
+            "/trunk/tests/phpunit/tests/user/queryCache.php",
+            "/trunk/tests/phpunit/tests/user/wpListUsers.php"
+        ]
+    },
+    {
+        "id": 65072,
+        "author": "jorgefilipecosta",
+        "message": "Abilities API: Encode empty object results as JSON objects.\n\nThe run endpoint prepared only associative array results for JSON clients, so an empty array returned for an object output schema, such as the `core/settings-get` result when no setting matches, was encoded as `[]` and failed output validation in JSON clients. Prepare every result, including root results, lists, object and `JsonSerializable` results, so empty objects are encoded as `{}` while arrays stay arrays.\nRegister the run endpoint with the `data_processing` route option set to `false`, so the `_fields` and `_embed` parameters and response links leave the result unchanged and it follows the ability's output schema whether it is an object, an array, or a scalar value. The REST API client fixture lists the disabled processing for the run endpoint.\n\nFollow-up to [64311], [64592], [64689].\n\nProps jorgefilipecosta, gziolo.\nSee #66267.",
+        "date": "2026-10-30T18:10:18.512366Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-run-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesSettingsController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1RunController.php"
+        ]
+    },
+    {
         "id": 65071,
         "author": "lancewillett",
         "message": "Tests: Make database charset data providers static.\n\nDeclare seven existing data providers as `public static`. Make the read-only table definitions static and update property access and assertion calls, preserving datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15234\n\nProps devmuhib, huzaifaalmesbah.\nSee #66211.\n",
