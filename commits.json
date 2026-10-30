@@ -1,5 +1,108 @@
 [
     {
+        "id": 65096,
+        "author": "lancewillett",
+        "message": "Tests: Cover bookmark field retrieval and contexts.\n\nCover invalid bookmarks, unknown fields, context forwarding, and attribute escaping in `get_bookmark_field()`. Use literal expected output to keep assertions independent of the implementation.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15161\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-30T20:52:31.863495Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/bookmark/getBookmarkField.php"
+        ]
+    },
+    {
+        "id": 65095,
+        "author": "lancewillett",
+        "message": "Tests: Cover site information formatting in RSS feeds.\n\nVerify that `get_bloginfo_rss()` strips tags and converts ampersands before filtering. Check the filtered return value and the requested site information field.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15160\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-30T20:48:57.847175Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/feed/getBloginfoRss.php"
+        ]
+    },
+    {
+        "id": 65094,
+        "author": "lancewillett",
+        "message": "Tests: Cover HTML class sanitization.\n\nCover character stripping, fallback sanitization, and the filter contract in `sanitize_html_class()`. Verify that the filter changes the returned value.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15147\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-30T20:47:29.753708Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/sanitizeHtmlClass.php"
+        ]
+    },
+    {
+        "id": 65093,
+        "author": "lancewillett",
+        "message": "Tests: Cover directory copy skip lists.\n\nVerify that `copy_dir()` skips exact file and directory matches while preserving other content. Protect the strict comparison that distinguishes `0019` from the skip-list entry `19`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14107\n\nProps irozum, huzaifaalmesbah.\nSee #65819, #46581.\n",
+        "date": "2026-10-30T20:42:53.506254Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/filesystem/copyDir.php"
+        ]
+    },
+    {
+        "id": 65092,
+        "author": "lancewillett",
+        "message": "Tests: Cover password reset URL formatting in emails.\n\nVerify that `retrieve_password()` and `wp_new_user_notification()` include password reset links without surrounding angle brackets.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14078\n\nProps irozum, huzaifaalmesbah.\nSee #65819, #44589.\n",
+        "date": "2026-10-30T20:42:07.512781Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/user/retrievePassword.php",
+            "/trunk/tests/phpunit/tests/user.php"
+        ]
+    },
+    {
+        "id": 65091,
+        "author": "lancewillett",
+        "message": "Tests: Cover application password creation emails.\n\nCover notification delivery, placeholder replacement, filtering, and invalid inputs in `wp_application_password_created_notification()`. Protect the admin-email placeholder fix.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14721\n\nProps ravipatel.\nSee #63927.\n",
+        "date": "2026-10-30T20:38:48.900897Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpApplicationPasswordCreatedNotification.php"
+        ]
+    },
+    {
+        "id": 65090,
+        "author": "dmsnell",
+        "message": "Blocks: Fix duplicated content when implicitly closing a final open block\n\nWhen a fix was recently applied to the block parser for implicitly closing open blocks that remain open at the end of a document, a mistake was made when collecting HTML spans preceding the still-open blocks. This led to duplicated content in documents missing expected closing delimiters.\n\nThis patch adjusts the implict closing algorithm to properly detect those HTML spans.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15197\nDiscussed in: https://core.trac.wordpress.org/ticket/66138\n\nFollow-up to r64996.\n\nProps chihsuan, dmsnell.\nSee #66138.\n",
+        "date": "2026-10-30T20:37:08.984076Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-parser.php",
+            "/trunk/tests/phpunit/tests/blocks/wpBlockParser.php"
+        ]
+    },
+    {
+        "id": 65089,
+        "author": "lancewillett",
+        "message": "Tests: Cover attachment field inheritance when editing images.\n\nVerify that edited attachments inherit omitted title, caption, description, and alt text from the original. Cover absent alt metadata and requests that override selected fields while inheriting the others.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14893\n\nProps irozum.\nSee #50675.\n",
+        "date": "2026-10-30T20:32:46.139599Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-attachments-controller.php"
+        ]
+    },
+    {
+        "id": 65088,
+        "author": "lancewillett",
+        "message": "Tests: Delete real files in filesystem deletion tests.\n\nUse the stored fixture path without appending its key. Assert that the visible and hidden files exist before deletion, so the tests exercise `WP_Filesystem_Direct::delete()` on real files instead of passing for nonexistent paths.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14902\n\nProps benitoalba.\nSee #57774.\n",
+        "date": "2026-10-30T20:24:59.981156Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/filesystem/wpFilesystemDirect/delete.php"
+        ]
+    },
+    {
+        "id": 65087,
+        "author": "lancewillett",
+        "message": "Tests: Cover filtering the path passed to `wp_delete_file()`.\n\nVerify that an empty filtered path prevents deletion and that a replacement path is deleted while the original file remains. Extend the existing basic deletion tests with both filter outcomes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14890\n\nProps bluefairydevelopment, pbearne.\nFixes #59788.\n",
+        "date": "2026-10-30T20:23:41.640740Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpDeleteFile.php"
+        ]
+    },
+    {
+        "id": 65086,
+        "author": "lancewillett",
+        "message": "Tests: Add types to text formatting tests and providers.\n\nAdd parameter and return types and document provider array shapes in the `wptexturize()` and `wp_html_split()` tests and their shared whole-post fixture. Remove returns of void assertion results while preserving the existing cases and expected values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14898\n\nProps nickchomey.\nSee #63997.\n",
+        "date": "2026-10-30T20:21:22.042645Z",
+        "files": [
+            "/trunk/tests/phpunit/data/formatting/whole-posts.php",
+            "/trunk/tests/phpunit/tests/formatting/wpHtmlSplit.php",
+            "/trunk/tests/phpunit/tests/formatting/wpTexturize.php"
+        ]
+    },
+    {
         "id": 65085,
         "author": "lancewillett",
         "message": "Tests: Cover email escaping in privacy request tables.\n\nVerify that email columns and checkbox labels escape requester email addresses containing HTML in the base, export, and removal request tables.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15207\n\nProps ravipatel, sainathpoojary.\nSee #65819.\n",
