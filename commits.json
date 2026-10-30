@@ -1,5 +1,82 @@
 [
     {
+        "id": 65085,
+        "author": "lancewillett",
+        "message": "Tests: Cover email escaping in privacy request tables.\n\nVerify that email columns and checkbox labels escape requester email addresses containing HTML in the base, export, and removal request tables.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15207\n\nProps ravipatel, sainathpoojary.\nSee #65819.\n",
+        "date": "2026-10-30T20:07:24.446451Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpPrivacyRequestsTable.php"
+        ]
+    },
+    {
+        "id": 65084,
+        "author": "lancewillett",
+        "message": "Tests: Use local fixtures for HTTP header and cookie checks.\n\nUse the local redirection script for cookie handling and requests to an IP address with a custom `Host` header. Assert the header received by the server and retain the live endpoint fallback when the local fixture is unavailable.\n\nPreserve parent-domain cookie acceptance coverage through a simulated transport while exercising real cookie parsing and redirect handling.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15184\n\nProps shailu25.\nSee #63914.\n",
+        "date": "2026-10-30T20:02:50.102148Z",
+        "files": [
+            "/trunk/tests/phpunit/data/WPHTTP-testcase-redirection-script.php",
+            "/trunk/tests/phpunit/tests/http/base.php"
+        ]
+    },
+    {
+        "id": 65083,
+        "author": "lancewillett",
+        "message": "Tests: Cover note editing permissions for comment moderators.\n\nVerify that `moderate_comments` alone does not allow updating or deleting a note when the user cannot edit its post. Confirm rejected REST requests leave the note unchanged.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15187\n\nProps ravipatel, sainathpoojary.\nSee #65819.\n",
+        "date": "2026-10-30T20:01:06.746885Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65082,
+        "author": "lancewillett",
+        "message": "Tests: Cover user-name escaping in admin output.\n\nVerify that account-menu titles, user-list rows, and network user-list columns escape display names and logins containing HTML. Check checkbox labels and visible escaped text.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15208\n\nProps ravipatel.\nSee #65819.\n",
+        "date": "2026-10-30T20:00:19.053754Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpMsUsersListTable.php",
+            "/trunk/tests/phpunit/tests/admin/wpUsersListTable.php",
+            "/trunk/tests/phpunit/tests/adminbar.php"
+        ]
+    },
+    {
+        "id": 65081,
+        "author": "lancewillett",
+        "message": "Tests: Cover media metadata keys and supported formats.\n\nVerify the display, edit, and JavaScript field sets returned by `wp_get_attachment_id3_keys()`, including filter arguments and returned values. Cover the default audio and video extension lists and their filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15249, https://github.com/WordPress/wordpress-develop/pull/15251\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-30T19:48:14.503748Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/media/wpGetAttachmentId3Keys.php",
+            "/trunk/tests/phpunit/tests/media/wpGetAudioVideoExtensions.php"
+        ]
+    },
+    {
+        "id": 65080,
+        "author": "lancewillett",
+        "message": "Tests: Cover media dimension expansion.\n\nVerify that `wp_expand_dimensions()` expands example dimensions to fit maximum bounds while preserving aspect ratio. Cover matching, landscape, portrait, square, and numeric-string inputs with explicit expected dimensions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15246\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-30T19:41:18.308278Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/media/wpExpandDimensions.php"
+        ]
+    },
+    {
+        "id": 65079,
+        "author": "lancewillett",
+        "message": "Tests: Document intentional object value comparisons.\n\nExplain why the Abilities API coercion error and plugin update transient assertions retain `assertEquals()` to compare objects by value rather than identity.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15209\n\nProps shailu25.\nSee #64895.\n",
+        "date": "2026-10-30T19:39:27.168588Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/abilities-api/wpAbility.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/wpCleanPluginsCache.php"
+        ]
+    },
+    {
+        "id": 65078,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Update PHPStan to 2.3.4.\n\nThis also brings in the 2.3.3 release, which replaces the regular expression parser used to infer the shapes of `preg_match()` and `preg_match_all()` matches, along with a number of type resolution and robustness fixes. The 2.3.4 release follows with fixes to unions involving constant scalars.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15137.\nFollow-up to r64757.\n\nProps westonruter, lancewillett, mukesh27.\nSee #65817.\n",
+        "date": "2026-10-30T19:31:03.776474Z",
+        "files": [
+            "/trunk/composer.json"
+        ]
+    },
+    {
         "id": 65077,
         "author": "lancewillett",
         "message": "Tests: Use keyboard activation for the menu location checkbox.\n\nFocus the primary menu location checkbox and activate it with Space to avoid a click being lost when focus scrolls the menu screen. Assert the checked state before saving, retaining the saved-location and front-end navigation checks.\n\nFollow-up to [65063]. The underlying pointer-interaction issue remains tracked in #65684.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15261\n\nProps westonruter.\nSee #54892, #65684.\n",
