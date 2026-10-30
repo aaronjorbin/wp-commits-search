@@ -1,5 +1,14 @@
 [
     {
+        "id": 65106,
+        "author": "lancewillett",
+        "message": "Tests: Cover empty objects in REST media responses.\n\nVerify empty `media_details.sizes` and missing attachment metadata are returned as objects that encode to `{}`, preserving the REST response schema.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13685\n\nProps therssoftware, huzaifaalmesbah.\nSee #65251.\n",
+        "date": "2026-10-30T22:12:24.243502Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-attachments-controller.php"
+        ]
+    },
+    {
         "id": 65105,
         "author": "lancewillett",
         "message": "Tests: Cover admin bar shortlink output.\n\nVerify `wp_admin_bar_shortlink_menu()` omits the node for an empty shortlink, renders the expected link and input, and escapes attribute values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13883\n\nProps r1k0, mukesh27, pbearne, anntrauf.\nSee #66223.\n",
