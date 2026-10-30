@@ -1,5 +1,85 @@
 [
     {
+        "id": 65055,
+        "author": "lancewillett",
+        "message": "Tests: Cover canonical and shortlink head output.\n\nVerify that `rel_canonical()` and `wp_shortlink_wp_head()` emit link elements for singular posts and suppress empty results. Cover filtered URLs and HTML escaping without repeating the getters' URL-construction tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14657, https://github.com/WordPress/wordpress-develop/pull/14658\n\nProps devmuhib, huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-30T16:50:45.852839Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/relCanonical.php",
+            "/trunk/tests/phpunit/tests/link/wpShortlinkWpHead.php"
+        ]
+    },
+    {
+        "id": 65054,
+        "author": "lancewillett",
+        "message": "Tests: Cover adjacent post links and relational output.\n\nVerify previous and next post destinations, title formatting, and relational links on single-post views. Cover display wrappers and empty output at the ends of the post sequence.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14649, https://github.com/WordPress/wordpress-develop/pull/14705\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-30T16:48:22.175316Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getAdjacentPostLink.php",
+            "/trunk/tests/phpunit/tests/link/getAdjacentPostRelLink.php"
+        ]
+    },
+    {
+        "id": 65053,
+        "author": "lancewillett",
+        "message": "Tests: Cover post pagination links and navigation.\n\nCover first, middle, and last-page navigation, custom labels and separators, and next/previous page URLs. Verify the display wrappers and initialize query fixtures before each test so test order does not change their results.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14647, https://github.com/WordPress/wordpress-develop/pull/14648, https://github.com/WordPress/wordpress-develop/pull/14712\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-30T16:46:02.361073Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getNextPostsLink.php",
+            "/trunk/tests/phpunit/tests/link/getNextPreviousPostsPageLink.php",
+            "/trunk/tests/phpunit/tests/link/getPostsNavLink.php",
+            "/trunk/tests/phpunit/tests/link/getPreviousPostsLink.php"
+        ]
+    },
+    {
+        "id": 65052,
+        "author": "lancewillett",
+        "message": "Tests: Cover comment pagination, navigation, and reply links.\n\nVerify comment-page URLs, navigation and pagination markup, and custom arguments. Cover reply links for comment availability, login requirements, and filtered output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14639, https://github.com/WordPress/wordpress-develop/pull/14642, https://github.com/WordPress/wordpress-develop/pull/14644, https://github.com/WordPress/wordpress-develop/pull/14682\n\nProps devmuhib, huzaifaalmesbah, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-30T16:40:57.223113Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/getPostReplyLink.php",
+            "/trunk/tests/phpunit/tests/link/getCommentsPagenumLink.php",
+            "/trunk/tests/phpunit/tests/link/getTheCommentsNavigation.php",
+            "/trunk/tests/phpunit/tests/link/getTheCommentsPagination.php"
+        ]
+    },
+    {
+        "id": 65051,
+        "author": "lancewillett",
+        "message": "Tests: Cover automatic update checks and reporting.\n\nCover update-result email selection, debug email content and filtering, and update-check scheduling. Verify plugin and theme auto-update settings and their filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14588, https://github.com/WordPress/wordpress-develop/pull/14589, https://github.com/WordPress/wordpress-develop/pull/14592, https://github.com/WordPress/wordpress-develop/pull/14593\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-30T16:37:11.409864Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/update/wpIsAutoUpdateEnabledForType.php",
+            "/trunk/tests/phpunit/tests/admin/wpAutomaticUpdaterAfterPluginThemeUpdate.php",
+            "/trunk/tests/phpunit/tests/admin/wpAutomaticUpdaterSendDebugEmail.php",
+            "/trunk/tests/phpunit/tests/functions/wpScheduleUpdateChecks.php"
+        ]
+    },
+    {
+        "id": 65050,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin deletion, deactivation, and sandbox loading.\n\nVerify plugin and translation-file deletion, uninstall callbacks, failure reporting, and update metadata cleanup. Cover site and network deactivation and sandbox loading, including symlinked plugins.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14604, https://github.com/WordPress/wordpress-develop/pull/14605, https://github.com/WordPress/wordpress-develop/pull/14609\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-30T16:35:35.747749Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/deactivatePlugins.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/deletePlugins.php",
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/pluginSandboxScrape.php"
+        ]
+    },
+    {
+        "id": 65049,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Run E2E tests in parallel and serial projects.\n\nSplit the Playwright suite into `parallel` and `serial` projects, running each in a separate CI job for both `SCRIPT_DEBUG` settings. Keep the default `all` project on one worker for local runs, and give each CI job a distinct artifact name.\n\nRemove the redundant media-upload login to avoid concurrent writes to shared authentication state. Document how to classify specs and check their execution order.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14897\n\nProps adrianmoldovanwp, lucatume.\nSee #66392.\n",
+        "date": "2026-10-30T16:21:43.896557Z",
+        "files": [
+            "/trunk/.github/workflows/end-to-end-tests.yml",
+            "/trunk/.github/workflows/reusable-end-to-end-tests.yml",
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/playwright.config.js",
+            "/trunk/tests/e2e/specs/media-upload.test.js"
+        ]
+    },
+    {
         "id": 65048,
         "author": "lancewillett",
         "message": "Tests: Cover plugin upgrader callbacks and skins.\n\nCover silent deactivation, maintenance mode, and old-plugin deletion in `Plugin_Upgrader`. Verify installed plugin discovery, installer error visibility, and bulk-update footer links and filtering.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14581, https://github.com/WordPress/wordpress-develop/pull/14591, https://github.com/WordPress/wordpress-develop/pull/14594, https://github.com/WordPress/wordpress-develop/pull/14595\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
