@@ -1,5 +1,15 @@
 [
     {
+        "id": 65046,
+        "author": "jorgefilipecosta",
+        "message": "REST API: Don't list the `data_processing` settings in the index.\n\nThe root index, the namespace indexes and OPTIONS responses listed the resolved `data_processing` settings of every endpoint that turns a feature off. The option configures how the server processes a response, so the index does not need to describe it.\n\nFollow-up to [64689].\n\nProps jorgefilipecosta, gziolo, sadmansakibnadvi.\nSee #66372.",
+        "date": "2026-10-30T13:38:42.592078Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/class-wp-rest-server.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-server.php"
+        ]
+    },
+    {
         "id": 65045,
         "author": "gziolo",
         "message": "Abilities API: Restrict content-query author visibility to viewable post types\n\nPrevent pagination totals from revealing author slugs through non-viewable post types. Add regression coverage.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15181.\n\nFollow-up to [64688].\n\nProps gziolo, laurisaarni, jorgefilipecosta, sadmansakibnadvi.\nSee #66268.\n\n",
