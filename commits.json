@@ -1,5 +1,90 @@
 [
     {
+        "id": 65041,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin list-table navigation, rows, and views.\n\nCover empty search results and navigation in `WP_Plugin_Install_List_Table`. Verify row classes, checkbox availability, and plugin grouping in `WP_Plugins_List_Table`, including multisite restrictions and update information.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14597, https://github.com/WordPress/wordpress-develop/pull/14606, https://github.com/WordPress/wordpress-develop/pull/14607\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-30T00:00:19.420398Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpPluginInstallListTableNoItems.php",
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTablePrepareItems.php",
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTableRowCheckbox.php"
+        ]
+    },
+    {
+        "id": 65040,
+        "author": "lancewillett",
+        "message": "Tests: Simplify formatting and KSES coverage.\n\nRemove overlapping wrapper and private-helper checks while retaining public KSES coverage. Consolidate the `pre_kses` argument contract and use literal expected values for `wp_kses_post_deep()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15013\n\nProps dmsnell.\nSee #65819.\n",
+        "date": "2026-10-29T23:56:35.698153Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/sanitizeTitleForQuery.php",
+            "/trunk/tests/phpunit/tests/formatting/tagEscape.php",
+            "/trunk/tests/phpunit/tests/formatting/wpSprintf.php",
+            "/trunk/tests/phpunit/tests/kses/wpKsesAllowPdfObjects.php",
+            "/trunk/tests/phpunit/tests/kses/wpKsesHook.php",
+            "/trunk/tests/phpunit/tests/kses/wpKsesPostDeep.php",
+            "/trunk/tests/phpunit/tests/kses/wpKsesUriAttributes.php",
+            "/trunk/tests/phpunit/tests/kses.php"
+        ]
+    },
+    {
+        "id": 65039,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin dependencies and list-table output.\n\nCover dependency details, required-by rows, and unmet or circular dependency notices. Verify the `WP_Plugins_List_Table` search box and sorting behavior, including the distinct multisite paths.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14586, https://github.com/WordPress/wordpress-develop/pull/14587, https://github.com/WordPress/wordpress-develop/pull/14590, https://github.com/WordPress/wordpress-develop/pull/14596\n\nProps huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-29T23:55:33.241860Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/plugin-dependencies/displayAdminNotices.php",
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTableDependencyRow.php",
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTableRequiredByRow.php",
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTableSearchBox.php"
+        ]
+    },
+    {
+        "id": 65038,
+        "author": "ramonopoly",
+        "message": "Comments: Use the note permission check when deleting reactions\n\nDeleting a reaction through `/wp/v2/comments` now uses the same permission check as the note it belongs to: edit access (`edit_comment`) to the note's post.\n\nFollow-up to r64488.\n\nProps kirasong, adamsilverstein, sadmansakibnadvi, talldan.\n\nFixes #66406.\n\n",
+        "date": "2026-10-29T23:41:54.388375Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65037,
+        "author": "lancewillett",
+        "message": "Tests: Cover intermediate image size names.\n\nVerify that `get_intermediate_image_sizes()` returns the default size names, includes registered additional sizes, and respects the `intermediate_image_sizes` filter result.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15158\n\nProps shailu25, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-29T23:31:05.618552Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/media/getIntermediateImageSizes.php"
+        ]
+    },
+    {
+        "id": 65036,
+        "author": "lancewillett",
+        "message": "Tests: Cover privacy filtering of ping sites.\n\nVerify that `privacy_ping_filter()` preserves ping sites for public sites and returns an empty string when `blog_public` is `'0'`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15163\n\nProps shailu25, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-29T23:24:14.687448Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/privacyPingFilter.php"
+        ]
+    },
+    {
+        "id": 65035,
+        "author": "lancewillett",
+        "message": "Tests: Cover enclosure URL retrieval.\n\nAdd direct coverage for `get_enclosed()` returning enclosure URLs from post metadata, trimming the URL line, ignoring unrelated metadata, and returning an empty array when no enclosure exists.\n\nVerify that the `get_enclosed` filter receives the expected arguments and changes the returned URLs.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15162\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-29T23:18:53.109985Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getEnclosed.php"
+        ]
+    },
+    {
+        "id": 65034,
+        "author": "lancewillett",
+        "message": "Tests: Make AI client timeout data providers static.\n\nDeclare the valid and invalid request-timeout data providers as `public static` for compatibility with newer PHPUnit versions.\n\nPreserve existing datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15103\n\nProps rejaulalomkhan, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-29T23:12:14.127313Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/ai-client/wpAiClientPromptBuilder.php"
+        ]
+    },
+    {
         "id": 65033,
         "author": "lancewillett",
         "message": "Tests: Make Customizer and text-diff data providers static.\n\nDeclare the widget control and text-diff compatibility data providers as `public static` for compatibility with newer PHPUnit versions.\n\nPreserve existing datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15177, https://github.com/WordPress/wordpress-develop/pull/15178\n\nProps rejaulalomkhan.\nSee #66211.\n",
