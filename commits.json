@@ -1,5 +1,173 @@
 [
     {
+        "id": 65071,
+        "author": "lancewillett",
+        "message": "Tests: Make database charset data providers static.\n\nDeclare seven existing data providers as `public static`. Make the read-only table definitions static and update property access and assertion calls, preserving datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15234\n\nProps devmuhib, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-30T18:05:28.283093Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/db/charset.php"
+        ]
+    },
+    {
+        "id": 65070,
+        "author": "lancewillett",
+        "message": "Tests: Make block and HTML-tree data providers static.\n\nDeclare nine existing data providers in the block-binding, HTML-tree comparison and block-template tests as `public static`. Preserve their datasets and assertions for compatibility with newer PHPUnit versions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15231, https://github.com/WordPress/wordpress-develop/pull/15232, https://github.com/WordPress/wordpress-develop/pull/15233\n\nProps devmuhib, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-30T17:58:36.522823Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-bindings/render.php",
+            "/trunk/tests/phpunit/tests/block-template.php",
+            "/trunk/tests/phpunit/tests/build-visual-html-tree.php"
+        ]
+    },
+    {
+        "id": 65069,
+        "author": "lancewillett",
+        "message": "Tests: Make privacy, plural-form and updater data providers static.\n\nDeclare five existing data providers as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15217, https://github.com/WordPress/wordpress-develop/pull/15229, https://github.com/WordPress/wordpress-develop/pull/15230\n\nProps devmuhib, shailu25, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-30T17:54:58.990743Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpAutomaticUpdater.php",
+            "/trunk/tests/phpunit/tests/pomo/pluralForms.php",
+            "/trunk/tests/phpunit/tests/privacy/wpPrivacyProcessPersonalDataExportPage.php"
+        ]
+    },
+    {
+        "id": 65068,
+        "author": "lancewillett",
+        "message": "Tests: Make request, sitemap and KSES data providers static.\n\nDeclare nine existing data providers as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15214, https://github.com/WordPress/wordpress-develop/pull/15215, https://github.com/WordPress/wordpress-develop/pull/15216\n\nProps devmuhib, shailu25, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-30T17:51:34.136958Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/kses/wpFilterGlobalStylesPost.php",
+            "/trunk/tests/phpunit/tests/kses/wpKsesHair.php",
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsPosts.php",
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsTaxonomies.php",
+            "/trunk/tests/phpunit/tests/wp/handle404.php",
+            "/trunk/tests/phpunit/tests/wp/handleRandom.php"
+        ]
+    },
+    {
+        "id": 65067,
+        "author": "lancewillett",
+        "message": "Tests: Make factory, abilities and link data providers static.\n\nDeclare 44 existing data providers as `public static` for compatibility with newer PHPUnit versions. Preserve their datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15201, https://github.com/WordPress/wordpress-develop/pull/15202, https://github.com/WordPress/wordpress-develop/pull/15213\n\nProps shailu25, devmuhib, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-30T17:48:31.218507Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreContentAbility.php",
+            "/trunk/tests/phpunit/tests/includes/factory.php",
+            "/trunk/tests/phpunit/tests/includes/helpers.php",
+            "/trunk/tests/phpunit/tests/includes/uploadSnapshot.php",
+            "/trunk/tests/phpunit/tests/link/editTermLink.php",
+            "/trunk/tests/phpunit/tests/link/getEditTermLink.php",
+            "/trunk/tests/phpunit/tests/link/getFeedLink.php",
+            "/trunk/tests/phpunit/tests/link/getPagenumLink.php",
+            "/trunk/tests/phpunit/tests/link/getThePostsNavigation.php",
+            "/trunk/tests/phpunit/tests/link/themeFile.php"
+        ]
+    },
+    {
+        "id": 65066,
+        "author": "lancewillett",
+        "message": "Code Modernization: Simplify block parser default length assignment.\n\nUse `??=` in `WP_Block_Parser::add_freeform()` to preserve the existing default-length behavior with a shorter assignment.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15149\n\nProps shailu25, westonruter.\nSee #65823.\n",
+        "date": "2026-10-30T17:41:14.244349Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-parser.php"
+        ]
+    },
+    {
+        "id": 65065,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin activation behavior.\n\nTest `activate_plugin()` validation, active-plugin state, activation hooks, silent activation, unexpected output, and redirect handling. Cover network-wide and network-only activation on multisite.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14601\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-30T17:32:45.478789Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/activatePlugin.php"
+        ]
+    },
+    {
+        "id": 65064,
+        "author": "lancewillett",
+        "message": "Tests: Cover password-protected post form output.\n\nTest `get_the_password_form()` markup, filter arguments and returned output, incorrect-password feedback, and block-theme button markup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14678\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-30T17:31:01.354506Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getThePasswordForm.php"
+        ]
+    },
+    {
+        "id": 65063,
+        "author": "lancewillett",
+        "message": "Tests: Cover classic menu creation and deletion in the browser.\n\nExercise menu creation, custom link insertion, theme location assignment, and deletion through the classic menu screen. Verify that the assigned menu appears in front-end navigation and that deletion removes the menu.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12669\n\nProps csmcneill.\nSee #54892, #52895.\n",
+        "date": "2026-10-30T17:22:10.630153Z",
+        "files": [
+            "/trunk/tests/e2e/specs/classic-menus.test.js"
+        ]
+    },
+    {
+        "id": 65062,
+        "author": "dmsnell",
+        "message": "Blocks: Ensure array type when implicitly closing nested blocks.\n\nWhen a fix was recently applied to the block parser for implicitly closing open blocks that remain open at the end of a document, the fix appended the structured `WP_Block_Parser_Block` class instance to the list of output blocks. This led to issues with code assuming array data types, accessing properties with array access rather than object access.\n\nThis patch casts the object to an array to ensure compatibility.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15199\nDiscussed in: https://core.trac.wordpress.org/ticket/66138\n\nFollow-up to r64996.\n\nProps chihsuan.\nSee #66138.\n",
+        "date": "2026-10-30T17:21:23.163225Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-parser.php",
+            "/trunk/tests/phpunit/tests/blocks/wpBlockParser.php"
+        ]
+    },
+    {
+        "id": 65061,
+        "author": "lancewillett",
+        "message": "Tests: Cover meta box order and attachment compatibility AJAX.\n\nVerify saved meta box ordering and screen layout preferences, along with invalid nonce and page handling in `wp_ajax_meta_box_order()`.\n\nTest that `wp_ajax_save_attachment_compat()` persists the title, caption, and description supplied through `attachment_fields_to_save` and returns a successful response.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11900, https://github.com/WordPress/wordpress-develop/pull/12094\n\nProps pbearne.\nSee #65252.\n",
+        "date": "2026-10-30T17:19:44.058667Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/metaBoxOrder.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/saveAttachmentCompat.php"
+        ]
+    },
+    {
+        "id": 65060,
+        "author": "lancewillett",
+        "message": "General: Preserve Walker hierarchy when children sort first.\n\nWhen no top-level element is included, select the first element whose parent is absent from the input instead of assuming the first element is a root. Use the configured `db_fields` and retain the first-element fallback for cycles.\n\nThis preserves the hierarchy and depth limits when `wp_list_pages()` sorts descendants before their included ancestors.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14684\n\nProps rob-castlegate, salvatorecorsi, mukesh27.\nFixes #28801.\n",
+        "date": "2026-10-30T17:18:14.766450Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-walker.php",
+            "/trunk/tests/phpunit/tests/post/wpListPages.php",
+            "/trunk/tests/phpunit/tests/walker.php"
+        ]
+    },
+    {
+        "id": 65059,
+        "author": "lancewillett",
+        "message": "Tests: Cover the submenu no-privilege page registry.\n\nVerify that `wp_admin_page_exists()` recognizes a page listed only in `$_wp_submenu_nopriv` and rejects a page missing from every registry.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14884\n\nProps ravipatel.\nSee #65819, #14060.\n",
+        "date": "2026-10-30T17:15:41.492964Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includesPlugin.php"
+        ]
+    },
+    {
+        "id": 65058,
+        "author": "lancewillett",
+        "message": "Tests: Cover label element styles in theme.json.\n\nTest global and block-specific `label` styles in `WP_Theme_JSON` stylesheet output, and verify that sanitizing user styles preserves them.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14776\n\nProps ravipatel.\nSee #65819, #65899.\n",
+        "date": "2026-10-30T17:14:23.431684Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
+        "id": 65057,
+        "author": "lancewillett",
+        "message": "Tests: Cover post type capability maps.\n\nTest irregular capability plurals, custom overrides with meta capability mapping, and additional caller-defined capabilities in `get_post_type_capabilities()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14711\n\nProps ekamran.\nSee #65819.\n",
+        "date": "2026-10-30T17:13:22.573623Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getPostTypeCapabilities.php"
+        ]
+    },
+    {
+        "id": 65056,
+        "author": "lancewillett",
+        "message": "Tests: Cover search queries, account URLs, and term titles.\n\nTest search query escaping and filters, logout and account URL construction, and term archive title output. Cover redirects, logout nonces, forced HTTPS, and archive-specific title filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14679, https://github.com/WordPress/wordpress-develop/pull/14680, https://github.com/WordPress/wordpress-develop/pull/14681\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-10-30T17:11:01.992685Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/getSearchQuery.php",
+            "/trunk/tests/phpunit/tests/general/singleTermTitle.php",
+            "/trunk/tests/phpunit/tests/general/wpLoginScreenUrls.php"
+        ]
+    },
+    {
         "id": 65055,
         "author": "lancewillett",
         "message": "Tests: Cover canonical and shortlink head output.\n\nVerify that `rel_canonical()` and `wp_shortlink_wp_head()` emit link elements for singular posts and suppress empty results. Cover filtered URLs and HTML escaping without repeating the getters' URL-construction tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14657, https://github.com/WordPress/wordpress-develop/pull/14658\n\nProps devmuhib, huzaifaalmesbah, mukesh27.\nSee #65819.\n",
