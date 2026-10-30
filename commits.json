@@ -1,5 +1,86 @@
 [
     {
+        "id": 65105,
+        "author": "lancewillett",
+        "message": "Tests: Cover admin bar shortlink output.\n\nVerify `wp_admin_bar_shortlink_menu()` omits the node for an empty shortlink, renders the expected link and input, and escapes attribute values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13883\n\nProps r1k0, mukesh27, pbearne, anntrauf.\nSee #66223.\n",
+        "date": "2026-10-30T22:03:11.587870Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/adminbar.php"
+        ]
+    },
+    {
+        "id": 65104,
+        "author": "lancewillett",
+        "message": "Tests: Cover block template changes after cache population.\n\nVerify `WP_Theme::get_post_templates()` includes newly created custom block templates and excludes deleted templates after its file-based cache has been populated.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14051\n\nProps irozum, huzaifaalmesbah.\nSee #65819, #57886.\n",
+        "date": "2026-10-30T22:01:46.294108Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme/wpThemeGetPostTemplates.php"
+        ]
+    },
+    {
+        "id": 65103,
+        "author": "lancewillett",
+        "message": "Tests: Cover Site Health zero-count messages.\n\nVerify the plugin and theme checks report the intended messages when there are no active plugins or installed themes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13960\n\nProps irozum, huzaifaalmesbah.\nSee #65819, #56134.\n",
+        "date": "2026-10-30T22:00:32.206891Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpSiteHealth.php"
+        ]
+    },
+    {
+        "id": 65102,
+        "author": "lancewillett",
+        "message": "Docs: Correct the canonical test helper return type.\n\nDocument the return type of `WP_Canonical_UnitTestCase::get_canonical()` as `string` instead of a variable name.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14271\n\nProps soean.\nSee #65860.\n",
+        "date": "2026-10-30T21:45:07.904719Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/testcase-canonical.php"
+        ]
+    },
+    {
+        "id": 65101,
+        "author": "lancewillett",
+        "message": "Tests: Cover filter suppression in post queries.\n\nVerify that `get_posts()` suppresses `posts_where` filters by default and honors an explicit `suppress_filters` value of `false`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14015\n\nProps irozum, huzaifaalmesbah.\nSee #65819, #7326.\n",
+        "date": "2026-10-30T21:44:08.743098Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getPosts.php"
+        ]
+    },
+    {
+        "id": 65100,
+        "author": "lancewillett",
+        "message": "Tests: Cover string IDs in REST search results.\n\nVerify that the search endpoint schema accepts integer and string IDs. Check that post-format searches preserve string slugs rather than coercing them to integers.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14049\n\nProps irozum, huzaifaalmesbah.\nSee #65819, #51131.\n",
+        "date": "2026-10-30T21:43:13.395646Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-search-controller.php"
+        ]
+    },
+    {
+        "id": 65099,
+        "author": "lancewillett",
+        "message": "Tests: Cover default comment status options and filtering.\n\nCover closed default options and distinct comment and ping defaults for a supported custom post type. Verify that the `get_default_comment_status` filter receives its arguments and changes the returned value.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15151\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-30T21:33:31.831478Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/getDefaultCommentStatus.php"
+        ]
+    },
+    {
+        "id": 65098,
+        "author": "lancewillett",
+        "message": "Tests: Cover post MIME type retrieval.\n\nVerify that `get_post_mime_type()` returns the stored attachment MIME type and returns `false` for a nonexistent post. Reuse existing `get_post()` coverage for input resolution.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15145\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-30T21:32:39.198544Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getPostMimeType.php"
+        ]
+    },
+    {
+        "id": 65097,
+        "author": "lancewillett",
+        "message": "Tests: Cover HTML comment preservation when balancing tags.\n\nExtend the existing `balanceTags()` tests with ordinary and spaced comment openers. Verify that balancing surrounding markup preserves both comment forms.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15141\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-30T21:29:04.786361Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/balanceTags.php"
+        ]
+    },
+    {
         "id": 65096,
         "author": "lancewillett",
         "message": "Tests: Cover bookmark field retrieval and contexts.\n\nCover invalid bookmarks, unknown fields, context forwarding, and attribute escaping in `get_bookmark_field()`. Use literal expected output to keep assertions independent of the implementation.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15161\n\nProps shailu25.\nSee #65819.\n",
