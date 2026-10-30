@@ -1,5 +1,20 @@
 [
     {
+        "id": 65044,
+        "author": "gziolo",
+        "message": "Abilities API: Share input coercion across execution paths\n\nIntroduce WP_Ability::coerce_input() to apply schema-based type coercion and format sanitization after validation and before permission checks and execution.\n\nReuse the shared implementation in the REST controller, including for normalized defaults and filter-provided input. Return ability_invalid_input on coercion failures, including nested errors, instead of falling back to raw input.\n\nDirect execution now follows REST type semantics, including converting number values to floats. Add regression coverage for coercion, lifecycle ordering, and REST error handling.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14882.\n\nProps gziolo, jorgefilipecosta.\nFixes #66383.\n\n\n",
+        "date": "2026-10-30T08:50:32.700206Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities-api/class-wp-ability.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-run-controller.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpAbilitiesRegistry.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpAbility.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterAbility.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreUsersAbility.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1RunController.php"
+        ]
+    },
+    {
         "id": 65043,
         "author": "peterwilsoncc",
         "message": "Sitemaps: Ensure only supported subtypes return a sitemap.\n\nUpdates `WP_Sitemaps::render_sitemaps()` to throw a 404 File Not Found error for sub-type requests that do not match a registered sub-type.\n\nIntroduces tests to ensure:\n\n* sitemaps for a registered private post type trigger a 404\n* sitemaps for a registered public post type trigger a 200 for in range pages\n* sitemaps for a registered private taxonomy trigger a 404\n* sitemaps for a registered public taxonomy trigger a 200 for in range pages\n\nIn order that these tests are able to run, `WP_Sitemaps::render_sitemaps()` is modified to avoid exiting when `WP_RUN_CORE_TESTS` is defined and `true`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15012.\n\nFollow up to r64792.\n\nProps westonruter, jasonbahl.\nFixes #61293.\n\n\n",
