@@ -1,5 +1,26 @@
 [
     {
+        "id": 65048,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin upgrader callbacks and skins.\n\nCover silent deactivation, maintenance mode, and old-plugin deletion in `Plugin_Upgrader`. Verify installed plugin discovery, installer error visibility, and bulk-update footer links and filtering.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14581, https://github.com/WordPress/wordpress-develop/pull/14591, https://github.com/WordPress/wordpress-develop/pull/14594, https://github.com/WordPress/wordpress-develop/pull/14595\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-30T16:01:17.263597Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/bulkPluginUpgraderSkin.php",
+            "/trunk/tests/phpunit/tests/admin/pluginInstallerSkinHideProcessFailed.php",
+            "/trunk/tests/phpunit/tests/admin/pluginUpgraderPluginInfo.php",
+            "/trunk/tests/phpunit/tests/admin/pluginUpgraderUpgradeHooks.php"
+        ]
+    },
+    {
+        "id": 65047,
+        "author": "westonruter",
+        "message": "Docs: Correct PHPDoc types in the AVIF info parser.\n\nSeveral types in the bundled copy of libavifinfo are not PHPDoc types: `binary string`, `stream`, and `Status`, the last of which stands for the integer status constants. In the `Avifinfo` namespace each one resolves to a nonexistent class, and four methods also documented a `$handle` parameter that they do not take. These are replaced with `string`, `resource`, and `int`, and the stale tags are removed. Only docblocks change.\n\nThe file is excluded from PHPStan analysis as third-party code, so the baselines do not record the resulting errors. They do reach the php-stubs/wordpress-stubs package, whose generator has to rewrite the `binary string` tags before generating the stubs.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15198.\nFollow-up to r57524.\n\nProps westonruter, mukesh27, adamsilverstein, szepeviktor.\nSee #65817.\n",
+        "date": "2026-10-30T15:53:57.635040Z",
+        "files": [
+            "/trunk/src/wp-includes/class-avif-info.php"
+        ]
+    },
+    {
         "id": 65046,
         "author": "jorgefilipecosta",
         "message": "REST API: Don't list the `data_processing` settings in the index.\n\nThe root index, the namespace indexes and OPTIONS responses listed the resolved `data_processing` settings of every endpoint that turns a feature off. The option configures how the server processes a response, so the index does not need to describe it.\n\nFollow-up to [64689].\n\nProps jorgefilipecosta, gziolo, sadmansakibnadvi.\nSee #66372.",
