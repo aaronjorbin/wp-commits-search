@@ -1,5 +1,94 @@
 [
     {
+        "id": 65158,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Preserve precise video metadata type inference.\n\nRemove the broad `$metadata` annotation and the always-true `created_timestamp` guard in `wp_read_video_metadata()`. Preserve the timestamp helper call and strict `false` check.\n\nCombine the pointer array type annotations with their explanatory docblocks.\n\nFollow-up to [65149].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15303\n\nProps westonruter.\nSee #65817.\n",
+        "date": "2026-10-31T21:28:01.904542Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-internal-pointers.php",
+            "/trunk/src/wp-admin/includes/media.php"
+        ]
+    },
+    {
+        "id": 65157,
+        "author": "lancewillett",
+        "message": "Tests: Correct HTML processor assertion capitalization.\n\nUse `assertSame()` consistently in the HTML processor semantic rules test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15300\n\nProps denisej25, rejaulalomkhan.\nSee #65819.\n",
+        "date": "2026-10-31T21:25:13.355689Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/html-api/wpHtmlProcessorSemanticRules.php"
+        ]
+    },
+    {
+        "id": 65156,
+        "author": "lancewillett",
+        "message": "Tests: Cover the Apache rewrite fallback and filter.\n\nVerify `got_mod_rewrite()` uses the server flag for its CLI fallback and passes that detected value to `got_rewrite`. Check that the filter can override the result and restore the server flag after each test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11656\n\nProps pbearne, westonruter.\nFixes #65134.\n",
+        "date": "2026-10-31T21:19:08.657898Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/misc/gotModRewrite.php"
+        ]
+    },
+    {
+        "id": 65155,
+        "author": "lancewillett",
+        "message": "Tests: Use explicit database charsets in charset fixtures.\n\nUse `utf8mb3` where fixtures require three-byte UTF-8, and explicit `utf8mb4` collations for the connection test. This avoids relying on the `utf8` alias, which resolves to `utf8mb4` by default in MariaDB 13.1.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13497\n\nProps micahele.\nFixes #66072.\n",
+        "date": "2026-10-31T21:17:45.906908Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/db/charset.php"
+        ]
+    },
+    {
+        "id": 65154,
+        "author": "lancewillett",
+        "message": "Tests: Cover generated image filename collisions.\n\nTest `_wp_check_existing_file_names()` against image dimensions, scaled and rotated suffixes, and filenames without a basename or extension.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/2332\n\nProps pbearne, azouamauriac, costdev.\nFixes #55192.\n",
+        "date": "2026-10-31T21:16:47.962155Z",
+        "files": [
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/tests/phpunit/tests/functions/_wpCheckExistingFileNames.php"
+        ]
+    },
+    {
+        "id": 65153,
+        "author": "lancewillett",
+        "message": "Tests: Verify the frame options response header.\n\nAssert that `send_frame_options_header()` sends `X-Frame-Options: SAMEORIGIN`, using Xdebug header inspection in an isolated process.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/5638\n\nProps pbearne, swissspidy.\nSee #59851.\n",
+        "date": "2026-10-31T21:16:02.364930Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/sendFrameOptionsHeader.php"
+        ]
+    },
+    {
+        "id": 65152,
+        "author": "lancewillett",
+        "message": "Tests: Cover AJAX menu, editor and preference actions.\n\nVerify menu metabox output and saved menu locations, dismissed pointers, fullscreen post updates, and post-lock ownership and expiry. Cover relevant permission and nonce rejection paths.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11897, https://github.com/WordPress/wordpress-develop/pull/11899, https://github.com/WordPress/wordpress-develop/pull/12138\n\nProps pbearne, ugyensupport.\nSee #65252.\n",
+        "date": "2026-10-31T21:15:08.854546Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/menuGetMetabox.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/menuLocationsSave.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/wp_ajax_dismiss_wp_pointer.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/wp_ajax_wp_fullscreen_save_post.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/wp_ajax_wp_remove_post_lock.php"
+        ]
+    },
+    {
+        "id": 65151,
+        "author": "lancewillett",
+        "message": "Posts, Post Types: Allow boundary post lookups outside single posts.\n\nAllow `get_boundary_post()` to return the first or last post on non-singular pages. Retain the missing-post guard when `$in_same_term` needs a current post, and continue rejecting unknown taxonomies.\n\nAdd coverage for non-singular lookups and the missing-post case.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/9200, https://github.com/WordPress/wordpress-develop/pull/9040\n\nProps pathawks, sirlouen, iamadisingh, mukesh27, devasheeshkaul.\nFixes #22957.\n",
+        "date": "2026-10-31T21:08:36.708514Z",
+        "files": [
+            "/trunk/src/wp-includes/link-template.php",
+            "/trunk/tests/phpunit/tests/link/getBoundaryPost.php"
+        ]
+    },
+    {
+        "id": 65150,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Explain Composer failures during environment startup.\n\nRun `composer update -W` through the shared Compose retry helper in `start.js`. Report a focused Composer error after exhausted retries, preserving startup ordering and the failing exit status.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/9360\n\nProps iamadisingh, azaozz, r1k0.\nFixes #62807.\n",
+        "date": "2026-10-31T21:07:40.290854Z",
+        "files": [
+            "/trunk/package.json",
+            "/trunk/tools/local-env/scripts/start.js"
+        ]
+    },
+    {
         "id": 65149,
         "author": "lancewillett",
         "message": "Build/Test Tools: Retire resolved PHPStan baselines.\n\nClarify pointer, metadata, and REST array types. Simplify equivalent Site Health, timezone, and upload checks while preserving the theme filter re-evaluation. Remove the resolved `empty.offset`, `booleanAnd.rightAlwaysTrue`, and `identical.alwaysTrue` baselines and the related unreachable-code entry.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14027, https://github.com/WordPress/wordpress-develop/pull/14031, https://github.com/WordPress/wordpress-develop/pull/14032\n\nProps huzaifaalmesbah.\nSee #65817.\n",
