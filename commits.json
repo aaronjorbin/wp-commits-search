@@ -1,5 +1,81 @@
 [
     {
+        "id": 65114,
+        "author": "lancewillett",
+        "message": "Tests: Guard query freshness during metadata insertion.\n\nVerify that post and comment metadata observers see newly added metadata, and that comment queries remain fresh after insertion. Preserve an intentionally removed comment-cache invalidation callback.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14553\n\nProps shanerounce, huzaifaalmesbah.\nSee #65485.\n",
+        "date": "2026-10-31T00:07:49.016018Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment.php",
+            "/trunk/tests/phpunit/tests/post/wpInsertPost.php"
+        ]
+    },
+    {
+        "id": 65113,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin file editing and loopback rollback.\n\nCover request validation, permissions, file boundaries, and saving plugin files through `wp_edit_theme_plugin_file()`. Verify loopback requests for active PHP files, authenticated requests, restored content on failure, and scrape-key cleanup.\n\nRemove temporary plugin fixtures and run the parent teardown before checking for unconsumed mock responses.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14600\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-31T00:06:49.367730Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpEditThemePluginFilePlugin.php"
+        ]
+    },
+    {
+        "id": 65112,
+        "author": "lancewillett",
+        "message": "Tests: Expand coverage for `wp_list_filter()`.\n\nCover lists of arrays, mixed arrays and objects, null-value matching, and case-insensitive operators. Verify the default `AND` operator, key preservation, and empty and invalid inputs.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13718\n\nProps mindctrl, huzaifaalmesbah.\nSee #53987.\n",
+        "date": "2026-10-31T00:05:14.310284Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpListFilter.php"
+        ]
+    },
+    {
+        "id": 65111,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin validation and list-table row metadata.\n\nCover invalid active-plugin options, silent deactivation, and network-plugin permissions in `validate_active_plugins()`. Consolidate the existing validation coverage in the dedicated test file.\n\nCover version, author, details and site links in `WP_Plugins_List_Table::single_row()`, including capability-dependent links and the `plugin_row_meta` filter. Scope temporary plugin cleanup to each test's own directory.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14608, https://github.com/WordPress/wordpress-develop/pull/14603\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-31T00:00:24.149582Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/plugin/validateActivePlugins.php",
+            "/trunk/tests/phpunit/tests/admin/includesPlugin.php",
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTableRowMeta.php"
+        ]
+    },
+    {
+        "id": 65110,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Correct test class name for `wp_register_ability()` tests.\n\nFollow-up to r61032.\n\nSee #65819.",
+        "date": "2026-10-30T23:54:34.944870Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterAbility.php"
+        ]
+    },
+    {
+        "id": 65109,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Update macOS runners on the 6.8 branch.\n\nUse `macos-15` for Core and Gutenberg build-process tests before the `macos-14` runner image retires.\n\nMerges the macOS runner changes from [60626] to the 6.8 branch. Limit this change to the retiring macOS image; retain the existing `windows-2022` runners.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15266\n\nProps johnbillion.\nFixes #66425.\n",
+        "date": "2026-10-30T23:50:58.652630Z",
+        "files": [
+            "/branches/6.8",
+            "/branches/6.8/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65108,
+        "author": "lancewillett",
+        "message": "Tests: Cover home query flags during REST requests.\n\nVerify `WP_Query::parse_query()` suppresses `is_home` for the main query during REST requests while allowing secondary queries to retain it. Isolate the tests in separate processes to define `REST_REQUEST`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14797\n\nProps irozum.\nSee #65819, #50213.\n",
+        "date": "2026-10-30T23:47:11.459443Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/query/parseQuery.php"
+        ]
+    },
+    {
+        "id": 65107,
+        "author": "lancewillett",
+        "message": "Tests: Cover font collection response preparation.\n\nVerify collection data, REST links, and requested-field filtering in `WP_REST_Font_Collections_Controller::prepare_item_for_response()`. Use a nonempty font-family fixture to detect missing response content.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14697\n\nProps devmuhib, shailu25, huzaifaalmesbah.\nSee #40538.\n",
+        "date": "2026-10-30T23:46:03.167895Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpRestFontCollectionsController.php"
+        ]
+    },
+    {
         "id": 65106,
         "author": "lancewillett",
         "message": "Tests: Cover empty objects in REST media responses.\n\nVerify empty `media_details.sizes` and missing attachment metadata are returned as objects that encode to `{}`, preserving the REST response schema.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13685\n\nProps therssoftware, huzaifaalmesbah.\nSee #65251.\n",
