@@ -1,5 +1,53 @@
 [
     {
+        "id": 65138,
+        "author": "lancewillett",
+        "message": "Tests: Cover post format labels and slugs.\n\nVerify `get_post_format_string()` handles standard, known, and unknown formats, and `get_post_format_slugs()` returns the expected keys and values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15273\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T19:05:16.715336Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getPostFormatString.php"
+        ]
+    },
+    {
+        "id": 65137,
+        "author": "lancewillett",
+        "message": "Tests: Cover comment author and ID helper output.\n\nVerify comment email, URL, and ID retrieval and display, including global comment handling and filtered output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15274, https://github.com/WordPress/wordpress-develop/pull/15276, https://github.com/WordPress/wordpress-develop/pull/15280\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T19:01:09.486210Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/commentAuthorUrl.php",
+            "/trunk/tests/phpunit/tests/comment/getCommentAuthorEmail.php",
+            "/trunk/tests/phpunit/tests/comment/getCommentID.php"
+        ]
+    },
+    {
+        "id": 65136,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST IP address helper return values.\n\nVerify that `rest_is_ip_address()` returns valid IPv4 and IPv6 addresses unchanged and returns `false` for invalid addresses.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15271\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T19:00:04.558135Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/restIsIpAddress.php"
+        ]
+    },
+    {
+        "id": 65135,
+        "author": "lancewillett",
+        "message": "Docs: Correct wording in contributor documentation.\n\nCorrect hyphenation and clarify configuration and QUnit build instructions in `README.md`. Add the missing preposition in `.github/pull_request_template.md`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/10749, https://github.com/WordPress/wordpress-develop/pull/14293\n\nProps jenish1234.\nUnlinked contributors: Abhishek Mane (abhishekmanegit).\nFixes #66431.\n",
+        "date": "2026-10-31T18:29:38.346688Z",
+        "files": [
+            "/trunk/.github/pull_request_template.md",
+            "/trunk/README.md"
+        ]
+    },
+    {
+        "id": 65134,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Update the performance test baseline to 7.1.\n\nUse WordPress 7.1 as the default release baseline for performance comparisons by updating `BASE_TAG` to `7.1.0`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13154\n\nProps desrosj.\nSee #65845.\n",
+        "date": "2026-10-31T18:18:06.084249Z",
+        "files": [
+            "/trunk/.github/workflows/reusable-performance-test-v2.yml"
+        ]
+    },
+    {
         "id": 65133,
         "author": "lancewillett",
         "message": "Tests: Cover serialization of queued attribute updates.\n\nVerify that `WP_HTML_Processor::serialize_token()` reflects attribute additions and removals before the updated HTML is retrieved.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12947\n\nProps motylanogha, irozum.\nSee #64567.\n",
