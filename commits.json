@@ -1,5 +1,14 @@
 [
     {
+        "id": 65115,
+        "author": "johnjamesjacoby",
+        "message": "Security: Harden the random aspect of the hash used for network admin email changes.\n\nReplace `mt_rand()` with `wp_rand()` when generating the network admin email confirmation hash, matching the site admin and user profile email change hashes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15267\n\nProps extremsx.\nFixes #66426.\n",
+        "date": "2026-10-31T03:38:40.583149Z",
+        "files": [
+            "/trunk/src/wp-includes/ms-functions.php"
+        ]
+    },
+    {
         "id": 65114,
         "author": "lancewillett",
         "message": "Tests: Guard query freshness during metadata insertion.\n\nVerify that post and comment metadata observers see newly added metadata, and that comment queries remain fresh after insertion. Preserve an intentionally removed comment-cache invalidation callback.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14553\n\nProps shanerounce, huzaifaalmesbah.\nSee #65485.\n",
