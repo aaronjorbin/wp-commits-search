@@ -1,5 +1,149 @@
 [
     {
+        "id": 65129,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST color parsing and avatar sizes.\n\nVerify accepted and rejected hexadecimal colors, and filtered avatar sizes and their URL parameters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15244, https://github.com/WordPress/wordpress-develop/pull/15250\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T17:03:31.487452Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/restGetAvatarSizes.php",
+            "/trunk/tests/phpunit/tests/rest-api/restParseHexColor.php"
+        ]
+    },
+    {
+        "id": 65128,
+        "author": "lancewillett",
+        "message": "Tests: Make block and pluggable data providers static.\n\nConvert the remaining providers and fixture callbacks to static methods. Preserve datasets, expectations, and the already-landed provider cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14970, https://github.com/WordPress/wordpress-develop/pull/15176, https://github.com/WordPress/wordpress-develop/pull/15180\n\nProps rejaulalomkhan, shailu25, mukesh27.\nSee #66211.\n",
+        "date": "2026-10-31T17:02:37.832323Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-bindings/patternOverridesSource.php",
+            "/trunk/tests/phpunit/tests/blocks/editor.php",
+            "/trunk/tests/phpunit/tests/blocks/render.php",
+            "/trunk/tests/phpunit/tests/blocks/supportedStyles.php",
+            "/trunk/tests/phpunit/tests/blocks/wpBlock.php",
+            "/trunk/tests/phpunit/tests/blocks/wpBlockParser.php",
+            "/trunk/tests/phpunit/tests/blocks/wpBlockType.php",
+            "/trunk/tests/phpunit/tests/pluggable/signatures.php",
+            "/trunk/tests/phpunit/tests/pluggable/wpRand.php"
+        ]
+    },
+    {
+        "id": 65127,
+        "author": "lancewillett",
+        "message": "Tests: Make REST API data providers static.\n\nDeclare the remaining 13 data providers in `tests/phpunit/tests/rest-api.php` as `public static` for PHPUnit compatibility. Preserve existing datasets and assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15299\n\nProps rejaulalomkhan, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-10-31T16:59:39.621009Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api.php"
+        ]
+    },
+    {
+        "id": 65126,
+        "author": "lancewillett",
+        "message": "Tests: Preserve registered metadata between tests.\n\nCapture and restore metadata registrations and their hooks around test methods and class fixtures. Preserve bootstrap registrations without rerunning registration filters, and explicitly clear the registry in tests that require an empty baseline.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14774\n\nProps salvatorecorsi.\nSee #48300.\n",
+        "date": "2026-10-31T16:47:18.233980Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/abstract-testcase.php",
+            "/trunk/tests/phpunit/tests/includes/registeredMeta.php",
+            "/trunk/tests/phpunit/tests/meta/registerMeta.php",
+            "/trunk/tests/phpunit/tests/post/meta.php",
+            "/trunk/tests/phpunit/tests/term/meta.php"
+        ]
+    },
+    {
+        "id": 65125,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Restore contributor welcome comments.\n\nUse `actions/github-script` to welcome first-time contributors. Check previous contributions and existing comments to avoid duplicate greetings.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14715\n\nProps devmuhib.\nSee #65432.\n",
+        "date": "2026-10-31T16:45:53.961991Z",
+        "files": [
+            "/trunk/.github/workflows/pull-request-comments.yml"
+        ]
+    },
+    {
+        "id": 65124,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Document Windows Docker setup.\n\nDocument WSL integration and Linux containers for the local development environment on Windows.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13499\n\nProps micahele.\nSee #62196.\n",
+        "date": "2026-10-31T16:43:18.572855Z",
+        "files": [
+            "/trunk/README.md"
+        ]
+    },
+    {
+        "id": 65123,
+        "author": "lancewillett",
+        "message": "Tests: Clarify post-date data providers.\n\nImprove dataset labels and provider documentation for post-date tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/10481\n\nProps mukesh27, westonruter.\nSee #26798.\n",
+        "date": "2026-10-31T16:42:20.226201Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post.php"
+        ]
+    },
+    {
+        "id": 65122,
+        "author": "lancewillett",
+        "message": "Tests: Strengthen object-cache assertions.\n\nVerify cache-group separation, missing entries, and bulk deletion. Cover empty and populated term relationship caches, including invalidation during deferred term counting.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12642, https://github.com/WordPress/wordpress-develop/pull/13226\n\nProps jorgelopezrepiso, sainathpoojary.\nSee #65693, #49799.\n",
+        "date": "2026-10-31T16:41:03.140413Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/cache.php",
+            "/trunk/tests/phpunit/tests/term/getTheTerms.php"
+        ]
+    },
+    {
+        "id": 65121,
+        "author": "lancewillett",
+        "message": "Tests: Cover image sizes and embedded media.\n\nVerify registered image dimensions, crop settings, and filtering, alongside embedded-media extraction and type filtering.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12749, https://github.com/WordPress/wordpress-develop/pull/13222\n\nProps irozum, khokansardar.\nSee #65751, #65931.\n",
+        "date": "2026-10-31T16:39:57.395593Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/media/getMediaEmbeddedInContent.php",
+            "/trunk/tests/phpunit/tests/media.php"
+        ]
+    },
+    {
+        "id": 65120,
+        "author": "lancewillett",
+        "message": "Tests: Cover logged-out Heartbeat requests.\n\nVerify the default response and the receive, send, and tick hooks in `wp_ajax_nopriv_heartbeat()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11826\n\nProps pbearne.\nSee #65236.\n",
+        "date": "2026-10-31T16:38:49.492400Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/wpAjaxNoprivHeartbeat.php"
+        ]
+    },
+    {
+        "id": 65119,
+        "author": "lancewillett",
+        "message": "Tests: Cover admin configuration helpers.\n\nAdd coverage for IIS rewrite rules, plugin file trees, and admin color-scheme settings.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11720, https://github.com/WordPress/wordpress-develop/pull/11724, https://github.com/WordPress/wordpress-develop/pull/11741\n\nProps pbearne.\nSee #65172, #65176, #65185.\n",
+        "date": "2026-10-31T16:37:17.521886Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/misc/iis7AddRewriteRule.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/wpColorSchemeSettings.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/wpMakePluginFileTree.php"
+        ]
+    },
+    {
+        "id": 65118,
+        "author": "lancewillett",
+        "message": "Tests: Cover plugin list-table action links.\n\nVerify the site and network plugin action links and their filters in `WP_Plugins_List_Table::single_row()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14598, https://github.com/WordPress/wordpress-develop/pull/14602\n\nProps huzaifaalmesbah, mukesh27.\nSee #65819.\n",
+        "date": "2026-10-31T16:34:13.394071Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTableActionLinks.php",
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTableNetworkActionLinks.php"
+        ]
+    },
+    {
+        "id": 65117,
+        "author": "lancewillett",
+        "message": "Tests: Cover term slugs with duplicate names.\n\nVerify slug generation for terms with duplicate names in different parent hierarchies.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12544\n\nProps sainathpoojary.\nSee #31270.\n",
+        "date": "2026-10-31T16:32:47.365012Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term/wpInsertTerm.php"
+        ]
+    },
+    {
+        "id": 65116,
+        "author": "lancewillett",
+        "message": "Tests: Use an unsupported image format for upload failures.\n\nUse a TGA fixture so the unsupported-format assertions remain meaningful when AVIF support is available.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/10057\n\nProps jigneshnakrani.\nSee #64225, #63167.\n",
+        "date": "2026-10-31T16:31:22.368250Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-attachments-controller.php"
+        ]
+    },
+    {
         "id": 65115,
         "author": "johnjamesjacoby",
         "message": "Security: Harden the random aspect of the hash used for network admin email changes.\n\nReplace `mt_rand()` with `wp_rand()` when generating the network admin email confirmation hash, matching the site admin and user profile email change hashes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15267\n\nProps extremsx.\nFixes #66426.\n",
