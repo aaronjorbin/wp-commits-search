@@ -1,5 +1,125 @@
 [
     {
+        "id": 65149,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Retire resolved PHPStan baselines.\n\nClarify pointer, metadata, and REST array types. Simplify equivalent Site Health, timezone, and upload checks while preserving the theme filter re-evaluation. Remove the resolved `empty.offset`, `booleanAnd.rightAlwaysTrue`, and `identical.alwaysTrue` baselines and the related unreachable-code entry.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14027, https://github.com/WordPress/wordpress-develop/pull/14031, https://github.com/WordPress/wordpress-develop/pull/14032\n\nProps huzaifaalmesbah.\nSee #65817.\n",
+        "date": "2026-10-31T20:07:14.892033Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-admin/includes/class-file-upload-upgrader.php",
+            "/trunk/src/wp-admin/includes/class-wp-internal-pointers.php",
+            "/trunk/src/wp-admin/includes/class-wp-site-health.php",
+            "/trunk/src/wp-admin/includes/media.php",
+            "/trunk/src/wp-content/themes/twentynineteen/header.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/src/wp-includes/rest-api.php",
+            "/trunk/tests/phpstan/baselines/booleanAnd.rightAlwaysTrue.neon",
+            "/trunk/tests/phpstan/baselines/deadCode.unreachable.neon",
+            "/trunk/tests/phpstan/baselines/empty.offset.neon",
+            "/trunk/tests/phpstan/baselines/identical.alwaysTrue.neon"
+        ]
+    },
+    {
+        "id": 65148,
+        "author": "lancewillett",
+        "message": "Tests: Cover IIS rewrite-rule detection.\n\nVerify `iis7_rewrite_rule_exists()` with temporary XML fixtures for matching and missing rules, invalid configuration, and nonexistent files.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11672\n\nProps pbearne.\nFixes #65148.\n",
+        "date": "2026-10-31T20:06:01.861898Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/misc.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/iis7RewriteRuleExists.php"
+        ]
+    },
+    {
+        "id": 65147,
+        "author": "lancewillett",
+        "message": "Tests: Add bookmark rendering coverage.\n\nCover bookmark markup and display options in `_walk_bookmarks()`, plus categorized and uncategorized output, filtering, visibility, and echo behavior in `wp_list_bookmarks()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13256\n\nProps pbearne.\nSee #65957.\n",
+        "date": "2026-10-31T19:28:00.237989Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/bookmark-template",
+            "/trunk/tests/phpunit/tests/bookmark-template/walkBookmarks.php",
+            "/trunk/tests/phpunit/tests/bookmark-template/wpListBookmarks.php"
+        ]
+    },
+    {
+        "id": 65146,
+        "author": "lancewillett",
+        "message": "Tests: Add focused coverage for utility functions.\n\nCover PHP update annotations, post-preview script output, backtrace class filtering and frame counts, hierarchy loop traversal, and the non-IIS permalink-support result and filter invocation.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/5545, https://github.com/WordPress/wordpress-develop/pull/5599, https://github.com/WordPress/wordpress-develop/pull/5631, https://github.com/WordPress/wordpress-develop/pull/5668, https://github.com/WordPress/wordpress-develop/pull/5733\n\nProps pbearne.\nFixes #59699, #59775, #59829, #60024.\nSee #59901.\n",
+        "date": "2026-10-31T19:26:27.786718Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/iis7SupportsPermalinks.php",
+            "/trunk/tests/phpunit/tests/functions/wpDebugBacktraceSummary.php",
+            "/trunk/tests/phpunit/tests/functions/wpFindHierarchyLoop.php",
+            "/trunk/tests/phpunit/tests/functions/wpGetUpdatePhpAnnotation.php",
+            "/trunk/tests/phpunit/tests/functions/wpPostPreviewJs.php"
+        ]
+    },
+    {
+        "id": 65145,
+        "author": "lancewillett",
+        "message": "Tests: Cover equivalent post-meta return values.\n\nCheck that `update_post_meta()` returns `false` when stored numeric strings are updated with equivalent integer or boolean values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8780\n\nProps vishalkakadiya, mukesh27.\nSee #59361.\n",
+        "date": "2026-10-31T19:24:45.189824Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/meta.php"
+        ]
+    },
+    {
+        "id": 65144,
+        "author": "lancewillett",
+        "message": "Tests: Cover emoji style enqueueing.\n\nCheck that `wp_enqueue_emoji_styles()` removes the legacy style-printing callback and emits the expected inline emoji styles.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/5912\n\nProps pbearne.\nSee #60301.\n",
+        "date": "2026-10-31T19:21:56.880585Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/wpEnqueueEmojiStyles.php"
+        ]
+    },
+    {
+        "id": 65143,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST authentication cookie status.\n\nVerify `rest_cookie_collect_status()` records successful authentication and the failure status associated with cookie validation actions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15293\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T19:20:41.816864Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/restCookieCollectStatus.php"
+        ]
+    },
+    {
+        "id": 65142,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST routes for queried resources.\n\nVerify `rest_get_queried_resource_route()` identifies singular posts, categories, and authors, handles requests without a resource, and respects its filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15291\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T19:16:17.563225Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/restGetQueriedResourceRoute.php"
+        ]
+    },
+    {
+        "id": 65141,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST value comparison and request argument parsing.\n\nVerify nested REST value comparisons and request argument validation before sanitization, including numeric coercion and invalid-type errors.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15285, https://github.com/WordPress/wordpress-develop/pull/15292\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T19:13:59.757296Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/restAreValuesEqual.php",
+            "/trunk/tests/phpunit/tests/rest-api/restParseRequestArg.php"
+        ]
+    },
+    {
+        "id": 65140,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST discovery output.\n\nVerify the REST discovery link, RSD API element, and HTTP link header use the configured REST URL and are suppressed when that URL is disabled.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15282, https://github.com/WordPress/wordpress-develop/pull/15283, https://github.com/WordPress/wordpress-develop/pull/15284\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T19:12:55.132578Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/restOutputLinkHeader.php",
+            "/trunk/tests/phpunit/tests/rest-api/restOutputLinkWpHead.php",
+            "/trunk/tests/phpunit/tests/rest-api/restOutputRsd.php"
+        ]
+    },
+    {
+        "id": 65139,
+        "author": "lancewillett",
+        "message": "Tests: Cover file extension groups.\n\nVerify `wp_get_ext_types()` includes representative extensions in the expected groups and respects the `ext2type` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15275\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T19:06:40.611181Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpGetExtTypes.php"
+        ]
+    },
+    {
         "id": 65138,
         "author": "lancewillett",
         "message": "Tests: Cover post format labels and slugs.\n\nVerify `get_post_format_string()` handles standard, known, and unknown formats, and `get_post_format_slugs()` returns the expected keys and values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15273\n\nProps shailu25.\nSee #65819.\n",
