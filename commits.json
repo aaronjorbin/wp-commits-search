@@ -1,5 +1,42 @@
 [
     {
+        "id": 65133,
+        "author": "lancewillett",
+        "message": "Tests: Cover serialization of queued attribute updates.\n\nVerify that `WP_HTML_Processor::serialize_token()` reflects attribute additions and removals before the updated HTML is retrieved.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12947\n\nProps motylanogha, irozum.\nSee #64567.\n",
+        "date": "2026-10-31T17:12:56.068864Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/html-api/wpHtmlProcessor-serialize.php"
+        ]
+    },
+    {
+        "id": 65132,
+        "author": "lancewillett",
+        "message": "Tests: Cover canonical redirect regressions.\n\nVerify encoded query keys on a static front page and prevent redirect guesses from exposing a private post type mixed with a public one.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13654, https://github.com/WordPress/wordpress-develop/pull/12941\n\nProps faisalahammad, huzaifaalmesbah, irozum.\nSee #44899, #44964.\n",
+        "date": "2026-10-31T17:11:54.898382Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/canonical.php"
+        ]
+    },
+    {
+        "id": 65131,
+        "author": "lancewillett",
+        "message": "Tests: Cover comment types and author IP output.\n\nVerify comment-type normalization, global comment lookup, filters, and escaped author IP output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15253, https://github.com/WordPress/wordpress-develop/pull/15254\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T17:08:45.408084Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/getCommentAuthorIP.php",
+            "/trunk/tests/phpunit/tests/comment/getCommentType.php"
+        ]
+    },
+    {
+        "id": 65130,
+        "author": "lancewillett",
+        "message": "Tests: Cover the MediaElement fallback output.\n\nVerify escaped fallback links and the output filter in `wp_mediaelement_fallback()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15248\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-10-31T17:07:11.492514Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/media/wpMediaelementFallback.php"
+        ]
+    },
+    {
         "id": 65129,
         "author": "lancewillett",
         "message": "Tests: Cover REST color parsing and avatar sizes.\n\nVerify accepted and rejected hexadecimal colors, and filtered avatar sizes and their URL parameters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15244, https://github.com/WordPress/wordpress-develop/pull/15250\n\nProps shailu25.\nSee #65819.\n",
