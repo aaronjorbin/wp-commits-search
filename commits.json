@@ -1,5 +1,53 @@
 [
     {
+        "id": 65182,
+        "author": "lancewillett",
+        "message": "I18N: Correct the documented return type of translation entries.\n\nDocument `WP_Translation_File::entries()` as returning string values rather than arrays of strings. Remove the three PHPStan baseline suppressions resolved by this correction.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15330\n\nProps abcd95.\n\nSee #65817.\n",
+        "date": "2026-11-01T19:19:44.732298Z",
+        "files": [
+            "/trunk/src/wp-includes/l10n/class-wp-translation-file.php",
+            "/trunk/tests/phpstan/baselines/assign.propertyType.neon",
+            "/trunk/tests/phpstan/baselines/return.type.neon"
+        ]
+    },
+    {
+        "id": 65181,
+        "author": "lancewillett",
+        "message": "Tests: Cover saved and rejected screen options.\n\nVerify user metadata written by `set_screen_options()` for built-in and filtered custom options, rejection of an out-of-range value, and requests without screen-option data. Use the inherited die handler, a redirect interceptor, and a static data provider.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11739\n\nProps pbearne.\n\nSee #65183.\n",
+        "date": "2026-11-01T19:18:53.317322Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/misc/setScreenOptions.php"
+        ]
+    },
+    {
+        "id": 65180,
+        "author": "lancewillett",
+        "message": "Tests: Cover emoji conversion in email messages.\n\nVerify plain-text preservation, HTML conversion, string and array headers, and content-type filter overrides in `wp_staticize_emoji_for_email()`. Control the emoji URL to avoid coupling expectations to the current CDN version.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/5909\n\nProps pbearne.\n\nSee #60300.\n",
+        "date": "2026-11-01T19:17:35.043418Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/wpStaticizeEmojiForEmail.php"
+        ]
+    },
+    {
+        "id": 65179,
+        "author": "lancewillett",
+        "message": "Tests: Cover terminating hierarchies and cycles reached from outside the loop.\n\nVerify that `wp_find_hierarchy_loop()` returns an empty array for a terminating chain and excludes a leading noncycle node from the returned cycle members. Preserve the existing loop cases and correct the `functions` group annotation.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8091\n\nProps sukhendu2002.\n\nSee #59901.\n",
+        "date": "2026-11-01T19:16:46.559567Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/wpFindHierarchyLoop.php"
+        ]
+    },
+    {
+        "id": 65178,
+        "author": "lancewillett",
+        "message": "Tests: Cover attachment ordering and editor AJAX responses.\n\nVerify that `wp_ajax_save_attachment_order()` persists attachment menu orders and rejects invalid requests. Cover image and file responses from `wp_ajax_send_attachment_to_editor()`, including attachment parenting and the supplied file URL.\n\nUse the inherited AJAX test handlers and a static data provider.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12095\n\nProps pbearne.\n\nSee #65252.\n",
+        "date": "2026-11-01T19:10:26.182256Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/saveAttachmentOrder.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/sendAttachmentToEditor.php"
+        ]
+    },
+    {
         "id": 65177,
         "author": "lancewillett",
         "message": "Tests: Isolate uploads in a dedicated test directory.\n\nUse `wp-content/test-suite-uploads` for test uploads and remove leftover files once at startup. This prevents interrupted runs from causing filename collisions in later media tests and keeps test files separate from normal uploads.\n\nUpdate upload URL expectations and run tests for the `upload_path` and `upload_url_path` options in separate processes without the `UPLOADS` constant.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13065\n\nProps mrdollar4444.\nFixes #63532.\n",
