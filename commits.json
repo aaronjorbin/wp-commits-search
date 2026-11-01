@@ -1,5 +1,15 @@
 [
     {
+        "id": 65161,
+        "author": "westonruter",
+        "message": "Taxonomy: Fix tag cloud handling of float font sizes.\n\nThe `smallest` and `largest` arguments of `wp_generate_tag_cloud()` were documented as integers, but they are only used in arithmetic, and the Tag Cloud block always passes them as floats so that its font size settings can be fractional. They are now documented as `int|float`.\n\nAccepting floats exposed a bug. The `aria-label` on each tag is meant to be omitted when all tags share one font size, which was checked by comparing the font spread against the integer `0`. With equal float sizes the spread is `0.0`, which is not identical to `0`, so the `aria-label` was output anyway, including for any Tag Cloud block whose smallest and largest sizes matched. The spread is now checked for being greater than zero; a negative spread was already clamped to `1`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15306.\nFollow-up to r40816.\n\nProps huzaifaalmesbah, westonruter.\nSee #65817.\n",
+        "date": "2026-11-01T05:58:25.433348Z",
+        "files": [
+            "/trunk/src/wp-includes/category-template.php",
+            "/trunk/tests/phpunit/tests/term/wpGenerateTagCloud.php"
+        ]
+    },
+    {
         "id": 65160,
         "author": "johnjamesjacoby",
         "message": "Networks and Sites: Remove view modes from the Network Sites and Users list tables.\n\nThe list and excerpt modes on these screens differ only by timestamps and optional site title and tagline output. Remove both view switchers and their request handling, and stop reading and writing the related user settings.\n\nUse the former excerpt-mode date format as the canonical display. Remove the site title and tagline output to avoid additional per-row option reads.\n\nUpdate the screen help text and add focused multisite tests.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13120.\n\nProps afercia, johnjamesjacoby, realloc, sukhendu2002.\nFixes #43899.\n",
