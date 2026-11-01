@@ -1,5 +1,17 @@
 [
     {
+        "id": 65159,
+        "author": "SergeyBiryukov",
+        "message": "Menus: Simplify redundant conditions in `wp-includes/nav-menu.php`\n\nSimplifies redundant conditional logic:\n\n1. In `wp_update_nav_menu_object()`: The preceding `if ( ! $_menu || is_wp_error( $_menu ) )` block handles non-existing menu creation and returns, so $_menu is guaranteed truthy. Dropped the redundant `! $_menu` check before `isset( $_menu->term_id )`.\n2. In `wp_update_nav_menu_item()`: In the `elseif ( 0 === (int) $args['menu-item-position'] )` block, `$menu_id` is guaranteed non-zero because the preceding `if ( 0 === $menu_id )` block already handled `$menu_id === 0`. Removed the redundant `if ( 0 !== $menu_id )` check.\n3. In `wp_map_nav_menu_locations()`: $slug is an alphanumeric theme location key string; comparing non-string types with $slug is strictly always true. Simplified `is_numeric(...) && ... !== $slug` to `! is_string(...)`.\n\nThis resolves all `notIdentical.alwaysTrue` and `booleanNot.alwaysFalse` occurrences in `wp-includes/nav-menu.php`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14931.\n\nProps huzaifaalmesbah.\nSee #65817.",
+        "date": "2026-10-31T23:39:24.402100Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-includes/nav-menu.php",
+            "/trunk/tests/phpstan/baselines/booleanNot.alwaysFalse.neon",
+            "/trunk/tests/phpstan/baselines/notIdentical.alwaysTrue.neon"
+        ]
+    },
+    {
         "id": 65158,
         "author": "lancewillett",
         "message": "Build/Test Tools: Preserve precise video metadata type inference.\n\nRemove the broad `$metadata` annotation and the always-true `created_timestamp` guard in `wp_read_video_metadata()`. Preserve the timestamp helper call and strict `false` check.\n\nCombine the pointer array type annotations with their explanatory docblocks.\n\nFollow-up to [65149].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15303\n\nProps westonruter.\nSee #65817.\n",
