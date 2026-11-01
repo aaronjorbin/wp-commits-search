@@ -1,5 +1,196 @@
 [
     {
+        "id": 65177,
+        "author": "lancewillett",
+        "message": "Tests: Isolate uploads in a dedicated test directory.\n\nUse `wp-content/test-suite-uploads` for test uploads and remove leftover files once at startup. This prevents interrupted runs from causing filename collisions in later media tests and keeps test files separate from normal uploads.\n\nUpdate upload URL expectations and run tests for the `upload_path` and `upload_url_path` options in separate processes without the `UPLOADS` constant.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13065\n\nProps mrdollar4444.\nFixes #63532.\n",
+        "date": "2026-11-01T17:52:59.719491Z",
+        "files": [
+            "/trunk/.gitignore",
+            "/trunk/tests/phpunit/includes/bootstrap.php",
+            "/trunk/tests/phpunit/includes/functions.php",
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpFontsDir.php",
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpRestFontFacesController.php",
+            "/trunk/tests/phpunit/tests/media/getAdjacentImageLink.php",
+            "/trunk/tests/phpunit/tests/media/getNextImageLink.php",
+            "/trunk/tests/phpunit/tests/media/getPostGalleries.php",
+            "/trunk/tests/phpunit/tests/media/getPreviousImageLink.php",
+            "/trunk/tests/phpunit/tests/media/nextImageLink.php",
+            "/trunk/tests/phpunit/tests/media/previousImageLink.php",
+            "/trunk/tests/phpunit/tests/media.php",
+            "/trunk/tests/phpunit/tests/multisite/msFilesRewriting.php",
+            "/trunk/tests/phpunit/tests/multisite/site.php",
+            "/trunk/tests/phpunit/tests/speculative-loading/wpGetSpeculationRules.php",
+            "/trunk/tests/phpunit/tests/upload",
+            "/trunk/tests/phpunit/tests/upload/uploadDirOptions.php",
+            "/trunk/tests/phpunit/tests/upload.php"
+        ]
+    },
+    {
+        "id": 65176,
+        "author": "lancewillett",
+        "message": "Tests: Handle external version API availability failures.\n\nSkip recognized availability failures in the readme version checks while retaining failures for invalid requests and unexpected responses. Add deterministic response checks that distinguish skipped tests from assertion failures.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14683\n\nProps devmuhib, huzaifaalmesbah.\nSee #63914.\n",
+        "date": "2026-11-01T17:40:33.363163Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/readme.php"
+        ]
+    },
+    {
+        "id": 65175,
+        "author": "lancewillett",
+        "message": "Filesystem: Handle concurrent directory creation in `wp_mkdir_p()`.\n\nAccept a directory created by another process after `mkdir()` fails, without changing its permissions. Add coverage for directory creation, existing paths, traversal rejection, and the race fallback.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15033\n\nProps pbearne, wildworks, dhrupo.\nSee #57081.\n",
+        "date": "2026-11-01T17:39:01.108567Z",
+        "files": [
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/tests/phpunit/tests/wp-includes",
+            "/trunk/tests/phpunit/tests/wp-includes/functions",
+            "/trunk/tests/phpunit/tests/wp-includes/functions/WpMkdirPTest.php"
+        ]
+    },
+    {
+        "id": 65174,
+        "author": "lancewillett",
+        "message": "Tests: Cover formatting values for editing.\n\nVerify the HTML escaping and format handling in `format_to_edit()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15317\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-01T17:38:08.221769Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/formatToEdit.php"
+        ]
+    },
+    {
+        "id": 65173,
+        "author": "lancewillett",
+        "message": "Tests: Cover adjacent post relation link display.\n\nVerify that `next_post_rel_link()` and `prev_post_rel_link()` output the corresponding adjacent-post relation links.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15323\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-01T17:37:15.074808Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getAdjacentPostRelLink.php"
+        ]
+    },
+    {
+        "id": 65172,
+        "author": "lancewillett",
+        "message": "Tests: Cover generator output formats and filters.\n\nVerify `get_the_generator()` output formats and filtering, and the display behavior of `the_generator()` and `wp_generator()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15324\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-01T17:35:52.205067Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/getTheGenerator.php"
+        ]
+    },
+    {
+        "id": 65171,
+        "author": "lancewillett",
+        "message": "Tests: Cover template and archive display helpers.\n\nCover body-opening output, post type descriptions, archive descriptions and titles, and post type archive titles. Verify relevant display filters and return behavior.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15240, https://github.com/WordPress/wordpress-develop/pull/15241, https://github.com/WordPress/wordpress-develop/pull/15242, https://github.com/WordPress/wordpress-develop/pull/15315, https://github.com/WordPress/wordpress-develop/pull/15319\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-01T17:35:00.439348Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/getThePostTypeDescription.php",
+            "/trunk/tests/phpunit/tests/general/postTypeArchiveTitle.php",
+            "/trunk/tests/phpunit/tests/general/theArchiveDescription.php",
+            "/trunk/tests/phpunit/tests/general/theArchiveTitle.php",
+            "/trunk/tests/phpunit/tests/general/wpBodyOpen.php"
+        ]
+    },
+    {
+        "id": 65170,
+        "author": "lancewillett",
+        "message": "Tests: Cover date display and calendar cache clearing.\n\nCover XML date and weekday display with fixed dates. Extend weekday-date assertions for repeated output and filters, and verify `delete_get_calendar_cache()` targets the calendar cache entry.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15238, https://github.com/WordPress/wordpress-develop/pull/15239, https://github.com/WordPress/wordpress-develop/pull/15318\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-01T17:34:03.678723Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/date/theDate.php",
+            "/trunk/tests/phpunit/tests/general/deleteGetCalendarCache.php",
+            "/trunk/tests/phpunit/tests/general/theDateXml.php",
+            "/trunk/tests/phpunit/tests/general/theWeekday.php"
+        ]
+    },
+    {
+        "id": 65169,
+        "author": "lancewillett",
+        "message": "Tests: Extend page template and term predicate coverage.\n\nExtend existing `is_page_template()` assertions for default and custom templates. Cover the global-post fallback and failure results in `has_term()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15222, https://github.com/WordPress/wordpress-develop/pull/15228\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-01T17:33:17.271888Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/hasTerm.php",
+            "/trunk/tests/phpunit/tests/query/conditionals.php"
+        ]
+    },
+    {
+        "id": 65168,
+        "author": "lancewillett",
+        "message": "Tests: Cover post ID, excerpt, metadata, and GUID helpers.\n\nCover display and missing-post behavior for post IDs, excerpt presence, scalar and multi-value custom metadata, and GUID retrieval and filtering.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15218, https://github.com/WordPress/wordpress-develop/pull/15219, https://github.com/WordPress/wordpress-develop/pull/15220, https://github.com/WordPress/wordpress-develop/pull/15221\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-01T17:32:23.286131Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getTheGuid.php",
+            "/trunk/tests/phpunit/tests/post/hasExcerpt.php",
+            "/trunk/tests/phpunit/tests/post/postCustom.php",
+            "/trunk/tests/phpunit/tests/post/theId.php"
+        ]
+    },
+    {
+        "id": 65167,
+        "author": "lancewillett",
+        "message": "Tests: Cover comment excerpt display.\n\nVerify `comment_excerpt()` output for explicit and current comments, using independent literal expectations and covering the display filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15281\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-01T17:30:11.849035Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/commentExcerpt.php"
+        ]
+    },
+    {
+        "id": 65166,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST boolean and cookie authentication helpers.\n\nCover `rest_is_boolean()` rejecting `null` and the authentication-state handling in `rest_cookie_check_errors()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15272, https://github.com/WordPress/wordpress-develop/pull/15294\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-01T17:29:02.909547Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/restCookieCheckErrors.php",
+            "/trunk/tests/phpunit/tests/rest-api/restSanitizeBoolean.php"
+        ]
+    },
+    {
+        "id": 65165,
+        "author": "lancewillett",
+        "message": "Tests: Cover REST resource route filters and collection routes.\n\nExtend the post and term route tests with filter assertions. Cover collection routes for post types and taxonomies, including REST visibility and custom route configuration.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15286, https://github.com/WordPress/wordpress-develop/pull/15287, https://github.com/WordPress/wordpress-develop/pull/15288, https://github.com/WordPress/wordpress-develop/pull/15289\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-01T17:28:16.195087Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/restGetRouteForPostTypeItems.php",
+            "/trunk/tests/phpunit/tests/rest-api/restGetRouteForTaxonomyItems.php",
+            "/trunk/tests/phpunit/tests/rest-api.php"
+        ]
+    },
+    {
+        "id": 65164,
+        "author": "lancewillett",
+        "message": "Tests: Expand MIME type and extension assertions.\n\nAdd literal extension-to-type and MIME-to-extension expectations to the existing tests for `wp_ext2type()` and `wp_get_default_extension_for_mime_type()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15278, https://github.com/WordPress/wordpress-develop/pull/15279\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-01T17:26:55.121431Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions.php"
+        ]
+    },
+    {
+        "id": 65163,
+        "author": "lancewillett",
+        "message": "Tests: Use the static factory in color scheme tests.\n\nReplace deprecated `$this->factory` property access with `self::factory()` in the `wp_color_scheme_settings()` tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15326\n\nProps soean.\nSee #65819.\n",
+        "date": "2026-11-01T17:26:04.677022Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/misc/wpColorSchemeSettings.php"
+        ]
+    },
+    {
+        "id": 65162,
+        "author": "lancewillett",
+        "message": "Tests: Make more data providers public and static.\n\nUpdate post, database, view configuration, bookmark, admin, media, metadata, and variable test providers for newer PHPUnit versions. Use static calls for the media dimension helpers without changing datasets or assertions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15270, https://github.com/WordPress/wordpress-develop/pull/15308, https://github.com/WordPress/wordpress-develop/pull/15309, https://github.com/WordPress/wordpress-develop/pull/15310, https://github.com/WordPress/wordpress-develop/pull/15311\n\nProps shailu25, rejaulalomkhan, devmuhib, huzaifaalmesbah.\nSee #66211.\n",
+        "date": "2026-11-01T17:25:13.006950Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/misc/gotModRewrite.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/iis7AddRewriteRule.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/iis7RewriteRuleExists.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/wpMakePluginFileTree.php",
+            "/trunk/tests/phpunit/tests/bookmark-template/walkBookmarks.php",
+            "/trunk/tests/phpunit/tests/bookmark-template/wpListBookmarks.php",
+            "/trunk/tests/phpunit/tests/db.php",
+            "/trunk/tests/phpunit/tests/functions/_wpCheckExistingFileNames.php",
+            "/trunk/tests/phpunit/tests/media/getMediaEmbeddedInContent.php",
+            "/trunk/tests/phpunit/tests/media.php",
+            "/trunk/tests/phpunit/tests/meta.php",
+            "/trunk/tests/phpunit/tests/post.php",
+            "/trunk/tests/phpunit/tests/vars.php",
+            "/trunk/tests/phpunit/tests/view-config.php"
+        ]
+    },
+    {
         "id": 65161,
         "author": "westonruter",
         "message": "Taxonomy: Fix tag cloud handling of float font sizes.\n\nThe `smallest` and `largest` arguments of `wp_generate_tag_cloud()` were documented as integers, but they are only used in arithmetic, and the Tag Cloud block always passes them as floats so that its font size settings can be fractional. They are now documented as `int|float`.\n\nAccepting floats exposed a bug. The `aria-label` on each tag is meant to be omitted when all tags share one font size, which was checked by comparing the font spread against the integer `0`. With equal float sizes the spread is `0.0`, which is not identical to `0`, so the `aria-label` was output anyway, including for any Tag Cloud block whose smallest and largest sizes matched. The spread is now checked for being greater than zero; a negative spread was already clamped to `1`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15306.\nFollow-up to r40816.\n\nProps huzaifaalmesbah, westonruter.\nSee #65817.\n",
