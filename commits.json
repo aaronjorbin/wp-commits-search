@@ -1,5 +1,116 @@
 [
     {
+        "id": 65195,
+        "author": "lancewillett",
+        "message": "Code Quality: Declare existing admin globals and simplify variable checks.\n\nDocument existing globals in user and plugin administration screens, initialize the remaining redirect and privacy management URL defaults, and remove a redundant old-user-data check from `wp_insert_user()`.\n\nRemove the corresponding PHPStan baseline entries.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11979\n\nProps huzaifaalmesbah, noruzzaman.\nSee #65817.\n",
+        "date": "2026-11-02T16:09:26.432030Z",
+        "files": [
+            "/trunk/src/wp-admin/plugins.php",
+            "/trunk/src/wp-admin/user-edit.php",
+            "/trunk/src/wp-admin/user-new.php",
+            "/trunk/src/wp-admin/users.php",
+            "/trunk/src/wp-includes/user.php",
+            "/trunk/tests/phpstan/baselines/empty.variable.neon",
+            "/trunk/tests/phpstan/baselines/variable.undefined.neon"
+        ]
+    },
+    {
+        "id": 65194,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Allow testing and packaging a selected default theme.\n\nAdd a theme selector to manual workflow runs, retaining `all` as the default and for automatic runs. Derive checks, builds, and ZIP packaging from the selection.\n\nReject unknown selections and missing selected themes, preserve packaging for themes without build scripts, and separate concurrent runs by branch and theme.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15196\n\nProps abcd95, adrianmoldovanwp, lucatume.\nSee #66405.\n",
+        "date": "2026-11-02T16:07:31.042040Z",
+        "files": [
+            "/trunk/.github/workflows/test-and-zip-default-themes.yml"
+        ]
+    },
+    {
+        "id": 65193,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Improve guidance for new contributors.\n\nAdd responsible disclosure guidance to the pull request template and welcome message. Explain how to link GitHub and WordPress.org accounts for contribution credit, and clarify the Trac ticket requirement.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15353\n\nProps yashjawale.\nSee #56897.\n",
+        "date": "2026-11-02T16:05:08.086902Z",
+        "files": [
+            "/trunk/.github/pull_request_template.md",
+            "/trunk/.github/workflows/pull-request-comments.yml"
+        ]
+    },
+    {
+        "id": 65192,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Correct nullable property documentation.\n\nDocument that `WP_Locale::$word_count_type` and `WP_Post_Type::$template` can be `null`, and remove the corresponding PHPStan baseline entries.\n\nCover the existing REST response normalization of a `null` post type template to an empty array.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13982\n\nProps huzaifaalmesbah.\nSee #65817.\n",
+        "date": "2026-11-02T16:03:09.555995Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-locale.php",
+            "/trunk/src/wp-includes/class-wp-post-type.php",
+            "/trunk/tests/phpstan/baselines/nullCoalesce.property.neon",
+            "/trunk/tests/phpunit/tests/rest-api/rest-post-types-controller.php"
+        ]
+    },
+    {
+        "id": 65191,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Use release ZIPs for installation tests.\n\nDownload WordPress release ZIP archives through `wp core download` to preserve long filenames during extraction. Keep nightly and trunk downloads unchanged.\n\nPin WP-CLI to `2.12.0` for PHP `5.6`, `7.0`, and `7.1`, retaining the existing `2.4.0` pin for PHP `5.4` and `5.5`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15252\n\nProps adrianmoldovanwp, lucatume.\nSee #66403.\n",
+        "date": "2026-11-02T15:59:22.804807Z",
+        "files": [
+            "/trunk/.github/workflows/install-testing.yml"
+        ]
+    },
+    {
+        "id": 65190,
+        "author": "lancewillett",
+        "message": "Tests: Clean test uploads before loading WordPress.\n\nDelete the test uploads directory before loading plugins and themes. Calling `wp_upload_dir()` during loading can create and cache the directory; deleting it afterward leaves that cached path missing.\n\nUse PHP filesystem operations before WordPress functions are available, handle Windows directory symlinks, and report directory traversal exceptions.\n\nFollow-up to [65177].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15368\n\nProps oaratovskyi, adrianmoldovanwp.\nSee #63532.\n",
+        "date": "2026-11-02T15:54:19.668124Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/bootstrap.php"
+        ]
+    },
+    {
+        "id": 65189,
+        "author": "lancewillett",
+        "message": "Tests: Cover posts navigation output and custom arguments.\n\nVerify that `the_posts_navigation()` emits navigation with the supplied class, screen-reader text, and accessible label. Reuse the existing post fixture and derive expected links from the configured home URL.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15321\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-02T15:53:05.647582Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getThePostsNavigation.php"
+        ]
+    },
+    {
+        "id": 65188,
+        "author": "lancewillett",
+        "message": "Tests: Cover array preservation in string-only unslashing.\n\nVerify that `stripslashes_from_strings_only()` leaves an array containing a slashed string unchanged. The existing `stripslashes_deep()` tests exercise recursive processing instead of this direct-input contract.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15325\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-02T15:49:03.357405Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/stripslashesDeep.php"
+        ]
+    },
+    {
+        "id": 65187,
+        "author": "lancewillett",
+        "message": "REST API: Remove unreachable featured media update code.\n\nRemove the unreachable `featured_media` block from `WP_REST_Attachments_Controller::update_item()` and its PHPStan baseline entries. The local `$schema` variable is never assigned, and the parent controller already handles featured media updates.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13980\n\nProps huzaifaalmesbah.\nSee #65817.\n",
+        "date": "2026-11-02T15:48:15.043743Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+            "/trunk/tests/phpstan/baselines/booleanAnd.alwaysFalse.neon",
+            "/trunk/tests/phpstan/baselines/empty.variable.neon"
+        ]
+    },
+    {
+        "id": 65186,
+        "author": "lancewillett",
+        "message": "Tests: Simplify post type removal in attachment permalink tests.\n\nUse `unregister_post_type()` instead of manually removing the registry entry when testing an attachment whose parent post type no longer exists. Remove the unused global declaration.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14950\n\nProps rejaulalomkhan, mukesh27.\nSee #65893.\n",
+        "date": "2026-11-02T15:39:49.397381Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link.php"
+        ]
+    },
+    {
+        "id": 65185,
+        "author": "lancewillett",
+        "message": "Tests: Correct block template slug assertion argument order.\n\nPass the expected slug before the actual value in `test_register_template()` so PHPUnit reports failures correctly.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15332\n\nProps noruzzaman, rejaulalomkhan.\nSee #64895.\n",
+        "date": "2026-11-02T15:38:40.252015Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-templates/WpBlockTemplatesRegistry.php"
+        ]
+    },
+    {
         "id": 65184,
         "author": "SergeyBiryukov",
         "message": "Twenty Fifteen: Hide menu toggle button when JavaScript is disabled.\n\nUses the `no-js` class to hide the toggle button that expands and collapses the secondary container (with a menu and/or widgets).\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13719.\n\nProps sabernhardt, dboy1988.\nFixes #66175.",
