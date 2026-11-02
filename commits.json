@@ -1,5 +1,14 @@
 [
     {
+        "id": 65206,
+        "author": "lancewillett",
+        "message": "Tests: Wait for editor readiness in media modal tests.\n\nWait for the post title in the editor canvas before inserting the Image block in `openModalFromImageBlock()`. This prevents initial editor setup from resetting the inserted block before the tests can open the media modal.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15372\n\nProps adrianmoldovanwp.\nFixes #66442.\n",
+        "date": "2026-11-02T17:38:15.362344Z",
+        "files": [
+            "/trunk/tests/e2e/specs/media-modal-client-side-upload.test.js"
+        ]
+    },
+    {
         "id": 65205,
         "author": "lancewillett",
         "message": "Build/Test Tools: Restore Composer argument forwarding during environment startup.\n\nForward arguments supplied to `npm run env:start -- ...` to `composer update -W`. This restores options such as `--dry-run`, which stopped reaching Composer when its invocation moved into `start.js`.\n\nFollow-up to [65150].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15304\n\nProps adrianmoldovanwp, lucatume.\nFixes #62807.\n",
