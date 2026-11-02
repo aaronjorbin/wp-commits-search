@@ -1,5 +1,15 @@
 [
     {
+        "id": 65211,
+        "author": "joedolson",
+        "message": "Accessibility: Improve fallback `aria-label` for navigation.\n\nThe fallback `wp_navigation` post has a default title of \"Navigation\", which provides the default `aria-label` for the menu. As all `nav` elements have the function of navigation, this is a strongly dis-recommended pattern for a default menu. This also leads to a duplicate name for the navigation screen and the default menu.\n\nChange fallback name to 'Main', which is a high probability use case if a fallback menu is in use, and eliminates the naming conflict with the navigation screen.\n\nProps bacoords, sainathpoojary, joedolson, afercia, rejaulalomkhan.\nFixes #66152.",
+        "date": "2026-11-02T22:56:49.874383Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-navigation-fallback.php",
+            "/trunk/tests/phpunit/tests/editor/navigation-fallback.php"
+        ]
+    },
+    {
         "id": 65210,
         "author": "lancewillett",
         "message": "Tests: Cover eleven admin AJAX handlers.\n\nDispatch registered AJAX actions and verify their responses, permission checks, and resulting database state. Consolidate the earlier handler test proposals and mock dashboard feeds to avoid network requests.\n\nAdd `WP_Ajax_UnitTestCase::get_ajax_response()` to clear the response buffer before dispatch and fail when a handler does not terminate with `wp_die()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15381\n\nProps mindctrl, pbearne.\nSee #65252.\n",
