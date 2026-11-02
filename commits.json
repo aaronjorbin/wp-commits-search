@@ -1,5 +1,27 @@
 [
     {
+        "id": 65184,
+        "author": "SergeyBiryukov",
+        "message": "Twenty Fifteen: Hide menu toggle button when JavaScript is disabled.\n\nUses the `no-js` class to hide the toggle button that expands and collapses the secondary container (with a menu and/or widgets).\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13719.\n\nProps sabernhardt, dboy1988.\nFixes #66175.",
+        "date": "2026-11-01T23:49:24.817934Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentyfifteen/style.css"
+        ]
+    },
+    {
+        "id": 65183,
+        "author": "lancewillett",
+        "message": "Code Quality: Remove redundant array-offset checks.\n\nSimplify conditions in menu ordering, timezone selection, and REST revision queries where surrounding code already guarantees the checked offset exists. Remove the resolved `isset.offset` PHPStan baseline and its configuration include.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14035\n\nProps huzaifaalmesbah.\n\nSee #65817.\n",
+        "date": "2026-11-01T23:44:17.245479Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-admin/nav-menus.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php",
+            "/trunk/tests/phpstan/baselines/isset.offset.neon"
+        ]
+    },
+    {
         "id": 65182,
         "author": "lancewillett",
         "message": "I18N: Correct the documented return type of translation entries.\n\nDocument `WP_Translation_File::entries()` as returning string values rather than arrays of strings. Remove the three PHPStan baseline suppressions resolved by this correction.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15330\n\nProps abcd95.\n\nSee #65817.\n",
