@@ -1,5 +1,97 @@
 [
     {
+        "id": 65205,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Restore Composer argument forwarding during environment startup.\n\nForward arguments supplied to `npm run env:start -- ...` to `composer update -W`. This restores options such as `--dry-run`, which stopped reaching Composer when its invocation moved into `start.js`.\n\nFollow-up to [65150].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15304\n\nProps adrianmoldovanwp, lucatume.\nFixes #62807.\n",
+        "date": "2026-11-02T17:04:27.314019Z",
+        "files": [
+            "/trunk/tools/local-env/scripts/start.js"
+        ]
+    },
+    {
+        "id": 65204,
+        "author": "lancewillett",
+        "message": "Tests: Cover image dimension attribute formatting.\n\nVerify `image_hwstring()` formats supplied dimensions, omits zero dimensions, and casts numeric strings to integers. Use five provider cases without additional fixtures.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15338\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-02T16:55:56.495239Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/media/imageHwstring.php"
+        ]
+    },
+    {
+        "id": 65203,
+        "author": "lancewillett",
+        "message": "Tests: Cover post type lookup from the global post.\n\nVerify `get_post_type()` uses the global post when called without an argument. Use a local page fixture and rely on the existing test lifecycle to reset global state.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15343\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-02T16:54:35.875994Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getPostType.php"
+        ]
+    },
+    {
+        "id": 65202,
+        "author": "lancewillett",
+        "message": "Tests: Cover feed category output and filtering.\n\nCover RDF category markup, deduplication of category and tag names, Atom attribute escaping, and the arguments and returned value of the `the_category_rss` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15345\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-02T16:53:45.578844Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/feed/getTheCategoryRss.php"
+        ]
+    },
+    {
+        "id": 65201,
+        "author": "lancewillett",
+        "message": "Tests: Cover feed title filtering.\n\nVerify `get_the_title_rss()` passes the post title to `the_title_rss` and returns the filtered value. Use a local post fixture and retain existing integration coverage for ordinary feed titles.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15346\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-02T16:52:13.812310Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/feed/getTheTitleRss.php"
+        ]
+    },
+    {
+        "id": 65200,
+        "author": "lancewillett",
+        "message": "Tests: Cover default feed selection and feed HTML types.\n\nVerify the default feed, legacy RSS normalization, and the `default_feed` filter. Cover how `html_type_rss()` maps HTML and XHTML content types to feed values.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15336, https://github.com/WordPress/wordpress-develop/pull/15342\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-02T16:50:12.854208Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/feed/getDefaultFeed.php",
+            "/trunk/tests/phpunit/tests/feed/htmlTypeRss.php"
+        ]
+    },
+    {
+        "id": 65199,
+        "author": "lancewillett",
+        "message": "Tests: Cover comment feed GUID generation.\n\nVerify `get_comment_guid()` combines the post GUID with the comment anchor, accepts a comment object, and returns `false` for a nonexistent comment.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15339\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-02T16:49:10.384024Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/feed/getCommentGuid.php"
+        ]
+    },
+    {
+        "id": 65198,
+        "author": "lancewillett",
+        "message": "Tests: Cover feed content types and content transformations.\n\nCover MIME type mappings, unknown feed types, default-feed selection, and the `feed_content_type` filter. Verify content formatting, CDATA terminator escaping, and the arguments and returned value of `the_content_feed`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15337, https://github.com/WordPress/wordpress-develop/pull/15348\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-02T16:25:28.783103Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/feed/feedContentType.php",
+            "/trunk/tests/phpunit/tests/feed/getTheContentFeed.php"
+        ]
+    },
+    {
+        "id": 65197,
+        "author": "lancewillett",
+        "message": "Tests: Cover post field sanitization context forwarding.\n\nVerify that `get_post_field()` passes the requested context to post field sanitization, using one local post fixture and context-specific filters.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15335\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-02T16:21:11.601181Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getPostField.php"
+        ]
+    },
+    {
+        "id": 65196,
+        "author": "lancewillett",
+        "message": "Tests: Cover extended post content parsing.\n\nVerify `get_extended()` splits content at the more marker, preserves custom more text, trims surrounding whitespace, and leaves an unrecognized marker unchanged.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15341\n\nProps shailu25.\nSee #65819.\n",
+        "date": "2026-11-02T16:10:25.725851Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getExtended.php"
+        ]
+    },
+    {
         "id": 65195,
         "author": "lancewillett",
         "message": "Code Quality: Declare existing admin globals and simplify variable checks.\n\nDocument existing globals in user and plugin administration screens, initialize the remaining redirect and privacy management URL defaults, and remove a redundant old-user-data check from `wp_insert_user()`.\n\nRemove the corresponding PHPStan baseline entries.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11979\n\nProps huzaifaalmesbah, noruzzaman.\nSee #65817.\n",
