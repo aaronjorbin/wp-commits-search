@@ -1,5 +1,34 @@
 [
     {
+        "id": 65210,
+        "author": "lancewillett",
+        "message": "Tests: Cover eleven admin AJAX handlers.\n\nDispatch registered AJAX actions and verify their responses, permission checks, and resulting database state. Consolidate the earlier handler test proposals and mock dashboard feeds to avoid network requests.\n\nAdd `WP_Ajax_UnitTestCase::get_ajax_response()` to clear the response buffer before dispatch and fail when a handler does not terminate with `wp_die()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15381\n\nProps mindctrl, pbearne.\nSee #65252.\n",
+        "date": "2026-11-02T21:18:32.642282Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/testcase-ajax.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/addHierarchicalTerm.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/addLinkCategory.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/closedPostboxes.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/dashboardWidgets.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/deleteMeta.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/deletePage.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/deletePost.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/findPosts.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/getPermalink.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/getTagcloud.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/untrashPost.php"
+        ]
+    },
+    {
+        "id": 65209,
+        "author": "SergeyBiryukov",
+        "message": "Customize: Correct section heading height to match the back button.\n\nSets `line-height: 2` on the small label above Customizer section titles. This restores the heading height to 74px, matching the back button.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15379.\n\nFollow-up to r63966.\n\nProps sainathpoojary, sabernhardt.\nFixes #66444.",
+        "date": "2026-11-02T21:13:49.123969Z",
+        "files": [
+            "/trunk/src/wp-admin/css/customize-controls.css"
+        ]
+    },
+    {
         "id": 65208,
         "author": "joedolson",
         "message": "Accessibility: Improve focus state and contrast in admin bar.\n\nChange the admin bar focus state to use a focus ring, similar to the majority of other focus states throughout the admin. Previous focus state was only a color change, and set a color contrast of 2.97:1 on the default theme, below WCAG requirements.\n\nAlso fix miscellaneous alignment errors in the admin bar that were made more obvious by shifting to a focus outline.\n\nProps joedolson, khokansardar, afercia, jns141191, iamraju, Joen, muryam, sukhendu2002, sabernhardt, ugyensupport, mciampini, fushar, rollybueno, shamimmoeen, wildworks, nicoblandel.\nFixes #65445.",
