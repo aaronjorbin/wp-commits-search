@@ -1,5 +1,27 @@
 [
     {
+        "id": 65208,
+        "author": "joedolson",
+        "message": "Accessibility: Improve focus state and contrast in admin bar.\n\nChange the admin bar focus state to use a focus ring, similar to the majority of other focus states throughout the admin. Previous focus state was only a color change, and set a color contrast of 2.97:1 on the default theme, below WCAG requirements.\n\nAlso fix miscellaneous alignment errors in the admin bar that were made more obvious by shifting to a focus outline.\n\nProps joedolson, khokansardar, afercia, jns141191, iamraju, Joen, muryam, sukhendu2002, sabernhardt, ugyensupport, mciampini, fushar, rollybueno, shamimmoeen, wildworks, nicoblandel.\nFixes #65445.",
+        "date": "2026-11-02T19:53:13.058130Z",
+        "files": [
+            "/trunk/src/wp-admin/css/admin-menu.css",
+            "/trunk/src/wp-admin/css/colors/_admin.scss",
+            "/trunk/src/wp-includes/css/admin-bar.css"
+        ]
+    },
+    {
+        "id": 65207,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Recover E2E fixtures after interrupted runs.\n\nRemove stale plugin and theme fixtures before each management test, preserving the existing absence and activation assertions. Remove leftover `.maintenance` and `fatal-error.php` fixtures before global setup connects to WordPress.\n\nReuse the fixture cleanup after each test so subsequent runs do not require a manual environment reset.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15369\n\nProps adrianmoldovanwp.\nFixes #66443.\n",
+        "date": "2026-11-02T19:44:08.787271Z",
+        "files": [
+            "/trunk/tests/e2e/config/global-setup.js",
+            "/trunk/tests/e2e/specs/plugins.test.js",
+            "/trunk/tests/e2e/specs/themes.test.js"
+        ]
+    },
+    {
         "id": 65206,
         "author": "lancewillett",
         "message": "Tests: Wait for editor readiness in media modal tests.\n\nWait for the post title in the editor canvas before inserting the Image block in `openModalFromImageBlock()`. This prevents initial editor setup from resetting the inserted block before the tests can open the media modal.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15372\n\nProps adrianmoldovanwp.\nFixes #66442.\n",
