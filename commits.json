@@ -1,5 +1,31 @@
 [
     {
+        "id": 65249,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Use PR number for `concurrency` groups instead of `head_ref`.\n\nThe current standard across all GitHub Actions workflows is to configure `concurrency` to use the `github.head_ref` value in the `group` name for a given PR. Because `head_ref` only includes the branch name, workflow runs can be inadvertantly cancelled when two PRs are open from different forks with identical branch names.\n\nThis switches to using the `github.event.pull_request.number` instead of `github.head_ref` to ensure that runs are properly grouped only with runs from the same pull request. A similar change has been made to `props-bot.yml`, which can be triggered by an `issue_comment` event. In this case, the `github.event.issue.number` will be used. In the context of GitHub, `issues == pull_requests` for the data returned by a number of request types.\n\nProps lancewillett.\nSee #65845.\n\n",
+        "date": "2026-11-03T19:56:05.970938Z",
+        "files": [
+            "/trunk/.github/workflows/coding-standards.yml",
+            "/trunk/.github/workflows/end-to-end-tests.yml",
+            "/trunk/.github/workflows/install-testing.yml",
+            "/trunk/.github/workflows/javascript-tests.yml",
+            "/trunk/.github/workflows/javascript-type-checking.yml",
+            "/trunk/.github/workflows/local-docker-environment.yml",
+            "/trunk/.github/workflows/performance.yml",
+            "/trunk/.github/workflows/php-compatibility.yml",
+            "/trunk/.github/workflows/phpstan-static-analysis.yml",
+            "/trunk/.github/workflows/phpunit-tests.yml",
+            "/trunk/.github/workflows/props-bot.yml",
+            "/trunk/.github/workflows/pull-request-comments.yml",
+            "/trunk/.github/workflows/test-and-zip-default-themes.yml",
+            "/trunk/.github/workflows/test-build-processes.yml",
+            "/trunk/.github/workflows/test-coverage.yml",
+            "/trunk/.github/workflows/upgrade-develop-testing.yml",
+            "/trunk/.github/workflows/upgrade-testing.yml",
+            "/trunk/.github/workflows/workflow-lint.yml"
+        ]
+    },
+    {
         "id": 65248,
         "author": "desrosj",
         "message": "Tests: Stop passing objects to static methods through Reflection.\n\nPHP 8.6 has deprecated passing an object to `ReflectionMethod::invoke()` and `ReflectionMethodL::invokeArgs()` when the target method is static.\n\nThis addresses this within two PHPUnit-related files.\n\nProps westonruter.\nFixes #66457.\n",
