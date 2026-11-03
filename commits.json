@@ -1,5 +1,15 @@
 [
     {
+        "id": 65216,
+        "author": "lancewillett",
+        "message": "Tests: Cover `dead_db()` and `admin_color_scheme_picker()`.\n\nVerify that `dead_db()` shows the database error in the admin and during installation, and the generic message everywhere else.\n\nVerify that `admin_color_scheme_picker()` selects the given user's scheme rather than the current user's, falls back to `modern` when the scheme is missing or unknown, lists `modern`, `fresh` and `light` first, and renders each scheme's inputs, label and palette.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/5792, https://github.com/WordPress/wordpress-develop/pull/11740\n\nProps pbearne.\nFixes #60102, #65184.\n",
+        "date": "2026-11-03T00:26:23.075409Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/misc/adminColorSchemePicker.php",
+            "/trunk/tests/phpunit/tests/functions/deadDb.php"
+        ]
+    },
+    {
         "id": 65215,
         "author": "westonruter",
         "message": "Script Loader: Ignore image preloads that have no URL.\n\nAn image resource passed through the `wp_preload_resources` filter without an `href` was accepted when it had either `imagesrcset` or `imagesizes`, but `imagesrcset` was always used as the key for removing duplicates. A resource with only `imagesizes` therefore raised an undefined array key warning (plus a null array offset deprecation on PHP 8.5), collapsed every such resource onto the same empty key, and printed a `<link>` with no URL at all, since `imagesizes` is only output alongside `imagesrcset`. A resource with neither `href` nor `as` raised a warning as well.\n\nSuch a resource is now skipped unless `as` is `image` and `imagesrcset` is set. PHPStan reports the missing offsets once the filter's value is typed from its documented hash notation.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15380.\nFollow-up to r53846.\n\nProps westonruter, adamsilverstein.\nSee #65817.\n",
