@@ -1,5 +1,127 @@
 [
     {
+        "id": 65247,
+        "author": "westonruter",
+        "message": "Docs: Move the `oembed_min_max_width` shape to its docblock.\n\nIn r62719 an inline `@var` was added after the `apply_filters()` call in `get_oembed_response_data()`, narrowing the filtered widths for `clamp()`. A type declared below the assignment it describes is confusing to read, but it could not go above, since the filter's docblock must immediately precede `apply_filters()` or the hook is reported as undocumented. The shape is now declared once, as a `@phpstan-param` in the filter docblock next to the `@param` hash it refines.\n\nThe `min` and `max` keys are also marked `Required.` in the hash. Since r65217 that marker makes a key required, where the keys of a `@param` hash are otherwise read as optional because a caller may pass a subset of them. That does not fit a filtered value: core always passes both keys, and a callback must return both, since they are read unconditionally. The documented defaults therefore describe the values core supplies, not a fallback for an omitted key. The `@phpstan-param` is kept regardless, because the hash only says `int`, while the shape narrows the widths to `positive-int`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15264.\nFollow-up to r62719, r65217.\n\nProps westonruter, dmsnell.\nSee #65817.\n",
+        "date": "2026-11-03T18:02:05.226804Z",
+        "files": [
+            "/trunk/src/wp-includes/embed.php"
+        ]
+    },
+    {
+        "id": 65246,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Fix static analysis issues in `HashNotationVisitor`.\n\nThis fixes the level-10 PHPStan errors that predate the hash notation visitor's recent changes, along with a few PhpStorm inspection warnings, without changing the `@phpstan-*` tags the visitor derives across `src/`.\n\nMost of the errors came from one limit: an entry in a hash can open a hash of its own, and an array shape cannot refer to itself, so every nested entry was `mixed`. Entries are therefore read into a new `HashEntry` class, whose children are typed as entries in turn. The rest came from writes through a list offset, which PHPStan reads as adding an incomplete element, so a tag or entry is now completed before it is added to its list. String types are also narrowed where possible, though an entry's type and key are only non-empty strings, since `0` is valid as either.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15384.\nFollow-up to r63420, r63789, r65217.\n\nProps westonruter, lancewillett.\nSee #65817.\n",
+        "date": "2026-11-03T17:50:20.629877Z",
+        "files": [
+            "/trunk/tests/phpstan/HashEntry.php",
+            "/trunk/tests/phpstan/HashNotationVisitor.php",
+            "/trunk/tests/phpstan/base.neon"
+        ]
+    },
+    {
+        "id": 65245,
+        "author": "lancewillett",
+        "message": "Tests: Compare HTML semantically in the `serialize_token()` attribute test.\n\nUse `assertEqualHTML()` instead of `assertSame()` when checking that `WP_HTML_Processor::serialize_token()` reflects enqueued attribute updates, so the test no longer depends on the order of serialized attributes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15373\n\nProps motylanogha, dmsnell.\nSee #64567.\n",
+        "date": "2026-11-03T17:39:42.767384Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/html-api/wpHtmlProcessor-serialize.php"
+        ]
+    },
+    {
+        "id": 65244,
+        "author": "lancewillett",
+        "message": "Tests: Remove block styles theme support in the tests that require its absence.\n\nTwo `Tests_Dependencies_Styles` tests assumed the active theme does not support `wp-block-styles`. Remove that support in each test instead of relying on earlier tests leaving it unset.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14688\n\nProps devmuhib, huzaifaalmesbah.\nSee #65893.\n",
+        "date": "2026-11-03T17:18:59.001752Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/dependencies/styles.php"
+        ]
+    },
+    {
+        "id": 65243,
+        "author": "lancewillett",
+        "message": "Tests: Check permalinks for post titles with a percent sign and digits.\n\nVerify that a title containing `%10` keeps the octet in its slug, and that the resulting permalink resolves to the post.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8250\n\nProps abcd95, mte90.\nFixes #3329.\n",
+        "date": "2026-11-03T17:18:06.359622Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post.php"
+        ]
+    },
+    {
+        "id": 65242,
+        "author": "lancewillett",
+        "message": "Tests: Check that saving General Settings keeps the theme options.\n\nAdd an E2E regression test for the Gutenberg 10.7 bug that cleared `stylesheet` and `template` when General Settings were saved. The test saves a new tagline through the settings form, checks both theme options are unchanged, and restores the tagline.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/8301\n\nProps abcd95, fullofcaffeine.\nFixes #53520.\n",
+        "date": "2026-11-03T17:17:16.762434Z",
+        "files": [
+            "/trunk/tests/e2e/specs/general-settings.test.js"
+        ]
+    },
+    {
+        "id": 65241,
+        "author": "lancewillett",
+        "message": "Tests: Check admin bar visibility on the front end.\n\nAdd E2E tests that the admin bar shows on the front page for a logged-in user and is absent for a logged-out visitor. The logged-out test starts without cookies, so it leaves the shared admin session intact.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/9023\n\nProps sukhendu2002, hideokamoto, justinahinon, talldanwp, isabel_brison, sirlouen, wildworks.\nFixes #48978.\n",
+        "date": "2026-11-03T17:16:22.505270Z",
+        "files": [
+            "/trunk/tests/e2e/specs/admin-bar.test.js"
+        ]
+    },
+    {
+        "id": 65240,
+        "author": "lancewillett",
+        "message": "Networks and Sites: Clarify the network admin email change notices.\n\nBring the network admin email change flow in line with the single site notices. Show a pending change as an info notice at the top of Network Settings and next to the email field, both with a \"Cancel request\" link. After the confirmation link is followed, show \"Network admin email updated.\" instead of \"Settings saved.\"\n\nShow \"Settings saved.\" only when `updated=true`, and in bold, so a failed confirmation or a canceled request no longer reports a save. Add `network_admin_email_updated` to `wp_removable_query_args()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14247, https://github.com/WordPress/wordpress-develop/pull/14466\n\nProps therssoftware, afercia, johnjamesjacoby, realloc.\nFixes #66300.\n",
+        "date": "2026-11-03T17:15:06.840445Z",
+        "files": [
+            "/trunk/src/wp-admin/network/settings.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/tests/phpunit/tests/functions/wpRemovableQueryArgs.php",
+            "/trunk/tests/phpunit/tests/multisite/networkAdminEmailChange.php"
+        ]
+    },
+    {
+        "id": 65239,
+        "author": "lancewillett",
+        "message": "Tests: Generate only the thumbnail in the Imagick PDF preview test.\n\nThe PDF alpha channel test needs one fallback size to create the full preview. Limit the fallback sizes to the thumbnail so the upload no longer also renders medium and large images.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14248\n\nProps abcd95, huzaifaalmesbah.\nSee #66074.\n",
+        "date": "2026-11-03T17:13:53.957453Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/editorImagick.php"
+        ]
+    },
+    {
+        "id": 65238,
+        "author": "lancewillett",
+        "message": "Tests: Cover `get_previous_post()` and `get_next_post()`.\n\nAssert that both wrappers return the adjacent posts already used by `test_get_adjacent_post()`, without new fixtures.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15362\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-03T17:12:27.009184Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/getAdjacentPost.php"
+        ]
+    },
+    {
+        "id": 65237,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_admin_css_color()` registration.\n\nVerify that `wp_admin_css_color()` stores the name, URL, colors and icon colors of a registered admin color scheme.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15363\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-03T17:10:43.148393Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/wpAdminCssColor.php"
+        ]
+    },
+    {
+        "id": 65236,
+        "author": "lancewillett",
+        "message": "Tests: Cover `wp_admin_css_uri()`.\n\nVerify that `wp_admin_css_uri()` returns the admin stylesheet URL with a version argument, and that the `wp_admin_css_uri` filter receives the file name and can replace the URL.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15364\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-03T17:09:50.342497Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/wpAdminCssUri.php"
+        ]
+    },
+    {
+        "id": 65235,
+        "author": "lancewillett",
+        "message": "Tests: Cover `rawurlencode_deep()` and `urldecode_deep()` on strings.\n\nVerify that `rawurlencode_deep()` encodes spaces, ampersands and equals signs, and that `urldecode_deep()` decodes both `+` and `%20`. Keep the existing `urlencode_deep()` tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15312\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-03T17:08:53.053725Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/urlencodeDeep.php"
+        ]
+    },
+    {
         "id": 65234,
         "author": "lancewillett",
         "message": "Build/Test Tools: Skip the WordPress install in process-isolated tests.\n\nA `@runInSeparateProcess` test loads the bootstrap again in a child process, which reran `install.php` and recreated every table the parent had already installed. Skip the install while PHPUnit sets `$GLOBALS['__PHPUNIT_BOOTSTRAP']`, which it does only in a child process. `WP_TESTS_SKIP_INSTALL=1` works as before.\n\nThe reinstall also hid state that test classes leak. `WP_UnitTestCase_Base` now deletes all data before each class's fixtures and restores the options table and `site_admins` after each class. It also flushes the cache before the class cleanup and flushes a persistent object cache after each rollback.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14786\n\nProps lucatume, adrianmoldovanwp.\nFixes #66410.\n",
