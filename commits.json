@@ -1,5 +1,15 @@
 [
     {
+        "id": 65248,
+        "author": "desrosj",
+        "message": "Tests: Stop passing objects to static methods through Reflection.\n\nPHP 8.6 has deprecated passing an object to `ReflectionMethod::invoke()` and `ReflectionMethodL::invokeArgs()` when the target method is static.\n\nThis addresses this within two PHPUnit-related files.\n\nProps westonruter.\nFixes #66457.\n",
+        "date": "2026-11-03T19:03:05.263996Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/plugin-dependencies/base.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
         "id": 65247,
         "author": "westonruter",
         "message": "Docs: Move the `oembed_min_max_width` shape to its docblock.\n\nIn r62719 an inline `@var` was added after the `apply_filters()` call in `get_oembed_response_data()`, narrowing the filtered widths for `clamp()`. A type declared below the assignment it describes is confusing to read, but it could not go above, since the filter's docblock must immediately precede `apply_filters()` or the hook is reported as undocumented. The shape is now declared once, as a `@phpstan-param` in the filter docblock next to the `@param` hash it refines.\n\nThe `min` and `max` keys are also marked `Required.` in the hash. Since r65217 that marker makes a key required, where the keys of a `@param` hash are otherwise read as optional because a caller may pass a subset of them. That does not fit a filtered value: core always passes both keys, and a callback must return both, since they are read unconditionally. The documented defaults therefore describe the values core supplies, not a fallback for an omitted key. The `@phpstan-param` is kept regardless, because the hash only says `int`, while the shape narrows the widths to `positive-int`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15264.\nFollow-up to r62719, r65217.\n\nProps westonruter, dmsnell.\nSee #65817.\n",
