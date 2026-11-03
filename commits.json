@@ -1,5 +1,30 @@
 [
     {
+        "id": 65220,
+        "author": "westonruter",
+        "message": "HTML API: Type tag queries and tag names for PHPStan.\n\nThe `$query` parameter of `next_tag()` is documented as `array|string|null`, but its hash notation only describes the array form, so stubs generated from it (as used by Gutenberg) turned it into an array shape and dropped the bare tag-name form, reporting calls like `next_tag( 'FIGURE' )` as errors. A `Query` type alias now covers the array, bare tag-name, and `null` forms, with each key allowed to be `null` as documented. The HTML Processor defines its own alias adding the `breadcrumbs` key, since type aliases are not inherited by subclasses.\n\nTag names are returned as `non-falsy-string`, since a parsed name is never empty or `'0'`, but accepted as `non-empty-string`, since that is all a `'' !== $tag` check proves and a `'0'` query simply matches nothing.\n\nThe changes are to PHPDoc only, so there is no runtime change.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15305.\nFollow-up to r55203.\n\nProps westonruter, dmsnell.\nSee #65817.\n",
+        "date": "2026-11-03T05:58:23.469689Z",
+        "files": [
+            "/trunk/src/wp-includes/html-api/class-wp-html-processor.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-tag-processor.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-token.php"
+        ]
+    },
+    {
+        "id": 65219,
+        "author": "ramonopoly",
+        "message": "Administration: Brighten the icon color of the Fresh admin color scheme\n\nIn 7.2, the admin menu and toolbar icons are being switched from Dashicons to SVG icons.\n\nThis commits updates the colors to brighten / increase the opacity of icons (both dashicons and SVG icons) in the Fresh scheme\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15143\n\nFollow-up to [65089].\n\nProps fushar, wildworks, ramonopoly, fcoveram, sadmansakibnadvi, rollybueno.\n\nFixes #66411.\n\n",
+        "date": "2026-11-03T05:32:48.124497Z",
+        "files": [
+            "/trunk/src/wp-admin/css/admin-menu.css",
+            "/trunk/src/wp-admin/includes/misc.php",
+            "/trunk/src/wp-includes/css/admin-bar.css",
+            "/trunk/src/wp-includes/general-template.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/adminColorSchemePicker.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/wpColorSchemeSettings.php"
+        ]
+    },
+    {
         "id": 65218,
         "author": "westonruter",
         "message": "Code Quality: Document theme JSON resolver caches as nullable.\n\nThe cached static properties of `WP_Theme_JSON_Resolver` all default to `null` and are reset to `null` in `clean_cached_data()`, and the getters check them against `null` to decide whether to rebuild the cache, but their `@var` tags omitted `null`. Adding it removes the six resulting `assign.propertyType` entries from the PHPStan baseline. There is no runtime change.\n\nThis mirrors the same fix to `WP_Theme_JSON_Resolver_Gutenberg` in the Gutenberg plugin, developed in https://github.com/WordPress/gutenberg/pull/86111.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15385.\nFollow-up to r50959, r52049, r54493, r63022.\n\nProps noruzzaman, huzaifaalmesbah.\nSee #65817.\n",
