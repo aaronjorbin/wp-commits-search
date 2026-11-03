@@ -1,5 +1,15 @@
 [
     {
+        "id": 65218,
+        "author": "westonruter",
+        "message": "Code Quality: Document theme JSON resolver caches as nullable.\n\nThe cached static properties of `WP_Theme_JSON_Resolver` all default to `null` and are reset to `null` in `clean_cached_data()`, and the getters check them against `null` to decide whether to rebuild the cache, but their `@var` tags omitted `null`. Adding it removes the six resulting `assign.propertyType` entries from the PHPStan baseline. There is no runtime change.\n\nThis mirrors the same fix to `WP_Theme_JSON_Resolver_Gutenberg` in the Gutenberg plugin, developed in https://github.com/WordPress/gutenberg/pull/86111.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15385.\nFollow-up to r50959, r52049, r54493, r63022.\n\nProps noruzzaman, huzaifaalmesbah.\nSee #65817.\n",
+        "date": "2026-11-03T03:43:26.770014Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme-json-resolver.php",
+            "/trunk/tests/phpstan/baselines/assign.propertyType.neon"
+        ]
+    },
+    {
         "id": 65217,
         "author": "westonruter",
         "message": "Build/Test Tools: Type `T[]` hash elements and `Required.` keys.\n\nThe `HashNotationVisitor` derived shapes only for a bare `array`, `object`, or class. A list of arrays declared as `array[]` and documented by a single `...$0` entry, as the blocks `parse_blocks()` returns are, therefore stayed `array<array>`, and every key read from an element was `mixed`.\n\nSuch a `T[]` now takes the shape when its entry has a hash of its own and is typed as that `T`. The two types are compared as parsed, so class names and keywords match in any case, while shape keys and string literals must match exactly. A hash on a template type or type alias is left untranslated, since whether it needs an array or an object shape depends on what the name stands for.\n\nKeys of a `@param` hash are optional, which is wrong for a value whose keys are always set, such as a parsed block, and there was no way to say otherwise. A `Required.` sentence opening or closing a key's description, as core already writes it in many hashes, now makes the key required. Unlike `Optional.`, it must be capitalized, since prose mistaken for it would report an error at every call leaving the key out.\n\nThe sharper types exposed docblocks contradicting the code, which are corrected: the `type` of each settings error is always set, and neither the `user_id` of `wp_initialize_site()` nor the `href` of a preloaded image is required. The blocks `resolve_pattern_blocks()` takes and returns are documented with the block hash, and the display arguments of `WP_Widget_Categories::widget()` are marked required, removing errors deferred when they were documented as a hash in r64413.\n\nAt level 10, this fixes 64 errors and makes 15 existing issues visible, for 49 fewer errors overall.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14457.\nFollow-up to r63420, r64413.\n\nProps westonruter, lancewillett.\nSee #62762, #65817, #65890.\n",
