@@ -1,5 +1,25 @@
 [
     {
+        "id": 65229,
+        "author": "SergeyBiryukov",
+        "message": "Media: Ignore empty items in a comma-separated `post_mime_type` string.\n\n`wp_post_mime_type_where()` splits a comma-separated string of MIME types with `explode()`. An extra comma left an empty item, and the empty string is one of the wildcards, so a value like `image/jpeg,` returned no clause and matched every MIME type. This affected `WP_Query` and `get_posts()` with `post_mime_type`, `wp_count_attachments()` and the media modal's `query-attachments` Ajax request.\n\n**What changes**\n\n- `wp_post_mime_type_where()`: after a string is split, empty items are removed with `array_diff()`. A value of `'0'` is not removed.\n- Arrays are not changed. An empty string, a string of only commas and spaces, and an explicit `%` still match every MIME type.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15403.\n\nFollow-up to r6910.\n\nProps ekamran.\nFixes #66454.",
+        "date": "2026-11-03T14:50:29.125639Z",
+        "files": [
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/tests/phpunit/tests/post/wpPostMimeTypeWhere.php"
+        ]
+    },
+    {
+        "id": 65228,
+        "author": "jonsurrell",
+        "message": "Interactivity API: Remove event handler bind directives.\n\nServer processing now removes `data-wp-bind--on*` directives from output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15396\n\nFollow-up to r61885.\n\nProps jonsurrell, ntsekouras, luisherranz.\nSee #66452.\n",
+        "date": "2026-11-03T14:36:41.086530Z",
+        "files": [
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-bind.php"
+        ]
+    },
+    {
         "id": 65227,
         "author": "audrasjb",
         "message": "Coding Standards: Fix a blank line WPCS issue found after [65226].\n\nSee #42281.\n\n",
