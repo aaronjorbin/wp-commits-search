@@ -1,5 +1,16 @@
 [
     {
+        "id": 65250,
+        "author": "jorbin",
+        "message": "Rewrites: Avoid fatal errors when flushing rules for random content.\n\n`wp_random_content_flush_rewrite_rules_for_post()` runs on the `wp_after_insert_post` and `after_delete_post` actions, which third-party code may fire with a missing or incorrectly typed `$post`. Also make the `$post` parameter of `_update_posts_count_on_delete()` optional for the same single-argument `after_delete_post` calls.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14356\n\nFollow-up to r64402.\n\nProps jorbin, bradshawtm, therssoftware.\nFixes #64498.\n",
+        "date": "2026-11-03T20:34:25.864874Z",
+        "files": [
+            "/trunk/src/wp-includes/ms-blogs.php",
+            "/trunk/src/wp-includes/query.php",
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php"
+        ]
+    },
+    {
         "id": 65249,
         "author": "desrosj",
         "message": "Build/Test Tools: Use PR number for `concurrency` groups instead of `head_ref`.\n\nThe current standard across all GitHub Actions workflows is to configure `concurrency` to use the `github.head_ref` value in the `group` name for a given PR. Because `head_ref` only includes the branch name, workflow runs can be inadvertantly cancelled when two PRs are open from different forks with identical branch names.\n\nThis switches to using the `github.event.pull_request.number` instead of `github.head_ref` to ensure that runs are properly grouped only with runs from the same pull request. A similar change has been made to `props-bot.yml`, which can be triggered by an `issue_comment` event. In this case, the `github.event.issue.number` will be used. In the context of GitHub, `issues == pull_requests` for the data returned by a number of request types.\n\nProps lancewillett.\nSee #65845.\n\n",
