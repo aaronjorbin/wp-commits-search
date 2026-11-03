@@ -1,5 +1,24 @@
 [
     {
+        "id": 65222,
+        "author": "Mamaduka",
+        "message": "REST API: Only let a reaction's author delete it.\n\nSince r65038, deleting a note reaction goes through the same `edit_comment` check as its note, so anyone who can edit the note's post, including the post author and administrators, could remove someone else's reaction. A reaction speaks for its author, so `WP_REST_Comments_Controller::delete_item_permissions_check()` now only allows its author to delete it.\n\nReactions on a resolved thread also can no longer be deleted, matching the existing check in `create_item()`. The thread-root walk moves into a private `is_thread_resolved()` helper shared by both.\n\nThe reaction type is matched case-insensitively, like in `check_edit_permission()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15383\nDeveloped in: https://github.com/WordPress/gutenberg/pull/85415\n\nFollow-up to r64488, r65038.\n\nProps adamsilverstein, ramonopoly, mamaduka.\nFixes #66447.",
+        "date": "2026-11-03T07:34:26.747486Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65221,
+        "author": "jonsurrell",
+        "message": "HTML API: Remove redundant after_tag() call.\n\n`parse_next_tag()` called `after_tag()`, but its only caller, `base_class_next_token()`, already calls `after_tag()` before it.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15136\n\nProps jonsurrell, dmsnell, lancewillett.\nSee #65984.\n",
+        "date": "2026-11-03T07:30:32.152598Z",
+        "files": [
+            "/trunk/src/wp-includes/html-api/class-wp-html-tag-processor.php"
+        ]
+    },
+    {
         "id": 65220,
         "author": "westonruter",
         "message": "HTML API: Type tag queries and tag names for PHPStan.\n\nThe `$query` parameter of `next_tag()` is documented as `array|string|null`, but its hash notation only describes the array form, so stubs generated from it (as used by Gutenberg) turned it into an array shape and dropped the bare tag-name form, reporting calls like `next_tag( 'FIGURE' )` as errors. A `Query` type alias now covers the array, bare tag-name, and `null` forms, with each key allowed to be `null` as documented. The HTML Processor defines its own alias adding the `breadcrumbs` key, since type aliases are not inherited by subclasses.\n\nTag names are returned as `non-falsy-string`, since a parsed name is never empty or `'0'`, but accepted as `non-empty-string`, since that is all a `'' !== $tag` check proves and a `'0'` query simply matches nothing.\n\nThe changes are to PHPDoc only, so there is no runtime change.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15305.\nFollow-up to r55203.\n\nProps westonruter, dmsnell.\nSee #65817.\n",
