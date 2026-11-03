@@ -1,5 +1,30 @@
 [
     {
+        "id": 65227,
+        "author": "audrasjb",
+        "message": "Coding Standards: Fix a blank line WPCS issue found after [65226].\n\nSee #42281.\n\n",
+        "date": "2026-11-03T13:44:33.744874Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-automatic-updater.php"
+        ]
+    },
+    {
+        "id": 65226,
+        "author": "audrasjb",
+        "message": "Upgrade/Install: Show and allow to select translation updates on the Updates screen.\n\nThis changeset introduces a way to see each available translation update on the Updates screen, and allows users to update them selectively. With this change, translation updates management is more consistent with how plugin and theme updates are managed.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/11610.\n\nProps stk_jj, Presskopp, jyria, tfrommen, audrasjb, ozgursar, im3dabasia1.\nFixes #42281.\n\n",
+        "date": "2026-11-03T13:38:37.834799Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-language-pack-upgrader.php",
+            "/trunk/src/wp-admin/includes/class-wp-automatic-updater.php",
+            "/trunk/src/wp-admin/includes/update.php",
+            "/trunk/src/wp-admin/update-core.php",
+            "/trunk/src/wp-includes/update.php",
+            "/trunk/tests/phpunit/tests/admin/includesUpdate.php",
+            "/trunk/tests/phpunit/tests/admin/languagePackUpgrader.php",
+            "/trunk/tests/phpunit/tests/admin/wpAutomaticUpdater.php"
+        ]
+    },
+    {
         "id": 65225,
         "author": "Mamaduka",
         "message": "General: Bump the pinned hash for Gutenberg to `c035c1a`.\n\nThis updates the pinned commit hash of the Gutenberg repository from `cc75a79186fd23e72eb015d594e82f40c6209eb5` to `c035c1a649ef68f5c1646694cf440df1d7ae6e62` (fixes cherry-picked to the `wp/7.2` branch).\n\nA full list of changes included in this commit can be found on GitHub: https://github.com/WordPress/gutenberg/compare/cc75a79186fd23e72eb015d594e82f40c6209eb5...c035c1a649ef68f5c1646694cf440df1d7ae6e62\n\n- Components: Use solid brand highlights for popup items (https://github.com/WordPress/gutenberg/pull/84583) (#85848)\n- Fix endless sideload loop when the browser can't decode a big image (https://github.com/WordPress/gutenberg/pull/83530)\n- Notes: Show reaction picker as a row of emoji (https://github.com/WordPress/gutenberg/pull/85819) (#85892)\n- Notes: Add thumbs up and plus reactions (https://github.com/WordPress/gutenberg/pull/85565)\n- Notes: Share thread focus recovery across actions (https://github.com/WordPress/gutenberg/pull/85455)\n- Core Fields: Prevent extra space between `/` and text in slug input (https://github.com/WordPress/gutenberg/pull/85935)\n- Notes: Add search and a status filter to the All Notes sidebar (https://github.com/WordPress/gutenberg/pull/84060)\n- Notes: Use the note permission check when deleting a reaction (https://github.com/WordPress/gutenberg/pull/85883)\n- [WP 7.2] Math block: Keyboard focus is trapped in the LaTeX field when the formula has an error (https://github.com/WordPress/gutenberg/pull/86032)\n- Core fields: Keep the status icon full size when its label wraps (https://github.com/WordPress/gutenberg/pull/85828) (#86050)\n- [WP 7.2] ToolsPanel: Keep the \"Reset\" label visible on the highlighted menu item (https://github.com/WordPress/gutenberg/pull/86060)\n- Interactivity Router: Ignore router regions and attachTo targets inside data-wp-html content (https://github.com/WordPress/gutenberg/pull/84919) (#86059)\n- [WP 7.2] wp-build: Derive CSS module class names from each stylesheet's CSS (https://github.com/WordPress/gutenberg/pull/86062)\n- Playlist: Allow track without an attachment ID to render on the frontend (https://github.com/WordPress/gutenberg/pull/83880) (#86158)\n- UI: Show only the day number in Calendar day cells (https://github.com/WordPress/gutenberg/pull/86010) (#86183)\n- Notes: Tolerate a null comment in the reaction cascade hooks (https://github.com/WordPress/gutenberg/pull/85959)\n- Rich Text: Remove stale format boundary when field loses selection (https://github.com/WordPress/gutenberg/pull/86168)\n- Notes: Only let a reaction's author delete it (https://github.com/WordPress/gutenberg/pull/85415)\n- Writing flow: Fix Arrow Up and Down getting stuck at the edge of the screen (https://github.com/WordPress/gutenberg/pull/85408)\n- Try: Run e2e tests in parallel, on one wp-env site per two cores (https://github.com/WordPress/gutenberg/pull/85420)\n- Raw handling: Keep shortcodes in text inline (https://github.com/WordPress/gutenberg/pull/85795)\n- Fix: Fixes non-breaking space replacement tooltip (https://github.com/WordPress/gutenberg/pull/85777)\n- Non-breaking space: Remove non-breaking spaces that would collapse when replaced (https://github.com/WordPress/gutenberg/pull/85873)\n\nProps mamaduka.\nSee #66340.",
