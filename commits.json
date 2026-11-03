@@ -1,5 +1,47 @@
 [
     {
+        "id": 65215,
+        "author": "westonruter",
+        "message": "Script Loader: Ignore image preloads that have no URL.\n\nAn image resource passed through the `wp_preload_resources` filter without an `href` was accepted when it had either `imagesrcset` or `imagesizes`, but `imagesrcset` was always used as the key for removing duplicates. A resource with only `imagesizes` therefore raised an undefined array key warning (plus a null array offset deprecation on PHP 8.5), collapsed every such resource onto the same empty key, and printed a `<link>` with no URL at all, since `imagesizes` is only output alongside `imagesrcset`. A resource with neither `href` nor `as` raised a warning as well.\n\nSuch a resource is now skipped unless `as` is `image` and `imagesrcset` is set. PHPStan reports the missing offsets once the filter's value is typed from its documented hash notation.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15380.\nFollow-up to r53846.\n\nProps westonruter, adamsilverstein.\nSee #65817.\n",
+        "date": "2026-11-03T00:21:34.690269Z",
+        "files": [
+            "/trunk/src/wp-includes/general-template.php",
+            "/trunk/tests/phpunit/tests/general/wpPreloadResources.php"
+        ]
+    },
+    {
+        "id": 65214,
+        "author": "lancewillett",
+        "message": "Tests: Cover more admin helpers in `misc.php`.\n\nVerify that `got_url_rewrite()` reports support for each server check it combines, and that the `got_url_rewrite` filter overrides the result in both directions.\n\nVerify that `iis7_save_url_rewrite_rules()` writes a new `web.config`, adds WordPress rules to an existing one while keeping other rules, removes them when permalinks are plain, and returns early outside IIS and on multisite.\n\nVerify that `wp_reset_vars()` prefers `$_POST` over `$_GET`, treats empty and `'0'` values as missing, and overwrites existing globals.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11657, https://github.com/WordPress/wordpress-develop/pull/11671, https://github.com/WordPress/wordpress-develop/pull/11737\n\nProps pbearne, westonruter.\nFixes #65135, #65147, #65180.\n",
+        "date": "2026-11-03T00:07:01.118425Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/misc/gotUrlRewrite.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/iis7SaveUrlRewriteRules.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/wpResetVars.php"
+        ]
+    },
+    {
+        "id": 65213,
+        "author": "joedolson",
+        "message": "Twenty Twenty Three: Move navigation from a hidden to a header pattern.\n\nHidden patterns and categorized patterns behave differently for extenders, and the previous change prevented content from being inserted into the header. Follow up to [64303].\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14629.\n\nProps joedolson, mukesh27, peterwilsoncc, codebytom.\nFixes #66195.",
+        "date": "2026-11-02T23:19:39.047415Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwentythree/parts/header.html",
+            "/trunk/src/wp-content/themes/twentytwentythree/patterns/header.php",
+            "/trunk/src/wp-content/themes/twentytwentythree/patterns/hidden-navigation.php"
+        ]
+    },
+    {
+        "id": 65212,
+        "author": "isabel_brison",
+        "message": "Editor: allow CSS custom properties in block gap values.\n\nEnsures wp_sanitize_block_gap_value allows custom property strings so they can applied in responsive grid layout calculations.\n\nProps noruzzaman.\nFixes #66427.\n\n",
+        "date": "2026-11-02T23:08:11.628647Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/layout.php",
+            "/trunk/tests/phpunit/tests/block-supports/layout.php"
+        ]
+    },
+    {
         "id": 65211,
         "author": "joedolson",
         "message": "Accessibility: Improve fallback `aria-label` for navigation.\n\nThe fallback `wp_navigation` post has a default title of \"Navigation\", which provides the default `aria-label` for the menu. As all `nav` elements have the function of navigation, this is a strongly dis-recommended pattern for a default menu. This also leads to a duplicate name for the navigation screen and the default menu.\n\nChange fallback name to 'Main', which is a high probability use case if a fallback menu is in use, and eliminates the naming conflict with the navigation screen.\n\nProps bacoords, sainathpoojary, joedolson, afercia, rejaulalomkhan.\nFixes #66152.",
