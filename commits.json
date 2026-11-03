@@ -1,5 +1,41 @@
 [
     {
+        "id": 65233,
+        "author": "lancewillett",
+        "message": "Tests: Cover `bloginfo()` output.\n\nVerify that `bloginfo()` prints the site name by default, prints the home URL for `url`, and prints the value returned by the `bloginfo` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15320\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
+        "date": "2026-11-03T16:02:36.667558Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/bloginfo.php"
+        ]
+    },
+    {
+        "id": 65232,
+        "author": "lancewillett",
+        "message": "Tests: Remove unneeded final cleanup from taxonomy tests.\n\nThree `Tests_Taxonomy` tests removed their taxonomy from the global registry after their last assertion. The per-test reset already unregisters custom taxonomies, so these lines protected nothing. Another test unregistered `wptests_pt`, a post type it never registers.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14952\n\nProps rejaulalomkhan, huzaifaalmesbah, mukesh27.\nSee #65893.\n",
+        "date": "2026-11-03T16:01:26.564475Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/taxonomy.php"
+        ]
+    },
+    {
+        "id": 65231,
+        "author": "audrasjb",
+        "message": "Post WordPress 7.2 Beta 4 version bump.\n\n",
+        "date": "2026-11-03T15:42:51.203036Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65230,
+        "author": "audrasjb",
+        "message": "WordPress 7.2 Beta 4.\n\n",
+        "date": "2026-11-03T15:17:31.716427Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
         "id": 65229,
         "author": "SergeyBiryukov",
         "message": "Media: Ignore empty items in a comma-separated `post_mime_type` string.\n\n`wp_post_mime_type_where()` splits a comma-separated string of MIME types with `explode()`. An extra comma left an empty item, and the empty string is one of the wildcards, so a value like `image/jpeg,` returned no clause and matched every MIME type. This affected `WP_Query` and `get_posts()` with `post_mime_type`, `wp_count_attachments()` and the media modal's `query-attachments` Ajax request.\n\n**What changes**\n\n- `wp_post_mime_type_where()`: after a string is split, empty items are removed with `array_diff()`. A value of `'0'` is not removed.\n- Arrays are not changed. An empty string, a string of only commas and spaces, and an explicit `%` still match every MIME type.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15403.\n\nFollow-up to r6910.\n\nProps ekamran.\nFixes #66454.",
