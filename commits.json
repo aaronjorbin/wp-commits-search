@@ -1,5 +1,16 @@
 [
     {
+        "id": 65234,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Skip the WordPress install in process-isolated tests.\n\nA `@runInSeparateProcess` test loads the bootstrap again in a child process, which reran `install.php` and recreated every table the parent had already installed. Skip the install while PHPUnit sets `$GLOBALS['__PHPUNIT_BOOTSTRAP']`, which it does only in a child process. `WP_TESTS_SKIP_INSTALL=1` works as before.\n\nThe reinstall also hid state that test classes leak. `WP_UnitTestCase_Base` now deletes all data before each class's fixtures and restores the options table and `site_admins` after each class. It also flushes the cache before the class cleanup and flushes a persistent object cache after each rollback.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14786\n\nProps lucatume, adrianmoldovanwp.\nFixes #66410.\n",
+        "date": "2026-11-03T16:42:10.227796Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/abstract-testcase.php",
+            "/trunk/tests/phpunit/includes/bootstrap.php",
+            "/trunk/tests/phpunit/tests/includes/tearDownAfterClass.php"
+        ]
+    },
+    {
         "id": 65233,
         "author": "lancewillett",
         "message": "Tests: Cover `bloginfo()` output.\n\nVerify that `bloginfo()` prints the site name by default, prints the home URL for `url`, and prints the value returned by the `bloginfo` filter.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15320\n\nProps devmuhib, huzaifaalmesbah.\nSee #65819.\n",
