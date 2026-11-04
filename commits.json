@@ -1,5 +1,39 @@
 [
     {
+        "id": 65262,
+        "author": "westonruter",
+        "message": "Date/Time: Correct argument types in `WP_Date_Query`.\n\nThe PHPStan baseline held eight `argument.type` errors for `WP_Date_Query`, caused by docblocks narrower than the input the methods actually handle and by an unused parameter. Since `build_value()` was introduced it has been documented as taking a string or an array, yet `build_time_query()` has always passed it integers or null. And when nested queries were added, `get_sql_for_subquery()` passed an empty string for the `$parent_query` array that `get_sql_for_clause()` never reads.\n\nNo path of `build_mysql_datetime()` returns false, though its `@return` tag said otherwise. An unparseable string has always resulted in the Unix epoch, obtained by passing false as the timestamp to `gmdate()`. That fallback now passes 0 and is documented, and its test asserts the fixed value instead of computing it, which also corrects a comment claiming the test was time-dependent.\n\nThe PHPStan types also go further than the published `@param` tags in describing valid input. The comparison operator is limited to the ten accepted by `get_compare()`, which are put directly into SQL. Date values are limited to non-negative integers or numeric strings, because `absint()` would silently turn a negative value positive. Non-numeric values are still filtered out at runtime, so there is no change in behavior.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15469.\nFollow-up to r25139, r29923, r45876.\n\nProps pwtyler, westonruter.\nSee #65817.\n",
+        "date": "2026-11-04T19:58:08.703857Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-date-query.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon",
+            "/trunk/tests/phpunit/tests/date/query.php"
+        ]
+    },
+    {
+        "id": 65261,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Switch the E2E theme before the other resets.\n\nE2E global setup activated Twenty Twenty-One at the same time as it deleted posts and blocks and reset preferences. `switch_theme()` saves `template` and `stylesheet` one after the other, so a request that loads between the two writes sees Ipsum as a child of Twenty Twenty-One. Ipsum then requires `inc/abilities.php` from the parent theme, which does not exist, and the request fails with a PHP fatal error that global setup cannot parse as JSON.\n\nActivate the theme first, then run the other resets in parallel.\n\nFollow-up to [65224].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15471\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-04T19:16:22.695834Z",
+        "files": [
+            "/trunk/tests/e2e/config/global-setup.js"
+        ]
+    },
+    {
+        "id": 65260,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Use web-first assertions in more E2E tests.\n\nReplace waits followed by one-time reads with Playwright assertions that retry until they pass. Each test keeps the same checks.\n\nThe edit-posts spec now waits for the post title instead of any element in the editor iframe. The media-upload spec drops a `waitForLoadState( 'load' )` call, since `visitAdminPage()` already waits for the page to load.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15463\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-04T19:06:23.073370Z",
+        "files": [
+            "/trunk/tests/e2e/specs/edit-posts.test.js",
+            "/trunk/tests/e2e/specs/login-localize-script.test.js",
+            "/trunk/tests/e2e/specs/media-library-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-modal-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-new-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-upload.test.js"
+        ]
+    },
+    {
         "id": 65259,
         "author": "SergeyBiryukov",
         "message": "Upgrade/Install: Detect a `.git` file when checking for a VCS checkout.\n\n`WP_Automatic_Updater::is_vcs_checkout()` looks for `.git` with `is_dir()`, but in a Git worktree or submodule `.git` is a plain file that points to the real repository. When there's no `.git` directory higher up, the site is treated as not under version control and automatic updates run. The Site Health VCS test has its own copy of the same check.\n\n**What changes**\n\n- `is_vcs_checkout()` and `WP_Site_Health_Auto_Updates::test_vcs_abspath()` use `file_exists()` instead of `is_dir()`, so a `.git` file counts as a checkout.\n- The `.git` file isn't read to see where it points. In case of a Docker site running from a worktree, the path may be on the host and may not exist inside the container.\n- The `automatic_updates_is_vcs_checkout` filter still decides the result.\n\nFollow-up to r47835, r64586.\n\nProps dlocc.\nFixes #66460.",
