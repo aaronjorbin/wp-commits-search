@@ -1,5 +1,24 @@
 [
     {
+        "id": 65264,
+        "author": "peterwilsoncc",
+        "message": "External Libraries: Remove build dependent jQuery file tests.\n\nRemoves PHPUnit tests introduced in r63983 to ensure the jQuery and jQuery Migrate files are present.\n\nThese tests are causing false failures if the test suite is run without running the build step. \n\nFollow-up to r63983.\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15435.\n\nProps sergeybiryukov.\nFixes #66203.\n\n",
+        "date": "2026-11-04T20:54:52.357360Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/dependencies/jquery.php"
+        ]
+    },
+    {
+        "id": 65263,
+        "author": "westonruter",
+        "message": "Comments: Add conditional return types to comment date functions.\n\nBoth `get_comment_date()` and `get_comment_time()` return the result of `mysql2date()`, which is an integer for the 'U' and 'G' formats and false on failure, yet they were documented as returning only a string. Callers such as the Comment Date block therefore had to cast `get_comment_date( 'U', $comment )` before passing it to `human_time_diff()`. They now declare the same conditional return on `$format` as `mysql2date()` and the post date functions, and the `get_comment_date` and `get_comment_time` filters document false as well, since the return type of `apply_filters()` is derived from them.\n\nA nonexistent comment no longer causes `get_comment_date()` to read a property on null. For back-compat, false is still passed through the `get_comment_date` filter, as is done in `get_the_modified_date()` and `get_the_modified_time()`, so the filter's `$comment` parameter is now documented as possibly null. Since r55284, `get_comment_time()` has returned an empty string for a nonexistent comment without applying its filter, and this is left unchanged.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15473.\nFollow-up to r37866, r55284, r63941.\n\nSee #65817.\n",
+        "date": "2026-11-04T20:48:37.183620Z",
+        "files": [
+            "/trunk/src/wp-includes/comment-template.php",
+            "/trunk/tests/phpunit/tests/date/getCommentDate.php"
+        ]
+    },
+    {
         "id": 65262,
         "author": "westonruter",
         "message": "Date/Time: Correct argument types in `WP_Date_Query`.\n\nThe PHPStan baseline held eight `argument.type` errors for `WP_Date_Query`, caused by docblocks narrower than the input the methods actually handle and by an unused parameter. Since `build_value()` was introduced it has been documented as taking a string or an array, yet `build_time_query()` has always passed it integers or null. And when nested queries were added, `get_sql_for_subquery()` passed an empty string for the `$parent_query` array that `get_sql_for_clause()` never reads.\n\nNo path of `build_mysql_datetime()` returns false, though its `@return` tag said otherwise. An unparseable string has always resulted in the Unix epoch, obtained by passing false as the timestamp to `gmdate()`. That fallback now passes 0 and is documented, and its test asserts the fixed value instead of computing it, which also corrects a comment claiming the test was time-dependent.\n\nThe PHPStan types also go further than the published `@param` tags in describing valid input. The comparison operator is limited to the ten accepted by `get_compare()`, which are put directly into SQL. Date values are limited to non-negative integers or numeric strings, because `absint()` would silently turn a negative value positive. Non-numeric values are still filtered out at runtime, so there is no change in behavior.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15469.\nFollow-up to r25139, r29923, r45876.\n\nProps pwtyler, westonruter.\nSee #65817.\n",
