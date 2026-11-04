@@ -1,5 +1,17 @@
 [
     {
+        "id": 65259,
+        "author": "SergeyBiryukov",
+        "message": "Upgrade/Install: Detect a `.git` file when checking for a VCS checkout.\n\n`WP_Automatic_Updater::is_vcs_checkout()` looks for `.git` with `is_dir()`, but in a Git worktree or submodule `.git` is a plain file that points to the real repository. When there's no `.git` directory higher up, the site is treated as not under version control and automatic updates run. The Site Health VCS test has its own copy of the same check.\n\n**What changes**\n\n- `is_vcs_checkout()` and `WP_Site_Health_Auto_Updates::test_vcs_abspath()` use `file_exists()` instead of `is_dir()`, so a `.git` file counts as a checkout.\n- The `.git` file isn't read to see where it points. In case of a Docker site running from a worktree, the path may be on the host and may not exist inside the container.\n- The `automatic_updates_is_vcs_checkout` filter still decides the result.\n\nFollow-up to r47835, r64586.\n\nProps dlocc.\nFixes #66460.",
+        "date": "2026-11-04T19:01:37.991255Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-automatic-updater.php",
+            "/trunk/src/wp-admin/includes/class-wp-site-health-auto-updates.php",
+            "/trunk/tests/phpunit/tests/admin/wpAutomaticUpdater.php",
+            "/trunk/tests/phpunit/tests/admin/wpSiteHealthAutoUpdates.php"
+        ]
+    },
+    {
         "id": 65258,
         "author": "lancewillett",
         "message": "Build/Test Tools: Share the client-side media upload E2E helpers.\n\nThe three client-side media upload specs each kept their own copies of the same constants and helpers. Move them into `tests/e2e/utils/media-pipeline.js`, and import them in each spec.\n\n`countUploadRequests()` had two versions. The shared one returns all five counters, so every existing assertion still applies.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15429\n\nProps adrianmoldovanwp.\nSee #66455.\n",
