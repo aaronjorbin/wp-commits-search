@@ -1,5 +1,62 @@
 [
     {
+        "id": 65268,
+        "author": "lancewillett",
+        "message": "KSES: Clarify that `valid_unicode()` checks XML Char ranges.\n\n`valid_unicode()` follows the XML `Char` production rather than checking whether a code point is valid Unicode. It rejects C0 controls other than tab, line feed, and carriage return, along with surrogates and U+FFFE and U+FFFF. Update its docblock to say so, and point callers to the newer Unicode and UTF-8 helpers, such as `wp_is_valid_utf8()`.\n\nAdd rejected test cases for U+000B and U+001F, which guard the boundary below U+0020, and rename the test and its data provider to describe XML `Char` acceptance.\n\nFollow-up to [64770].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15105\n\nProps shailu25, dmsnell.\nFixes #66483. See #65819.\n",
+        "date": "2026-11-04T21:36:26.780183Z",
+        "files": [
+            "/trunk/src/wp-includes/kses.php",
+            "/trunk/tests/phpunit/tests/kses/validUnicode.php"
+        ]
+    },
+    {
+        "id": 65267,
+        "author": "lancewillett",
+        "message": "Tests: Cover five more admin AJAX handlers.\n\nAdd tests for `wp_ajax_imgedit_preview()`, `wp_ajax_get_community_events()`, `wp_ajax_hidden_columns()`, `wp_ajax_save_widget()`, and `wp_ajax_save_user_color_scheme()`. Each test dispatches the action core registers through `get_ajax_response()` and checks the response and the resulting state.\n\nThe community events tests mock the Events API, so they make no network requests. The save-widget tests use a per-test Text widget and restore the widget globals afterward.\n\nThis consolidates five earlier handler test proposals.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15421\n\nProps mindctrl, pbearne.\nSee #65252.\n",
+        "date": "2026-11-04T21:29:24.269833Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/getCommunityEvents.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/hiddenColumns.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/imgeditPreview.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/saveUserColorScheme.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/saveWidget.php"
+        ]
+    },
+    {
+        "id": 65266,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Retry failed and stalled downloads in CI setup.\n\nFrom October 15 to 28, 13 of 523 trunk Performance Tests runs needed a rerun because a setup step failed, and three Playwright installs hung for six hours.\n\nAdd two composite actions. `download-with-retry` downloads with curl, retrying on any error and on stalled transfers. `run-with-retry` runs a command up to three times. Use them for the Gutenberg download in E2E tests and the WordPress Importer and mock data downloads in performance tests. Also use them for the WordPress downloads in the installation, upgrade, and performance baseline steps. Retry the global npm install in the `setup-npm` action.\n\nAlso cap the Playwright browser install and the mock data import at 15 minutes each, and skip archiving performance artifacts when the tests never ran.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15210\n\nProps lucatume, johnbillion.\nSee #65845.\n",
+        "date": "2026-11-04T21:21:44.450502Z",
+        "files": [
+            "/trunk/.github/actions/download-with-retry",
+            "/trunk/.github/actions/download-with-retry/action.yml",
+            "/trunk/.github/actions/run-with-retry",
+            "/trunk/.github/actions/run-with-retry/action.yml",
+            "/trunk/.github/actions/setup-npm/action.yml",
+            "/trunk/.github/workflows/end-to-end-tests.yml",
+            "/trunk/.github/workflows/install-testing.yml",
+            "/trunk/.github/workflows/performance.yml",
+            "/trunk/.github/workflows/reusable-end-to-end-tests.yml",
+            "/trunk/.github/workflows/reusable-performance-test-v2.yml",
+            "/trunk/.github/workflows/reusable-upgrade-testing.yml",
+            "/trunk/.github/workflows/upgrade-develop-testing.yml",
+            "/trunk/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
+        "id": 65265,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Introduce phpstan-strict-rules.\n\nThis adds `phpstan/phpstan-strict-rules` as a development dependency so that its rules can be enabled in a local `phpstan.neon` to work toward compliance, and it enables by default the rules which core already complies with or which enforce the WordPress Coding Standards:\n* Disallow the backtick operator.\n* Disallow short ternaries (the one remaining instance is replaced).\n* Disallow `$this` in closures.\n* Require inherited method names to match in case.\n\nThe rules are registered individually rather than by including the package's `rules.neon`, because that file also makes several PHPStan parameters stricter even when its rules are disabled, and because a local config including it would otherwise fail on the duplicate include. The README documents how to opt into the other rules locally, and the roles of `base.neon` and `phpstan.neon.dist` are clarified so that local configs include the latter rather than copying it.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15399.\nFollow-up to r61699, r63420.\n\nProps westonruter, apermo.\nSee #65817.\n",
+        "date": "2026-11-04T21:20:32.309860Z",
+        "files": [
+            "/trunk/composer.json",
+            "/trunk/phpstan.neon.dist",
+            "/trunk/tests/phpstan/HashNotationVisitor.php",
+            "/trunk/tests/phpstan/README.md",
+            "/trunk/tests/phpstan/base.neon"
+        ]
+    },
+    {
         "id": 65264,
         "author": "peterwilsoncc",
         "message": "External Libraries: Remove build dependent jQuery file tests.\n\nRemoves PHPUnit tests introduced in r63983 to ensure the jQuery and jQuery Migrate files are present.\n\nThese tests are causing false failures if the test suite is run without running the build step. \n\nFollow-up to r63983.\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15435.\n\nProps sergeybiryukov.\nFixes #66203.\n\n",
