@@ -1,5 +1,56 @@
 [
     {
+        "id": 65255,
+        "author": "lancewillett",
+        "message": "Tests: Cover the `post_mime_types` filter in `get_post_mime_types()`.\n\nAdd a test that a callback on the `post_mime_types` filter can change the labels `get_post_mime_types()` returns.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15376\n\nProps shailu25.\nFixes #66472.\n",
+        "date": "2026-11-04T15:58:53.877735Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/getPostMimeTypes.php"
+        ]
+    },
+    {
+        "id": 65254,
+        "author": "lancewillett",
+        "message": "Tests: Cover `get_taxonomies_for_attachments()`.\n\nAdd tests that `get_taxonomies_for_attachments()` returns taxonomies registered for attachments and for attachment subtypes such as `attachment:image`, as names or as objects, and leaves out taxonomies for other post types.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15377\n\nProps shailu25.\nFixes #66471.\n",
+        "date": "2026-11-04T15:52:42.300505Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/media/getTaxonomiesForAttachments.php"
+        ]
+    },
+    {
+        "id": 65253,
+        "author": "lancewillett",
+        "message": "Tests: Cover `find_core_update()`.\n\nAdd tests that `find_core_update()` returns false without update data, returns the update that matches both version and locale, and returns false when either the locale or the version does not match.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15378\n\nProps shailu25.\nFixes #66470.\n",
+        "date": "2026-11-04T15:50:42.252323Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/update/findCoreUpdate.php"
+        ]
+    },
+    {
+        "id": 65252,
+        "author": "lancewillett",
+        "message": "Tests: Remove a test file committed by mistake in [65251].\n\nThe `format_for_editor()` test was not part of that change. It will land with its own ticket.\n\nSee #34185, #65819.\n",
+        "date": "2026-11-04T15:45:56.955874Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/formatForEditor.php"
+        ]
+    },
+    {
+        "id": 65251,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Keep default-excluded groups excluded when using `--exclude-group`.\n\nPassing `--exclude-group` replaces the group exclusions in the PHPUnit XML config, and the test bootstrap also cleared its own list of skipped groups. So any `--exclude-group` run also ran the groups excluded by default, such as `ajax`, `ms-files` and `external-http`.\n\nA new test listener now removes default-excluded tests from every suite, including nested ones, before class fixtures run. A group requested with `--group` still runs.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11801\n\nProps arkaprabhachowdhury, netweb, isabel_brison, johnbillion.\nFixes #34185.\n",
+        "date": "2026-11-04T15:40:47.683443Z",
+        "files": [
+            "/trunk/phpunit.xml.dist",
+            "/trunk/tests/phpunit/includes/abstract-testcase.php",
+            "/trunk/tests/phpunit/includes/bootstrap.php",
+            "/trunk/tests/phpunit/multisite.xml",
+            "/trunk/tests/phpunit/tests/formatting/formatForEditor.php",
+            "/trunk/tests/phpunit/tests/phpunit",
+            "/trunk/tests/phpunit/tests/phpunit/groupFilters.php"
+        ]
+    },
+    {
         "id": 65250,
         "author": "jorbin",
         "message": "Rewrites: Avoid fatal errors when flushing rules for random content.\n\n`wp_random_content_flush_rewrite_rules_for_post()` runs on the `wp_after_insert_post` and `after_delete_post` actions, which third-party code may fire with a missing or incorrectly typed `$post`. Also make the `$post` parameter of `_update_posts_count_on_delete()` optional for the same single-argument `after_delete_post` calls.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14356\n\nFollow-up to r64402.\n\nProps jorbin, bradshawtm, therssoftware.\nFixes #64498.\n",
