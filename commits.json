@@ -1,5 +1,23 @@
 [
     {
+        "id": 65257,
+        "author": "lancewillett",
+        "message": "Tests: Cover the `get_wp_title_rss` filter in `get_wp_title_rss()`.\n\nAdd a test that a callback on the `get_wp_title_rss` filter receives the document title and can change the feed title that `get_wp_title_rss()` returns.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15370\n\nProps shailu25.\nFixes #66474.\n",
+        "date": "2026-11-04T16:37:34.478460Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/feed/getWpTitleRss.php"
+        ]
+    },
+    {
+        "id": 65256,
+        "author": "lancewillett",
+        "message": "Tests: Cover the `the_permalink_rss` filter and escaping in `the_permalink_rss()`.\n\nAdd a test that the `the_permalink_rss` filter receives the post permalink, and that the filtered URL is escaped in the feed output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15371\n\nProps shailu25.\nFixes #66473.\n",
+        "date": "2026-11-04T16:36:22.718762Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/feed/thePermalinkRss.php"
+        ]
+    },
+    {
         "id": 65255,
         "author": "lancewillett",
         "message": "Tests: Cover the `post_mime_types` filter in `get_post_mime_types()`.\n\nAdd a test that a callback on the `post_mime_types` filter can change the labels `get_post_mime_types()` returns.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15376\n\nProps shailu25.\nFixes #66472.\n",
