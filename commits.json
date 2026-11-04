@@ -1,5 +1,18 @@
 [
     {
+        "id": 65258,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Share the client-side media upload E2E helpers.\n\nThe three client-side media upload specs each kept their own copies of the same constants and helpers. Move them into `tests/e2e/utils/media-pipeline.js`, and import them in each spec.\n\n`countUploadRequests()` had two versions. The shared one returns all five counters, so every existing assertion still applies.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15429\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-04T18:01:18.979991Z",
+        "files": [
+            "/trunk/tests/e2e/specs/media-library-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-modal-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-new-client-side-upload.test.js",
+            "/trunk/tests/e2e/utils",
+            "/trunk/tests/e2e/utils/media-pipeline.js"
+        ]
+    },
+    {
         "id": 65257,
         "author": "lancewillett",
         "message": "Tests: Cover the `get_wp_title_rss` filter in `get_wp_title_rss()`.\n\nAdd a test that a callback on the `get_wp_title_rss` filter receives the document title and can change the feed title that `get_wp_title_rss()` returns.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15370\n\nProps shailu25.\nFixes #66474.\n",
