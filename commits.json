@@ -1,5 +1,19 @@
 [
     {
+        "id": 65282,
+        "author": "westonruter",
+        "message": "Code Quality: Fix the `booleanAnd.alwaysFalse` PHPStan error.\n\nIn `themes.php`, PHPStan only knew `$parent_file` as the `'themes.php'` literal assigned earlier in the file, so it reported the `empty( $parent_file )` clause of the Appearance submenu condition as never true. That is a false positive: `wp-admin/menu-header.php`, loaded via `admin-header.php`, passes `$parent_file` through the `parent_file` filter, and it also sets `$self`, while `$submenu` comes from `wp-admin/menu.php`. None of these are visible to PHPStan across the `require` chain. The condition is therefore left unchanged, and the globals are instead declared with a file-scope `global` statement and `@global` tags. An inline `@var` would not suffice, since with `treatPhpDocTypesAsCertain` disabled the always-true and always-false rules use the native type, which only the `global` statement resets.\n\nThis retires the `booleanAnd.alwaysFalse` baseline along with the remaining baseline entries for `themes.php`, and the `$submenu` array shape also resolves the `mixed` errors in the submenu loop at higher rule levels.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15478.\nFollow-up to r63019, r63023.\n\nProps bgturner, westonruter.\nSee #65817.\n",
+        "date": "2026-11-05T20:45:38.201862Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-admin/themes.php",
+            "/trunk/tests/phpstan/baselines/booleanAnd.alwaysFalse.neon",
+            "/trunk/tests/phpstan/baselines/booleanAnd.leftAlwaysTrue.neon",
+            "/trunk/tests/phpstan/baselines/empty.variable.neon",
+            "/trunk/tests/phpstan/baselines/variable.undefined.neon"
+        ]
+    },
+    {
         "id": 65281,
         "author": "westonruter",
         "message": "Code Quality: Fix the `nullCoalesce.property` PHPStan error.\n\nSince `WP_Query::$max_num_pages` is never `null`, the `?? 1` fallback in `paginate_links()` never applied, so the property is now read directly.\n\nThe property is also documented as a non-negative integer. This exposed that `WP_Query::set_found_posts()` could compute a negative page count when a `found_posts` filter returns a negative number, or when a filter injects a `LIMIT` into a query with a `posts_per_page` of `-1`, so that result is now clamped to zero. For the same reason the unreachable `isset()` fallback in `WP_Sitemaps_Posts::get_max_num_pages()` is removed, retiring its baseline entry.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15475.\nFollow-up to r48476, r57648, r61454, r65192.\n\nProps bgturner, westonruter.\nSee #65817.\n",
