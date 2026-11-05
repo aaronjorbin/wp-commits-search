@@ -1,5 +1,14 @@
 [
     {
+        "id": 65283,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Remove redundant `null` call in `get_the_content_feed()` coverage.\n\nThe no-argument call already passes the default `null` value, so the explicit `null` invocation in that method adds no distinct protection. Explicit `null` with a customized `default_feed` remains covered by `test_null_feed_type_uses_default_feed()`.\n\nFollow-up to r65198.\n\nProps shailu25, lancewillett.\nFixes #66475.",
+        "date": "2026-11-05T21:22:12.365559Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/feed/getTheContentFeed.php"
+        ]
+    },
+    {
         "id": 65282,
         "author": "westonruter",
         "message": "Code Quality: Fix the `booleanAnd.alwaysFalse` PHPStan error.\n\nIn `themes.php`, PHPStan only knew `$parent_file` as the `'themes.php'` literal assigned earlier in the file, so it reported the `empty( $parent_file )` clause of the Appearance submenu condition as never true. That is a false positive: `wp-admin/menu-header.php`, loaded via `admin-header.php`, passes `$parent_file` through the `parent_file` filter, and it also sets `$self`, while `$submenu` comes from `wp-admin/menu.php`. None of these are visible to PHPStan across the `require` chain. The condition is therefore left unchanged, and the globals are instead declared with a file-scope `global` statement and `@global` tags. An inline `@var` would not suffice, since with `treatPhpDocTypesAsCertain` disabled the always-true and always-false rules use the native type, which only the `global` statement resets.\n\nThis retires the `booleanAnd.alwaysFalse` baseline along with the remaining baseline entries for `themes.php`, and the `$submenu` array shape also resolves the `mixed` errors in the submenu loop at higher rule levels.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15478.\nFollow-up to r63019, r63023.\n\nProps bgturner, westonruter.\nSee #65817.\n",
