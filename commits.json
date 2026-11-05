@@ -1,5 +1,76 @@
 [
     {
+        "id": 65280,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Test against MariaDB 12.3 and 13.0.\n\nThis adds MariaDB 12.3, the latest LTS release, to the MariaDB testing strategy. It also replaces 11.8 as the MariaDB version used for the memcached jobs, the limited matrix for forks, and the PHP 8.6 pre-release jobs.\n\nMariaDB 12.1 is no longer supported, so the innovation release jobs now test 13.0 instead. This is the most recent innovation release with a stable Docker image available.\n\nThe outdated note stating that MariaDB does not have a supported innovation release has also been removed.\n\nSee #65845, #65819.\n",
+        "date": "2026-11-05T16:46:56.320576Z",
+        "files": [
+            "/trunk/.github/workflows/phpunit-tests.yml"
+        ]
+    },
+    {
+        "id": 65279,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Add MySQL 26.10 to the relevant test matrices.\n\nThis adds MySQL 26.10, the latest innovation release, to the relevant testing strategies.\n\nBecause MySQL 9.7 is an LTS release, some of the configurations specific to innovation releases were removed when it was added in [62407]. These are now restored for `26.10`:\n- The PHPUnit workflow tests `26.10` in the innovation release jobs.\n- The upgrade testing workflow tests `26.10` alongside the LTS versions for the two most recent releases and the oldest WordPress version still receiving security updates.\n- The installation and local Docker environment workflows test `26.10` through the `7-2` entry in `.version-support-mysql.json`. PHP 7.2 and 7.3 are excluded with 26.10 because MySQL 9.0+ does not work on them.\n\nMySQL 26.7 is also listed as supported for 7.2. It is excluded from the test matrices because only the most recent innovation release is tested.\n\nMySQL 9.7 remains the default database version for the local Docker environment and in the non-innovation PHPUnit jobs.\n\nProps desrosj.\nSee #65845, #65819.\n",
+        "date": "2026-11-05T16:41:57.979794Z",
+        "files": [
+            "/trunk/.github/workflows/install-testing.yml",
+            "/trunk/.github/workflows/local-docker-environment.yml",
+            "/trunk/.github/workflows/phpunit-tests.yml",
+            "/trunk/.github/workflows/upgrade-testing.yml",
+            "/trunk/.version-support-mysql.json"
+        ]
+    },
+    {
+        "id": 65278,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Implement `stream_flush()` in `WP_Test_Stream`.\n\nAs of PHP 8.6, `fclose()`, `file_put_contents()`, and `copy()` return `false` when flushing or closing a stream fails. Before 8.6, these failures were silently ignored. A stream wrapper that does not implement `stream_flush()` is treated as failing to flush, so every write to `WP_Test_Stream` was reported as a failure on PHP 8.6, even though the data was written. This caused `Tests_Image_Editor_Imagick::test_streams` to fail.\n\nWrites to `WP_Test_Stream` are stored directly in memory, so `stream_flush()` has nothing to do and returns `true`. `WP_Test_Stream_Http_Mock` extends this class and inherits the fix.\n\nThis also moves the `assertNotWPError()` assertion in `test_streams()` ahead of the first use of `$saved['path']`, so a failed save reports the actual error instead of `Cannot use object of type WP_Error as array`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15476.\n\nProps desrosj, lancewillett.\nFixes #66487.\n",
+        "date": "2026-11-05T16:20:06.159075Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/class-wp-test-stream.php",
+            "/trunk/tests/phpunit/tests/image/editorImagick.php"
+        ]
+    },
+    {
+        "id": 65277,
+        "author": "lancewillett",
+        "message": "Tests: Load the WP_Upgrader classes in the WP_Automatic_Updater tests.\n\n`test_should_update_should_skip_deferred_translation_updates()` calls `WP_Automatic_Updater::should_update()`, which creates an `Automatic_Upgrader_Skin`. The test class loaded only `class-wp-automatic-updater.php`, so the test errored when its file ran on its own. The full suite passed only because earlier tests had already loaded `class-wp-upgrader.php`.\n\nFollow-up to [65226].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15506\n\nProps ravipatel.\nSee #42281.\n",
+        "date": "2026-11-05T15:38:41.947568Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/wpAutomaticUpdater.php"
+        ]
+    },
+    {
+        "id": 65276,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Only declare the default group filter where PHPUnit has test listeners.\n\n[65251] declared `WP_PHPUnit_Default_Group_Filter` as a `PHPUnit\\Framework\\TestListener` for every PHPUnit version from 6.0. PHPUnit 10 removed that interface, so loading the test bootstrap with PHPUnit 10 or later failed before any test ran. This broke test suites that load the core test library with newer PHPUnit versions, such as the WordPress.org unit tests.\n\nThe listener is now declared only when the interface exists. PHPUnit 9 and earlier are unchanged. PHPUnit 10 and later do not support listeners.\n\nFollow-up to [65251].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15508\n\nProps ekamran.\nSee #34185.\n",
+        "date": "2026-11-05T15:36:34.412207Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/bootstrap.php"
+        ]
+    },
+    {
+        "id": 65275,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Use user-facing locators in E2E tests.\n\nMany E2E specs found elements by CSS class, by position with `.first()`, or by counting Tab presses. After a markup change, a test could act on the wrong element or fail far from the real problem. Most of these now use role, label and text locators.\n\nThe media grid specs find tiles by attachment name, so they check that the uploaded file is there rather than any finished tile. Upload errors are found by file name. The Quick Edit test keeps its keyboard path but checks that the Quick Edit button has focus before pressing Enter.\n\nThe bulk-action and Save Menu controls use their IDs, since the top and bottom controls share an accessible name.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15513\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-05T15:21:43.296917Z",
+        "files": [
+            "/trunk/tests/e2e/specs/classic-menus.test.js",
+            "/trunk/tests/e2e/specs/dashboard.test.js",
+            "/trunk/tests/e2e/specs/edit-posts.test.js",
+            "/trunk/tests/e2e/specs/media-library-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-library.test.js",
+            "/trunk/tests/e2e/specs/media-modal-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-new-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/moderate-comments.test.js",
+            "/trunk/tests/e2e/specs/plugins.test.js",
+            "/trunk/tests/e2e/specs/privacy.test.js",
+            "/trunk/tests/e2e/specs/taxonomies.test.js",
+            "/trunk/tests/e2e/specs/themes.test.js",
+            "/trunk/tests/e2e/utils/media-pipeline.js"
+        ]
+    },
+    {
         "id": 65274,
         "author": "lancewillett",
         "message": "Build/Test Tools: Add an E2E fixtures module and a WP-CLI helper.\n\nPlaywright copies the config's `use` options, including `storageState`, into every `browser.newContext()` call that does not set them. The cache-control specs' logged-out pages were therefore logged in. A new `loggedOutPage` fixture in `tests/e2e/fixtures` opens a page in a context with no cookies, and the cache-control specs use it.\n\nThe logged-out cache-control check now fails when the header contains `no-cache`, `no-store` or `private`. Before, it failed only on an exact match, so it passed for the logged-in header too.\n\nA new `wpCli()` helper runs WP-CLI with `--path` set from `LOCAL_DIR`, so WP-CLI loads the same copy of WordPress as the site under test. The install and invalid-timezone specs now use it.\n\nThe E2E README describes both ways to run a test logged out.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15410\n\nProps adrianmoldovanwp.\nSee #66455.\n",
