@@ -1,5 +1,20 @@
 [
     {
+        "id": 65281,
+        "author": "westonruter",
+        "message": "Code Quality: Fix the `nullCoalesce.property` PHPStan error.\n\nSince `WP_Query::$max_num_pages` is never `null`, the `?? 1` fallback in `paginate_links()` never applied, so the property is now read directly.\n\nThe property is also documented as a non-negative integer. This exposed that `WP_Query::set_found_posts()` could compute a negative page count when a `found_posts` filter returns a negative number, or when a filter injects a `LIMIT` into a query with a `posts_per_page` of `-1`, so that result is now clamped to zero. For the same reason the unreachable `isset()` fallback in `WP_Sitemaps_Posts::get_max_num_pages()` is removed, retiring its baseline entry.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15475.\nFollow-up to r48476, r57648, r61454, r65192.\n\nProps bgturner, westonruter.\nSee #65817.\n",
+        "date": "2026-11-05T17:27:20.753543Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-includes/class-wp-query.php",
+            "/trunk/src/wp-includes/general-template.php",
+            "/trunk/src/wp-includes/sitemaps/providers/class-wp-sitemaps-posts.php",
+            "/trunk/tests/phpstan/baselines/isset.property.neon",
+            "/trunk/tests/phpstan/baselines/nullCoalesce.property.neon",
+            "/trunk/tests/phpunit/tests/query/noFoundRows.php"
+        ]
+    },
+    {
         "id": 65280,
         "author": "desrosj",
         "message": "Build/Test Tools: Test against MariaDB 12.3 and 13.0.\n\nThis adds MariaDB 12.3, the latest LTS release, to the MariaDB testing strategy. It also replaces 11.8 as the MariaDB version used for the memcached jobs, the limited matrix for forks, and the PHP 8.6 pre-release jobs.\n\nMariaDB 12.1 is no longer supported, so the innovation release jobs now test 13.0 instead. This is the most recent innovation release with a stable Docker image available.\n\nThe outdated note stating that MariaDB does not have a supported innovation release has also been removed.\n\nSee #65845, #65819.\n",
