@@ -1,5 +1,20 @@
 [
     {
+        "id": 65274,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Add an E2E fixtures module and a WP-CLI helper.\n\nPlaywright copies the config's `use` options, including `storageState`, into every `browser.newContext()` call that does not set them. The cache-control specs' logged-out pages were therefore logged in. A new `loggedOutPage` fixture in `tests/e2e/fixtures` opens a page in a context with no cookies, and the cache-control specs use it.\n\nThe logged-out cache-control check now fails when the header contains `no-cache`, `no-store` or `private`. Before, it failed only on an exact match, so it passed for the logged-in header too.\n\nA new `wpCli()` helper runs WP-CLI with `--path` set from `LOCAL_DIR`, so WP-CLI loads the same copy of WordPress as the site under test. The install and invalid-timezone specs now use it.\n\nThe E2E README describes both ways to run a test logged out.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15410\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-05T15:05:23.939298Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/fixtures",
+            "/trunk/tests/e2e/fixtures/index.js",
+            "/trunk/tests/e2e/specs/cache-control-headers-directives.test.js",
+            "/trunk/tests/e2e/specs/general-settings-invalid-timezone.test.js",
+            "/trunk/tests/e2e/specs/install.test.js",
+            "/trunk/tests/e2e/utils/wp-cli.js"
+        ]
+    },
+    {
         "id": 65273,
         "author": "oandregal",
         "message": "Editor: Show the placeholder of empty excerpt, description, and author fields.\n\nTurns on the panel layout's `showPlaceholderIfEmpty` option in `view-config.php` for the fields that render nothing when empty, so their row in the editor's summary panel shows the field's placeholder instead of only its label, which gave users no hint the row could be edited until they hovered it:\n\n- `excerpt`, in the default post type form and in the `wp_block` form.\n- `description`, in the `wp_template` form.\n- `author`, in the default post type form and in the `attachment` form, for a post or media item without a known author, as the post summary did before it moved to the form.\n\nDataViews lists are not affected, since the placeholder only shows in the panel summary.\n\nBackports the changes from https://github.com/WordPress/gutenberg/pull/85842.\n\nProps oandregal, jorgefilipecosta, 0mirka00.\nFixes #65981.\n",
