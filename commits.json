@@ -1,5 +1,15 @@
 [
     {
+        "id": 65320,
+        "author": "lancewillett",
+        "message": "Tests: Run the cURL transport tests without live external HTTP.\n\nFollow-up to [34639], [64733], [65084].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15488\n\nProps shailu25.\nSee #63914.\n",
+        "date": "2026-11-06T20:43:25.824200Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/http/base.php",
+            "/trunk/tests/phpunit/tests/http/curl.php"
+        ]
+    },
+    {
         "id": 65319,
         "author": "desrosj",
         "message": "Upload: Accept both valid MIME types reported for TrueType fonts.\n\nThe MIME type reported by libmagic for TrueType font files (`.ttf`) changed in version 5.47 from the abstract `font/sfnt` type to `font/ttf`, which `font/sfnt` is conceptually derived from.\n\nThe version of libmagic bundled by default in PHP 8.6 will include this change. However, PHP builds that use the system libmagic can report either type, regardless of the PHP version being used. Because `WP_Font_Utils::get_allowed_font_mime_types()` currently only expects and allows `font/sfnt`, uploading `.ttf` files to the Font Library will fail with a `rest_font_upload_invalid_file_type` error.\n\nThis adds TrueType fonts to the list of known alternate MIME types for `.ttf` files, allowing both `font/ttf` and `font/sfnt` to be considered valid and accepted. Files of other formats with a `.ttf` extension are still rejected. `WP_Font_Utils::get_allowed_font_mime_types()` will also now return `font/ttf` for TrueType fonts regardless of PHP or libmagic version.\n\nWhile this ensures that both possible MIME types are considered valid, there is still a separate regression in PHP 8.6 that causes TrueType fonts to be detected as `application/octet-stream` instead of `font/ttf`. The issue has been addressed in libmagic, but the fix not been merged into the 8.6 release. Because this is a known upstream regression being tracked, the 2 relevant test methods will skip `.ttf` file-related tests when `application/octet-stream` is returned as the type for a `.ttf` file.\n\nFollow-up to [57539].\n\nProps dhrupo, desrosj.\nFixes #66419.\n",
