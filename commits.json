@@ -1,5 +1,69 @@
 [
     {
+        "id": 65319,
+        "author": "desrosj",
+        "message": "Upload: Accept both valid MIME types reported for TrueType fonts.\n\nThe MIME type reported by libmagic for TrueType font files (`.ttf`) changed in version 5.47 from the abstract `font/sfnt` type to `font/ttf`, which `font/sfnt` is conceptually derived from.\n\nThe version of libmagic bundled by default in PHP 8.6 will include this change. However, PHP builds that use the system libmagic can report either type, regardless of the PHP version being used. Because `WP_Font_Utils::get_allowed_font_mime_types()` currently only expects and allows `font/sfnt`, uploading `.ttf` files to the Font Library will fail with a `rest_font_upload_invalid_file_type` error.\n\nThis adds TrueType fonts to the list of known alternate MIME types for `.ttf` files, allowing both `font/ttf` and `font/sfnt` to be considered valid and accepted. Files of other formats with a `.ttf` extension are still rejected. `WP_Font_Utils::get_allowed_font_mime_types()` will also now return `font/ttf` for TrueType fonts regardless of PHP or libmagic version.\n\nWhile this ensures that both possible MIME types are considered valid, there is still a separate regression in PHP 8.6 that causes TrueType fonts to be detected as `application/octet-stream` instead of `font/ttf`. The issue has been addressed in libmagic, but the fix not been merged into the 8.6 release. Because this is a known upstream regression being tracked, the 2 relevant test methods will skip `.ttf` file-related tests when `application/octet-stream` is returned as the type for a `.ttf` file.\n\nFollow-up to [57539].\n\nProps dhrupo, desrosj.\nFixes #66419.\n",
+        "date": "2026-11-06T19:52:56.722917Z",
+        "files": [
+            "/trunk/src/wp-includes/fonts/class-wp-font-utils.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpRestFontFacesController.php",
+            "/trunk/tests/phpunit/tests/functions.php"
+        ]
+    },
+    {
+        "id": 65318,
+        "author": "westonruter",
+        "message": "Code Quality: Define array shapes for block selectors and viewports.\n\nThe `WP_Block_Type::$selectors` property was documented only as an `array`, so PHPStan saw every selector read from it as `mixed`. Its shape now follows the `selectors` schema in `block.json`: an optional `root` selector string, plus the selectors for each block support feature, each either a string or an array of selectors keyed by subfeature. The shape stays open to other keys, since core blocks also use `states` and `filter`, and third-party blocks can add their own. It is applied wherever the selectors pass through `WP_Theme_JSON` and the block state styles.\n\nSimilarly, `WP_Theme_JSON::get_viewport_media_queries()` only ever returns the `@mobile`, `@tablet`, and `@desktop` keys, each holding a media query string, so its return value is now documented with that shape. Callers such as the Navigation block, which passes each query to `wp_style_engine_get_stylesheet_from_css_rules()` as the `rules_group`, no longer see them as `mixed`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15644.\nFollow-up to r55673, r56058, r62453, r62671, r64727.\n\nSee #65817.\n",
+        "date": "2026-11-06T19:45:26.486921Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/states.php",
+            "/trunk/src/wp-includes/class-wp-block-type.php",
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
+        "id": 65317,
+        "author": "SergeyBiryukov",
+        "message": "Code Modernization: Simplify `isset()` guards that initialize empty arrays.\n\nCovering one recognizable idiom: initializing a container to an empty array before writing into it.\n\n{{{#!diff\n-if ( ! isset( $widget_options[ $widget_id ] ) ) {\n-\t$widget_options[ $widget_id ] = array();\n-}\n+$widget_options[ $widget_id ] ??= array();\n}}}\n\nEvery one of the 54 changed guards is an `isset()` check whose entire body is a single `= array();` assignment to the tested expression. Each one is handled by one of four rules, so no case needs individual judgement:\n\n1. **Convert** the guard to `??=` (35 places).\n2. **Collapse** nested guard chains to the deepest key, since `??=` autovivifies missing parent arrays (`add_meta_box()`, `remove_meta_box()`):\n   {{{#!php\n   $wp_meta_boxes[ $page ][ $context ] ??= array();\n   }}}\n3. **Remove** the guard where the next statement writes into the same array or property anyway, since that write creates it (9 places):\n   {{{#!diff\n   -if ( ! isset( $object_terms[ $id ] ) ) {\n   -\t$object_terms[ $id ] = array();\n   -}\n    $object_terms[ $id ][ $taxonomy ] = array();\n   }}}\n4. **Inline** the default where the next statement reassigns the same expression from an `array_merge()` call (3 places):\n   {{{#!php\n   $this->headers[ $key ] = array_merge( $this->headers[ $key ] ?? array(), $value );\n   }}}\n\n**Why this is safe**\n\n- `??=` requires PHP 7.4, which is already the minimum supported version.\n- `??=`, `??` and `! isset()` test the same condition, so the default is used in exactly the same cases.\n- Only blocks whose body is a single assignment were changed. Any guard containing further statements was skipped, since `??=` would let those statements run unconditionally.\n- Removed guards are only those directly followed by a write into the same array, or into a property of a `stdClass` object, where PHP creates the missing container the same way.\n- No behavior change.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12912.\n\nProps Soean, mukesh27, westonruter.\nSee #65823.",
+        "date": "2026-11-06T19:34:18.996211Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/dashboard.php",
+            "/trunk/src/wp-admin/includes/nav-menu.php",
+            "/trunk/src/wp-admin/includes/post.php",
+            "/trunk/src/wp-admin/includes/template.php",
+            "/trunk/src/wp-admin/includes/widgets.php",
+            "/trunk/src/wp-includes/block-supports/anchor.php",
+            "/trunk/src/wp-includes/block-template-utils.php",
+            "/trunk/src/wp-includes/blocks.php",
+            "/trunk/src/wp-includes/capabilities.php",
+            "/trunk/src/wp-includes/class-wp-block-styles-registry.php",
+            "/trunk/src/wp-includes/class-wp-customize-manager.php",
+            "/trunk/src/wp-includes/class-wp-customize-nav-menus.php",
+            "/trunk/src/wp-includes/class-wp-customize-setting.php",
+            "/trunk/src/wp-includes/class-wp-customize-widgets.php",
+            "/trunk/src/wp-includes/class-wp-duotone.php",
+            "/trunk/src/wp-includes/class-wp-speculation-rules.php",
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/src/wp-includes/class-wp-theme.php",
+            "/trunk/src/wp-includes/class-wp-token-map.php",
+            "/trunk/src/wp-includes/customize/class-wp-customize-nav-menu-item-setting.php",
+            "/trunk/src/wp-includes/customize/class-wp-customize-nav-menu-setting.php",
+            "/trunk/src/wp-includes/customize/class-wp-widget-form-customize-control.php",
+            "/trunk/src/wp-includes/general-template.php",
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/trunk/src/wp-includes/l10n/class-wp-translation-controller.php",
+            "/trunk/src/wp-includes/meta.php",
+            "/trunk/src/wp-includes/plugin.php",
+            "/trunk/src/wp-includes/rest-api/class-wp-rest-request.php",
+            "/trunk/src/wp-includes/rest-api/class-wp-rest-server.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php",
+            "/trunk/src/wp-includes/taxonomy.php"
+        ]
+    },
+    {
         "id": 65316,
         "author": "desrosj",
         "message": "Build/Test Tools: Remove `WP_BASE_URL` from `.env.example`.\n\n`WP_BASE_URL` was added to `.env.example` in r45783 so the browser tests would use the same port as the local Docker environment. Wrapper scripts loaded `.env` with `dotenv` and `dotenv-expand`, which filled in `${LOCAL_PORT}`, before running the tests.\n\nSince the browser tests moved to Playwright in [56926], those wrappers no longer exist and nothing on the test side reads `.env`. The Playwright configuration uses `WP_BASE_URL` only from the shell environment and falls back to `http://localhost:8889`. The value in `.env.example` has had no effect since then, and suggests that changing `LOCAL_PORT` also changes the URL the tests use, which is no longer true.\n\nTo run the tests against a different URL, `WP_BASE_URL` must be set when running them, as documented in `tests/e2e/README.md`.\n\nSee #65819.\n",
