@@ -1,5 +1,17 @@
 [
     {
+        "id": 65309,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed. \"And another one gone, and another one gone.\"\n\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-06T14:10:40.592190Z",
+        "files": [
+            "/trunk/package-lock.json",
+            "/trunk/package.json",
+            "/trunk/tests/gutenberg/.wp-env.sample.json",
+            "/trunk/tests/gutenberg/run.js"
+        ]
+    },
+    {
         "id": 65308,
         "author": "gziolo",
         "message": "Abilities API: Require a registered category for abilities\n\nPartially reverts [63343]. Abilities that omit a category are no longer assigned to the built-in `uncategorized` category, which is removed. Registration fails with a `_doing_it_wrong()` notice instead. Updates the docs to explain why categories are required and how to reuse existing ones.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15462.\n\nProps gziolo, jason_the_adams, jorgefilipecosta.\nFixes #65569.\n\n\n\n",
