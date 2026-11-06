@@ -1,5 +1,25 @@
 [
     {
+        "id": 65325,
+        "author": "joedolson",
+        "message": "Toolbar: A11y: Add skip link to bypass the toolbar.\n\nWhen the admin bar is rendered in the footer, a link is added to skip to the toolbar. However, if it is rendered at `wp_body_open`, it injects significant repeated content at the beginning of the page with no bypass mechanism.\n\nAdd a skip link that targets a point after the end of the admin bar when it is rendered during `wp_body_open`, allowing users to bypass the navigation, supporting WCAG 2.4.1: Bypass Blocks.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14410.\n\nProps travisjeans, rishabhwp, ravi patel, joedolson.\nFixes #66331.",
+        "date": "2026-11-06T22:57:07.407290Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-admin-bar.php",
+            "/trunk/tests/phpunit/tests/adminbar.php"
+        ]
+    },
+    {
+        "id": 65324,
+        "author": "joedolson",
+        "message": "Administration: Restore hover styles on adminbar for color schemes.\n\nThe Blue, Coffee, Ectoplasm, Midnight, Ocean, and Sunrise color schemes lost their hover states following [65208]. The removal of the background change was fine in schemes where other colors were changed on hover, but not all schemes contain these changes.\n\nApply color change to the parent `li` on `:hover` so all schemes have a visible `:hover` state in the adminbar.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15466.\n\nProps fushar, joen, rishabhwp, joedolson.\nFixes #66463.",
+        "date": "2026-11-06T22:33:21.649908Z",
+        "files": [
+            "/trunk/src/wp-admin/css/colors/_admin.scss",
+            "/trunk/src/wp-includes/css/admin-bar.css"
+        ]
+    },
+    {
         "id": 65323,
         "author": "lancewillett",
         "message": "Tests: Cover posting a comment from the front end.\n\nPost a comment through the comment form on a published post. Check that the comment is saved and approved, and that it appears in the Comments screen.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15729\n\nProps shailu25.\nSee #52895.\n",
