@@ -1,5 +1,28 @@
 [
     {
+        "id": 65314,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Use `spl_object_id()` in `_test_filter_build_unique_id()`.\n\n`spl_object_hash()` has been deprecated in PHP 8.6. `tests_add_filter()` uses this helper to build callback IDs before WordPress is loaded. A deprecation notice is triggered for plugin and theme test suites that register a closure or an object method during bootstrap.\n\nThe helper now builds the same IDs as `_wp_filter_build_unique_id()`, which switched to `spl_object_id()` in r62408 and began prefixing object IDs in r63334. The callbacks that run do not change because `WP_Hook::build_preinitialized_hooks()` re-adds every pre-loaded callback with `add_filter()`.\n\nA new test is included to confirm that both functions return the same ID for each type of callback.\n\nFollow-up to r62408, r63334.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15625.\n\nProps dhrupo.\nFixes #66512.\n",
+        "date": "2026-11-06T18:10:35.306569Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/functions.php",
+            "/trunk/tests/phpunit/tests/includes/functions.php"
+        ]
+    },
+    {
+        "id": 65313,
+        "author": "lancewillett",
+        "message": "Tests: Make template, theme and other data providers public and static.\n\nUpdate the template, theme, view configuration, Ajax time format and PHPUnit group filter test providers for newer PHPUnit versions. Two providers used `$this`: the late-printed styles provider now uses static closures with `self::assert*()`, and the default themes list is now a static property.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15730, https://github.com/WordPress/wordpress-develop/pull/15731, https://github.com/WordPress/wordpress-develop/pull/15732, https://github.com/WordPress/wordpress-develop/pull/15733, https://github.com/WordPress/wordpress-develop/pull/15734, https://github.com/WordPress/wordpress-develop/pull/15442, https://github.com/WordPress/wordpress-develop/pull/15438\n\nProps fozlerabbi48, devmuhib.\nSee #66211.\n",
+        "date": "2026-11-06T17:12:06.816654Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/wpAjaxTimeFormat.php",
+            "/trunk/tests/phpunit/tests/phpunit/groupFilters.php",
+            "/trunk/tests/phpunit/tests/template.php",
+            "/trunk/tests/phpunit/tests/theme.php",
+            "/trunk/tests/phpunit/tests/view-config.php"
+        ]
+    },
+    {
         "id": 65312,
         "author": "lancewillett",
         "message": "Build/Test Tools: Replace E2E site state hooks with fixtures.\n\nFour E2E specs each had their own hooks to put settings, options and must-use plugins back after a test. Three shared fixtures in `tests/e2e/fixtures/site.js` now restore that state in teardown, also when a test fails. If a restore fails, the test fails.\n\n`siteSettings` changes settings through REST, `siteOptions` changes options through WP-CLI, and `muPlugin` writes a must-use plugin and deletes it after the test. The settings and options fixtures restore only the keys a test changes.\n\nThe E2E README has a new Fixtures section.\n\nFollow-up to [56949], [58068], [58430], [64409], [64584], [65274].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15709\n\nProps adrianmoldovanwp.\nSee #66455.\n",
