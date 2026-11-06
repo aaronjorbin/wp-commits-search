@@ -1,5 +1,39 @@
 [
     {
+        "id": 65312,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Replace E2E site state hooks with fixtures.\n\nFour E2E specs each had their own hooks to put settings, options and must-use plugins back after a test. Three shared fixtures in `tests/e2e/fixtures/site.js` now restore that state in teardown, also when a test fails. If a restore fails, the test fails.\n\n`siteSettings` changes settings through REST, `siteOptions` changes options through WP-CLI, and `muPlugin` writes a must-use plugin and deletes it after the test. The settings and options fixtures restore only the keys a test changes.\n\nThe E2E README has a new Fixtures section.\n\nFollow-up to [56949], [58068], [58430], [64409], [64584], [65274].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15709\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-06T16:57:57.926846Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/fixtures/index.js",
+            "/trunk/tests/e2e/fixtures/site.js",
+            "/trunk/tests/e2e/specs/fatal-error-handler.test.js",
+            "/trunk/tests/e2e/specs/general-settings-invalid-timezone.test.js",
+            "/trunk/tests/e2e/specs/login-localize-script.test.js",
+            "/trunk/tests/e2e/specs/privacy.test.js"
+        ]
+    },
+    {
+        "id": 65311,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Wait for maintenance mode to end in E2E tests.\n\nThe maintenance mode spec deletes the `.maintenance` file from the host. With a Docker file share on macOS, the file can still show as present for about a second. In that time, `file_exists()` passes in `wp_is_maintenance_mode()`, the `require` fails, and the first tests of the next spec fail.\n\nThe spec now waits until the home page loads without that error before it ends. It fails if the site does not recover within 10 seconds.\n\nFollow-up to [58430].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15727\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-06T16:56:53.725298Z",
+        "files": [
+            "/trunk/tests/e2e/specs/maintenance-mode.test.js"
+        ]
+    },
+    {
+        "id": 65310,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Raise the maximum PHP version for PHPStan.\n\nThe `tests/phpstan/base.neon` file currently defines `80500` for `phpVersion.max`. Since WordPress 7.2 aims to be compatible with PHP 8.6 due out later this month, this is now set to `80600`.\n\nThis also updates the `phpstan/phpstan` dependency's pinned version from `2.3.4` to `2.3.5`.\n\nSee #65817.\n",
+        "date": "2026-11-06T16:09:55.523216Z",
+        "files": [
+            "/trunk/composer.json",
+            "/trunk/tests/phpstan/base.neon"
+        ]
+    },
+    {
         "id": 65309,
         "author": "desrosj",
         "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed. \"And another one gone, and another one gone.\"\n\nSee #65845, #50469, #59407.\n",
