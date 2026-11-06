@@ -1,5 +1,96 @@
 [
     {
+        "id": 65300,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove the welcome message workflow from 6.3.\n\nThe `welcome-new-contributors.yml` workflow file was removed in r57124 when the logic was moved into a new workflow file $\n\nThe third-parrt action will also begin to fail as soon as GitHub removes Node.js 20.x from GitHub Actions runners. It's a$\n\nThis removes the workflow as it's unnecessary in the 6.3 branch.\n\nFollow up to r57124.\n\nSee #65845, #59416.\n",
+        "date": "2026-11-06T02:12:06.785210Z",
+        "files": [
+            "/branches/6.3/.github/workflows/welcome-new-contributors.yml"
+        ]
+    },
+    {
+        "id": 65299,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove the welcome message workflow from 6.4.\n\nThe `welcome-new-contributors.yml` workflow file was removed in r57124 when the logic was moved into a new workflow file that managed all pull request comments. This workflow file remained in some older branches and has continued to work, however the third-party action being used has been abandoned.\n\nThe third-parrt action will also begin to fail as soon as GitHub removes Node.js 20.x from GitHub Actions runners. It's also quite rare that a contributor's first pull request is opened against a `BASE` branch that is not `trunk`.\n\nThis removes the workflow as it's unnecessary in the 6.4 branch.\n\nFollow up to r57124.\n\nSee #65845, #59416.\n",
+        "date": "2026-11-06T02:10:23.580159Z",
+        "files": [
+            "/branches/6.4/.github/workflows/welcome-new-contributors.yml"
+        ]
+    },
+    {
+        "id": 65298,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Stop committing changes to tracked files in pull requests.\n\nThis workflow has not proven to be as useful as originally hoped, so it's being removed to reduce maintenance burden. All workflows that run the build script already fail if they result in untracked changes.\n\nMerges r63315 to the 6.8 branch.\n\nSee #65845.\n",
+        "date": "2026-11-06T01:57:13.162238Z",
+        "files": [
+            "/branches/6.8",
+            "/branches/6.8/.github/workflows/check-built-files.yml"
+        ]
+    },
+    {
+        "id": 65297,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Stop committing changes to tracked files in pull requests.\n\nThis workflow has not proven to be as useful as originally hoped, so it's being removed to reduce maintenance burden. All workflows that run the build script already fail if they result in untracked changes.\n\nMerges r63315 to the 6.9 branch.\n\nSee #65845.\n",
+        "date": "2026-11-06T01:55:45.639278Z",
+        "files": [
+            "/branches/6.9",
+            "/branches/6.9/.github/workflows/check-built-files.yml"
+        ]
+    },
+    {
+        "id": 65296,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Stop committing changes to tracked files in pull requests.\n\nThis workflow has not proven to be as useful as originally hoped, so it's being removed to reduce maintenance burden. All workflows that run the build script already fail if they result in untracked changes.\n\nMerges r63315 to the 7.0 branch.\n\nSee #65845.\n",
+        "date": "2026-11-06T01:54:45.507715Z",
+        "files": [
+            "/branches/7.0",
+            "/branches/7.0/.github/workflows/check-built-files.yml"
+        ]
+    },
+    {
+        "id": 65295,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Stop committing changes to tracked files in pull requests.\n\nThis workflow has not proven to be as useful as originally hoped, so it's being removed to reduce maintenance burden. All workflows that run the build script already fail if they result in untracked changes.\n\nMerges r63315 to the 7.1 branch.\n\nSee #65845.\n",
+        "date": "2026-11-06T01:53:20.396491Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/.github/workflows/check-built-files.yml"
+        ]
+    },
+    {
+        "id": 65294,
+        "author": "desrosj",
+        "message": "Media: Report failed image writes to streams.\n\nWhen saving an image to a stream, `WP_Image_Editor::make_image()` currently ignores the return values of `fwrite()` and `fclose()`. A save that failed to write the image still reported success. `WP_Image_Editor_GD` uses this path for all stream destinations.\n\nThe buffered image is now written with `file_put_contents()`, and `make_image()` returns `false` when that fails. This happens when the stream cannot be opened or the image is only partially written. As of PHP 8.6, it also happens when flushing or closing the stream fails. For stream wrappers that only send data on flush or close, a failed upload was previously reported as a successful save.\n\nStreams are now written the same way as in `WP_Image_Editor_Imagick::write_image()`, so both editors report the same failures.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15477.\n\nProps adamsilverstein.\nFixes #66486.\n\n",
+        "date": "2026-11-06T01:47:51.386223Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-image-editor.php",
+            "/trunk/tests/phpunit/tests/image/editorGd.php"
+        ]
+    },
+    {
+        "id": 65293,
+        "author": "peterwilsoncc",
+        "message": "Administration: Remove unnoticeable notice from RSS dashboard Widget.\n\nRemove notice that the RSS portion of the \"WordPress Events and News\" dashboard widget requires JavaScript. The container in which the notice is displayed is hidden if JavaScript is unavailable so the notice is never visible to user.\n\nThe widget level notice \"The WordPress Events and News feeds require JavaScript\" is unchanged as that is displayed to users when JavaScript is turned off in the browser.\n\nProps rishabhwp, joedolson, afercia.\nFixes #66296.\n\n\n",
+        "date": "2026-11-06T01:24:44.213591Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/dashboard.php"
+        ]
+    },
+    {
+        "id": 65292,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Use the PCOV extension included in local Docker images.\n\nPCOV is now preinstalled in the `wordpressdevelop` local  Docker images for PHP 7.4 and higher.\n\nInstead of installing PCOV during each GitHub Actions run that generates a code coverage report, it is now turned on with a new `LOCAL_PHP_PCOV` environment variable.\n\nPCOV is not interoperable with Xdebug. When both are enabled, Xdebug is used and PCOV is turned off. Generating an HTML coverage report still turns on Xdebug automatically, unless PCOV is enabled and Xdebug is not.\n\nFollow-up to r62409.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/11949.\n\nProps lancewillett, johnbillion.\nSee #65845, #64893.\n",
+        "date": "2026-11-06T01:23:05.413705Z",
+        "files": [
+            "/trunk/.env.example",
+            "/trunk/.github/workflows/reusable-phpunit-tests-v3.yml",
+            "/trunk/README.md",
+            "/trunk/docker-compose.yml",
+            "/trunk/tools/local-env/php-config.ini",
+            "/trunk/tools/local-env/scripts/docker.js"
+        ]
+    },
+    {
         "id": 65291,
         "author": "lancewillett",
         "message": "Tests: Add a test for `wp_ajax_logged_in()`.\n\nCheck that the handler responds with `1` for a logged-in user.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11836\n\nProps pbearne.\nFixes #65242.\n",
