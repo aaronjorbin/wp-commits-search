@@ -1,5 +1,14 @@
 [
     {
+        "id": 65307,
+        "author": "gziolo",
+        "message": "Tests: Extend coverage for core abilities\n\nCover `core/get-site-info` permissions, the categories and annotations of the core information abilities, and the roles returned by `core/get-user-info`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15528.\n\nProps hmbashar, gziolo.\nFixes #66493.\n\n\n",
+        "date": "2026-11-06T12:57:48.012309Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreAbilities.php"
+        ]
+    },
+    {
         "id": 65306,
         "author": "gziolo",
         "message": "Abilities API: Document input preparation for direct permission checks\n\n`WP_Ability::check_permissions()` does not prepare the input. Callers outside of `WP_Ability::execute()` must run `normalize_input()`, `validate_input()`, and `coerce_input()` first, or the permission callback may get different input than during `execute()`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15514.\n\nProps euvoor, gziolo, zaguiini, jorbin.\nSee #66482.\n\n\n",
