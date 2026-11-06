@@ -1,5 +1,56 @@
 [
     {
+        "id": 65305,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove the welcome message workflow from 5.9.\n\nThe `welcome-new-contributors.yml` workflow file was removed in r57124 when the logic was moved into a new workflow file $\n\nThe third-party action will also begin to fail as soon as GitHub removes Node.js 20.x from GitHub Actions runners. It's a$\n\nThis removes the workflow as it's unnecessary in the 5.9 branch.\n\nFollow up to r57124.\n\nSee #65845, #59416.\n",
+        "date": "2026-11-06T02:18:53.675294Z",
+        "files": [
+            "/branches/5.9/.github/workflows/welcome-new-contributors.yml"
+        ]
+    },
+    {
+        "id": 65304,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove the welcome message workflow from 6.0.\n\nThe `welcome-new-contributors.yml` workflow file was removed in r57124 when the logic was moved into a new workflow file $\n\nThe third-party action will also begin to fail as soon as GitHub removes Node.js 20.x from GitHub Actions runners. It's a$\n\nThis removes the workflow as it's unnecessary in the 6.0 branch.\n\nFollow up to r57124.\n\nSee #65845, #59416.\n",
+        "date": "2026-11-06T02:17:54.846993Z",
+        "files": [
+            "/branches/6.0/.github/workflows/welcome-new-contributors.yml"
+        ]
+    },
+    {
+        "id": 65303,
+        "author": "peterwilsoncc",
+        "message": "General: Replace `is_a()` conditions with `instanceOf` for PHP 8.6 compat.\n\nPHP 8.6 deprecates passing class names as strings to `is_a()`, for example `is_a( $post, 'WP_Post' )`. This replaces the pattern with their equivalent `instanceof` conditions within the adopted IXR and Text packages.\n\nIntroduces tests to cover the code paths to demonstrate the tests fail in PHP 8.6.\n\nProps dhrupo, westonruter.\nFixes #66418.\n\n\n",
+        "date": "2026-11-06T02:16:03.840663Z",
+        "files": [
+            "/trunk/src/wp-includes/IXR/class-IXR-introspectionserver.php",
+            "/trunk/src/wp-includes/IXR/class-IXR-server.php",
+            "/trunk/src/wp-includes/IXR/class-IXR-value.php",
+            "/trunk/src/wp-includes/Text/Diff/Renderer.php",
+            "/trunk/src/wp-includes/Text/Diff.php",
+            "/trunk/tests/phpunit/tests/diff/textDiff.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/basic.php"
+        ]
+    },
+    {
+        "id": 65302,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove the welcome message workflow from 6.2.\n\nThe `welcome-new-contributors.yml` workflow file was removed in r57124 when the logic was moved into a new workflow file $\n\nThe third-parrt action will also begin to fail as soon as GitHub removes Node.js 20.x from GitHub Actions runners. It's a$\n\nThis removes the workflow as it's unnecessary in the 6.2 branch.\n\nFollow up to r57124.\n\nSee #65845, #59416.\n",
+        "date": "2026-11-06T02:14:35.458160Z",
+        "files": [
+            "/branches/6.1/.github/workflows/welcome-new-contributors.yml"
+        ]
+    },
+    {
+        "id": 65301,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove the welcome message workflow from 6.2.\n\nThe `welcome-new-contributors.yml` workflow file was removed in r57124 when the logic was moved into a new workflow file $\n\nThe third-parrt action will also begin to fail as soon as GitHub removes Node.js 20.x from GitHub Actions runners. It's a$\n\nThis removes the workflow as it's unnecessary in the 6.2 branch.\n\nFollow up to r57124.\n\nSee #65845, #59416.\n",
+        "date": "2026-11-06T02:13:32.737161Z",
+        "files": [
+            "/branches/6.2/.github/workflows/welcome-new-contributors.yml"
+        ]
+    },
+    {
         "id": 65300,
         "author": "desrosj",
         "message": "Build/Test Tools: Remove the welcome message workflow from 6.3.\n\nThe `welcome-new-contributors.yml` workflow file was removed in r57124 when the logic was moved into a new workflow file $\n\nThe third-parrt action will also begin to fail as soon as GitHub removes Node.js 20.x from GitHub Actions runners. It's a$\n\nThis removes the workflow as it's unnecessary in the 6.3 branch.\n\nFollow up to r57124.\n\nSee #65845, #59416.\n",
