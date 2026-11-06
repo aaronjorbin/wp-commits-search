@@ -1,5 +1,15 @@
 [
     {
+        "id": 65306,
+        "author": "gziolo",
+        "message": "Abilities API: Document input preparation for direct permission checks\n\n`WP_Ability::check_permissions()` does not prepare the input. Callers outside of `WP_Ability::execute()` must run `normalize_input()`, `validate_input()`, and `coerce_input()` first, or the permission callback may get different input than during `execute()`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15514.\n\nProps euvoor, gziolo, zaguiini, jorbin.\nSee #66482.\n\n\n",
+        "date": "2026-11-06T08:36:45.917447Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities-api/class-wp-ability.php",
+            "/trunk/src/wp-includes/abilities-api.php"
+        ]
+    },
+    {
         "id": 65305,
         "author": "desrosj",
         "message": "Build/Test Tools: Remove the welcome message workflow from 5.9.\n\nThe `welcome-new-contributors.yml` workflow file was removed in r57124 when the logic was moved into a new workflow file $\n\nThe third-party action will also begin to fail as soon as GitHub removes Node.js 20.x from GitHub Actions runners. It's a$\n\nThis removes the workflow as it's unnecessary in the 5.9 branch.\n\nFollow up to r57124.\n\nSee #65845, #59416.\n",
