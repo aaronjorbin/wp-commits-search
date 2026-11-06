@@ -1,5 +1,32 @@
 [
     {
+        "id": 65323,
+        "author": "lancewillett",
+        "message": "Tests: Cover posting a comment from the front end.\n\nPost a comment through the comment form on a published post. Check that the comment is saved and approved, and that it appears in the Comments screen.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15729\n\nProps shailu25.\nSee #52895.\n",
+        "date": "2026-11-06T21:34:46.219539Z",
+        "files": [
+            "/trunk/tests/e2e/specs/comments.test.js"
+        ]
+    },
+    {
+        "id": 65322,
+        "author": "lancewillett",
+        "message": "Tests: Cover Media Library search.\n\nSearch the list view for an uploaded image and check that its row is shown. Search for a missing title and check for the empty result, with another upload present so the test fails if search is ignored.\n\nFollow-up to [64737].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15722\n\nProps shailu25.\nSee #52895.\n",
+        "date": "2026-11-06T21:33:59.157807Z",
+        "files": [
+            "/trunk/tests/e2e/specs/media-library.test.js"
+        ]
+    },
+    {
+        "id": 65321,
+        "author": "lancewillett",
+        "message": "Tests: Use a distinct slug in the taxonomy E2E test.\n\nThe \"adds a term\" test gave the new term the same name and slug, so its Slug column check passed even if the column showed the name, or if the slug field were ignored. The test now enters a different slug and checks that the Slug column shows it.\n\nFollow-up to [64738], [65275].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15516\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-06T21:33:13.343049Z",
+        "files": [
+            "/trunk/tests/e2e/specs/taxonomies.test.js"
+        ]
+    },
+    {
         "id": 65320,
         "author": "lancewillett",
         "message": "Tests: Run the cURL transport tests without live external HTTP.\n\nFollow-up to [34639], [64733], [65084].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15488\n\nProps shailu25.\nSee #63914.\n",
