@@ -1,5 +1,167 @@
 [
     {
+        "id": 65291,
+        "author": "lancewillett",
+        "message": "Tests: Add a test for `wp_ajax_logged_in()`.\n\nCheck that the handler responds with `1` for a logged-in user.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11836\n\nProps pbearne.\nFixes #65242.\n",
+        "date": "2026-11-05T23:59:27.970310Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/wpAjaxLoggedIn.php"
+        ]
+    },
+    {
+        "id": 65290,
+        "author": "lancewillett",
+        "message": "Tests: Add tests for `wp_ajax_time_format()`.\n\nCover the admin AJAX handler that previews a time format. The tests check that it formats the submitted format with `date_i18n()`, strips markup with `sanitize_option()`, and responds to any logged-in user.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/11814\n\nProps pbearne.\nFixes #65228.\n",
+        "date": "2026-11-05T23:57:22.975680Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/wpAjaxTimeFormat.php"
+        ]
+    },
+    {
+        "id": 65289,
+        "author": "lancewillett",
+        "message": "Tests: Remove redundant per-test cleanup in canonical post-status tests.\n\n`Tests_Canonical_PostStatus` registers custom post types and a non-built-in status in its own `set_up()`. The inherited reset removes these registrations before the next test, so the per-test unregister override repeated that work. Remove it, and keep the class-level `wpTearDownAfterClass()` cleanup.\n\nFollow-up to [64851].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15192\n\nProps peterwilsoncc.\nSee #65893.\n",
+        "date": "2026-11-05T23:41:53.480595Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/canonical/postStatus.php"
+        ]
+    },
+    {
+        "id": 65288,
+        "author": "lancewillett",
+        "message": "Tests: Keep the test taxonomy available during term-parent fixture deletion.\n\n`Tests_Terms_GetTermsParentsList` unregistered `wptests_tax` after each test, so the class teardown's `wp_delete_term()` calls ran after the taxonomy was gone and returned `false`. Remove the per-test unregister. The class teardown still unregisters the taxonomy after deleting both terms.\n\nFollow-up to [65014].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15193\n\nProps peterwilsoncc.\nSee #65893.\n",
+        "date": "2026-11-05T23:40:54.280624Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term/getTermParentsList.php"
+        ]
+    },
+    {
+        "id": 65287,
+        "author": "lancewillett",
+        "message": "Tests: Remove redundant registration cleanup from presentation tests.\n\n`WP_UnitTestCase_Base::set_up()` resets post types, taxonomies, and non-built-in post statuses before each test. Per-test unregister calls added to these link, feed, sitemap, oEmbed, Customizer, and widget tests repeated that reset, so remove them.\n\nKeep scenario-specific unregister calls and the class-level callbacks in the canonical, feed link, and edit-term link tests.\n\nFollow-up to [64841], [64843], [64847], [64848], [64858], [64859], [64860], [64861], [64862], [64864], [65014], [65018], [65019], [65026].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15191\n\nProps peterwilsoncc.\nSee #65893.\n",
+        "date": "2026-11-05T23:39:26.888915Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/canonical.php",
+            "/trunk/tests/phpunit/tests/customize/nav-menu-item-setting.php",
+            "/trunk/tests/phpunit/tests/customize/nav-menus.php",
+            "/trunk/tests/phpunit/tests/functions/wpGetArchives.php",
+            "/trunk/tests/phpunit/tests/general/feedLinksExtra.php",
+            "/trunk/tests/phpunit/tests/general/wpGetDocumentTitle.php",
+            "/trunk/tests/phpunit/tests/includes/factory.php",
+            "/trunk/tests/phpunit/tests/link/editTermLink.php",
+            "/trunk/tests/phpunit/tests/link/getAdjacentPost.php",
+            "/trunk/tests/phpunit/tests/link/getEditTagLink.php",
+            "/trunk/tests/phpunit/tests/link/getEditTermLink.php",
+            "/trunk/tests/phpunit/tests/link/getPostTypeArchiveFeedLink.php",
+            "/trunk/tests/phpunit/tests/link/getPreviewPostLink.php",
+            "/trunk/tests/phpunit/tests/link/wpForcePlainPostPermalink.php",
+            "/trunk/tests/phpunit/tests/media/getAttachmentTaxonomies.php",
+            "/trunk/tests/phpunit/tests/menu/wpAjaxMenuQuickSearch.php",
+            "/trunk/tests/phpunit/tests/meta/registerMeta.php",
+            "/trunk/tests/phpunit/tests/oembed/discovery.php",
+            "/trunk/tests/phpunit/tests/oembed/getOembedResponseData.php",
+            "/trunk/tests/phpunit/tests/oembed/template.php",
+            "/trunk/tests/phpunit/tests/rewrite/randomRewriteRules.php",
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsPosts.php",
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsTaxonomies.php",
+            "/trunk/tests/phpunit/tests/sitemaps/wpSitemapsUsers.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetTagCloud.php"
+        ]
+    },
+    {
+        "id": 65286,
+        "author": "lancewillett",
+        "message": "Tests: Remove redundant registration cleanup from controller and admin tests.\n\n`WP_UnitTestCase_Base::set_up()` resets post types, taxonomies, and non-built-in post statuses before each test. Per-test unregister calls added to these REST API, XML-RPC, admin, AJAX, and core registration tests repeated that reset, so remove them.\n\nKeep scenario-specific unregister calls.\n\nFollow-up to [64848], [64849], [64850], [64852], [64853], [64854], [64855], [64857], [65019], [65020], [65024].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15190\n\nProps peterwilsoncc.\nSee #65893.\n",
+        "date": "2026-11-05T23:38:32.181919Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreUsersAbility.php",
+            "/trunk/tests/phpunit/tests/admin/exportWp.php",
+            "/trunk/tests/phpunit/tests/admin/includesPost.php",
+            "/trunk/tests/phpunit/tests/admin/includesScreen.php",
+            "/trunk/tests/phpunit/tests/admin/includesTemplate.php",
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxInlineSave.php",
+            "/trunk/tests/phpunit/tests/ajax/wpCustomizeNavMenus.php",
+            "/trunk/tests/phpunit/tests/entity-actions/registerCoreEntityActions.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpRegisterCoreFieldCollections.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-categories-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-post-types-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-tags-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-taxonomies-controller.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/editTerm.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/getPostType.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/getTerms.php"
+        ]
+    },
+    {
+        "id": 65285,
+        "author": "lancewillett",
+        "message": "Tests: Remove redundant registration cleanup from term and taxonomy tests.\n\n`WP_UnitTestCase_Base::set_up()` resets post types, taxonomies, and non-built-in post statuses before each test. Per-test unregister calls added to these term, category, and taxonomy tests repeated that reset, so remove them.\n\nAlso remove the class-level taxonomy cleanup in the `get_tag_link()` and `get_term_link()` tests. Keep scenario-specific unregister calls.\n\nFollow-up to [64844], [64845], [64846], [64856], [64862], [65014], [65015], [65016], [65017], [65018], [65019], [65020], [65024], [65025], [65026].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15188\n\nProps peterwilsoncc.\nSee #65893.\n",
+        "date": "2026-11-05T23:37:38.489821Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/category/catIsAncestorOf.php",
+            "/trunk/tests/phpunit/tests/category/categoryDescription.php",
+            "/trunk/tests/phpunit/tests/category/getCategoryLink.php",
+            "/trunk/tests/phpunit/tests/category/getTheCategoryById.php",
+            "/trunk/tests/phpunit/tests/category/wpListCategories.php",
+            "/trunk/tests/phpunit/tests/taxonomy/getObjectTaxonomies.php",
+            "/trunk/tests/phpunit/tests/taxonomy/isTaxonomyViewable.php",
+            "/trunk/tests/phpunit/tests/term/getTagLink.php",
+            "/trunk/tests/phpunit/tests/term/getTermBy.php",
+            "/trunk/tests/phpunit/tests/term/getTermField.php",
+            "/trunk/tests/phpunit/tests/term/getTermLink.php",
+            "/trunk/tests/phpunit/tests/term/getTheTerms.php",
+            "/trunk/tests/phpunit/tests/term/isObjectInTerm.php",
+            "/trunk/tests/phpunit/tests/term/meta.php",
+            "/trunk/tests/phpunit/tests/term/splitSharedTerm.php",
+            "/trunk/tests/phpunit/tests/term/termCounts.php",
+            "/trunk/tests/phpunit/tests/term/termDescription.php",
+            "/trunk/tests/phpunit/tests/term/wpDeleteObjectTermRelationships.php",
+            "/trunk/tests/phpunit/tests/term/wpDeleteTerm.php",
+            "/trunk/tests/phpunit/tests/term/wpGenerateTagCloud.php",
+            "/trunk/tests/phpunit/tests/term/wpGetObjectTerms.php",
+            "/trunk/tests/phpunit/tests/term/wpInsertTerm.php",
+            "/trunk/tests/phpunit/tests/term/wpRemoveObjectTerms.php",
+            "/trunk/tests/phpunit/tests/term/wpTerm.php",
+            "/trunk/tests/phpunit/tests/term/wpUniqueTermSlug.php",
+            "/trunk/tests/phpunit/tests/term/wpUpdateTerm.php"
+        ]
+    },
+    {
+        "id": 65284,
+        "author": "lancewillett",
+        "message": "Tests: Remove redundant registration cleanup from post and query tests.\n\n`WP_UnitTestCase_Base::set_up()` resets post types, taxonomies, and non-built-in post statuses before each test. Per-test unregister calls added to these post, query, comment, and user tests repeated that reset, so remove them.\n\nKeep scenario-specific unregister calls and the class-level callbacks in the query fields and post status tests.\n\nFollow-up to [64839], [64840], [64842], [64861], [64864], [64865], [64975], [65016], [65017], [65019], [65025], [65026].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15189\n\nProps peterwilsoncc.\nSee #65893.\n",
+        "date": "2026-11-05T23:35:32.108664Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/query.php",
+            "/trunk/tests/phpunit/tests/post/getBodyClass.php",
+            "/trunk/tests/phpunit/tests/post/getLastPostDate.php",
+            "/trunk/tests/phpunit/tests/post/getLastPostModified.php",
+            "/trunk/tests/phpunit/tests/post/getPageByPath.php",
+            "/trunk/tests/phpunit/tests/post/getPages.php",
+            "/trunk/tests/phpunit/tests/post/getPostClass.php",
+            "/trunk/tests/phpunit/tests/post/metaRevisions.php",
+            "/trunk/tests/phpunit/tests/post/nav-menu.php",
+            "/trunk/tests/phpunit/tests/post/randomablePostType.php",
+            "/trunk/tests/phpunit/tests/post/types.php",
+            "/trunk/tests/phpunit/tests/post/updateTermCountOnTransitionPostStatus.php",
+            "/trunk/tests/phpunit/tests/post/wpPublishPost.php",
+            "/trunk/tests/phpunit/tests/post.php",
+            "/trunk/tests/phpunit/tests/query/cacheResults.php",
+            "/trunk/tests/phpunit/tests/query/conditionals.php",
+            "/trunk/tests/phpunit/tests/query/fieldsClause.php",
+            "/trunk/tests/phpunit/tests/query/isTerm.php",
+            "/trunk/tests/phpunit/tests/query/lazyLoadTermMeta.php",
+            "/trunk/tests/phpunit/tests/query/postStatus.php",
+            "/trunk/tests/phpunit/tests/query/results.php",
+            "/trunk/tests/phpunit/tests/query/search.php",
+            "/trunk/tests/phpunit/tests/query/taxQuery.php",
+            "/trunk/tests/phpunit/tests/user/countUserPosts.php",
+            "/trunk/tests/phpunit/tests/user/query.php",
+            "/trunk/tests/phpunit/tests/user/queryCache.php",
+            "/trunk/tests/phpunit/tests/user/theAuthorPosts.php"
+        ]
+    },
+    {
         "id": 65283,
         "author": "SergeyBiryukov",
         "message": "Tests: Remove redundant `null` call in `get_the_content_feed()` coverage.\n\nThe no-argument call already passes the default `null` value, so the explicit `null` invocation in that method adds no distinct protection. Explicit `null` with a customized `default_feed` remains covered by `test_null_feed_type_uses_default_feed()`.\n\nFollow-up to r65198.\n\nProps shailu25, lancewillett.\nFixes #66475.",
