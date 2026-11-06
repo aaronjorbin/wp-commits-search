@@ -1,5 +1,25 @@
 [
     {
+        "id": 65316,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove `WP_BASE_URL` from `.env.example`.\n\n`WP_BASE_URL` was added to `.env.example` in r45783 so the browser tests would use the same port as the local Docker environment. Wrapper scripts loaded `.env` with `dotenv` and `dotenv-expand`, which filled in `${LOCAL_PORT}`, before running the tests.\n\nSince the browser tests moved to Playwright in [56926], those wrappers no longer exist and nothing on the test side reads `.env`. The Playwright configuration uses `WP_BASE_URL` only from the shell environment and falls back to `http://localhost:8889`. The value in `.env.example` has had no effect since then, and suggests that changing `LOCAL_PORT` also changes the URL the tests use, which is no longer true.\n\nTo run the tests against a different URL, `WP_BASE_URL` must be set when running them, as documented in `tests/e2e/README.md`.\n\nSee #65819.\n",
+        "date": "2026-11-06T19:00:57.034113Z",
+        "files": [
+            "/trunk/.env.example"
+        ]
+    },
+    {
+        "id": 65315,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove the unused `cssnano` dependency.\n\nThe changes in r61438 removed the final usage of the `stylesTransform()` helper in `tools/webpack/shared.js`, which is the only code using the `cssnano` dependency.\n\nThis removes the helper, its `postcss` import, and the now unnecessary `cssnano` dev dependency becomes just a drop of water in an endless see.\n\nThe output of `npm run build` is unchanged.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15735.\n\nProps desrosj.\nSee #65857.\n",
+        "date": "2026-11-06T18:21:43.678741Z",
+        "files": [
+            "/trunk/package-lock.json",
+            "/trunk/package.json",
+            "/trunk/tools/webpack/shared.js"
+        ]
+    },
+    {
         "id": 65314,
         "author": "desrosj",
         "message": "Build/Test Tools: Use `spl_object_id()` in `_test_filter_build_unique_id()`.\n\n`spl_object_hash()` has been deprecated in PHP 8.6. `tests_add_filter()` uses this helper to build callback IDs before WordPress is loaded. A deprecation notice is triggered for plugin and theme test suites that register a closure or an object method during bootstrap.\n\nThe helper now builds the same IDs as `_wp_filter_build_unique_id()`, which switched to `spl_object_id()` in r62408 and began prefixing object IDs in r63334. The callbacks that run do not change because `WP_Hook::build_preinitialized_hooks()` re-adds every pre-loaded callback with `add_filter()`.\n\nA new test is included to confirm that both functions return the same ID for each type of callback.\n\nFollow-up to r62408, r63334.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15625.\n\nProps dhrupo.\nFixes #66512.\n",
