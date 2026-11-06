@@ -1,5 +1,19 @@
 [
     {
+        "id": 65308,
+        "author": "gziolo",
+        "message": "Abilities API: Require a registered category for abilities\n\nPartially reverts [63343]. Abilities that omit a category are no longer assigned to the built-in `uncategorized` category, which is removed. Registration fails with a `_doing_it_wrong()` notice instead. Updates the docs to explain why categories are required and how to reuse existing ones.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15462.\n\nProps gziolo, jason_the_adams, jorgefilipecosta.\nFixes #65569.\n\n\n\n",
+        "date": "2026-11-06T13:09:43.765814Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities-api/class-wp-abilities-registry.php",
+            "/trunk/src/wp-includes/abilities-api.php",
+            "/trunk/src/wp-includes/abilities.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpAbilitiesRegistry.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterAbility.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreAbilities.php"
+        ]
+    },
+    {
         "id": 65307,
         "author": "gziolo",
         "message": "Tests: Extend coverage for core abilities\n\nCover `core/get-site-info` permissions, the categories and annotations of the core information abilities, and the roles returned by `core/get-user-info`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15528.\n\nProps hmbashar, gziolo.\nFixes #66493.\n\n\n",
