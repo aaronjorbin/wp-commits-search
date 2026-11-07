@@ -1,5 +1,34 @@
 [
     {
+        "id": 65334,
+        "author": "lancewillett",
+        "message": "Tests: Cover the self-demotion guard and empty user searches.\n\nLog in as a second administrator and try to change their own role to Subscriber with the bulk Change role control on the Users screen. Check for the error notice and that the role is unchanged. Search users for a missing name and check for the empty result, with another user present so the test fails if search is ignored.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15779\n\nProps shailu25.\nSee #52895.\n",
+        "date": "2026-11-07T18:52:00.345269Z",
+        "files": [
+            "/trunk/tests/e2e/specs/users.test.js"
+        ]
+    },
+    {
+        "id": 65333,
+        "author": "lancewillett",
+        "message": "Tests: Run the streams transport tests without live external HTTP.\n\nThe HTTP transport tests chose a transport with the `use_{$transport}_transport` filters, which only `WP_Http_Curl::test()` and `WP_Http_Streams::test()` read. `WP_Http::request()` passes requests to Requests, which picked cURL, so `Tests_HTTP_streams` was running on cURL. Set the Requests transport for each test class instead, and move the streams tests out of the external-http group.\n\nFollow-up to [65320].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15787\n\nProps shailu25.\nSee #63914.\n",
+        "date": "2026-11-07T18:50:21.095320Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/http/base.php",
+            "/trunk/tests/phpunit/tests/http/streams.php"
+        ]
+    },
+    {
+        "id": 65332,
+        "author": "lancewillett",
+        "message": "Site Health: Use a passing label for the insecure registration test.\n\nThe insecure registration check used its warning label as the default, so a site with safe registration settings listed \"Open Registration with privileged default role\" under Passed tests. Give the passing result its own label, set the warning label only on the critical result, and wrap the critical description in a paragraph like other Site Health results.\n\nAdd the first tests for this check.\n\nFollow-up to [61687].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14669\n\nProps ravipatel, johnbillion.\nFixes #66359.\n",
+        "date": "2026-11-07T18:38:00.268797Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-site-health.php",
+            "/trunk/tests/phpunit/tests/admin/wpSiteHealthGetTestInsecureRegistration.php"
+        ]
+    },
+    {
         "id": 65331,
         "author": "lancewillett",
         "message": "Tests: Cover searching installed themes.\n\nSearch the Themes screen for the uploaded test theme and check that it is the only result. Search for a missing theme and check for the empty state. The test theme stays installed, so both tests fail if search is ignored.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15782\n\nProps shailu25.\nSee #52895.\n",
