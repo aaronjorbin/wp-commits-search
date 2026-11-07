@@ -1,5 +1,31 @@
 [
     {
+        "id": 65327,
+        "author": "lancewillett",
+        "message": "Tests: Cover editing attachment details.\n\nEdit an attachment's title, alternative text and description on its edit screen and save. Check the values on the reloaded screen and through the REST API.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15689\n\nProps shailu25.\nSee #52895.\n",
+        "date": "2026-11-07T15:33:27.106981Z",
+        "files": [
+            "/trunk/tests/e2e/specs/media-library.test.js"
+        ]
+    },
+    {
+        "id": 65326,
+        "author": "lancewillett",
+        "message": "Tests: Use the `Tests_` prefix for nine test classes.\n\nRenames nine PHPUnit test classes from the singular `Test_` prefix to the plural `Tests_` prefix that most test classes use.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15486\n\nProps denisej25, mukesh27.\nFixes #66585.\n",
+        "date": "2026-11-07T15:21:47.900213Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/compat/arrayAll.php",
+            "/trunk/tests/phpunit/tests/compat/arrayAny.php",
+            "/trunk/tests/phpunit/tests/compat/arrayFindKey.php",
+            "/trunk/tests/phpunit/tests/image/resizeGd.php",
+            "/trunk/tests/phpunit/tests/image/resizeImagick.php",
+            "/trunk/tests/phpunit/tests/l10n/phpmailerTranslations.php",
+            "/trunk/tests/phpunit/tests/load/wpDebugMode.php",
+            "/trunk/tests/phpunit/tests/load/wpGetDevelopmentMode.php",
+            "/trunk/tests/phpunit/tests/oembed/controller.php"
+        ]
+    },
+    {
         "id": 65325,
         "author": "joedolson",
         "message": "Toolbar: A11y: Add skip link to bypass the toolbar.\n\nWhen the admin bar is rendered in the footer, a link is added to skip to the toolbar. However, if it is rendered at `wp_body_open`, it injects significant repeated content at the beginning of the page with no bypass mechanism.\n\nAdd a skip link that targets a point after the end of the admin bar when it is rendered during `wp_body_open`, allowing users to bypass the navigation, supporting WCAG 2.4.1: Bypass Blocks.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14410.\n\nProps travisjeans, rishabhwp, ravi patel, joedolson.\nFixes #66331.",
