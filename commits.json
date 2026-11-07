@@ -1,5 +1,24 @@
 [
     {
+        "id": 65329,
+        "author": "lancewillett",
+        "message": "Tests: Move the `wp_mkdir_p()` tests to the current folder layout.\n\nMove the tests added in [65175] to `tests/phpunit/tests/functions/`, without a namespace, to match the guidance for new tests during 7.2 on #65208. Rename the race test's stream wrapper class to match.\n\nFollow-up to [65175].\n\nSee #57081, #65208.\n",
+        "date": "2026-11-07T16:57:21.612613Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/functions/WpMkdirP_Test.php",
+            "/trunk/tests/phpunit/tests/wp-includes"
+        ]
+    },
+    {
+        "id": 65328,
+        "author": "lancewillett",
+        "message": "Tests: Cover bulk deleting categories and empty term searches.\n\nBulk delete two categories on the Categories screen and check that both are gone, and that the default category has no checkbox. Search categories and tags for a missing term and check for the empty result, with another term present so the test fails if search is ignored.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15718\n\nProps shailu25.\nSee #52895.\n",
+        "date": "2026-11-07T16:56:01.555015Z",
+        "files": [
+            "/trunk/tests/e2e/specs/taxonomies.test.js"
+        ]
+    },
+    {
         "id": 65327,
         "author": "lancewillett",
         "message": "Tests: Cover editing attachment details.\n\nEdit an attachment's title, alternative text and description on its edit screen and save. Check the values on the reloaded screen and through the REST API.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15689\n\nProps shailu25.\nSee #52895.\n",
