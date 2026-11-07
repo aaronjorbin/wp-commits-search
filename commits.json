@@ -1,5 +1,23 @@
 [
     {
+        "id": 65331,
+        "author": "lancewillett",
+        "message": "Tests: Cover searching installed themes.\n\nSearch the Themes screen for the uploaded test theme and check that it is the only result. Search for a missing theme and check for the empty state. The test theme stays installed, so both tests fail if search is ignored.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15782\n\nProps shailu25.\nSee #52895.\n",
+        "date": "2026-11-07T17:41:05.124615Z",
+        "files": [
+            "/trunk/tests/e2e/specs/themes.test.js"
+        ]
+    },
+    {
+        "id": 65330,
+        "author": "lancewillett",
+        "message": "Tests: Cover adding export and erase personal data requests.\n\nAdd a requester by username on the Export Personal Data and Erase Personal Data screens, and check for the success notice and the requester in the list, including after a search. The two screens share one looped spec.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15688\n\nProps shailu25.\nSee #52895.\n",
+        "date": "2026-11-07T17:10:22.245777Z",
+        "files": [
+            "/trunk/tests/e2e/specs/personal-data-requests.test.js"
+        ]
+    },
+    {
         "id": 65329,
         "author": "lancewillett",
         "message": "Tests: Move the `wp_mkdir_p()` tests to the current folder layout.\n\nMove the tests added in [65175] to `tests/phpunit/tests/functions/`, without a namespace, to match the guidance for new tests during 7.2 on #65208. Rename the race test's stream wrapper class to match.\n\nFollow-up to [65175].\n\nSee #57081, #65208.\n",
