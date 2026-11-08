@@ -1,5 +1,15 @@
 [
     {
+        "id": 65337,
+        "author": "joedolson",
+        "message": "Twenty Twenty Four: Adjust text input border colors for a11y.\n\nShift the colors used for text input borders so they meet the WCAG 3:1 contrast ratios in all theme variations.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15349.\n\nProps joedolson, sabernhardt, raiyanmarzan, denisej25.\nFixes #66190.",
+        "date": "2026-11-08T16:41:16.115965Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwentyfour/styles/maelstrom.json",
+            "/trunk/src/wp-content/themes/twentytwentyfour/theme.json"
+        ]
+    },
+    {
         "id": 65336,
         "author": "joedolson",
         "message": "Administration: Prevent multiple menus from showing active in nav.\n\nWhile navigating the primary admin navigation on mobile, multiple menu sidebars could appear visually as if they were active, due to retained styles. Additionally, multiple submenus could be opened, decreasing usability due to increased scrolling. \n\nUpdate JS handler to move focus into submenu on open, remove other open submenus unless they are in the current view, and change CSS to avoid retaining focus styles unnecessarily.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15827.\n\nProps sumitsingh, khokansardar, gdbarora, jorbin, narenin, neo2k23, r1k0, nazmulasif, iamraju, mdridipu, peterwilsoncc, sanayasir, hameem1102, rollybueno, mimitrz, 369work, wildworks, joedolson, masteradhoc.\nFixes #65280.",
