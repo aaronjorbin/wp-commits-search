@@ -1,5 +1,17 @@
 [
     {
+        "id": 65340,
+        "author": "joedolson",
+        "message": "Media: Support specific media types that map to video but contain audio.\n\nSome audio files can legitimately have real mime types that map to video. This causes an upload failure because of the mismatched subtype to primary type. \n\nAdd support for .m4a extensions that are detected as video mime types. Subtypes were already allowed in `wp_check_filetype_and_ext()`, but the mismatched major type caused an upload failure.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13156.\n\nProps soleo, subrataemfluence, ironprogrammer, joedolson, sanketparmar, arkaprabhachowdhury, andrewssanya, robertbpugh.\nFixes #46544.",
+        "date": "2026-11-08T19:37:44.768413Z",
+        "files": [
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/tests/phpunit/data/uploads/audio-in-video-container.m4a",
+            "/trunk/tests/phpunit/data/uploads/audio-only-3gp4.m4a",
+            "/trunk/tests/phpunit/tests/functions.php"
+        ]
+    },
+    {
         "id": 65339,
         "author": "joedolson",
         "message": "Twenty Twenty Five: Add accessibility.txt file.\n\nAdd documentation file for the accessibility-ready requirements in Twenty Twenty Five.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13723.\n\nProps joedolson, therssoftware.\nFixes #66179.",
