@@ -1,5 +1,23 @@
 [
     {
+        "id": 65339,
+        "author": "joedolson",
+        "message": "Twenty Twenty Five: Add accessibility.txt file.\n\nAdd documentation file for the accessibility-ready requirements in Twenty Twenty Five.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13723.\n\nProps joedolson, therssoftware.\nFixes #66179.",
+        "date": "2026-11-08T17:12:41.040082Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwentyfive/accessibility.txt"
+        ]
+    },
+    {
+        "id": 65338,
+        "author": "joedolson",
+        "message": "Twenty Twenty Five: Adjust text input border colors for a11y.\n\nShift the colors used for text input borders so they meet the WCAG 3:1 contrast ratios in light theme variations.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13724.\n\nProps joedolson, sabernhardt, rahultank.\nFixes #66180.",
+        "date": "2026-11-08T17:09:37.971126Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwentyfive/theme.json"
+        ]
+    },
+    {
         "id": 65337,
         "author": "joedolson",
         "message": "Twenty Twenty Four: Adjust text input border colors for a11y.\n\nShift the colors used for text input borders so they meet the WCAG 3:1 contrast ratios in all theme variations.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15349.\n\nProps joedolson, sabernhardt, raiyanmarzan, denisej25.\nFixes #66190.",
