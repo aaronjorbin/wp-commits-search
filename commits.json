@@ -1,5 +1,14 @@
 [
     {
+        "id": 65335,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Align `_test_filter_build_unique_id` with `_wp_filter_build_unique_id()`.\n\nIncludes:\n* Returning `null` if the function ID for usage as array key could not be determined.\n* Updating comments for accuracy.\n\nFollow-up to r62408, r63334, r65314.\n\nSee #65819.",
+        "date": "2026-11-07T23:18:43.445971Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/functions.php"
+        ]
+    },
+    {
         "id": 65334,
         "author": "lancewillett",
         "message": "Tests: Cover the self-demotion guard and empty user searches.\n\nLog in as a second administrator and try to change their own role to Subscriber with the bulk Change role control on the Users screen. Check for the error notice and that the role is unchanged. Search users for a missing name and check for the empty result, with another user present so the test fails if search is ignored.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15779\n\nProps shailu25.\nSee #52895.\n",
