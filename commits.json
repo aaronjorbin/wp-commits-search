@@ -1,5 +1,16 @@
 [
     {
+        "id": 65341,
+        "author": "joedolson",
+        "message": "Editor: Add vertical margin between Save Draft and Preview.\n\nIn the Classic Editor, long translated strings could cause minor publication actions to wrap onto two lines. Following the admin reskin, the vertical margin was lost, creating a visual overlap in the layout. \n\nSwitch layout to use flex, accounting for extender usage of the panel and the existing spinner.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13807.\n\nProps Emielb, audrasjb, afercia, sainathpoojary, im3dabasia1, therssoftware, joedolson.\nFixes #66188.",
+        "date": "2026-11-08T20:15:42.008616Z",
+        "files": [
+            "/trunk/src/wp-admin/css/common.css",
+            "/trunk/src/wp-admin/css/edit.css",
+            "/trunk/src/wp-admin/includes/meta-boxes.php"
+        ]
+    },
+    {
         "id": 65340,
         "author": "joedolson",
         "message": "Media: Support specific media types that map to video but contain audio.\n\nSome audio files can legitimately have real mime types that map to video. This causes an upload failure because of the mismatched subtype to primary type. \n\nAdd support for .m4a extensions that are detected as video mime types. Subtypes were already allowed in `wp_check_filetype_and_ext()`, but the mismatched major type caused an upload failure.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13156.\n\nProps soleo, subrataemfluence, ironprogrammer, joedolson, sanketparmar, arkaprabhachowdhury, andrewssanya, robertbpugh.\nFixes #46544.",
