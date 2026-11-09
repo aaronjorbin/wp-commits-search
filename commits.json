@@ -1,5 +1,17 @@
 [
     {
+        "id": 65354,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Add a remember method to the E2E site fixtures.\n\nA spec that changes a setting or option through a form can now record the current value for teardown without writing it first.\n\nFollow-up to [65312].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15851\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-09T18:58:39.851675Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/fixtures/site.js",
+            "/trunk/tests/e2e/specs/general-settings-invalid-timezone.test.js",
+            "/trunk/tests/e2e/specs/privacy.test.js"
+        ]
+    },
+    {
         "id": 65353,
         "author": "lancewillett",
         "message": "Tests: Add helpers for reading and setting protected image editor properties.\n\nReplace the repeated `ReflectionProperty` setup in the image editor tests with two helpers on `WP_Image_UnitTestCase`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15842\n\nProps therssoftware, sanjith2023.\nFixes #66584.\n",
