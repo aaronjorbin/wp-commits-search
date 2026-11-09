@@ -1,5 +1,14 @@
 [
     {
+        "id": 65342,
+        "author": "SergeyBiryukov",
+        "message": "Docs: Document `description` for block pattern categories.\n\nBlock pattern categories have accepted a `description` since 6.2.0 / r55097, but the `WP_Block_Pattern_Categories_Registry::register()` docblock only listed `label`.\n\nThis commit:\n- Documents the optional `description` property.\n- Adds a `@since 6.2.0` note for it.\n- Corrects the `@return` description, which referred to a pattern rather than a pattern category.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15505.\n\nFollow-up to r55097.\n\nProps mcsf.\nSee #65860.",
+        "date": "2026-11-08T23:49:53.289276Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-pattern-categories-registry.php"
+        ]
+    },
+    {
         "id": 65341,
         "author": "joedolson",
         "message": "Editor: Add vertical margin between Save Draft and Preview.\n\nIn the Classic Editor, long translated strings could cause minor publication actions to wrap onto two lines. Following the admin reskin, the vertical margin was lost, creating a visual overlap in the layout. \n\nSwitch layout to use flex, accounting for extender usage of the panel and the existing spinner.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13807.\n\nProps Emielb, audrasjb, afercia, sainathpoojary, im3dabasia1, therssoftware, joedolson.\nFixes #66188.",
