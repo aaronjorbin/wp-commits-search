@@ -1,5 +1,14 @@
 [
     {
+        "id": 65359,
+        "author": "audrasjb",
+        "message": "Administration: Restore the full-width upload folder row on Settings > Media.\n\nOn Settings > Media, \"Organize my uploads into month- and year-based folders\" wraps onto three lines as soon as any plugin registers a field in the Uploads settings section.\n\nThe row spanned both columns unconditionally until [40823] which moved it inside the upload-path conditional in order to change its `th` into a `td`. That carried `colspan=\"2\"` onto the editable-paths branch only.\n\nThis changeset closes the conditional above the row and restore the single unconditional cell, keeping the td/td-full markup [40823] introduced.\n\nFollow-up to [40823].\n\nProps imath, dpknauss, dhruvang21, audrasjb, dilip2615, im3dabasia1.\nFixes #51190.\n\n",
+        "date": "2026-11-09T22:40:09.778554Z",
+        "files": [
+            "/trunk/src/wp-admin/options-media.php"
+        ]
+    },
+    {
         "id": 65358,
         "author": "desrosj",
         "message": "Build/Test Tools: Ensure PHPStan detects `get_file()` in the `7.0` branch.\n\nIn r63644, the build step within the reusable PHPStan workflow, which the `7.0` branch calls from `trunk`, was removed. The build copied `wp-tinymce.php` into `src/wp-includes/js/tinymce`, and that copy was the only definition of `get_file()` that PHPStan scanned.\n\nEvery run on the `7.0` branch since then has reported a `Function get_file not found` error for both `load-scripts.php` and `load-styles.php`.\n\nThis adds the source copy of the file, `src/js/_enqueues/vendor/tinymce/wp-tinymce.php`, to `scanFiles`, so PHPStan can find the function without running the build. Files in `scanFiles` are only used to discover symbols and are not analyzed themselves.\n\nThis change is not needed in `trunk` (where `load-scripts.php` and `load-styles.php` no longer use `get_file()`), or in the `7.1` branch (where these files were excluded from analysis in r62657).\n\nFollow-up to r63644.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15609.\n\nProps lancewillett, westonruter.\nSee #65845.\n",
