@@ -1,5 +1,15 @@
 [
     {
+        "id": 65345,
+        "author": "oandregal",
+        "message": "Editor: Summarize the `date` panel of the post form with `publish_date`.\n\nIn the default post type form returned by `_wp_get_default_posttype_form()`, the `date` field is now a panel summarized by the `publish_date` field. The summary reads \"Immediately\" while the post has no date of its own, as the post summary did before it moved to the form.\n\nPost types that provide their own form are unchanged.\n\nIncludes unit tests.\n\nProps oandregal, jorgefilipecosta.\nSee #65981.\n\n",
+        "date": "2026-11-09T11:23:59.230003Z",
+        "files": [
+            "/trunk/src/wp-includes/view-config.php",
+            "/trunk/tests/phpunit/tests/view-config.php"
+        ]
+    },
+    {
         "id": 65344,
         "author": "wildworks",
         "message": "Code Modernization: Simplify duotone and theme.json defaults\n\nReplaces guards that assign a value only when one is not already set with the null coalescing assignment operator (`??=`) in duotone color parsing and block style variation metadata.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15354\n\nProps mukesh27, shailu25, wildworks.\nSee #65823.",
