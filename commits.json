@@ -1,5 +1,37 @@
 [
     {
+        "id": 65358,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Ensure PHPStan detects `get_file()` in the `7.0` branch.\n\nIn r63644, the build step within the reusable PHPStan workflow, which the `7.0` branch calls from `trunk`, was removed. The build copied `wp-tinymce.php` into `src/wp-includes/js/tinymce`, and that copy was the only definition of `get_file()` that PHPStan scanned.\n\nEvery run on the `7.0` branch since then has reported a `Function get_file not found` error for both `load-scripts.php` and `load-styles.php`.\n\nThis adds the source copy of the file, `src/js/_enqueues/vendor/tinymce/wp-tinymce.php`, to `scanFiles`, so PHPStan can find the function without running the build. Files in `scanFiles` are only used to discover symbols and are not analyzed themselves.\n\nThis change is not needed in `trunk` (where `load-scripts.php` and `load-styles.php` no longer use `get_file()`), or in the `7.1` branch (where these files were excluded from analysis in r62657).\n\nFollow-up to r63644.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15609.\n\nProps lancewillett, westonruter.\nSee #65845.\n",
+        "date": "2026-11-09T20:47:48.181374Z",
+        "files": [
+            "/branches/7.0/tests/phpstan/base.neon"
+        ]
+    },
+    {
+        "id": 65357,
+        "author": "desrosj",
+        "message": "Twenty Twenty: Update to Node.js 24.x.\n\nThis updates the theme's `.nvmrc` file and the `engines` field in `package.json` to require Node.js `24.18.0` and npm `11.16.0`, bringing Twenty Twenty in line with Core and the other bundled themes.\n\nThis also adds the `devEngines` configuration used by Core and the other bundled themes, which enforces these minimum versions when installing dependencies or running npm scripts.\n\nTwenty Twenty was the last bundled theme that had not been updated to Node.js 24.x.\n\nFollow-up to r63539, r63870.\n\nProps desrosj, sabernhardt, manzoorwanijk, lucatume.\nFixes #65451. See #66099.\n",
+        "date": "2026-11-09T20:17:45.806978Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwenty/.nvmrc",
+            "/trunk/src/wp-content/themes/twentytwenty/package-lock.json",
+            "/trunk/src/wp-content/themes/twentytwenty/package.json"
+        ]
+    },
+    {
+        "id": 65356,
+        "author": "adamsilverstein",
+        "message": "Media: Keep non-image uploads on the classic upload path.\n\nFix an issue with the client-side media processing pipeline checking file types against the allowed mime types captured when the page rendered, not the uploader's own `filters.mime_types`. File types a plugin allows for a single frame, such as SVG and JSON, were rejected in the browser with \"Sorry, you are not allowed to upload this file type.\" before reaching the server.\n\nAfter this change, only images the pipeline can process (currently JPEG, PNG, GIF, WebP, AVIF and HEIC/HEIF) are routed to it. Everything else (audio, video, PDF, SVG, JSON, archives) uploads through `async-upload.php` as it did before the pipeline was added. An image whose type is missing from the render-time allowed mime types also stays on the classic path, so the server decides whether to accept it. HEIC files are matched by extension too, because browsers without a HEIC codec may give them no type.\n\nFollow-up to [64588].\n\nProps desrosj, andrewserong.\nSee #66490.\n\n",
+        "date": "2026-11-09T20:11:31.528962Z",
+        "files": [
+            "/trunk/src/js/_enqueues/admin/media-frame-upload.js",
+            "/trunk/src/js/_enqueues/admin/media-upload-pipeline.js",
+            "/trunk/tests/e2e/specs/media-library-client-side-upload.test.js",
+            "/trunk/tests/e2e/utils/media-pipeline.js"
+        ]
+    },
+    {
         "id": 65355,
         "author": "desrosj",
         "message": "Twenty Twenty: Replace the abandoned `stylelint-a11y` dependency.\n\nThe `stylelint-a11y` package has not been updated in over 7 years and is incompatible with newer versions of Stylelint and Node.js. This replaces it with `@double-great/stylelint-a11y`, an actively maintained fork, and replaces the deprecated `stylelint-config-wordpress` configuration with `@wordpress/stylelint-config`.\n\nThe `a11y/selector-pseudo-class-focus` rule is disabled for the block editor's Button and File block hover styles. These elements are editable text fields in the editor, so a `:focus` underline would be displayed the entire time the text is being edited.\n\nProps sabernhardt, desrosj.\nFixes #66004.\n",
