@@ -1,5 +1,26 @@
 [
     {
+        "id": 65353,
+        "author": "lancewillett",
+        "message": "Tests: Add helpers for reading and setting protected image editor properties.\n\nReplace the repeated `ReflectionProperty` setup in the image editor tests with two helpers on `WP_Image_UnitTestCase`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15842\n\nProps therssoftware, sanjith2023.\nFixes #66584.\n",
+        "date": "2026-11-09T16:34:11.681586Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/base.php",
+            "/trunk/tests/phpunit/tests/image/editor.php",
+            "/trunk/tests/phpunit/tests/image/editorGd.php",
+            "/trunk/tests/phpunit/tests/image/editorImagick.php"
+        ]
+    },
+    {
+        "id": 65352,
+        "author": "joedolson",
+        "message": "Twenty Twenty Four: A11y: Add `accessibility.txt`.\n\nAdd documentation for the accessibility processes used in development of Twenty Twenty Four.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13765.\n\nProps joedolson, mukesh27.\nFixes #66191.",
+        "date": "2026-11-09T16:12:05.728764Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwentyfour/accessibility.txt"
+        ]
+    },
+    {
         "id": 65351,
         "author": "joedolson",
         "message": "Twenty Twenty Four: A11y: Add `aria-label` in default menu names.\n\nAdd missing default `aria-label` values to the hidden-sidebar, header, and footer with centered logo patterns in Twenty Twenty Four.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13763.\n\nProps joedolson, mukesh27, rahultank, nhrrob, harishtewari.\nFixes #66189.",
