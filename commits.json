@@ -1,5 +1,18 @@
 [
     {
+        "id": 65355,
+        "author": "desrosj",
+        "message": "Twenty Twenty: Replace the abandoned `stylelint-a11y` dependency.\n\nThe `stylelint-a11y` package has not been updated in over 7 years and is incompatible with newer versions of Stylelint and Node.js. This replaces it with `@double-great/stylelint-a11y`, an actively maintained fork, and replaces the deprecated `stylelint-config-wordpress` configuration with `@wordpress/stylelint-config`.\n\nThe `a11y/selector-pseudo-class-focus` rule is disabled for the block editor's Button and File block hover styles. These elements are editable text fields in the editor, so a `:focus` underline would be displayed the entire time the text is being edited.\n\nProps sabernhardt, desrosj.\nFixes #66004.\n",
+        "date": "2026-11-09T20:06:12.500965Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwenty/.stylelintrc.json",
+            "/trunk/src/wp-content/themes/twentytwenty/assets/css/editor-style-block-rtl.css",
+            "/trunk/src/wp-content/themes/twentytwenty/assets/css/editor-style-block.css",
+            "/trunk/src/wp-content/themes/twentytwenty/package-lock.json",
+            "/trunk/src/wp-content/themes/twentytwenty/package.json"
+        ]
+    },
+    {
         "id": 65354,
         "author": "lancewillett",
         "message": "Build/Test Tools: Add a remember method to the E2E site fixtures.\n\nA spec that changes a setting or option through a form can now record the current value for teardown without writing it first.\n\nFollow-up to [65312].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15851\n\nProps adrianmoldovanwp.\nSee #66455.\n",
