@@ -1,5 +1,36 @@
 [
     {
+        "id": 65348,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Wait for menu saves in the classic menus E2E test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15772\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-09T14:40:52.610570Z",
+        "files": [
+            "/trunk/tests/e2e/specs/classic-menus.test.js"
+        ]
+    },
+    {
+        "id": 65347,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Stop the General Settings E2E specs from running together.\n\nBoth General Settings specs save the whole form, which writes every field on the page. When they ran at the same time in the `parallel` project, one spec's save could undo the other's change. Give both specs the same Playwright test lock, so they never overlap but stay in `parallel`.\n\nAdd a \"Parallel safety\" section to the E2E README: scope the test data, else lock every spec that writes the shared data, else move the spec to `serial`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15846\n\nProps adrianmoldovanwp.\nSee #66392.\n",
+        "date": "2026-11-09T14:22:32.885765Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/specs/general-settings-invalid-timezone.test.js",
+            "/trunk/tests/e2e/specs/general-settings.test.js",
+            "/trunk/tests/e2e/utils/locks.js"
+        ]
+    },
+    {
+        "id": 65346,
+        "author": "lancewillett",
+        "message": "Tests: Remove the `$start` argument from `WP_UnitTest_Generator_Sequence`.\n\nThe factories build each default value from the generator's template string and a shared counter, so a start value never reached the generated data. The network factory was the only caller that passed one.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15844\n\nProps arkaprabhachowdhury, desrosj.\nFixes #37261.\n",
+        "date": "2026-11-09T14:21:09.747427Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/factory/class-wp-unittest-factory-for-network.php",
+            "/trunk/tests/phpunit/includes/factory/class-wp-unittest-generator-sequence.php"
+        ]
+    },
+    {
         "id": 65345,
         "author": "oandregal",
         "message": "Editor: Summarize the `date` panel of the post form with `publish_date`.\n\nIn the default post type form returned by `_wp_get_default_posttype_form()`, the `date` field is now a panel summarized by the `publish_date` field. The summary reads \"Immediately\" while the post has no date of its own, as the post summary did before it moved to the form.\n\nPost types that provide their own form are unchanged.\n\nIncludes unit tests.\n\nProps oandregal, jorgefilipecosta.\nSee #65981.\n\n",
