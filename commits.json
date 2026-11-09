@@ -1,5 +1,27 @@
 [
     {
+        "id": 65344,
+        "author": "wildworks",
+        "message": "Code Modernization: Simplify duotone and theme.json defaults\n\nReplaces guards that assign a value only when one is not already set with the null coalescing assignment operator (`??=`) in duotone color parsing and block style variation metadata.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15354\n\nProps mukesh27, shailu25, wildworks.\nSee #65823.",
+        "date": "2026-11-09T09:07:48.236039Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-duotone.php",
+            "/trunk/src/wp-includes/class-wp-theme-json.php"
+        ]
+    },
+    {
+        "id": 65343,
+        "author": "luisherranz",
+        "message": "Interactivity API: Align server-side data-wp-html processing with client behavior.\n\nEmpty the element when its reference does not resolve to a trusted HTML token, and avoid processing directives inside content controlled by data-wp-html. Match the client's reference parsing, reserved-name filtering, namespace resolution, and conflicting-directive rules.\n\nIgnore unsupported suffix and unique-ID entries while allowing their children to be processed. Ignore data-wp-html on void and text-only elements without evaluating its reference or changing their content.\n\nReplace element content in a forward-only pass to avoid exceeding the HTML API's seek limit. Save and restore processing state around nested process_directives() calls.\n\nFollow-up to [64386] and [64501].\n\nProps santosguillamot.\nFixes #66246.",
+        "date": "2026-11-09T08:57:29.781110Z",
+        "files": [
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-api-directives-processor.php",
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-html.php",
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPIDirectivesProcessor.php"
+        ]
+    },
+    {
         "id": 65342,
         "author": "SergeyBiryukov",
         "message": "Docs: Document `description` for block pattern categories.\n\nBlock pattern categories have accepted a `description` since 6.2.0 / r55097, but the `WP_Block_Pattern_Categories_Registry::register()` docblock only listed `label`.\n\nThis commit:\n- Documents the optional `description` property.\n- Adds a `@since 6.2.0` note for it.\n- Corrects the `@return` description, which referred to a pattern rather than a pattern category.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15505.\n\nFollow-up to r55097.\n\nProps mcsf.\nSee #65860.",
