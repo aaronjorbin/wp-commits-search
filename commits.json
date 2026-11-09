@@ -1,5 +1,36 @@
 [
     {
+        "id": 65351,
+        "author": "joedolson",
+        "message": "Twenty Twenty Four: A11y: Add `aria-label` in default menu names.\n\nAdd missing default `aria-label` values to the hidden-sidebar, header, and footer with centered logo patterns in Twenty Twenty Four.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13763.\n\nProps joedolson, mukesh27, rahultank, nhrrob, harishtewari.\nFixes #66189.",
+        "date": "2026-11-09T16:08:43.730595Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwentyfour/parts/header.html",
+            "/trunk/src/wp-content/themes/twentytwentyfour/patterns/footer-centered-logo-nav.php",
+            "/trunk/src/wp-content/themes/twentytwentyfour/patterns/header.php",
+            "/trunk/src/wp-content/themes/twentytwentyfour/patterns/hidden-sidebar.php"
+        ]
+    },
+    {
+        "id": 65350,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Retry failing E2E tests once in CI.\n\nA test that fails twice needs a fix; a second retry only adds run time.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15848\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-09T15:43:18.224145Z",
+        "files": [
+            "/trunk/tests/e2e/playwright.config.js"
+        ]
+    },
+    {
+        "id": 65349,
+        "author": "SergeyBiryukov",
+        "message": "Plugins: Update custom plugin group counts after deleting a plugin.\n\nDecrements counts for groups registered via the `plugins_list` filter when a plugin is deleted via Ajax, so tabs whose label is supplied through `plugins_list_status_text` stay in sync without requiring a page reload.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14675.\n\nFollow-up to r37714, r53124, r56068, r61695.\n\nProps huzaifaalmesbah, wildworks, alessioarzentondev, gabrieleburgarella, enzo2018, lopo, realloc, f94leonardo, ozgursar, rollybueno, SergeyBiryukov,\nFixes #65191.",
+        "date": "2026-11-09T15:29:44.674628Z",
+        "files": [
+            "/trunk/src/js/_enqueues/wp/updates.js",
+            "/trunk/tests/qunit/wp-admin/js/updates.js"
+        ]
+    },
+    {
         "id": 65348,
         "author": "lancewillett",
         "message": "Build/Test Tools: Wait for menu saves in the classic menus E2E test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15772\n\nProps adrianmoldovanwp.\nSee #66455.\n",
