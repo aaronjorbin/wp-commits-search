@@ -1,5 +1,19 @@
 [
     {
+        "id": 65372,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Add a script to fix stale PHPStan baselines.\n\nSince PHPStan 2.3.5, its `--fix` option removes stale ignores in place: it lowers the count of a baseline entry whose error now occurs fewer times, removes an entry that matches nothing, and removes an `@phpstan-ignore` comment that no longer ignores anything. That is quicker than regenerating the baselines, since it reuses the result cache, and it also clears the stale inline ignores, which regenerating leaves to be removed by hand.\n\nThe new `composer phpstan:fix` script (and `npm run typecheck:php:fix`) runs PHPStan with `--fix`, then the baseline generator with its new `--prune` option, which deletes any baseline left with no entries along with its `includes` entry, and then the analysis once more, since `--fix` reports only what it fixed and succeeds even when other errors remain. Both analyses use `phpstan.neon.dist`, because a local configuration at another rule level can report a baselined error with a different message, and `--fix` would then remove entries that the default configuration still needs.\n\nThe CI annotations, step summary, and pull request comment now recommend the new script, and the annotation of an error that PHPStan can fix itself says so.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15479.\nFollow-up to r63019, r64539, r65310.\n\nProps westonruter, apermo.\nSee #65817.\n",
+        "date": "2026-11-10T06:51:08.677954Z",
+        "files": [
+            "/trunk/.github/workflows/phpstan-pull-request-comments.yml",
+            "/trunk/.github/workflows/reusable-phpstan-static-analysis-v1.yml",
+            "/trunk/composer.json",
+            "/trunk/package.json",
+            "/trunk/tests/phpstan/README.md",
+            "/trunk/tests/phpstan/generate-baselines.php"
+        ]
+    },
+    {
         "id": 65371,
         "author": "luisherranz",
         "message": "Interactivity API: Choose the `data-wp-html` placeholder marker in linear time.\n\nReplace the repeated input-search loop with a UUID-based marker, generated\nwhen the first `data-wp-html` host renders and reused by subsequent hosts\nin the same processing call.\n\nThis removes input-dependent searching, keeps placeholder length fixed,\nand avoids generating a UUID when no host renders.\n\nProps jonsurrell.\nFixes #66498.",
