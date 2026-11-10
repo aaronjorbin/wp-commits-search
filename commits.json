@@ -1,5 +1,26 @@
 [
     {
+        "id": 65395,
+        "author": "whyisjake",
+        "message": "Docs: Mark the internal Secrets API helper functions as private.\n\nAdds `@access private` to the eight underscore-prefixed functions in `wp-includes/secrets.php`: `_wp_secrets_get_store()`, `_wp_secrets_get_key_manager()`, `_wp_secrets_get_provider()`, `_wp_secrets_set()`, `_wp_secrets_get()`, `_wp_secrets_delete()`, `_wp_secrets_retire()` and `_wp_secrets_list()`.\n\nThese are internal helpers that only core calls. The tag makes the code reference show that they are not meant for plugins or themes.\n\nFollow-up to r64337.\n\nProps wildworks.\nFixes #66187.\n",
+        "date": "2026-11-10T18:49:31.564196Z",
+        "files": [
+            "/trunk/src/wp-includes/secrets.php"
+        ]
+    },
+    {
+        "id": 65394,
+        "author": "whyisjake",
+        "message": "Security: Move Secrets API Site Health checks into `WP_Site_Health`.\n\nThe Secrets API's Site Health checks and debug information lived in `wp-admin/includes/secrets-site-health.php`, as functions hooked onto `site_status_tests` and `debug_information`. That is how the feature plugin added them, and the file was carried over unchanged. Core's own checks are methods of `WP_Site_Health` and `WP_Debug_Data`, and these now are too.\n\nThe three checks are `WP_Site_Health::get_test_secrets_api_key_source()`, `::get_test_secrets_api_undecryptable()` and `::get_test_secrets_api_needs_rotation()`, registered as direct tests in `WP_Site_Health::get_tests()` under the same IDs and labels. The debug information is `WP_Debug_Data::get_wp_secrets_api()`.\n\nThe statuses, labels and descriptions of the checks are unchanged. Three things do change, to match the rest of core:\n\n* The debug information section key is `wp-secrets-api`, not `secrets-api`.\n* The results use the blue Security badge whatever the status.\n* The results include an `actions` key.\n\n`secrets-site-health.php` and the `wp_secrets_site_health_*()` functions are removed. None of them has been in a release.\n\nFollow-up to r64337, r65385, r65387.\n\nProps ericmann, peterwilsoncc, mindctrl.\nSee #66187.\n",
+        "date": "2026-11-10T18:39:19.857135Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-debug-data.php",
+            "/trunk/src/wp-admin/includes/class-wp-site-health.php",
+            "/trunk/src/wp-admin/includes/secrets-site-health.php",
+            "/trunk/tests/phpunit/tests/secrets/siteHealth.php"
+        ]
+    },
+    {
         "id": 65393,
         "author": "lancewillett",
         "message": "Build/Test Tools: Add a user factory fixture to the E2E tests.\n\nThe `userFactory` fixture creates users and deletes them when the test ends, also if the test fails. `signIn()` logs a user in through `wp-login.php`. `users.test.js` and `dashboard.test.js` use them instead of their own cleanup and login code.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15884\n\nProps adrianmoldovanwp.\nSee #66455.\n",
