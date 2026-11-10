@@ -1,5 +1,63 @@
 [
     {
+        "id": 65377,
+        "author": "whyisjake",
+        "message": "Security: Document the Secrets API hardening tests.\n\nBrings the tests added in r65375 in line with the conventions the Secrets API tests follow since r65272: each test has a summary and a `@covers` annotation, and each assertion has a message.\n\nFollow-up to r65272, r65375.\n\nSee #66414.\n",
+        "date": "2026-11-10T07:59:19.429027Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/secrets/wpSetSecretAndWpGetSecret.php"
+        ]
+    },
+    {
+        "id": 65376,
+        "author": "wildworks",
+        "message": "Tests: Cover deprecated block feature selectors in theme.json\n\nAdds a test that registers a dedicated block with feature-level selectors defined via `__experimentalSelector` and verifies the generated color and typography styles.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15849\n\nProps shailu25, wildworks.\nFixes #66640.",
+        "date": "2026-11-10T07:58:19.784974Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme/wpThemeJson.php"
+        ]
+    },
+    {
+        "id": 65375,
+        "author": "whyisjake",
+        "message": "Security: Harden secret names, parameters and the root key field.\n\nFixes three small issues in the Secrets API:\n\n* `wp_secrets_validate_name()` accepted a name with a trailing newline, because `$` also matches before a final newline. The options API trims option names, so that name shared a row with the name without the newline, and a write through one made the other unreadable. The pattern now ends with `\\z`.\n* A secret value or key material could appear in a stack trace when an exception was thrown while a secret was being saved. The parameters that receive them are now marked with `#[\\SensitiveParameter]`. Attributes are not inherited, so keyrings and providers in a drop-in need to add it themselves.\n* Settings > All Settings showed `_wp_secrets_root_key` as an editable field, and saving the screen with it changed made every stored secret unreadable. The field is now masked, disabled and left out of the options the screen saves, like the connector API keys.\n\nFollow-up to r64337.\n\nProps dhrupo, aryanjasala, ericmann.\nFixes #66414. See #66187.\n",
+        "date": "2026-11-10T07:57:03.143451Z",
+        "files": [
+            "/trunk/src/wp-admin/options.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-broken-keyring.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-broken-provider.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-cipher.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-config-key-provider.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-libsodium-provider.php",
+            "/trunk/src/wp-includes/secrets/interface-wp-secrets-keyring.php",
+            "/trunk/src/wp-includes/secrets/interface-wp-secrets-provider.php",
+            "/trunk/src/wp-includes/secrets.php",
+            "/trunk/tests/phpunit/tests/secrets/wpSecretsValidateName.php",
+            "/trunk/tests/phpunit/tests/secrets/wpSetSecretAndWpGetSecret.php"
+        ]
+    },
+    {
+        "id": 65374,
+        "author": "whyisjake",
+        "message": "Plugins: List `secrets.php` as a drop-in.\n\n`wp-content/secrets.php` has been loaded on every request since r64337, but it was missing from `_get_dropins()`. Neither the Drop-ins view of the Plugins screen nor the Drop-ins section of Site Health Info showed it.\n\nFollow-up to r64337.\n\nProps nofearinc, ericmann.\nSee #66380.\n",
+        "date": "2026-11-10T07:48:23.378724Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/plugin.php",
+            "/trunk/tests/phpunit/tests/admin/includesPlugin.php"
+        ]
+    },
+    {
+        "id": 65373,
+        "author": "whyisjake",
+        "message": "Security: Keep the Secrets API root key after a failed read.\n\n`WP_Secrets_Key_Manager::get_root_key()` generated a new root key whenever `get_site_option()` returned `false`. That also happens when the query fails, and on a single site the new key then overwrote the stored one, so every existing secret became unreadable. Two requests creating the first root key at the same time could overwrite each other in the same way.\n\nA `false` result is now checked against the database before a key is generated. If that read also fails, a `WP_Error` is returned and nothing is written. Reading a secret no longer creates a root key: `WP_Secrets_Libsodium_Provider::get()` returns an error when none is stored. The first root key is inserted with `INSERT IGNORE` on a single site, so an existing key is never overwritten. On multisite, every request uses the oldest row, and a request that lost the race deletes its own.\n\nFollow-up to r64337.\n\nProps aryanjasala, dhrupo, ericmann.\nFixes #66413. See #66187.\n",
+        "date": "2026-11-10T07:47:34.643643Z",
+        "files": [
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-key-manager.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-libsodium-provider.php",
+            "/trunk/tests/phpunit/tests/secrets/wpSecretsKeyManager.php"
+        ]
+    },
+    {
         "id": 65372,
         "author": "westonruter",
         "message": "Build/Test Tools: Add a script to fix stale PHPStan baselines.\n\nSince PHPStan 2.3.5, its `--fix` option removes stale ignores in place: it lowers the count of a baseline entry whose error now occurs fewer times, removes an entry that matches nothing, and removes an `@phpstan-ignore` comment that no longer ignores anything. That is quicker than regenerating the baselines, since it reuses the result cache, and it also clears the stale inline ignores, which regenerating leaves to be removed by hand.\n\nThe new `composer phpstan:fix` script (and `npm run typecheck:php:fix`) runs PHPStan with `--fix`, then the baseline generator with its new `--prune` option, which deletes any baseline left with no entries along with its `includes` entry, and then the analysis once more, since `--fix` reports only what it fixed and succeeds even when other errors remain. Both analyses use `phpstan.neon.dist`, because a local configuration at another rule level can report a baselined error with a different message, and `--fix` would then remove entries that the default configuration still needs.\n\nThe CI annotations, step summary, and pull request comment now recommend the new script, and the annotation of an error that PHPStan can fix itself says so.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15479.\nFollow-up to r63019, r64539, r65310.\n\nProps westonruter, apermo.\nSee #65817.\n",
