@@ -1,5 +1,28 @@
 [
     {
+        "id": 65371,
+        "author": "luisherranz",
+        "message": "Interactivity API: Choose the `data-wp-html` placeholder marker in linear time.\n\nReplace the repeated input-search loop with a UUID-based marker, generated\nwhen the first `data-wp-html` host renders and reused by subsequent hosts\nin the same processing call.\n\nThis removes input-dependent searching, keeps placeholder length fixed,\nand avoids generating a UUID when no host renders.\n\nProps jonsurrell.\nFixes #66498.",
+        "date": "2026-11-10T05:22:33.444431Z",
+        "files": [
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/trunk/tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-html.php"
+        ]
+    },
+    {
+        "id": 65370,
+        "author": "gziolo",
+        "message": "Abilities API: Replace `coerce_input()` with `prepare_input()`\n\nAdd a public `WP_Ability::prepare_input()` method that normalizes, validates, and sanitizes input in one call. Use it in `WP_Ability::execute()` and the REST run controller.\n\nRename `coerce_input()` to the protected `sanitize_input()`, so sanitization cannot run on input that was not validated. `coerce_input()` was not released yet, so this is not a breaking change.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15685.\nFollow-up to [65044], [65306].\n\nProps gziolo, jorgefilipecosta, justlevine,\u2002zaguiini.\nSee #66383.\nFixes #66482.\n\n\n",
+        "date": "2026-11-10T05:17:25.140496Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities-api/class-wp-ability.php",
+            "/trunk/src/wp-includes/abilities-api.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-run-controller.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpAbility.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1RunController.php"
+        ]
+    },
+    {
         "id": 65369,
         "author": "westonruter",
         "message": "REST API: Accept a post object in global styles `prepare_links()`.\n\nThe `WP_REST_Global_Styles_Controller::prepare_links()` override took a post ID while the parent method takes a `WP_Post`, which PHPStan reports as an incompatible child parameter type. It now accepts either, and `prepare_item_for_response()` continues to pass the ID so that subclasses overriding the method and expecting an ID are not broken. The method also gains a precise return type, which in turn required narrowing the types it relies on: REST URLs are documented as non-empty, and `count` is declared as a non-negative link attribute.\n\nThe `WP_Query::$found_posts` count is now clamped to zero, both from the `found_posts_query` query and after the `found_posts` filter, since a negative post count has no valid meaning and would otherwise surface as a negative revisions count. In r65281 only `$max_num_pages` was clamped, and its test asserted a negative `found_posts` merely as a precondition.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15826.\nFollow-up to r48328, r52051, r56082, r65281.\n\nProps westonruter, huzaifaalmesbah, dpknauss.\nSee #65817.\n",
