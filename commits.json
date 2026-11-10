@@ -1,5 +1,14 @@
 [
     {
+        "id": 65378,
+        "author": "whyisjake",
+        "message": "Security: Let the `secrets.php` drop-in set plain variables.\n\n`wp_load_secrets_dropin()` requires `wp-content/secrets.php` inside a function, so a drop-in that set an override as a plain variable, such as `$wp_secrets_keyring = new My_Keyring();`, only set a local variable. The override was ignored and the default was used instead, with nothing to say so.\n\nThe `$wp_secrets_provider`, `$wp_secrets_store` and `$wp_secrets_keyring` globals are now declared before the drop-in is required, as `require_wp_db()` does with `$wpdb` for `db.php`. Drop-ins that write to `$GLOBALS` work as before.\n\nFollow-up to r64337.\n\nProps ericmann, jorbin.\nSee #66187.\n",
+        "date": "2026-11-10T08:18:14.538715Z",
+        "files": [
+            "/trunk/src/wp-includes/load.php"
+        ]
+    },
+    {
         "id": 65377,
         "author": "whyisjake",
         "message": "Security: Document the Secrets API hardening tests.\n\nBrings the tests added in r65375 in line with the conventions the Secrets API tests follow since r65272: each test has a summary and a `@covers` annotation, and each assertion has a message.\n\nFollow-up to r65272, r65375.\n\nSee #66414.\n",
