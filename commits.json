@@ -1,5 +1,44 @@
 [
     {
+        "id": 65399,
+        "author": "johnbillion",
+        "message": "Database: Bump the recommended version of MySQL to 8.4.\n\nMySQL 8.0 reached end of life on 30 April 2026 but was still the recommended version in `readme.html` and Site Health. MySQL 8.4 is an LTS release supported until April 2032, and has been tested in CI since [59280].\n\nFollow-up to [59280], [62170].\n\nProps lucatume, desrosj, masteradhoc.\nFixes #66637.\n",
+        "date": "2026-11-10T21:06:23.841095Z",
+        "files": [
+            "/trunk/src/readme.html",
+            "/trunk/src/wp-admin/includes/class-wp-site-health.php",
+            "/trunk/tests/phpunit/tests/readme.php"
+        ]
+    },
+    {
+        "id": 65398,
+        "author": "desrosj",
+        "message": "External Libraries: Update `sodium_compat` to version `1.24.2`.\n\nThis updates the `sodium_compat` library from version `1.24.1` to `1.42.2`.\n\nThis update is a hardening release.\n\nA full list of changes can be found on GitHub: https://github.com/paragonie/sodium_compat/compare/v1.24.1...v1.24.2.\n\nProps johnbillion.\nFixes #66650.\n",
+        "date": "2026-11-10T20:47:31.929223Z",
+        "files": [
+            "/trunk/src/wp-includes/sodium_compat/src/Core/ChaCha20.php",
+            "/trunk/src/wp-includes/sodium_compat/src/Core/Curve25519.php",
+            "/trunk/src/wp-includes/sodium_compat/src/Core/Ed25519.php",
+            "/trunk/src/wp-includes/sodium_compat/src/Core/Ristretto255.php",
+            "/trunk/src/wp-includes/sodium_compat/src/Core/SecretStream/State.php",
+            "/trunk/src/wp-includes/sodium_compat/src/Core32/ChaCha20/Ctx.php",
+            "/trunk/src/wp-includes/sodium_compat/src/Core32/ChaCha20.php",
+            "/trunk/src/wp-includes/sodium_compat/src/Core32/Ed25519.php",
+            "/trunk/src/wp-includes/sodium_compat/src/Core32/SecretStream/State.php",
+            "/trunk/src/wp-includes/sodium_compat/src/File.php"
+        ]
+    },
+    {
+        "id": 65397,
+        "author": "lancewillett",
+        "message": "Tests: Remove redundant registration cleanup.\n\nRemove final taxonomy and post type cleanup calls already covered by the inherited per-test setup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15497, https://github.com/WordPress/wordpress-develop/pull/15498\n\nProps devmuhib.\nSee #65893.\n",
+        "date": "2026-11-10T20:22:29.465651Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/comment/query.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/getTerms.php"
+        ]
+    },
+    {
         "id": 65396,
         "author": "westonruter",
         "message": "Build/Test Tools: Make the file watcher pick up changes reliably.\n\nThe `npm run dev` watcher often missed changes entirely, such as edits to `src/js/_enqueues/lib/emoji-loader.js`. The causes lay in grunt-contrib-watch and its gaze dependency, so they could not be fixed through configuration:\n* Gaze enumerated every file under a pattern before applying exclusions, including every installed plugin and bundled `node_modules` directory, which could block the watcher for minutes.\n* Each file was then polled every two seconds.\n* The watchers were recreated after each run, missing changes made in the meantime.\n\nThe watch task is therefore replaced with one built on chokidar, which uses native file system events, skips ignored directories, and keeps a single watcher for the session. Polling remains available via `CHOKIDAR_USEPOLLING=1` for network drives and Windows drives accessed from WSL. Version 4 of chokidar is used, matching `@wordpress/build` in Gutenberg, since version 5 is ESM-only.\n\nThe new watch task also changes what is rebuilt:\n* Only the files that the build uses are now watched, and the `all` target copies the same files that `copy:files` does instead of everything in `src`.\n* The `:dynamic` task configuration is now built from all files changed together and reset on each run. Previously only the last changed file was rebuilt, and a stale `clean:dynamic` list could delete uploaded files.\n* Changed scripts are minified by the same uglify target as in the build.\n* When the Gruntfile changes, the watcher restarts in a new process, and the previous one keeps watching until the new one is ready, so edits made during the restart are still built.\n\nA new opt-in `--symlink` option for `npm run build:dev` and `npm run dev` symlinks the scripts copied unchanged from `src/js/_enqueues`, so edits take effect without the watcher. It is opt-in because Docker Desktop's file sharing can fail to read a path that switches between a file and a symlink until the environment is restarted.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15863.\nFollow-up to r43309, r43324, r43327, r44359, r56461, r61475.\n\nProps westonruter, lancewillett, siliconforks, sirlouen.\nSee #44271, #63606, #64563.\nFixes #66638, #63605.\n",
