@@ -1,5 +1,18 @@
 [
     {
+        "id": 65393,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Add a user factory fixture to the E2E tests.\n\nThe `userFactory` fixture creates users and deletes them when the test ends, also if the test fails. `signIn()` logs a user in through `wp-login.php`. `users.test.js` and `dashboard.test.js` use them instead of their own cleanup and login code.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15884\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-10T17:35:16.557746Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/fixtures/index.js",
+            "/trunk/tests/e2e/fixtures/user.js",
+            "/trunk/tests/e2e/specs/dashboard.test.js",
+            "/trunk/tests/e2e/specs/users.test.js"
+        ]
+    },
+    {
         "id": 65392,
         "author": "audrasjb",
         "message": "Post WordPress 7.2 Beta 5 version bump.\n\n",
