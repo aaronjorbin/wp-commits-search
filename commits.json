@@ -1,5 +1,32 @@
 [
     {
+        "id": 65369,
+        "author": "westonruter",
+        "message": "REST API: Accept a post object in global styles `prepare_links()`.\n\nThe `WP_REST_Global_Styles_Controller::prepare_links()` override took a post ID while the parent method takes a `WP_Post`, which PHPStan reports as an incompatible child parameter type. It now accepts either, and `prepare_item_for_response()` continues to pass the ID so that subclasses overriding the method and expecting an ID are not broken. The method also gains a precise return type, which in turn required narrowing the types it relies on: REST URLs are documented as non-empty, and `count` is declared as a non-negative link attribute.\n\nThe `WP_Query::$found_posts` count is now clamped to zero, both from the `found_posts_query` query and after the `found_posts` filter, since a negative post count has no valid meaning and would otherwise surface as a negative revisions count. In r65281 only `$max_num_pages` was clamped, and its test asserted a negative `found_posts` merely as a precondition.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15826.\nFollow-up to r48328, r52051, r56082, r65281.\n\nProps westonruter, huzaifaalmesbah, dpknauss.\nSee #65817.\n",
+        "date": "2026-11-10T04:51:29.026828Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-query.php",
+            "/trunk/src/wp-includes/rest-api/class-wp-rest-response.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php",
+            "/trunk/src/wp-includes/rest-api.php",
+            "/trunk/src/wp-includes/revision.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon",
+            "/trunk/tests/phpstan/baselines/method.childParameterType.neon",
+            "/trunk/tests/phpunit/tests/query/noFoundRows.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-global-styles-controller.php"
+        ]
+    },
+    {
+        "id": 65368,
+        "author": "gziolo",
+        "message": "Abilities API: Skip redundant input sanitization in the REST run endpoint\n\nThe permission callback and `WP_Ability::execute()` already normalize, validate, and coerce input. The `input` argument now sets `sanitize_callback` to `null`, so both receive the original raw input. `sanitize_input_for_ability()` is deprecated and returns its input unchanged.\n\nFollow-up to [62674], [65044].\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15684.\n\nProps gziolo, jorgefilipecosta, euvoor, justlevine.\nFixes #66383.\n\n\n",
+        "date": "2026-11-10T04:15:24.456662Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-abilities-v1-run-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1RunController.php"
+        ]
+    },
+    {
         "id": 65367,
         "author": "desrosj",
         "message": "Media: Use `imageflip()` to flip images with GD.\n\n`WP_Image_Editor_GD::flip()` and the deprecated `_flip_image_resource()` mirrored images by copying them with `imagecopyresampled()` and negative source dimensions. With the GD 2.4.0 bundled in PHP 8.6, this produces an all-black image. It affects flips in the image editor, and also JPEG uploads with an EXIF orientation of 2, 3 or 4, which `WP_Image_Editor::maybe_exif_rotate()` flips.\n\nBoth functions now flip the image in place with `imageflip()`, and the output stays the same as before. Palette images are still converted to truecolor, alpha blending is turned off and alpha saving on, and the resolution and interlacing are reset to GD's defaults of 96 DPI and off. This matches what `rotate()`, `crop()` and `resize()` produce. Whether every operation should keep the source image's resolution and interlacing will be decided in a follow-up ticket.\n\nWhen no valid image is loaded, `flip()` now returns a `WP_Error` instead of throwing a `TypeError`.\n\nProps sanjith2023, rumancodes, arshidkv12, dhruvang21, abhishekfdd, desrosj.\nFixes #66113.\n",
