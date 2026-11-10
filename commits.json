@@ -1,5 +1,66 @@
 [
     {
+        "id": 65365,
+        "author": "audrasjb",
+        "message": "Twenty Nineteen: Revert [65362] to fix a Unit test issue on version-controlled files.\n\nUnprops audrasjb.\nSee #65433.\n\n",
+        "date": "2026-11-10T00:06:26.983212Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentynineteen/sass/mixins/_mixins-master.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/style-editor.css"
+        ]
+    },
+    {
+        "id": 65364,
+        "author": "audrasjb",
+        "message": "Twenty Nineteen: Partially revert [65362] to exclude version controlled files such as style.css.\n\nUnprops audrasjb.\nSee #65433.\n\n",
+        "date": "2026-11-09T23:58:52.532839Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentynineteen/style.css"
+        ]
+    },
+    {
+        "id": 65363,
+        "author": "audrasjb",
+        "message": "Twenty Nineteen: Partially revert [65362] to exclude version controlled files such as RTL styles.\n\nUnprops audrasjb.\nSee #65433.\n\n",
+        "date": "2026-11-09T23:54:11.628989Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentynineteen/style-rtl.css"
+        ]
+    },
+    {
+        "id": 65362,
+        "author": "audrasjb",
+        "message": "Twenty Nineteen: Replace whitespace character for heading decoration.\n\nWhen a user inserts an empty heading block in the editor and applies an \"Underline\" or \"Strikethrough\" text decoration, the browser attempts to underline the pseudo-element's whitespace character. This interaction causes a stray, visible hyphen-like artifact to render inside the editor above the empty block.\n\nThis changeset updates the CSS content property to use the empty string `content: \"\";` instead of `content: \\020`. By removing the whitespace character, the pseudo-element no longer contains an actual text node.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12121.\n\nProps karunyachavan84, sabernhardt, karmatosed, tusharaddweb, 369work.\nFixes #65433.\n\n",
+        "date": "2026-11-09T23:40:22.522887Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentynineteen/sass/mixins/_mixins-master.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/style-editor.css",
+            "/trunk/src/wp-content/themes/twentynineteen/style-rtl.css",
+            "/trunk/src/wp-content/themes/twentynineteen/style.css"
+        ]
+    },
+    {
+        "id": 65361,
+        "author": "johnbillion",
+        "message": "Application Passwords: Pass unslashed data to hooks.\n\nThe name of an application password appeared with backslashes in the \"Application Password Created\" email, so a name such as `Bob's App` showed as `Bob\\'s App`. This happened because `WP_Application_Passwords::create_new_application_password()` and `::update_application_password()` expect slashed data and have passed it to their actions unchanged since 5.6.0. Both methods now unslash their input.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15608\n\nFollow-up to [63582], [64253], [65091].\n\nProps peterwilsoncc, jorbin, audrasjb, ssebuwufumoses.\nFixes #63927.\n",
+        "date": "2026-11-09T23:31:31.239310Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-application-passwords.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/tests/phpunit/tests/functions/wpApplicationPasswordCreatedNotification.php",
+            "/trunk/tests/phpunit/tests/rest-api/application-passwords.php"
+        ]
+    },
+    {
+        "id": 65360,
+        "author": "audrasjb",
+        "message": "Twenty Seventeen: Replace an asset reference that does not use a license that is compatible with GPL.\n\nThis changeset replaces the asset reference with a link to a Wikimedia Commons page, without \"Source:\", that could give more details.\n\nProps mehrazmorshed, audrasjb, dd32, sabernhardt, karmatosed.\nFixes #64206.\nSee #30156.\n\n",
+        "date": "2026-11-09T23:18:56.857035Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentyseventeen/readme.txt"
+        ]
+    },
+    {
         "id": 65359,
         "author": "audrasjb",
         "message": "Administration: Restore the full-width upload folder row on Settings > Media.\n\nOn Settings > Media, \"Organize my uploads into month- and year-based folders\" wraps onto three lines as soon as any plugin registers a field in the Uploads settings section.\n\nThe row spanned both columns unconditionally until [40823] which moved it inside the upload-path conditional in order to change its `th` into a `td`. That carried `colspan=\"2\"` onto the editable-paths branch only.\n\nThis changeset closes the conditional above the row and restore the single unconditional cell, keeping the td/td-full markup [40823] introduced.\n\nFollow-up to [40823].\n\nProps imath, dpknauss, dhruvang21, audrasjb, dilip2615, im3dabasia1.\nFixes #51190.\n\n",
