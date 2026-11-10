@@ -1,5 +1,19 @@
 [
     {
+        "id": 65396,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Make the file watcher pick up changes reliably.\n\nThe `npm run dev` watcher often missed changes entirely, such as edits to `src/js/_enqueues/lib/emoji-loader.js`. The causes lay in grunt-contrib-watch and its gaze dependency, so they could not be fixed through configuration:\n* Gaze enumerated every file under a pattern before applying exclusions, including every installed plugin and bundled `node_modules` directory, which could block the watcher for minutes.\n* Each file was then polled every two seconds.\n* The watchers were recreated after each run, missing changes made in the meantime.\n\nThe watch task is therefore replaced with one built on chokidar, which uses native file system events, skips ignored directories, and keeps a single watcher for the session. Polling remains available via `CHOKIDAR_USEPOLLING=1` for network drives and Windows drives accessed from WSL. Version 4 of chokidar is used, matching `@wordpress/build` in Gutenberg, since version 5 is ESM-only.\n\nThe new watch task also changes what is rebuilt:\n* Only the files that the build uses are now watched, and the `all` target copies the same files that `copy:files` does instead of everything in `src`.\n* The `:dynamic` task configuration is now built from all files changed together and reset on each run. Previously only the last changed file was rebuilt, and a stale `clean:dynamic` list could delete uploaded files.\n* Changed scripts are minified by the same uglify target as in the build.\n* When the Gruntfile changes, the watcher restarts in a new process, and the previous one keeps watching until the new one is ready, so edits made during the restart are still built.\n\nA new opt-in `--symlink` option for `npm run build:dev` and `npm run dev` symlinks the scripts copied unchanged from `src/js/_enqueues`, so edits take effect without the watcher. It is opt-in because Docker Desktop's file sharing can fail to read a path that switches between a file and a symlink until the environment is restarted.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15863.\nFollow-up to r43309, r43324, r43327, r44359, r56461, r61475.\n\nProps westonruter, lancewillett, siliconforks, sirlouen.\nSee #44271, #63606, #64563.\nFixes #66638, #63605.\n",
+        "date": "2026-11-10T19:26:15.229088Z",
+        "files": [
+            "/trunk/Gruntfile.js",
+            "/trunk/README.md",
+            "/trunk/package-lock.json",
+            "/trunk/package.json",
+            "/trunk/tools/watch",
+            "/trunk/tools/watch/task.js"
+        ]
+    },
+    {
         "id": 65395,
         "author": "whyisjake",
         "message": "Docs: Mark the internal Secrets API helper functions as private.\n\nAdds `@access private` to the eight underscore-prefixed functions in `wp-includes/secrets.php`: `_wp_secrets_get_store()`, `_wp_secrets_get_key_manager()`, `_wp_secrets_get_provider()`, `_wp_secrets_set()`, `_wp_secrets_get()`, `_wp_secrets_delete()`, `_wp_secrets_retire()` and `_wp_secrets_list()`.\n\nThese are internal helpers that only core calls. The tag makes the code reference show that they are not meant for plugins or themes.\n\nFollow-up to r64337.\n\nProps wildworks.\nFixes #66187.\n",
