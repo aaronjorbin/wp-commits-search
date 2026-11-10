@@ -1,5 +1,23 @@
 [
     {
+        "id": 65392,
+        "author": "audrasjb",
+        "message": "Post WordPress 7.2 Beta 5 version bump.\n\n",
+        "date": "2026-11-10T16:55:14.747813Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65391,
+        "author": "audrasjb",
+        "message": "WordPress 7.2 Beta 5.\n\n",
+        "date": "2026-11-10T16:20:32.069990Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
         "id": 65390,
         "author": "whyisjake",
         "message": "Security: Make the Secrets API extension points abstract classes.\n\n`WP_Secrets_Provider`, `WP_Secrets_Store` and `WP_Secrets_Keyring` were interfaces. Once they ship, adding a method to one would be a fatal error in every `secrets.php` drop-in that implements it, so they could never change. As abstract classes, a later release can add a method with a default implementation and existing drop-ins keep working.\n\nThe method signatures are unchanged. The three files are renamed from `interface-wp-secrets-*.php` to `class-wp-secrets-*.php`, and the default and fail-closed implementations now extend the classes.\n\nA drop-in written against the interfaces must change `implements` to `extends`. Until it does, loading it is a fatal error.\n\nFollow-up to r64337, r65375.\n\nProps ericmann, jorbin.\nSee #66187.\n",
