@@ -1,5 +1,18 @@
 [
     {
+        "id": 65403,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Run media grid and modal E2E specs in parallel.\n\nUse unique upload names and per-test attachment and post cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15903\n\nProps adrianmoldovanwp.\nSee #66392.\n",
+        "date": "2026-11-11T17:15:44.731765Z",
+        "files": [
+            "/trunk/tests/e2e/playwright.config.js",
+            "/trunk/tests/e2e/specs/media-library-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-modal-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-new-client-side-upload.test.js",
+            "/trunk/tests/e2e/utils/media-pipeline.js"
+        ]
+    },
+    {
         "id": 65402,
         "author": "lancewillett",
         "message": "Build/Test Tools: Isolate media uploads and application passwords in E2E tests.\n\nTrack and clean up each test's attachments, and run the Add New Media spec in parallel. Give each application-password test its own user.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15896, https://github.com/WordPress/wordpress-develop/pull/15902\n\nProps adrianmoldovanwp.\nSee #66392.\n",
