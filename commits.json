@@ -1,5 +1,14 @@
 [
     {
+        "id": 65404,
+        "author": "lancewillett",
+        "message": "Tests: Use the public API for REST user post type cleanup.\n\nReplace four `_unregister_post_type()` calls with `unregister_post_type()` in `WP_Test_REST_Users_Controller::wpTearDownAfterClass()`. Preserve the existing class-level cleanup for fixtures that opt out of automatic unregistration.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15490\n\nProps devmuhib.\nSee #65893.\n",
+        "date": "2026-11-11T18:15:22.263005Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-users-controller.php"
+        ]
+    },
+    {
         "id": 65403,
         "author": "lancewillett",
         "message": "Build/Test Tools: Run media grid and modal E2E specs in parallel.\n\nUse unique upload names and per-test attachment and post cleanup.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15903\n\nProps adrianmoldovanwp.\nSee #66392.\n",
