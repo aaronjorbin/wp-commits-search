@@ -1,5 +1,16 @@
 [
     {
+        "id": 65400,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Make the remaining data providers public and static.\n\nDeveloped in:\nhttps://github.com/WordPress/wordpress-develop/pull/15439\nhttps://github.com/WordPress/wordpress-develop/pull/15440\nhttps://github.com/WordPress/wordpress-develop/pull/15441\n\nProps devmuhib, mukesh27, huzaifaalmesbah.\nSee #66211.",
+        "date": "2026-11-10T23:33:27.138141Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includesUpdate.php",
+            "/trunk/tests/phpunit/tests/admin/languagePackUpgrader.php",
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php"
+        ]
+    },
+    {
         "id": 65399,
         "author": "johnbillion",
         "message": "Database: Bump the recommended version of MySQL to 8.4.\n\nMySQL 8.0 reached end of life on 30 April 2026 but was still the recommended version in `readme.html` and Site Health. MySQL 8.4 is an LTS release supported until April 2032, and has been tested in CI since [59280].\n\nFollow-up to [59280], [62170].\n\nProps lucatume, desrosj, masteradhoc.\nFixes #66637.\n",
