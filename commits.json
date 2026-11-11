@@ -1,5 +1,19 @@
 [
     {
+        "id": 65402,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Isolate media uploads and application passwords in E2E tests.\n\nTrack and clean up each test's attachments, and run the Add New Media spec in parallel. Give each application-password test its own user.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15896, https://github.com/WordPress/wordpress-develop/pull/15902\n\nProps adrianmoldovanwp.\nSee #66392.\n",
+        "date": "2026-11-11T14:52:01.711653Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/fixtures/attachment.js",
+            "/trunk/tests/e2e/fixtures/index.js",
+            "/trunk/tests/e2e/playwright.config.js",
+            "/trunk/tests/e2e/specs/media-new-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/profile/applications-passwords.test.js"
+        ]
+    },
+    {
         "id": 65401,
         "author": "johnbillion",
         "message": "Docs: Add missing documentation for the `view_script_module_ids` property of `WP_Block_Type`.\n\nFollow-up to [57565], [65318].\n\nProps westonruter, gziolo.\nSee #65860.\n",
