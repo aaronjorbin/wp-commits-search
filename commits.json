@@ -1,5 +1,14 @@
 [
     {
+        "id": 65401,
+        "author": "johnbillion",
+        "message": "Docs: Add missing documentation for the `view_script_module_ids` property of `WP_Block_Type`.\n\nFollow-up to [57565], [65318].\n\nProps westonruter, gziolo.\nSee #65860.\n",
+        "date": "2026-11-11T00:49:35.494849Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-type.php"
+        ]
+    },
+    {
         "id": 65400,
         "author": "SergeyBiryukov",
         "message": "Tests: Make the remaining data providers public and static.\n\nDeveloped in:\nhttps://github.com/WordPress/wordpress-develop/pull/15439\nhttps://github.com/WordPress/wordpress-develop/pull/15440\nhttps://github.com/WordPress/wordpress-develop/pull/15441\n\nProps devmuhib, mukesh27, huzaifaalmesbah.\nSee #66211.",
