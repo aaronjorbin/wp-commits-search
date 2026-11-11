@@ -1,5 +1,15 @@
 [
     {
+        "id": 65405,
+        "author": "dmsnell",
+        "message": "Blocks: Non-string documents should parse as empty arrays.\n\nFollowing the change to rely on `WP_Block_Processor` for parsing inside of `WP_Block_Parser`, a small behavioral change affected non-string inputs. Previously they coerced to strings, but the updated code throws a `TypeError`.\n\nIn this patch, non-string and `Stringable` inputs call `_doing_it_wrong()`, Stringables coerce to string, and non-string inputs return an empty array.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15340\nDiscussed in: https://core.trac.wordpress.org/ticket/66138\n\nFollow-up to r64870.\n\nProps dmsnell, rejaulalomkhan.\nSee #66138.\n",
+        "date": "2026-11-11T21:40:30.581612Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-parser.php",
+            "/trunk/tests/phpunit/tests/blocks/wpBlockParser.php"
+        ]
+    },
+    {
         "id": 65404,
         "author": "lancewillett",
         "message": "Tests: Use the public API for REST user post type cleanup.\n\nReplace four `_unregister_post_type()` calls with `unregister_post_type()` in `WP_Test_REST_Users_Controller::wpTearDownAfterClass()`. Preserve the existing class-level cleanup for fixtures that opt out of automatic unregistration.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15490\n\nProps devmuhib.\nSee #65893.\n",
