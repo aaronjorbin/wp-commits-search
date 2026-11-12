@@ -1,5 +1,16 @@
 [
     {
+        "id": 65408,
+        "author": "dmsnell",
+        "message": "Blocks: Correctly document the blockName property as being nullable.\n\nGutenberg PR#70900 applied several updates to documentation in the PHP block parser, however, as of r61504, the PHP block parser lives in the Core repo. The docs updates were never applied, and this patch backports them into Core.\n\nSee https://github.com/WordPress/gutenberg/pull/70900\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15913\nDiscussed in: https://core.trac.wordpress.org/ticket/63663\n\nProps dmsnell, johnbillion.\nSee #63663.\n",
+        "date": "2026-11-12T02:15:34.597374Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-block-parser-block.php",
+            "/trunk/src/wp-includes/class-wp-block-parser.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon"
+        ]
+    },
+    {
         "id": 65407,
         "author": "SergeyBiryukov",
         "message": "Docs: Remove duplicate words and correct a typo in inline comments.\n\nProps devansh2002.\nSee #65860.",
