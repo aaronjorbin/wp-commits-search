@@ -1,5 +1,241 @@
 [
     {
+        "id": 65437,
+        "author": "desrosj",
+        "message": "External Libraries: Update getID3 to version `1.9.28`.\n\nThis update includes `1.9.27` and brings bug fixes and hardening improvements:\n- Entry counts in the QuickTime `stsd`, `dref`, `elst`, and `keys` atoms are now capped to the data available, which prevents memory exhaustion from crafted files.\n- Decompressing compressed ID3v2 frames is limited to a quarter of the PHP memory limit (or 32MB when unknown).\n- `getid3_lib::XML2array()` refuses to parse when external entity loading cannot be disabled (PHP < 8.0 only).\n- Embedded picture data is no longer run through character set conversion.\n- `replaygain_album_peak` is now read from ID3v2 `TXXX` frames.\n\nThe involved people list frames (ID3v2.2 `IPL`, ID3v2.3 `IPLS`) and the ID3v2.4 `TIPL` and `TMCL` frames are now parsed into `position`/`person` pairs. Because `wp_add_id3_tag_data()` stores the first value for each key, the `involved_people_list` and `musician_credits_list` attachment metadata values for newly uploaded audio files will now contain only the first pair. These values are not displayed anywhere in Core, and this only applies to newly uploaded files (preexisting metadata values are unchanged).\n\nOnly the bundled audio/video subset was updated. No modules were added, and all bundled files are identical to upstream v1.9.28.\n\nReferences:\n* [https://github.com/JamesHeinrich/getID3/releases/tag/v1.9.27 getID3 1.9.27 release notes]\n* [https://github.com/JamesHeinrich/getID3/releases/tag/v1.9.28 getID3 1.9.28 release notes]\n* [https://github.com/JamesHeinrich/getID3/compare/v1.9.26...v1.9.28 Full list of changes in getID3 1.9.28]\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15878.\n\nFollow-up to r47601, r48278, r52254, r54376, r56975, r61253, r61889, r62087, r63520.\n\nProps desrosj, johnbillion.\nFixes #66646.\n",
+        "date": "2026-11-12T15:07:24.597381Z",
+        "files": [
+            "/trunk/src/wp-includes/ID3/getid3.lib.php",
+            "/trunk/src/wp-includes/ID3/getid3.php",
+            "/trunk/src/wp-includes/ID3/module.audio-video.quicktime.php",
+            "/trunk/src/wp-includes/ID3/module.tag.id3v2.php"
+        ]
+    },
+    {
+        "id": 65436,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 4.7 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:54:31.018086Z",
+        "files": [
+            "/branches/4.7/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65435,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 4.8 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:53:53.238739Z",
+        "files": [
+            "/branches/4.8/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65434,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 4.9 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:53:17.260073Z",
+        "files": [
+            "/branches/4.9/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65433,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 5.0 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:52:39.182577Z",
+        "files": [
+            "/branches/5.0/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65432,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 5.1 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:52:00.603512Z",
+        "files": [
+            "/branches/5.1/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65431,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 5.2 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:51:24.283695Z",
+        "files": [
+            "/branches/5.2/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65430,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 5.3 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:50:45.539677Z",
+        "files": [
+            "/branches/5.3/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65429,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 5.4 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:50:06.284894Z",
+        "files": [
+            "/branches/5.4/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65428,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 5.5 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:49:30.684244Z",
+        "files": [
+            "/branches/5.5/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65427,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 5.6 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:48:48.802007Z",
+        "files": [
+            "/branches/5.6/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65426,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 5.7 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:48:04.276352Z",
+        "files": [
+            "/branches/5.7/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65425,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 5.8 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:47:25.964711Z",
+        "files": [
+            "/branches/5.8/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65424,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 5.9 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:46:42.276101Z",
+        "files": [
+            "/branches/5.9/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65423,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 6.0 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:46:02.089212Z",
+        "files": [
+            "/branches/6.0/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65422,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 6.1 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:45:22.959163Z",
+        "files": [
+            "/branches/6.1/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65421,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 6.2 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:44:41.540742Z",
+        "files": [
+            "/branches/6.2/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65420,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 6.3 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:44:00.444846Z",
+        "files": [
+            "/branches/6.3/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65419,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 6.4 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:43:22.546343Z",
+        "files": [
+            "/branches/6.4/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65418,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 6.5 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:42:41.250595Z",
+        "files": [
+            "/branches/6.5/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65417,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Properly delete `tests/gutenberg` directory.\n\nThis properly delets the `tests/gutenberg` directory and it's files using `svn delete`.\n\nFollow-up to r65309.\n\nSee #65845.\n",
+        "date": "2026-11-12T14:42:06.415965Z",
+        "files": [
+            "/trunk/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65416,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 6.6 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:41:56.267449Z",
+        "files": [
+            "/branches/6.6/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65415,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates from the 6.7 branch.\n\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:19:47.684453Z",
+        "files": [
+            "/branches/6.7/src/wp-includes/certificates/ca-bundle.crt"
+        ]
+    },
+    {
+        "id": 65414,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates.\n\nThese legacy certificates were kept in the bundle so that OpenSSL 1.0.1e to 1.0.1q, which have path discovery bugs, continue to work with it. Those versions are over a decade old, so the certificates are removed to keep the HTTP API secure. The Grunt task no longer builds the bundle from `cacert.pem` and `legacy-1024bit.pem`, both files are deleted, and `ca-bundle.crt` is regenerated to match trunk.\n\nReviewed by desrosj.\nMerges [61669] to the 6.8 branch.\n\nProps kkmuffme, javiercasares, desrosj.\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:15:42.947587Z",
+        "files": [
+            "/branches/6.8",
+            "/branches/6.8/Gruntfile.js",
+            "/branches/6.8/src/wp-includes/certificates/ca-bundle.crt",
+            "/branches/6.8/src/wp-includes/certificates/cacert.pem",
+            "/branches/6.8/src/wp-includes/certificates/legacy-1024bit.pem"
+        ]
+    },
+    {
+        "id": 65413,
+        "author": "johnbillion",
+        "message": "HTTP API: Remove 1024 bit certificates from bundled root certificates.\n\nThese legacy certificates were kept in the bundle so that OpenSSL 1.0.1e to 1.0.1q, which have path discovery bugs, continue to work with it. Those versions are over a decade old, so the certificates are removed to keep the HTTP API secure. The Grunt task no longer builds the bundle from `cacert.pem` and `legacy-1024bit.pem`, both files are deleted, and `ca-bundle.crt` is regenerated to match trunk.\n\nReviewed by desrosj.\nMerges [61669] to the 6.9 branch.\n\nProps kkmuffme, javiercasares, desrosj.\nSee #64063, #66423.\n",
+        "date": "2026-11-12T14:13:58.179193Z",
+        "files": [
+            "/branches/6.9",
+            "/branches/6.9/Gruntfile.js",
+            "/branches/6.9/src/wp-includes/certificates/ca-bundle.crt",
+            "/branches/6.9/src/wp-includes/certificates/cacert.pem",
+            "/branches/6.9/src/wp-includes/certificates/legacy-1024bit.pem"
+        ]
+    },
+    {
         "id": 65412,
         "author": "lancewillett",
         "message": "Build/Test Tools: Run post-list E2E specs in parallel.\n\nScope post fixtures and list assertions to each test, and keep Empty Trash tests serial. Clean up saved drafts within Quick Draft's own tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15901\n\nProps adrianmoldovanwp.\nSee #66392.\n",
