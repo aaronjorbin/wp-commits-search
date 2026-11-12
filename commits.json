@@ -1,5 +1,16 @@
 [
     {
+        "id": 65411,
+        "author": "jorgefilipecosta",
+        "message": "I18N: Print translations for the script modules that scripts depend on.\n\n`WP_Script_Modules::print_script_module_translations()` only printed the translations of the enqueued script modules and their dependencies. A script module that only a script imports, declared in the script's `module_dependencies`, is added to the import map and loads, but its translations were never printed, so its strings showed untranslated. This is the case of the `@wordpress/core-actions` and `@wordpress/core-fields` script modules that the `wp-editor` script imports.\nThe method now prints the translations of the enqueued script modules, followed by the translations of the script modules in the import map, which include the script module dependencies of scripts and their dependencies. `WP_Script_Modules::print_script_module_data()` already covered these script modules, and both methods now get them from the new private `WP_Script_Modules::get_loadable_script_module_ids()` method.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14260.\nFollow-up to [61587], [62278].\n\nProps jorgefilipecosta, manzoorwanijk, jsnajdr, oandregal, wildworks.\nFixes #66591.",
+        "date": "2026-11-12T09:54:55.370999Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-script-modules.php",
+            "/trunk/src/wp-includes/functions.wp-scripts.php",
+            "/trunk/tests/phpunit/tests/script-modules/wpScriptModules.php"
+        ]
+    },
+    {
         "id": 65410,
         "author": "westonruter",
         "message": "Code Quality: Resolve return.unusedType PHPStan errors.\n\nEvery `return.unusedType` error is fixed and its baseline removed. Most came from a `@return` tag that listed a type the function never returns. Others came from a filter `@param` tag that listed too few types: PHPStan derives the result of `apply_filters()` from the hook's first `@param`, so where the function's documented return was already right, the hook docs were corrected instead of loosening the function's type.\n\nCorrecting these types uncovered a real bug in `wp_mime_type_icon()`: when an attachment ID matched no icon, the `wp_mime_type_icon` filter received an undefined `$icon`, so `null` along with a warning. It now always receives `string|false`, and values read from the object cache are only used when they are strings. The `is_object()` guard in `_set_preview()` is removed, since `WP_Query` only applies the `the_preview` filter to a post already passed through `get_post()`, and no plugin in the directory was found to return anything else from it. Conditional return types are also added to `get_post_gallery()` and `sanitize_term()`, so callers get the type matching the arguments they pass.\n\nThe `wp_imagecreatetruecolor()` error moves to the permanent ignore list, because PHPStan analyzes against PHP 7.4, where `imagecreatetruecolor()` returns a resource rather than a `GdImage`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15387.\nFollow-up to r63023, r63941.\n\nProps mukesh27, westonruter.\nSee #65817.\n",
