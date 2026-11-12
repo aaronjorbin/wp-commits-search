@@ -1,5 +1,19 @@
 [
     {
+        "id": 65412,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Run post-list E2E specs in parallel.\n\nScope post fixtures and list assertions to each test, and keep Empty Trash tests serial. Clean up saved drafts within Quick Draft's own tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15901\n\nProps adrianmoldovanwp.\nSee #66392.\n",
+        "date": "2026-11-12T13:40:36.153313Z",
+        "files": [
+            "/trunk/tests/e2e/playwright.config.js",
+            "/trunk/tests/e2e/specs/cache-control-headers-directives.test.js",
+            "/trunk/tests/e2e/specs/dashboard.test.js",
+            "/trunk/tests/e2e/specs/edit-posts.test.js",
+            "/trunk/tests/e2e/specs/empty-trash-restore-trashed-posts.test.js",
+            "/trunk/tests/e2e/specs/empty-trash.test.js"
+        ]
+    },
+    {
         "id": 65411,
         "author": "jorgefilipecosta",
         "message": "I18N: Print translations for the script modules that scripts depend on.\n\n`WP_Script_Modules::print_script_module_translations()` only printed the translations of the enqueued script modules and their dependencies. A script module that only a script imports, declared in the script's `module_dependencies`, is added to the import map and loads, but its translations were never printed, so its strings showed untranslated. This is the case of the `@wordpress/core-actions` and `@wordpress/core-fields` script modules that the `wp-editor` script imports.\nThe method now prints the translations of the enqueued script modules, followed by the translations of the script modules in the import map, which include the script module dependencies of scripts and their dependencies. `WP_Script_Modules::print_script_module_data()` already covered these script modules, and both methods now get them from the new private `WP_Script_Modules::get_loadable_script_module_ids()` method.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14260.\nFollow-up to [61587], [62278].\n\nProps jorgefilipecosta, manzoorwanijk, jsnajdr, oandregal, wildworks.\nFixes #66591.",
