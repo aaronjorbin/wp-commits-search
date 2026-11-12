@@ -1,5 +1,31 @@
 [
     {
+        "id": 65440,
+        "author": "jorbin",
+        "message": "Rewrite Rules: Always redirect random content requests.\n\nWhen the randomly selected post's permalink was empty or on a host outside `allowed_redirect_hosts`, the request was not redirected and instead rendered the post as a one-post archive with a `200` status. That response was sent without the no-cache and noindex headers, so a page cache could store one post for `/random/`, and the post's content was displayed even though its permalink pointed elsewhere.\n\nThe request now ends as soon as a post is selected, sending the headers and redirecting with `wp_redirect()` rather than `wp_safe_redirect()`. A permalink can only point to another site if a plugin filters it to do so, so it is treated as an intentional redirect location.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15825\n\nFollow-up to r64402.\n\nProps renehermi, jorbin, peterwilsoncc, ssebuwufumoses.\nFixes #66625. See #64498.\n",
+        "date": "2026-11-12T21:34:21.312858Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp.php",
+            "/trunk/src/wp-includes/query.php",
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php",
+            "/trunk/tests/phpunit/tests/rewrite/randomRewriteRules.php",
+            "/trunk/tests/phpunit/tests/wp/handleRandom.php"
+        ]
+    },
+    {
+        "id": 65439,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Enable same-file E2E parallelism.\n\nEnable `fullyParallel` for the parallel project. Scope classic menu fixtures to each test and lock shared menu-location and privacy-page settings.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15929\n\nProps adrianmoldovanwp.\nSee #66392.\n",
+        "date": "2026-11-12T21:12:06.524513Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/playwright.config.js",
+            "/trunk/tests/e2e/specs/classic-menus.test.js",
+            "/trunk/tests/e2e/specs/privacy.test.js",
+            "/trunk/tests/e2e/utils/locks.js"
+        ]
+    },
+    {
         "id": 65438,
         "author": "westonruter",
         "message": "Editor: Improve Style Engine types and avoid a fatal error.\n\nA selector made only of whitespace passed the empty check in `WP_Style_Engine::store_css_rule()`, but the rules store trims it and returns no rule, so `add_declarations()` was called on null. This fatal error is reachable from `wp_style_engine_get_stylesheet_from_css_rules()` when a `context` is passed, and the rule is now skipped instead.\n\nRaw style values are documented as `mixed`, since `parse_block_styles()` passes whatever is found at a definition's path to every definition, so spacing values arrive as arrays and settings such as `textColumns` as integers. A `Style_Definition` type alias describes each entry of `BLOCK_STYLE_DEFINITIONS_METADATA`. Non-string values are now left out of the returned declarations so the documented `string[]` return type holds; they were already dropped from the compiled CSS, which is unchanged.\n\nThese changes are synced from the Style Engine package in Gutenberg.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15823.\nFollow-up to r54156, r56614, r58089.\n\nProps westonruter, ramonopoly.\nSee #65817.\n",
