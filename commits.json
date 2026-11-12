@@ -1,5 +1,108 @@
 [
     {
+        "id": 65450,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 6.0 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13742\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:03:55.734232Z",
+        "files": [
+            "/branches/6.0",
+            "/branches/6.0/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65449,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 6.1 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13743\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:00:36.204570Z",
+        "files": [
+            "/branches/6.1",
+            "/branches/6.1/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65448,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 6.2 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13744\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T22:58:54.720645Z",
+        "files": [
+            "/branches/6.2",
+            "/branches/6.2/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65447,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 6.3 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13745\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T22:57:04.186898Z",
+        "files": [
+            "/branches/6.3",
+            "/branches/6.3/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65446,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 6.4 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13746\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T22:55:54.961122Z",
+        "files": [
+            "/branches/6.4",
+            "/branches/6.4/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65445,
+        "author": "lancewillett",
+        "message": "Tests: Cover term sanitization for editing.\n\nVerify `get_term_to_edit()` returns a term with edit-context filtering applied to its name.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15428\n\nProps shailu25.\nFixes #66481.\n",
+        "date": "2026-11-12T22:54:36.455960Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/term/getTermToEdit.php"
+        ]
+    },
+    {
+        "id": 65444,
+        "author": "lancewillett",
+        "message": "Tests: Cover the RSS site-information display filter.\n\nVerify the `bloginfo_rss` filter receives the value and requested field, and that its result is echoed.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15425\n\nProps shailu25.\nFixes #66478.\n",
+        "date": "2026-11-12T22:53:21.634047Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/feed/bloginfoRss.php"
+        ]
+    },
+    {
+        "id": 65443,
+        "author": "lancewillett",
+        "message": "Tests: Cover EXIF date whitespace handling.\n\nVerify EXIF date conversion with ordinary and whitespace-padded input. The whitespace case protects trimming before the date and time are split.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15423\n\nProps shailu25.\nFixes #66476.\n",
+        "date": "2026-11-12T22:52:27.516417Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/image",
+            "/trunk/tests/phpunit/tests/admin/includes/image/wpExifDate2ts.php"
+        ]
+    },
+    {
+        "id": 65442,
+        "author": "lancewillett",
+        "message": "Tests: Tighten admin and update assertions.\n\nUse `assertSame()` for attachment fields, color-scheme output, and the empty PHP update annotation. Document intentional metadata and object-value comparisons.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15891\n\nProps shailu25, desrosj.\nSee #64895.\n",
+        "date": "2026-11-12T22:49:36.950157Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/saveAttachmentOrder.php",
+            "/trunk/tests/phpunit/tests/admin/includes/ajax-actions/sendAttachmentToEditor.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/adminColorSchemePicker.php",
+            "/trunk/tests/phpunit/tests/admin/includes/misc/setScreenOptions.php",
+            "/trunk/tests/phpunit/tests/admin/includesUpdate.php",
+            "/trunk/tests/phpunit/tests/functions/wpGetUpdatePhpAnnotation.php"
+        ]
+    },
+    {
+        "id": 65441,
+        "author": "jorbin",
+        "message": "Rewrite Rules: Give top rewrite rules priority over random content rules.\n\nA post type whose archive is at the random base, by name, rewrite slug or `has_archive`, kept its rewrite rule but had the rule's query replaced by the random content query. As a result `/random/` either redirected to random content or returned a 404 instead of displaying the post type archive. The same applied to any rule a plugin added to the top using the same regex as a random content rule.\n\nRandom content rules using the same regex as a rule added to the top, including post type and taxonomy rules, are now omitted when the rewrite rules are generated.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15959 and https://github.com/WordPress/wordpress-develop/pull/15838\n\nFollow-up to r64402.\n\nProps peterwilsoncc, jorbin, ssebuwufumoses, aryanjasala.\nFixes #66630. See #64498.\n",
+        "date": "2026-11-12T22:23:49.121666Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-rewrite.php",
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php",
+            "/trunk/tests/phpunit/tests/rewrite/randomRewriteRules.php"
+        ]
+    },
+    {
         "id": 65440,
         "author": "jorbin",
         "message": "Rewrite Rules: Always redirect random content requests.\n\nWhen the randomly selected post's permalink was empty or on a host outside `allowed_redirect_hosts`, the request was not redirected and instead rendered the post as a one-post archive with a `200` status. That response was sent without the no-cache and noindex headers, so a page cache could store one post for `/random/`, and the post's content was displayed even though its permalink pointed elsewhere.\n\nThe request now ends as soon as a post is selected, sending the headers and redirecting with `wp_redirect()` rather than `wp_safe_redirect()`. A permalink can only point to another site if a plugin filters it to do so, so it is treated as an intentional redirect location.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15825\n\nFollow-up to r64402.\n\nProps renehermi, jorbin, peterwilsoncc, ssebuwufumoses.\nFixes #66625. See #64498.\n",
