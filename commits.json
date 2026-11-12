@@ -1,5 +1,31 @@
 [
     {
+        "id": 65407,
+        "author": "SergeyBiryukov",
+        "message": "Docs: Remove duplicate words and correct a typo in inline comments.\n\nProps devansh2002.\nSee #65860.",
+        "date": "2026-11-11T23:56:12.075781Z",
+        "files": [
+            "/trunk/src/js/_enqueues/wp/widgets/media.js",
+            "/trunk/src/wp-includes/class-wp-customize-manager.php",
+            "/trunk/src/wp-includes/class-wp-query.php",
+            "/trunk/src/wp-includes/class-wp-tax-query.php",
+            "/trunk/src/wp-includes/functions.php"
+        ]
+    },
+    {
+        "id": 65406,
+        "author": "SergeyBiryukov",
+        "message": "Docs: Correct the order of annotations in some files per the documentation standards.\n\nProps shailu25, mukesh27.\nSee #65860.",
+        "date": "2026-11-11T23:47:01.727276Z",
+        "files": [
+            "/trunk/src/wp-includes/author-template.php",
+            "/trunk/src/wp-includes/customize/class-wp-customize-nav-menu-setting.php",
+            "/trunk/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/src/wp-includes/taxonomy.php"
+        ]
+    },
+    {
         "id": 65405,
         "author": "dmsnell",
         "message": "Blocks: Non-string documents should parse as empty arrays.\n\nFollowing the change to rely on `WP_Block_Processor` for parsing inside of `WP_Block_Parser`, a small behavioral change affected non-string inputs. Previously they coerced to strings, but the updated code throws a `TypeError`.\n\nIn this patch, non-string and `Stringable` inputs call `_doing_it_wrong()`, Stringables coerce to string, and non-string inputs return an empty array.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15340\nDiscussed in: https://core.trac.wordpress.org/ticket/66138\n\nFollow-up to r64870.\n\nProps dmsnell, rejaulalomkhan.\nSee #66138.\n",
