@@ -1,5 +1,40 @@
 [
     {
+        "id": 65410,
+        "author": "westonruter",
+        "message": "Code Quality: Resolve return.unusedType PHPStan errors.\n\nEvery `return.unusedType` error is fixed and its baseline removed. Most came from a `@return` tag that listed a type the function never returns. Others came from a filter `@param` tag that listed too few types: PHPStan derives the result of `apply_filters()` from the hook's first `@param`, so where the function's documented return was already right, the hook docs were corrected instead of loosening the function's type.\n\nCorrecting these types uncovered a real bug in `wp_mime_type_icon()`: when an attachment ID matched no icon, the `wp_mime_type_icon` filter received an undefined `$icon`, so `null` along with a warning. It now always receives `string|false`, and values read from the object cache are only used when they are strings. The `is_object()` guard in `_set_preview()` is removed, since `WP_Query` only applies the `the_preview` filter to a post already passed through `get_post()`, and no plugin in the directory was found to return anything else from it. Conditional return types are also added to `get_post_gallery()` and `sanitize_term()`, so callers get the type matching the arguments they pass.\n\nThe `wp_imagecreatetruecolor()` error moves to the permanent ignore list, because PHPStan analyzes against PHP 7.4, where `imagecreatetruecolor()` returns a resource rather than a `GdImage`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15387.\nFollow-up to r63023, r63941.\n\nProps mukesh27, westonruter.\nSee #65817.\n",
+        "date": "2026-11-12T03:58:45.466429Z",
+        "files": [
+            "/trunk/phpstan.neon.dist",
+            "/trunk/src/wp-admin/includes/plugin-install.php",
+            "/trunk/src/wp-admin/includes/post.php",
+            "/trunk/src/wp-admin/includes/update.php",
+            "/trunk/src/wp-includes/category-template.php",
+            "/trunk/src/wp-includes/category.php",
+            "/trunk/src/wp-includes/class-wp-recovery-mode-cookie-service.php",
+            "/trunk/src/wp-includes/general-template.php",
+            "/trunk/src/wp-includes/media.php",
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/src/wp-includes/revision.php",
+            "/trunk/src/wp-includes/taxonomy.php",
+            "/trunk/src/wp-includes/user.php",
+            "/trunk/src/wp-signup.php",
+            "/trunk/tests/phpstan/baselines/property.nonObject.neon",
+            "/trunk/tests/phpstan/baselines/return.unusedType.neon",
+            "/trunk/tests/phpunit/tests/post/attachments.php"
+        ]
+    },
+    {
+        "id": 65409,
+        "author": "lancewillett",
+        "message": "Tests: Limit upload directory isolation to the Core test suite.\n\nPreserve default upload paths for plugin and theme test suites. Only define and clean the dedicated uploads directory when `WP_RUN_CORE_TESTS` is enabled.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15914\n\nProps peterwilsoncc.\nSee #63532.\n",
+        "date": "2026-11-12T03:30:19.763209Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/bootstrap.php",
+            "/trunk/tests/phpunit/includes/functions.php"
+        ]
+    },
+    {
         "id": 65408,
         "author": "dmsnell",
         "message": "Blocks: Correctly document the blockName property as being nullable.\n\nGutenberg PR#70900 applied several updates to documentation in the PHP block parser, however, as of r61504, the PHP block parser lives in the Core repo. The docs updates were never applied, and this patch backports them into Core.\n\nSee https://github.com/WordPress/gutenberg/pull/70900\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15913\nDiscussed in: https://core.trac.wordpress.org/ticket/63663\n\nProps dmsnell, johnbillion.\nSee #63663.\n",
