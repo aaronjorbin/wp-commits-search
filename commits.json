@@ -1,5 +1,564 @@
 [
     {
+        "id": 65499,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Use PR number for `concurrency` groups instead of `head_ref`.\n\nThe current standard across all GitHub Actions workflows is to configure `concurrency` to use the `github.head_ref` value in the `group` name for a given PR. Because `head_ref` only includes the branch name, workflow runs can be inadvertently cancelled when two PRs are open from different forks with identical branch names.\n\nThis switches to using the `github.event.pull_request.number` instead of `github.head_ref` to ensure that runs are properly grouped only with runs from the same pull request. A similar change has been made to `props-bot.yml`, which can be triggered by an `issue_comment` event. In this case, the `github.event.issue.number` will be used. In the context of GitHub, `issues == pull_requests` for the data returned by a number of request types.\n\nReviewed by lancewillett.\nMerges r65249 to the 6.5 branch.\n\nProps lancewillett.\nSee #65845.\n",
+        "date": "2026-11-13T04:10:14.127039Z",
+        "files": [
+            "/branches/6.5",
+            "/branches/6.5/.github/workflows/coding-standards.yml",
+            "/branches/6.5/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.5/.github/workflows/javascript-tests.yml",
+            "/branches/6.5/.github/workflows/php-compatibility.yml",
+            "/branches/6.5/.github/workflows/phpunit-tests.yml",
+            "/branches/6.5/.github/workflows/props-bot.yml",
+            "/branches/6.5/.github/workflows/pull-request-comments.yml",
+            "/branches/6.5/.github/workflows/test-build-processes.yml",
+            "/branches/6.5/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
+        "id": 65498,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Use PR number for `concurrency` groups instead of `head_ref`.\n\nThe current standard across all GitHub Actions workflows is to configure `concurrency` to use the `github.head_ref` value in the `group` name for a given PR. Because `head_ref` only includes the branch name, workflow runs can be inadvertently cancelled when two PRs are open from different forks with identical branch names.\n\nThis switches to using the `github.event.pull_request.number` instead of `github.head_ref` to ensure that runs are properly grouped only with runs from the same pull request. A similar change has been made to `props-bot.yml`, which can be triggered by an `issue_comment` event. In this case, the `github.event.issue.number` will be used. In the context of GitHub, `issues == pull_requests` for the data returned by a number of request types.\n\nReviewed by lancewillett.\nMerges r65249 to the 6.6 branch.\n\nProps lancewillett.\nSee #65845.\n",
+        "date": "2026-11-13T04:08:41.019046Z",
+        "files": [
+            "/branches/6.6",
+            "/branches/6.6/.github/workflows/coding-standards.yml",
+            "/branches/6.6/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.6/.github/workflows/javascript-tests.yml",
+            "/branches/6.6/.github/workflows/php-compatibility.yml",
+            "/branches/6.6/.github/workflows/phpunit-tests.yml",
+            "/branches/6.6/.github/workflows/props-bot.yml",
+            "/branches/6.6/.github/workflows/pull-request-comments.yml",
+            "/branches/6.6/.github/workflows/test-build-processes.yml",
+            "/branches/6.6/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
+        "id": 65497,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Use PR number for `concurrency` groups instead of `head_ref`.\n\nThe current standard across all GitHub Actions workflows is to configure `concurrency` to use the `github.head_ref` value in the `group` name for a given PR. Because `head_ref` only includes the branch name, workflow runs can be inadvertently cancelled when two PRs are open from different forks with identical branch names.\n\nThis switches to using the `github.event.pull_request.number` instead of `github.head_ref` to ensure that runs are properly grouped only with runs from the same pull request. A similar change has been made to `props-bot.yml`, which can be triggered by an `issue_comment` event. In this case, the `github.event.issue.number` will be used. In the context of GitHub, `issues == pull_requests` for the data returned by a number of request types.\n\nReviewed by lancewillett.\nMerges r65249 to the 6.7 branch.\n\nProps lancewillett.\nSee #65845.\n",
+        "date": "2026-11-13T04:08:06.309576Z",
+        "files": [
+            "/branches/6.7",
+            "/branches/6.7/.github/workflows/coding-standards.yml",
+            "/branches/6.7/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.7/.github/workflows/javascript-tests.yml",
+            "/branches/6.7/.github/workflows/php-compatibility.yml",
+            "/branches/6.7/.github/workflows/phpunit-tests.yml",
+            "/branches/6.7/.github/workflows/props-bot.yml",
+            "/branches/6.7/.github/workflows/pull-request-comments.yml",
+            "/branches/6.7/.github/workflows/test-build-processes.yml",
+            "/branches/6.7/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
+        "id": 65496,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Use PR number for `concurrency` groups instead of `head_ref`.\n\nThe current standard across all GitHub Actions workflows is to configure `concurrency` to use the `github.head_ref` value in the `group` name for a given PR. Because `head_ref` only includes the branch name, workflow runs can be inadvertently cancelled when two PRs are open from different forks with identical branch names.\n\nThis switches to using the `github.event.pull_request.number` instead of `github.head_ref` to ensure that runs are properly grouped only with runs from the same pull request. A similar change has been made to `props-bot.yml`, which can be triggered by an `issue_comment` event. In this case, the `github.event.issue.number` will be used. In the context of GitHub, `issues == pull_requests` for the data returned by a number of request types.\n\nReviewed by lancewillett.\nMerges r65249 to the 6.8 branch.\n\nProps lancewillett.\nSee #65845.\n",
+        "date": "2026-11-13T04:07:30.676893Z",
+        "files": [
+            "/branches/6.8",
+            "/branches/6.8/.github/workflows/coding-standards.yml",
+            "/branches/6.8/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.8/.github/workflows/javascript-tests.yml",
+            "/branches/6.8/.github/workflows/local-docker-environment.yml",
+            "/branches/6.8/.github/workflows/performance.yml",
+            "/branches/6.8/.github/workflows/php-compatibility.yml",
+            "/branches/6.8/.github/workflows/phpunit-tests.yml",
+            "/branches/6.8/.github/workflows/props-bot.yml",
+            "/branches/6.8/.github/workflows/pull-request-comments.yml",
+            "/branches/6.8/.github/workflows/test-build-processes.yml",
+            "/branches/6.8/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/6.8/.github/workflows/upgrade-testing.yml",
+            "/branches/6.8/.github/workflows/workflow-lint.yml"
+        ]
+    },
+    {
+        "id": 65495,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Use PR number for `concurrency` groups instead of `head_ref`.\n\nThe current standard across all GitHub Actions workflows is to configure `concurrency` to use the `github.head_ref` value in the `group` name for a given PR. Because `head_ref` only includes the branch name, workflow runs can be inadvertently cancelled when two PRs are open from different forks with identical branch names.\n\nThis switches to using the `github.event.pull_request.number` instead of `github.head_ref` to ensure that runs are properly grouped only with runs from the same pull request. A similar change has been made to `props-bot.yml`, which can be triggered by an `issue_comment` event. In this case, the `github.event.issue.number` will be used. In the context of GitHub, `issues == pull_requests` for the data returned by a number of request types.\n\nReviewed by lancewillett.\nMerges r65249 to the 6.9 branch.\n\nProps lancewillett.\nSee #65845.\n",
+        "date": "2026-11-13T04:06:53.849209Z",
+        "files": [
+            "/branches/6.9",
+            "/branches/6.9/.github/workflows/coding-standards.yml",
+            "/branches/6.9/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.9/.github/workflows/javascript-tests.yml",
+            "/branches/6.9/.github/workflows/local-docker-environment.yml",
+            "/branches/6.9/.github/workflows/performance.yml",
+            "/branches/6.9/.github/workflows/php-compatibility.yml",
+            "/branches/6.9/.github/workflows/phpunit-tests.yml",
+            "/branches/6.9/.github/workflows/props-bot.yml",
+            "/branches/6.9/.github/workflows/pull-request-comments.yml",
+            "/branches/6.9/.github/workflows/test-build-processes.yml",
+            "/branches/6.9/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/6.9/.github/workflows/workflow-lint.yml"
+        ]
+    },
+    {
+        "id": 65494,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Use PR number for `concurrency` groups instead of `head_ref`.\n\nThe current standard across all GitHub Actions workflows is to configure `concurrency` to use the `github.head_ref` value in the `group` name for a given PR. Because `head_ref` only includes the branch name, workflow runs can be inadvertently cancelled when two PRs are open from different forks with identical branch names.\n\nThis switches to using the `github.event.pull_request.number` instead of `github.head_ref` to ensure that runs are properly grouped only with runs from the same pull request. A similar change has been made to `props-bot.yml`, which can be triggered by an `issue_comment` event. In this case, the `github.event.issue.number` will be used. In the context of GitHub, `issues == pull_requests` for the data returned by a number of request types.\n\nReviewed by lancewillett.\nMerges r65249 to the 7.0 branch.\n\nProps lancewillett.\nSee #65845.\n",
+        "date": "2026-11-13T04:06:14.564789Z",
+        "files": [
+            "/branches/7.0",
+            "/branches/7.0/.github/workflows/coding-standards.yml",
+            "/branches/7.0/.github/workflows/end-to-end-tests.yml",
+            "/branches/7.0/.github/workflows/javascript-tests.yml",
+            "/branches/7.0/.github/workflows/javascript-type-checking.yml",
+            "/branches/7.0/.github/workflows/local-docker-environment.yml",
+            "/branches/7.0/.github/workflows/performance.yml",
+            "/branches/7.0/.github/workflows/php-compatibility.yml",
+            "/branches/7.0/.github/workflows/phpstan-static-analysis.yml",
+            "/branches/7.0/.github/workflows/phpunit-tests.yml",
+            "/branches/7.0/.github/workflows/props-bot.yml",
+            "/branches/7.0/.github/workflows/pull-request-comments.yml",
+            "/branches/7.0/.github/workflows/test-build-processes.yml",
+            "/branches/7.0/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/7.0/.github/workflows/workflow-lint.yml"
+        ]
+    },
+    {
+        "id": 65493,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Use PR number for `concurrency` groups instead of `head_ref`.\n\nThe current standard across all GitHub Actions workflows is to configure `concurrency` to use the `github.head_ref` value in the `group` name for a given PR. Because `head_ref` only includes the branch name, workflow runs can be inadvertently cancelled when two PRs are open from different forks with identical branch names.\n\nThis switches to using the `github.event.pull_request.number` instead of `github.head_ref` to ensure that runs are properly grouped only with runs from the same pull request. A similar change has been made to `props-bot.yml`, which can be triggered by an `issue_comment` event. In this case, the `github.event.issue.number` will be used. In the context of GitHub, `issues == pull_requests` for the data returned by a number of request types.\n\nReviewed by lancewillett.\nMerges r65249 to the 7.1 branch.\n\nProps lancewillett.\nSee #65845.\n",
+        "date": "2026-11-13T04:05:06.262096Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/.github/workflows/coding-standards.yml",
+            "/branches/7.1/.github/workflows/end-to-end-tests.yml",
+            "/branches/7.1/.github/workflows/javascript-tests.yml",
+            "/branches/7.1/.github/workflows/javascript-type-checking.yml",
+            "/branches/7.1/.github/workflows/local-docker-environment.yml",
+            "/branches/7.1/.github/workflows/performance.yml",
+            "/branches/7.1/.github/workflows/php-compatibility.yml",
+            "/branches/7.1/.github/workflows/phpstan-static-analysis.yml",
+            "/branches/7.1/.github/workflows/phpunit-tests.yml",
+            "/branches/7.1/.github/workflows/props-bot.yml",
+            "/branches/7.1/.github/workflows/pull-request-comments.yml",
+            "/branches/7.1/.github/workflows/test-build-processes.yml",
+            "/branches/7.1/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/7.1/.github/workflows/workflow-lint.yml"
+        ]
+    },
+    {
+        "id": 65492,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 4.7.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 4.7 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 4.7 branch.\n\nProps lancewillett.\nFixes #66499.\n\n",
+        "date": "2026-11-13T03:53:57.959089Z",
+        "files": [
+            "/branches/4.7",
+            "/branches/4.7/.github/workflows/coding-standards.yml",
+            "/branches/4.7/.github/workflows/javascript-tests.yml",
+            "/branches/4.7/.github/workflows/phpunit-tests.yml",
+            "/branches/4.7/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65491,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 4.8.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 4.8 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 4.8 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:52:26.412342Z",
+        "files": [
+            "/branches/4.8",
+            "/branches/4.8/.github/workflows/coding-standards.yml",
+            "/branches/4.8/.github/workflows/javascript-tests.yml",
+            "/branches/4.8/.github/workflows/phpunit-tests.yml",
+            "/branches/4.8/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65490,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 4.9.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 4.9 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 4.9 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:51:48.540968Z",
+        "files": [
+            "/branches/4.9",
+            "/branches/4.9/.github/workflows/coding-standards.yml",
+            "/branches/4.9/.github/workflows/javascript-tests.yml",
+            "/branches/4.9/.github/workflows/phpunit-tests.yml",
+            "/branches/4.9/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65489,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 5.0.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 5.0 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 5.0 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:51:06.338367Z",
+        "files": [
+            "/branches/5.0",
+            "/branches/5.0/.github/workflows/coding-standards.yml",
+            "/branches/5.0/.github/workflows/javascript-tests.yml",
+            "/branches/5.0/.github/workflows/phpunit-tests.yml",
+            "/branches/5.0/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65488,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 5.1.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 5.1 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 5.1 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:50:27.087797Z",
+        "files": [
+            "/branches/5.1",
+            "/branches/5.1/.github/workflows/coding-standards.yml",
+            "/branches/5.1/.github/workflows/javascript-tests.yml",
+            "/branches/5.1/.github/workflows/phpunit-tests.yml",
+            "/branches/5.1/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65487,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 5.2.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 5.2 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 5.2 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:49:06.782135Z",
+        "files": [
+            "/branches/5.2",
+            "/branches/5.2/.github/workflows/coding-standards.yml",
+            "/branches/5.2/.github/workflows/javascript-tests.yml",
+            "/branches/5.2/.github/workflows/phpunit-tests.yml",
+            "/branches/5.2/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65486,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 5.3.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 5.3 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 5.3 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:48:15.239697Z",
+        "files": [
+            "/branches/5.3",
+            "/branches/5.3/.github/workflows/coding-standards.yml",
+            "/branches/5.3/.github/workflows/javascript-tests.yml",
+            "/branches/5.3/.github/workflows/phpunit-tests.yml",
+            "/branches/5.3/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65485,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 5.4.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 5.4 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 5.4 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:47:38.261043Z",
+        "files": [
+            "/branches/5.4",
+            "/branches/5.4/.github/workflows/coding-standards.yml",
+            "/branches/5.4/.github/workflows/javascript-tests.yml",
+            "/branches/5.4/.github/workflows/phpunit-tests.yml",
+            "/branches/5.4/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65484,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 5.5.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 5.5 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 5.5 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:47:03.046174Z",
+        "files": [
+            "/branches/5.5",
+            "/branches/5.5/.github/workflows/coding-standards.yml",
+            "/branches/5.5/.github/workflows/javascript-tests.yml",
+            "/branches/5.5/.github/workflows/php-compatibility.yml",
+            "/branches/5.5/.github/workflows/phpunit-tests.yml",
+            "/branches/5.5/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65483,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 5.6.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 5.6 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 5.6 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:46:29.227313Z",
+        "files": [
+            "/branches/5.6",
+            "/branches/5.6/.github/workflows/coding-standards.yml",
+            "/branches/5.6/.github/workflows/javascript-tests.yml",
+            "/branches/5.6/.github/workflows/php-compatibility.yml",
+            "/branches/5.6/.github/workflows/phpunit-tests.yml",
+            "/branches/5.6/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65482,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 5.7.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 5.7 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 5.7 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:45:53.839343Z",
+        "files": [
+            "/branches/5.7",
+            "/branches/5.7/.github/workflows/coding-standards.yml",
+            "/branches/5.7/.github/workflows/javascript-tests.yml",
+            "/branches/5.7/.github/workflows/php-compatibility.yml",
+            "/branches/5.7/.github/workflows/phpunit-tests.yml",
+            "/branches/5.7/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65481,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 5.8.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 5.8 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 5.8 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:45:19.381904Z",
+        "files": [
+            "/branches/5.8",
+            "/branches/5.8/.github/workflows/coding-standards.yml",
+            "/branches/5.8/.github/workflows/end-to-end-tests.yml",
+            "/branches/5.8/.github/workflows/javascript-tests.yml",
+            "/branches/5.8/.github/workflows/php-compatibility.yml",
+            "/branches/5.8/.github/workflows/phpunit-tests.yml",
+            "/branches/5.8/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65480,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 5.9.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 5.9 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 5.9 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:44:16.359055Z",
+        "files": [
+            "/branches/5.9",
+            "/branches/5.9/.github/workflows/coding-standards.yml",
+            "/branches/5.9/.github/workflows/end-to-end-tests.yml",
+            "/branches/5.9/.github/workflows/javascript-tests.yml",
+            "/branches/5.9/.github/workflows/php-compatibility.yml",
+            "/branches/5.9/.github/workflows/phpunit-tests.yml",
+            "/branches/5.9/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65479,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 6.0.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 6.0 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 6.0 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:43:39.095159Z",
+        "files": [
+            "/branches/6.0",
+            "/branches/6.0/.github/workflows/coding-standards.yml",
+            "/branches/6.0/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.0/.github/workflows/javascript-tests.yml",
+            "/branches/6.0/.github/workflows/php-compatibility.yml",
+            "/branches/6.0/.github/workflows/phpunit-tests.yml",
+            "/branches/6.0/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65478,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 6.1.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 6.1 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 6.1 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:42:59.226634Z",
+        "files": [
+            "/branches/6.1",
+            "/branches/6.1/.github/workflows/coding-standards.yml",
+            "/branches/6.1/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.1/.github/workflows/javascript-tests.yml",
+            "/branches/6.1/.github/workflows/php-compatibility.yml",
+            "/branches/6.1/.github/workflows/phpunit-tests.yml",
+            "/branches/6.1/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65477,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 6.2.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 6.2 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 6.2 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:42:23.785400Z",
+        "files": [
+            "/branches/6.2",
+            "/branches/6.2/.github/workflows/coding-standards.yml",
+            "/branches/6.2/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.2/.github/workflows/javascript-tests.yml",
+            "/branches/6.2/.github/workflows/php-compatibility.yml",
+            "/branches/6.2/.github/workflows/phpunit-tests.yml",
+            "/branches/6.2/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65476,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners in 6.3.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 6.3 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` runner is also pinned to `windows-2025`. This label already points to that image, so the Windows jobs are unchanged.\n\nReviewed by lancewillett.\nMerges r65467 to the 6.3 branch.\n\nProps lancewillett.\nSee #66499.\n",
+        "date": "2026-11-13T03:41:35.358367Z",
+        "files": [
+            "/branches/6.3",
+            "/branches/6.3/.github/workflows/coding-standards.yml",
+            "/branches/6.3/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.3/.github/workflows/javascript-tests.yml",
+            "/branches/6.3/.github/workflows/php-compatibility.yml",
+            "/branches/6.3/.github/workflows/phpunit-tests.yml",
+            "/branches/6.3/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65475,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners and Playwright in 6.4.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 6.4 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead, including the default `os` input of the `upgrade-testing-run.yml` reusable workflow. This pins the version explicitly to match trunk.\n\nThe `windows-latest` and `macos-latest` runners are also pinned to `windows-2025` and `macos-26`. Both labels already point to those images, so these jobs are unchanged.\n\nThis also updates `@playwright/test` from `1.49.1` to `1.64.1`, along with its `playwright` and `playwright-core` dependencies, to match trunk. This is not required for Ubuntu 26.04 support in this branch, but keeps a single version of Playwright in use across trunk and all branches that use it.\n\nReviewed by lancewillett.\nMerges r64740, r65467 to the 6.4 branch.\n\nProps lancewillett, adrianmoldovanwp.\nSee #65857, #66499.\n",
+        "date": "2026-11-13T03:40:58.039643Z",
+        "files": [
+            "/branches/6.4",
+            "/branches/6.4/.github/workflows/coding-standards.yml",
+            "/branches/6.4/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.4/.github/workflows/javascript-tests.yml",
+            "/branches/6.4/.github/workflows/php-compatibility.yml",
+            "/branches/6.4/.github/workflows/phpunit-tests.yml",
+            "/branches/6.4/.github/workflows/test-build-processes.yml",
+            "/branches/6.4/.github/workflows/upgrade-testing-run.yml",
+            "/branches/6.4/.github/workflows/upgrade-testing.yml",
+            "/branches/6.4/package-lock.json",
+            "/branches/6.4/package.json"
+        ]
+    },
+    {
+        "id": 65474,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners and Playwright in 6.5.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 6.5 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` and `macos-latest` runners are also pinned to `windows-2025` and `macos-26`. Both labels already point to those images, so these jobs are unchanged.\n\nThis also updates `@playwright/test` from `1.49.1` to `1.64.1`, along with its `playwright` and `playwright-core` dependencies, to match trunk. This is not required for Ubuntu 26.04 support in this branch, but keeps a single version of Playwright in use across trunk and all branches that use it.\n\nReviewed by lancewillett.\nMerges r64740, r65467 to the 6.5 branch.\n\nProps lancewillett, adrianmoldovanwp.\nSee #65857, #66499.\n",
+        "date": "2026-11-13T03:40:17.368211Z",
+        "files": [
+            "/branches/6.5",
+            "/branches/6.5/.github/workflows/coding-standards.yml",
+            "/branches/6.5/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.5/.github/workflows/javascript-tests.yml",
+            "/branches/6.5/.github/workflows/php-compatibility.yml",
+            "/branches/6.5/.github/workflows/phpunit-tests.yml",
+            "/branches/6.5/.github/workflows/props-bot.yml",
+            "/branches/6.5/.github/workflows/pull-request-comments.yml",
+            "/branches/6.5/.github/workflows/test-build-processes.yml",
+            "/branches/6.5/.github/workflows/upgrade-testing.yml",
+            "/branches/6.5/package-lock.json",
+            "/branches/6.5/package.json"
+        ]
+    },
+    {
+        "id": 65473,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners and Playwright in 6.6.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 6.6 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` and `macos-latest` runners are also pinned to `windows-2025` and `macos-26`. Both labels already point to those images, so these jobs are unchanged.\n\nThis also updates `@playwright/test` from `1.49.1` to `1.64.1`, along with its `playwright` and `playwright-core` dependencies, to match trunk. This is not required for Ubuntu 26.04 support in this branch, but keeps a single version of Playwright in use across trunk and all branches that use it.\n\nReviewed by lancewillett.\nMerges r64740, r65467 to the 6.6 branch.\n\nProps lancewillett, adrianmoldovanwp.\nSee #65857, #66499.\n",
+        "date": "2026-11-13T03:39:33.617990Z",
+        "files": [
+            "/branches/6.6",
+            "/branches/6.6/.github/workflows/coding-standards.yml",
+            "/branches/6.6/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.6/.github/workflows/javascript-tests.yml",
+            "/branches/6.6/.github/workflows/php-compatibility.yml",
+            "/branches/6.6/.github/workflows/phpunit-tests.yml",
+            "/branches/6.6/.github/workflows/props-bot.yml",
+            "/branches/6.6/.github/workflows/pull-request-comments.yml",
+            "/branches/6.6/.github/workflows/test-build-processes.yml",
+            "/branches/6.6/.github/workflows/upgrade-testing.yml",
+            "/branches/6.6/package-lock.json",
+            "/branches/6.6/package.json"
+        ]
+    },
+    {
+        "id": 65472,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners and Playwright in 6.7.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 6.7 branch that uses `ubuntu-latest` to use `ubuntu-26.04` instead. This pins the version explicitly to match trunk.\n\nThe `windows-latest` and `macos-latest` runners are also pinned to `windows-2025` and `macos-26`. Both labels already point to those images, so these jobs are unchanged.\n\nThis also updates `@playwright/test` from `1.49.1` to `1.64.1`, along with its `playwright` and `playwright-core` dependencies, to match trunk. This is not required for Ubuntu 26.04 support in this branch, but keeps a single version of Playwright in use across trunk and all branches that use it.\n\nReviewed by lancewillett.\nMerges r64740, r65467 to the 6.7 branch.\n\nProps lancewillett, adrianmoldovanwp.\nSee #65857, #66499.\n",
+        "date": "2026-11-13T03:38:56.024592Z",
+        "files": [
+            "/branches/6.7",
+            "/branches/6.7/.github/workflows/coding-standards.yml",
+            "/branches/6.7/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.7/.github/workflows/javascript-tests.yml",
+            "/branches/6.7/.github/workflows/php-compatibility.yml",
+            "/branches/6.7/.github/workflows/phpunit-tests.yml",
+            "/branches/6.7/.github/workflows/props-bot.yml",
+            "/branches/6.7/.github/workflows/pull-request-comments.yml",
+            "/branches/6.7/.github/workflows/test-build-processes.yml",
+            "/branches/6.7/.github/workflows/upgrade-testing.yml",
+            "/branches/6.7/package-lock.json",
+            "/branches/6.7/package.json"
+        ]
+    },
+    {
+        "id": 65471,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners and Playwright in 6.8.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 6.8 branch that pins `ubuntu-24.04` to use `ubuntu-26.04` instead. The build process tests also now run on `macos-26` instead of `macos-15`, the newest GitHub-hosted macOS image.\n\nThe pinned version of `actionlint` does not recognize the new label yet, so it is registered in `.github/actionlint.yaml` for the time being.\n\nThis also updates `@playwright/test` from `1.50.1` to `1.64.1`, along with its `playwright` and `playwright-core` dependencies, to match trunk. Versions of Playwright older than 1.61.0 do not support Ubuntu 26.04, and the end-to-end and performance tests in this branch run through reusable workflows from trunk that now use the new runner.\n\nReviewed by lancewillett.\nMerges r64740, r65467 to the 6.8 branch.\n\nProps lancewillett, adrianmoldovanwp.\nSee #65857, #66499.\n",
+        "date": "2026-11-13T03:38:18.149763Z",
+        "files": [
+            "/branches/6.8",
+            "/branches/6.8/.github/actionlint.yaml",
+            "/branches/6.8/.github/workflows/coding-standards.yml",
+            "/branches/6.8/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.8/.github/workflows/javascript-tests.yml",
+            "/branches/6.8/.github/workflows/local-docker-environment.yml",
+            "/branches/6.8/.github/workflows/performance.yml",
+            "/branches/6.8/.github/workflows/php-compatibility.yml",
+            "/branches/6.8/.github/workflows/phpunit-tests.yml",
+            "/branches/6.8/.github/workflows/props-bot.yml",
+            "/branches/6.8/.github/workflows/pull-request-comments.yml",
+            "/branches/6.8/.github/workflows/test-build-processes.yml",
+            "/branches/6.8/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/6.8/.github/workflows/upgrade-testing.yml",
+            "/branches/6.8/.github/workflows/workflow-lint.yml",
+            "/branches/6.8/package-lock.json",
+            "/branches/6.8/package.json"
+        ]
+    },
+    {
+        "id": 65470,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners and Playwright in 6.9.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 6.9 branch that pins `ubuntu-24.04` to use `ubuntu-26.04` instead. The build process tests also now run on `macos-26` instead of `macos-15`, the newest GitHub-hosted macOS image.\n\nThe pinned version of `actionlint` does not recognize the new label yet, so it is registered in `.github/actionlint.yaml` for the time being.\n\nThis also updates `@playwright/test` from `1.56.1` to `1.64.1`, along with its `playwright` and `playwright-core` dependencies, to match trunk. Versions of Playwright older than 1.61.0 do not support Ubuntu 26.04, and the end-to-end and performance tests in this branch run through reusable workflows from trunk that now use the new runner.\n\nReviewed by lancewillett.\nMerges r64740, r65467 to the 6.9 branch.\n\nProps lancewillett, adrianmoldovanwp.\nSee #65857, #66499.\n",
+        "date": "2026-11-13T03:37:37.907777Z",
+        "files": [
+            "/branches/6.9",
+            "/branches/6.9/.github/actionlint.yaml",
+            "/branches/6.9/.github/workflows/coding-standards.yml",
+            "/branches/6.9/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.9/.github/workflows/javascript-tests.yml",
+            "/branches/6.9/.github/workflows/local-docker-environment.yml",
+            "/branches/6.9/.github/workflows/performance.yml",
+            "/branches/6.9/.github/workflows/php-compatibility.yml",
+            "/branches/6.9/.github/workflows/phpunit-tests.yml",
+            "/branches/6.9/.github/workflows/props-bot.yml",
+            "/branches/6.9/.github/workflows/pull-request-comments.yml",
+            "/branches/6.9/.github/workflows/test-build-processes.yml",
+            "/branches/6.9/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/6.9/.github/workflows/workflow-lint.yml",
+            "/branches/6.9/package-lock.json",
+            "/branches/6.9/package.json"
+        ]
+    },
+    {
+        "id": 65469,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners and Playwright in 7.0.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 7.0 branch that pins `ubuntu-24.04` to use `ubuntu-26.04` instead. The build process tests also now run on `macos-26` instead of `macos-15`, the newest GitHub-hosted macOS image.\n\nThe pinned version of `actionlint` does not recognize the new label yet, so it is registered in `.github/actionlint.yaml` for the time being.\n\nThis also updates `@playwright/test` from `1.58.2` to `1.64.1`, along with its `playwright` and `playwright-core` dependencies, to match trunk. Versions of Playwright older than 1.61.0 do not support Ubuntu 26.04, and the end-to-end and performance tests in this branch run through reusable workflows from trunk that now use the new runner.\n\nReviewed by lancewillett.\nMerges r64740, r65467 to the 7.0 branch.\n\nProps lancewillett, adrianmoldovanwp.\nSee #65857, #66499.\n",
+        "date": "2026-11-13T03:36:58.059018Z",
+        "files": [
+            "/branches/7.0",
+            "/branches/7.0/.github/actionlint.yaml",
+            "/branches/7.0/.github/workflows/coding-standards.yml",
+            "/branches/7.0/.github/workflows/end-to-end-tests.yml",
+            "/branches/7.0/.github/workflows/javascript-tests.yml",
+            "/branches/7.0/.github/workflows/javascript-type-checking.yml",
+            "/branches/7.0/.github/workflows/local-docker-environment.yml",
+            "/branches/7.0/.github/workflows/performance.yml",
+            "/branches/7.0/.github/workflows/php-compatibility.yml",
+            "/branches/7.0/.github/workflows/phpstan-static-analysis.yml",
+            "/branches/7.0/.github/workflows/phpunit-tests.yml",
+            "/branches/7.0/.github/workflows/props-bot.yml",
+            "/branches/7.0/.github/workflows/pull-request-comments.yml",
+            "/branches/7.0/.github/workflows/test-build-processes.yml",
+            "/branches/7.0/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/7.0/.github/workflows/workflow-lint.yml",
+            "/branches/7.0/package-lock.json",
+            "/branches/7.0/package.json"
+        ]
+    },
+    {
+        "id": 65468,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update GitHub-hosted runners and Playwright in 7.1.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow in the 7.1 branch that pins `ubuntu-24.04` to use `ubuntu-26.04` instead. The build process tests also now run on `macos-26` instead of `macos-15`, the newest GitHub-hosted macOS image.\n\nThe pinned version of `actionlint` does not recognize the new label yet, so it is registered in `.github/actionlint.yaml` for the time being.\n\nThis also updates `@playwright/test` from `1.61.1` to `1.64.1`, along with its `playwright` and `playwright-core` dependencies, to match trunk.\n\nReviewed by lancewillett.\nMerges r64740, r65467 to the 7.1 branch.\n\nProps lancewillett, adrianmoldovanwp.\nSee #65857, #66499.\n",
+        "date": "2026-11-13T03:35:55.182203Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/.github/actionlint.yaml",
+            "/branches/7.1/.github/workflows/coding-standards.yml",
+            "/branches/7.1/.github/workflows/end-to-end-tests.yml",
+            "/branches/7.1/.github/workflows/javascript-tests.yml",
+            "/branches/7.1/.github/workflows/javascript-type-checking.yml",
+            "/branches/7.1/.github/workflows/local-docker-environment.yml",
+            "/branches/7.1/.github/workflows/performance.yml",
+            "/branches/7.1/.github/workflows/php-compatibility.yml",
+            "/branches/7.1/.github/workflows/phpstan-static-analysis.yml",
+            "/branches/7.1/.github/workflows/phpunit-tests.yml",
+            "/branches/7.1/.github/workflows/props-bot.yml",
+            "/branches/7.1/.github/workflows/pull-request-comments.yml",
+            "/branches/7.1/.github/workflows/test-build-processes.yml",
+            "/branches/7.1/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/7.1/.github/workflows/workflow-lint.yml",
+            "/branches/7.1/package-lock.json",
+            "/branches/7.1/package.json"
+        ]
+    },
+    {
         "id": 65467,
         "author": "desrosj",
         "message": "Build/Test Tools: Update GitHub-hosted runners.\n\nThe `ubuntu-26.04` runner image became generally available on 2026-09-17, and the `ubuntu-latest` label is moving from 24.04 to 26.04 between 2026-10-19 and 2026-11-19.\n\nThis updates every workflow and reusable workflow that pins `ubuntu-24.04` to use `ubuntu-26.04` instead, including the default `os` input on the reusable workflows. Because the versioned reusable workflows are also called from older branches, those branches will also run on 26.04 unless they pass `os` explicitly.\n\nThe pinned version of `actionlint` does not recognize the new label yet, so it is registered in `.github/actionlint.yaml` for the time being.\n\nThe build process tests also now run on `macos-26` instead of `macos-15`, the newest GitHub-hosted macOS image.\n\nProps desrosj, lancewillett.\nSee #66499.\n",
