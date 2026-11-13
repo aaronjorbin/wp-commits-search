@@ -1,5 +1,16 @@
 [
     {
+        "id": 65466,
+        "author": "johnbillion",
+        "message": "Security: Mark two more Secrets API parameters as sensitive.\n\nFollow-up to r64337, r65375.\n\nSee #66187, #66414.\n",
+        "date": "2026-11-13T01:28:17.576044Z",
+        "files": [
+            "/trunk/src/wp-includes/secrets/class-wp-secret.php",
+            "/trunk/src/wp-includes/secrets/class-wp-secrets-cipher.php",
+            "/trunk/tests/phpunit/tests/secrets/wpSetSecretAndWpGetSecret.php"
+        ]
+    },
+    {
         "id": 65465,
         "author": "lancewillett",
         "message": "Build/Test Tools: Parse expectation annotations without PHPUnit.\n\nRead deprecation and incorrect-usage annotations through reflection instead of PHPUnit's internal parser, which is unavailable in PHPUnit 11. Preserve existing expectation methods, annotation names, and callers.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13848\n\nProps sukhendu2002, hellofromtonya, jrf, sergeybiryukov, dmsnell.\nSee #54029.\n",
