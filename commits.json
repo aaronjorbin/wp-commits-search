@@ -1,5 +1,31 @@
 [
     {
+        "id": 65522,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Use `create_upload_object()` in more attachment tests.\n\nSix test files uploaded a file and then called `WP_UnitTestCase::_make_attachment()`, which repeats what the attachment factory's `create_upload_object()` does. They now call the factory method, a first step before deprecating `_make_attachment()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15975\n\nProps huzaifaalmesbah, desrosj.\n\nSee #42990.\n",
+        "date": "2026-11-13T16:57:00.834179Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxImageEditor.php",
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxSendAttachmentToEditor.php",
+            "/trunk/tests/phpunit/tests/canonical.php",
+            "/trunk/tests/phpunit/tests/image/intermediateSize.php",
+            "/trunk/tests/phpunit/tests/image/siteIcon.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/getMediaItem.php"
+        ]
+    },
+    {
+        "id": 65521,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Skip client-side media E2E tests only in unsupported browsers.\n\nThe client-side media E2E tests skipped when the page was not cross-origin isolated, so the job passed even if WordPress broke isolation in Chromium. They now skip only in browsers without Document-Isolation-Policy support, and fail in Chromium 137 or newer when the page is not isolated.\n\nFollow-up to [64588], [65356].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15979\n\nProps adrianmoldovanwp.\n\nSee #66455.\n",
+        "date": "2026-11-13T16:44:54.896475Z",
+        "files": [
+            "/trunk/tests/e2e/specs/media-library-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-modal-client-side-upload.test.js",
+            "/trunk/tests/e2e/specs/media-new-client-side-upload.test.js",
+            "/trunk/tests/e2e/utils/media-pipeline.js"
+        ]
+    },
+    {
         "id": 65520,
         "author": "lancewillett",
         "message": "Build/Test Tools: Cover replacing an installed theme with an uploaded version.\n\nUpload a newer version of the fixture theme over the installed one, replace it, and verify the new version through REST. A second ZIP fixture holds the newer version.\n\nFollow-up to [64624].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15970\n\nProps huzaifaalmesbah, justinahinon, juhise.\nFixes #54334.\n",
