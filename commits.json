@@ -1,5 +1,156 @@
 [
     {
+        "id": 65465,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Parse expectation annotations without PHPUnit.\n\nRead deprecation and incorrect-usage annotations through reflection instead of PHPUnit's internal parser, which is unavailable in PHPUnit 11. Preserve existing expectation methods, annotation names, and callers.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13848\n\nProps sukhendu2002, hellofromtonya, jrf, sergeybiryukov, dmsnell.\nSee #54029.\n",
+        "date": "2026-11-12T23:35:37.041049Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/abstract-testcase.php"
+        ]
+    },
+    {
+        "id": 65464,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 4.7 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13729\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:27:33.509638Z",
+        "files": [
+            "/branches/4.7",
+            "/branches/4.7/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65463,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 4.8 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13730\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:26:43.501363Z",
+        "files": [
+            "/branches/4.8",
+            "/branches/4.8/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65462,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 4.9 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13731\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:25:40.940078Z",
+        "files": [
+            "/branches/4.9",
+            "/branches/4.9/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65461,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 5.0 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13732\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:24:39.494619Z",
+        "files": [
+            "/branches/5.0",
+            "/branches/5.0/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65460,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 5.1 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13733\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:21:29.761817Z",
+        "files": [
+            "/branches/5.1",
+            "/branches/5.1/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65459,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 5.2 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13734\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:20:02.373674Z",
+        "files": [
+            "/branches/5.2",
+            "/branches/5.2/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65458,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 5.3 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13735\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:19:08.166824Z",
+        "files": [
+            "/branches/5.3",
+            "/branches/5.3/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65457,
+        "author": "SergeyBiryukov",
+        "message": "External Libraries: Upgrade PHPMailer to version 7.2.0.\n\nChanges in the latest version:\n\n- **XOAUTH:** authentication with a long token could report success when it had actually failed.\n- **S/MIME:** signed messages no longer contain bare LF line breaks, which some SMTP servers reject.\n- **Long address headers:** these are now folded to stay within the RFC 2822 line length limit.\n- **`QUIT`:** no longer sent while a `DATA` command is still in progress.\n- **XCLIENT:**\n  - Attribute values are now xtext-encoded when they're sent, which prevents attribute injection.\n  - The expected reply is now 220, not 250, and `EHLO` is sent again afterwards.\n  - Invalid attributes are rejected.\n- **`DSNConfigurator`:** `smtps://` DSNs now use `ENCRYPTION_SMTPS` instead of `ENCRYPTION_STARTTLS`.\n- **Deprecations:** `PHPMailer::parseAddresses()` and the `pcre` and `pcre8` patterns for `validateAddress()` are deprecated, and will be removed in PHPMailer 8.0. The deprecation is only in the docblocks; no notice is triggered.\n\nWordPress core doesn't use XCLIENT, `DSNConfigurator`, `parseAddresses()` or `validateAddress()`. Plugins that call these directly may be affected.\n\nReferences:\n* [https://github.com/PHPMailer/PHPMailer/releases/tag/v7.2.0 PHPMailer 7.2.0 release notes]\n* [https://github.com/PHPMailer/PHPMailer/compare/v7.1.1...v7.2.0 Full list of changes in PHPMailer 7.2.0]\n\nFollow-up to r54937, r55557, r56484, r57137, r59246, r59481, r60623, r60813, r60888, r61249, r61468, r62975.\n\nProps desrosj.\nFixes #66649.",
+        "date": "2026-11-12T23:17:59.512876Z",
+        "files": [
+            "/trunk/src/wp-includes/PHPMailer/DSNConfigurator.php",
+            "/trunk/src/wp-includes/PHPMailer/PHPMailer.php",
+            "/trunk/src/wp-includes/PHPMailer/POP3.php",
+            "/trunk/src/wp-includes/PHPMailer/SMTP.php"
+        ]
+    },
+    {
+        "id": 65456,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 5.4 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13736\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:15:37.694340Z",
+        "files": [
+            "/branches/5.4",
+            "/branches/5.4/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65455,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 5.5 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13737\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:14:44.199397Z",
+        "files": [
+            "/branches/5.5",
+            "/branches/5.5/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65454,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 5.6 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13738\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:13:46.542631Z",
+        "files": [
+            "/branches/5.6",
+            "/branches/5.6/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65453,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 5.7 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13739\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:12:46.241638Z",
+        "files": [
+            "/branches/5.7",
+            "/branches/5.7/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65452,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 5.8 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13740\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n\n",
+        "date": "2026-11-12T23:09:56.253204Z",
+        "files": [
+            "/branches/5.8",
+            "/branches/5.8/docker-compose.yml"
+        ]
+    },
+    {
+        "id": 65451,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 5.9 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13741\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
+        "date": "2026-11-12T23:07:24.374237Z",
+        "files": [
+            "/branches/5.9",
+            "/branches/5.9/docker-compose.yml"
+        ]
+    },
+    {
         "id": 65450,
         "author": "lancewillett",
         "message": "Build/Test Tools: Check database readiness over TCP.\n\nMerges r59484, r59489, and r63871 to the 6.0 branch.\n\nApply the database healthcheck changes from these revisions, retaining the client selection for older MariaDB versions. Leave their workflow and installation-script changes out of this branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13742\n\nProps lucatume, adrianmoldovanwp, johnbillion, afercia, jorbin, desrosj.\nSee #66117.\n",
