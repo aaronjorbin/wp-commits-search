@@ -1,5 +1,14 @@
 [
     {
+        "id": 65523,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Switch more attachment tests to `create_upload_object()`.\n\nFollow-up to [65522].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15984\n\nProps huzaifaalmesbah, desrosj.\n\nSee #42990.\n",
+        "date": "2026-11-13T19:37:43.172586Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/attachments.php"
+        ]
+    },
+    {
         "id": 65522,
         "author": "lancewillett",
         "message": "Build/Test Tools: Use `create_upload_object()` in more attachment tests.\n\nSix test files uploaded a file and then called `WP_UnitTestCase::_make_attachment()`, which repeats what the attachment factory's `create_upload_object()` does. They now call the factory method, a first step before deprecating `_make_attachment()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15975\n\nProps huzaifaalmesbah, desrosj.\n\nSee #42990.\n",
