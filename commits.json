@@ -1,5 +1,29 @@
 [
     {
+        "id": 65525,
+        "author": "westonruter",
+        "message": "Date/Time: Pass only valid weekday numbers to `WP_Locale`.\n\nThe PHP warning that `WP_Locale::get_weekday()` raises for an out-of-range weekday is already useful feedback, so no runtime validation is added. Instead, its parameter type is narrowed for static analysis, along with those of `get_month_genitive()` and `get_meridiem()`. The core callers that the narrower types exposed are fixed. The parameter of `get_month()` is left as is, since in r59870 it was made to tolerate unvalidated input.\n\nThe fixes change behavior in a few edge cases. A post whose date cannot be parsed is no longer labeled as Sunday by `the_weekday()` and `the_weekday_date()`; both filters still run. A numeric timestamp that passes the `is_numeric()` check but cannot be parsed now makes `wp_date()` return false instead of causing a fatal error. The calendar keeps wrapping an out-of-range `start_of_week` value modulo 7, so a value of 7 still means Sunday, consistent with the weekly archive query.\n\nTo let the weekday type flow through, the return type of `get_post_time()` is narrowed per date format, and the `get_post_time` filter now documents that its value must match what the format produces.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14827.\nFollow-up to r36292, r45379, r45901, r59870, r63941.\n\nProps raulsalvat, westonruter, shishir1, swissspidy.\nSee #34688.\nFixes #64522.\n",
+        "date": "2026-11-13T23:31:23.089806Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-locale.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/src/wp-includes/general-template.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon",
+            "/trunk/tests/phpunit/tests/date/theDate.php",
+            "/trunk/tests/phpunit/tests/date/wpDate.php",
+            "/trunk/tests/phpunit/tests/general/theWeekday.php"
+        ]
+    },
+    {
+        "id": 65524,
+        "author": "SergeyBiryukov",
+        "message": "Docs: Clarify how to access results of an existing WP_Query.\n\nAdds a short clarification to the `WP_Query::get_posts()` DocBlock explaining that:\n\n* Query arguments passed to the constructor cause the query to execute.\n* The retrieved results are available through the `posts` property.\n* Calling `get_posts()` again is unnecessary when the intention is only to access those results.\n\nProps isaeedam.\nFixes #66656.",
+        "date": "2026-11-13T23:09:43.167296Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-query.php"
+        ]
+    },
+    {
         "id": 65523,
         "author": "lancewillett",
         "message": "Build/Test Tools: Switch more attachment tests to `create_upload_object()`.\n\nFollow-up to [65522].\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15984\n\nProps huzaifaalmesbah, desrosj.\n\nSee #42990.\n",
