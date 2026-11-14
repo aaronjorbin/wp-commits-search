@@ -1,5 +1,24 @@
 [
     {
+        "id": 65528,
+        "author": "jorbin",
+        "message": "Rewrite Rules: Fire template_redirect in the random content redirect header tests.\n\nSince the random content redirect moved to the `template_redirect` action, the tests in the `xdebug` group that check its headers no longer triggered it.\n\nFollow-up to r65526.\n\nUnprops jorbin.\nSee #66661, #64498.\n",
+        "date": "2026-11-14T05:26:58.135237Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/query/randomContentRedirectHeaders.php"
+        ]
+    },
+    {
+        "id": 65527,
+        "author": "westonruter",
+        "message": "Posts, Post Types: Accept an array `exclude` in `wp_list_pages()`.\n\nPassing an array of page IDs as the `exclude` argument caused a fatal `TypeError` on PHP 8, since the value was sanitized with `preg_replace()` and split with `explode()`. It is now parsed with `wp_parse_id_list()`, which also accepts the comma-separated string that remains supported for back-compat. The same fix is applied to `wp_page_menu()`, which appended the static front page to `exclude` by string concatenation. The `wp_list_pages_excludes` filter still receives a list of numeric strings, as before.\n\nThe `exclude` and `include` arguments are now documented as `int[]`, matching `get_pages()` which receives them. The `include` argument had been typed as an array but described as a comma-separated list. Documenting the array form steers callers toward input that static analysis can check, even though a string is still accepted.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13922.\nFollow-up to r10115, r10121.\n\nProps sabbir345, westonruter, marian1, irozum, wprashed, therssoftware.\nFixes #66052.\n",
+        "date": "2026-11-14T05:13:21.806480Z",
+        "files": [
+            "/trunk/src/wp-includes/post-template.php",
+            "/trunk/tests/phpunit/tests/post/wpListPages.php"
+        ]
+    },
+    {
         "id": 65526,
         "author": "jorbin",
         "message": "Rewrite Rules: Send the random content redirect on template_redirect.\n\nThe random content redirect was sent from `WP::handle_random()` before the `template_redirect` action fired. Plugins that restrict access to a site on that action never saw the request, so logged-out visitors to a locked site were still redirected to post URLs. The redirect is now sent on `template_redirect` at priority 100, and `redirect_canonical()` leaves these requests alone so they are not redirected twice.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15912\n\nFollow-up to r64402, r65440.\n\nProps jorbin, renehermi, aryanjasala, rcwpdev.\nFixes #66661. See #64498.\n",
