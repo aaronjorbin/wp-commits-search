@@ -1,5 +1,14 @@
 [
     {
+        "id": 65530,
+        "author": "SergeyBiryukov",
+        "message": "Code Modernization: Use the null coalescing assignment operator in `wp-includes/comment.php`.\n\nReplaces verbose `! isset()` guard blocks that assign default values with the null coalescing assignment operator (`??=`).\n\n**Scope**\n\nThis covers `get_comment_pages_count()` and `wp_new_comment()` completely.\n\n**Why this is safe**\n\n- `??=` requires PHP 7.4, which is already the minimum supported version.\n- `??=` and `! isset()` test the same condition, so the default is applied in exactly the same cases.\n- Assignment order is preserved.\n- No behavior change; this is a purely internal syntax simplification.\n\nProps noruzzaman, masteradhoc.\nSee #65823.",
+        "date": "2026-11-15T20:16:53.798837Z",
+        "files": [
+            "/trunk/src/wp-includes/comment.php"
+        ]
+    },
+    {
         "id": 65529,
         "author": "SergeyBiryukov",
         "message": "Code Modernization: Use the null coalescing assignment operator for installer API arguments.\n\nReplaces verbose `! isset()` guard blocks that assign default values in `plugins_api()` and `themes_api()` with the null coalescing assignment operator (`??=`):\n\n{{{#!php\n<?php\n// Before\nif ( 'query_plugins' === $action ) {\n\tif ( ! isset( $args->per_page ) ) {\n\t\t$args->per_page = 24;\n\t}\n}\n\nif ( ! isset( $args->locale ) ) {\n\t$args->locale = get_user_locale();\n}\n\nif ( ! isset( $args->wp_version ) ) {\n\t$args->wp_version = substr( wp_get_wp_version(), 0, 3 );\n}\n\n// After\nif ( 'query_plugins' === $action ) {\n\t$args->per_page ??= 24;\n}\n\n$args->locale     ??= get_user_locale();\n$args->wp_version ??= substr( wp_get_wp_version(), 0, 3 );\n}}}\n\nBoth installer API functions normalize their arguments using the same idiom, so the two functions now read identically. 6 guard blocks replaced, 20 lines removed for 6 added.\n\n**Scope**\n\nThis covers `plugins_api()` in `src/wp-admin/includes/plugin-install.php` and `themes_api()` in `src/wp-admin/includes/theme.php` completely: every guard in those two functions that `??=` can express is converted, so the two installer API functions are internally consistent rather than half-modernized.\n\n**Why this is safe**\n\n- `??=` requires PHP 7.4, which is already the minimum supported version.\n- `??=` and `! isset()` test the same condition, so the default is applied in exactly the same cases.\n- Assignment order is preserved.\n- No behavior change; this is a purely internal syntax simplification.\n\nProps noruzzaman.\nSee #65823.",
