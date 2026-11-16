@@ -1,5 +1,17 @@
 [
     {
+        "id": 65532,
+        "author": "adamsilverstein",
+        "message": "Media: Stop enabling client-side uploads on plugin-isolated screens.\n\nFix an issue where a plugin screen that sends its own `Document-Isolation-Policy` header, such as the Elementor editor, got the client-side upload pipeline in every media frame without asking for it. `wp_is_cross_origin_isolated_request()` treated any queued `Document-Isolation-Policy` header as a sign the screen was set up for the pipeline, so it could not tell core's isolation apart from a plugin's.\n\nThe function now returns true only when `wp_send_document_isolation_policy_header()` has sent the header. Media frames on a screen a plugin isolates itself upload through plupload again, as they did in 7.1. To opt a screen into the pipeline, call `wp_send_document_isolation_policy_header()` before `wp_enqueue_media()` runs.\n\nThe Gutenberg plugin sends the header itself on the editor screens, so its media modal uses classic uploads until a site updates to a release that includes https://github.com/WordPress/gutenberg/pull/86542. Uploads made in the block editor itself are unaffected.\n\nFollow-up to [64588].\n\nProps andrewserong.\nFixes #66490.\n\n",
+        "date": "2026-11-16T17:43:33.162194Z",
+        "files": [
+            "/trunk/src/wp-includes/media.php",
+            "/trunk/tests/phpunit/tests/media/wpCrossOriginIsolation.php",
+            "/trunk/tests/phpunit/tests/media/wpEnqueueMediaFrameUpload.php",
+            "/trunk/tests/phpunit/tests/media/wpEnqueueMediaNewUpload.php"
+        ]
+    },
+    {
         "id": 65531,
         "author": "peterwilsoncc",
         "message": "Plugins: Clarify dependency notes on the Plugins screen.\n\nUpdates `WP_Plugins_List_Table::add_dependents_to_dependency_plugin_row()` to display a note matching the action blocked by a plugin's dependents:\n\n* Active plugins with active dependents note that the plugin cannot be deactivated until the plugins requiring it are deactivated.\n* Inactive plugins note that the plugin cannot be deleted until the plugins requiring it are deleted.\n* No note is displayed if neither action is blocked, including for plugins with a circular dependency.\n\nPreviously the note stated that the plugin could not be deactivated or deleted until the plugins requiring it were deactivated or deleted, regardless of the plugin's state. This was inaccurate as deactivating the dependents does not allow a plugin to be deleted.\n\nThe note is now displayed as an inline warning via `wp_get_admin_notice()`.\n\nThe tests are updated to account for the user's capabilities and to cover the notices on the network Plugins screen separately.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12732\n\nProps hbhalodia, joedolson, huzaifaalmesbah, softglaze.\nFixes #64493.\n",
