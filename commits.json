@@ -1,5 +1,15 @@
 [
     {
+        "id": 65531,
+        "author": "peterwilsoncc",
+        "message": "Plugins: Clarify dependency notes on the Plugins screen.\n\nUpdates `WP_Plugins_List_Table::add_dependents_to_dependency_plugin_row()` to display a note matching the action blocked by a plugin's dependents:\n\n* Active plugins with active dependents note that the plugin cannot be deactivated until the plugins requiring it are deactivated.\n* Inactive plugins note that the plugin cannot be deleted until the plugins requiring it are deleted.\n* No note is displayed if neither action is blocked, including for plugins with a circular dependency.\n\nPreviously the note stated that the plugin could not be deactivated or deleted until the plugins requiring it were deactivated or deleted, regardless of the plugin's state. This was inaccurate as deactivating the dependents does not allow a plugin to be deleted.\n\nThe note is now displayed as an inline warning via `wp_get_admin_notice()`.\n\nThe tests are updated to account for the user's capabilities and to cover the notices on the network Plugins screen separately.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12732\n\nProps hbhalodia, joedolson, huzaifaalmesbah, softglaze.\nFixes #64493.\n",
+        "date": "2026-11-16T01:11:25.329209Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-plugins-list-table.php",
+            "/trunk/tests/phpunit/tests/admin/wpPluginsListTableRequiredByRow.php"
+        ]
+    },
+    {
         "id": 65530,
         "author": "SergeyBiryukov",
         "message": "Code Modernization: Use the null coalescing assignment operator in `wp-includes/comment.php`.\n\nReplaces verbose `! isset()` guard blocks that assign default values with the null coalescing assignment operator (`??=`).\n\n**Scope**\n\nThis covers `get_comment_pages_count()` and `wp_new_comment()` completely.\n\n**Why this is safe**\n\n- `??=` requires PHP 7.4, which is already the minimum supported version.\n- `??=` and `! isset()` test the same condition, so the default is applied in exactly the same cases.\n- Assignment order is preserved.\n- No behavior change; this is a purely internal syntax simplification.\n\nProps noruzzaman, masteradhoc.\nSee #65823.",
