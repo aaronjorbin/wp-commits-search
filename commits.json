@@ -1,5 +1,51 @@
 [
     {
+        "id": 65536,
+        "author": "jorbin",
+        "message": "Rewrite Rules: Redirect random searches to the search results.\n\nA search request that included the `random` query variable should not redirect to a random post, it should treat search as the priority. Search requests are no longer random content requests. They are instead redirected to the same search without `random` before the main query is run.\n\nRequests for robots.txt, the favicon, sitemaps, feeds and trackbacks now also ignore the `random` query variable.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15916\n\nFollow-up to r64402.\n\nProps jorbin, renehermi, ssebuwufumoses, manfcarlo.\nFixes #66662. See #64498.\n",
+        "date": "2026-11-16T20:53:00.860659Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-query.php",
+            "/trunk/src/wp-includes/class-wp-rewrite.php",
+            "/trunk/src/wp-includes/class-wp.php",
+            "/trunk/src/wp-includes/query.php",
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php"
+        ]
+    },
+    {
+        "id": 65535,
+        "author": "SergeyBiryukov",
+        "message": "Code Modernization: Use the null coalescing assignment operator in `wp-includes/option.php`.\n\nReplaces verbose `! isset()` guard blocks that assign default values with the null coalescing assignment operator (`??=`).\n\n**Scope**\n\nThis covers `get_transient()` and `get_site_transient()` completely.\n\n**Why this is safe**\n\n- `??=` requires PHP 7.4, which is already the minimum supported version.\n- `??=` and `! isset()` test the same condition, so the default is applied in exactly the same cases.\n- Assignment order is preserved.\n- No behavior change; this is a purely internal syntax simplification.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16005.\n\nProps noruzzaman, masteradhoc.\nSee #65823.",
+        "date": "2026-11-16T20:46:15.208232Z",
+        "files": [
+            "/trunk/src/wp-includes/option.php"
+        ]
+    },
+    {
+        "id": 65534,
+        "author": "westonruter",
+        "message": "Code Quality: Use `decimal-int-string` for integer strings.\n\nPHPStan 2.2.0 introduced the `decimal-int-string` type for a string in canonical decimal integer form, such as `'123'` or `'-5'`, which is exactly what casting an integer to a string produces. For historical reasons, WordPress passes many integers around as strings, since that is what MySQL returns for integer columns. These had been typed as `numeric-string`, which also admits floats, exponents, and leading zeros or whitespace. The narrower `decimal-int-string` type is now used for object IDs, `COUNT(*)` results, and the integer columns exposed on the core object classes. The `numeric-string` type is kept where a value can be zero-padded or fractional, such as date parts and EXIF image metadata, and for now in `wp_unique_id()` and `wp_unique_prefixed_id()` due to a PHPStan issue.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16013.\nFollow-up to r62437, r62640, r62717, r62822, r63488, r63618, r65269, r65527.\n\nSee #65817.\n",
+        "date": "2026-11-16T20:12:03.232289Z",
+        "files": [
+            "/trunk/src/wp-includes/category.php",
+            "/trunk/src/wp-includes/class-wp-comment.php",
+            "/trunk/src/wp-includes/class-wp-network.php",
+            "/trunk/src/wp-includes/class-wp-post.php",
+            "/trunk/src/wp-includes/class-wp-site.php",
+            "/trunk/src/wp-includes/class-wp-term-query.php",
+            "/trunk/src/wp-includes/class-wp-user-request.php",
+            "/trunk/src/wp-includes/class-wp-user.php",
+            "/trunk/src/wp-includes/comment.php",
+            "/trunk/src/wp-includes/meta.php",
+            "/trunk/src/wp-includes/post-template.php",
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/src/wp-includes/taxonomy.php",
+            "/trunk/src/wp-includes/user.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon",
+            "/trunk/tests/phpunit/tests/post/wpListPages.php"
+        ]
+    },
+    {
         "id": 65533,
         "author": "adamsilverstein",
         "message": "Media: Enable sideloading sub-sizes in the output format on multisite.\n\nFix an issue where client-side media processing failed on multisite for any image whose sub-sizes are generated in a format missing from the network's \"Upload file types\" setting. Networks created before 5.8 have no `webp` in that list and those created before 6.5 have no `avif`, so with a plugin filtering `image_editor_output_format` to either format every sub-size sideload was rejected and the whole upload failed. Server-side processing never had this limit because the image editor writes sub-sizes straight to disk.\n\nMatch that behavior by adding the attachment's output format to the `upload_filetypes` network option for the duration of the sideload only, leaving all other formats, `upload_mimes` filtering and single site unaffected.\n\nFollow-up to [62617].\n\nProps desrosj, andrewserong.\nFixes #66681.\n\n",
