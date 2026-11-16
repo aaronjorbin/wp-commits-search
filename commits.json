@@ -1,5 +1,15 @@
 [
     {
+        "id": 65533,
+        "author": "adamsilverstein",
+        "message": "Media: Enable sideloading sub-sizes in the output format on multisite.\n\nFix an issue where client-side media processing failed on multisite for any image whose sub-sizes are generated in a format missing from the network's \"Upload file types\" setting. Networks created before 5.8 have no `webp` in that list and those created before 6.5 have no `avif`, so with a plugin filtering `image_editor_output_format` to either format every sub-size sideload was rejected and the whole upload failed. Server-side processing never had this limit because the image editor writes sub-sizes straight to disk.\n\nMatch that behavior by adding the attachment's output format to the `upload_filetypes` network option for the duration of the sideload only, leaving all other formats, `upload_mimes` filtering and single site unaffected.\n\nFollow-up to [62617].\n\nProps desrosj, andrewserong.\nFixes #66681.\n\n",
+        "date": "2026-11-16T18:28:17.794003Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-attachments-controller.php"
+        ]
+    },
+    {
         "id": 65532,
         "author": "adamsilverstein",
         "message": "Media: Stop enabling client-side uploads on plugin-isolated screens.\n\nFix an issue where a plugin screen that sends its own `Document-Isolation-Policy` header, such as the Elementor editor, got the client-side upload pipeline in every media frame without asking for it. `wp_is_cross_origin_isolated_request()` treated any queued `Document-Isolation-Policy` header as a sign the screen was set up for the pipeline, so it could not tell core's isolation apart from a plugin's.\n\nThe function now returns true only when `wp_send_document_isolation_policy_header()` has sent the header. Media frames on a screen a plugin isolates itself upload through plupload again, as they did in 7.1. To opt a screen into the pipeline, call `wp_send_document_isolation_policy_header()` before `wp_enqueue_media()` runs.\n\nThe Gutenberg plugin sends the header itself on the editor screens, so its media modal uses classic uploads until a site updates to a release that includes https://github.com/WordPress/gutenberg/pull/86542. Uploads made in the block editor itself are unaffected.\n\nFollow-up to [64588].\n\nProps andrewserong.\nFixes #66490.\n\n",
