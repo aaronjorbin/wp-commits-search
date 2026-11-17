@@ -1,5 +1,31 @@
 [
     {
+        "id": 65538,
+        "author": "peterwilsoncc",
+        "message": "Security: Revert the Secrets API.\n\nRemoves the Secrets API from WordPress 7.2 to allow more time for the API to mature before it ships in a future release.\n\nFeedback on the 7.2 announcement post raised questions about the design of the API, including whether writing secrets belongs in the same API as reading host-provided secrets.\n\nFurther review also found that the `manage_secrets` and `manage_network_secrets` capabilities are not checked when secrets are set. \n\nRather than rework the API late in the release cycle, it is reverted so the design can be revisited.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16046\nDiscussed in: https://wordpress.slack.com/archives/C0BPBLBKEET/p1794828184730239\n\nReverts r65466, r65395, r65394, r65390, r65389, r65387, r65385, r65378, r65377, r65375, r65374, r65373, r65272, r64674, r64345, r64344, r64337.\n\nProps peterwilsoncc, ericmann.\nSee #66187, #66353, #66380, #66399, #66413, #66414, #64789.\n",
+        "date": "2026-11-17T00:27:37.252603Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-debug-data.php",
+            "/trunk/src/wp-admin/includes/class-wp-site-health.php",
+            "/trunk/src/wp-admin/includes/plugin.php",
+            "/trunk/src/wp-admin/includes/schema.php",
+            "/trunk/src/wp-admin/includes/upgrade.php",
+            "/trunk/src/wp-admin/options.php",
+            "/trunk/src/wp-admin/setup-config.php",
+            "/trunk/src/wp-includes/capabilities.php",
+            "/trunk/src/wp-includes/load.php",
+            "/trunk/src/wp-includes/secrets",
+            "/trunk/src/wp-includes/secrets.php",
+            "/trunk/src/wp-settings.php",
+            "/trunk/tests/phpunit/includes/bootstrap.php",
+            "/trunk/tests/phpunit/includes/secrets",
+            "/trunk/tests/phpunit/tests/admin/includesPlugin.php",
+            "/trunk/tests/phpunit/tests/secrets",
+            "/trunk/tests/phpunit/tests/user/capabilities.php",
+            "/trunk/wp-config-sample.php"
+        ]
+    },
+    {
         "id": 65537,
         "author": "westonruter",
         "message": "Build/Test Tools: Update PHPStan to 2.3.6.\n\nThis also updates `phpstan/phpstan-phpunit` to 2.1.2, and regenerates the baselines for the errors PHPStan now reports differently.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16042.\nFollow-up to r65078, r65310.\n\nSee #65817.\n",
