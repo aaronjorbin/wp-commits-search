@@ -1,5 +1,55 @@
 [
     {
+        "id": 65564,
+        "author": "lancewillett",
+        "message": "Tests: Share admin locators across E2E tests.\n\nExtract common admin locators into a shared helper and update the affected browser tests. Document its use and normalize the E2E README to LF line endings.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16030\n\nProps adrianmoldovanwp, lucatume, mukesh27.\nSee #66455.\n",
+        "date": "2026-11-17T21:36:32.214459Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/specs/classic-menus.test.js",
+            "/trunk/tests/e2e/specs/comments.test.js",
+            "/trunk/tests/e2e/specs/edit-posts.test.js",
+            "/trunk/tests/e2e/specs/empty-trash-restore-trashed-posts.test.js",
+            "/trunk/tests/e2e/specs/empty-trash.test.js",
+            "/trunk/tests/e2e/specs/media-library.test.js",
+            "/trunk/tests/e2e/specs/moderate-comments.test.js",
+            "/trunk/tests/e2e/specs/pages/quick-edit-page.test.js",
+            "/trunk/tests/e2e/specs/personal-data-requests.test.js",
+            "/trunk/tests/e2e/specs/taxonomies.test.js",
+            "/trunk/tests/e2e/specs/users.test.js",
+            "/trunk/tests/e2e/utils/admin.js"
+        ]
+    },
+    {
+        "id": 65563,
+        "author": "lancewillett",
+        "message": "Tests: Make page-list data providers static.\n\nDeclare the four `wp_list_pages()` data providers static for compatibility with newer PHPUnit versions.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16057\n\nProps shailu25.\nSee #66211.\n",
+        "date": "2026-11-17T21:34:36.040642Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/wpListPages.php"
+        ]
+    },
+    {
+        "id": 65562,
+        "author": "lancewillett",
+        "message": "Tests: Use the attachment factory for uploaded fixtures.\n\nReplace duplicated upload and attachment setup with `create_upload_object()` in MIME type, template, and AJAX crop tests. Remove the unused custom-logo URL fixture.\n\nFollow-up to r65522, r65523.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15994, https://github.com/WordPress/wordpress-develop/pull/15995, https://github.com/WordPress/wordpress-develop/pull/15998\n\nProps shailu25, huzaifaalmesbah, desrosj.\nSee #42990.\n",
+        "date": "2026-11-17T21:33:47.811010Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxCropImage.php",
+            "/trunk/tests/phpunit/tests/general/template.php",
+            "/trunk/tests/phpunit/tests/post/getAvailablePostMimeTypes.php"
+        ]
+    },
+    {
+        "id": 65561,
+        "author": "lancewillett",
+        "message": "Tests: Remove redundant post-status fixture cleanup.\n\nRemove mixed-case and class-level cleanup while retaining the per-test removal of the normalized `wp_tests_ps` status, including the built-in fixture.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15194\n\nProps mukesh27, peterwilsoncc.\nSee #65893.\n",
+        "date": "2026-11-17T21:32:04.885278Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/post/isPostStatusViewable.php"
+        ]
+    },
+    {
         "id": 65560,
         "author": "dmsnell",
         "message": "HTML API: Refactor `excerpt_remove_footnotes()`.\n\nAttribute ordering in HTML is not guaranteed, but the PCRE pattern in `excerpt_remove_footnotes()` was hard-coded to expect a specific order. The `wp_kses()` refactor reorders attributes saved in footnote references from the block editor, triggering a failure to remove them from excerpts.\n\nThis patch replaces the PCRE match in `excerpt_remove_footnotes()` with HTML API matching code, which detects the intended pattern from the original implementation, making it more robust against lexical variations of equivalent HTML structure.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15917\nDiscussed in: https://core.trac.wordpress.org/ticket/66668\n\nFollow-up to r64233.\n\nProps cbravobernal, dmsnell, tbshiki, westonruter.\nFixes #66668. See #66208.\n",
