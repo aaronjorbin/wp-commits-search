@@ -1,5 +1,33 @@
 [
     {
+        "id": 65559,
+        "author": "davidbaumwald",
+        "message": "Post WordPress 7.2-RC1 version bump.",
+        "date": "2026-11-17T16:00:45.722746Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65558,
+        "author": "audrasjb",
+        "message": "WordPress 7.2 RC 1.\n\n",
+        "date": "2026-11-17T15:37:29.405912Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65557,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Update npm `devDependencies`.\n\nThis updates the following npm `devDependencies` to their latest versions:\n\n- `@playwright/test` from `1.64.1` to `1.65.1`\n- `@pmmmwh/react-refresh-webpack-plugin` from `0.6.2` to `0.6.3`\n- `@types/codemirror` from `5.60.17` to `5.60.18`\n- `autoprefixer` from `10.5.3` to `10.6.2`\n- `grunt` from `1.6.2` to `1.6.3`\n- `grunt-webpack` from `7.0.1` to `8.0.0`\n- `minimizer-webpack-plugin` from `5.6.1` to `5.14.0`\n- `postcss` from `8.5.19` to `8.5.33`\n- `qunit` from `~2.26.0` to `3.0.0`\n- `update-browserslist-db` from `1.3.1` to `1.4.0`\n- `wait-on` from `9.0.10` to `9.5.1`\n- `webpack` from `5.108.4` to `5.109.2`\n\nThe newer version of `terser` included with `minimizer-webpack-plugin` changes the minified output of `codemirror.min.js`,\n`espree.min.js`, `react-refresh-entry.min.js`, and `react-refresh-runtime.min.js` without changing their behavior.\n\nSee #65857.\n",
+        "date": "2026-11-17T15:13:59.162686Z",
+        "files": [
+            "/trunk/package-lock.json",
+            "/trunk/package.json"
+        ]
+    },
+    {
         "id": 65556,
         "author": "desrosj",
         "message": "Build/Test Tools: Update `@napi-rs/image` to version 1.16.0.\n\nThis updates `@napi-rs/image` from `1.14.0` to `1.16.0` and runs `grunt precommit:image` with the new version.\n\nThe new version compresses some PNG images further, so 24 PNG images in `wp-admin`, `wp-includes`, and five bundled themes are\nlosslessly recompressed. The Ipsum theme's `screenshot.jpg`, which was committed without being optimized, is also optimized.\n\nEach image decodes to the same pixels as before, and the total savings are 40,301 bytes.\n\nSee #65857.\n",
