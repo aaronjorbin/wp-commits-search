@@ -1,5 +1,30 @@
 [
     {
+        "id": 65545,
+        "author": "audrasjb",
+        "message": "Privacy: Add a check for post status in `wp_privacy_send_personal_data_export_email()`.\n\nIn `wp_privacy_send_personal_data_export_email()`, the post status was not previously validated before sending the export email. This could lead to export emails being sent for unconfirmed or invalid requests (e.g. `request-pending`, `request-failed`).\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12759.\n\nProps pbearne, wildworks, mindctrl, masteradhoc, therssoftware, im3dabasia1.\nFixes #65758.\n\n",
+        "date": "2026-11-17T08:00:27.221099Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/privacy-tools.php",
+            "/trunk/tests/phpunit/tests/privacy/wpPrivacyProcessPersonalDataExportPage.php",
+            "/trunk/tests/phpunit/tests/privacy/wpPrivacySendPersonalDataExportEmail.php"
+        ]
+    },
+    {
+        "id": 65544,
+        "author": "audrasjb",
+        "message": "Twenty Nineteen: Replace single space in pseudo-elements.\n\nWhen a user inserts an empty heading block in the editor and applies an \"Underline\" or \"Strikethrough\" text decoration, the browser attempts to underline the pseudo-element's whitespace character. This interaction causes a stray, visible hyphen-like artifact to render inside the editor above the empty block.\n\nThis changeset updates the CSS content property to use the empty string `content: \"\";`. By removing the whitespace character, the pseudo-element no longer contains an actual text node.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15895.\n\nProps karunyachavan84, sabernhardt, karmatosed, tusharaddweb, 369work, tremidkhar.\nFixes #65433.\n\n",
+        "date": "2026-11-17T07:22:25.733854Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentynineteen/sass/mixins/_mixins-master.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/site/header/_site-featured-image.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/sass/site/primary/_posts-and-pages.scss",
+            "/trunk/src/wp-content/themes/twentynineteen/style-editor.css",
+            "/trunk/src/wp-content/themes/twentynineteen/style-rtl.css",
+            "/trunk/src/wp-content/themes/twentynineteen/style.css"
+        ]
+    },
+    {
         "id": 65543,
         "author": "Mamaduka",
         "message": "General: Bump the pinned hash for Gutenberg to `61aba54`.\n\nThis updates the pinned commit hash of the Gutenberg repository from `1b0dc90c700746b108e080263a4dc67707b750a1` to `61aba5422836aeed76a794f98d3fe0da3eb5f5d1` (head of the `wp/7.2` branch).\n\nA full list of changes included in this commit can be found on GitHub: https://github.com/WordPress/gutenberg/compare/1b0dc90c700746b108e080263a4dc67707b750a1...61aba5422836aeed76a794f98d3fe0da3eb5f5d1.\n\n- Interactivity API: Render TrustedHTML after rejecting the same markup as a string (https://github.com/WordPress/gutenberg/pull/86555).\n- Interactivity Router: Render only the most recently started navigation (https://github.com/WordPress/gutenberg/pull/86515) (https://github.com/WordPress/gutenberg/pull/86608).\n- Block Parser: Update error-handling for stack of unclosed blocks (https://github.com/WordPress/gutenberg/pull/74427).\n- Block Parser: Match updates from Core's default parser (https://github.com/WordPress/gutenberg/pull/86078).\n- Upload Media: Export `isClientSideSupportedFormat()` (https://github.com/WordPress/gutenberg/pull/86541) (https://github.com/WordPress/gutenberg/pull/86693).\n- Core fields: Restore the `editor.PostFeaturedImage.imageSize` filter in the post editor (https://github.com/WordPress/gutenberg/pull/86662).\n- Icons: Rename file to folder, add actual file icon (https://github.com/WordPress/gutenberg/pull/86526) (https://github.com/WordPress/gutenberg/pull/86779).\n- Icons: Add \"database\" icon (https://github.com/WordPress/gutenberg/pull/85273) (https://github.com/WordPress/gutenberg/pull/86853).\n- [WP 7.2] Icons: Map a conservative set of Dashicons to `core-admin` icons (https://github.com/WordPress/gutenberg/pull/86708) (https://github.com/WordPress/gutenberg/pull/86854).\n- Connectors: Show filesystem credentials modal on plugin install (https://github.com/WordPress/gutenberg/pull/78367).\n- Icons: Deprecate locks-small, lock-outline, replace lock with lock-outline svg (https://github.com/WordPress/gutenberg/pull/85740) (https://github.com/WordPress/gutenberg/pull/86924).\n- Blocks: Fix duplicated content when implicitly closing a final open block (https://github.com/WordPress/gutenberg/pull/86703).\n- ContentEditableControl: Don't focus a disabled field on click (https://github.com/WordPress/gutenberg/pull/86613).\n- Fix iOS keyboard not opening on a tap into another block after Done (https://github.com/WordPress/gutenberg/pull/86839).\n\nRemoves the icons restored by this update from the `$_old_files` array to prevent them being deleted when WordPress is updated.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16048\n\nProps peterwilsoncc, mamaduka, wildworks, fushar.\nSee #66340.",
