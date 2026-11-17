@@ -1,5 +1,14 @@
 [
     {
+        "id": 65565,
+        "author": "lancewillett",
+        "message": "Tests: Remove empty REST icons test placeholders.\n\nRename the existing GET tests to satisfy the required `test_get_item()` and `test_get_items()` methods. Remove the empty placeholders while preserving their behavioral coverage.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15919\n\nProps rejaulalomkhan, rcwpdev.\nSee #40538.\n",
+        "date": "2026-11-17T22:46:56.428182Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/icons/wpRestIconsController.php"
+        ]
+    },
+    {
         "id": 65564,
         "author": "lancewillett",
         "message": "Tests: Share admin locators across E2E tests.\n\nExtract common admin locators into a shared helper and update the affected browser tests. Document its use and normalize the E2E README to LF line endings.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16030\n\nProps adrianmoldovanwp, lucatume, mukesh27.\nSee #66455.\n",
