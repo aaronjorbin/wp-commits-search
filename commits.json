@@ -1,5 +1,14 @@
 [
     {
+        "id": 65552,
+        "author": "SergeyBiryukov",
+        "message": "Networks and Sites: Return a 404 from `ms-files.php` when no file is requested.\n\nReturns the existing 404 before reading `$_GET['file']` when it's missing or not a string. This removes the \u201cUndefined array key\u201d, `str_replace()` null deprecation, and \u201cArray to string conversion\u201d warnings on line 33. Behavior is unchanged: those requests already end in a 404.\n\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16068.\n\nFollow-up to r12936, r60956.\n\nProps bor0.\nFixes #66715.",
+        "date": "2026-11-17T13:28:57.335247Z",
+        "files": [
+            "/trunk/src/wp-includes/ms-files.php"
+        ]
+    },
+    {
         "id": 65551,
         "author": "wildworks",
         "message": "Privacy: Add a check for post status in `wp_privacy_send_personal_data_export_email()`.\n\nIn `wp_privacy_send_personal_data_export_email()`, the post status was not previously validated before sending the export email. This could lead to export emails being sent for unconfirmed or invalid requests (e.g. `request-pending`, `request-failed`).\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12759\n\nProps pbearne, wildworks, mindctrl, masteradhoc, therssoftware, im3dabasia1.\nFixes #65758.",
