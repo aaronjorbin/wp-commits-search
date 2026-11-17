@@ -1,5 +1,14 @@
 [
     {
+        "id": 65546,
+        "author": "audrasjb",
+        "message": "Editor: Keep excerpt popover below media modal.\n\nWhen the Excerpt panel is open, opening the Media Library can leave the Excerpt popover above the Media Library. This can cover part of the modal and make it difficult to use.\n\nThis changeset moves the Excerpt popover below the Media Library only when the modal is open. The normal popover behavior is unchanged after the modal closes.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13552.\n\nProps aksharmakwana6, sainathpoojary, micahele, audrasjb.\nFixes #66031.\n\n",
+        "date": "2026-11-17T08:23:01.485627Z",
+        "files": [
+            "/trunk/src/wp-admin/css/common.css"
+        ]
+    },
+    {
         "id": 65545,
         "author": "audrasjb",
         "message": "Privacy: Add a check for post status in `wp_privacy_send_personal_data_export_email()`.\n\nIn `wp_privacy_send_personal_data_export_email()`, the post status was not previously validated before sending the export email. This could lead to export emails being sent for unconfirmed or invalid requests (e.g. `request-pending`, `request-failed`).\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12759.\n\nProps pbearne, wildworks, mindctrl, masteradhoc, therssoftware, im3dabasia1.\nFixes #65758.\n\n",
