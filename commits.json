@@ -1,5 +1,17 @@
 [
     {
+        "id": 65537,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Update PHPStan to 2.3.6.\n\nThis also updates `phpstan/phpstan-phpunit` to 2.1.2, and regenerates the baselines for the errors PHPStan now reports differently.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16042.\nFollow-up to r65078, r65310.\n\nSee #65817.\n",
+        "date": "2026-11-16T23:17:14.657197Z",
+        "files": [
+            "/trunk/composer.json",
+            "/trunk/tests/phpstan/baselines/assign.propertyType.neon",
+            "/trunk/tests/phpstan/baselines/offsetAccess.notFound.neon",
+            "/trunk/tests/phpstan/baselines/variable.undefined.neon"
+        ]
+    },
+    {
         "id": 65536,
         "author": "jorbin",
         "message": "Rewrite Rules: Redirect random searches to the search results.\n\nA search request that included the `random` query variable should not redirect to a random post, it should treat search as the priority. Search requests are no longer random content requests. They are instead redirected to the same search without `random` before the main query is run.\n\nRequests for robots.txt, the favicon, sitemaps, feeds and trackbacks now also ignore the `random` query variable.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15916\n\nFollow-up to r64402.\n\nProps jorbin, renehermi, ssebuwufumoses, manfcarlo.\nFixes #66662. See #64498.\n",
