@@ -1,5 +1,16 @@
 [
     {
+        "id": 65551,
+        "author": "wildworks",
+        "message": "Privacy: Add a check for post status in `wp_privacy_send_personal_data_export_email()`.\n\nIn `wp_privacy_send_personal_data_export_email()`, the post status was not previously validated before sending the export email. This could lead to export emails being sent for unconfirmed or invalid requests (e.g. `request-pending`, `request-failed`).\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/12759\n\nProps pbearne, wildworks, mindctrl, masteradhoc, therssoftware, im3dabasia1.\nFixes #65758.",
+        "date": "2026-11-17T12:54:50.760349Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/privacy-tools.php",
+            "/trunk/tests/phpunit/tests/privacy/wpPrivacyProcessPersonalDataExportPage.php",
+            "/trunk/tests/phpunit/tests/privacy/wpPrivacySendPersonalDataExportEmail.php"
+        ]
+    },
+    {
         "id": 65550,
         "author": "audrasjb",
         "message": "Media: Ignore bare EXIF `UserComment` character codes.\n\nAfter `trim()`, the `UserComment` is now discarded when it is exactly one of the character codes `ASCII`, `UNICODE`, or `JIS`. A bare code holds no comment, so the metadata falls back to `ImageDescription` (or to nothing). Valid comments, including ones that contain a code word as part of a longer string, are unchanged.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15434.\n\nProps lessbloat, sarequl, matt, azaozz.\nFixes #66462.\n\n",
