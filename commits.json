@@ -1,5 +1,25 @@
 [
     {
+        "id": 65541,
+        "author": "peterwilsoncc",
+        "message": "External Libraries: Update jQuery Form to version `4.4.0`.\n\nUpdates the jQuery Form library from version `4.3.0` to `4.4.0`. This release includes hardening fixes, adds support for jQuery 4 and fixes several long-standing bugs.\n\nCore registers the `jquery-form` script handle but does not use it, so this update only affects plugins and themes that enqueue it. The following behavior changes may affect them:\n\n* JSON responses are now parsed only with `JSON.parse()`. Responses that were previously accepted through `eval()`, such as those with single quotes or unquoted keys, now fail with a parse error.\n* The `target` option now only inserts string responses. Responses that have already been parsed as JSON or XML are no longer inserted.\n* Iframe responses that fail to parse now report `parsererror` instead of `success` with no data.\n\nA full list of changes can be found on GitHub: https://github.com/jquery-form/form/compare/v4.3.0...v4.4.0.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16038\n\nProps desrosj.\nFixes #66711.\n",
+        "date": "2026-11-17T02:37:57.880872Z",
+        "files": [
+            "/trunk/package-lock.json",
+            "/trunk/package.json",
+            "/trunk/src/wp-includes/script-loader.php"
+        ]
+    },
+    {
+        "id": 65540,
+        "author": "peterwilsoncc",
+        "message": "Connectors: Prompt for filesystem credentials on install.\n\nUpdates the connectors installation process to display a credentials modal when required by the filesystem type.\n\nPreviously, installing a connector plugin from Settings > Connectors failed with a generic error when the site needed filesystem credentials that hadn't been stored, for example when `FS_METHOD` is `ftpext`. The Connectors screen installs plugins through the REST API, which can't accept credentials, so the request was rejected with an `fs_unavailable` error.\n\nWith the Connectors JavaScript from https://github.com/WordPress/gutenberg/pull/78367, an `fs_unavailable` error now falls back to `wp.updates.installPlugin()`, which displays the \"Connection Information\" modal.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15889\n\nProps ekamran, westonruter, wildworks, sheldorofazeroth, harshitmshingala, rejaulalomkhan, rollybueno, gaurangsondagar, mirmpro, logicrays, manhar.\nFixes #65223.\n",
+        "date": "2026-11-17T02:17:54.751117Z",
+        "files": [
+            "/trunk/src/wp-admin/options-connectors.php"
+        ]
+    },
+    {
         "id": 65539,
         "author": "desrosj",
         "message": "Tests: Remove TrueType font detection skips for PHP 8.6.\n\nThe upstream libmagic regression that caused TrueType fonts to be detected as `application/octet-stream` has been fixed in PHP 8.6.0RC7, which now correctly reports `font/ttf`. The conditional skips added to account for this are no longer necessary.\n\nFollow-up to [65319].\n\nFixes #66419.\n",
