@@ -1,5 +1,16 @@
 [
     {
+        "id": 65560,
+        "author": "dmsnell",
+        "message": "HTML API: Refactor `excerpt_remove_footnotes()`.\n\nAttribute ordering in HTML is not guaranteed, but the PCRE pattern in `excerpt_remove_footnotes()` was hard-coded to expect a specific order. The `wp_kses()` refactor reorders attributes saved in footnote references from the block editor, triggering a failure to remove them from excerpts.\n\nThis patch replaces the PCRE match in `excerpt_remove_footnotes()` with HTML API matching code, which detects the intended pattern from the original implementation, making it more robust against lexical variations of equivalent HTML structure.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15917\nDiscussed in: https://core.trac.wordpress.org/ticket/66668\n\nFollow-up to r64233.\n\nProps cbravobernal, dmsnell, tbshiki, westonruter.\nFixes #66668. See #66208.\n",
+        "date": "2026-11-17T18:55:10.624469Z",
+        "files": [
+            "/trunk/src/wp-includes/blocks.php",
+            "/trunk/src/wp-includes/html-api/class-wp-html-tag-processor.php",
+            "/trunk/tests/phpunit/tests/formatting/excerptRemoveFootnotes.php"
+        ]
+    },
+    {
         "id": 65559,
         "author": "davidbaumwald",
         "message": "Post WordPress 7.2-RC1 version bump.",
