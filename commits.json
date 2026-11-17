@@ -1,5 +1,17 @@
 [
     {
+        "id": 65542,
+        "author": "jorbin",
+        "message": "Query: Select random redirect posts by random post ID.\n\nChange Random content requests from using `ORDER BY RAND() LIMIT 1` to using a sampling with rejection method. The post is now selected by looking up random post IDs by primary key, which keeps the cost of a request independent of the number of posts while leaving every eligible post equally likely to be selected.\n\nArchives whose posts are too sparse among the post IDs to be found this way fall back to a pool of randomly ordered posts stored in the object cache.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16050\n\nFollow-up to r64402, r65042.\n\nProps jorbin, peterwilsoncc, sukhendu2002, rmccue, gddrt, renehermi, djpaul.\nFixes #66654. See #64498.\n",
+        "date": "2026-11-17T04:52:59.313897Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp.php",
+            "/trunk/src/wp-includes/query.php",
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php",
+            "/trunk/tests/phpunit/tests/wp/handleRandom.php"
+        ]
+    },
+    {
         "id": 65541,
         "author": "peterwilsoncc",
         "message": "External Libraries: Update jQuery Form to version `4.4.0`.\n\nUpdates the jQuery Form library from version `4.3.0` to `4.4.0`. This release includes hardening fixes, adds support for jQuery 4 and fixes several long-standing bugs.\n\nCore registers the `jquery-form` script handle but does not use it, so this update only affects plugins and themes that enqueue it. The following behavior changes may affect them:\n\n* JSON responses are now parsed only with `JSON.parse()`. Responses that were previously accepted through `eval()`, such as those with single quotes or unquoted keys, now fail with a parse error.\n* The `target` option now only inserts string responses. Responses that have already been parsed as JSON or XML are no longer inserted.\n* Iframe responses that fail to parse now report `parsererror` instead of `success` with no data.\n\nA full list of changes can be found on GitHub: https://github.com/jquery-form/form/compare/v4.3.0...v4.4.0.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16038\n\nProps desrosj.\nFixes #66711.\n",
