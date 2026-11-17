@@ -1,5 +1,15 @@
 [
     {
+        "id": 65539,
+        "author": "desrosj",
+        "message": "Tests: Remove TrueType font detection skips for PHP 8.6.\n\nThe upstream libmagic regression that caused TrueType fonts to be detected as `application/octet-stream` has been fixed in PHP 8.6.0RC7, which now correctly reports `font/ttf`. The conditional skips added to account for this are no longer necessary.\n\nFollow-up to [65319].\n\nFixes #66419.\n",
+        "date": "2026-11-17T01:38:09.263316Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/fonts/font-library/wpRestFontFacesController.php",
+            "/trunk/tests/phpunit/tests/functions.php"
+        ]
+    },
+    {
         "id": 65538,
         "author": "peterwilsoncc",
         "message": "Security: Revert the Secrets API.\n\nRemoves the Secrets API from WordPress 7.2 to allow more time for the API to mature before it ships in a future release.\n\nFeedback on the 7.2 announcement post raised questions about the design of the API, including whether writing secrets belongs in the same API as reading host-provided secrets.\n\nFurther review also found that the `manage_secrets` and `manage_network_secrets` capabilities are not checked when secrets are set. \n\nRather than rework the API late in the release cycle, it is reverted so the design can be revisited.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16046\nDiscussed in: https://wordpress.slack.com/archives/C0BPBLBKEET/p1794828184730239\n\nReverts r65466, r65395, r65394, r65390, r65389, r65387, r65385, r65378, r65377, r65375, r65374, r65373, r65272, r64674, r64345, r64344, r64337.\n\nProps peterwilsoncc, ericmann.\nSee #66187, #66353, #66380, #66399, #66413, #66414, #64789.\n",
