@@ -1,5 +1,458 @@
 [
     {
+        "id": 65666,
+        "author": "jeremyfelt",
+        "message": "Tag 4.7.40",
+        "date": "2026-11-18T19:03:08.048814Z",
+        "files": [
+            "/tags/4.7.40"
+        ]
+    },
+    {
+        "id": 65665,
+        "author": "jeremyfelt",
+        "message": "Tag 4.8.35",
+        "date": "2026-11-18T19:03:03.918958Z",
+        "files": [
+            "/tags/4.8.35"
+        ]
+    },
+    {
+        "id": 65664,
+        "author": "jeremyfelt",
+        "message": "Tag 4.9.36",
+        "date": "2026-11-18T19:03:00.187712Z",
+        "files": [
+            "/tags/4.9.36"
+        ]
+    },
+    {
+        "id": 65663,
+        "author": "jeremyfelt",
+        "message": "Tag 5.0.32",
+        "date": "2026-11-18T19:02:56.475050Z",
+        "files": [
+            "/tags/5.0.32"
+        ]
+    },
+    {
+        "id": 65662,
+        "author": "jeremyfelt",
+        "message": "Tag 5.1.29",
+        "date": "2026-11-18T19:02:51.865225Z",
+        "files": [
+            "/tags/5.1.29"
+        ]
+    },
+    {
+        "id": 65661,
+        "author": "jeremyfelt",
+        "message": "Tag 5.2.31",
+        "date": "2026-11-18T19:02:48.399576Z",
+        "files": [
+            "/tags/5.2.31"
+        ]
+    },
+    {
+        "id": 65660,
+        "author": "jeremyfelt",
+        "message": "Tag 5.3.28",
+        "date": "2026-11-18T19:02:44.787642Z",
+        "files": [
+            "/tags/5.3.28"
+        ]
+    },
+    {
+        "id": 65659,
+        "author": "jeremyfelt",
+        "message": "Tag 5.4.26",
+        "date": "2026-11-18T19:02:40.971030Z",
+        "files": [
+            "/tags/5.4.26"
+        ]
+    },
+    {
+        "id": 65658,
+        "author": "jeremyfelt",
+        "message": "Tag 5.5.25",
+        "date": "2026-11-18T19:02:37.327294Z",
+        "files": [
+            "/tags/5.5.25"
+        ]
+    },
+    {
+        "id": 65657,
+        "author": "jeremyfelt",
+        "message": "Tag 5.6.24",
+        "date": "2026-11-18T19:02:32.596018Z",
+        "files": [
+            "/tags/5.6.24"
+        ]
+    },
+    {
+        "id": 65656,
+        "author": "jeremyfelt",
+        "message": "Tag 5.7.22",
+        "date": "2026-11-18T19:02:29.195039Z",
+        "files": [
+            "/tags/5.7.22"
+        ]
+    },
+    {
+        "id": 65655,
+        "author": "jeremyfelt",
+        "message": "Tag 5.8.20",
+        "date": "2026-11-18T19:02:25.780399Z",
+        "files": [
+            "/tags/5.8.20"
+        ]
+    },
+    {
+        "id": 65654,
+        "author": "jeremyfelt",
+        "message": "Tag 5.9.21",
+        "date": "2026-11-18T19:02:21.570743Z",
+        "files": [
+            "/tags/5.9.21"
+        ]
+    },
+    {
+        "id": 65653,
+        "author": "jeremyfelt",
+        "message": "Tag 6.0.19",
+        "date": "2026-11-18T19:02:18.178341Z",
+        "files": [
+            "/tags/6.0.19"
+        ]
+    },
+    {
+        "id": 65652,
+        "author": "jeremyfelt",
+        "message": "Tag 6.1.17",
+        "date": "2026-11-18T19:02:13.405738Z",
+        "files": [
+            "/tags/6.1.17"
+        ]
+    },
+    {
+        "id": 65651,
+        "author": "jeremyfelt",
+        "message": "Tag 6.2.16",
+        "date": "2026-11-18T19:02:08.599348Z",
+        "files": [
+            "/tags/6.2.16"
+        ]
+    },
+    {
+        "id": 65650,
+        "author": "jeremyfelt",
+        "message": "Tag 6.3.15",
+        "date": "2026-11-18T19:02:04.995980Z",
+        "files": [
+            "/tags/6.3.15"
+        ]
+    },
+    {
+        "id": 65649,
+        "author": "jeremyfelt",
+        "message": "Tag 6.4.15",
+        "date": "2026-11-18T19:02:00.681635Z",
+        "files": [
+            "/tags/6.4.15"
+        ]
+    },
+    {
+        "id": 65648,
+        "author": "jeremyfelt",
+        "message": "Tag 6.5.15",
+        "date": "2026-11-18T19:01:56.963429Z",
+        "files": [
+            "/tags/6.5.15"
+        ]
+    },
+    {
+        "id": 65647,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.7.22.\n",
+        "date": "2026-11-18T18:51:07.188146Z",
+        "files": [
+            "/branches/5.7/package-lock.json",
+            "/branches/5.7/package.json",
+            "/branches/5.7/src/wp-admin/about.php",
+            "/branches/5.7/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65646,
+        "author": "jeremyfelt",
+        "message": "WordPress 4.7.40.\n",
+        "date": "2026-11-18T18:48:50.728790Z",
+        "files": [
+            "/branches/4.7/package-lock.json",
+            "/branches/4.7/package.json",
+            "/branches/4.7/src/wp-admin/about.php",
+            "/branches/4.7/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65645,
+        "author": "jeremyfelt",
+        "message": "WordPress 4.8.35.\n",
+        "date": "2026-11-18T18:48:27.444839Z",
+        "files": [
+            "/branches/4.8/package-lock.json",
+            "/branches/4.8/package.json",
+            "/branches/4.8/src/wp-admin/about.php",
+            "/branches/4.8/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65644,
+        "author": "jeremyfelt",
+        "message": "WordPress 4.9.36.\n",
+        "date": "2026-11-18T18:46:39.853645Z",
+        "files": [
+            "/branches/4.9/package-lock.json",
+            "/branches/4.9/package.json",
+            "/branches/4.9/src/wp-admin/about.php",
+            "/branches/4.9/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65643,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.0.32.\n",
+        "date": "2026-11-18T18:45:47.792839Z",
+        "files": [
+            "/branches/5.0/package-lock.json",
+            "/branches/5.0/package.json",
+            "/branches/5.0/src/wp-admin/about.php",
+            "/branches/5.0/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65642,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.1.29.\n",
+        "date": "2026-11-18T18:45:21.304908Z",
+        "files": [
+            "/branches/5.1/package-lock.json",
+            "/branches/5.1/package.json",
+            "/branches/5.1/src/wp-admin/about.php",
+            "/branches/5.1/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65641,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.2.31.\n",
+        "date": "2026-11-18T18:45:01.658076Z",
+        "files": [
+            "/branches/5.2/package-lock.json",
+            "/branches/5.2/package.json",
+            "/branches/5.2/src/wp-admin/about.php",
+            "/branches/5.2/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65640,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.3.28.\n",
+        "date": "2026-11-18T18:44:43.141972Z",
+        "files": [
+            "/branches/5.3/package-lock.json",
+            "/branches/5.3/package.json",
+            "/branches/5.3/src/wp-admin/about.php",
+            "/branches/5.3/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65639,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.4.26.\n",
+        "date": "2026-11-18T18:43:44.415209Z",
+        "files": [
+            "/branches/5.4/package-lock.json",
+            "/branches/5.4/package.json",
+            "/branches/5.4/src/wp-admin/about.php",
+            "/branches/5.4/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65638,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.5.25.\n",
+        "date": "2026-11-18T18:43:10.012537Z",
+        "files": [
+            "/branches/5.5/package-lock.json",
+            "/branches/5.5/package.json",
+            "/branches/5.5/src/wp-admin/about.php",
+            "/branches/5.5/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65637,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.6.24.\n",
+        "date": "2026-11-18T18:42:44.039565Z",
+        "files": [
+            "/branches/5.6/package-lock.json",
+            "/branches/5.6/package.json",
+            "/branches/5.6/src/wp-admin/about.php",
+            "/branches/5.6/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65636,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.8.20.\n",
+        "date": "2026-11-18T18:35:16.460526Z",
+        "files": [
+            "/branches/5.8/package-lock.json",
+            "/branches/5.8/package.json",
+            "/branches/5.8/src/wp-admin/about.php",
+            "/branches/5.8/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65635,
+        "author": "jeremyfelt",
+        "message": "WordPress 5.9.21.\n",
+        "date": "2026-11-18T18:34:49.616670Z",
+        "files": [
+            "/branches/5.9/package-lock.json",
+            "/branches/5.9/package.json",
+            "/branches/5.9/src/wp-admin/about.php",
+            "/branches/5.9/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65634,
+        "author": "jeremyfelt",
+        "message": "WordPress 6.0.19.\n",
+        "date": "2026-11-18T18:34:25.920367Z",
+        "files": [
+            "/branches/6.0/package-lock.json",
+            "/branches/6.0/package.json",
+            "/branches/6.0/src/wp-admin/about.php",
+            "/branches/6.0/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65633,
+        "author": "jeremyfelt",
+        "message": "WordPress 6.1.17.\n",
+        "date": "2026-11-18T18:34:03.939042Z",
+        "files": [
+            "/branches/6.1/package-lock.json",
+            "/branches/6.1/package.json",
+            "/branches/6.1/src/wp-admin/about.php",
+            "/branches/6.1/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65632,
+        "author": "jeremyfelt",
+        "message": "WordPress 6.2.16.\n",
+        "date": "2026-11-18T18:33:36.243859Z",
+        "files": [
+            "/branches/6.2/package-lock.json",
+            "/branches/6.2/package.json",
+            "/branches/6.2/src/wp-admin/about.php",
+            "/branches/6.2/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65631,
+        "author": "jeremyfelt",
+        "message": "WordPress 6.3.15.\n",
+        "date": "2026-11-18T18:33:16.844724Z",
+        "files": [
+            "/branches/6.3/package-lock.json",
+            "/branches/6.3/package.json",
+            "/branches/6.3/src/wp-admin/about.php",
+            "/branches/6.3/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65630,
+        "author": "jeremyfelt",
+        "message": "WordPress 6.4.15.\n",
+        "date": "2026-11-18T18:32:57.551301Z",
+        "files": [
+            "/branches/6.4/package-lock.json",
+            "/branches/6.4/package.json",
+            "/branches/6.4/src/wp-admin/about.php",
+            "/branches/6.4/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65629,
+        "author": "jeremyfelt",
+        "message": "WordPress 6.5.15.\n",
+        "date": "2026-11-18T18:32:16.304147Z",
+        "files": [
+            "/branches/6.5/package-lock.json",
+            "/branches/6.5/package.json",
+            "/branches/6.5/src/wp-admin/about.php",
+            "/branches/6.5/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65628,
+        "author": "jeremyfelt",
+        "message": "Build/Test Tools: Update the `components.js` version hash in the 5.7 branch.\n\nThe `lodash` upgrade in [65617] changes the built `components.js` file. This updates its hash in `script-loader-packages.php` so that building leaves no version-controlled file modified.\n\nFollow-up to [65617].\n\nProps jeremyfelt, lancewillett.\n",
+        "date": "2026-11-18T18:24:29.111761Z",
+        "files": [
+            "/branches/5.7/src/wp-includes/assets/script-loader-packages.php"
+        ]
+    },
+    {
+        "id": 65627,
+        "author": "jeremyfelt",
+        "message": "Security: Backport the WordPress 7.1.5 security fixes to the 4.7 branch.\n\n- XML-RPC: Only return comments the user can read from `wp.getComments`.\n- Meta API: Validate the `relation` argument in `WP_Meta_Query`.\n- Query: Use prepared statements for more `WP_Query` clauses.\n- Customize: Sanitize option settings with sanitize_option() when previewing.\n- REST API: Only serve `rest_route` requests outside of the admin.\n- XML-RPC: Process only one pingback per request.\n- Comments: Check permissions before moving a comment to another post in the admin.\n- Shortcodes: Prevent attribute escape sequences from forming HTML.\n- Customize: Harden nav menu args handling.\n- REST API: Harden comment author handling.\n- REST API: Restrict post and template author assignment to site members.\n\nMerges [65568], [65570], [65571], [65573], [65574], [65575], [65576], [65577], [65578], [65579], [65581], [65582] to the 4.7 branch.\n\nProps villanovachile, peterwilsoncc, westonruter, johnbillion, jonsurrell, jeremyfelt, xknown, rfaile313, tyxla, lancewillett, batmoo, jorbin, ramonopoly, adamsilverstein, ntsekouras, ehtis, andrewserong, jsnajdr, jeryj.\n",
+        "date": "2026-11-18T18:10:51.907833Z",
+        "files": [
+            "/branches/4.7",
+            "/branches/4.7/src/wp-admin/includes/comment.php",
+            "/branches/4.7/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/4.7/src/wp-includes/class-wp-customize-nav-menus.php",
+            "/branches/4.7/src/wp-includes/class-wp-customize-setting.php",
+            "/branches/4.7/src/wp-includes/class-wp-meta-query.php",
+            "/branches/4.7/src/wp-includes/class-wp-query.php",
+            "/branches/4.7/src/wp-includes/class-wp-xmlrpc-server.php",
+            "/branches/4.7/src/wp-includes/formatting.php",
+            "/branches/4.7/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/branches/4.7/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/branches/4.7/src/wp-includes/rest-api.php",
+            "/branches/4.7/src/wp-includes/shortcodes.php",
+            "/branches/4.7/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65626,
+        "author": "jeremyfelt",
+        "message": "Security: Backport the WordPress 7.1.5 security fixes to the 4.8 branch.\n\n- XML-RPC: Only return comments the user can read from `wp.getComments`.\n- Meta API: Validate the `relation` argument in `WP_Meta_Query`.\n- Query: Use prepared statements for more `WP_Query` clauses.\n- Customize: Sanitize option settings with sanitize_option() when previewing.\n- REST API: Only serve `rest_route` requests outside of the admin.\n- XML-RPC: Process only one pingback per request.\n- Comments: Check permissions before moving a comment to another post in the admin.\n- Shortcodes: Prevent attribute escape sequences from forming HTML.\n- Customize: Harden nav menu args handling.\n- REST API: Harden comment author handling.\n- Embeds: Return scripts from the oEmbed proxy only for embed handlers.\n- REST API: Restrict post and template author assignment to site members.\n\nMerges [65568], [65570], [65571], [65572], [65573], [65574], [65575], [65576], [65577], [65578], [65579], [65581], [65582] to the 4.8 branch.\n\nProps villanovachile, peterwilsoncc, westonruter, johnbillion, jonsurrell, jeremyfelt, xknown, rfaile313, tyxla, lancewillett, batmoo, jorbin, ramonopoly, adamsilverstein, ntsekouras, ehtis, andrewserong, jsnajdr, jeryj.\n",
+        "date": "2026-11-18T18:10:16.743792Z",
+        "files": [
+            "/branches/4.8",
+            "/branches/4.8/src/wp-admin/includes/comment.php",
+            "/branches/4.8/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/4.8/src/wp-includes/class-wp-customize-nav-menus.php",
+            "/branches/4.8/src/wp-includes/class-wp-customize-setting.php",
+            "/branches/4.8/src/wp-includes/class-wp-meta-query.php",
+            "/branches/4.8/src/wp-includes/class-wp-oembed-controller.php",
+            "/branches/4.8/src/wp-includes/class-wp-query.php",
+            "/branches/4.8/src/wp-includes/class-wp-xmlrpc-server.php",
+            "/branches/4.8/src/wp-includes/formatting.php",
+            "/branches/4.8/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/branches/4.8/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/branches/4.8/src/wp-includes/rest-api.php",
+            "/branches/4.8/src/wp-includes/shortcodes.php",
+            "/branches/4.8/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
         "id": 65625,
         "author": "jeremyfelt",
         "message": "Security: Backport the WordPress 7.1.5 security fixes to the 4.9 branch.\n\n- XML-RPC: Only return comments the user can read from `wp.getComments`.\n- Meta API: Validate the `relation` argument in `WP_Meta_Query`.\n- Query: Use prepared statements for more `WP_Query` clauses.\n- Customize: Sanitize option settings with sanitize_option() when previewing.\n- REST API: Only serve `rest_route` requests outside of the admin.\n- XML-RPC: Process only one pingback per request.\n- Comments: Check permissions before moving a comment to another post in the admin.\n- Shortcodes: Prevent attribute escape sequences from forming HTML.\n- Customize: Harden nav menu args handling.\n- REST API: Harden comment author handling.\n- Embeds: Return scripts from the oEmbed proxy only for embed handlers.\n- REST API: Restrict post and template author assignment to site members.\n\nMerges [65568], [65570], [65571], [65572], [65573], [65574], [65575], [65576], [65577], [65578], [65579], [65581], [65582] to the 4.9 branch.\n\nProps villanovachile, peterwilsoncc, westonruter, johnbillion, jonsurrell, jeremyfelt, xknown, rfaile313, tyxla, lancewillett, batmoo, jorbin, ramonopoly, adamsilverstein, ntsekouras, ehtis, andrewserong, jsnajdr, jeryj.\n",
