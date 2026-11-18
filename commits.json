@@ -1,5 +1,14 @@
 [
     {
+        "id": 65567,
+        "author": "johnbillion",
+        "message": "REST API: Return no terms when a term search resolves to no taxonomy.\n\nProps xknown, dmsnell, jonsurrell, jeremyfelt.\n",
+        "date": "2026-11-18T13:05:26.997800Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/search/class-wp-rest-term-search-handler.php"
+        ]
+    },
+    {
         "id": 65566,
         "author": "westonruter",
         "message": "Build/Test Tools: Include PHPStan baselines via a PHP loader.\n\nThe per-identifier baselines were listed one by one in `phpstan.neon.dist`, between markers that `composer phpstan:baselines` rewrote whenever a baseline was added or deleted, so every change that retired a baseline edited the same lines and two such changes conflicted. They are now included through `tests/phpstan/baselines/loader.php`, a PHP configuration that returns the baselines found in its directory, since NEON can only include files by name. A baseline takes effect when it is added and stops when it is deleted, with no edit of the configuration.\n\nWhen regenerating, only the baselines being rewritten are suppressed: the generator passes their directory in the `WP_PHPSTAN_GENERATING_BASELINES` environment variable, and the loader there returns nothing. This works even when the configuration is included by another, such as a local `phpstan.neon`, which previously left every baseline in force and got them deleted. Baselines in other directories stay in force, so a stricter configuration with baselines of its own records only the errors the default ones do not cover.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16049.\nFollow-up to r63019, r63294, r65372.\n\nProps westonruter, apermo.\nSee #65817.\n",
