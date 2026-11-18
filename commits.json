@@ -1,5 +1,256 @@
 [
     {
+        "id": 65597,
+        "author": "johnbillion",
+        "message": "WordPress 6.6.12.\n",
+        "date": "2026-11-18T16:07:52.273835Z",
+        "files": [
+            "/branches/6.6/package-lock.json",
+            "/branches/6.6/package.json",
+            "/branches/6.6/src/wp-admin/about.php",
+            "/branches/6.6/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65596,
+        "author": "johnbillion",
+        "message": "WordPress 6.7.12.\n",
+        "date": "2026-11-18T16:07:32.152237Z",
+        "files": [
+            "/branches/6.7/package-lock.json",
+            "/branches/6.7/package.json",
+            "/branches/6.7/src/wp-admin/about.php",
+            "/branches/6.7/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65595,
+        "author": "johnbillion",
+        "message": "WordPress 6.8.13.\n",
+        "date": "2026-11-18T16:07:07.540316Z",
+        "files": [
+            "/branches/6.8/composer.json",
+            "/branches/6.8/package-lock.json",
+            "/branches/6.8/package.json",
+            "/branches/6.8/src/wp-admin/about.php",
+            "/branches/6.8/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65594,
+        "author": "johnbillion",
+        "message": "WordPress 6.9.12.\n",
+        "date": "2026-11-18T16:06:44.166968Z",
+        "files": [
+            "/branches/6.9/composer.json",
+            "/branches/6.9/package-lock.json",
+            "/branches/6.9/package.json",
+            "/branches/6.9/src/wp-admin/about.php",
+            "/branches/6.9/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65593,
+        "author": "johnbillion",
+        "message": "WordPress 7.0.9.\n",
+        "date": "2026-11-18T16:06:08.887325Z",
+        "files": [
+            "/branches/7.0/composer.json",
+            "/branches/7.0/package-lock.json",
+            "/branches/7.0/package.json",
+            "/branches/7.0/src/wp-admin/about.php",
+            "/branches/7.0/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65592,
+        "author": "johnbillion",
+        "message": "WordPress 7.1.5.\n",
+        "date": "2026-11-18T16:05:11.402512Z",
+        "files": [
+            "/branches/7.1/src/wp-admin/about.php",
+            "/branches/7.1/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65591,
+        "author": "johnbillion",
+        "message": "Security: Backport the WordPress 7.1.5 security fixes to the 6.6 branch.\n\n- Interactivity API: Escape the store namespace in `wp_interactivity_data_wp_context()`.\n- REST API: Return no terms when a term search resolves to no taxonomy.\n- REST API: Escape a hyphen in `wp_is_json_media_type()`.\n- XML-RPC: Only return comments the user can read from `wp.getComments`.\n- Meta API: Validate the `relation` argument in `WP_Meta_Query`.\n- Query: Use prepared statements for more `WP_Query` clauses.\n- Customize: Sanitize option settings with sanitize_option() when previewing.\n- REST API: Only serve `rest_route` requests outside of the admin.\n- XML-RPC: Process only one pingback per request.\n- Comments: Check permissions before moving a comment to another post in the admin.\n- Shortcodes: Prevent attribute escape sequences from forming HTML.\n- Customize: Harden nav menu args handling.\n- REST API: Harden comment author handling.\n- Embeds: Return scripts from the oEmbed proxy only for embed handlers.\n- REST API: Restrict post and template author assignment to site members.\n\nThis also updates the `@wordpress/*` packages to include the Gutenberg fixes:\n\n- File: Preserve the filename text in media transforms\n- Editor: Escape Openverse metadata in image captions\n- Core Data: Reject unsafe entity record keys\n- Embed: Remove support for Imgur oEmbeds\n- Comment Date: Escape the formatted date output\n\nMerges [65567], [65568], [65569], [65570], [65571], [65572], [65573], [65574], [65575], [65576], [65577], [65578], [65579], [65580], [65581], [65582] to the 6.6 branch.\n\nProps jrf, gziolo, luisherranz, jonsurrell, lancewillett, xknown, dmsnell, jeremyfelt, batmoo, villanovachile, peterwilsoncc, westonruter, johnbillion, rfaile313, tyxla, jorbin, ramonopoly, adamsilverstein, ntsekouras, ehtis, andrewserong, jsnajdr, jeryj.\n",
+        "date": "2026-11-18T15:42:57.288149Z",
+        "files": [
+            "/branches/6.6",
+            "/branches/6.6/package-lock.json",
+            "/branches/6.6/package.json",
+            "/branches/6.6/src/wp-admin/includes/comment.php",
+            "/branches/6.6/src/wp-includes/assets/script-loader-packages.min.php",
+            "/branches/6.6/src/wp-includes/blocks/comment-date.php",
+            "/branches/6.6/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/6.6/src/wp-includes/class-wp-customize-nav-menus.php",
+            "/branches/6.6/src/wp-includes/class-wp-customize-setting.php",
+            "/branches/6.6/src/wp-includes/class-wp-meta-query.php",
+            "/branches/6.6/src/wp-includes/class-wp-oembed-controller.php",
+            "/branches/6.6/src/wp-includes/class-wp-query.php",
+            "/branches/6.6/src/wp-includes/class-wp-xmlrpc-server.php",
+            "/branches/6.6/src/wp-includes/formatting.php",
+            "/branches/6.6/src/wp-includes/interactivity-api/interactivity-api.php",
+            "/branches/6.6/src/wp-includes/load.php",
+            "/branches/6.6/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/branches/6.6/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/branches/6.6/src/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php",
+            "/branches/6.6/src/wp-includes/rest-api/search/class-wp-rest-term-search-handler.php",
+            "/branches/6.6/src/wp-includes/rest-api.php",
+            "/branches/6.6/src/wp-includes/shortcodes.php",
+            "/branches/6.6/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65590,
+        "author": "johnbillion",
+        "message": "Security: Backport the WordPress 7.1.5 security fixes to the 6.7 branch.\n\n- Interactivity API: Escape the store namespace in `wp_interactivity_data_wp_context()`.\n- REST API: Return no terms when a term search resolves to no taxonomy.\n- REST API: Escape a hyphen in `wp_is_json_media_type()`.\n- XML-RPC: Only return comments the user can read from `wp.getComments`.\n- Meta API: Validate the `relation` argument in `WP_Meta_Query`.\n- Query: Use prepared statements for more `WP_Query` clauses.\n- Customize: Sanitize option settings with sanitize_option() when previewing.\n- REST API: Only serve `rest_route` requests outside of the admin.\n- XML-RPC: Process only one pingback per request.\n- Comments: Check permissions before moving a comment to another post in the admin.\n- Shortcodes: Prevent attribute escape sequences from forming HTML.\n- Customize: Harden nav menu args handling.\n- REST API: Harden comment author handling.\n- Embeds: Return scripts from the oEmbed proxy only for embed handlers.\n- REST API: Restrict post and template author assignment to site members.\n\nThis also updates the `@wordpress/*` packages to include the Gutenberg fixes:\n\n- File: Preserve the filename text in media transforms\n- Editor: Escape Openverse metadata in image captions\n- Core Data: Reject unsafe entity record keys\n- Embed: Remove support for Imgur oEmbeds\n- Comment Date: Escape the formatted date output\n\nMerges [65567], [65568], [65569], [65570], [65571], [65572], [65573], [65574], [65575], [65576], [65577], [65578], [65579], [65580], [65581], [65582] to the 6.7 branch.\n\nProps jrf, gziolo, luisherranz, jonsurrell, lancewillett, xknown, dmsnell, jeremyfelt, batmoo, villanovachile, peterwilsoncc, westonruter, johnbillion, rfaile313, tyxla, jorbin, ramonopoly, adamsilverstein, ntsekouras, ehtis, andrewserong, jsnajdr, jeryj.\n",
+        "date": "2026-11-18T15:41:08.126004Z",
+        "files": [
+            "/branches/6.7",
+            "/branches/6.7/package-lock.json",
+            "/branches/6.7/package.json",
+            "/branches/6.7/src/wp-admin/includes/comment.php",
+            "/branches/6.7/src/wp-includes/assets/script-loader-packages.min.php",
+            "/branches/6.7/src/wp-includes/blocks/comment-date.php",
+            "/branches/6.7/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/6.7/src/wp-includes/class-wp-customize-nav-menus.php",
+            "/branches/6.7/src/wp-includes/class-wp-customize-setting.php",
+            "/branches/6.7/src/wp-includes/class-wp-meta-query.php",
+            "/branches/6.7/src/wp-includes/class-wp-oembed-controller.php",
+            "/branches/6.7/src/wp-includes/class-wp-query.php",
+            "/branches/6.7/src/wp-includes/class-wp-xmlrpc-server.php",
+            "/branches/6.7/src/wp-includes/formatting.php",
+            "/branches/6.7/src/wp-includes/interactivity-api/interactivity-api.php",
+            "/branches/6.7/src/wp-includes/load.php",
+            "/branches/6.7/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/branches/6.7/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/branches/6.7/src/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php",
+            "/branches/6.7/src/wp-includes/rest-api/search/class-wp-rest-term-search-handler.php",
+            "/branches/6.7/src/wp-includes/rest-api.php",
+            "/branches/6.7/src/wp-includes/shortcodes.php",
+            "/branches/6.7/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65589,
+        "author": "johnbillion",
+        "message": "Security: Backport the WordPress 7.1.5 security fixes to the 6.8 branch.\n\n- Interactivity API: Escape the store namespace in `wp_interactivity_data_wp_context()`.\n- REST API: Return no terms when a term search resolves to no taxonomy.\n- REST API: Escape a hyphen in `wp_is_json_media_type()`.\n- XML-RPC: Only return comments the user can read from `wp.getComments`.\n- Meta API: Validate the `relation` argument in `WP_Meta_Query`.\n- Query: Use prepared statements for more `WP_Query` clauses.\n- Customize: Sanitize option settings with sanitize_option() when previewing.\n- REST API: Only serve `rest_route` requests outside of the admin.\n- XML-RPC: Process only one pingback per request.\n- Comments: Check permissions before moving a comment to another post in the admin.\n- Shortcodes: Prevent attribute escape sequences from forming HTML.\n- Customize: Harden nav menu args handling.\n- REST API: Harden comment author handling.\n- Embeds: Return scripts from the oEmbed proxy only for embed handlers.\n- REST API: Restrict post and template author assignment to site members.\n\nMerges [65567], [65568], [65569], [65570], [65571], [65572], [65573], [65574], [65575], [65576], [65577], [65578], [65579], [65580], [65581], [65582] to the 6.8 branch.\n\nProps jrf, gziolo, luisherranz, jonsurrell, lancewillett, xknown, dmsnell, jeremyfelt, batmoo, villanovachile, peterwilsoncc, westonruter, johnbillion, rfaile313, tyxla, jorbin, ramonopoly, adamsilverstein, ntsekouras, ehtis, andrewserong, jsnajdr, jeryj.\n",
+        "date": "2026-11-18T15:27:56.385866Z",
+        "files": [
+            "/branches/6.8",
+            "/branches/6.8/package-lock.json",
+            "/branches/6.8/package.json",
+            "/branches/6.8/src/wp-admin/includes/comment.php",
+            "/branches/6.8/src/wp-includes/assets/script-loader-packages.min.php",
+            "/branches/6.8/src/wp-includes/blocks/comment-date.php",
+            "/branches/6.8/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/6.8/src/wp-includes/class-wp-customize-nav-menus.php",
+            "/branches/6.8/src/wp-includes/class-wp-customize-setting.php",
+            "/branches/6.8/src/wp-includes/class-wp-meta-query.php",
+            "/branches/6.8/src/wp-includes/class-wp-oembed-controller.php",
+            "/branches/6.8/src/wp-includes/class-wp-query.php",
+            "/branches/6.8/src/wp-includes/class-wp-xmlrpc-server.php",
+            "/branches/6.8/src/wp-includes/formatting.php",
+            "/branches/6.8/src/wp-includes/interactivity-api/interactivity-api.php",
+            "/branches/6.8/src/wp-includes/load.php",
+            "/branches/6.8/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/branches/6.8/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/branches/6.8/src/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php",
+            "/branches/6.8/src/wp-includes/rest-api/search/class-wp-rest-term-search-handler.php",
+            "/branches/6.8/src/wp-includes/rest-api.php",
+            "/branches/6.8/src/wp-includes/shortcodes.php",
+            "/branches/6.8/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65588,
+        "author": "johnbillion",
+        "message": "Security: Backport the WordPress 7.1.5 security fixes to the 6.9 branch.\n\n- Interactivity API: Escape the store namespace in `wp_interactivity_data_wp_context()`.\n- REST API: Return no terms when a term search resolves to no taxonomy.\n- REST API: Escape a hyphen in `wp_is_json_media_type()`.\n- XML-RPC: Only return comments the user can read from `wp.getComments`.\n- Meta API: Validate the `relation` argument in `WP_Meta_Query`.\n- Query: Use prepared statements for more `WP_Query` clauses.\n- Customize: Sanitize option settings with sanitize_option() when previewing.\n- REST API: Only serve `rest_route` requests outside of the admin.\n- XML-RPC: Process only one pingback per request.\n- Comments: Check permissions before moving a comment to another post in the admin.\n- Shortcodes: Prevent attribute escape sequences from forming HTML.\n- Customize: Harden nav menu args handling.\n- REST API: Harden comment author handling.\n- Embeds: Return scripts from the oEmbed proxy only for embed handlers.\n- REST API: Restrict post and template author assignment to site members.\n\nMerges [65567], [65568], [65569], [65570], [65571], [65572], [65573], [65574], [65575], [65576], [65577], [65578], [65579], [65580], [65581], [65582] to the 6.9 branch.\n\nProps jrf, gziolo, luisherranz, jonsurrell, lancewillett, xknown, dmsnell, jeremyfelt, batmoo, villanovachile, peterwilsoncc, westonruter, johnbillion, rfaile313, tyxla, jorbin, ramonopoly, adamsilverstein, ntsekouras, ehtis, andrewserong, jsnajdr, jeryj.\n",
+        "date": "2026-11-18T15:24:46.774564Z",
+        "files": [
+            "/branches/6.9",
+            "/branches/6.9/package-lock.json",
+            "/branches/6.9/package.json",
+            "/branches/6.9/src/wp-admin/includes/comment.php",
+            "/branches/6.9/src/wp-includes/assets/script-loader-packages.min.php",
+            "/branches/6.9/src/wp-includes/blocks/comment-date.php",
+            "/branches/6.9/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/6.9/src/wp-includes/class-wp-customize-nav-menus.php",
+            "/branches/6.9/src/wp-includes/class-wp-customize-setting.php",
+            "/branches/6.9/src/wp-includes/class-wp-meta-query.php",
+            "/branches/6.9/src/wp-includes/class-wp-oembed-controller.php",
+            "/branches/6.9/src/wp-includes/class-wp-query.php",
+            "/branches/6.9/src/wp-includes/class-wp-xmlrpc-server.php",
+            "/branches/6.9/src/wp-includes/formatting.php",
+            "/branches/6.9/src/wp-includes/interactivity-api/interactivity-api.php",
+            "/branches/6.9/src/wp-includes/load.php",
+            "/branches/6.9/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/branches/6.9/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/branches/6.9/src/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php",
+            "/branches/6.9/src/wp-includes/rest-api/search/class-wp-rest-term-search-handler.php",
+            "/branches/6.9/src/wp-includes/rest-api.php",
+            "/branches/6.9/src/wp-includes/shortcodes.php",
+            "/branches/6.9/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65587,
+        "author": "johnbillion",
+        "message": "Security: Backport the WordPress 7.1.5 security fixes to the 7.0 branch.\n\n- Interactivity API: Escape the store namespace in `wp_interactivity_data_wp_context()`.\n- REST API: Return no terms when a term search resolves to no taxonomy.\n- REST API: Escape a hyphen in `wp_is_json_media_type()`.\n- XML-RPC: Only return comments the user can read from `wp.getComments`.\n- Meta API: Validate the `relation` argument in `WP_Meta_Query`.\n- Query: Use prepared statements for more `WP_Query` clauses.\n- Customize: Sanitize option settings with sanitize_option() when previewing.\n- REST API: Only serve `rest_route` requests outside of the admin.\n- XML-RPC: Process only one pingback per request.\n- Comments: Check permissions before moving a comment to another post in the admin.\n- Shortcodes: Prevent attribute escape sequences from forming HTML.\n- Customize: Harden nav menu args handling.\n- REST API: Harden comment author handling.\n- Embeds: Return scripts from the oEmbed proxy only for embed handlers.\n- REST API: Restrict post and template author assignment to site members.\n\nMerges [65567], [65568], [65569], [65570], [65571], [65572], [65573], [65574], [65575], [65576], [65577], [65578], [65579], [65580], [65581], [65582] to the 7.0 branch.\n\nProps jrf, gziolo, luisherranz, jonsurrell, lancewillett, xknown, dmsnell, jeremyfelt, batmoo, villanovachile, peterwilsoncc, westonruter, johnbillion, rfaile313, tyxla, jorbin, ramonopoly, adamsilverstein, ntsekouras, ehtis, andrewserong, jsnajdr, jeryj.\n",
+        "date": "2026-11-18T15:21:54.541674Z",
+        "files": [
+            "/branches/7.0",
+            "/branches/7.0/src/wp-admin/includes/comment.php",
+            "/branches/7.0/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/7.0/src/wp-includes/class-wp-customize-nav-menus.php",
+            "/branches/7.0/src/wp-includes/class-wp-customize-setting.php",
+            "/branches/7.0/src/wp-includes/class-wp-meta-query.php",
+            "/branches/7.0/src/wp-includes/class-wp-oembed-controller.php",
+            "/branches/7.0/src/wp-includes/class-wp-query.php",
+            "/branches/7.0/src/wp-includes/class-wp-xmlrpc-server.php",
+            "/branches/7.0/src/wp-includes/formatting.php",
+            "/branches/7.0/src/wp-includes/interactivity-api/interactivity-api.php",
+            "/branches/7.0/src/wp-includes/load.php",
+            "/branches/7.0/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/branches/7.0/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/branches/7.0/src/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php",
+            "/branches/7.0/src/wp-includes/rest-api/search/class-wp-rest-term-search-handler.php",
+            "/branches/7.0/src/wp-includes/rest-api.php",
+            "/branches/7.0/src/wp-includes/shortcodes.php",
+            "/branches/7.0/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65586,
+        "author": "johnbillion",
+        "message": "Security: Backport the WordPress 7.1.5 security fixes to the 7.1 branch.\n\n- Interactivity API: Escape the store namespace in `wp_interactivity_data_wp_context()`.\n- REST API: Return no terms when a term search resolves to no taxonomy.\n- REST API: Escape a hyphen in `wp_is_json_media_type()`.\n- XML-RPC: Only return comments the user can read from `wp.getComments`.\n- Meta API: Validate the `relation` argument in `WP_Meta_Query`.\n- Query: Use prepared statements for more `WP_Query` clauses.\n- Customize: Sanitize option settings with sanitize_option() when previewing.\n- REST API: Only serve `rest_route` requests outside of the admin.\n- XML-RPC: Process only one pingback per request.\n- Comments: Check permissions before moving a comment to another post in the admin.\n- Shortcodes: Prevent attribute escape sequences from forming HTML.\n- Customize: Harden nav menu args handling.\n- REST API: Harden comment author handling.\n- Embeds: Return scripts from the oEmbed proxy only for embed handlers.\n- REST API: Restrict post and template author assignment to site members.\n\nMerges [65567], [65568], [65569], [65570], [65571], [65572], [65573], [65574], [65575], [65576], [65577], [65578], [65579], [65580], [65581], [65582] to the 7.1 branch.\n\nProps jrf, gziolo, luisherranz, jonsurrell, lancewillett, xknown, dmsnell, jeremyfelt, batmoo, villanovachile, peterwilsoncc, westonruter, johnbillion, rfaile313, tyxla, jorbin, ramonopoly, adamsilverstein, ntsekouras, ehtis, andrewserong, jsnajdr, jeryj.\n",
+        "date": "2026-11-18T15:17:51.635297Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/src/wp-admin/includes/comment.php",
+            "/branches/7.1/src/wp-includes/class-wp-customize-manager.php",
+            "/branches/7.1/src/wp-includes/class-wp-customize-nav-menus.php",
+            "/branches/7.1/src/wp-includes/class-wp-customize-setting.php",
+            "/branches/7.1/src/wp-includes/class-wp-meta-query.php",
+            "/branches/7.1/src/wp-includes/class-wp-oembed-controller.php",
+            "/branches/7.1/src/wp-includes/class-wp-query.php",
+            "/branches/7.1/src/wp-includes/class-wp-xmlrpc-server.php",
+            "/branches/7.1/src/wp-includes/formatting.php",
+            "/branches/7.1/src/wp-includes/interactivity-api/interactivity-api.php",
+            "/branches/7.1/src/wp-includes/load.php",
+            "/branches/7.1/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/branches/7.1/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/branches/7.1/src/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php",
+            "/branches/7.1/src/wp-includes/rest-api/search/class-wp-rest-term-search-handler.php",
+            "/branches/7.1/src/wp-includes/rest-api.php",
+            "/branches/7.1/src/wp-includes/shortcodes.php",
+            "/branches/7.1/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
         "id": 65585,
         "author": "johnbillion",
         "message": "General: Bump the pinned hash for Gutenberg in `7.0` branch.\n\nThis updates the pinned commit hash of the Gutenberg repository from `594b540e0bdd826d5ab8153b2ebdc5157e500456` to `febe63886823a41db5ccc3817b276f3e81259b62`.\n\nA full list of changes included in this commit can be found on GitHub:\nhttps://github.com/WordPress/gutenberg/compare/594b540e0bdd826d5ab8153b2ebdc5157e500456...febe63886823a41db5ccc3817b276f3e81259b62.\n",
