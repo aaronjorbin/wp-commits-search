@@ -1,5 +1,38 @@
 [
     {
+        "id": 65585,
+        "author": "johnbillion",
+        "message": "General: Bump the pinned hash for Gutenberg in `7.0` branch.\n\nThis updates the pinned commit hash of the Gutenberg repository from `594b540e0bdd826d5ab8153b2ebdc5157e500456` to `febe63886823a41db5ccc3817b276f3e81259b62`.\n\nA full list of changes included in this commit can be found on GitHub:\nhttps://github.com/WordPress/gutenberg/compare/594b540e0bdd826d5ab8153b2ebdc5157e500456...febe63886823a41db5ccc3817b276f3e81259b62.\n",
+        "date": "2026-11-18T15:05:43.764876Z",
+        "files": [
+            "/branches/7.0/package.json",
+            "/branches/7.0/src/wp-includes/assets/script-loader-packages.php",
+            "/branches/7.0/src/wp-includes/blocks/comment-date.php"
+        ]
+    },
+    {
+        "id": 65584,
+        "author": "johnbillion",
+        "message": "General: Bump the pinned hash for Gutenberg in `7.1` branch.\n\nThis updates the pinned commit hash of the Gutenberg repository from `8daba429215ef3dce75da4360156b1a2f39897c6` to `89408c2b9bd944575dfa9039bc6870da1c8f56cb`.\n\nA full list of changes included in this commit can be found on GitHub:\nhttps://github.com/WordPress/gutenberg/compare/8daba429215ef3dce75da4360156b1a2f39897c6...89408c2b9bd944575dfa9039bc6870da1c8f56cb.\n",
+        "date": "2026-11-18T14:53:36.248946Z",
+        "files": [
+            "/branches/7.1/package.json",
+            "/branches/7.1/src/wp-includes/assets/script-loader-packages.php",
+            "/branches/7.1/src/wp-includes/blocks/comment-date.php"
+        ]
+    },
+    {
+        "id": 65583,
+        "author": "johnbillion",
+        "message": "General: Bump the pinned hash for Gutenberg to `efd7722`.\n\nThis updates the pinned commit hash of the Gutenberg repository from `61aba5422836aeed76a794f98d3fe0da3eb5f5d1` to `efd7722f89ebb8abfc3607fffdd86f5e34afbd9c`.\n\nA full list of changes included in this commit can be found on GitHub:\nhttps://github.com/WordPress/gutenberg/compare/61aba5422836aeed76a794f98d3fe0da3eb5f5d1...efd7722f89ebb8abfc3607fffdd86f5e34afbd9c.\n",
+        "date": "2026-11-18T14:39:30.071126Z",
+        "files": [
+            "/trunk/package.json",
+            "/trunk/src/wp-includes/assets/script-loader-packages.php",
+            "/trunk/src/wp-includes/blocks/comment-date.php"
+        ]
+    },
+    {
         "id": 65582,
         "author": "johnbillion",
         "message": "Tests: Update the expected error for an invalid comment author.\n\nFollow-up to [65570].\n\nProps jeremyfelt.\n",
