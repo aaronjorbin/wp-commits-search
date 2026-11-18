@@ -1,5 +1,68 @@
 [
     {
+        "id": 65604,
+        "author": "johnbillion",
+        "message": "WordPress 7.2 RC 2.\n",
+        "date": "2026-11-18T16:41:53.904952Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65603,
+        "author": "johnbillion",
+        "message": "Tag 6.6.12",
+        "date": "2026-11-18T16:27:18.009000Z",
+        "files": [
+            "/tags/6.6.12"
+        ]
+    },
+    {
+        "id": 65602,
+        "author": "johnbillion",
+        "message": "Tag 6.7.12",
+        "date": "2026-11-18T16:27:14.449640Z",
+        "files": [
+            "/tags/6.7.12"
+        ]
+    },
+    {
+        "id": 65601,
+        "author": "johnbillion",
+        "message": "Tag 6.8.13",
+        "date": "2026-11-18T16:27:10.981610Z",
+        "files": [
+            "/tags/6.8.13"
+        ]
+    },
+    {
+        "id": 65600,
+        "author": "johnbillion",
+        "message": "Tag 6.9.12",
+        "date": "2026-11-18T16:27:07.549342Z",
+        "files": [
+            "/tags/6.9.12"
+        ]
+    },
+    {
+        "id": 65599,
+        "author": "johnbillion",
+        "message": "Tag 7.0.9",
+        "date": "2026-11-18T16:27:04.025027Z",
+        "files": [
+            "/tags/7.0.9"
+        ]
+    },
+    {
+        "id": 65598,
+        "author": "johnbillion",
+        "message": "Tag 7.1.5",
+        "date": "2026-11-18T16:27:00.367771Z",
+        "files": [
+            "/tags/7.1.5"
+        ]
+    },
+    {
         "id": 65597,
         "author": "johnbillion",
         "message": "WordPress 6.6.12.\n",
