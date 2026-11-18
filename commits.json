@@ -1,5 +1,143 @@
 [
     {
+        "id": 65582,
+        "author": "johnbillion",
+        "message": "Tests: Update the expected error for an invalid comment author.\n\nFollow-up to [65570].\n\nProps jeremyfelt.\n",
+        "date": "2026-11-18T14:02:11.550988Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65581,
+        "author": "johnbillion",
+        "message": "REST API: Restrict post and template author assignment to site members.\n\nProps jsnajdr, johnbillion, jeryj, xknown.\n",
+        "date": "2026-11-18T13:16:28.282662Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php"
+        ]
+    },
+    {
+        "id": 65580,
+        "author": "johnbillion",
+        "message": "Interactivity API: Escape the store namespace in `wp_interactivity_data_wp_context()`.\n\nProps jrf, gziolo, luisherranz, jonsurrell, lancewillett.\n",
+        "date": "2026-11-18T13:15:52.253176Z",
+        "files": [
+            "/trunk/src/wp-includes/interactivity-api/interactivity-api.php"
+        ]
+    },
+    {
+        "id": 65579,
+        "author": "johnbillion",
+        "message": "XML-RPC: Process only one pingback per request.\n\nProps johnbillion, batmoo, jonsurrell, jeremyfelt, jorbin, xknown, rfaile313.\n",
+        "date": "2026-11-18T13:15:24.340349Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-xmlrpc-server.php"
+        ]
+    },
+    {
+        "id": 65578,
+        "author": "johnbillion",
+        "message": "Comments: Check permissions before moving a comment to another post in the admin.\n\nProps jorbin, ramonopoly, westonruter, adamsilverstein, jeremyfelt, rfaile313.\n",
+        "date": "2026-11-18T13:14:58.027491Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/comment.php"
+        ]
+    },
+    {
+        "id": 65577,
+        "author": "johnbillion",
+        "message": "REST API: Only serve `rest_route` requests outside of the admin.\n\nProps xknown, jonsurrell, jeremyfelt.\n",
+        "date": "2026-11-18T13:14:32.668105Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api.php"
+        ]
+    },
+    {
+        "id": 65576,
+        "author": "johnbillion",
+        "message": "Query: Use prepared statements for more `WP_Query` clauses.\n\nProps rfaile313, westonruter, tyxla, lancewillett, xknown, jeremyfelt.\n",
+        "date": "2026-11-18T13:14:06.555338Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-query.php"
+        ]
+    },
+    {
+        "id": 65575,
+        "author": "johnbillion",
+        "message": "Customize: Harden nav menu args handling.\n\nProps xknown, jonsurrell, jeremyfelt.\n",
+        "date": "2026-11-18T13:13:40.147252Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-customize-nav-menus.php"
+        ]
+    },
+    {
+        "id": 65574,
+        "author": "johnbillion",
+        "message": "Meta API: Validate the `relation` argument in `WP_Meta_Query`.\n\nProps xknown, westonruter, jeremyfelt.\n",
+        "date": "2026-11-18T13:13:14.085871Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-meta-query.php"
+        ]
+    },
+    {
+        "id": 65573,
+        "author": "johnbillion",
+        "message": "Shortcodes: Prevent attribute escape sequences from forming HTML.\n\nProps jonsurrell, ntsekouras, westonruter, xknown, rfaile313, jorbin, jeremyfelt, ehtis.\n",
+        "date": "2026-11-18T13:12:47.137423Z",
+        "files": [
+            "/trunk/src/wp-includes/shortcodes.php"
+        ]
+    },
+    {
+        "id": 65572,
+        "author": "johnbillion",
+        "message": "Embeds: Return scripts from the oEmbed proxy only for embed handlers.\n\nProps jonsurrell, jsnajdr, jeryj.\n",
+        "date": "2026-11-18T13:12:18.721235Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-oembed-controller.php"
+        ]
+    },
+    {
+        "id": 65571,
+        "author": "johnbillion",
+        "message": "XML-RPC: Only return comments the user can read from `wp.getComments`.\n\nProps villanovachile, peterwilsoncc, westonruter, johnbillion, jonsurrell, jeremyfelt.\n",
+        "date": "2026-11-18T13:11:52.273898Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-xmlrpc-server.php"
+        ]
+    },
+    {
+        "id": 65570,
+        "author": "johnbillion",
+        "message": "REST API: Harden comment author handling.\n\nProps xknown, jonsurrell, andrewserong.\n",
+        "date": "2026-11-18T13:11:22.988806Z",
+        "files": [
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php"
+        ]
+    },
+    {
+        "id": 65569,
+        "author": "johnbillion",
+        "message": "REST API: Escape a hyphen in `wp_is_json_media_type()`.\n\nProps batmoo, xknown, jonsurrell.\n",
+        "date": "2026-11-18T13:10:56.475907Z",
+        "files": [
+            "/trunk/src/wp-includes/load.php"
+        ]
+    },
+    {
+        "id": 65568,
+        "author": "johnbillion",
+        "message": "Customize: Sanitize option settings with sanitize_option() when previewing.\n\nProps westonruter, lancewillett, johnbillion, xknown.\n",
+        "date": "2026-11-18T13:10:29.369234Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-customize-manager.php",
+            "/trunk/src/wp-includes/class-wp-customize-setting.php",
+            "/trunk/src/wp-includes/formatting.php"
+        ]
+    },
+    {
         "id": 65567,
         "author": "johnbillion",
         "message": "REST API: Return no terms when a term search resolves to no taxonomy.\n\nProps xknown, dmsnell, jonsurrell, jeremyfelt.\n",
