@@ -1,5 +1,14 @@
 [
     {
+        "id": 65695,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Cover `rsd_link()`.\n\nVerify the expected output of `EditURI` RSD link element with the site XML-RPC endpoint URL.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15356.\n\nProps devmuhib, huzaifaalmesbah, lancewillett.\nSee #65819.",
+        "date": "2026-11-19T21:25:47.149931Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/rsdLink.php"
+        ]
+    },
+    {
         "id": 65694,
         "author": "desrosj",
         "message": "External Libraries: Use the classic build of jQuery Form.\n\nAs of version 4.4.0, `src/jquery.form.js` in the `jquery-form` package is an ES module. Because `jquery-form` is registered as a classic script, browsers reject the file with a syntax error and `ajaxForm()` and `ajaxSubmit()` are not defined.\n\nThis updates the relevant build scripts to copy `dist/jquery.form.js` instead, which is the package's UMD build and matches the format shipped before 4.4.0.\n\nFollow-up to r65541.\nReviewed by davidbaumwald.\n\nProps prosenjitbarman.\nFixes #66711.\n",
