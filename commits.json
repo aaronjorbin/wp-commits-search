@@ -1,5 +1,14 @@
 [
     {
+        "id": 65673,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Check where tracked CSS and JavaScript files live.\n\nCheck the CSS and JavaScript directories in `wp-admin` and `wp-includes` for misplaced files. Allow the admin color scheme SCSS sources and the generated files under `wp-includes/build/`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13684\n\nProps adrianmoldovanwp, mohamedahamed, lucatume, jorbin.\nSee #65279.\n",
+        "date": "2026-11-19T13:13:51.190008Z",
+        "files": [
+            "/trunk/.github/workflows/file-type-check.yml"
+        ]
+    },
+    {
         "id": 65672,
         "author": "lancewillett",
         "message": "Tests: Avoid attachment ID collisions in media widget tests.\n\nUse `REST_TESTS_IMPOSSIBLY_HIGH_NUMBER` for the missing audio and video attachments. The fixture itself can receive ID `777`.\n\nMerges [65670] to the 4.8 branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16092\n\nProps johnbillion.\nSee #66736.\n",
