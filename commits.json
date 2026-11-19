@@ -1,5 +1,51 @@
 [
     {
+        "id": 65672,
+        "author": "lancewillett",
+        "message": "Tests: Avoid attachment ID collisions in media widget tests.\n\nUse `REST_TESTS_IMPOSSIBLY_HIGH_NUMBER` for the missing audio and video attachments. The fixture itself can receive ID `777`.\n\nMerges [65670] to the 4.8 branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16092\n\nProps johnbillion.\nSee #66736.\n",
+        "date": "2026-11-19T00:18:15.160568Z",
+        "files": [
+            "/branches/4.8",
+            "/branches/4.8/tests/phpunit/tests/widgets/media-audio-widget.php",
+            "/branches/4.8/tests/phpunit/tests/widgets/media-video-widget.php"
+        ]
+    },
+    {
+        "id": 65671,
+        "author": "lancewillett",
+        "message": "Tests: Avoid attachment ID collisions in media widget tests.\n\nUse `REST_TESTS_IMPOSSIBLY_HIGH_NUMBER` for the missing audio and video attachments. The fixture itself can receive ID `777`.\n\nMerges [65670] to the 4.9 branch.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16092\n\nProps johnbillion.\nSee #66736.\n",
+        "date": "2026-11-19T00:16:51.826019Z",
+        "files": [
+            "/branches/4.9",
+            "/branches/4.9/tests/phpunit/tests/widgets/media-audio-widget.php",
+            "/branches/4.9/tests/phpunit/tests/widgets/media-video-widget.php"
+        ]
+    },
+    {
+        "id": 65670,
+        "author": "lancewillett",
+        "message": "Tests: Avoid attachment ID collisions in media widget tests.\n\nUse `REST_TESTS_IMPOSSIBLY_HIGH_NUMBER` for the missing attachment in the audio and video widget tests. The test fixture itself can receive ID `777` and render media where the tests expect empty output.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16092\n\nProps johnbillion.\nSee #66736.\n",
+        "date": "2026-11-19T00:04:58.624149Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetMediaAudio.php",
+            "/trunk/tests/phpunit/tests/widgets/wpWidgetMediaVideo.php"
+        ]
+    },
+    {
+        "id": 65669,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Run the mu-plugin E2E specs in parallel.\n\nGive each test plugin a unique filename and limit its effects to requests carrying the test\u2019s query parameter. Publish each plugin with an atomic rename and remove test plugins during global setup.\n\nMove the fatal error handler and login script localization specs to the parallel Playwright project.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16037\n\nProps adrianmoldovanwp, lucatume.\nSee #66392.\n",
+        "date": "2026-11-18T23:55:10.691584Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/config/global-setup.js",
+            "/trunk/tests/e2e/fixtures/site.js",
+            "/trunk/tests/e2e/playwright.config.js",
+            "/trunk/tests/e2e/specs/fatal-error-handler.test.js",
+            "/trunk/tests/e2e/specs/login-localize-script.test.js"
+        ]
+    },
+    {
         "id": 65668,
         "author": "westonruter",
         "message": "Build/Test Tools: Hold a project subset to PHPStan rule level 10.\n\nPHPStan analyzes all of core at rule level 5, but much of the code added in recent releases, such as the Abilities API and the AI client, already meets or nearly meets level 10. A second analysis now holds a selected set of paths to level 10, so that they cannot regress, and so that the set can grow as more files are brought up to that level, without raising the level for the entire project.\n\nPHPStan has no per-path rule levels, so the strict paths have a configuration of their own, `phpstan-strict.neon.dist`, which includes `phpstan.neon.dist`, replaces its paths with the strict ones, and scans the rest of core so that its symbols are known. Its baselines in `tests/phpstan/baselines-strict/` hold only what level 10 adds in the strict paths, since it includes the default baselines too. The two analyses are named \"default\" and \"strict\" rather than after their levels, since either level can be raised. The narrowed analysis relies on PHPStan 2.3.6, which no longer reports an ignored error as unmatched when its file is not analyzed.\n\n`composer phpstan` now runs both analyses. Also, `composer phpstan:baselines` and `composer phpstan:fix` handle both baseline directories. In CI, the two analyses run as parallel jobs, whose results are merged into the pull request comment. The headers of the default baselines change only to name the configuration they are regenerated with.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16021.\nFollow-up to r61699, r64539, r65372, r65537, r65566.\n\nProps westonruter, apermo.\nSee #65817.\n",
