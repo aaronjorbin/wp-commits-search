@@ -1,5 +1,215 @@
 [
     {
+        "id": 65691,
+        "author": "desrosj",
+        "message": "Docs: Remove repeated word within `WP_Error` property.\n\nProps kimclow.\nSee #65860.\n",
+        "date": "2026-11-19T14:53:30.876426Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-error.php"
+        ]
+    },
+    {
+        "id": 65690,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 5.5.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. The `uuid` entry is also removed from `package-lock.json`, but `chalk` remains there because other packages in this branch still require it. \"And another one gone, and another one gone.\"\n\nReviewed by johnbillion, lucatume.\nMerges r65309, r65417 to the 5.5 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:46:23.472492Z",
+        "files": [
+            "/branches/5.5",
+            "/branches/5.5/package-lock.json",
+            "/branches/5.5/package.json",
+            "/branches/5.5/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65689,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 5.6.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. The `uuid` entry is also removed from `package-lock.json`, but `chalk` remains there because other packages in this branch still require it. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 5.6 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:45:29.360501Z",
+        "files": [
+            "/branches/5.6",
+            "/branches/5.6/package-lock.json",
+            "/branches/5.6/package.json",
+            "/branches/5.6/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65688,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 5.7.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. Both remain in `package-lock.json` because other packages in this branch still require them. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 5.7 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:44:05.627141Z",
+        "files": [
+            "/branches/5.7",
+            "/branches/5.7/package.json",
+            "/branches/5.7/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65687,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 5.8.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. Both remain in `package-lock.json` because other packages in this branch still require them. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 5.8 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:43:03.025632Z",
+        "files": [
+            "/branches/5.8",
+            "/branches/5.8/package.json",
+            "/branches/5.8/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65686,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 5.9.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. Both remain in `package-lock.json` because other packages in this branch still require them. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 5.9 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:41:38.768254Z",
+        "files": [
+            "/branches/5.9",
+            "/branches/5.9/package.json",
+            "/branches/5.9/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65685,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 6.0.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. The `chalk` entry is also removed from `package-lock.json`, but `uuid` remains there because other packages in this branch still require it. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 6.0 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:40:38.294044Z",
+        "files": [
+            "/branches/6.0",
+            "/branches/6.0/package-lock.json",
+            "/branches/6.0/package.json",
+            "/branches/6.0/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65684,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 6.1.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 6.1 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:39:40.421673Z",
+        "files": [
+            "/branches/6.1",
+            "/branches/6.1/package-lock.json",
+            "/branches/6.1/package.json",
+            "/branches/6.1/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65683,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 6.2.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 6.2 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:38:58.268983Z",
+        "files": [
+            "/branches/6.2",
+            "/branches/6.2/package-lock.json",
+            "/branches/6.2/package.json",
+            "/branches/6.2/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65682,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 6.3.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. The `chalk` entry is also removed from `package-lock.json`, but `uuid` remains there because other packages in this branch still require it. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 6.3 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:37:42.529576Z",
+        "files": [
+            "/branches/6.3",
+            "/branches/6.3/package-lock.json",
+            "/branches/6.3/package.json",
+            "/branches/6.3/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65681,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 6.4.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. The `chalk` entry is also removed from `package-lock.json`, but `uuid` remains there because other packages in this branch still require it. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 6.4 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:36:15.108873Z",
+        "files": [
+            "/branches/6.4",
+            "/branches/6.4/package-lock.json",
+            "/branches/6.4/package.json",
+            "/branches/6.4/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65680,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 6.5.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. The `chalk` entry is also removed from `package-lock.json`, but `uuid` remains there because other packages in this branch still require it. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 6.5 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:35:42.141120Z",
+        "files": [
+            "/branches/6.5",
+            "/branches/6.5/package-lock.json",
+            "/branches/6.5/package.json",
+            "/branches/6.5/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65679,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 6.6.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. The `chalk` entry is also removed from `package-lock.json`, but `uuid` remains there because other packages in this branch still require it. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 6.6 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:34:56.317225Z",
+        "files": [
+            "/branches/6.6",
+            "/branches/6.6/package-lock.json",
+            "/branches/6.6/package.json",
+            "/branches/6.6/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65678,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 6.7.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed from `package.json`. The `chalk` entry is also removed from `package-lock.json`, but `uuid` remains there because other packages in this branch still require it. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 6.7 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:32:15.455217Z",
+        "files": [
+            "/branches/6.7",
+            "/branches/6.7/package-lock.json",
+            "/branches/6.7/package.json",
+            "/branches/6.7/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65677,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 6.8.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 6.8 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:27:48.896074Z",
+        "files": [
+            "/branches/6.8",
+            "/branches/6.8/package-lock.json",
+            "/branches/6.8/package.json",
+            "/branches/6.8/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65676,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 6.9.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 6.9 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:26:51.305752Z",
+        "files": [
+            "/branches/6.9",
+            "/branches/6.9/package-lock.json",
+            "/branches/6.9/package.json",
+            "/branches/6.9/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65675,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 7.0.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 7.0 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:26:14.819439Z",
+        "files": [
+            "/branches/7.0",
+            "/branches/7.0/package-lock.json",
+            "/branches/7.0/package.json",
+            "/branches/7.0/tests/gutenberg"
+        ]
+    },
+    {
+        "id": 65674,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Remove script to run Gutenberg E2E tests in Core in 7.1.\n\nIn r48382 a script was added to run the Gutenberg end-to-end tests in `wordpress-develop`. Besides a few small changes related to normal Gutenberg syncs, these files have not been touched since being introduced and the script no longer works:\n- The specified `wp/trunk` branch checked out from `gutenberg` no longer exists (it was renamed to `wp/latest`).\n- The `test-e2e` npm script no longer exists (it was renamed to `test:e2e` in https://github.com/WordPress/gutenberg/pull/42368).\n- `packages/e2e-tests/specs` \n- The `FORCE_REDUCED_MOTION` build flag it passed was removed in r56699.\n- It crashes on startup because the `chalk` dependency is now ESM-only.\n- It was never formally added to any Github Actions workflows.\n\nRemoving this script also allows the `chalk` and `uuid` dependencies to be removed. \"And another one gone, and another one gone.\"\n\nReviewed by lucatume.\nMerges r65309, r65417 to the 7.1 branch.\n\nProps johnbillion, lucatume.\nSee #65845, #50469, #59407.\n",
+        "date": "2026-11-19T14:25:30.538877Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/package-lock.json",
+            "/branches/7.1/package.json",
+            "/branches/7.1/tests/gutenberg"
+        ]
+    },
+    {
         "id": 65673,
         "author": "lancewillett",
         "message": "Build/Test Tools: Check where tracked CSS and JavaScript files live.\n\nCheck the CSS and JavaScript directories in `wp-admin` and `wp-includes` for misplaced files. Allow the admin color scheme SCSS sources and the generated files under `wp-includes/build/`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13684\n\nProps adrianmoldovanwp, mohamedahamed, lucatume, jorbin.\nSee #65279.\n",
