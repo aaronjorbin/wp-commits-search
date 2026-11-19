@@ -1,5 +1,99 @@
 [
     {
+        "id": 65700,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.7.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.7 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:06:47.362249Z",
+        "files": [
+            "/branches/6.7",
+            "/branches/6.7/.github/workflows/coding-standards.yml",
+            "/branches/6.7/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.7/.github/workflows/javascript-tests.yml",
+            "/branches/6.7/.github/workflows/php-compatibility.yml",
+            "/branches/6.7/.github/workflows/phpunit-tests.yml",
+            "/branches/6.7/.github/workflows/test-build-processes.yml",
+            "/branches/6.7/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
+        "id": 65699,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.8.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.8 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:06:10.616713Z",
+        "files": [
+            "/branches/6.8",
+            "/branches/6.8/.github/workflows/coding-standards.yml",
+            "/branches/6.8/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.8/.github/workflows/javascript-tests.yml",
+            "/branches/6.8/.github/workflows/local-docker-environment.yml",
+            "/branches/6.8/.github/workflows/performance.yml",
+            "/branches/6.8/.github/workflows/php-compatibility.yml",
+            "/branches/6.8/.github/workflows/phpunit-tests.yml",
+            "/branches/6.8/.github/workflows/test-build-processes.yml",
+            "/branches/6.8/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/6.8/.github/workflows/upgrade-testing.yml",
+            "/branches/6.8/.github/workflows/workflow-lint.yml"
+        ]
+    },
+    {
+        "id": 65698,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.9.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.9 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:05:32.090250Z",
+        "files": [
+            "/branches/6.9",
+            "/branches/6.9/.github/workflows/coding-standards.yml",
+            "/branches/6.9/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.9/.github/workflows/javascript-tests.yml",
+            "/branches/6.9/.github/workflows/performance.yml",
+            "/branches/6.9/.github/workflows/php-compatibility.yml",
+            "/branches/6.9/.github/workflows/phpunit-tests.yml",
+            "/branches/6.9/.github/workflows/test-build-processes.yml",
+            "/branches/6.9/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/6.9/.github/workflows/workflow-lint.yml"
+        ]
+    },
+    {
+        "id": 65697,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 7.0.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 7.0 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:04:56.360145Z",
+        "files": [
+            "/branches/7.0",
+            "/branches/7.0/.github/workflows/coding-standards.yml",
+            "/branches/7.0/.github/workflows/end-to-end-tests.yml",
+            "/branches/7.0/.github/workflows/javascript-tests.yml",
+            "/branches/7.0/.github/workflows/javascript-type-checking.yml",
+            "/branches/7.0/.github/workflows/performance.yml",
+            "/branches/7.0/.github/workflows/php-compatibility.yml",
+            "/branches/7.0/.github/workflows/phpstan-static-analysis.yml",
+            "/branches/7.0/.github/workflows/phpunit-tests.yml",
+            "/branches/7.0/.github/workflows/test-build-processes.yml",
+            "/branches/7.0/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/7.0/.github/workflows/workflow-lint.yml"
+        ]
+    },
+    {
+        "id": 65696,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 7.1.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 7.1 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:04:19.766748Z",
+        "files": [
+            "/branches/7.1",
+            "/branches/7.1/.github/workflows/coding-standards.yml",
+            "/branches/7.1/.github/workflows/end-to-end-tests.yml",
+            "/branches/7.1/.github/workflows/javascript-tests.yml",
+            "/branches/7.1/.github/workflows/javascript-type-checking.yml",
+            "/branches/7.1/.github/workflows/performance.yml",
+            "/branches/7.1/.github/workflows/php-compatibility.yml",
+            "/branches/7.1/.github/workflows/phpstan-static-analysis.yml",
+            "/branches/7.1/.github/workflows/phpunit-tests.yml",
+            "/branches/7.1/.github/workflows/test-build-processes.yml",
+            "/branches/7.1/.github/workflows/upgrade-develop-testing.yml",
+            "/branches/7.1/.github/workflows/workflow-lint.yml"
+        ]
+    },
+    {
         "id": 65695,
         "author": "SergeyBiryukov",
         "message": "Tests: Cover `rsd_link()`.\n\nVerify the expected output of `EditURI` RSD link element with the site XML-RPC endpoint URL.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15356.\n\nProps devmuhib, huzaifaalmesbah, lancewillett.\nSee #65819.",
