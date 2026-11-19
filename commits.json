@@ -1,5 +1,26 @@
 [
     {
+        "id": 65694,
+        "author": "desrosj",
+        "message": "External Libraries: Use the classic build of jQuery Form.\n\nAs of version 4.4.0, `src/jquery.form.js` in the `jquery-form` package is an ES module. Because `jquery-form` is registered as a classic script, browsers reject the file with a syntax error and `ajaxForm()` and `ajaxSubmit()` are not defined.\n\nThis updates the relevant build scripts to copy `dist/jquery.form.js` instead, which is the package's UMD build and matches the format shipped before 4.4.0.\n\nFollow-up to r65541.\nReviewed by davidbaumwald.\n\nProps prosenjitbarman.\nFixes #66711.\n",
+        "date": "2026-11-19T19:17:47.254837Z",
+        "files": [
+            "/trunk/Gruntfile.js"
+        ]
+    },
+    {
+        "id": 65693,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Split the PHPStan reusable workflow into -v1 and -v2.\n\nThe 7.0 and 7.1 branches call `reusable-phpstan-static-analysis-v1.yml` from `trunk`. In r65668, that workflow began running `composer phpstan:default` and `composer phpstan:strict`, which only exist in `trunk`'s `composer.json`. Because of this, both of its jobs now fail immediately on those branches.\n\nThis copies the current version of the workflow to `reusable-phpstan-static-analysis-v2.yml`, which `trunk` now calls, and restores `reusable-phpstan-static-analysis-v1.yml` to its state before r65668 for those branches.\n\nFollow-up to r65668.\nReviewed by westonruter.\n\nProps desrosj, westonruter.\nFixes #65817.\n",
+        "date": "2026-11-19T19:14:38.790361Z",
+        "files": [
+            "/trunk/.github/workflows/phpstan-static-analysis.yml",
+            "/trunk/.github/workflows/reusable-phpstan-static-analysis-v1.yml",
+            "/trunk/.github/workflows/reusable-phpstan-static-analysis-v2.yml",
+            "/trunk/tests/phpstan/README.md"
+        ]
+    },
+    {
         "id": 65692,
         "author": "johnbillion",
         "message": "Docs: Correct the indentation of closing braces in hash notation.\n\nSee #65860\n",
