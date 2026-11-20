@@ -1,5 +1,14 @@
 [
     {
+        "id": 65733,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Cover `esc_url_raw()`.\n\nVerify that ampersands are not entity-encoded in database context and custom protocols are accepted.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15360.\n\nProps devmuhib, huzaifaalmesbah, lancewillett.\nSee #65819.",
+        "date": "2026-11-20T23:02:41.460664Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/escUrl.php"
+        ]
+    },
+    {
         "id": 65732,
         "author": "peterwilsoncc",
         "message": "Administration: Revert the On This Day section of the Activity widget.\n\nThe On This Day section of the Activity widget has been removed from the WordPress 7.2 release. This restores the Recent Comments section to the Activity widget and removes the dedicated Recent Comments dashboard widget.\n\nThis reverts r64593.\n\nReviewed by audrasjb.\n\nProps annezazu.\nSee #65116.\n\n",
