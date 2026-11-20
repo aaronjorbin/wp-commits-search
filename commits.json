@@ -1,5 +1,53 @@
 [
     {
+        "id": 65731,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Type-check three more JavaScript files.\n\nAdd `xfn.js`, `language-chooser.js`, and `sanitize.js` to the TypeScript compiler inputs.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16117\n\nProps faisalahammad.\nSee #66751.\n",
+        "date": "2026-11-20T16:54:06.028661Z",
+        "files": [
+            "/trunk/tsconfig.json"
+        ]
+    },
+    {
+        "id": 65730,
+        "author": "lancewillett",
+        "message": "Tests: Reconnect the database helper after disconnect tests.\n\nReconnect the shared test helper alongside `$wpdb` so later field-processing tests have a working connection.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16133\n\nProps ekamran.\nSee #66755.\n",
+        "date": "2026-11-20T16:53:05.395159Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/db.php"
+        ]
+    },
+    {
+        "id": 65729,
+        "author": "lancewillett",
+        "message": "Tests: Isolate theme, script module, and post password fixtures.\n\nRestore the registered theme features, allow the saved script modules instance to be `null`, and clear the post password cookie after the header tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16131, https://github.com/WordPress/wordpress-develop/pull/16132, https://github.com/WordPress/wordpress-develop/pull/16134\n\nProps ekamran.\nSee #66755.\n",
+        "date": "2026-11-20T16:51:04.163766Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/script-modules/wpScriptModules.php",
+            "/trunk/tests/phpunit/tests/theme.php",
+            "/trunk/tests/phpunit/tests/wp/sendHeaders.php"
+        ]
+    },
+    {
+        "id": 65728,
+        "author": "lancewillett",
+        "message": "Tests: Load the menu quick search helper in test setup.\n\nLoad `nav-menu.php` before each test so the searches can run independently.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16130\n\nProps ekamran.\nSee #66755.\n",
+        "date": "2026-11-20T16:46:31.291054Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/menu/wpAjaxMenuQuickSearch.php"
+        ]
+    },
+    {
+        "id": 65727,
+        "author": "lancewillett",
+        "message": "Tests: Isolate rewrite state in term link and redirect tests.\n\nSkip the rewrite flushes in the term link tests and unregister the `random` post type before teardown replaces the request.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16111, https://github.com/WordPress/wordpress-develop/pull/16112\n\nProps faisalahammad.\nSee #66755.\n",
+        "date": "2026-11-20T16:44:52.594780Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/query/randomContentRedirect.php",
+            "/trunk/tests/phpunit/tests/term/getTermLink.php"
+        ]
+    },
+    {
         "id": 65726,
         "author": "jorgefilipecosta",
         "message": "Abilities API: Reject empty slugs and usernames in `core/users-query`.\n\nThe items of the `slugs` and `usernames` filters now require at least one character, like the `slugs` filter of `core/content-query`, so a list holding an empty string fails schema validation instead of returning an empty list. A slug or username made only of whitespace names no user, so it is dropped before the query, and a list holding only such a value fails with `users_invalid_filter`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15986.\n\nFollow-up to [64346].\n\nProps jorgefilipecosta, gziolo.\nFixes #64657.",
