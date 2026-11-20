@@ -1,5 +1,17 @@
 [
     {
+        "id": 65732,
+        "author": "peterwilsoncc",
+        "message": "Administration: Revert the On This Day section of the Activity widget.\n\nThe On This Day section of the Activity widget has been removed from the WordPress 7.2 release. This restores the Recent Comments section to the Activity widget and removes the dedicated Recent Comments dashboard widget.\n\nThis reverts r64593.\n\nReviewed by audrasjb.\n\nProps annezazu.\nSee #65116.\n\n",
+        "date": "2026-11-20T21:17:39.162559Z",
+        "files": [
+            "/trunk/src/wp-admin/_index.php",
+            "/trunk/src/wp-admin/css/dashboard.css",
+            "/trunk/src/wp-admin/includes/dashboard.php",
+            "/trunk/tests/phpunit/tests/admin/wpDashboardSiteActivity.php"
+        ]
+    },
+    {
         "id": 65731,
         "author": "lancewillett",
         "message": "Build/Test Tools: Type-check three more JavaScript files.\n\nAdd `xfn.js`, `language-chooser.js`, and `sanitize.js` to the TypeScript compiler inputs.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16117\n\nProps faisalahammad.\nSee #66751.\n",
