@@ -1,5 +1,55 @@
 [
     {
+        "id": 65725,
+        "author": "jorgefilipecosta",
+        "message": "Editor: Validate the entity in the entity fields reads and REST route.\n\nThe entity fields API lacked two input checks that the entity actions API has:\n- `WP_Entity_Fields_Registry::get_registered()` and `::get_registered_field_modules()` did not validate the entity kind and name, so an array caused a fatal `TypeError`. They now return an empty list with a `_doing_it_wrong()` notice.\n- The `kind` and `name` arguments of `/wp/v2/entity-fields` had no `minLength`, so empty values returned a 200 response. They now return a 400 error, like `/wp/v2/entity-actions`.\nThe entity actions endpoint no longer skips registering its route when a post type or taxonomy uses `entity-actions` as its REST base. No other core endpoint with a fixed base, such as `/wp/v2/settings` or `/wp/v2/search`, has this check.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16067.\n\nFollow-up to [64517], [64528].\n\nProps mukesh27, oandregal, jorgefilipecosta.\nFixes #66229.",
+        "date": "2026-11-20T14:52:17.654079Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-entity-fields-registry.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-entity-actions-controller.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-entity-fields-controller.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpEntityFieldsRegistry.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-entity-actions-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-entity-fields-controller.php",
+            "/trunk/tests/qunit/fixtures/wp-api-generated.js"
+        ]
+    },
+    {
+        "id": 65724,
+        "author": "jorgefilipecosta",
+        "message": "Abilities API: Declare the `uri` format for the `link` output of `core/content-query`.\n\nThe post permalink in the `link` output was a plain string, while the `link` output of `core/users-query` declares the `uri` format. Declare the same format for the post permalink, so clients that check formats treat both links the same. The value is unchanged.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15987.\n\nFollow-up to [64388].\n\nProps jorgefilipecosta, gziolo.\nFixes #66268.",
+        "date": "2026-11-20T14:43:26.712449Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-content.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreContentAbility.php"
+        ]
+    },
+    {
+        "id": 65723,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Run plugin management E2E tests in parallel.\n\nUse the `PLUGINS` lock so tests that share a plugin can run alongside other specs without changing the plugin at the same time.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16128\n\nProps adrianmoldovanwp.\nSee #66392.\n",
+        "date": "2026-11-20T14:42:52.212041Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/playwright.config.js",
+            "/trunk/tests/e2e/specs/plugins.test.js",
+            "/trunk/tests/e2e/utils/locks.js"
+        ]
+    },
+    {
+        "id": 65722,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Share the release ZIP across test jobs.\n\nWait for a verified release ZIP before starting the installation and upgrade jobs. Keep it available for failed-job reruns.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16106\n\nProps adrianmoldovanwp.\nFixes #66744.\n",
+        "date": "2026-11-20T14:41:45.759052Z",
+        "files": [
+            "/trunk/.github/actionlint.yaml",
+            "/trunk/.github/workflows/install-testing.yml",
+            "/trunk/.github/workflows/reusable-download-wordpress-release.yml",
+            "/trunk/.github/workflows/reusable-upgrade-testing.yml",
+            "/trunk/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
         "id": 65721,
         "author": "desrosj",
         "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 4.7.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 4.7 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
