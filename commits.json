@@ -1,5 +1,298 @@
 [
     {
+        "id": 65721,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 4.7.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 4.7 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:18:15.356616Z",
+        "files": [
+            "/branches/4.7",
+            "/branches/4.7/.github/workflows/coding-standards.yml",
+            "/branches/4.7/.github/workflows/javascript-tests.yml",
+            "/branches/4.7/.github/workflows/phpunit-tests.yml",
+            "/branches/4.7/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65720,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 4.8.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 4.8 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:17:46.580693Z",
+        "files": [
+            "/branches/4.8",
+            "/branches/4.8/.github/workflows/coding-standards.yml",
+            "/branches/4.8/.github/workflows/javascript-tests.yml",
+            "/branches/4.8/.github/workflows/phpunit-tests.yml",
+            "/branches/4.8/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65719,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 4.9.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 4.9 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:17:20.434290Z",
+        "files": [
+            "/branches/4.9",
+            "/branches/4.9/.github/workflows/coding-standards.yml",
+            "/branches/4.9/.github/workflows/javascript-tests.yml",
+            "/branches/4.9/.github/workflows/phpunit-tests.yml",
+            "/branches/4.9/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65718,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 5.0.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 5.0 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:16:53.587614Z",
+        "files": [
+            "/branches/5.0",
+            "/branches/5.0/.github/workflows/coding-standards.yml",
+            "/branches/5.0/.github/workflows/javascript-tests.yml",
+            "/branches/5.0/.github/workflows/phpunit-tests.yml",
+            "/branches/5.0/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65717,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 5.1.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 5.1 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:16:24.556661Z",
+        "files": [
+            "/branches/5.1",
+            "/branches/5.1/.github/workflows/coding-standards.yml",
+            "/branches/5.1/.github/workflows/javascript-tests.yml",
+            "/branches/5.1/.github/workflows/phpunit-tests.yml",
+            "/branches/5.1/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65716,
+        "author": "peterwilsoncc",
+        "message": "Upgrade/Install: Update the `$_old_files` array for 7.2.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15830\n\nReviewed by jonsurrell.\n\nProps therssoftware, jonsurrell, nathanrice, courane01.\nFixes #66456.\n",
+        "date": "2026-11-19T23:15:56.053360Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/update-core.php"
+        ]
+    },
+    {
+        "id": 65715,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 5.2.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 5.2 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:15:52.442770Z",
+        "files": [
+            "/branches/5.2",
+            "/branches/5.2/.github/workflows/coding-standards.yml",
+            "/branches/5.2/.github/workflows/javascript-tests.yml",
+            "/branches/5.2/.github/workflows/phpunit-tests.yml",
+            "/branches/5.2/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65714,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 5.3.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 5.3 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:15:24.430390Z",
+        "files": [
+            "/branches/5.3",
+            "/branches/5.3/.github/workflows/coding-standards.yml",
+            "/branches/5.3/.github/workflows/javascript-tests.yml",
+            "/branches/5.3/.github/workflows/phpunit-tests.yml",
+            "/branches/5.3/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65713,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 5.4.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 5.4 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:14:51.742018Z",
+        "files": [
+            "/branches/5.4",
+            "/branches/5.4/.github/workflows/coding-standards.yml",
+            "/branches/5.4/.github/workflows/javascript-tests.yml",
+            "/branches/5.4/.github/workflows/phpunit-tests.yml",
+            "/branches/5.4/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65712,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 5.5.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 5.5 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:14:20.664350Z",
+        "files": [
+            "/branches/5.5",
+            "/branches/5.5/.github/workflows/coding-standards.yml",
+            "/branches/5.5/.github/workflows/javascript-tests.yml",
+            "/branches/5.5/.github/workflows/php-compatibility.yml",
+            "/branches/5.5/.github/workflows/phpunit-tests.yml",
+            "/branches/5.5/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65711,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 5.6.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 5.6 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:13:47.659389Z",
+        "files": [
+            "/branches/5.6",
+            "/branches/5.6/.github/workflows/coding-standards.yml",
+            "/branches/5.6/.github/workflows/javascript-tests.yml",
+            "/branches/5.6/.github/workflows/php-compatibility.yml",
+            "/branches/5.6/.github/workflows/phpunit-tests.yml",
+            "/branches/5.6/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65710,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 5.7.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 5.7 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:13:15.603712Z",
+        "files": [
+            "/branches/5.7",
+            "/branches/5.7/.github/workflows/coding-standards.yml",
+            "/branches/5.7/.github/workflows/javascript-tests.yml",
+            "/branches/5.7/.github/workflows/php-compatibility.yml",
+            "/branches/5.7/.github/workflows/phpunit-tests.yml",
+            "/branches/5.7/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65709,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 5.8.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 5.8 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:12:42.624215Z",
+        "files": [
+            "/branches/5.8",
+            "/branches/5.8/.github/workflows/coding-standards.yml",
+            "/branches/5.8/.github/workflows/end-to-end-tests.yml",
+            "/branches/5.8/.github/workflows/javascript-tests.yml",
+            "/branches/5.8/.github/workflows/php-compatibility.yml",
+            "/branches/5.8/.github/workflows/phpunit-tests.yml",
+            "/branches/5.8/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65708,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 5.9.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 5.9 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:12:00.688278Z",
+        "files": [
+            "/branches/5.9",
+            "/branches/5.9/.github/workflows/coding-standards.yml",
+            "/branches/5.9/.github/workflows/end-to-end-tests.yml",
+            "/branches/5.9/.github/workflows/javascript-tests.yml",
+            "/branches/5.9/.github/workflows/php-compatibility.yml",
+            "/branches/5.9/.github/workflows/phpunit-tests.yml",
+            "/branches/5.9/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65707,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.0.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.0 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:11:17.815861Z",
+        "files": [
+            "/branches/6.0",
+            "/branches/6.0/.github/workflows/coding-standards.yml",
+            "/branches/6.0/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.0/.github/workflows/javascript-tests.yml",
+            "/branches/6.0/.github/workflows/php-compatibility.yml",
+            "/branches/6.0/.github/workflows/phpunit-tests.yml",
+            "/branches/6.0/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65706,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.1.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.1 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:10:34.959182Z",
+        "files": [
+            "/branches/6.1",
+            "/branches/6.1/.github/workflows/coding-standards.yml",
+            "/branches/6.1/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.1/.github/workflows/javascript-tests.yml",
+            "/branches/6.1/.github/workflows/php-compatibility.yml",
+            "/branches/6.1/.github/workflows/phpunit-tests.yml",
+            "/branches/6.1/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65705,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.2.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.2 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:09:54.920169Z",
+        "files": [
+            "/branches/6.2",
+            "/branches/6.2/.github/workflows/coding-standards.yml",
+            "/branches/6.2/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.2/.github/workflows/javascript-tests.yml",
+            "/branches/6.2/.github/workflows/php-compatibility.yml",
+            "/branches/6.2/.github/workflows/phpunit-tests.yml",
+            "/branches/6.2/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65704,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.3.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.3 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:09:19.680990Z",
+        "files": [
+            "/branches/6.3",
+            "/branches/6.3/.github/workflows/coding-standards.yml",
+            "/branches/6.3/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.3/.github/workflows/javascript-tests.yml",
+            "/branches/6.3/.github/workflows/php-compatibility.yml",
+            "/branches/6.3/.github/workflows/phpunit-tests.yml",
+            "/branches/6.3/.github/workflows/test-build-processes.yml"
+        ]
+    },
+    {
+        "id": 65703,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.4.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.4 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:08:43.829730Z",
+        "files": [
+            "/branches/6.4",
+            "/branches/6.4/.github/workflows/coding-standards.yml",
+            "/branches/6.4/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.4/.github/workflows/javascript-tests.yml",
+            "/branches/6.4/.github/workflows/php-compatibility.yml",
+            "/branches/6.4/.github/workflows/phpunit-tests.yml",
+            "/branches/6.4/.github/workflows/test-build-processes.yml",
+            "/branches/6.4/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
+        "id": 65702,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.5.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.5 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:08:07.822873Z",
+        "files": [
+            "/branches/6.5",
+            "/branches/6.5/.github/workflows/coding-standards.yml",
+            "/branches/6.5/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.5/.github/workflows/javascript-tests.yml",
+            "/branches/6.5/.github/workflows/php-compatibility.yml",
+            "/branches/6.5/.github/workflows/phpunit-tests.yml",
+            "/branches/6.5/.github/workflows/test-build-processes.yml",
+            "/branches/6.5/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
+        "id": 65701,
+        "author": "desrosj",
+        "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.6.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.6 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
+        "date": "2026-11-19T23:07:33.323330Z",
+        "files": [
+            "/branches/6.6",
+            "/branches/6.6/.github/workflows/coding-standards.yml",
+            "/branches/6.6/.github/workflows/end-to-end-tests.yml",
+            "/branches/6.6/.github/workflows/javascript-tests.yml",
+            "/branches/6.6/.github/workflows/php-compatibility.yml",
+            "/branches/6.6/.github/workflows/phpunit-tests.yml",
+            "/branches/6.6/.github/workflows/test-build-processes.yml",
+            "/branches/6.6/.github/workflows/upgrade-testing.yml"
+        ]
+    },
+    {
         "id": 65700,
         "author": "desrosj",
         "message": "Build/Test Tools: Skip `pull_request` triggered runs in private repos in 6.7.\n\nThis modifies the conditions for GitHub Actions workflow runs so that they do not run within private forks and mirrors for `pull_request` events when the PR is in `draft` status.\n\nFor situations where this may be desirable, a `Draft Workflow Runs` label can be added to a `draft` pull request to force workflows to run.\n\nReviewed by lancewillett.\nMerges r63183 to the 6.7 branch.\n\nProps desrosj, jorbin, lancewillett.\nSee #65848.\n",
