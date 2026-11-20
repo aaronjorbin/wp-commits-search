@@ -1,5 +1,15 @@
 [
     {
+        "id": 65726,
+        "author": "jorgefilipecosta",
+        "message": "Abilities API: Reject empty slugs and usernames in `core/users-query`.\n\nThe items of the `slugs` and `usernames` filters now require at least one character, like the `slugs` filter of `core/content-query`, so a list holding an empty string fails schema validation instead of returning an empty list. A slug or username made only of whitespace names no user, so it is dropped before the query, and a list holding only such a value fails with `users_invalid_filter`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15986.\n\nFollow-up to [64346].\n\nProps jorgefilipecosta, gziolo.\nFixes #64657.",
+        "date": "2026-11-20T15:46:43.739892Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-users.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreUsersAbility.php"
+        ]
+    },
+    {
         "id": 65725,
         "author": "jorgefilipecosta",
         "message": "Editor: Validate the entity in the entity fields reads and REST route.\n\nThe entity fields API lacked two input checks that the entity actions API has:\n- `WP_Entity_Fields_Registry::get_registered()` and `::get_registered_field_modules()` did not validate the entity kind and name, so an array caused a fatal `TypeError`. They now return an empty list with a `_doing_it_wrong()` notice.\n- The `kind` and `name` arguments of `/wp/v2/entity-fields` had no `minLength`, so empty values returned a 200 response. They now return a 400 error, like `/wp/v2/entity-actions`.\nThe entity actions endpoint no longer skips registering its route when a post type or taxonomy uses `entity-actions` as its REST base. No other core endpoint with a fixed base, such as `/wp/v2/settings` or `/wp/v2/search`, has this check.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16067.\n\nFollow-up to [64517], [64528].\n\nProps mukesh27, oandregal, jorgefilipecosta.\nFixes #66229.",
