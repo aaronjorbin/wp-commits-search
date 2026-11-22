@@ -1,5 +1,14 @@
 [
     {
+        "id": 65738,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Cover `user_can_richedit()`.\n\nVerify that the function returns `true` when the browser supports the visual editor and the user option is enabled, `false` otherwise.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15359.\n\nProps devmuhib, huzaifaalmesbah, lancewillett.\nSee #65819.",
+        "date": "2026-11-22T15:51:49.380124Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/userCanRichedit.php"
+        ]
+    },
+    {
         "id": 65737,
         "author": "lancewillett",
         "message": "Tests: Isolate stylesheet assertions in embed and Customizer tests.\n\nReset `$wp_styles` after the embed tests so later tests can print emoji styles. Check the `customize-preview` stylesheet in the Customizer manager test that enqueues it.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16147, https://github.com/WordPress/wordpress-develop/pull/16148\n\nProps ekamran.\nSee #66755.\n",
