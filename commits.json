@@ -1,5 +1,14 @@
 [
     {
+        "id": 65734,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Cover `format_for_editor()`.\n\nVerify that HTML entities are encoded but quotes are preserved, and the `format_for_editor` filter receives arguments and modifies the returned text.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15361.\n\nProps devmuhib, huzaifaalmesbah, lancewillett.\nSee #65819.",
+        "date": "2026-11-21T23:38:43.127534Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/formatForEditor.php"
+        ]
+    },
+    {
         "id": 65733,
         "author": "SergeyBiryukov",
         "message": "Tests: Cover `esc_url_raw()`.\n\nVerify that ampersands are not entity-encoded in database context and custom protocols are accepted.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15360.\n\nProps devmuhib, huzaifaalmesbah, lancewillett.\nSee #65819.",
