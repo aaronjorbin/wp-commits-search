@@ -1,5 +1,34 @@
 [
     {
+        "id": 65737,
+        "author": "lancewillett",
+        "message": "Tests: Isolate stylesheet assertions in embed and Customizer tests.\n\nReset `$wp_styles` after the embed tests so later tests can print emoji styles. Check the `customize-preview` stylesheet in the Customizer manager test that enqueues it.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16147, https://github.com/WordPress/wordpress-develop/pull/16148\n\nProps ekamran.\nSee #66755.\n",
+        "date": "2026-11-22T13:04:47.715996Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/customize/manager.php",
+            "/trunk/tests/phpunit/tests/customize/widgets.php",
+            "/trunk/tests/phpunit/tests/oembed/template.php"
+        ]
+    },
+    {
+        "id": 65736,
+        "author": "lancewillett",
+        "message": "Tests: Isolate script module registration in the entity action tests.\n\nRegister the default modules for the assertion and restore the previous script module and Interactivity API instances afterward.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16146\n\nProps ekamran.\nSee #66755.\n",
+        "date": "2026-11-22T13:03:05.766848Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/entity-actions/registerCoreEntityActions.php"
+        ]
+    },
+    {
+        "id": 65735,
+        "author": "lancewillett",
+        "message": "Tests: Delete the network created by the network option cache tests.\n\nRemove the network and its metadata after the class finishes so later multisite tests see only their own networks.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16145\n\nProps ekamran.\nSee #66755.\n",
+        "date": "2026-11-22T13:00:55.884388Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/option/wpPrimeNetworkOptionCaches.php"
+        ]
+    },
+    {
         "id": 65734,
         "author": "SergeyBiryukov",
         "message": "Tests: Cover `format_for_editor()`.\n\nVerify that HTML entities are encoded but quotes are preserved, and the `format_for_editor` filter receives arguments and modifies the returned text.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15361.\n\nProps devmuhib, huzaifaalmesbah, lancewillett.\nSee #65819.",
