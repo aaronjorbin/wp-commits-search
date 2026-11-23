@@ -1,5 +1,18 @@
 [
     {
+        "id": 65746,
+        "author": "lancewillett",
+        "message": "Tests: Log out after creating privileged class fixtures.\n\nRestore the logged-out user before the test harness saves the sanitization filters for subsequent tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16185\n\nProps mayankmajeji.\nSee #66755.\n",
+        "date": "2026-11-23T22:14:54.481646Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxHeartbeat.php",
+            "/trunk/tests/phpunit/tests/post/wpGetAutoSave.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-autosaves-controller.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplateAutosavesController.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplateRevisionsController.php"
+        ]
+    },
+    {
         "id": 65745,
         "author": "lancewillett",
         "message": "Tests: Restore theme features after image header tests.\n\nKeep custom header dimensions set by these tests from affecting later REST theme responses.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16182\n\nProps mayankmajeji.\nSee #66755.\n",
