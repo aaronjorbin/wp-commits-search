@@ -1,5 +1,16 @@
 [
     {
+        "id": 65743,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Run the trash end-to-end tests in parallel.\n\nGive the Empty Trash test its own post type and restore only the post created by the current test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16175\n\nProps adrianmoldovanwp.\nSee #66392.\n",
+        "date": "2026-11-23T16:56:07.853266Z",
+        "files": [
+            "/trunk/tests/e2e/playwright.config.js",
+            "/trunk/tests/e2e/specs/empty-trash-restore-trashed-posts.test.js",
+            "/trunk/tests/e2e/specs/empty-trash.test.js"
+        ]
+    },
+    {
         "id": 65742,
         "author": "lancewillett",
         "message": "Build/Test Tools: Run theme management E2E tests in parallel.\n\nKeep theme activation in the serial project. Use a shared `UPGRADER` lock so plugin and theme uploads cannot delete each other\u2019s unpacked files.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16127\n\nFollow-up to r65723.\n\nProps adrianmoldovanwp.\nSee #66392.\n",
