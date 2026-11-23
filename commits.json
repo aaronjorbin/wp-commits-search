@@ -1,5 +1,16 @@
 [
     {
+        "id": 65744,
+        "author": "dmsnell",
+        "message": "Mail: Guard against line feeds in untrusted header sources.\n\nEmail-sending functions should ensure that header fields are guarded against untrusted inputs, and that they should not bleed into new headers or into the email body.\n\nThis patch adds these guards by removing line feeds in the inputs to these header values. This will result in some minor corruption of already-corrupt data, but will prevent unwanted structural injetions into the outbound emails.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16113\nDiscussed in: https://core.trac.wordpress.org/ticket/66769\n\nProps dmsnell, sirlouen, westonruter.\nFixes #66769.\n",
+        "date": "2026-11-23T18:49:28.169663Z",
+        "files": [
+            "/trunk/phpcs.xml.dist",
+            "/trunk/src/wp-includes/pluggable.php",
+            "/trunk/tests/phpunit/tests/comment.php"
+        ]
+    },
+    {
         "id": 65743,
         "author": "lancewillett",
         "message": "Build/Test Tools: Run the trash end-to-end tests in parallel.\n\nGive the Empty Trash test its own post type and restore only the post created by the current test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16175\n\nProps adrianmoldovanwp.\nSee #66392.\n",
