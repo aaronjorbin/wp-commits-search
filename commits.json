@@ -1,5 +1,15 @@
 [
     {
+        "id": 65740,
+        "author": "johnbillion",
+        "message": "Application Passwords: Send the created notification in the user's locale.\n\nThis ensures the receipient sees the notification in their chosen language when a password is added by a user that uses a different language.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16065\n\nProps mukesh27, peterwilsoncc.\n\nFixes #63927\n",
+        "date": "2026-11-23T10:51:26.629951Z",
+        "files": [
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/tests/phpunit/tests/functions/wpApplicationPasswordCreatedNotification.php"
+        ]
+    },
+    {
         "id": 65739,
         "author": "gziolo",
         "message": "Abilities API: Reject input that sanitization makes invalid\n\n`WP_Ability::prepare_input()` validated input before sanitizing it, but did not validate the sanitized value. Sanitization can turn accepted input into a value that breaks the schema. For example, whitespace or markup can become an empty string below `minLength`, and an infinite number can become `0` when cast to an integer with `minimum: 1`. Callbacks could then receive input that does not match the schema.\n\nWhen sanitization changes the value, `prepare_input()` now validates it again with `validate_input()`, including the `wp_ability_validate_input` filter. Unchanged input is validated only once. Validation errors are returned before the permission and execute callbacks run.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15911.\nFollow-up to r65044, r65370.\n\nReviewed by jorgefilipecosta.\n\nProps aryanjasala, avinashzala01, gziolo, jorgefilipecosta.\nFixes #66665.\n\n",
