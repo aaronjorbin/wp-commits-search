@@ -1,5 +1,14 @@
 [
     {
+        "id": 65741,
+        "author": "lancewillett",
+        "message": "Tests: Reset the script queue after Customizer manager tests.\n\nThe preview initialization test enqueues `customize-selective-refresh`. Clear `$wp_scripts` in `tear_down()` so the selective refresh test starts with its script unenqueued.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16158\n\nProps ekamran.\nSee #66755.\n",
+        "date": "2026-11-23T13:54:03.728654Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/customize/manager.php"
+        ]
+    },
+    {
         "id": 65740,
         "author": "johnbillion",
         "message": "Application Passwords: Send the created notification in the user's locale.\n\nThis ensures the receipient sees the notification in their chosen language when a password is added by a user that uses a different language.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16065\n\nProps mukesh27, peterwilsoncc.\n\nFixes #63927\n",
