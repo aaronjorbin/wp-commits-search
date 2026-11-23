@@ -1,5 +1,20 @@
 [
     {
+        "id": 65742,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Run theme management E2E tests in parallel.\n\nKeep theme activation in the serial project. Use a shared `UPGRADER` lock so plugin and theme uploads cannot delete each other\u2019s unpacked files.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16127\n\nFollow-up to r65723.\n\nProps adrianmoldovanwp.\nSee #66392.\n",
+        "date": "2026-11-23T15:10:09.931514Z",
+        "files": [
+            "/trunk/tests/e2e/README.md",
+            "/trunk/tests/e2e/playwright.config.js",
+            "/trunk/tests/e2e/specs/plugins.test.js",
+            "/trunk/tests/e2e/specs/theme-activation.test.js",
+            "/trunk/tests/e2e/specs/themes.test.js",
+            "/trunk/tests/e2e/utils/locks.js",
+            "/trunk/tests/e2e/utils/themes.js"
+        ]
+    },
+    {
         "id": 65741,
         "author": "lancewillett",
         "message": "Tests: Reset the script queue after Customizer manager tests.\n\nThe preview initialization test enqueues `customize-selective-refresh`. Clear `$wp_scripts` in `tear_down()` so the selective refresh test starts with its script unenqueued.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16158\n\nProps ekamran.\nSee #66755.\n",
