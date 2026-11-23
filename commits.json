@@ -1,5 +1,14 @@
 [
     {
+        "id": 65745,
+        "author": "lancewillett",
+        "message": "Tests: Restore theme features after image header tests.\n\nKeep custom header dimensions set by these tests from affecting later REST theme responses.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16182\n\nProps mayankmajeji.\nSee #66755.\n",
+        "date": "2026-11-23T22:05:19.013884Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/image/header.php"
+        ]
+    },
+    {
         "id": 65744,
         "author": "dmsnell",
         "message": "Mail: Guard against line feeds in untrusted header sources.\n\nEmail-sending functions should ensure that header fields are guarded against untrusted inputs, and that they should not bleed into new headers or into the email body.\n\nThis patch adds these guards by removing line feeds in the inputs to these header values. This will result in some minor corruption of already-corrupt data, but will prevent unwanted structural injetions into the outbound emails.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16113\nDiscussed in: https://core.trac.wordpress.org/ticket/66769\n\nProps dmsnell, sirlouen, westonruter.\nFixes #66769.\n",
