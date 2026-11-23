@@ -1,5 +1,16 @@
 [
     {
+        "id": 65739,
+        "author": "gziolo",
+        "message": "Abilities API: Reject input that sanitization makes invalid\n\n`WP_Ability::prepare_input()` validated input before sanitizing it, but did not validate the sanitized value. Sanitization can turn accepted input into a value that breaks the schema. For example, whitespace or markup can become an empty string below `minLength`, and an infinite number can become `0` when cast to an integer with `minimum: 1`. Callbacks could then receive input that does not match the schema.\n\nWhen sanitization changes the value, `prepare_input()` now validates it again with `validate_input()`, including the `wp_ability_validate_input` filter. Unchanged input is validated only once. Validation errors are returned before the permission and execute callbacks run.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15911.\nFollow-up to r65044, r65370.\n\nReviewed by jorgefilipecosta.\n\nProps aryanjasala, avinashzala01, gziolo, jorgefilipecosta.\nFixes #66665.\n\n",
+        "date": "2026-11-23T09:38:01.410688Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities-api/class-wp-ability.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpAbility.php",
+            "/trunk/tests/phpunit/tests/rest-api/wpRestAbilitiesV1RunController.php"
+        ]
+    },
+    {
         "id": 65738,
         "author": "SergeyBiryukov",
         "message": "Tests: Cover `user_can_richedit()`.\n\nVerify that the function returns `true` when the browser supports the visual editor and the user option is enabled, `false` otherwise.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15359.\n\nProps devmuhib, huzaifaalmesbah, lancewillett.\nSee #65819.",
