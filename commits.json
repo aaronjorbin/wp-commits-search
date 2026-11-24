@@ -1,5 +1,15 @@
 [
     {
+        "id": 65749,
+        "author": "peterwilsoncc",
+        "message": "Editor: Restore the default block editor styles.\n\nMoves the default block editor styles into `get_default_block_editor_settings()` rather than attempting to read them from `wp-includes/css/dist/block-editor/default-editor-styles.css`.\n\nThe file's source was removed from the block editor package in https://github.com/WordPress/gutenberg/commit/aee1d484423d020fd6b4857abdae29b01c079530, so the `defaultEditorStyles` setting was empty and the styles were missing in these places:\n\n* The block editor, when a user turns off the theme styles preference.\n* The Customizer's widgets editor.\n\nThe file's post title rule is not restored. The `.editor-post-title__block` class it targets was removed in WordPress 5.9.\n\nThe tests are updated to ensure the default editor styles are populated.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16118\n\nFollow-up to r63535.\n\nReviewed by wildworks.\n\nProps mukesh27, wildworks.\nFixes #66762.\n\n",
+        "date": "2026-11-24T01:12:19.224356Z",
+        "files": [
+            "/trunk/src/wp-includes/block-editor.php",
+            "/trunk/tests/phpunit/tests/blocks/editor.php"
+        ]
+    },
+    {
         "id": 65748,
         "author": "adamsilverstein",
         "message": "Media: Create image sizes that share dimensions on upload.\n\nWhen client-side media processing is active and two or more registered image sizes have the same dimensions, the Media Library upload pipeline sideloads one file for all of them and sends their names as an array in `image_size`. `flattenFormData()` in `media-upload-pipeline.js` only recursed into plain objects, so the array was sent as a comma-separated string. The sideload endpoint rejected it with a 400 and none of those sizes were created, while the upload itself appeared to succeed.\n\nRecurse into arrays as well as plain objects, matching `flattenFormData()` in the media-utils package since https://github.com/WordPress/gutenberg/pull/82353. This affects only Media > Add New and the Media Library grid. The block editor already handled arrays correctly.\n\nFollow-up to [64588].\n\nReviewed by westonruter.\n\nProps aryanjasala, ozgursar, dhrupo, jyria, kirasong, westonruter.\nFixes #66412.\n\n",
