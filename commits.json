@@ -1,5 +1,15 @@
 [
     {
+        "id": 65761,
+        "author": "lancewillett",
+        "message": "Tests: Remove redundant taxonomy cleanup.\n\nThe test harness resets the private block-binding and category test taxonomies before the next test.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15502, https://github.com/WordPress/wordpress-develop/pull/15503\n\nProps devmuhib, peterwilsoncc.\nSee #66755.\n",
+        "date": "2026-11-24T16:29:30.621956Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/block-bindings/termDataSource.php",
+            "/trunk/tests/phpunit/tests/category/getAllCategoryIds.php"
+        ]
+    },
+    {
         "id": 65760,
         "author": "audrasjb",
         "message": "Post WordPress 7.2 RC 3 version bump.\n\n",
