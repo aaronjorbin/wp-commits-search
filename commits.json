@@ -1,5 +1,26 @@
 [
     {
+        "id": 65753,
+        "author": "wildworks",
+        "message": "Help/About: Update the About page for 7.2.\n\nIntroduces the new content for the 7.2 About page.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16078\n\nProps adamsilverstein, fcoveram, huzaifaalmesbah, mamaduka, markoserb, mosescursor, nazmul111, obenland, peterwilsoncc, sfougnier, trascaandrei, tusharaddweb, wildworks.\nFixes #66202.",
+        "date": "2026-11-24T10:59:19.441086Z",
+        "files": [
+            "/trunk/src/wp-admin/about.php",
+            "/trunk/src/wp-admin/css/about.css",
+            "/trunk/src/wp-admin/images/about-header-credits-rtl.svg",
+            "/trunk/src/wp-admin/images/about-header-credits.svg",
+            "/trunk/src/wp-admin/images/about-header-default-rtl.svg",
+            "/trunk/src/wp-admin/images/about-header-default.svg",
+            "/trunk/src/wp-admin/images/about-header-freedoms-rtl.svg",
+            "/trunk/src/wp-admin/images/about-header-freedoms.svg",
+            "/trunk/src/wp-admin/images/about-header-get-involved-rtl.svg",
+            "/trunk/src/wp-admin/images/about-header-get-involved.svg",
+            "/trunk/src/wp-admin/images/about-header-privacy-rtl.svg",
+            "/trunk/src/wp-admin/images/about-header-privacy.svg",
+            "/trunk/src/wp-admin/images/about-release-badge.svg"
+        ]
+    },
+    {
         "id": 65752,
         "author": "jorgefilipecosta",
         "message": "Abilities API: Read the schema default in `core/settings-get`.\n\nUses the default declared in a setting's `show_in_abilities` or `show_in_rest` schema when reading a setting that was never saved, rather than only the registered `default` argument. The registered default is still used when the schema declares none.\nThe tests are updated to ensure schema defaults are returned for settings that were never saved.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16062\n\nFollow-up to r64311.\n\nReviewed by peterwilsoncc.\n\nProps mukesh27, peterwilsoncc.\nFixes #64605.",
