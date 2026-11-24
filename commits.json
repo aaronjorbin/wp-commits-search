@@ -1,5 +1,23 @@
 [
     {
+        "id": 65750,
+        "author": "adamsilverstein",
+        "message": "Comments: Tighten note and reaction rules in all handlers.\n\nEnsure all routes enforce that a reaction belongs to its author, carries one of the curated emoji keys and sits under a note on the same post, including Ajax and XML-RPC update routes.\n\nAlso, a note reply must have a note on the same post as its parent, and `reaction_summary` only counts reactions that are on their note's post and use a curated key.\n\nFollow-up to [64488], [64999], [65222].\n\nReviewed by westonruter.\n\nProps westonruter, wildworks, mamaduka.\nFixes #66635.\n\n",
+        "date": "2026-11-24T06:18:49.132733Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/ajax-actions.php",
+            "/trunk/src/wp-admin/includes/comment.php",
+            "/trunk/src/wp-includes/class-wp-xmlrpc-server.php",
+            "/trunk/src/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php",
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxEditComment.php",
+            "/trunk/tests/phpunit/tests/ajax/wpAjaxReplytoComment.php",
+            "/trunk/tests/phpunit/tests/comment.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-comments-controller.php",
+            "/trunk/tests/phpunit/tests/xmlrpc/wp/editComment.php",
+            "/trunk/tests/qunit/fixtures/wp-api-generated.js"
+        ]
+    },
+    {
         "id": 65749,
         "author": "peterwilsoncc",
         "message": "Editor: Restore the default block editor styles.\n\nMoves the default block editor styles into `get_default_block_editor_settings()` rather than attempting to read them from `wp-includes/css/dist/block-editor/default-editor-styles.css`.\n\nThe file's source was removed from the block editor package in https://github.com/WordPress/gutenberg/commit/aee1d484423d020fd6b4857abdae29b01c079530, so the `defaultEditorStyles` setting was empty and the styles were missing in these places:\n\n* The block editor, when a user turns off the theme styles preference.\n* The Customizer's widgets editor.\n\nThe file's post title rule is not restored. The `.editor-post-title__block` class it targets was removed in WordPress 5.9.\n\nThe tests are updated to ensure the default editor styles are populated.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16118\n\nFollow-up to r63535.\n\nReviewed by wildworks.\n\nProps mukesh27, wildworks.\nFixes #66762.\n\n",
