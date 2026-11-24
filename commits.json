@@ -1,5 +1,30 @@
 [
     {
+        "id": 65752,
+        "author": "jorgefilipecosta",
+        "message": "Abilities API: Read the schema default in `core/settings-get`.\n\nUses the default declared in a setting's `show_in_abilities` or `show_in_rest` schema when reading a setting that was never saved, rather than only the registered `default` argument. The registered default is still used when the schema declares none.\nThe tests are updated to ensure schema defaults are returned for settings that were never saved.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16062\n\nFollow-up to r64311.\n\nReviewed by peterwilsoncc.\n\nProps mukesh27, peterwilsoncc.\nFixes #64605.",
+        "date": "2026-11-24T09:42:25.596409Z",
+        "files": [
+            "/trunk/src/wp-includes/abilities/class-wp-abilities-settings.php",
+            "/trunk/tests/phpunit/tests/abilities-api/wpRegisterCoreSettingsGetAbility.php"
+        ]
+    },
+    {
+        "id": 65751,
+        "author": "Mamaduka",
+        "message": "General: Bump the pinned hash for Gutenberg to `c5bdc7f`.\n\nThis updates the pinned commit hash of the Gutenberg repository from `efd7722f89ebb8abfc3607fffdd86f5e34afbd9c` to `c5bdc7f4898ec98114cdccbe1cacec7a979b85cc` (head of the `wp/7.2` branch).\n\nA full list of changes included in this commit can be found on GitHub: https://github.com/WordPress/gutenberg/compare/efd7722f89ebb8abfc3607fffdd86f5e34afbd9c...c5bdc7f4898ec98114cdccbe1cacec7a979b85cc.\n\n- Interactivity API: Align unsupported `data-wp-html` bindings with PHP (https://github.com/WordPress/gutenberg/pull/86968) (https://github.com/WordPress/gutenberg/pull/87015)\n- E2E: Select the link preview by URL in the keyboard test (https://github.com/WordPress/gutenberg/pull/87053) (https://github.com/WordPress/gutenberg/pull/87102)\n- Update the Update icon. (https://github.com/WordPress/gutenberg/pull/87088) (https://github.com/WordPress/gutenberg/pull/87139)\n- Editor: Hide parent controls for non-hierarchical post types (https://github.com/WordPress/gutenberg/pull/85679) (https://github.com/WordPress/gutenberg/pull/87150)\n- SearchableChipSelect: Use a single string for the chips toolbar label (https://github.com/WordPress/gutenberg/pull/87219) (https://github.com/WordPress/gutenberg/pull/87275)\n- E2E Tests: Switch the theme before the other setup resets (https://github.com/WordPress/gutenberg/pull/86278)\n- Abilities: Accept a date-time without an offset in the `date-time` schema format (https://github.com/WordPress/gutenberg/pull/86845) (https://github.com/WordPress/gutenberg/pull/87311)\n- Fix iOS tap into a quote jumping to the caret's block when it's off screen (https://github.com/WordPress/gutenberg/pull/86923)\n- Place the caret on a tap after the keyboard is swiped away (https://github.com/WordPress/gutenberg/pull/87182)\n- Writing flow: Keep the browser from deleting into a neighbouring block (https://github.com/WordPress/gutenberg/pull/87188)\n- Writing flow: Bring back the header iOS slides off screen, once the canvas stops scrolling (https://github.com/WordPress/gutenberg/pull/87316)\n- List: Drag a list item by its bullet again (https://github.com/WordPress/gutenberg/pull/85801)\n- MediaEdit: Show the image preview when the MIME type is empty (https://github.com/WordPress/gutenberg/pull/87207) (https://github.com/WordPress/gutenberg/pull/87326)\n- Block Editor: Fix block hover outline flicker when moving between elements of a block (https://github.com/WordPress/gutenberg/pull/86852) (https://github.com/WordPress/gutenberg/pull/87328)\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16187\n\nProps peterwilsoncc, mamaduka, linewebdigital, abhishekfdd, oandregal, jorgefilipecosta.\nSee #66340.\nFixes #66428.",
+        "date": "2026-11-24T09:17:17.108193Z",
+        "files": [
+            "/trunk/package.json",
+            "/trunk/src/wp-includes/assets/script-loader-packages.php",
+            "/trunk/src/wp-includes/assets/script-modules-packages.php",
+            "/trunk/src/wp-includes/build/scripts/core-fields/index.php",
+            "/trunk/src/wp-includes/build/scripts/core-fields/post_type_supports/parent/field.php",
+            "/trunk/src/wp-includes/images/icon-library/update.svg",
+            "/trunk/tests/phpunit/tests/entity-fields/wpRegisterCoreFieldCollections.php"
+        ]
+    },
+    {
         "id": 65750,
         "author": "adamsilverstein",
         "message": "Comments: Tighten note and reaction rules in all handlers.\n\nEnsure all routes enforce that a reaction belongs to its author, carries one of the curated emoji keys and sits under a note on the same post, including Ajax and XML-RPC update routes.\n\nAlso, a note reply must have a note on the same post as its parent, and `reaction_summary` only counts reactions that are on their note's post and use a curated key.\n\nFollow-up to [64488], [64999], [65222].\n\nReviewed by westonruter.\n\nProps westonruter, wildworks, mamaduka.\nFixes #66635.\n\n",
