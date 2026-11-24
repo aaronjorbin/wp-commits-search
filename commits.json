@@ -1,5 +1,55 @@
 [
     {
+        "id": 65760,
+        "author": "audrasjb",
+        "message": "Post WordPress 7.2 RC 3 version bump.\n\n",
+        "date": "2026-11-24T15:50:09.274497Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65759,
+        "author": "audrasjb",
+        "message": "Revert [65758].\n\n",
+        "date": "2026-11-24T15:49:22.072328Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65758,
+        "author": "audrasjb",
+        "message": "Post WordPress 7.2 RC 3 version bump.\n\n",
+        "date": "2026-11-24T15:45:44.363960Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
+        "id": 65757,
+        "author": "lancewillett",
+        "message": "Tests: Simplify post type cleanup.\n\nRemove duplicate cleanup for ordinary post types. Use `unregister_post_type()` where the test needs a type to disappear before an assertion.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/15489, https://github.com/WordPress/wordpress-develop/pull/15491, https://github.com/WordPress/wordpress-develop/pull/15492, https://github.com/WordPress/wordpress-develop/pull/15493, https://github.com/WordPress/wordpress-develop/pull/15495, https://github.com/WordPress/wordpress-develop/pull/15496\n\nProps devmuhib, peterwilsoncc.\nSee #66755.\n",
+        "date": "2026-11-24T15:31:32.045756Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/customize/nav-menu-item-setting.php",
+            "/trunk/tests/phpunit/tests/link/getDeletePostLink.php",
+            "/trunk/tests/phpunit/tests/rest-api/rest-posts-controller.php",
+            "/trunk/tests/phpunit/tests/rewrite.php",
+            "/trunk/tests/phpunit/tests/user/capabilities.php",
+            "/trunk/tests/phpunit/tests/view-config.php"
+        ]
+    },
+    {
+        "id": 65756,
+        "author": "audrasjb",
+        "message": "WordPress 7.2 RC 3.\n\n",
+        "date": "2026-11-24T15:17:58.680035Z",
+        "files": [
+            "/trunk/src/wp-includes/version.php"
+        ]
+    },
+    {
         "id": 65755,
         "author": "lancewillett",
         "message": "Tests: Allow hosts to opt out of HTTP loopback fixtures.\n\nHonor `WP_TESTS_SKIP_HTTP_LOOPBACK=1` when PHP cannot reserve a local TCP port. Continue running transport tests that do not need the fixture. If PHP reserves a port but the server fails to start, report the failure.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16183\n\nProps verygoode, tessory, amykamala, lucatume, adrianmoldovanwp.\nSee #66794.\n",
