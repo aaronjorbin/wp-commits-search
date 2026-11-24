@@ -1,5 +1,24 @@
 [
     {
+        "id": 65748,
+        "author": "adamsilverstein",
+        "message": "Media: Create image sizes that share dimensions on upload.\n\nWhen client-side media processing is active and two or more registered image sizes have the same dimensions, the Media Library upload pipeline sideloads one file for all of them and sends their names as an array in `image_size`. `flattenFormData()` in `media-upload-pipeline.js` only recursed into plain objects, so the array was sent as a comma-separated string. The sideload endpoint rejected it with a 400 and none of those sizes were created, while the upload itself appeared to succeed.\n\nRecurse into arrays as well as plain objects, matching `flattenFormData()` in the media-utils package since https://github.com/WordPress/gutenberg/pull/82353. This affects only Media > Add New and the Media Library grid. The block editor already handled arrays correctly.\n\nFollow-up to [64588].\n\nReviewed by westonruter.\n\nProps aryanjasala, ozgursar, dhrupo, jyria, kirasong, westonruter.\nFixes #66412.\n\n",
+        "date": "2026-11-23T23:28:40.629764Z",
+        "files": [
+            "/trunk/src/js/_enqueues/admin/media-upload-pipeline.js",
+            "/trunk/tests/e2e/specs/media-new-client-side-upload.test.js"
+        ]
+    },
+    {
+        "id": 65747,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Cover `wp_default_editor()`.\n\nVerify that the function returns `tinymce` by default or user editor setting when set.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15358.\n\nProps devmuhib, huzaifaalmesbah, lancewillett.\nSee #65819.",
+        "date": "2026-11-23T23:23:12.775960Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/wpDefaultEditor.php"
+        ]
+    },
+    {
         "id": 65746,
         "author": "lancewillett",
         "message": "Tests: Log out after creating privileged class fixtures.\n\nRestore the logged-out user before the test harness saves the sanitization filters for subsequent tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16185\n\nProps mayankmajeji.\nSee #66755.\n",
