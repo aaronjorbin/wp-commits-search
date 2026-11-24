@@ -1,5 +1,26 @@
 [
     {
+        "id": 65755,
+        "author": "lancewillett",
+        "message": "Tests: Allow hosts to opt out of HTTP loopback fixtures.\n\nHonor `WP_TESTS_SKIP_HTTP_LOOPBACK=1` when PHP cannot reserve a local TCP port. Continue running transport tests that do not need the fixture. If PHP reserves a port but the server fails to start, report the failure.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16183\n\nProps verygoode, tessory, amykamala, lucatume, adrianmoldovanwp.\nSee #66794.\n",
+        "date": "2026-11-24T14:21:03.854739Z",
+        "files": [
+            "/trunk/tests/phpunit/README.md",
+            "/trunk/tests/phpunit/tests/http/base.php"
+        ]
+    },
+    {
+        "id": 65754,
+        "author": "lancewillett",
+        "message": "Tests: Keep the oEmbed suite running without SimpleXML.\n\nRequire `SimpleXML` for the XML-only tests so an unavailable extension cannot end the PHPUnit run early with a successful exit code. Check the requirement before starting the isolated headers test.\n\nKeep checking JSON discovery links and filters on every build. Expect the XML discovery link only when `SimpleXMLElement` is available.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16171\n\nProps shanerounce.\nFixes #66788.\n",
+        "date": "2026-11-24T14:19:18.478135Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/oembed/controller.php",
+            "/trunk/tests/phpunit/tests/oembed/discovery.php",
+            "/trunk/tests/phpunit/tests/oembed/headers.php"
+        ]
+    },
+    {
         "id": 65753,
         "author": "wildworks",
         "message": "Help/About: Update the About page for 7.2.\n\nIntroduces the new content for the 7.2 About page.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16078\n\nProps adamsilverstein, fcoveram, huzaifaalmesbah, mamaduka, markoserb, mosescursor, nazmul111, obenland, peterwilsoncc, sfougnier, trascaandrei, tusharaddweb, wildworks.\nFixes #66202.",
