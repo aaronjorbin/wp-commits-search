@@ -1,5 +1,19 @@
 [
     {
+        "id": 65779,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Filter E2E lists to test-owned rows.\n\nFilter comment lists by post and find the Quick Edit page by its unique title so other workers cannot push the target off the first page. Reuse the shared settings, logged-out page, and attachment fixtures.\n\nFollow-up to r65049.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16206\n\nProps adrianmoldovanwp.\nSee #66392, #66455.\n",
+        "date": "2026-11-25T13:31:28.860260Z",
+        "files": [
+            "/trunk/tests/e2e/specs/comments.test.js",
+            "/trunk/tests/e2e/specs/general-settings.test.js",
+            "/trunk/tests/e2e/specs/media-upload.test.js",
+            "/trunk/tests/e2e/specs/moderate-comments.test.js",
+            "/trunk/tests/e2e/specs/pages/quick-edit-page.test.js",
+            "/trunk/tests/e2e/specs/users.test.js"
+        ]
+    },
+    {
         "id": 65778,
         "author": "ntsekouras",
         "message": "Editor: Update the post editor preload paths for the DataForm inspector.\n\nThe DataForm-based inspector requests the form config of the post type on load, so preload `/wp/v2/view-config` with `_fields=form`. Remove the preload of the post author user, which was only requested by the previous author panel.\n\nSee https://github.com/WordPress/gutenberg/pull/85081.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14494.\n\nReviewed by mamaduka.\nMerges [65772] to the 7.2 branch.\n\nProps ntsekouras, oandregal, mamaduka.\nFixes #66339.\n",
