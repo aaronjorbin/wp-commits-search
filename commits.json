@@ -1,5 +1,41 @@
 [
     {
+        "id": 65773,
+        "author": "westonruter",
+        "message": "Code Quality: Resolve the `deadCode.unreachable` PHPStan errors.\n\nOnly one of the unreachable statements in the baseline could never run, the trailing `wp_send_json_error()` in `wp_ajax_set_attachment_thumbnail()`, which would only have appended a second response after one had already been sent, and it is removed. The others are kept on purpose:\n\n* Translatable strings after a `return`, so that they are added to the POT file.\n* An `exit` or `break` that keeps a `switch` case from reading as falling through.\n* The `wp_die()` fallback for a list table supplied by the `wp_list_table_class_name` filter whose `ajax_response()` returns.\n* The `die()` that stops a request with an invalid nonce even if a custom `wp_die()` handler returns.\n\nSince these should never be fixed, they are ignored inline with a reason rather than left in a baseline, which would invite contributors to remove them. Unlike the counted entries used for the HTML API in r64294, an inline ignore names the exact statement, so a genuine unreachable statement added to the same file is still reported. The Ajax handlers involved are also documented as never returning.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16224.\nFollow-up to r29029, r63023, r64294.\n\nProps mukesh27, westonruter.\nSee #66739.\n",
+        "date": "2026-11-25T08:09:51.902429Z",
+        "files": [
+            "/trunk/src/wp-admin/about.php",
+            "/trunk/src/wp-admin/credits.php",
+            "/trunk/src/wp-admin/includes/ajax-actions.php",
+            "/trunk/src/wp-admin/post.php",
+            "/trunk/src/wp-includes/capabilities.php",
+            "/trunk/src/wp-includes/pluggable.php",
+            "/trunk/tests/phpstan/baselines/deadCode.unreachable.neon"
+        ]
+    },
+    {
+        "id": 65772,
+        "author": "ntsekouras",
+        "message": "Editor: Update the post editor preload paths for the DataForm inspector.\n\nThe DataForm-based inspector requests the form config of the post type on load, so preload `/wp/v2/view-config` with `_fields=form`. Remove the preload of the post author user, which was only requested by the previous author panel.\n\nSee https://github.com/WordPress/gutenberg/pull/85081.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14494.\n\nProps ntsekouras, oandregal, mamaduka.\nFixes #66339.\n",
+        "date": "2026-11-25T08:07:25.685819Z",
+        "files": [
+            "/trunk/src/wp-admin/edit-form-blocks.php"
+        ]
+    },
+    {
+        "id": 65771,
+        "author": "westonruter",
+        "message": "Code Quality: Correct by-ref types in UTF-8 compat functions.\n\nIn `_wp_scan_utf8()` the `$has_noncharacters` reference was accumulated with the bitwise `|=` operator, which turned the boolean into an integer as soon as a sequence able to encode a noncharacter was scanned, contrary to its documented type. It is now accumulated with a logical OR, so callers always receive a boolean.\n\nNew `@param-out` tags document that `$has_noncharacters` and `$found_code_points` are never null on return, even though both accept null when passed in. This empties the `parameterByRef.unusedType` baseline, so it is removed. New tests cover how `_wp_scan_utf8()` counts code points across multibyte sequences and grapheme clusters, how it reports the maximal subparts of invalid byte sequences, and how it detects noncharacters.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14025.\nFollow-up to r61000, r63022.\n\nProps huzaifaalmesbah, dmsnell, lancewillett, westonruter, rcwpdev.\nSee #66739.\n",
+        "date": "2026-11-25T07:18:50.504504Z",
+        "files": [
+            "/trunk/src/wp-includes/compat-utf8.php",
+            "/trunk/tests/phpstan/baselines/parameterByRef.type.neon",
+            "/trunk/tests/phpstan/baselines/parameterByRef.unusedType.neon",
+            "/trunk/tests/phpunit/tests/compat/wpScanUtf8.php"
+        ]
+    },
+    {
         "id": 65770,
         "author": "westonruter",
         "message": "Code Quality: Call `process_blocks_custom_css()` statically.\n\nThe `WP_Theme_JSON::process_blocks_custom_css()` method is declared static, yet three of its call sites invoked it through `$this` while the others already used `static::`. Behavior is unchanged, since both forms resolve the method with late static binding. In Gutenberg the same change, made in https://github.com/WordPress/gutenberg/pull/87058, cleared the only errors of the `dynamicCallOnStaticMethod` rule from phpstan-strict-rules, so making it here keeps `WP_Theme_JSON` in sync with its Gutenberg counterpart.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16093.\nFollow-up to r55192, r58421.\n\nProps noruzzaman, westonruter.\nSee #66739.\n",
