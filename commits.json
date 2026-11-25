@@ -1,5 +1,51 @@
 [
     {
+        "id": 65787,
+        "author": "lancewillett",
+        "message": "Themes: Test registering and removing default headers.\n\nCheck that successive registrations preserve existing headers and that removing one or more headers updates the registry.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16190\n\nFollow-up to r27575.\n\nProps rejaulalomkhan.\nFixes #66826.\n",
+        "date": "2026-11-25T18:06:55.135353Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme/defaultHeaders.php"
+        ]
+    },
+    {
+        "id": 65786,
+        "author": "lancewillett",
+        "message": "Themes: Test header video player selection.\n\nCover the MIME type and video URL returned by `get_header_video_settings()` for YouTube, direct video files and an unset URL.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16189\n\nFollow-up to r38985.\n\nProps rejaulalomkhan.\nFixes #66825.\n",
+        "date": "2026-11-25T18:05:54.351946Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme/getHeaderVideoSettings.php"
+        ]
+    },
+    {
+        "id": 65785,
+        "author": "lancewillett",
+        "message": "Themes: Test the empty theme feature registry fallback.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16188\n\nFollow-up to r48171.\n\nProps rejaulalomkhan.\nFixes #66824.\n",
+        "date": "2026-11-25T18:04:19.423574Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme.php"
+        ]
+    },
+    {
+        "id": 65784,
+        "author": "lancewillett",
+        "message": "Tests: Clear the Customizer manager between tests.\n\nReset `$wp_customize` in teardown so later widget tests run outside the Customizer preview.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16248\n\nProps mayankmajeji.\nSee #66755.\n",
+        "date": "2026-11-25T17:56:55.410903Z",
+        "files": [
+            "/trunk/tests/phpunit/includes/abstract-testcase.php"
+        ]
+    },
+    {
+        "id": 65783,
+        "author": "westonruter",
+        "message": "Code Quality: Fix the `$args` types of `wp_get_recent_posts()`.\n\nThe `$args` parameter was documented as accepting only an array, even though a deprecated integer number of posts is still accepted. PHPStan therefore concluded that the deprecated branch could never run, and reported the value passed to `absint()` there as an unresolvable type. Documenting the integer form, as was done for `wp_get_typography_font_size_value()` in r64163, empties the `argument.unresolvableType` baseline, so it is removed.\n\nFor static analysis the integer is narrowed to `positive-int`, since `absint()` silently turns a negative number into a positive count and `0` falls back to the `posts_per_page` option. A hash now documents the arguments whose defaults differ from those of `get_posts()`.\n\nAt level 10 the parsed arguments could not be passed to `get_posts()`, because the inline `@var` typed only `fields`. It now types the keys that `get_posts()` documents. Instead of being asserted to be `null`, `fields` is limited to `''` or `'all'`, since a caller asking for IDs would make `get_object_vars()` throw a `TypeError` with the default `ARRAY_A` output. The `include` and `exclude` defaults become empty arrays to match their documented type, which has no runtime effect.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15450.\nFollow-up to r62648, r63024, r64163.\n\nProps mukesh27, westonruter.\nSee #66739.\n",
+        "date": "2026-11-25T17:42:33.297664Z",
+        "files": [
+            "/trunk/src/wp-includes/post.php",
+            "/trunk/tests/phpstan/baselines/argument.unresolvableType.neon"
+        ]
+    },
+    {
         "id": 65782,
         "author": "ntsekouras",
         "message": "Editor: Keep the entity fields registry immutable when its init action fires again.\n\n`WP_Entity_Fields_Registry` checked `doing_action( 'wp_entity_fields_api_init' )`\nto allow `register()`, `update()`, `unregister()`, and `register_collection()`.\nSo firing the action again with `do_action()` after the registry had been read\nreopened it to changes. The registry now records when it fires the action\nitself, as `WP_Entity_Actions_Registry` already does.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16009.\n\nReviewed by oandregal.\nMerges [65781] to the 7.2 branch.\n\nProps banghamid, oandregal, abhishekfdd, wildworks, mamaduka, ntsekouras.\nFixes #66703.\n",
