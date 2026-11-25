@@ -1,5 +1,64 @@
 [
     {
+        "id": 65776,
+        "author": "swissspidy",
+        "message": "Code Quality: Add PHPStan integer ranges and literal types.\n\nNarrow integer return and parameter types to ranges such as `non-negative-int` and `positive-int`, and string and integer types to the literal values a function can actually take or return, so that static analysis can catch more mistakes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13893\n\nProps swissspidy, westonruter, marian1.\nSee #66739.",
+        "date": "2026-11-25T10:59:46.299475Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/bookmark.php",
+            "/trunk/src/wp-admin/includes/class-custom-image-header.php",
+            "/trunk/src/wp-admin/includes/class-wp-importer.php",
+            "/trunk/src/wp-admin/includes/taxonomy.php",
+            "/trunk/src/wp-admin/includes/template.php",
+            "/trunk/src/wp-includes/bookmark.php",
+            "/trunk/src/wp-includes/class-wp-locale.php",
+            "/trunk/src/wp-includes/class-wpdb.php",
+            "/trunk/src/wp-includes/comment.php",
+            "/trunk/src/wp-includes/formatting.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/src/wp-includes/load.php",
+            "/trunk/src/wp-includes/pluggable.php",
+            "/trunk/src/wp-includes/plugin.php",
+            "/trunk/src/wp-includes/post-template.php",
+            "/trunk/src/wp-includes/rest-api.php",
+            "/trunk/src/wp-includes/script-loader.php",
+            "/trunk/src/wp-includes/taxonomy.php",
+            "/trunk/tests/phpstan/baselines/argument.type.neon",
+            "/trunk/tests/phpunit/includes/abstract-testcase.php",
+            "/trunk/tests/phpunit/includes/utils.php",
+            "/trunk/tests/phpunit/tests/user.php"
+        ]
+    },
+    {
+        "id": 65775,
+        "author": "swissspidy",
+        "message": "Bundled Themes: Place translator comments directly before their strings.\n\nSome translator comments were placed in front of a ternary operator or shared a line with several translatable strings. String extraction tools either miss such comments or attach them to the wrong string. This moves each comment directly before the gettext call it describes.\n\nThis is the bundled themes counterpart of r65774, which fixes the same problem in core.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16071\n\nProps swissspidy, mukesh27.\nSee #66747.",
+        "date": "2026-11-25T10:55:10.035609Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentyeleven/archive.php",
+            "/trunk/src/wp-content/themes/twentyfourteen/archive.php",
+            "/trunk/src/wp-content/themes/twentyfourteen/inc/customizer.php",
+            "/trunk/src/wp-content/themes/twentyseventeen/single.php",
+            "/trunk/src/wp-content/themes/twentyten/archive.php",
+            "/trunk/src/wp-content/themes/twentythirteen/archive.php",
+            "/trunk/src/wp-content/themes/twentytwelve/archive.php"
+        ]
+    },
+    {
+        "id": 65774,
+        "author": "swissspidy",
+        "message": "I18N: Place translator comments directly before their strings.\n\nSome translator comments were placed in front of a ternary operator or shared a line with several translatable strings. String extraction tools either miss such comments or attach them to the wrong string. This moves each comment directly before the gettext call it describes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16069\n\nProps swissspidy, mukesh27.\nSee #66747.",
+        "date": "2026-11-25T10:53:33.434093Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/deprecated.php",
+            "/trunk/src/wp-admin/includes/update.php",
+            "/trunk/src/wp-includes/class-wp-object-cache.php",
+            "/trunk/src/wp-includes/class-wp-taxonomy.php",
+            "/trunk/src/wp-includes/class-wp-theme-json.php",
+            "/trunk/src/wp-includes/pluggable.php"
+        ]
+    },
+    {
         "id": 65773,
         "author": "westonruter",
         "message": "Code Quality: Resolve the `deadCode.unreachable` PHPStan errors.\n\nOnly one of the unreachable statements in the baseline could never run, the trailing `wp_send_json_error()` in `wp_ajax_set_attachment_thumbnail()`, which would only have appended a second response after one had already been sent, and it is removed. The others are kept on purpose:\n\n* Translatable strings after a `return`, so that they are added to the POT file.\n* An `exit` or `break` that keeps a `switch` case from reading as falling through.\n* The `wp_die()` fallback for a list table supplied by the `wp_list_table_class_name` filter whose `ajax_response()` returns.\n* The `die()` that stops a request with an invalid nonce even if a custom `wp_die()` handler returns.\n\nSince these should never be fixed, they are ignored inline with a reason rather than left in a baseline, which would invite contributors to remove them. Unlike the counted entries used for the HTML API in r64294, an inline ignore names the exact statement, so a genuine unreachable statement added to the same file is still reported. The Ajax handlers involved are also documented as never returning.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16224.\nFollow-up to r29029, r63023, r64294.\n\nProps mukesh27, westonruter.\nSee #66739.\n",
