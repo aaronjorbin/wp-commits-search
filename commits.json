@@ -1,5 +1,16 @@
 [
     {
+        "id": 65788,
+        "author": "westonruter",
+        "message": "Code Quality: Resolve the notIdentical.alwaysTrue PHPStan errors.\n\nIn `wp_timezone_choice()` the `'Etc' !== $zone[0]` check has always been true since `Etc` was removed from the list of continents in r12507, because zones outside that list are skipped before the check is reached.\n\nIn `wp_rand()` the `false !== $val` check after calling `random_int()` was added in r34981, while PHP 7 was still in release candidates whose `random_int()` had only just switched from returning `false` on failure to throwing an exception. Stable PHP 7.0 shipped with the exception, and the bundled `random_compat` polyfill always threw, so the check could never fail. Since r56141 raised the minimum PHP version and removed the polyfill, the existing `catch` blocks are what fall back to the internal generator, so behavior is unchanged. Removing the two checks empties the baseline, so it is removed.\n\nAdditionally, `wp_rand()` now passes PHPStan level 10. Its return type is narrowed to `non-negative-int`, which both code paths already guarantee, and the seed read with `get_transient()` is reset to an empty string when it is not a string, which keeps the existing behavior for a missing transient whose `false` value was concatenated as an empty string.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14036.\nFollow-up to r11597, r12507, r34981, r56141, r63023.\n\nProps huzaifaalmesbah, westonruter.\nSee #66739.\n",
+        "date": "2026-11-25T18:34:24.956507Z",
+        "files": [
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/src/wp-includes/pluggable.php",
+            "/trunk/tests/phpstan/baselines/notIdentical.alwaysTrue.neon"
+        ]
+    },
+    {
         "id": 65787,
         "author": "lancewillett",
         "message": "Themes: Test registering and removing default headers.\n\nCheck that successive registrations preserve existing headers and that removing one or more headers updates the registry.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16190\n\nFollow-up to r27575.\n\nProps rejaulalomkhan.\nFixes #66826.\n",
