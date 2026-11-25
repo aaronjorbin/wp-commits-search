@@ -1,5 +1,35 @@
 [
     {
+        "id": 65782,
+        "author": "ntsekouras",
+        "message": "Editor: Keep the entity fields registry immutable when its init action fires again.\n\n`WP_Entity_Fields_Registry` checked `doing_action( 'wp_entity_fields_api_init' )`\nto allow `register()`, `update()`, `unregister()`, and `register_collection()`.\nSo firing the action again with `do_action()` after the registry had been read\nreopened it to changes. The registry now records when it fires the action\nitself, as `WP_Entity_Actions_Registry` already does.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16009.\n\nReviewed by oandregal.\nMerges [65781] to the 7.2 branch.\n\nProps banghamid, oandregal, abhishekfdd, wildworks, mamaduka, ntsekouras.\nFixes #66703.\n",
+        "date": "2026-11-25T15:48:38.114943Z",
+        "files": [
+            "/branches/7.2",
+            "/branches/7.2/src/wp-includes/class-wp-entity-fields-registry.php",
+            "/branches/7.2/tests/phpunit/tests/entity-fields/wpEntityFieldsRegistry.php"
+        ]
+    },
+    {
+        "id": 65781,
+        "author": "ntsekouras",
+        "message": "Editor: Keep the entity fields registry immutable when its init action fires again.\n\n`WP_Entity_Fields_Registry` checked `doing_action( 'wp_entity_fields_api_init' )`\nto allow `register()`, `update()`, `unregister()`, and `register_collection()`.\nSo firing the action again with `do_action()` after the registry had been read\nreopened it to changes. The registry now records when it fires the action\nitself, as `WP_Entity_Actions_Registry` already does.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16009.\n\nProps banghamid, oandregal, abhishekfdd, wildworks, mamaduka, ntsekouras.\nFixes #66703.\n",
+        "date": "2026-11-25T15:42:09.537108Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-entity-fields-registry.php",
+            "/trunk/tests/phpunit/tests/entity-fields/wpEntityFieldsRegistry.php"
+        ]
+    },
+    {
+        "id": 65780,
+        "author": "lancewillett",
+        "message": "Tests: Clear the theme JSON cache before each theme test using `WP_Theme_UnitTestCase`.\n\nPrevent stylesheet tests from reading theme data cached by an earlier test class.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16226\n\nProps mayankmajeji, mukesh27.\nSee #66755.\n",
+        "date": "2026-11-25T15:12:34.597065Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/theme/base.php"
+        ]
+    },
+    {
         "id": 65779,
         "author": "lancewillett",
         "message": "Build/Test Tools: Filter E2E lists to test-owned rows.\n\nFilter comment lists by post and find the Quick Edit page by its unique title so other workers cannot push the target off the first page. Reuse the shared settings, logged-out page, and attachment fixtures.\n\nFollow-up to r65049.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16206\n\nProps adrianmoldovanwp.\nSee #66392, #66455.\n",
