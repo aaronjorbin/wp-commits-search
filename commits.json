@@ -1,5 +1,37 @@
 [
     {
+        "id": 65791,
+        "author": "westonruter",
+        "message": "Code Quality: Correct the type of `WP_Theme::$update`.\n\nThe property was documented as a boolean when it was declared on the class in r33957, which only accounted for `WP_MS_Themes_List_Table` setting it to true. Since r12066, however, `get_theme_updates()` has stored the theme's entry from the `update_themes` site transient in it, and callers read `new_version` from that array, which PHPStan reported as an offset access on a boolean. The docblock now describes the default, the flag, and the update data, and its type includes the array. This empties the `offsetAccess.nonOffsetAccessible` baseline, so it is removed.\n\nFor static analysis the update data is given an open array shape in which `new_version` is always a string, so the values passed to `printf()` and `sprintf()` are no longer mixed at level 10. The contents of the transient are still not validated by `get_theme_updates()`, which is left for a follow-up.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16240.\nFollow-up to r12066, r33957, r63022.\n\nProps mukesh27, westonruter.\nSee #66739.\n",
+        "date": "2026-11-25T19:55:46.110151Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme.php",
+            "/trunk/tests/phpstan/baselines/offsetAccess.nonOffsetAccessible.neon"
+        ]
+    },
+    {
+        "id": 65790,
+        "author": "lancewillett",
+        "message": "Revisions: Bound comparisons when rendering large diffs.\n\nSkip word highlighting for very long lines. Display removed lines followed by added lines when matching a changed block would exceed the line or pair limit. Sites can adjust the limits through `wp_text_diff()`.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16136\n\nProps iverok, justjack1, arkaprabhachowdhury, adamsilverstein, dmsnell, josephscott, mukesh27.\nFixes #66095.\nSee #48973.\n",
+        "date": "2026-11-25T19:33:37.772704Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-text-diff-renderer-table.php",
+            "/trunk/src/wp-includes/pluggable.php",
+            "/trunk/tests/phpunit/tests/diff/wpTextDiffRendererTable.php"
+        ]
+    },
+    {
+        "id": 65789,
+        "author": "westonruter",
+        "message": "Code Quality: Resolve the empty.variable PHPStan errors.\n\nIn `WP_Query::parse_search()` the search clause can never be empty after its loop, since at least one search term is always populated before the loop is reached, and in `WP_Query::get_posts()` every queried post type appends a clause to `$status_type_clauses`, so the checks guarding both are removed. In `wp_unique_term_slug()` the loop over parent terms is now a `do`/`while`, because the parent is already known to be non-empty before the first iteration, and the separate check for the end of the ancestry duplicated the loop condition. Behavior is unchanged in all three cases. Removing these empties the baseline, so it is removed.\n\nThe term object passed to `wp_unique_term_slug()` is also documented with an object shape, which requires the `taxonomy` property that PHPStan otherwise reports as undefined on a plain `object`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16242.\nFollow-up to r51276, r63019.\n\nProps sunasty, westonruter, mukesh27.\nSee #66739.\n",
+        "date": "2026-11-25T19:12:17.337846Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-query.php",
+            "/trunk/src/wp-includes/taxonomy.php",
+            "/trunk/tests/phpstan/baselines/empty.variable.neon"
+        ]
+    },
+    {
         "id": 65788,
         "author": "westonruter",
         "message": "Code Quality: Resolve the notIdentical.alwaysTrue PHPStan errors.\n\nIn `wp_timezone_choice()` the `'Etc' !== $zone[0]` check has always been true since `Etc` was removed from the list of continents in r12507, because zones outside that list are skipped before the check is reached.\n\nIn `wp_rand()` the `false !== $val` check after calling `random_int()` was added in r34981, while PHP 7 was still in release candidates whose `random_int()` had only just switched from returning `false` on failure to throwing an exception. Stable PHP 7.0 shipped with the exception, and the bundled `random_compat` polyfill always threw, so the check could never fail. Since r56141 raised the minimum PHP version and removed the polyfill, the existing `catch` blocks are what fall back to the internal generator, so behavior is unchanged. Removing the two checks empties the baseline, so it is removed.\n\nAdditionally, `wp_rand()` now passes PHPStan level 10. Its return type is narrowed to `non-negative-int`, which both code paths already guarantee, and the seed read with `get_transient()` is reset to an empty string when it is not a string, which keeps the existing behavior for a missing transient whose `false` value was concatenated as an empty string.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14036.\nFollow-up to r11597, r12507, r34981, r56141, r63023.\n\nProps huzaifaalmesbah, westonruter.\nSee #66739.\n",
