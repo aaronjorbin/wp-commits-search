@@ -1,5 +1,23 @@
 [
     {
+        "id": 65768,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Cover `wp_heartbeat_settings()`.\n\nVerify:\n- Injecting the relative `ajaxurl` for frontend requests while leaving `nonce` unset when logged out.\n- Injecting both `ajaxurl` and a valid `heartbeat-nonce` when a user is logged in.\n- Preserving any custom settings keys passed into the function.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15791.\n\nProps devmuhib, huzaifaalmesbah.\nSee #66757.",
+        "date": "2026-11-24T23:34:57.511123Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/wpHeartbeatSettings.php"
+        ]
+    },
+    {
+        "id": 65767,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Show individual end-to-end test names in CI.\n\nEnable Playwright\u2019s `list` reporter alongside the `github` reporter in CI so the job log names each test and retains GitHub annotations.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16212\n\nProps adrianmoldovanwp.\nSee #66455.\n",
+        "date": "2026-11-24T23:15:29.842809Z",
+        "files": [
+            "/trunk/tests/e2e/playwright.config.js"
+        ]
+    },
+    {
         "id": 65766,
         "author": "johnbillion",
         "message": "Build/Test Tools: Post-branching updates for the 7.2 branch.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16218\n\nProps johnbillion, audrasjb, peterwilsoncc\n\nSee #66738\n",
