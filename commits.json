@@ -1,5 +1,39 @@
 [
     {
+        "id": 65778,
+        "author": "ntsekouras",
+        "message": "Editor: Update the post editor preload paths for the DataForm inspector.\n\nThe DataForm-based inspector requests the form config of the post type on load, so preload `/wp/v2/view-config` with `_fields=form`. Remove the preload of the post author user, which was only requested by the previous author panel.\n\nSee https://github.com/WordPress/gutenberg/pull/85081.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/14494.\n\nReviewed by mamaduka.\nMerges [65772] to the 7.2 branch.\n\nProps ntsekouras, oandregal, mamaduka.\nFixes #66339.\n",
+        "date": "2026-11-25T11:43:54.568297Z",
+        "files": [
+            "/branches/7.2",
+            "/branches/7.2/src/wp-admin/edit-form-blocks.php"
+        ]
+    },
+    {
+        "id": 65777,
+        "author": "swissspidy",
+        "message": "Code Quality: Add PHPStan array shapes.\n\nDocument the known keys of arrays that functions accept or return as array shapes, such as the HTTP API response, which is defined once on `WP_Http` and reused by the remote request functions, and the widget, robots, and admin helper arrays. This lets static analysis check how the values are used.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13894\n\nProps swissspidy, westonruter, marian1, johnbillion.\nSee #66739.",
+        "date": "2026-11-25T11:11:52.942044Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/media.php",
+            "/trunk/src/wp-admin/includes/ms.php",
+            "/trunk/src/wp-admin/includes/nav-menu.php",
+            "/trunk/src/wp-admin/includes/post.php",
+            "/trunk/src/wp-includes/class-wp-dependencies.php",
+            "/trunk/src/wp-includes/class-wp-http.php",
+            "/trunk/src/wp-includes/class-wp-widget.php",
+            "/trunk/src/wp-includes/feed.php",
+            "/trunk/src/wp-includes/formatting.php",
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/src/wp-includes/http.php",
+            "/trunk/src/wp-includes/nav-menu.php",
+            "/trunk/src/wp-includes/robots-template.php",
+            "/trunk/src/wp-includes/shortcodes.php",
+            "/trunk/src/wp-includes/widgets.php",
+            "/trunk/tests/phpstan/baselines-strict/argument.type.neon"
+        ]
+    },
+    {
         "id": 65776,
         "author": "swissspidy",
         "message": "Code Quality: Add PHPStan integer ranges and literal types.\n\nNarrow integer return and parameter types to ranges such as `non-negative-int` and `positive-int`, and string and integer types to the literal values a function can actually take or return, so that static analysis can catch more mistakes.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13893\n\nProps swissspidy, westonruter, marian1.\nSee #66739.",
