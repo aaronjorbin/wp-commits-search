@@ -1,5 +1,14 @@
 [
     {
+        "id": 65796,
+        "author": "lancewillett",
+        "message": "Tests: Restore the rewrite object after rewrite tag tests.\n\nKeep the sitemap rules registered at bootstrap available to subsequent canonical redirect tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16250\n\nProps mayankmajeji.\nSee #66755.\n",
+        "date": "2026-11-25T21:08:38.474686Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rewrite/rewriteTags.php"
+        ]
+    },
+    {
         "id": 65795,
         "author": "lancewillett",
         "message": "Tests: Restore widget registries after widget tests.\n\nPreserve the sidebar and widget registrations that later Customizer tests inherit.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16249\n\nProps mayankmajeji.\nSee #66755.\n",
