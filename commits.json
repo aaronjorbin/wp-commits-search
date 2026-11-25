@@ -1,5 +1,50 @@
 [
     {
+        "id": 65795,
+        "author": "lancewillett",
+        "message": "Tests: Restore widget registries after widget tests.\n\nPreserve the sidebar and widget registrations that later Customizer tests inherit.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16249\n\nProps mayankmajeji.\nSee #66755.\n",
+        "date": "2026-11-25T21:07:31.802401Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/widgets.php"
+        ]
+    },
+    {
+        "id": 65794,
+        "author": "westonruter",
+        "message": "Code Quality: Resolve the `varTag.noVariable` PHPStan errors.\n\nPHPStan reports `varTag.noVariable` for a `@var` tag that names no variable and is not above a local variable assignment, since such a tag has nothing to apply to. Eight of these were above `define()` calls, which declare no variable, and they are removed. No type information is lost, since PHPStan reads the types of the constants that vary by environment from `dynamicConstantNames` and infers the others from their values. The tag for `CUSTOM_TAGS` was also wrong, as it described the constant as an array of tags rather than a flag, so its docblock now explains that defining it as `true` uses the KSES globals in place of the defaults.\n\nThe other nine were above assignments to `WP_Query` properties, where they were added in r49700 to help IDEs narrow the union property types. Neither PHPStan nor !PhpStorm applied them, and PHPStan already narrows each property from the assigned value, so they are removed as well. Two similar tags above local variables in `WP_Query::get_posts()` are also removed, since they only overrode the types PHPStan infers, one of them with a less precise type. This empties the baseline, so it is removed.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15449.\nFollow-up to r49700, r49927, r63020.\n\nProps mukesh27, westonruter.\nSee #66739.\n",
+        "date": "2026-11-25T21:06:33.133949Z",
+        "files": [
+            "/trunk/src/wp-admin/install.php",
+            "/trunk/src/wp-admin/profile.php",
+            "/trunk/src/wp-admin/upgrade.php",
+            "/trunk/src/wp-cron.php",
+            "/trunk/src/wp-includes/class-wp-query.php",
+            "/trunk/src/wp-includes/kses.php",
+            "/trunk/src/wp-includes/rest-api.php",
+            "/trunk/src/xmlrpc.php",
+            "/trunk/tests/phpstan/baselines/varTag.noVariable.neon"
+        ]
+    },
+    {
+        "id": 65793,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Cover `allowed_tags()`.\n\nVerify:\n- Default HTML entity-encoded allowed tags output from `$allowedtags`.\n- Custom allowed tags and attributes formatting.\n- Empty `$allowedtags` handling.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15316.\n\nProps devmuhib, huzaifaalmesbah.\nSee #66757.",
+        "date": "2026-11-25T21:05:41.742384Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/general/allowedTags.php"
+        ]
+    },
+    {
+        "id": 65792,
+        "author": "westonruter",
+        "message": "Code Quality: Resolve the identical.alwaysFalse PHPStan errors.\n\nIn `wp_rand()` the `3000000000 === 2147483647` comparison was added in r21685 to detect misconfigured 32-bit PHP builds (Entropy PHP, for example) that truncate integer literals larger than `PHP_INT_MAX` instead of overflowing them to floats, so that `0xffffffff` could be built from a string cast to a float on them. PHPStan evaluates the literals as a 64-bit build does, so it reported the comparison as always false. It is replaced with a `PHP_INT_SIZE` check, which uses the explicit float on every 32-bit build. Behavior is unchanged, since on a correctly configured 32-bit build the literal already overflows to the same float. This empties the baseline, so it is removed.\n\nThe `identical.alwaysFalse` ignore for `WP_HTML_Processor::step()` in `phpstan.neon.dist` remains, since that report is a false positive for the bookmark exhaustion guards added in r61755, which are intentional.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/13782.\nFollow-up to r21685, r63023.\n\nProps arshidkv12, westonruter, mukesh27.\nSee #66739.\n",
+        "date": "2026-11-25T20:25:48.265054Z",
+        "files": [
+            "/trunk/src/wp-includes/pluggable.php",
+            "/trunk/tests/phpstan/baselines/identical.alwaysFalse.neon"
+        ]
+    },
+    {
         "id": 65791,
         "author": "westonruter",
         "message": "Code Quality: Correct the type of `WP_Theme::$update`.\n\nThe property was documented as a boolean when it was declared on the class in r33957, which only accounted for `WP_MS_Themes_List_Table` setting it to true. Since r12066, however, `get_theme_updates()` has stored the theme's entry from the `update_themes` site transient in it, and callers read `new_version` from that array, which PHPStan reported as an offset access on a boolean. The docblock now describes the default, the flag, and the update data, and its type includes the array. This empties the `offsetAccess.nonOffsetAccessible` baseline, so it is removed.\n\nFor static analysis the update data is given an open array shape in which `new_version` is always a string, so the values passed to `printf()` and `sprintf()` are no longer mixed at level 10. The contents of the transient are still not validated by `get_theme_updates()`, which is left for a follow-up.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16240.\nFollow-up to r12066, r33957, r63022.\n\nProps mukesh27, westonruter.\nSee #66739.\n",
