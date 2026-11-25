@@ -1,5 +1,14 @@
 [
     {
+        "id": 65770,
+        "author": "westonruter",
+        "message": "Code Quality: Call `process_blocks_custom_css()` statically.\n\nThe `WP_Theme_JSON::process_blocks_custom_css()` method is declared static, yet three of its call sites invoked it through `$this` while the others already used `static::`. Behavior is unchanged, since both forms resolve the method with late static binding. In Gutenberg the same change, made in https://github.com/WordPress/gutenberg/pull/87058, cleared the only errors of the `dynamicCallOnStaticMethod` rule from phpstan-strict-rules, so making it here keeps `WP_Theme_JSON` in sync with its Gutenberg counterpart.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16093.\nFollow-up to r55192, r58421.\n\nProps noruzzaman, westonruter.\nSee #66739.\n",
+        "date": "2026-11-25T07:08:03.538425Z",
+        "files": [
+            "/trunk/src/wp-includes/class-wp-theme-json.php"
+        ]
+    },
+    {
         "id": 65769,
         "author": "westonruter",
         "message": "Build/Test Tools: Update PHPStan to 2.3.7.\n\nThis also updates `phpstan/phpstan-strict-rules` to 2.1.2. Both are bugfix releases, and neither changes what PHPStan reports for core, so the baselines are unchanged.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16186.\nFollow-up to r65265, r65537.\n\nSee #66739.\n",
