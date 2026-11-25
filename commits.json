@@ -1,5 +1,14 @@
 [
     {
+        "id": 65769,
+        "author": "westonruter",
+        "message": "Build/Test Tools: Update PHPStan to 2.3.7.\n\nThis also updates `phpstan/phpstan-strict-rules` to 2.1.2. Both are bugfix releases, and neither changes what PHPStan reports for core, so the baselines are unchanged.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16186.\nFollow-up to r65265, r65537.\n\nSee #66739.\n",
+        "date": "2026-11-25T04:09:19.707896Z",
+        "files": [
+            "/trunk/composer.json"
+        ]
+    },
+    {
         "id": 65768,
         "author": "SergeyBiryukov",
         "message": "Tests: Cover `wp_heartbeat_settings()`.\n\nVerify:\n- Injecting the relative `ajaxurl` for frontend requests while leaving `nonce` unset when logged out.\n- Injecting both `ajaxurl` and a valid `heartbeat-nonce` when a user is logged in.\n- Preserving any custom settings keys passed into the function.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15791.\n\nProps devmuhib, huzaifaalmesbah.\nSee #66757.",
