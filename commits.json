@@ -1,5 +1,14 @@
 [
     {
+        "id": 65799,
+        "author": "wildworks",
+        "message": "Media: Add spacing below filter labels in the media modal.\n\nIncreases the space between the \"Filter by type\", \"Filter by date\", and search labels and their fields in the media modal, with slightly more space on small screens.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/11927\n\nProps ankitkumarshah, audrasjb, deeppatel8950, im3dabasia1, jns141191, masteradhoc, ravichudasama01, wildworks.\nFixes #65300.",
+        "date": "2026-11-26T13:42:16.375198Z",
+        "files": [
+            "/trunk/src/wp-includes/css/media-views.css"
+        ]
+    },
+    {
         "id": 65798,
         "author": "aaronrobertshaw",
         "message": "Editor: Add PHP helpers for block support classes and styles.\n\nAdds `wp_get_border_classes_and_styles()`, `wp_get_shadow_classes_and_styles()`, `wp_get_spacing_classes_and_styles()`, `wp_get_color_classes_and_styles()` and `wp_get_background_classes_and_styles()`. Each takes a block's attributes and returns the classes and styles for that block support, similar to the JavaScript `get*ClassesAndStyles()` functions.\n\nBlocks that skip serialization of a block support can call these helpers instead of rebuilding the classes and styles by hand. The border, shadow, spacing, color and background block supports now build their output with them.\n\nThe block support output is unchanged with one exception. A null, false, empty or zero preset color now falls back to the custom color, as it does in the editor.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14094\n\nProps westonruter, ramonopoly, andrewserong, talldanwp, sakibmd, testerrahul.\nFixes #66269.\n",
