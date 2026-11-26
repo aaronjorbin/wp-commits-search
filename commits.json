@@ -1,5 +1,39 @@
 [
     {
+        "id": 65802,
+        "author": "wildworks",
+        "message": "Editor: Count numbers in the classic editor word count.\n\nThe classic editor's word count now includes numbers such as `2026`, `1,500`, and `$5`, which were previously stripped along with punctuation before counting. This brings it in line with the block editor's word count.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16070\n\nProps sainathpoojary, wildworks.\nFixes #66716.",
+        "date": "2026-11-26T14:34:18.772418Z",
+        "files": [
+            "/trunk/src/js/_enqueues/wp/utils/word-count.js",
+            "/trunk/tests/qunit/wp-admin/js/word-count.js"
+        ]
+    },
+    {
+        "id": 65801,
+        "author": "wildworks",
+        "message": "Twenty Twenty-One: Keep button text visible on custom backgrounds.\n\nButtons in the Search, File, and Button blocks, and plain buttons, now keep readable text when placed inside a block with a custom background color.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/13707\n\nFollow-up to [49987].\n\nProps dhruvang21, rishabhwp, sabernhardt, sourav08, wildworks.\nFixes #63245.",
+        "date": "2026-11-26T14:23:43.550809Z",
+        "files": [
+            "/trunk/src/wp-content/themes/twentytwentyone/assets/css/style-editor.css",
+            "/trunk/src/wp-content/themes/twentytwentyone/assets/sass/02-tools/mixins.scss",
+            "/trunk/src/wp-content/themes/twentytwentyone/style-rtl.css",
+            "/trunk/src/wp-content/themes/twentytwentyone/style.css"
+        ]
+    },
+    {
+        "id": 65800,
+        "author": "wildworks",
+        "message": "Widgets: Introduce `wp_delete_inactive_widgets()`.\n\nThis moves the logic that removes all inactive widgets and their settings into a new reusable function, which is now used by both the classic Widgets screen and the Ajax handler.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12099\n\nProps im3dabasia1, jorbin, mukesh27, pbearne, peterwilsoncc, westonruter, wildworks.\nFixes #65414.",
+        "date": "2026-11-26T14:19:30.220698Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/ajax-actions.php",
+            "/trunk/src/wp-admin/includes/widgets.php",
+            "/trunk/src/wp-admin/widgets-form.php",
+            "/trunk/tests/phpunit/tests/widgets/wpDeleteInactiveWidgets.php"
+        ]
+    },
+    {
         "id": 65799,
         "author": "wildworks",
         "message": "Media: Add spacing below filter labels in the media modal.\n\nIncreases the space between the \"Filter by type\", \"Filter by date\", and search labels and their fields in the media modal, with slightly more space on small screens.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/11927\n\nProps ankitkumarshah, audrasjb, deeppatel8950, im3dabasia1, jns141191, masteradhoc, ravichudasama01, wildworks.\nFixes #65300.",
