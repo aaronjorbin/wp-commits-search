@@ -1,5 +1,27 @@
 [
     {
+        "id": 65798,
+        "author": "aaronrobertshaw",
+        "message": "Editor: Add PHP helpers for block support classes and styles.\n\nAdds `wp_get_border_classes_and_styles()`, `wp_get_shadow_classes_and_styles()`, `wp_get_spacing_classes_and_styles()`, `wp_get_color_classes_and_styles()` and `wp_get_background_classes_and_styles()`. Each takes a block's attributes and returns the classes and styles for that block support, similar to the JavaScript `get*ClassesAndStyles()` functions.\n\nBlocks that skip serialization of a block support can call these helpers instead of rebuilding the classes and styles by hand. The border, shadow, spacing, color and background block supports now build their output with them.\n\nThe block support output is unchanged with one exception. A null, false, empty or zero preset color now falls back to the custom color, as it does in the editor.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/14094\n\nProps westonruter, ramonopoly, andrewserong, talldanwp, sakibmd, testerrahul.\nFixes #66269.\n",
+        "date": "2026-11-26T06:51:16.993455Z",
+        "files": [
+            "/trunk/src/wp-includes/block-supports/background.php",
+            "/trunk/src/wp-includes/block-supports/border.php",
+            "/trunk/src/wp-includes/block-supports/colors.php",
+            "/trunk/src/wp-includes/block-supports/shadow.php",
+            "/trunk/src/wp-includes/block-supports/spacing.php",
+            "/trunk/tests/phpunit/tests/block-supports/border.php",
+            "/trunk/tests/phpunit/tests/block-supports/colors.php",
+            "/trunk/tests/phpunit/tests/block-supports/spacing.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpGetBackgroundClassesAndStyles.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpGetBorderClassesAndStyles.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpGetColorClassesAndStyles.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpGetShadowClassesAndStyles.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpGetSpacingClassesAndStyles.php",
+            "/trunk/tests/phpunit/tests/block-supports/wpRenderBackgroundSupport.php"
+        ]
+    },
+    {
         "id": 65797,
         "author": "peterwilsoncc",
         "message": "Help/About: Optimize about page header images.\n\nUpdates the ten About page header images, the LTR and RTL versions of each, to display their text with `text` elements using an embedded subset of the JetBrains Mono font.\n\nPreviously each character was drawn as an outlined path, using text reduces the total size of the images by 79%, or about 55% when gzipped.\n\nJetBrains Mono is licensed under the SIL Open Font License 1.1.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16221\n\nFollow-up to r65753.\n\nProps peterwilsoncc, wildworks, markoserb.\nSee #66202.\n\n",
