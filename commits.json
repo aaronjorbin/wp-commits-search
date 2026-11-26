@@ -1,5 +1,16 @@
 [
     {
+        "id": 65803,
+        "author": "swissspidy",
+        "message": "I18N: Read both revision date header names in `.l10n.php` files.\n\nLanguage packs from translate.wordpress.org store the revision date as `translation-revision-date`, while files converted from a PO or MO source store it as `po-revision-date`. `wp_get_l10n_php_file_data()` only read the latter, so `PO-Revision-Date` came back empty for language packs, and `wp_get_installed_translations()` could then offer an installed, up-to-date pack for update again when no `.po` file sits next to it. Both names are now read, with the first one present used.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12844\n\nProps bejignesh, irozum, swissspidy.\nFixes #65809.",
+        "date": "2026-11-26T16:01:51.004749Z",
+        "files": [
+            "/trunk/src/wp-includes/l10n.php",
+            "/trunk/tests/phpunit/data/languages/de_CH.l10n.php",
+            "/trunk/tests/phpunit/tests/l10n.php"
+        ]
+    },
+    {
         "id": 65802,
         "author": "wildworks",
         "message": "Editor: Count numbers in the classic editor word count.\n\nThe classic editor's word count now includes numbers such as `2026`, `1,500`, and `$5`, which were previously stripped along with punctuation before counting. This brings it in line with the block editor's word count.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16070\n\nProps sainathpoojary, wildworks.\nFixes #66716.",
