@@ -1,5 +1,24 @@
 [
     {
+        "id": 65804,
+        "author": "peterwilsoncc",
+        "message": "Help/About: Optimize about page header images.\n\nUpdates the ten About page header images, the LTR and RTL versions of each, to display their text with `text` elements using an embedded subset of the JetBrains Mono font.\n\nPreviously each character was drawn as an outlined path, using text reduces the total size of the images by 79%, or about 55% when gzipped.\n\nJetBrains Mono is licensed under the SIL Open Font License 1.1.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16221\n\nFollow-up to r65753.\n\nReviewed by cbravobernal.\nMerges r65797 to the 7.2 branch.\n\nProps peterwilsoncc, wildworks, markoserb.\nSee #66202.\n\n",
+        "date": "2026-11-26T20:50:11.783558Z",
+        "files": [
+            "/branches/7.2",
+            "/branches/7.2/src/wp-admin/images/about-header-credits-rtl.svg",
+            "/branches/7.2/src/wp-admin/images/about-header-credits.svg",
+            "/branches/7.2/src/wp-admin/images/about-header-default-rtl.svg",
+            "/branches/7.2/src/wp-admin/images/about-header-default.svg",
+            "/branches/7.2/src/wp-admin/images/about-header-freedoms-rtl.svg",
+            "/branches/7.2/src/wp-admin/images/about-header-freedoms.svg",
+            "/branches/7.2/src/wp-admin/images/about-header-get-involved-rtl.svg",
+            "/branches/7.2/src/wp-admin/images/about-header-get-involved.svg",
+            "/branches/7.2/src/wp-admin/images/about-header-privacy-rtl.svg",
+            "/branches/7.2/src/wp-admin/images/about-header-privacy.svg"
+        ]
+    },
+    {
         "id": 65803,
         "author": "swissspidy",
         "message": "I18N: Read both revision date header names in `.l10n.php` files.\n\nLanguage packs from translate.wordpress.org store the revision date as `translation-revision-date`, while files converted from a PO or MO source store it as `po-revision-date`. `wp_get_l10n_php_file_data()` only read the latter, so `PO-Revision-Date` came back empty for language packs, and `wp_get_installed_translations()` could then offer an installed, up-to-date pack for update again when no `.po` file sits next to it. Both names are now read, with the first one present used.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12844\n\nProps bejignesh, irozum, swissspidy.\nFixes #65809.",
