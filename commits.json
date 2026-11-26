@@ -1,5 +1,14 @@
 [
     {
+        "id": 65805,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Cover `_navigation_markup()`.\n\nVerify:\n- Default navigation markup structure, CSS class, aria-label, screen reader text, and links insertion.\n- Custom arguments for CSS class, screen reader heading, and `aria-label`.\n- Fallback of `aria-label` to screen reader text when empty.\n- The `navigation_markup_template` filter receiving both template and CSS class arguments.\n- Sanitization of CSS classes via `sanitize_html_class()`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15739.\n\nProps devmuhib, huzaifaalmesbah.\nSee #66757.",
+        "date": "2026-11-26T21:40:16.051324Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/link/navigationMarkup.php"
+        ]
+    },
+    {
         "id": 65804,
         "author": "peterwilsoncc",
         "message": "Help/About: Optimize about page header images.\n\nUpdates the ten About page header images, the LTR and RTL versions of each, to display their text with `text` elements using an embedded subset of the JetBrains Mono font.\n\nPreviously each character was drawn as an outlined path, using text reduces the total size of the images by 79%, or about 55% when gzipped.\n\nJetBrains Mono is licensed under the SIL Open Font License 1.1.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16221\n\nFollow-up to r65753.\n\nReviewed by cbravobernal.\nMerges r65797 to the 7.2 branch.\n\nProps peterwilsoncc, wildworks, markoserb.\nSee #66202.\n\n",
