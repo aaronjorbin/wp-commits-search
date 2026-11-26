@@ -1,5 +1,23 @@
 [
     {
+        "id": 65797,
+        "author": "peterwilsoncc",
+        "message": "Help/About: Optimize about page header images.\n\nUpdates the ten About page header images, the LTR and RTL versions of each, to display their text with `text` elements using an embedded subset of the JetBrains Mono font.\n\nPreviously each character was drawn as an outlined path, using text reduces the total size of the images by 79%, or about 55% when gzipped.\n\nJetBrains Mono is licensed under the SIL Open Font License 1.1.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16221\n\nFollow-up to r65753.\n\nProps peterwilsoncc, wildworks, markoserb.\nSee #66202.\n\n",
+        "date": "2026-11-26T03:54:29.610213Z",
+        "files": [
+            "/trunk/src/wp-admin/images/about-header-credits-rtl.svg",
+            "/trunk/src/wp-admin/images/about-header-credits.svg",
+            "/trunk/src/wp-admin/images/about-header-default-rtl.svg",
+            "/trunk/src/wp-admin/images/about-header-default.svg",
+            "/trunk/src/wp-admin/images/about-header-freedoms-rtl.svg",
+            "/trunk/src/wp-admin/images/about-header-freedoms.svg",
+            "/trunk/src/wp-admin/images/about-header-get-involved-rtl.svg",
+            "/trunk/src/wp-admin/images/about-header-get-involved.svg",
+            "/trunk/src/wp-admin/images/about-header-privacy-rtl.svg",
+            "/trunk/src/wp-admin/images/about-header-privacy.svg"
+        ]
+    },
+    {
         "id": 65796,
         "author": "lancewillett",
         "message": "Tests: Restore the rewrite object after rewrite tag tests.\n\nKeep the sitemap rules registered at bootstrap available to subsequent canonical redirect tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16250\n\nProps mayankmajeji.\nSee #66755.\n",
