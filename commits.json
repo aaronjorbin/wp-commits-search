@@ -1,5 +1,18 @@
 [
     {
+        "id": 65807,
+        "author": "wildworks",
+        "message": "I18N: Add context to the Filter button in list tables.\n\nThe \"Filter\" submit button on admin list tables now uses the existing \"Filter\" string with the \"verb\" context. The block editor recently added a \"Filter\" string meant as a noun, so the button's string needs context to keep being translated as an action.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/16216\n\nProps timse201, wildworks.\nFixes #66810.",
+        "date": "2026-11-27T01:12:33.677772Z",
+        "files": [
+            "/trunk/src/wp-admin/includes/class-wp-comments-list-table.php",
+            "/trunk/src/wp-admin/includes/class-wp-links-list-table.php",
+            "/trunk/src/wp-admin/includes/class-wp-media-list-table.php",
+            "/trunk/src/wp-admin/includes/class-wp-ms-sites-list-table.php",
+            "/trunk/src/wp-admin/includes/class-wp-posts-list-table.php"
+        ]
+    },
+    {
         "id": 65806,
         "author": "wildworks",
         "message": "Themes: Check that a JSON file is readable before decoding it.\n\nWhen the given path is a directory or an unreadable file, `wp_json_file_decode()` now triggers a notice and returns `null` instead of emitting a PHP warning while reading it. The notice for a missing file now also shows the requested path instead of an empty string.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/10898\n\nProps mindctrl, mukesh27, ozgursar, pbearne, westonruter, wildworks.\nFixes #64620.",
