@@ -1,5 +1,17 @@
 [
     {
+        "id": 65806,
+        "author": "wildworks",
+        "message": "Themes: Check that a JSON file is readable before decoding it.\n\nWhen the given path is a directory or an unreadable file, `wp_json_file_decode()` now triggers a notice and returns `null` instead of emitting a PHP warning while reading it. The notice for a missing file now also shows the requested path instead of an empty string.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/10898\n\nProps mindctrl, mukesh27, ozgursar, pbearne, westonruter, wildworks.\nFixes #64620.",
+        "date": "2026-11-27T00:56:32.181403Z",
+        "files": [
+            "/trunk/src/wp-includes/functions.php",
+            "/trunk/tests/phpunit/tests/functions.php",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJsonResolver",
+            "/trunk/tests/phpunit/tests/theme/wpThemeJsonResolver/readJsonFile.php"
+        ]
+    },
+    {
         "id": 65805,
         "author": "SergeyBiryukov",
         "message": "Tests: Cover `_navigation_markup()`.\n\nVerify:\n- Default navigation markup structure, CSS class, aria-label, screen reader text, and links insertion.\n- Custom arguments for CSS class, screen reader heading, and `aria-label`.\n- Fallback of `aria-label` to screen reader text when empty.\n- The `navigation_markup_template` filter receiving both template and CSS class arguments.\n- Sanitization of CSS classes via `sanitize_html_class()`.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15739.\n\nProps devmuhib, huzaifaalmesbah.\nSee #66757.",
