@@ -1,5 +1,104 @@
 [
     {
+        "id": 65819,
+        "author": "lancewillett",
+        "message": "Tests: Add opt-in checks for core abilities with live AI providers.\n\nExercise each core ability separately and together across the three providers. Keep the suite outside ordinary PHPUnit discovery so contributors can run it explicitly with their own credentials. Surface rejected schemas and failed ability calls.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16029\n\nProps jorgefilipecosta.\nFixes #66707.\n",
+        "date": "2026-11-28T14:51:56.635490Z",
+        "files": [
+            "/trunk/.env.example",
+            "/trunk/composer.json",
+            "/trunk/docker-compose.yml",
+            "/trunk/tests/phpunit/manual",
+            "/trunk/tests/phpunit/manual/wpAiClientLiveProviders.php",
+            "/trunk/wp-tests-config-sample.php"
+        ]
+    },
+    {
+        "id": 65818,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Generate a changed-file list for release tags.\n\nCompare the tagged release with its predecessor in the built WordPress repository. Publish added, modified, and deleted paths in the workflow summary and as a downloadable artifact for HelpHub contributors. Allow a manual run to compare two named releases.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/12068\n\nProps akshat2802, desrosj, ridesirat.\nFixes #64003.\n",
+        "date": "2026-11-28T14:50:52.674364Z",
+        "files": [
+            "/trunk/.github/workflows/generate-changed-files.yml"
+        ]
+    },
+    {
+        "id": 65817,
+        "author": "lancewillett",
+        "message": "Tests: Initialize the script registries for the core entity field module test.\n\nConstruct the default scripts and modules before checking field registrations. This lets the test run on its own and after tests that replace the registries.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16295\n\nProps johnbillion, mayankmajeji.\nSee #66755.\n",
+        "date": "2026-11-28T14:49:09.636664Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/entity-fields/wpRegisterCoreFieldCollections.php"
+        ]
+    },
+    {
+        "id": 65816,
+        "author": "lancewillett",
+        "message": "Tests: Fix invalid JSON in the non-Latin block theme fixture.\n\nRemove the trailing comma in the template parts list so WordPress can decode the fixture\u2019s `theme.json` file.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16281\n\nProps ramonopoly, andrewserong, aaronrobertshaw.\nFixes #66838.\n",
+        "date": "2026-11-28T14:47:51.116995Z",
+        "files": [
+            "/trunk/tests/phpunit/data/themedir1/block-theme-non-latin/theme.json"
+        ]
+    },
+    {
+        "id": 65815,
+        "author": "lancewillett",
+        "message": "Tests: Remove duplicate post type and taxonomy cleanup from five test classes.\n\nCore resets these registrations before each test. Remove the trailing unregister calls from the admin bar, query, REST icon collection and block template tests. Keep the icon collection cleanup for its separate registry.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16267, https://github.com/WordPress/wordpress-develop/pull/16268, https://github.com/WordPress/wordpress-develop/pull/16269, https://github.com/WordPress/wordpress-develop/pull/16272, https://github.com/WordPress/wordpress-develop/pull/16274\n\nProps shailu25, devmuhib, huzaifaalmesbah, peterwilsoncc, mukesh27.\nSee #66755.\n",
+        "date": "2026-11-28T14:46:49.428689Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/adminbar.php",
+            "/trunk/tests/phpunit/tests/block-templates/getTemplateHierarchy.php",
+            "/trunk/tests/phpunit/tests/icons/wpRestIconCollectionsController.php",
+            "/trunk/tests/phpunit/tests/query/dateQuery.php",
+            "/trunk/tests/phpunit/tests/query/taxQuery.php"
+        ]
+    },
+    {
+        "id": 65814,
+        "author": "lancewillett",
+        "message": "Tests: Restore the active theme after template REST requests.\n\nSwitch back to the original stylesheet after testing file-backed template dates and template fallbacks. This clears the theme data that otherwise changes featured-image markup in subsequent media tests.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16266\n\nProps mayankmajeji.\nSee #66755.\n",
+        "date": "2026-11-28T14:45:19.501148Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/wpRestTemplatesController.php"
+        ]
+    },
+    {
+        "id": 65813,
+        "author": "lancewillett",
+        "message": "Tests: Reset the entity action registry before each entity action test.\n\nDiscard actions cached by an earlier test so the next registry read uses the default actions registered by the test class.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16259\n\nProps mayankmajeji, mukesh27.\nSee #66755.\n",
+        "date": "2026-11-28T14:43:38.348779Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/entity-actions.php"
+        ]
+    },
+    {
+        "id": 65812,
+        "author": "lancewillett",
+        "message": "Tests: Preserve block style variations in multisite revision fixtures.\n\nGrant the fixture administrator super admin access on multisite before saving global styles. This lets the revision tests exercise the REST response with the variation data intact.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16256\n\nProps noruzzaman.\nSee #66755.\n",
+        "date": "2026-11-28T14:42:14.932355Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/rest-api/rest-global-styles-revisions-controller.php"
+        ]
+    },
+    {
+        "id": 65811,
+        "author": "lancewillett",
+        "message": "Tests: Clear the unloaded markers for the two translation fixture domains.\n\nUnloading the fixtures leaves both domains marked as unloaded. Clear their entries so the next locale-switching test can load its translations.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/16251\n\nProps mayankmajeji.\nSee #66755.\n",
+        "date": "2026-11-28T14:36:06.040431Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/l10n/wpTranslationController.php"
+        ]
+    },
+    {
+        "id": 65810,
+        "author": "lancewillett",
+        "message": "Build/Test Tools: Document where to keep a WSL checkout.\n\nExplain that keeping the project files on the Linux filesystem improves Docker performance on Windows, and show how to recognize that location.\n\nDeveloped in: https://github.com/WordPress/wordpress-develop/pull/10933\n\nProps marcelloruoppolome, wildworks, desrosj, sirlouen, Clorith, karthikeya01, poena.\nFixes #62196.\n",
+        "date": "2026-11-28T14:34:29.475957Z",
+        "files": [
+            "/trunk/README.md"
+        ]
+    },
+    {
         "id": 65809,
         "author": "SergeyBiryukov",
         "message": "Tests: Cover `wptexturize_primes()`.\n\nVerify:\n- Replacing single quotes with single prime entities (`&#8242;`) following numbers.\n- Replacing double quotes with double prime entities (`&#8243;`) following numbers.\n- Ensuring strings without target quotes remain unmodified.\n- Disambiguating quotes and primes within opened quotation marks.\n- Ensuring regular quotes not preceded by numbers become closing quotes.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15740.\n\nProps devmuhib, huzaifaalmesbah.\nFixes #66609.",
