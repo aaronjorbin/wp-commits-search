@@ -1,5 +1,14 @@
 [
     {
+        "id": 65809,
+        "author": "SergeyBiryukov",
+        "message": "Tests: Cover `wptexturize_primes()`.\n\nVerify:\n- Replacing single quotes with single prime entities (`&#8242;`) following numbers.\n- Replacing double quotes with double prime entities (`&#8243;`) following numbers.\n- Ensuring strings without target quotes remain unmodified.\n- Disambiguating quotes and primes within opened quotation marks.\n- Ensuring regular quotes not preceded by numbers become closing quotes.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15740.\n\nProps devmuhib, huzaifaalmesbah.\nFixes #66609.",
+        "date": "2026-11-27T23:22:53.270861Z",
+        "files": [
+            "/trunk/tests/phpunit/tests/formatting/wptexturizePrimes.php"
+        ]
+    },
+    {
         "id": 65808,
         "author": "westonruter",
         "message": "Build/Test Tools: Add tests for the PHPStan extensions.\n\nThe extensions in `tests/phpstan` change what PHPStan reads out of core, deriving types from hash notation and `@global` tags, typing filtered values, and checking hook documentation, so a defect in one surfaces only as a quiet change in what the analysis reports. They are now covered by a PHPUnit suite built on PHPStan's test harness, which runs them against fixtures rather than against core, with hook reference comments resolving against a small fixture tree instead of `src`. It is run with `composer phpstan:test` or `npm run typecheck:php:test`.\n\nSince the harness parses every file as an analyzed one, it cannot see whether the redefinition of the simple parser in `base.neon` still applies, which is what gives a file that is only scanned the same derived types. One test therefore runs a real analysis with `base.neon` to cover it, so that a PHPStan upgrade renaming the service it redefines fails a test rather than quietly undoing it.\n\nIn CI, the suite runs in the analysis of the whole codebase, after its results are reported, so that a failing test does not also leave a pull request without its annotations. It is skipped on branches that do not have it.\n\nDeveloped in https://github.com/WordPress/wordpress-develop/pull/15850.\nFollow-up to r62292, r62939, r63420, r63462.\n\nProps johnbillion, lucatume, westonruter.\nFixes #66634.\n",
